@@ -15,7 +15,7 @@ public class SparkImpactEffect extends EYBEffect
 {
     private static final TextureCache[] images = {VFX.IMAGES.Spark1, VFX.IMAGES.Spark2};
     protected int particles = 60;
-    protected float radius = 500;
+    protected float radius = 400;
     protected float x;
     protected float y;
 
@@ -50,7 +50,7 @@ public class SparkImpactEffect extends EYBEffect
                     .SetBlendingMode(PCLRenderHelpers.BlendingMode.Glowing)
                     .Edit(i, (r, p) -> p
                             .SetScale(scale * MathUtils.random(0.04f, 0.55f)).SetTargetRotation(36000f,1440f)
-                            .SetSpeed(MathUtils.random(170f, 800f), MathUtils.random(170f, 800f), MathUtils.random(700f, 1010f),-0.03f)
+                            .SetSpeed(MathUtils.random(140f, 580f), MathUtils.random(140f, 580f), MathUtils.random(200f, 710f),-0.03f)
                             .SetTargetPosition(x + radius * MathUtils.cos(r), y + radius * MathUtils.sin(r))).SetDuration(0.5f, false)
             .SetDuration(MathUtils.random(0.5F, 1.0F), true));
             PCLGameEffects.Queue.Add(new LightFlareParticleEffect(this.x, this.y, color));

@@ -130,6 +130,16 @@ public class VFX
                 .SetFading(30);
     }
 
+    public static ElectricityEffect Electric(Hitbox target, float spread)
+    {
+        return Electric(target.cX, target.cY).SetSpread(spread);
+    }
+
+    public static ElectricityEffect Electric(float cX, float cY)
+    {
+        return new ElectricityEffect(cX, cY);
+    }
+
     public static FallingIceEffect FallingIce(int frostCount)
     {
         return new FallingIceEffect(frostCount, FlipHorizontally());
@@ -323,7 +333,6 @@ public class VFX
     {
         return new SparkImpactEffect(cX, cY);
     }
-
 
     public static ColoredSweepingBeamEffect SweepingBeam(AbstractCreature source)
     {

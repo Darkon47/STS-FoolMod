@@ -4,10 +4,8 @@ import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.combat.AdditiveSlashImpactEffect;
 import com.megacrit.cardcrawl.vfx.combat.AnimatedSlashEffect;
 import eatyourbeets.powers.CombatStats;
@@ -18,15 +16,10 @@ import pinacolada.cards.base.PCLCardData;
 import pinacolada.effects.AttackEffects;
 import pinacolada.effects.SFX;
 import pinacolada.effects.VFX;
-import pinacolada.monsters.PCLEnemyIntent;
-import pinacolada.powers.common.DelayedDamagePower;
 import pinacolada.powers.special.SelfImmolationPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameEffects;
 import pinacolada.utilities.PCLGameUtilities;
-import pinacolada.utilities.PCLJUtils;
-
-import java.util.ArrayList;
 
 public class AyakaKamisato extends PCLCard {
     private static final Color FADE_EFFECT_COLOR = new Color(0.6f,0.6f,0.8f,0.5f);
@@ -66,54 +59,27 @@ public class AyakaKamisato extends PCLCard {
                         })
                 );
 
-        PCLActions.Bottom.TakeDamage(secondaryValue, AttackEffects.CLAW).CanKill(false).IsCancellable(false);
+        PCLActions.Bottom.TakeDamage(secondaryValue, AttackEffects.CLAW).CanKill(!checkCache).IsCancellable(false);
         PCLActions.Bottom.StackPower(new SelfImmolationPower(player, magicNumber));
         PCLActions.Bottom.GainBlur(1);
     }
 
     @Override
     public void OnLateUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info) {
-        PCLActions.Last.Callback(() -> {
-            if ((checkCache || CheckSpecialCondition(true)) && CombatStats.TryActivateLimited(cardID)) {
-                final ArrayList<AbstractCard> choices = new ArrayList<>();
-                choices.addAll(PCLJUtils.Filter(player.hand.group, c -> c.block > 0));
-                choices.addAll(PCLJUtils.Filter(player.discardPile.group, c -> c.block > 0));
-                choices.addAll(PCLJUtils.Filter(player.drawPile.group, c -> c.block > 0));
-
-                AbstractCard blockCard = PCLJUtils.FindMin(choices, c -> c.block);
-                if (blockCard != null) {
-                    PCLActions.Bottom.PlayCard(blockCard, m).AddCallback(() -> {
-                        PCLActions.Last.Callback(() -> {
-                            DelayedDamagePower dd = PCLGameUtilities.GetPower(player, DelayedDamagePower.POWER_ID);
-                            if (dd != null) {
-                                dd.atEndOfTurn(true);
-                            }
-
-                            for (AbstractCreature cr: PCLGameUtilities.GetEnemies(true)) {
-                                if (cr.powers != null) {
-                                    for (AbstractPower po : cr.powers) {
-                                        if (po instanceof DelayedDamagePower) {
-                                            po.atEndOfTurn(false);
-                                        }
-                                    }
-                                }
-                            }
-                        });
+        if (checkCache) {
+            PCLActions.Bottom.PlayFromPile(name, 1, m, p.hand)
+                    .SetOptions(false, false)
+                    .SetFilter(c -> c.type == CardType.ATTACK)
+                    .AddCallback(cards -> {
+                        for (AbstractCard c : cards) {
+                            PCLActions.Last.Exhaust(c);
+                        }
                     });
-                }
-            }
-        });
+        }
     }
 
     public boolean CheckSpecialCondition(boolean tryUse){
-        int damage = 0;
-        for (PCLEnemyIntent intent : PCLGameUtilities.GetPCLIntents()) {
-            damage += intent.GetDamage(true);
-            if (damage >= player.currentHealth + player.currentBlock + PCLGameUtilities.GetTempHP()) {
-                return true;
-            }
-        }
-        return false;
+        return player.currentHealth + player.currentBlock + PCLGameUtilities.GetTempHP() < secondaryValue && tryUse ? CombatStats.TryActivateLimited(cardID) : CombatStats.CanActivateLimited(cardID);
     }
 
     protected WaitAction PreDamageAction(AbstractMonster m) {

@@ -47,12 +47,12 @@ public class ElectrifiedPower extends PCLTriggerablePower
         if (info.output > 0 && target != this.owner && info.type == DamageInfo.DamageType.NORMAL) {
             ArrayList<AbstractMonster> enemies = PCLGameUtilities.GetEnemies(true);
             if (PCLGameUtilities.IsPlayer(owner) || enemies.size() == 1) {
-                PCLActions.Bottom.DealDamage(owner, owner, (int) CalculateDamage(info, GetEffectMultiplier()), DamageInfo.DamageType.THORNS, AttackEffects.SPARK);
+                PCLActions.Bottom.DealDamage(owner, owner, (int) CalculateDamage(info, GetEffectMultiplier()), DamageInfo.DamageType.THORNS, AttackEffects.ELECTRIC);
             }
             else {
                 for (AbstractMonster enemy : enemies) {
                     if (enemy != owner) {
-                        PCLActions.Bottom.DealDamage(owner, enemy, (int) CalculateDamage(info, GetEffectMultiplier()), DamageInfo.DamageType.THORNS, AttackEffects.SPARK);
+                        PCLActions.Bottom.DealDamage(owner, enemy, (int) CalculateDamage(info, GetEffectMultiplier()), DamageInfo.DamageType.THORNS, AttackEffects.ELECTRIC);
                     }
                 }
             }
@@ -68,7 +68,7 @@ public class ElectrifiedPower extends PCLTriggerablePower
 
     @Override
     public AbstractGameAction.AttackEffect GetAttackEffect() {
-        return AttackEffects.SPARK;
+        return AttackEffects.ELECTRIC;
     }
 
     @Override

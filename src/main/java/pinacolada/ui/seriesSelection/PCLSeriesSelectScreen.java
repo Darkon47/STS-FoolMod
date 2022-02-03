@@ -250,6 +250,8 @@ public class PCLSeriesSelectScreen extends AbstractScreen
 
         seriesCountDropdown.SetItems(PCLJUtils.RangeArray(PCLLoadoutsContainer.MINIMUM_SERIES, GR.PCL.Data.GetEveryLoadout().size()));
         seriesCountDropdown.SetSelection(GR.PCL.Config.SeriesSize.Get(), false);
+
+        massExpansionButton.SetActive(container.shouldShowExpansionButton);
     }
 
     @Override

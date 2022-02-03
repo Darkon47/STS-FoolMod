@@ -5,14 +5,13 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Interpolation;
-import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.core.Settings;
-import com.megacrit.cardcrawl.vfx.combat.LightFlareParticleEffect;
 import eatyourbeets.effects.EYBEffect;
 import eatyourbeets.ui.TextureCache;
-import eatyourbeets.utilities.RandomizedList;
 import pinacolada.effects.VFX;
-import pinacolada.utilities.PCLGameEffects;
+import pinacolada.utilities.PCLJUtils;
+
+import java.util.ArrayList;
 
 public class ElectricityParticleEffect extends EYBEffect
 {
@@ -24,40 +23,36 @@ public class ElectricityParticleEffect extends EYBEffect
             VFX.IMAGES.Electric5,
             VFX.IMAGES.Electric6,
             VFX.IMAGES.Electric7};
-    private static final RandomizedList<TextureCache> textures = new RandomizedList<>();
+    private static final ArrayList<Texture> imageTextures = new ArrayList<>();
 
-    protected static final float GRAVITY = 180f * Settings.scale;
     protected static final int SIZE = 96;
 
-    protected float vfxFrequency = 0.75f;
+    protected float animFrequency = 0.005f;
+    protected float animTimer;
+    protected int imgIndex;
     protected Texture img;
-    protected float floor;
     protected float x;
     protected float y;
-    protected float vX;
-    protected float vY;
+    protected float baseX;
+    protected float baseY;
+    protected float jitter;
     protected float vR;
-    protected float vfxTimer;
     protected boolean flip;
-    protected boolean enableFloor = true;
-    protected boolean hasTrail = false;
 
-    public ElectricityParticleEffect(float x, float y, Color color)
+    public ElectricityParticleEffect(float x, float y, float jitter, Color color)
     {
         super(Random(0.5f, 1f));
 
-        this.img = RandomElement(images, textures).Texture();
-        this.x = x - (float) (SIZE / 2);
-        this.y = y - (float) (SIZE / 2);
+        this.img = GetTexture(Random(0, images.length - 1));
+        this.x = this.baseX = x - (float) (SIZE / 2);
+        this.y = this.baseY = y - (float) (SIZE / 2);
+        this.jitter = jitter;
         this.rotation = Random(-10f, 10f);
         this.scale = Random(0.2f, 1.5f) * Settings.scale;
-        this.vX = Random(-650f, 650f) * Settings.scale;
-        this.vY = Random(-650f, 650f) * Settings.scale;
-        this.floor = Random(100f, 250f) * Settings.scale;
-        this.vR = Random(-600f, 600f);
+        this.vR = Random(-700f, 700f);
         this.flip = RandomBoolean(0.5f);
 
-        SetColor(color);
+        SetColor(color, 0.35f);
     }
 
     public ElectricityParticleEffect SetColor(Color color, float variance)
@@ -82,42 +77,12 @@ public class ElectricityParticleEffect extends EYBEffect
         return this;
     }
 
-    public ElectricityParticleEffect SetSpeed(float vX, float vY)
-    {
-        this.vX = vX;
-        this.vY = vY;
-        return this;
-    }
-
-    public ElectricityParticleEffect DisableFloor()
-    {
-        enableFloor = false;
-        return this;
-    }
-
-    public ElectricityParticleEffect EnableTrail()
-    {
-        hasTrail = true;
-        return this;
-    }
-
     @Override
     protected void UpdateInternal(float deltaTime)
     {
-        vY += GRAVITY / scale * deltaTime;
-        x += vX * deltaTime;
-        y += vY * deltaTime;
-        rotation += vR * deltaTime;
         if (scale > 0.3f * Settings.scale)
         {
             scale -= deltaTime * 2f;
-        }
-
-        if (enableFloor && y < floor)
-        {
-            vY = -vY * 0.35f;
-            y = floor + 0.1f;
-            vX *= 1.1f;
         }
 
         if ((1f - duration) < 0.1f)
@@ -129,15 +94,13 @@ public class ElectricityParticleEffect extends EYBEffect
             color.a = Interpolation.pow2Out.apply(0f, 1f, duration);
         }
 
-        if (hasTrail) {
-            vfxTimer -= deltaTime;
-            if (vfxTimer < 0f)
-            {
-                if (MathUtils.randomBoolean()) {
-                    PCLGameEffects.Queue.Add(new LightFlareParticleEffect(x, y, color));
-                }
-                vfxTimer = vfxFrequency;
-            }
+        animTimer -= deltaTime;
+        if (animTimer < 0) {
+            animTimer = animFrequency;
+            this.img = GetTexture(imgIndex);
+            x = baseX + Random(-jitter, jitter);
+            y = baseY + Random(-jitter, jitter);
+            rotation += vR * deltaTime;
         }
 
         super.UpdateInternal(deltaTime);
@@ -149,5 +112,13 @@ public class ElectricityParticleEffect extends EYBEffect
         sb.setColor(this.color);
         sb.draw(this.img, x, y, SIZE * 0.5f, SIZE * 0.5f, SIZE, SIZE, scale, scale, rotation, 0, 0, SIZE, SIZE, flip, false);
         sb.setBlendFunction(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
+    }
+
+    protected Texture GetTexture(int currentIndex) {
+        if (imageTextures.size() == 0) {
+            imageTextures.addAll(PCLJUtils.Map(images, TextureCache::Texture));
+        }
+        imgIndex = (currentIndex + Random(1, images.length - 1)) % images.length;
+        return imageTextures.get(imgIndex);
     }
 }

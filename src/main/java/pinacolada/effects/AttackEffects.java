@@ -27,34 +27,35 @@ public class AttackEffects
     private static final ArrayList<AttackEffect> magic = new ArrayList<>();
     private static final ArrayList<AttackEffect> other = new ArrayList<>();
 
-   public static final AttackEffect BLUNT_LIGHT = AttackEffect.BLUNT_LIGHT;
    public static final AttackEffect BLUNT_HEAVY = AttackEffect.BLUNT_HEAVY;
+   public static final AttackEffect BLUNT_LIGHT = AttackEffect.BLUNT_LIGHT;
+   public static final AttackEffect FIRE = AttackEffect.FIRE;
+   public static final AttackEffect LIGHTNING = AttackEffect.LIGHTNING;
+   public static final AttackEffect NONE = AttackEffect.NONE;
+   public static final AttackEffect POISON = AttackEffect.POISON;
+   public static final AttackEffect SHIELD = AttackEffect.SHIELD;
    public static final AttackEffect SLASH_DIAGONAL = AttackEffect.SLASH_DIAGONAL;
    public static final AttackEffect SLASH_HEAVY = AttackEffect.SLASH_HEAVY;
    public static final AttackEffect SLASH_HORIZONTAL = AttackEffect.SLASH_HORIZONTAL;
    public static final AttackEffect SLASH_VERTICAL = AttackEffect.SLASH_VERTICAL;
    public static final AttackEffect SMASH = AttackEffect.SMASH;
-   public static final AttackEffect NONE = AttackEffect.NONE;
-   public static final AttackEffect FIRE = AttackEffect.FIRE;
-   public static final AttackEffect POISON = AttackEffect.POISON;
-   public static final AttackEffect SHIELD = AttackEffect.SHIELD;
-   public static final AttackEffect LIGHTNING = AttackEffect.LIGHTNING;
    // Custom:
-   public static final AttackEffect SMALL_EXPLOSION = GR.Enums.AttackEffect.SMALL_EXPLOSION;
-   public static final AttackEffect FIRE_EXPLOSION = GR.Enums.AttackEffect.FIRE_EXPLOSION;
-   public static final AttackEffect ICE = GR.Enums.AttackEffect.ICE;
-   public static final AttackEffect SPARK = GR.Enums.AttackEffect.SPARK;
-   public static final AttackEffect DARKNESS = GR.Enums.AttackEffect.DARKNESS;
-   public static final AttackEffect PSYCHOKINESIS = GR.Enums.AttackEffect.PSYCHOKINESIS;
-   public static final AttackEffect SHIELD_FROST = GR.Enums.AttackEffect.SHIELD_FROST;
-   public static final AttackEffect GUNSHOT = GR.Enums.AttackEffect.GUNSHOT;
-   public static final AttackEffect DAGGER = GR.Enums.AttackEffect.DAGGER;
-   public static final AttackEffect SPEAR = GR.Enums.AttackEffect.SPEAR;
-   public static final AttackEffect PUNCH = GR.Enums.AttackEffect.PUNCH;
-   public static final AttackEffect CLAW = GR.Enums.AttackEffect.CLAW;
-   public static final AttackEffect DARK = GR.Enums.AttackEffect.DARK;
-   public static final AttackEffect WATER = GR.Enums.AttackEffect.WATER;
    public static final AttackEffect BITE = GR.Enums.AttackEffect.BITE;
+   public static final AttackEffect CLAW = GR.Enums.AttackEffect.CLAW;
+   public static final AttackEffect DAGGER = GR.Enums.AttackEffect.DAGGER;
+   public static final AttackEffect DARK = GR.Enums.AttackEffect.DARK;
+   public static final AttackEffect DARKNESS = GR.Enums.AttackEffect.DARKNESS;
+   public static final AttackEffect ELECTRIC = GR.Enums.AttackEffect.ELECTRIC;
+   public static final AttackEffect FIRE_EXPLOSION = GR.Enums.AttackEffect.FIRE_EXPLOSION;
+   public static final AttackEffect GUNSHOT = GR.Enums.AttackEffect.GUNSHOT;
+   public static final AttackEffect ICE = GR.Enums.AttackEffect.ICE;
+   public static final AttackEffect PSYCHOKINESIS = GR.Enums.AttackEffect.PSYCHOKINESIS;
+   public static final AttackEffect PUNCH = GR.Enums.AttackEffect.PUNCH;
+   public static final AttackEffect SHIELD_FROST = GR.Enums.AttackEffect.SHIELD_FROST;
+   public static final AttackEffect SMALL_EXPLOSION = GR.Enums.AttackEffect.SMALL_EXPLOSION;
+   public static final AttackEffect SPARK = GR.Enums.AttackEffect.SPARK;
+   public static final AttackEffect SPEAR = GR.Enums.AttackEffect.SPEAR;
+   public static final AttackEffect WATER = GR.Enums.AttackEffect.WATER;
    public static final AttackEffect WAVE = GR.Enums.AttackEffect.WAVE;
 
     public static EYBEffect GetVFX(AttackEffect effect, AbstractCreature source, float t_cX, float t_cY)
@@ -180,6 +181,11 @@ public class AttackEffects
 
         Add(magic, SPARK)
                 .SetVFX(VFX::SparkImpact)
+                .SetSFX(SFX.ORB_LIGHTNING_CHANNEL)
+                .SetDamageTint(Colors.Lerp(Color.YELLOW, Color.WHITE, 0.3f));
+
+        Add(magic, ELECTRIC)
+                .SetVFX(VFX::Electric)
                 .SetSFX(SFX.ORB_LIGHTNING_CHANNEL)
                 .SetDamageTint(Colors.Lerp(Color.YELLOW, Color.WHITE, 0.3f));
 

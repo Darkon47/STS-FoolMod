@@ -935,7 +935,7 @@
 		},
 		"pcl:AyakaKamisato":
 		{
-			"DESCRIPTION": "Gain [Blur] and !M! [Self-Immolation]. Take !S! non-lethal damage. || <LIM>. If any enemy would kill you: Play the lowest [Block] card in play, then activate [DD] on ALL characters.",
+			"DESCRIPTION": "Gain [Blur] and !M! [Self-Immolation]. Take !S! damage. || <LIM>. If this would kill you: Survive with 1 HP, then play and Exhaust an Attack in hand.",
 			"EXTENDED_DESCRIPTION": ["in hand", "in play"],
 			"NAME": "Ayaka Kamisato"
 		},

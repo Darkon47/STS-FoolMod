@@ -315,6 +315,7 @@ public class GR extends eatyourbeets.resources.GR
             @SpireEnum public static AbstractGameAction.AttackEffect BLEED;
             @SpireEnum public static AbstractGameAction.AttackEffect CLASH;
             @SpireEnum public static AbstractGameAction.AttackEffect DARKNESS;
+            @SpireEnum public static AbstractGameAction.AttackEffect ELECTRIC;
             @SpireEnum public static AbstractGameAction.AttackEffect FIRE_EXPLOSION;
             @SpireEnum public static AbstractGameAction.AttackEffect PSYCHOKINESIS;
             @SpireEnum public static AbstractGameAction.AttackEffect SMALL_EXPLOSION;

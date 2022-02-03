@@ -25,6 +25,7 @@ public class PCLLoadoutsContainer
     public final ArrayList<AbstractCard> betaCards = new ArrayList<>();
     public final ArrayList<AbstractCard> allCards = new ArrayList<>();
     public AbstractCard currentSeriesCard;
+    public boolean shouldShowExpansionButton;
 
     public static void PreloadResources()
     {
@@ -108,6 +109,7 @@ public class PCLLoadoutsContainer
         }
 
         CurrentSeriesLimit = Mathf.Clamp(GR.PCL.Config.SeriesSize.Get(), MINIMUM_SERIES, currentCards.size());
+        shouldShowExpansionButton = PCLJUtils.Any(cardsMap.values(), c -> c.canEnableExpansion);
     }
 
     public PCLRuntimeLoadout Find(AbstractCard card)
