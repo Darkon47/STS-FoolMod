@@ -2,10 +2,7 @@ package pinacolada.cards.pcl.series.AngelBeats;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import pinacolada.cards.base.CardUseInfo;
-import pinacolada.cards.base.PCLAttackType;
-import pinacolada.cards.base.PCLCard;
-import pinacolada.cards.base.PCLCardData;
+import pinacolada.cards.base.*;
 import pinacolada.effects.AttackEffects;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
@@ -18,7 +15,7 @@ public class HidekiHinata extends PCLCard
     {
         super(DATA);
 
-        Initialize(6, 0, 2, 6);
+        Initialize(6, 0, 2, 3);
         SetUpgrade(3, 0, 0, 0);
 
         SetAffinity_Red(1, 0, 0);
@@ -32,11 +29,7 @@ public class HidekiHinata extends PCLCard
     @Override
     protected float ModifyDamage(AbstractMonster enemy, float amount)
     {
-        if (enemy != null && PCLGameUtilities.IsAttacking(enemy.intent))
-        {
-            return super.ModifyDamage(enemy, amount + secondaryValue);
-        }
-        return super.ModifyDamage(enemy, amount);
+        return super.ModifyDamage(enemy, amount + PCLGameUtilities.GetCurrentMatchCombo() * secondaryValue);
     }
 
 
@@ -44,8 +37,7 @@ public class HidekiHinata extends PCLCard
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
         PCLActions.Bottom.DealCardDamage(this, m, AttackEffects.GUNSHOT);
-
-        if (!PCLGameUtilities.IsAttacking(m.intent)) {
+        if (PCLGameUtilities.GetCurrentAffinity() == PCLAffinity.Light || PCLGameUtilities.GetNextAffinity() == PCLAffinity.Light) {
             PCLActions.Bottom.GainSupportDamage(magicNumber);
         }
     }

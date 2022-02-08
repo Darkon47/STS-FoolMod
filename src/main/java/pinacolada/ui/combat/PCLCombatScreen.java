@@ -3,6 +3,8 @@ package pinacolada.ui.combat;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import eatyourbeets.interfaces.subscribers.OnBattleStartSubscriber;
 import eatyourbeets.interfaces.subscribers.OnStatsClearedSubscriber;
+import eatyourbeets.monsters.PlayerMinions.UnnamedDoll;
+import eatyourbeets.powers.CombatStats;
 import eatyourbeets.ui.GUIElement;
 import pinacolada.powers.PCLCombatStats;
 import pinacolada.resources.GR;
@@ -39,6 +41,7 @@ public class PCLCombatScreen extends GUIElement implements OnStatsClearedSubscri
     {
         PCLCombatStats.MatchingSystem.TryUpdate();
         PCLCombatStats.ControlPile.Update();
+        CombatStats.Dolls.TryUpdate();
         Helper.Update();
 
     }
@@ -48,5 +51,10 @@ public class PCLCombatScreen extends GUIElement implements OnStatsClearedSubscri
     {
         PCLCombatStats.MatchingSystem.TryRender(sb);
         PCLCombatStats.ControlPile.Render(sb);
+        for (UnnamedDoll doll : CombatStats.Dolls.Slots) {
+            if (doll != null && doll.Visible) {
+                GR.UI.AddPreRender(doll::render);
+            }
+        }
     }
 }

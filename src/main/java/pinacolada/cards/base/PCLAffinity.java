@@ -4,11 +4,12 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import eatyourbeets.ui.TextureCache;
+import pinacolada.interfaces.markers.TooltipObject;
 import pinacolada.powers.affinity.*;
 import pinacolada.resources.GR;
 import pinacolada.utilities.PCLJUtils;
 
-public enum PCLAffinity implements Comparable<PCLAffinity>
+public enum PCLAffinity implements TooltipObject, Comparable<PCLAffinity>
 {
     Red(0, "Red", "Might", "R", GR.PCL.Images.Affinities.Red),
     Green(1, "Green", "Velocity", "G", GR.PCL.Images.Affinities.Green),

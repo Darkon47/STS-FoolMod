@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import pinacolada.cards.base.*;
 import pinacolada.orbs.pcl.Chaos;
-import pinacolada.powers.special.DainsleifAbyssPower;
+import pinacolada.powers.pcl.DainsleifAbyssPower;
 import pinacolada.resources.GR;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLJUtils;

@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import eatyourbeets.utilities.TargetHelper;
 import pinacolada.cards.base.*;
 import pinacolada.powers.common.ImpairedPower;
-import pinacolada.powers.special.InvertPower;
+import pinacolada.powers.pcl.InvertPower;
 import pinacolada.utilities.PCLActions;
 
 public class YukariYakumo extends PCLCard

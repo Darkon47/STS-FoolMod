@@ -1,11 +1,43 @@
 
 {
-	"pcl:GrowthPotion":
+	"pcl:BurningPotion":
 	{
-		"NAME": "Exp. Potion",
+		"NAME": "Burning Potion",
 		"DESCRIPTIONS":
 		[
-			"Gain #b{0} #yForce, #yIntellect and #yAgility."
+			"Apply #b{0} [Burning]."
+		]
+	},
+	"pcl:ChillingPotion":
+	{
+		"NAME": "Chilling Potion",
+		"DESCRIPTIONS":
+		[
+			"Apply #b{0} [Freezing]."
+		]
+	},
+	"pcl:ColorfulPotion":
+	{
+		"NAME": "Colorful Potion",
+		"DESCRIPTIONS":
+		[
+			"Gain #b{0} of any [A-Gen] except for [A-Silver]."
+		]
+	},
+	"pcl:ShockingPotion":
+	{
+		"NAME": "Shocking Potion",
+		"DESCRIPTIONS":
+		[
+			"Apply #b{0} [Electrified]."
+		]
+	},
+	"pcl:SuperPotion":
+	{
+		"NAME": "Super Potion",
+		"DESCRIPTIONS":
+		[
+			"Gain #b{0} [R], [G], [B], and [O]."
 		]
 	}
 }

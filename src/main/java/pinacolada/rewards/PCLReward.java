@@ -113,6 +113,13 @@ public abstract class PCLReward extends CustomReward
                 {
                     cards.Add(card, card.rarity == AbstractCard.CardRarity.UNCOMMON ? 8 : 2);
                 }
+                else if (PCLGameUtilities.CanReceiveAnyColorCard() && CardSeries.ANY.equals(series)) {
+                    int weight = context.GetRarityWeight(card.rarity);
+                    if (weight > 0)
+                    {
+                        cards.Add(PCLGameUtilities.GetAnyColorCardFiltered(card.rarity, null, true), weight);
+                    }
+                }
                 else if (series.Equals(card.series) || CardSeries.ANY.equals(series))
                 {
                     int weight = context.GetRarityWeight(card.rarity);

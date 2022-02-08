@@ -178,7 +178,7 @@ public abstract class PCLEnchantableRelic extends PCLRelic implements OnReceiveR
     {
         super.update();
 
-        if (hb.hovered && PCLInputManager.RightClick.IsJustPressed())
+        if (hb.hovered && PCLInputManager.RightClick.IsJustPressed() && counter > 0)
         {
             if (AbstractDungeon.isScreenUp) {
                 AbstractDungeon.dynamicBanner.hide();
@@ -209,11 +209,13 @@ public abstract class PCLEnchantableRelic extends PCLRelic implements OnReceiveR
                     .CancellableFromPlayer(true)
                     .AddCallback(selection -> {
                         if (selection.size() > 0) {
-                            Enchantment e = (Enchantment) selection.get(0);
-                            ApplyEnchantment(e);
-                            flash();
-                            AddCounter(-1);
-                            Use();
+                            Enchantment e = PCLJUtils.SafeCast(selection.get(0), Enchantment.class);
+                            if (e != null) {
+                                ApplyEnchantment(e);
+                                flash();
+                                AddCounter(-1);
+                                Use();
+                            }
                         }
                     }));
         }

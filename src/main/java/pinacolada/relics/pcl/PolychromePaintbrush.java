@@ -12,6 +12,7 @@ import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.pcl.basic.ImprovedDefend;
 import pinacolada.cards.pcl.basic.ImprovedStrike;
 import pinacolada.relics.PCLRelic;
+import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameEffects;
 import pinacolada.utilities.PCLInputManager;
 
@@ -50,8 +51,12 @@ public class PolychromePaintbrush extends PCLRelic
     {
         super.update();
 
-        if (hb.hovered && !AbstractDungeon.isScreenUp && PCLInputManager.RightClick.IsJustPressed())
+        if (hb.hovered && PCLInputManager.RightClick.IsJustPressed() && counter > 0)
         {
+            if (AbstractDungeon.isScreenUp) {
+                AbstractDungeon.dynamicBanner.hide();
+                AbstractDungeon.previousScreen = AbstractDungeon.screen;
+            }
             stopPulse();
             Use();
         }
@@ -62,8 +67,7 @@ public class PolychromePaintbrush extends PCLRelic
         if (counter > 0)
         {
             flash();
-            PCLGameEffects.Queue.Callback(
-                    new SelectFromPile(name, 1, player.masterDeck)
+            PCLActions.Bottom.SelectFromPile(name, 1, player.masterDeck)
                     .SetFilter(c -> c.rarity == AbstractCard.CardRarity.BASIC)
                     .HideTopPanel(true)
                     .AddCallback(selection -> {
@@ -80,7 +84,7 @@ public class PolychromePaintbrush extends PCLRelic
                                 }
                             }));
                         }
-                    }));
+                    });
             AddCounter(-1);
         }
     }

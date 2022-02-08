@@ -12,7 +12,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import eatyourbeets.effects.Projectile;
-import eatyourbeets.interfaces.subscribers.OnRawDamageReceivedSubscriber;
+import eatyourbeets.interfaces.subscribers.OnModifyDamageFirstSubscriber;
 import eatyourbeets.interfaces.subscribers.OnStartOfTurnPostDrawSubscriber;
 import eatyourbeets.ui.TextureCache;
 import eatyourbeets.utilities.Colors;
@@ -30,7 +30,7 @@ import pinacolada.utilities.PCLGameUtilities;
 
 import java.util.ArrayList;
 
-public class Earth extends PCLOrb implements OnStartOfTurnPostDrawSubscriber, OnRawDamageReceivedSubscriber
+public class Earth extends PCLOrb implements OnStartOfTurnPostDrawSubscriber, OnModifyDamageFirstSubscriber
 {
     public static final String ORB_ID = CreateFullID(Earth.class);
     public static final int BASE_PROJECTILES = 6;
@@ -107,7 +107,7 @@ public class Earth extends PCLOrb implements OnStartOfTurnPostDrawSubscriber, On
         AddProjectiles(projectilesCount);
 
         PCLCombatStats.onStartOfTurnPostDraw.Subscribe(this);
-        PCLCombatStats.onRawDamageReceived.Subscribe(this);
+        PCLCombatStats.onModifyDamageFirst.Subscribe(this);
     }
 
     public String GetUpdatedDescription()
@@ -237,7 +237,7 @@ public class Earth extends PCLOrb implements OnStartOfTurnPostDrawSubscriber, On
         turns = 0;
         evoked = true;
         PCLCombatStats.onStartOfTurnPostDraw.Unsubscribe(this);
-        PCLCombatStats.onRawDamageReceived.Unsubscribe(this);
+        PCLCombatStats.onModifyDamageFirst.Unsubscribe(this);
     }
 
     @Override
@@ -253,7 +253,7 @@ public class Earth extends PCLOrb implements OnStartOfTurnPostDrawSubscriber, On
     }
 
     @Override
-    public int OnRawDamageReceived(AbstractCreature target, DamageInfo info, int damage) {
+    public int OnModifyDamageFirst(AbstractCreature target, DamageInfo info, int damage) {
         if (info.type == DamageInfo.DamageType.NORMAL && PCLGameUtilities.IsPlayer(target) && PCLGameUtilities.IsMonster(info.owner))
         {
             PCLActions.Top.Add(new EarthOrbPassiveAction(this, -1));

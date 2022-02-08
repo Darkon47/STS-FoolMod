@@ -28,7 +28,7 @@ public class IrohaTamaki extends PCLCard
 
         SetAffinityRequirement(PCLAffinity.Light, 3);
 
-        SetSoul(2, 0, IrohaTamaki_Giovanna::new);
+        SetSoul(3, 0, IrohaTamaki_Giovanna::new);
     }
 
     @Override
@@ -48,5 +48,7 @@ public class IrohaTamaki extends PCLCard
                 }
             });
         }
+
+        cooldown.ProgressCooldownAndTrigger(m);
     }
 }

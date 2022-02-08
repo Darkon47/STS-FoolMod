@@ -35,7 +35,7 @@
 			"Code Geass",
 			"Youjo Senki",
 			"Bleach",
-			"Jojo's Bizzarre Adventures",
+			"JoJo's Bizzarre Adventures",
 			"Tate no Yuusha",
 			"Symphogear",
 			"Call Of Cthulhu",
@@ -105,7 +105,7 @@
 		[
 			"Gain {0} {1}",
 			"Apply {0} {1}",
-			"Apply {0} {1} NL to ALL enemies",
+			"Apply {0} {1} to ALL enemies",
 			"Cycle {0}",
 			"Draw {0}",
 			"Discard {0}",
@@ -128,8 +128,8 @@
 			"Enter any stance",
 			"Pay {0} [E]",
 			"Lose {0} HP",
-            "Give a random enemy NL {0} {1}",
-			"Give ALL enemies NL {0} {1}",
+            "Give a random enemy {0} {1}",
+			"Give ALL enemies {0} {1}",
 			"Lose {0} {1}",
 			"Motivate {0}",
 			"Add {0} {1} to your discard pile",
@@ -147,7 +147,9 @@
 			"Obtain 3 random Curses",
 			"Heal {0} HP",
 			"Trigger your first {0} {1} time(s)",
-			"Pay {0} {1}"
+			"Pay {0} {1}",
+			"to a random enemy",
+			"to ALL enemies"
 		]
 	},
 

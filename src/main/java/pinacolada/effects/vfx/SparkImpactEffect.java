@@ -50,8 +50,10 @@ public class SparkImpactEffect extends EYBEffect
                     .SetBlendingMode(PCLRenderHelpers.BlendingMode.Glowing)
                     .Edit(i, (r, p) -> p
                             .SetScale(scale * MathUtils.random(0.04f, 0.55f)).SetTargetRotation(36000f,1440f)
-                            .SetSpeed(MathUtils.random(140f, 580f), MathUtils.random(140f, 580f), MathUtils.random(200f, 710f),-0.03f)
-                            .SetTargetPosition(x + radius * MathUtils.cos(r), y + radius * MathUtils.sin(r))).SetDuration(0.5f, false)
+                            .SetSpeed(MathUtils.random(140f, 480f), MathUtils.random(10f, 380f), MathUtils.random(200f, 710f),-0.03f)
+                            .SetTargetPosition(x + radius * MathUtils.cos(r), y + radius)
+                            .SetAcceleration(null, 10f, null, null, null)
+                    ).SetDuration(0.8f, false)
             .SetDuration(MathUtils.random(0.5F, 1.0F), true));
             PCLGameEffects.Queue.Add(new LightFlareParticleEffect(this.x, this.y, color));
         }

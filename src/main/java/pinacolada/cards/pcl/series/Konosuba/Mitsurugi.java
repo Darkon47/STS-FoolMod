@@ -6,9 +6,7 @@ import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCard;
 import pinacolada.cards.base.PCLCardData;
-import pinacolada.cards.base.attributes.AbstractAttribute;
 import pinacolada.effects.AttackEffects;
-import pinacolada.ui.cards.TargetEffectPreview;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
@@ -18,36 +16,24 @@ public class Mitsurugi extends PCLCard
             .SetAttack(0, CardRarity.COMMON)
             .SetSeriesFromClassPackage();
 
-    private final TargetEffectPreview targetEffectPreview = new TargetEffectPreview(this::OnTargetChanged);
-    private boolean showDamage = true;
-
     public Mitsurugi()
     {
         super(DATA);
 
-        Initialize(8, 0, 2, 4);
-        SetUpgrade(3, 0, 0, 0);
+        Initialize(1, 0, 2, 7);
+        SetUpgrade(0, 0, 0, 3);
 
         SetAffinity_Red(1, 0, 1);
     }
 
     @Override
-    public AbstractAttribute GetDamageInfo()
+    protected float ModifyDamage(AbstractMonster enemy, float amount)
     {
-        if (showDamage)
+        if (enemy != null && PCLGameUtilities.IsAttacking(enemy.intent))
         {
-            return super.GetDamageInfo();
+            return super.ModifyDamage(enemy, amount + secondaryValue);
         }
-
-        return null;
-    }
-
-    @Override
-    public void update()
-    {
-        super.update();
-
-        targetEffectPreview.Update();
+        return super.ModifyDamage(enemy, amount);
     }
 
     @Override
@@ -55,22 +41,17 @@ public class Mitsurugi extends PCLCard
     {
         super.triggerOnExhaust();
 
-        PCLActions.Bottom.GainBlock(secondaryValue);
+        PCLActions.Bottom.AddAffinity(PCLAffinity.Red, magicNumber);
     }
 
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.AddAffinity(PCLAffinity.Red, magicNumber);
-
-        if (PCLGameUtilities.IsAttacking(m.intent))
+        PCLActions.Bottom.DealCardDamage(this, m, AttackEffects.SLASH_HEAVY);
+        if (m == null || !PCLGameUtilities.IsAttacking(m.intent))
         {
-            PCLActions.Bottom.DealCardDamage(this, m, AttackEffects.SLASH_HEAVY);
+            PCLActions.Bottom.AddAffinity(PCLAffinity.Red, magicNumber);
         }
-    }
 
-    private void OnTargetChanged(AbstractMonster monster)
-    {
-        showDamage = (monster == null || !PCLGameUtilities.IsAttacking(monster.intent));
     }
 }

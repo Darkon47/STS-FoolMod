@@ -19,7 +19,7 @@ import pinacolada.effects.AttackEffects;
 import pinacolada.effects.VFX;
 import pinacolada.orbs.PCLOrbHelper;
 import pinacolada.powers.PCLPowerHelper;
-import pinacolada.powers.special.StolenGoldPower;
+import pinacolada.powers.pcl.StolenGoldPower;
 import pinacolada.resources.GR;
 import pinacolada.resources.pcl.PCLStrings;
 import pinacolada.utilities.PCLActions;

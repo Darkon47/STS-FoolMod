@@ -16,7 +16,7 @@ import pinacolada.cards.pcl.series.GenshinImpact.AyakaKamisato;
 import pinacolada.effects.AttackEffects;
 import pinacolada.powers.PCLPower;
 import pinacolada.powers.common.DeenergizedPower;
-import pinacolada.powers.special.InvertPower;
+import pinacolada.powers.pcl.InvertPower;
 import pinacolada.powers.temporary.TemporaryThousandCutsPower;
 import pinacolada.resources.GR;
 import pinacolada.resources.pcl.PCLStrings;
@@ -165,7 +165,7 @@ public class TakashiNatsume_Circle extends PCLCard
                     c.upgrade();
                 }
                 c.applyPowers();
-                if (PCLGameUtilities.IsPlayerTurn()) {
+                if (PCLGameUtilities.IsPlayerTurn(true)) {
                     PCLActions.Bottom.PlayCopy(c, null);
                 }
                 else {

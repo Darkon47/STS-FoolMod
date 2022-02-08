@@ -27,7 +27,7 @@ public class Megumin extends PCLCard
             .SetAttack(2, CardRarity.RARE, PCLAttackType.Fire, PCLCardTarget.AoE)
             .SetSeriesFromClassPackage();
     public static final int ATTACK_TURNS = 2;
-    public static final int SYNERGY_REQUIREMENT = 6;
+    public static final int SYNERGY_REQUIREMENT = 4;
 
     public Megumin()
     {

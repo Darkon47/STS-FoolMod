@@ -53,14 +53,7 @@ public class Akatsuki extends PCLCard
 
         if (CombatStats.TryActivateLimited(cardID))
         {
-            PCLActions.Bottom.CreateThrowingKnives(magicNumber, player.drawPile)
-                    .AddCallback(card ->
-                    {
-                        if (upgraded)
-                        {
-                            PCLGameUtilities.SetCardTag(card, HASTE, true);
-                        }
-                    });
+            PCLActions.Bottom.CreateThrowingKnives(magicNumber);
         }
     }
 

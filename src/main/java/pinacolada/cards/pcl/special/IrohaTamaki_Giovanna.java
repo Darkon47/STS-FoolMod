@@ -23,7 +23,7 @@ public class IrohaTamaki_Giovanna extends PCLCard
     {
         super(DATA);
 
-        Initialize(0, 2, 10, 1);
+        Initialize(0, 2, 8, 1);
         SetUpgrade(0, 0, 1, 0);
         SetPurge(true);
 

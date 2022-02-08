@@ -1,14 +1,13 @@
 package pinacolada.cards.pcl.special;
 
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.Prefs;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.screens.stats.CharStat;
 import eatyourbeets.utilities.FieldInfo;
 import pinacolada.cards.base.*;
 import pinacolada.relics.PCLEnchantableRelic;
+import pinacolada.relics.pcl.PolychromePaintbrush;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
@@ -47,14 +46,8 @@ public class GiftBox extends PCLCard
         {
             enchantable.AddCounter(2);
         }
-
-        AbstractDungeon.rareCardPool.clear();
-        AbstractDungeon.uncommonCardPool.clear();
-        AbstractDungeon.commonCardPool.clear();
-        AbstractDungeon.curseCardPool.clear();
-        AbstractCard randomCard = AbstractDungeon.getCardFromPool(CardRarity.RARE, CardType.POWER, true);
-        PCLActions.Bottom.MakeCardInHand(randomCard);
-        AbstractCard randomCard2 = AbstractDungeon.getCardFromPool(CardRarity.UNCOMMON, CardType.POWER, true);
-        PCLActions.Bottom.MakeCardInHand(randomCard2);
+        PolychromePaintbrush pb = new PolychromePaintbrush();
+        pb.AddCounter(5);
+        PCLGameUtilities.ObtainRelic(player.hb.cX, player.hb.cY, pb);
     }
 }

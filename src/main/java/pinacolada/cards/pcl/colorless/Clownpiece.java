@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import eatyourbeets.powers.CombatStats;
 import pinacolada.cards.base.*;
-import pinacolada.powers.special.ProvokedPower;
+import pinacolada.powers.pcl.ProvokedPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 

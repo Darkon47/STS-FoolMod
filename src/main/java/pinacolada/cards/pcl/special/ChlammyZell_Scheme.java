@@ -8,7 +8,7 @@ import pinacolada.cards.base.PCLCard;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.pcl.series.NoGameNoLife.ChlammyZell;
-import pinacolada.powers.special.ChlammyZellPower;
+import pinacolada.powers.pcl.ChlammyZellPower;
 import pinacolada.utilities.PCLActions;
 
 public class ChlammyZell_Scheme extends PCLCard

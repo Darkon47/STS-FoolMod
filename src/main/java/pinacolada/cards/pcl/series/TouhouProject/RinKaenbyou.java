@@ -25,8 +25,8 @@ public class RinKaenbyou extends PCLCard
     {
         super(DATA);
 
-        Initialize(0, 0, 10, 12);
-        SetUpgrade(0, 0, 0, 1);
+        Initialize(0, 0, 10, 4);
+        SetUpgrade(0, 0, 0, 0);
         SetAffinity_Blue(1);
         SetAffinity_Dark(1);
 

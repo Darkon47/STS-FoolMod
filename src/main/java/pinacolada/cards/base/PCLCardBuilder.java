@@ -5,10 +5,10 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import eatyourbeets.cards.base.DynamicCardBuilder;
 import eatyourbeets.interfaces.delegates.ActionT1;
 import eatyourbeets.interfaces.delegates.ActionT3;
 import eatyourbeets.interfaces.delegates.FuncT1;
+import eatyourbeets.interfaces.delegates.FuncT2;
 import eatyourbeets.utilities.AdvancedTexture;
 import pinacolada.cards.base.attributes.AbstractAttribute;
 import pinacolada.cards.pcl.colorless.QuestionMark;
@@ -18,34 +18,49 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class PCLCardBuilder extends DynamicCardBuilder
+public class PCLCardBuilder
 {
+    protected AbstractCard.CardColor cardColor = AbstractCard.CardColor.COLORLESS;
+    protected AbstractCard.CardRarity cardRarity = AbstractCard.CardRarity.BASIC;
+    protected AbstractCard.CardTarget cardTarget = AbstractCard.CardTarget.NONE;
+    protected AbstractCard.CardType cardType = AbstractCard.CardType.SKILL;
     protected ActionT1<PCLCard> constructor;
     protected ActionT1<PCLCard> onUpgrade;
     protected ActionT3<PCLCard, AbstractPlayer, AbstractMonster> onUse;
+    protected AdvancedTexture portraitForeground;
+    protected AdvancedTexture portraitImage;
+    protected ArrayList<AbstractCard.CardTags> tags = new ArrayList<>();
     protected CardSeries series;
-    protected PCLCardTarget attackTarget = PCLCardTarget.Normal;
+    protected CardStrings cardStrings;
     protected FuncT1<AbstractAttribute, PCLCard> getBlockInfo;
     protected FuncT1<AbstractAttribute, PCLCard> getDamageInfo;
     protected FuncT1<AbstractAttribute, PCLCard> getSpecialInfo;
+    protected FuncT2<Boolean, PCLCard, AbstractMonster> canUse;
     protected PCLAttackType attackType = PCLAttackType.Normal;
     protected PCLCardAffinities affinities;
+    protected PCLCardTarget attackTarget = PCLCardTarget.Normal;
+    protected String imagePath;
     protected TextureAtlas.AtlasRegion fakePortrait;
+    protected boolean canUpgrade = true;
+    protected boolean isMultiDamage;
     protected boolean showTypeText = true;
     protected int attributeMultiplier = 1;
+    protected int block;
     protected int blockUpgrade;
+    protected int cost = -2;
     protected int costUpgrade;
+    protected int damage;
     protected int damageUpgrade;
     protected int hitCount;
     protected int hitCountUpgrade;
+    protected int magicNumber;
     protected int magicNumberUpgrade;
     protected int secondaryValue;
     protected int secondaryValueUpgrade;
+    public String id;
 
     public PCLCardBuilder(String id)
     {
-        super(id);
-
         this.affinities = new PCLCardAffinities(null);
         this.id = id;
     }
@@ -70,10 +85,6 @@ public class PCLCardBuilder extends DynamicCardBuilder
             SetUpgrades(card.upgrade_damage, card.upgrade_block, card.upgrade_magicNumber, card.upgrade_secondaryValue, card.upgrade_hitCount);
             SetCost(card.cost, card.upgrade_cost);
             affinities.Initialize(card.affinities);
-        }
-        else
-        {
-            SetCost(-2, 0);
         }
 
         SetImage(card.portraitImg, card.portraitForeground);
@@ -321,6 +332,12 @@ public class PCLCardBuilder extends DynamicCardBuilder
     public PCLCardBuilder CanUpgrade(boolean canUpgrade)
     {
         this.canUpgrade = canUpgrade;
+
+        return this;
+    }
+
+    public PCLCardBuilder CanUse(FuncT2<Boolean, PCLCard, AbstractMonster> canUse) {
+        this.canUse = canUse;
 
         return this;
     }

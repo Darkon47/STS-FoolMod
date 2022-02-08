@@ -6,7 +6,7 @@ import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCard;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.PCLCardTarget;
-import pinacolada.powers.special.ElementalMasteryPower;
+import pinacolada.powers.pcl.ElementalMasteryPower;
 import pinacolada.utilities.PCLActions;
 
 public class Traveler_Wish extends PCLCard

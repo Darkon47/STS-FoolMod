@@ -12,7 +12,7 @@ import eatyourbeets.actions.EYBActionWithCallback;
 import eatyourbeets.interfaces.delegates.FuncT1;
 import pinacolada.cards.base.PCLAttackType;
 import pinacolada.effects.AttackEffects;
-import pinacolada.powers.special.StolenGoldPower;
+import pinacolada.powers.pcl.StolenGoldPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameEffects;
 import pinacolada.utilities.PCLGameUtilities;

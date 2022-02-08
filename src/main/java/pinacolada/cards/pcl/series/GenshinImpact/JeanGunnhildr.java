@@ -8,7 +8,7 @@ import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCard;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.effects.AttackEffects;
-import pinacolada.powers.special.SwirledPower;
+import pinacolada.powers.pcl.SwirledPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 

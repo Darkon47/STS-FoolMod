@@ -16,6 +16,7 @@ public class Natsumi extends PCLCard
 {
     public static final PCLCardData DATA = Register(Natsumi.class)
             .SetAttack(1, CardRarity.UNCOMMON, PCLAttackType.Ice, PCLCardTarget.Random)
+            .SetMultiformData(2, false)
             .SetSeriesFromClassPackage();
 
     public Natsumi()
@@ -31,10 +32,23 @@ public class Natsumi extends PCLCard
     }
 
     @Override
+    public int SetForm(Integer form, int timesUpgraded) {
+        if (form == 1) {
+            Initialize(2, 0, 2, 2);
+            SetUpgrade(1,0, 0, 1);
+        }
+        else {
+            Initialize(2, 0, 2, 2);
+            SetUpgrade(1,0, 1, 0);
+        }
+        return super.SetForm(form, timesUpgraded);
+    }
+
+    @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
         PCLActions.Bottom.DealCardDamageToRandomEnemy(this, AttackEffects.FIRE).forEach(d -> d
-        .SetVFXColor(Color.TEAL, Color.TEAL));
+        .SetVFXColor(Color.SKY, Color.SKY));
     }
 
     @Override

@@ -10,7 +10,7 @@ import pinacolada.cards.base.PCLCardData;
 import pinacolada.effects.SFX;
 import pinacolada.effects.VFX;
 import pinacolada.orbs.PCLOrbHelper;
-import pinacolada.powers.special.UndulatingLacunaPower;
+import pinacolada.powers.pcl.UndulatingLacunaPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameEffects;
 

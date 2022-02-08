@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import pinacolada.cards.base.*;
 import pinacolada.cards.pcl.curse.Curse_Normality;
-import pinacolada.powers.special.PhasingPower;
+import pinacolada.powers.pcl.PhasingPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 

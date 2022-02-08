@@ -42,8 +42,8 @@ import pinacolada.cards.base.modifiers.AfterLifeMod;
 import pinacolada.patches.screens.GridCardSelectScreenPatches;
 import pinacolada.powers.PCLCombatStats;
 import pinacolada.powers.affinity.AbstractPCLAffinityPower;
+import pinacolada.powers.pcl.ElementalExposurePower;
 import pinacolada.powers.replacement.PlayerFlightPower;
-import pinacolada.powers.special.ElementalExposurePower;
 import pinacolada.resources.GR;
 import pinacolada.resources.pcl.PCLImages;
 import pinacolada.ui.cards.DrawPileCardPreview;
@@ -57,8 +57,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import static pinacolada.powers.pcl.ElementalExposurePower.ELEMENTAL_MODIFIER;
 import static pinacolada.powers.replacement.PCLLockOnPower.GetAttackMultiplier;
-import static pinacolada.powers.special.ElementalExposurePower.ELEMENTAL_MODIFIER;
 import static pinacolada.resources.GR.Enums.CardTags.*;
 
 public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscriber, OnStartOfTurnPostDrawSubscriber, CustomSavable<PCLCardSaveData>
@@ -1293,7 +1293,7 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
     public boolean cardPlayable(AbstractMonster m)
     {
         cantUseMessage = UNPLAYABLE_MESSAGE;
-        return (!unplayable ||
+        return !PCLGameUtilities.IsUnplayableThisTurn(this) && (!unplayable ||
                 (PCLGameUtilities.HasRelicEffect(BlueCandle.ID) && type == AbstractCard.CardType.CURSE) ||
                 (PCLGameUtilities.HasRelicEffect(MedicalKit.ID) && type == AbstractCard.CardType.STATUS))
                 && super.cardPlayable(m);

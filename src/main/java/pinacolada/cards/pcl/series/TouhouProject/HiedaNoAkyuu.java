@@ -9,7 +9,6 @@ import pinacolada.resources.GR;
 import pinacolada.utilities.PCLActions;
 
 import static pinacolada.resources.GR.Enums.CardTags.PCL_ETHEREAL;
-import static pinacolada.resources.GR.Enums.CardTags.PCL_EXHAUST;
 
 public class HiedaNoAkyuu extends PCLCard
 {
@@ -46,7 +45,7 @@ public class HiedaNoAkyuu extends PCLCard
                 PCLActions.Bottom.ModifyTag(card, PCL_INNATE,true);
                 if (canRemoveTags) {
                     PCLActions.Bottom.ModifyTag(card, PCL_ETHEREAL,false);
-                    PCLActions.Bottom.ModifyTag(card, PCL_EXHAUST,false);
+                    card.isEthereal = false;
                 }
             }
         });

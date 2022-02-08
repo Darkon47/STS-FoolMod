@@ -18,6 +18,7 @@ import com.megacrit.cardcrawl.orbs.*;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.relics.ChemicalX;
+import com.megacrit.cardcrawl.relics.PrismaticShard;
 import com.megacrit.cardcrawl.screens.SingleCardViewPopup;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
@@ -47,6 +48,7 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Scanner;
 
 import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.actionManager;
 import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.player;
@@ -158,6 +160,11 @@ public class PCLGameUtilities extends GameUtilities
     public static boolean CanPlayTwice(AbstractCard card)
     {
         return !card.isInAutoplay && (!card.purgeOnUse || card.hasTag(GR.Enums.CardTags.PURGE));
+    }
+
+    // TODO Add more possible conditions
+    public static boolean CanReceiveAnyColorCard() {
+        return PCLGameUtilities.HasRelicEffect(PrismaticShard.ID);
     }
 
     public static boolean CanReducePower(AbstractCreature source, AbstractCreature target, String powerID, AbstractGameAction action)
@@ -1289,6 +1296,45 @@ public class PCLGameUtilities extends GameUtilities
     public static void ObtainRelicFromEvent(AbstractRelic relic) {
         relic.instantObtain();
         CardCrawlGame.metricData.addRelicObtainData(relic);
+    }
+
+    public static void ScanForTips(String rawDesc, ArrayList<PCLCardTooltip> tips) {
+        final Scanner desc = new Scanner(rawDesc);
+        String s;
+        boolean alreadyExists;
+        do
+        {
+            if (!desc.hasNext())
+            {
+                desc.close();
+                return;
+            }
+
+            s = desc.next();
+            if (s.charAt(0) == '#')
+            {
+                s = s.substring(2);
+            }
+
+            s = s.replace(',', ' ');
+            s = s.replace('.', ' ');
+
+            if (s.length() > 4)
+            {
+                s = s.replace('[', ' ');
+                s = s.replace(']', ' ');
+            }
+
+            s = s.trim();
+            s = s.toLowerCase();
+
+            PCLCardTooltip tip = CardTooltips.FindByName(s);
+            if (tip != null && !tips.contains(tip))
+            {
+                tips.add(tip);
+            }
+        }
+        while (true);
     }
 
     public static void SetCardTag(AbstractCard card, AbstractCard.CardTags tag, boolean value)

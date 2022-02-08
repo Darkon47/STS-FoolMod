@@ -2,12 +2,11 @@ package pinacolada.cards.pcl.series.TenseiSlime;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import pinacolada.cards.base.PCLCardTarget;
-import eatyourbeets.utilities.Colors;
 import eatyourbeets.utilities.TargetHelper;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCard;
 import pinacolada.cards.base.PCLCardData;
+import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.base.attributes.AbstractAttribute;
 import pinacolada.cards.base.attributes.TempHPAttribute;
 import pinacolada.monsters.PCLEnemyIntent;
@@ -22,8 +21,7 @@ public class Ramiris extends PCLCard
             .SetSkill(0, CardRarity.RARE, PCLCardTarget.AoE)
             .SetMaxCopies(2)
             .SetSeriesFromClassPackage();
-    public static final int TEMP_HP = 2;
-    public static final int SHACKLES = 10;
+    public static final int CAP = 10;
 
     public Ramiris()
     {
@@ -40,9 +38,27 @@ public class Ramiris extends PCLCard
     }
 
     @Override
+    protected void OnUpgrade()
+    {
+        super.OnUpgrade();
+        SetHaste(true);
+    }
+
+    @Override
+    protected String GetRawDescription(Object... args)
+    {
+        return super.GetRawDescription(CAP);
+    }
+
+    @Override
     public AbstractAttribute GetSpecialInfo()
     {
-        return TempHPAttribute.Instance.SetCard(this, false).SetText(TEMP_HP, Colors.Cream(1));
+        return TempHPAttribute.Instance.SetCard(this, true);
+    }
+
+    @Override
+    public int GetXValue() {
+        return Math.min(CAP, PCLGameUtilities.GetCurrentMatchCombo());
     }
 
     @Override
@@ -50,27 +66,20 @@ public class Ramiris extends PCLCard
     {
         super.OnDrag(m);
 
-        if (IsStarter())
+        for (PCLEnemyIntent intent : PCLGameUtilities.GetPCLIntents())
         {
-            for (PCLEnemyIntent intent : PCLGameUtilities.GetPCLIntents())
-            {
-                intent.AddWeak();
-                intent.AddStrength(-secondaryValue);
-            }
+            intent.AddStrength(-GetXValue());
+            intent.AddBlinded();
         }
     }
 
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainTemporaryHP(TEMP_HP);
-
-        if (IsStarter())
-        {
-            PCLActions.Bottom.StackPower(TargetHelper.Enemies(), PCLPowerHelper.Weak, magicNumber);
-            PCLActions.Bottom.StackPower(TargetHelper.Enemies(), PCLPowerHelper.Shackles, secondaryValue);
-            PCLActions.Bottom.StackPower(TargetHelper.Player(), PCLPowerHelper.Shackles, SHACKLES);
-        }
+        PCLActions.Bottom.GainTemporaryHP(magicNumber);
+        PCLActions.Bottom.StackPower(TargetHelper.Player(), PCLPowerHelper.TemporaryFocus, -secondaryValue);
+        PCLActions.Bottom.StackPower(TargetHelper.Enemies(), PCLPowerHelper.Shackles, GetXValue());
+        PCLActions.Bottom.StackPower(TargetHelper.Enemies(), PCLPowerHelper.Blinded, GetXValue());
     }
 
     @Override
@@ -81,7 +90,7 @@ public class Ramiris extends PCLCard
         if (startOfBattle)
         {
             PCLGameEffects.List.ShowCopy(this);
-            PCLActions.Bottom.GainTemporaryHP(TEMP_HP);
+            PCLActions.Bottom.GainTemporaryHP(magicNumber);
         }
     }
 }

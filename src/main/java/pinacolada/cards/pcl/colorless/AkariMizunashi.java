@@ -4,7 +4,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.orbs.Frost;
-import pinacolada.cards.base.PCLCardTarget;
 import eatyourbeets.powers.CombatStats;
 import pinacolada.actions.orbs.EvokeOrb;
 import pinacolada.cards.base.*;
@@ -97,7 +96,7 @@ public class AkariMizunashi extends PCLCard
                 {
                     if (orbs.size() > 0)
                     {
-                        PCLGameUtilities.AddAffinityPowerUse(PCLAffinity.Light, PCLGameUtilities.GetPCLAffinityPowerLevel(PCLAffinity.Light));
+                        PCLGameUtilities.AddAffinityPowerUse(PCLAffinity.Blue, PCLGameUtilities.GetPCLAffinityPowerLevel(PCLAffinity.Blue));
                     }
                     else
                     {

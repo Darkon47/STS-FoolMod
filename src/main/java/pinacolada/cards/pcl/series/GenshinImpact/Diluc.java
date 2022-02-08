@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.powers.NextTurnBlockPower;
 import pinacolada.cards.base.*;
 import pinacolada.effects.AttackEffects;
 import pinacolada.powers.common.FreezingPower;
-import pinacolada.powers.special.BurningWeaponPower;
+import pinacolada.powers.pcl.BurningWeaponPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 

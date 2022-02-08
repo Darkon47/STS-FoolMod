@@ -10,10 +10,11 @@ import pinacolada.powers.PCLPower;
 
 public class DesecratedPower extends PCLPower implements OnDamageOverrideSubscriber, OnOrbApplyLockOnSubscriber
 {
+    public static final float MAX_REDUCTION = 0.75f;
     public static final String POWER_ID = CreateFullID(DesecratedPower.class);
 
     public static float GetDamageDealtDecrease(int amount) {
-        return amount * 0.125f;
+        return Math.min(MAX_REDUCTION, amount * 0.125f);
     }
 
     public static float GetDamageReceivedIncrease(int amount) {
@@ -72,7 +73,7 @@ public class DesecratedPower extends PCLPower implements OnDamageOverrideSubscri
     @Override
     public void updateDescription()
     {
-        this.description = FormatDescription(0, GetDamageReceivedIncrease(amount) * 100, GetDamageDealtDecrease(amount) * 100);
+        this.description = FormatDescription(0, GetDamageReceivedIncrease(amount) * 100, GetDamageDealtDecrease(amount) * 100, MAX_REDUCTION * 100);
     }
 
     @Override

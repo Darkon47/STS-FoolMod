@@ -17,7 +17,6 @@ import eatyourbeets.utilities.FieldInfo;
 import pinacolada.cards.base.PCLCardTooltip;
 import pinacolada.dailymods.AllRelicPCLRun;
 import pinacolada.dailymods.NoRelics;
-import pinacolada.resources.CardTooltips;
 import pinacolada.resources.GR;
 import pinacolada.resources.pcl.PCLDungeonData;
 import pinacolada.utilities.PCLActions;
@@ -26,7 +25,6 @@ import pinacolada.utilities.PCLJUtils;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public abstract class PCLRelic extends CustomRelic
 {
@@ -215,45 +213,9 @@ public abstract class PCLRelic extends CustomRelic
             tips.clear();
         }
 
-        mainTooltip = new PCLCardTooltip(name, description);
+        mainTooltip = new PCLCardTooltip(name, description, GR.Enums.Characters.THE_FOOL);
         tips.add(mainTooltip);
-
-        final Scanner desc = new Scanner(this.description);
-        String s;
-        boolean alreadyExists;
-        do
-        {
-            if (!desc.hasNext())
-            {
-                desc.close();
-                return;
-            }
-
-            s = desc.next();
-            if (s.charAt(0) == '#')
-            {
-                s = s.substring(2);
-            }
-
-            s = s.replace(',', ' ');
-            s = s.replace('.', ' ');
-
-            if (s.length() > 4)
-            {
-                s = s.replace('[', ' ');
-                s = s.replace(']', ' ');
-            }
-
-            s = s.trim();
-            s = s.toLowerCase();
-
-            PCLCardTooltip tip = CardTooltips.FindByName(s);
-            if (tip != null && !tips.contains(tip))
-            {
-                tips.add(tip);
-            }
-        }
-        while (true);
+        PCLGameUtilities.ScanForTips(description, tips);
     }
 
     protected void ActivateBattleEffect()

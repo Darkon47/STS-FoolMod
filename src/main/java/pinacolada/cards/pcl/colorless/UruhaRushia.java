@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
-import eatyourbeets.interfaces.subscribers.OnRawDamageReceivedSubscriber;
+import eatyourbeets.interfaces.subscribers.OnModifyDamageLastSubscriber;
 import eatyourbeets.utilities.GameUtilities;
 import pinacolada.cards.base.*;
 import pinacolada.interfaces.subscribers.OnOrbApplyFocusSubscriber;
@@ -75,7 +75,7 @@ public class UruhaRushia extends PCLCard implements OnOrbApplyFocusSubscriber
         }
     }
 
-    public static class UruhaRushiaPower extends PCLPower implements OnRawDamageReceivedSubscriber
+    public static class UruhaRushiaPower extends PCLPower implements OnModifyDamageLastSubscriber
     {
         public UruhaRushiaPower(AbstractPlayer owner, int amount)
         {
@@ -92,7 +92,7 @@ public class UruhaRushia extends PCLCard implements OnOrbApplyFocusSubscriber
         {
             super.onInitialApplication();
 
-            PCLCombatStats.onRawDamageReceived.Subscribe(this);
+            PCLCombatStats.onModifyDamageLast.Subscribe(this);
         }
 
         @Override
@@ -100,11 +100,11 @@ public class UruhaRushia extends PCLCard implements OnOrbApplyFocusSubscriber
         {
             super.onRemove();
 
-            PCLCombatStats.onRawDamageReceived.Unsubscribe(this);
+            PCLCombatStats.onModifyDamageLast.Unsubscribe(this);
         }
 
-        public int OnRawDamageReceived(AbstractCreature target, DamageInfo info, int damage) {
-            if (target != player || !GameUtilities.IsPlayerTurn() || info.type == DamageInfo.DamageType.NORMAL && info.owner != null && !info.owner.isPlayer) {
+        public int OnModifyDamageLast(AbstractCreature target, DamageInfo info, int damage) {
+            if (target != player || !PCLGameUtilities.IsPlayerTurn(true) || info.type == DamageInfo.DamageType.NORMAL && info.owner != null && !info.owner.isPlayer) {
                 return damage;
             } else {
                 this.flash();

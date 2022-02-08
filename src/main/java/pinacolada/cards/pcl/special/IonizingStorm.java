@@ -7,7 +7,7 @@ import pinacolada.cards.base.PCLCard;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.effects.vfx.ScreenHexagonEffect;
 import pinacolada.orbs.PCLOrbHelper;
-import pinacolada.powers.special.IonizingStormPower;
+import pinacolada.powers.pcl.IonizingStormPower;
 import pinacolada.utilities.PCLActions;
 
 public class IonizingStorm extends PCLCard

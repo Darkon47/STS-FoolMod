@@ -31,7 +31,6 @@ import pinacolada.effects.AttackEffects;
 import pinacolada.effects.SFX;
 import pinacolada.events.base.PCLEvent;
 import pinacolada.misc.CardPoolPanelItem;
-import pinacolada.potions.GrowthPotion;
 import pinacolada.powers.affinity.AbstractPCLAffinityPower;
 import pinacolada.powers.replacement.GenericFadingPower;
 import pinacolada.resources.CardTooltips;
@@ -49,7 +48,14 @@ import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
-public class PCLResources extends GR implements EditCharactersSubscriber, EditCardsSubscriber, EditKeywordsSubscriber, EditRelicsSubscriber, EditStringsSubscriber, PostInitializeSubscriber, AddAudioSubscriber {
+public class PCLResources extends GR implements
+        EditCharactersSubscriber,
+        EditCardsSubscriber,
+        EditKeywordsSubscriber,
+        EditRelicsSubscriber,
+        EditStringsSubscriber,
+        PostInitializeSubscriber,
+        AddAudioSubscriber {
     public static final String ID = GR.BASE_PREFIX;
     public static final String JSON_CARDS = "CardStrings.json";
     public static final String JSON_KEYWORDS = "KeywordStrings.json";
@@ -216,8 +222,9 @@ public class PCLResources extends GR implements EditCharactersSubscriber, EditCa
 
     protected void InitializePotions()
     {
-        BaseMod.addPotion(GrowthPotion.class, Color.NAVY.cpy(), Color.FOREST.cpy(), Color.YELLOW.cpy(),
-        GrowthPotion.POTION_ID, Enums.Characters.THE_FOOL);
+        PCLJUtils.LogInfo(this, "InitializePotions();");
+
+        LoadCustomPotions();
     }
 
     protected void InitializeRewards()
@@ -427,6 +434,11 @@ public class PCLResources extends GR implements EditCharactersSubscriber, EditCa
         {
             super.LoadKeywords(GetFile(Settings.language, JSON_KEYWORDS));
         }
+    }
+
+    protected void LoadCustomPotions()
+    {
+        super.LoadCustomPotions(ID);
     }
 
     protected void LoadCustomRelics()

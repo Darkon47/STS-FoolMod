@@ -25,7 +25,7 @@ public class Biyorigo extends PCLCard
     {
         super(DATA);
 
-        Initialize(0, 0, 2, COST);
+        Initialize(0, 0, 3, COST);
 
         SetAffinity_Red(1);
         SetAffinity_Green(1);

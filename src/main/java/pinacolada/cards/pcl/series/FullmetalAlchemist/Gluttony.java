@@ -22,7 +22,7 @@ public class Gluttony extends PCLCard
     {
         super(DATA);
 
-        Initialize(0, 0, 4, 3);
+        Initialize(0, 0, 3, 4);
 
         SetAffinity_Red(1);
         SetAffinity_Dark(1);

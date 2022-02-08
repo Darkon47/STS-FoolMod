@@ -33,14 +33,14 @@ public class MifuyuAsuza extends PCLCard
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
         PCLActions.Bottom.GainBlock(block);
-        int stacks = PCLGameUtilities.UseXCostEnergy(this);
-        PCLActions.Bottom.GainOrbSlots(stacks + magicNumber);
-        for (int i = 0; i < stacks + magicNumber; i++) {
+        int amount = PCLGameUtilities.UseXCostEnergy(this) + magicNumber;
+        PCLActions.Bottom.GainOrbSlots(amount);
+        for (int i = 0; i < amount; i++) {
             PCLActions.Bottom.MakeCardInHand(new Curse_GriefSeed());
         }
 
         PCLActions.Bottom.TryChooseSpendAffinity(this).AddConditionalCallback(() -> {
-            PCLActions.Bottom.ChannelOrbs(PCLOrbHelper.RandomCommonHelper(), stacks);
+            PCLActions.Bottom.ChannelOrbs(PCLOrbHelper.RandomCommonHelper(), amount);
         });
     }
 }

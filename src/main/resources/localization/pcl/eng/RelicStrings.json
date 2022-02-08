@@ -54,6 +54,12 @@
 		"FLAVOR": "Whole Grain Guaranteed! Approved by Konayuki.",
 		"NAME": "Cereal Box"
 	},
+	"pcl:ChiliPepper":
+	{
+		"DESCRIPTIONS": ["At the start of each turn, apply #b{0} [Burning] to a random enemy."],
+		"FLAVOR": "You can't beat the heat!",
+		"NAME": "Chili Pepper"
+	},
 	"pcl:ColorlessFragment":
 	{
 		"DESCRIPTIONS": ["Replaces #yThe #yMissing #yPiece. Every #b{0} combats, receive improved card rewards. Chance to contain colorless cards.", "Current Series:"],
@@ -83,6 +89,12 @@
 		"DESCRIPTIONS": ["Upon pickup, #rlose #r{0} #rMax #rHP, all enemies start with additional Max HP. NL NL The card linked to this relic can #yNOT be duplicated."],
 		"FLAVOR": "Maybe it was a mistake...",
 		"NAME": "Cursed Glyph"
+	},
+	"pcl:DiscoBall":
+	{
+		"DESCRIPTIONS": ["At the start of each combat, shuffle 3 0-Cost, upgraded Shido Itsukas into your deck."],
+		"FLAVOR": "Is it time to panic?",
+		"NAME": "Disco Ball"
 	},
 	"pcl:EngravedStaff":
 	{
@@ -137,6 +149,12 @@
 		"DESCRIPTIONS": ["Whenever you apply [Vulnerable], gain #b{0} [R]."],
 		"FLAVOR": "Ruling over death means ruling over life. Death is the climax of life. To have the best death, you must honor life.",
 		"NAME": "Heavy Halberd"
+	},
+	"pcl:HeavyWeights":
+	{
+		"DESCRIPTIONS": ["[Might] is 50% more effective. [Velocity] is 50% less effective."],
+		"FLAVOR": "There's no need for speed.",
+		"NAME": "Heavy Weights"
 	},
 	"pcl:HolyGrailRelic":
 	{

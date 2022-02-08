@@ -18,6 +18,7 @@ public class ElricEdward extends PCLCard
 {
     public static final PCLCardData DATA = Register(ElricEdward.class)
             .SetAttack(1, CardRarity.COMMON, PCLAttackType.Fire)
+            .SetMultiformData(2, false)
             .SetSeriesFromClassPackage();
 
     public ElricEdward()
@@ -25,12 +26,28 @@ public class ElricEdward extends PCLCard
         super(DATA);
 
         Initialize(5, 0, 1);
+        SetUpgrade(3, 0);
 
         SetAffinity_Blue(1, 0, 1);
         SetAffinity_Orange(1, 0, 1);
 
         SetEvokeOrbCount(1);
         SetProtagonist(true);
+    }
+
+    @Override
+    public int SetForm(Integer form, int timesUpgraded) {
+        if (form == 1) {
+            Initialize(5, 0, 1);
+            SetUpgrade(2, 0);
+        }
+        return super.SetForm(form, timesUpgraded);
+    }
+
+    @Override
+    protected String GetRawDescription(Object... args)
+    {
+        return super.GetRawDescription(upgraded && auxiliaryData.form == 1 ? cardData.Strings.EXTENDED_DESCRIPTION[0] : "");
     }
 
     @Override
@@ -62,7 +79,7 @@ public class ElricEdward extends PCLCard
 
                     case CURSE:
                     case STATUS:
-                        if (upgraded)
+                        if (upgraded && auxiliaryData.form == 1)
                         {
                             PCLActions.Bottom.ChannelOrb(new Fire());
                         }

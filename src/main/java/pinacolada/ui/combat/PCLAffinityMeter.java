@@ -189,6 +189,11 @@ public class PCLAffinityMeter extends GUIElement
 
     public int GetLongestMatchCombo() {return longestMatchCombo;}
 
+    public void IncreaseMatchCombo(int amount) {
+        currentMatchCombo += amount;
+        longestMatchCombo = Math.max(longestMatchCombo, currentMatchCombo);
+    }
+
     public PCLAffinity Set(PCLAffinity affinity, Target target) {
         return target == Target.CurrentAffinity ? SetCurrentAffinity(affinity) : SetNextAffinity(affinity);
     }
@@ -265,7 +270,7 @@ public class PCLAffinityMeter extends GUIElement
 
             isGlowing = GR.PCL.Config.FlashForReroll.Get()
                             && PCLGameUtilities.InBattle()
-                            && PCLGameUtilities.IsPlayerTurn()
+                            && PCLGameUtilities.IsPlayerTurn(true)
                             && AbstractDungeon.getCurrMapNode() != null
                             && AbstractDungeon.actionManager.phase == GameActionManager.Phase.WAITING_ON_USER
                             && PCLJUtils.Find(AbstractDungeon.player.hand.group, c -> HasMatch(c, true) && PCLGameUtilities.IsPlayable(c)) == null

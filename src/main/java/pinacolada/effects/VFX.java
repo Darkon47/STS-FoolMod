@@ -113,12 +113,17 @@ public class VFX
         return effect;
     }
 
-    public static GenericAnimationEffect Darkness(Hitbox target, float spread)
+    public static DarknessEffect Darkness(Hitbox target, float spread)
     {
         return Darkness(RandomX(target, spread), RandomY(target, spread));
     }
 
-    public static GenericAnimationEffect Darkness(float cX, float cY)
+    public static DarknessEffect Darkness(float cX, float cY)
+    {
+        return new DarknessEffect(cX, cY);
+    }
+
+    public static GenericAnimationEffect Darkness2(float cX, float cY)
     {
         return new GenericAnimationEffect(IMAGES.Darkness.Texture(), cX, cY, 4, 5, 0.01f)
                 .SetColor(Color.WHITE)

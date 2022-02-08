@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.BorderFlashEffect;
 import pinacolada.cards.base.*;
-import pinacolada.powers.special.GeassPower;
+import pinacolada.powers.pcl.GeassPower;
 import pinacolada.utilities.PCLActions;
 
 import java.util.ArrayList;

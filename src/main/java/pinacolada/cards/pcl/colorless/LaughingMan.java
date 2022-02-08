@@ -4,7 +4,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.curses.Necronomicurse;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import eatyourbeets.interfaces.subscribers.OnEndOfTurnSubscriber;
+import eatyourbeets.interfaces.subscribers.OnEndOfTurnFirstSubscriber;
 import eatyourbeets.interfaces.subscribers.OnStartOfTurnSubscriber;
 import pinacolada.cards.base.*;
 import pinacolada.powers.PCLCombatStats;
@@ -13,7 +13,7 @@ import pinacolada.resources.GR;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameEffects;
 
-public class LaughingMan extends PCLCard implements OnEndOfTurnSubscriber, OnStartOfTurnSubscriber
+public class LaughingMan extends PCLCard implements OnEndOfTurnFirstSubscriber, OnStartOfTurnSubscriber
 {
     public static final PCLCardData DATA = Register(LaughingMan.class).SetSkill(0, CardRarity.RARE, PCLCardTarget.None).SetMaxCopies(1).SetColor(CardColor.COLORLESS).SetSeries(CardSeries.GhostInTheShell);
     private CardType cardType;
@@ -40,7 +40,7 @@ public class LaughingMan extends PCLCard implements OnEndOfTurnSubscriber, OnSta
     }
 
     @Override
-    public void OnEndOfTurn(boolean isPlayer) {
+    public void OnEndOfTurnFirst(boolean isPlayer) {
         cardType = null;
         PCLActions.Bottom.SelectFromPile(name, magicNumber, player.hand)
                 .SetOptions(false, false)

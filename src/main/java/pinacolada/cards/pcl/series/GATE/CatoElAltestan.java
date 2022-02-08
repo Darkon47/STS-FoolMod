@@ -18,7 +18,7 @@ public class CatoElAltestan extends PCLCard
     {
         super(DATA);
 
-        Initialize(0, 1, 3, 3);
+        Initialize(0, 2, 2, 5);
         SetUpgrade(0, 0, 1, 1);
 
         SetAffinity_Blue(1, 0, 2);

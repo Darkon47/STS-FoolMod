@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.orbs.Lightning;
 import eatyourbeets.utilities.TargetHelper;
 import pinacolada.actions.orbs.EvokeOrb;
 import pinacolada.cards.base.*;
-import pinacolada.powers.special.SilencedPower;
+import pinacolada.powers.pcl.SilencedPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 

@@ -7,7 +7,7 @@ import eatyourbeets.utilities.TargetHelper;
 import pinacolada.cards.base.*;
 import pinacolada.effects.AttackEffects;
 import pinacolada.powers.common.BurningPower;
-import pinacolada.powers.special.SwirledPower;
+import pinacolada.powers.pcl.SwirledPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameEffects;
 import pinacolada.utilities.PCLGameUtilities;

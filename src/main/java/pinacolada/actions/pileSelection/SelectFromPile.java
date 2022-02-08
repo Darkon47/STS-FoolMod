@@ -31,6 +31,8 @@ public class SelectFromPile extends EYBActionWithCallback<ArrayList<AbstractCard
     protected GenericCondition<AbstractCard> filter;
     protected FuncT1<String, ArrayList<AbstractCard>> dynamicString;
     protected ListSelection<AbstractCard> origin;
+    protected ListSelection<AbstractCard> maxChoicesOrigin;
+    protected int maxChoices;
     protected boolean hideTopPanel;
     protected boolean canPlayerCancel;
     protected boolean anyNumber;
@@ -124,6 +126,19 @@ public class SelectFromPile extends EYBActionWithCallback<ArrayList<AbstractCard
         return this;
     }
 
+    public SelectFromPile SetMaxChoices(Integer maxChoices)
+    {
+        return SetMaxChoices(maxChoices, CardSelection.Random);
+    }
+
+    public SelectFromPile SetMaxChoices(Integer maxChoices, ListSelection<AbstractCard> origin)
+    {
+        this.maxChoices = maxChoices;
+        this.maxChoicesOrigin = origin;
+
+        return this;
+    }
+
     public SelectFromPile SetCompletionRequirement(FuncT1<Boolean, ArrayList<AbstractCard>> condition)
     {
         this.condition = GenericCondition.FromT1(condition);
@@ -194,21 +209,19 @@ public class SelectFromPile extends EYBActionWithCallback<ArrayList<AbstractCard
             return;
         }
 
+        if (maxChoicesOrigin != null) {
+            List<AbstractCard> temp = new ArrayList<>(mergedGroup.group);
+            CardGroup newMerged = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
+            GetCardSubset(temp, newMerged.group, maxChoicesOrigin, maxChoices);
+            GridCardSelectScreenHelper.Clear(false);
+            GridCardSelectScreenHelper.AddGroup(newMerged);
+            mergedGroup = GridCardSelectScreenHelper.GetCardGroup();
+        }
+
         if (origin != null)
         {
             List<AbstractCard> temp = new ArrayList<>(mergedGroup.group);
-
-            boolean remove = origin.mode.IsRandom();
-            int max = Math.min(temp.size(), amount);
-            for (int i = 0; i < max; i++)
-            {
-                final AbstractCard card = origin.Get(temp, i, remove);
-                if (card != null)
-                {
-                    selectedCards.add(card);
-                }
-            }
-
+            GetCardSubset(temp, selectedCards, origin, amount);
             selected = true;
             GridCardSelectScreenHelper.Clear(true);
             Complete(selectedCards);
@@ -246,6 +259,19 @@ public class SelectFromPile extends EYBActionWithCallback<ArrayList<AbstractCard
             UnlockTracker.markCardAsSeen(card.cardID);
             card.isLocked = false;
             card.isSeen = true;
+        }
+    }
+
+    protected void GetCardSubset(List<AbstractCard> source, List<AbstractCard> dest, ListSelection<AbstractCard> o, int count) {
+        boolean remove = o.mode.IsRandom();
+        int max = Math.min(source.size(), count);
+        for (int i = 0; i < max; i++)
+        {
+            final AbstractCard card = o.Get(source, i, remove);
+            if (card != null)
+            {
+                dest.add(card);
+            }
         }
     }
 

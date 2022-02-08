@@ -60,14 +60,12 @@ import pinacolada.actions.player.ChangeStance;
 import pinacolada.actions.player.GainGold;
 import pinacolada.actions.player.SpendEnergy;
 import pinacolada.actions.powers.*;
-import pinacolada.actions.special.CreateGriefSeeds;
-import pinacolada.actions.special.CreateThrowingKnives;
-import pinacolada.actions.special.SelectCreature;
-import pinacolada.actions.special.UsePotionAction;
+import pinacolada.actions.special.*;
 import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCard;
 import pinacolada.cards.base.PCLCardAffinities;
 import pinacolada.cards.pcl.tokens.AffinityToken;
+import pinacolada.monsters.PCLAlly;
 import pinacolada.orbs.PCLOrbHelper;
 import pinacolada.powers.PCLCombatStats;
 import pinacolada.powers.PCLPowerHelper;
@@ -1224,6 +1222,16 @@ public final class PCLActions
     public ApplyPowerAuto StackPower(TargetHelper target, PCLPowerHelper power, int stacks)
     {
         return Add(new ApplyPowerAuto(target, power, stacks));
+    }
+
+    public SummonAction Summon(PCLAlly ally)
+    {
+        return Add(new SummonAction(ally));
+    }
+
+    public SummonAction Summon(PCLAlly ally, int slot)
+    {
+        return Add(new SummonAction(ally, slot));
     }
 
     public ApplyPower DealDamageAtEndOfTurn(AbstractCreature source, AbstractCreature target, int amount)

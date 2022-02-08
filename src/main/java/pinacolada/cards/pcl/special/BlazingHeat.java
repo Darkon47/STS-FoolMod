@@ -8,7 +8,7 @@ import pinacolada.cards.base.PCLCardData;
 import pinacolada.effects.vfx.ScreenOnFireEffect3;
 import pinacolada.orbs.PCLOrbHelper;
 import pinacolada.powers.common.BurningPower;
-import pinacolada.powers.special.BlazingHeatPower;
+import pinacolada.powers.pcl.BlazingHeatPower;
 import pinacolada.utilities.PCLActions;
 
 public class BlazingHeat extends PCLCard

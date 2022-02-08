@@ -354,6 +354,9 @@ public class PCLStrings
     {
         private final UIStrings Strings = GetUIStrings("Actions");
 
+        public final String ToARandomEnemy = Strings.TEXT[44];
+        public final String ToALLEnemies = Strings.TEXT[45];
+
         public final String GainAmount(Object amount, Object buff, boolean addPeriod)
         {
             return Format(addPeriod, 0, amount, buff);

@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import pinacolada.cards.base.*;
 import pinacolada.cards.pcl.series.DateALive.ShidoItsuka;
 import pinacolada.powers.PCLPower;
-import pinacolada.powers.special.MagusFormPower;
+import pinacolada.powers.pcl.MagusFormPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;

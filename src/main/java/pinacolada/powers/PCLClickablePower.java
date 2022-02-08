@@ -176,7 +176,7 @@ public abstract class PCLClickablePower extends PCLPower
             currentPhase = phase;
         }
 
-        clickable = (currentPhase == GameActionManager.Phase.WAITING_ON_USER && PCLGameUtilities.IsPlayerTurn()) && triggerCondition.CanUse();
+        clickable = (currentPhase == GameActionManager.Phase.WAITING_ON_USER && PCLGameUtilities.IsPlayerTurn(true)) && triggerCondition.CanUse();
         hb.update();
 
         if (hb.hovered)

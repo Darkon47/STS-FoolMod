@@ -12,8 +12,8 @@ import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCard;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.powers.PCLPower;
-import pinacolada.powers.special.Amplification_DarkPower;
-import pinacolada.powers.special.Amplification_LightningPower;
+import pinacolada.powers.pcl.Amplification_DarkPower;
+import pinacolada.powers.pcl.Amplification_LightningPower;
 import pinacolada.utilities.PCLActions;
 
 public class RaidenShogun extends PCLCard

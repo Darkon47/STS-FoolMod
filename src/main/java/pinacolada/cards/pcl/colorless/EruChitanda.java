@@ -4,7 +4,6 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import pinacolada.cards.base.PCLCardTarget;
 import eatyourbeets.powers.CombatStats;
 import eatyourbeets.utilities.JUtils;
 import eatyourbeets.utilities.RandomizedList;
@@ -24,7 +23,7 @@ public class EruChitanda extends PCLCard
     {
         super(DATA);
 
-        Initialize(0, 1, 3, 4);
+        Initialize(0, 1, 3, 3);
         SetUpgrade(0, 0, 999, 0);
         SetAffinity_Light(1, 0 ,1);
         SetExhaust(true);

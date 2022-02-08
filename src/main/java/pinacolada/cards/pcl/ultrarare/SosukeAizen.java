@@ -4,7 +4,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import pinacolada.cards.base.*;
 import pinacolada.powers.common.CounterAttackPower;
-import pinacolada.powers.special.PhasingPower;
+import pinacolada.powers.pcl.PhasingPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 

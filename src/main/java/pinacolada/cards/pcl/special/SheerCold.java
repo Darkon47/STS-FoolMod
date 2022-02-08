@@ -9,7 +9,7 @@ import pinacolada.effects.vfx.ScreenFreezingEffect;
 import pinacolada.orbs.PCLOrbHelper;
 import pinacolada.powers.PCLCombatStats;
 import pinacolada.powers.common.FreezingPower;
-import pinacolada.powers.special.SheerColdPower;
+import pinacolada.powers.pcl.SheerColdPower;
 import pinacolada.utilities.PCLActions;
 
 public class SheerCold extends PCLCard

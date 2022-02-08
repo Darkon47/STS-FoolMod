@@ -248,6 +248,7 @@ public class PCLImages
         public final TextureCache Chaos1           = new TextureCache("images/pcl/orbs/Chaos1.png");
         public final TextureCache Chaos2           = new TextureCache("images/pcl/orbs/Chaos2.png");
         public final TextureCache Chaos3           = new TextureCache("images/pcl/orbs/Chaos3.png");
+        public final TextureCache Chaos4           = new TextureCache("images/pcl/orbs/Chaos4.png");
         public final TextureCache Earth1           = new TextureCache("images/pcl/orbs/Earth1.png");
         public final TextureCache Earth2           = new TextureCache("images/pcl/orbs/Earth2.png");
         public final TextureCache Earth3           = new TextureCache("images/pcl/orbs/Earth3.png");
@@ -275,6 +276,11 @@ public class PCLImages
         public final TextureCache AirTrail3        = new TextureCache("images/pcl/effects/AirTrail3.png");
         public final TextureCache Circle           = new TextureCache("images/pcl/effects/Circle.png");
         public final TextureCache Circle2           = new TextureCache("images/pcl/effects/Circle2.png");
+        public final TextureCache Dark1             = new TextureCache("images/pcl/effects/Dark1.png");
+        public final TextureCache Dark2             = new TextureCache("images/pcl/effects/Dark2.png");
+        public final TextureCache Dark3             = new TextureCache("images/pcl/effects/Dark3.png");
+        public final TextureCache Dark4             = new TextureCache("images/pcl/effects/Dark4.png");
+        public final TextureCache Dark5             = new TextureCache("images/pcl/effects/Dark5.png");
         public final TextureCache Darkness         = new TextureCache("images/pcl/effects/Darkness.png");
         public final TextureCache Droplet          = new TextureCache("images/pcl/effects/Droplet.png");
         public final TextureCache Electric1       = new TextureCache("images/pcl/effects/Electric1.png");

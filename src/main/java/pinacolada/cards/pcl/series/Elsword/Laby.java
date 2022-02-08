@@ -81,7 +81,7 @@ public class Laby extends PCLCard
             int applyAmount = power.amount;
             if (target == owner && ph != null && power.amount > 0)
             {
-                if (!PCLGameUtilities.IsPlayerTurn() && (VulnerablePower.POWER_ID.equals(ph.ID) || WeakPower.POWER_ID.equals(ph.ID) || FrailPower.POWER_ID.equals(ph.ID))) {
+                if (!PCLGameUtilities.IsPlayerTurn(true) && (VulnerablePower.POWER_ID.equals(ph.ID) || WeakPower.POWER_ID.equals(ph.ID) || FrailPower.POWER_ID.equals(ph.ID))) {
                     applyAmount += 1;
                 }
                 GameActions.Bottom.StackPower(TargetHelper.Enemies(), ph, applyAmount);

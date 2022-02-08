@@ -45,8 +45,8 @@ public class Shiro extends PCLCard
                         PCLActions.Bottom.TriggerOrbPassive(cards.size(), true, false);
                     }
 
-                    if (PCLGameUtilities.GetPCLAffinityPowerLevel(PCLAffinity.Blue) > 0 && PCLGameUtilities.TrySpendAffinityPower(PCLAffinity.Light, magicNumber)) {
-                        PCLGameUtilities.AddAffinityPowerUse(PCLAffinity.Blue, 1);
+                    if (PCLGameUtilities.GetPCLAffinityPowerLevel(PCLAffinity.Blue) > 0 && PCLGameUtilities.TrySpendAffinityPower(PCLAffinity.Light, secondaryValue)) {
+                        PCLActions.Bottom.GainSorcery(magicNumber);
                     }
                 }
         );

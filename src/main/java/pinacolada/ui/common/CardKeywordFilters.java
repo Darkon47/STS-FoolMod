@@ -59,7 +59,7 @@ public class CardKeywordFilters extends GUIElement
     public enum OriginFilter
     {
         BaseGame("Base Game", GR.PackageNames.OG),
-        Animator("Animator",GR.PackageNames.EYB),
+        Animator("Animator",GR.PackageNames.EYB_ANIMATOR),
         PCL("Fool",GR.PackageNames.PCL);
 
         public final String name;

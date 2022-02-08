@@ -11,7 +11,7 @@ import pinacolada.cards.base.*;
 import pinacolada.effects.AttackEffects;
 import pinacolada.effects.SFX;
 import pinacolada.powers.common.RippledPower;
-import pinacolada.powers.special.SwirledPower;
+import pinacolada.powers.pcl.SwirledPower;
 import pinacolada.stances.pcl.VelocityStance;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameEffects;

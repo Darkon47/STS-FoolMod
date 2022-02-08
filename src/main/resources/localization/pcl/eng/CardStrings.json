@@ -212,7 +212,7 @@
 		},
 		"pcl:Fujimaki":
 		{
-			"DESCRIPTION": "<CDN>: Gain !M! [R] and Obtain {~Wound}. || Pay !A! <G> or on Purge: Enter <RS>.",
+			"DESCRIPTION": "<CDN>: Gain !M! [R] and Obtain a {~Wound} with this card's <W>. || Pay !A! <G> or on Purge: Enter <RS>.",
 			"NAME": "Fujimaki"
 		},
 		"pcl:GirlDeMo":
@@ -228,7 +228,7 @@
 		},
 		"pcl:HidekiHinata":
 		{
-			"DESCRIPTION": "If the enemy is attacking: Deal +!S! damage. Otherwise, gain !M! [Support Damage]. || In {Afterlife}: Gain [Energized].",
+			"DESCRIPTION": "Deal +!S! damage per Match Combo. If the Current or Next <W> is <L>: Gain !M! [Support Damage]. || In {Afterlife}: Gain [Energized].",
 			"NAME": "Hideki Hinata"
 		},
 		"pcl:Hisako":
@@ -269,7 +269,7 @@
 		},
 		"pcl:Yui":
 		{
-			"DESCRIPTION": "Obtain {<L> Token}{+}, then Motivate !S!. || <LIM>. In {Afterlife}: Add {Girls Dead Monster} to your draw pile.",
+			"DESCRIPTION": "Obtain {<L> Token}{+}. Motivate equal to half your Match Combo (!X!, max. {0}). || <LIM>. In {Afterlife}: Add {Girls Dead Monster} to your draw pile.",
 			"NAME": "Yui"
 		},
 		"pcl:YuriNakamura":
@@ -281,7 +281,7 @@
 		},
 		"pcl:Yusa":
 		{
-			"DESCRIPTION": "{Scry} !S!. || Exhaust a card from your discard pile. Gain !M! [THP] if it was <L>.",
+			"DESCRIPTION": "{Scry} !S!. || Exhaust a card in your discard pile. Gain !M! [THP] if it was <L>.",
 			"NAME": "Yusa"
 		},
 		"pcl:YuzuruOtonashi":
@@ -407,7 +407,7 @@
 		},
 		"pcl:UryuuIshida":
 		{
-			"DESCRIPTION": "{Starter}: Transfer !M! [Weak] and !M! [Vulnerable] from you to the enemy. || <slm>. On Discard: Gain !S! [Support Damage].",
+			"DESCRIPTION": "{Starter}: Transfer !M! [Weak] and !M! [Vulnerable] from you to the enemy. || <SLM>. On Discard: ** Gain !S! [Support Damage].",
 			"NAME": "Uryuu Ishida"
 		},
 		"pcl:YasutoraSado":
@@ -426,7 +426,7 @@
 	{
 		"pcl:AkariMizunashi":
 		{
-			"DESCRIPTION": "{0}Evoke your first [Water] to gain a [L] use. ** Otherwise, Channel [Water]. || When drawn: Heal !S! [HP] ** (!X!/!S! times left this combat).",
+			"DESCRIPTION": "{0}Evoke your first [Water] to gain a [B] use. ** Otherwise, Channel [Water]. || When drawn: Heal !S! [HP] ** (!X!/!S! times left this combat).",
 			"EXTENDED_DESCRIPTION": ["Convert ALL [Frost] to [Water]. "],
 			"NAME": "Akari Mizunashi"
 		},
@@ -514,7 +514,7 @@
 		},
 		"pcl:HaruhiSuzumiya":
         {
-            "DESCRIPTION": "Exhaust your hand. For each: Obtain a random Motivated card. || <LIM>. !A! <W>: Repeat this with your draw and discard piles.",
+            "DESCRIPTION": "Replace ALL cards in play with cards from 1 of !M! Series. Reshuffle them, then draw. || You may pay !A! <W>: Make all enemies Reactive.",
             "NAME": "Haruhi Suzumiya"
         },
 		"pcl:HatsuneMiku":
@@ -838,7 +838,7 @@
 		},
 		"pcl:MikuIzayoi":
 		{
-			"DESCRIPTION": "Gain [Energized]. If you played a Power this turn: Gain [Inspiration]. || <SLM>. !S! Match Combo: {Motivate} 1.",
+			"DESCRIPTION": "Gain [Energized]. If you played a Power this turn or if [B] is active: Gain [Inspiration]. || <SLM>. Match: Increase your Match Combo by !S!.",
 			"NAME": "Miku Izayoi"
 		},
 		"pcl:MioTakamiya":
@@ -1146,7 +1146,7 @@
 		},
 		"pcl:YunJin":
 		{
-			"DESCRIPTION": "<CYC>. Motivate both the card discarded and the card drawn.",
+			"DESCRIPTION": "<CYC>. Motivate both the card discarded and the card drawn. || Match: Gain the <W> of the last card played.",
 			"NAME": "Yun Jin"
 		},
 		"pcl:Zhongli":
@@ -1286,10 +1286,10 @@
 		},
 		"pcl:Kirakishou":
 		{
-			"DESCRIPTION": "Place the top !M! card(s) of your draw pile on a non-Boss enemy. Apply a {Mind Control} Power to the target for each. || On Exhaust: Purge and apply !S! [Constricted] to ALL enemies !M! times.",
-			"EXTENDED_DESCRIPTION": ["Once per turn, pay a [A-Gen] cost to force the target to perform a certain action. The [A-Gen] cost and the action are dependent on the card used to create this Power. That card is returned to you when the target dies."],
+			"DESCRIPTION": "Create a {Puppet} with the top !M! card(s) from your draw pile (skipping duplicates). Its stats and available intents depend on the cards used. Retrieve these cards when the {Puppet} dies.",
+			"EXTENDED_DESCRIPTION": ["Puppets are allies that act autonomously. Once per turn, pay a [A-Gen] cost to force the target to perform a certain action. That card is returned to you when the target dies."],
 			"NAME": "Kirakishou",
-			"UPGRADE_DESCRIPTION": "Place !M! of the top !S! card(s) of your draw pile on a non-Boss enemy. Apply a {Mind Control} Power to the target for each. || On Exhaust: Purge and apply !S! [Constricted] to ALL enemies !M! times."
+			"UPGRADE_DESCRIPTION": "Create a {Puppet} with !M! of the top !S! card(s) from draw pile (skipping duplicates). Its stats and available intents depend on the cards used. Retrieve these cards when the {Puppet} dies."
 		},
 		"pcl:LaplacesDemon":
 		{
@@ -1414,7 +1414,7 @@
 		},
 		"pcl:HiedaNoAkyuu":
 		{
-			"DESCRIPTION": "You cannot draw additional cards this turn. Discard your draw pile. Give !M! cards in your discard pile [~Innate]. ** <LIM>. !A! <W>: Also remove [~Ethereal] and Exhaust from them.",
+			"DESCRIPTION": "You cannot draw additional cards this turn. Discard your draw pile. Give !M! cards in your discard pile [~Innate]. ** <LIM>. !A! <W>: Also remove [~Ethereal] from them.",
 			"NAME": "Hieda no Akyuu"
 		},
 		"pcl:KaguyaHouraisan":
@@ -1908,7 +1908,7 @@
 		},
 		"pcl:Avenger":
 		{
-			"DESCRIPTION": "For !S! turns: The target takes +!M!% damage from <D> Attacks. || If you receive unblocked attack damage this turn: Gain !S! [Vigor].",
+			"DESCRIPTION": "For !S! turns: The target takes +!M!% damage from <D> Attacks. || You may pay !A! <R>: Set this card's base damage to the amount of HP you lost last turn.",
 			"EXTENDED_DESCRIPTION": ["For #b{0} turns: The target takes #b+{1}% damage from [A-Dark] #yAttacks.","If you receive unblocked attack damage this turn: Gain #b{0} [Vigor]"],
 			"NAME": "Avenger"
 		},
@@ -2042,8 +2042,8 @@
 		},
 		"pcl:ElricEdward":
 		{
-			"DESCRIPTION": "<CYC>. If it is a: || {Skill} -> Channel 1 [Frost]. ** {Attack} -> Channel 1 [~Lightning]. ** {Power} -> Channel 1 [Earth].",
-			"UPGRADE_DESCRIPTION": "<DESCRIPTION> ** {Hindrance} -> Channel 1 [Fire].",
+			"DESCRIPTION": "<CYC>. If it is a: || {Skill} -> Channel 1 [Frost]. ** {Attack} -> Channel 1 [~Lightning]. ** {Power} -> Channel 1 [Earth].{0}",
+			"UPGRADE_DESCRIPTION": " ** {Hindrance} -> Channel 1 [Fire].",
 			"NAME": "Edward Elric"
 		},
 		"pcl:Envy":
@@ -2059,7 +2059,7 @@
 		},
 		"pcl:Gluttony":
 		{
-			"DESCRIPTION": "Exhaust the top !M! cards of your draw pile. For each: Gain [D] and !M! [THP]. || <LIM>. If you Exhausted a {Curse}: Obtain {<D> Token+}.",
+			"DESCRIPTION": "Exhaust the top !S! cards of your draw pile. For each: Gain [D] and !M! [THP]. || <LIM>. If you Exhausted a {Curse}: Obtain {<D> Token+}.",
 			"EXTENDED_DESCRIPTION": ["Not enough cards in hand."],
 			"NAME": "Gluttony"
 		},
@@ -2433,9 +2433,8 @@
 		},
 		"pcl:TsurugaMeisai":
 		{
-			"DESCRIPTION": "Gain !M! [NTB]. Discard a card to gain +!S!. || Add !S! [T-Knife] to your draw pile.",
-			"NAME": "Tsuruga Meisai",
-			"UPGRADE_DESCRIPTION": "Gain !M! [NTB]. Discard a card to gain +!S!. || Add !S! [T-Knife] with [~Haste] to your draw pile."
+			"DESCRIPTION": "Gain !M! [NTB]. Discard a card to gain +!S!. || Add !S! [T-Knife] with [~Haste] to your draw pile.",
+			"NAME": "Tsuruga Meisai"
 		},
 		"pcl:UneriGinkaku":
 		{
@@ -2519,7 +2518,7 @@
 		},
 		"pcl:Mitsurugi":
 		{
-			"DESCRIPTION": "Gain +!M! <R>. Can only ** deal damage if the ** enemy is attacking. || On Exhaust: ** Gain !S! [Block].",
+			"DESCRIPTION": "If the enemy is attacking: Deal +!S! damage. Otherwise, gain +!M! <R>. || On Exhaust: ** Gain +!M! <R>.",
 			"NAME": "Mitsurugi Kyouya"
 		},
 		"pcl:Vanir":
@@ -2550,15 +2549,15 @@
 	{
 		"pcl:Akatsuki":
 		{
-			"DESCRIPTION": "If the enemy is attacking: Obtain [T-Knife]. Otherwise, Deal +!S! damage. || <LIM>. When drawn: Add !M! [T-Knife] to your draw pile.",
-			"NAME": "Akatsuki",
-			"UPGRADE_DESCRIPTION": "If the enemy is attacking: Obtain [T-Knife]. Otherwise, Deal +!S! damage. || <LIM>. When drawn: Add !M! [T-Knife] to your draw pile."
+			"DESCRIPTION": "If the enemy is attacking: Obtain [T-Knife]. Otherwise, Deal +!S! damage. || <LIM>. When drawn: Obtain !M! [T-Knife].",
+			"NAME": "Akatsuki"
 		},
 		"pcl:Henrietta":
 		{
 			"DESCRIPTION": "When you use a {<W> Skip}: You may choose the {Next <W>}. || Once per turn, Pay !S! <W>: Gain !M! of any {<W> Power}.",
 			"EXTENDED_DESCRIPTION": ["Pay #b{0} [A-Gen]: Gain #b{1} of any [A-Gen] #yPower. NL When you use a [A-Gen] #ySkip: You may choose the #yNext [A-Gen]."],
-			"NAME": "Henrietta"
+			"NAME": "Henrietta",
+			"UPGRADE_DESCRIPTION": "Gain 1 [Artifact]. When you use a {<W> Skip}: You may choose the {Next <W>}. || Once per turn, Pay !S! <W>: Gain !M! of any {<W> Power}."
 		},
 		"pcl:IsuzuTonan":
 		{
@@ -2843,14 +2842,14 @@
 		},
 		"pcl:NinaClive":
 		{
-			"DESCRIPTION": "Give [~Delayed] to a card in hand or discard pile. If you do: Give [~Innate] to a card in hand.",
+			"DESCRIPTION": "Give [~Delayed] to up to !M! cards in hand or discard pile. For each: Give [~Innate] to a card in hand or discard pile. Then, reshuffle your draw pile.",
 			"EXTENDED_DESCRIPTION": ["Select card(s) to give Delayed","Select card(s) to give Innate"],
 			"NAME": "Nina Clive",
-			"UPGRADE_DESCRIPTION": "Give [~Delayed] to up to !M! cards in hand or discard pile. For each: Give [~Innate] to a card in hand."
+			"UPGRADE_DESCRIPTION": "Give [~Delayed] to up to !M! cards anywhere. For each: Give [~Innate] to a card in hand or discard pile. Then, reshuffle your draw pile."
 		},
 		"pcl:Shiro":
 		{
-			"DESCRIPTION": "Scry !S!. For each discarded card: Trigger a random Orb. || Spend !M! [L]: ** Gain a [B] {Use}.",
+			"DESCRIPTION": "Scry !S!. For each discarded card: Trigger a random Orb. || Spend !M! [L]: ** Gain !S! [Sorcery].",
 			"NAME": "Shiro"
 		},
 		"pcl:Sora":
@@ -2971,7 +2970,8 @@
 		},
 		"pcl:Tatsumaki":
 		{
-			"DESCRIPTION": "Channel 1 [Air]. ** Gain !M! {Temp.} [Focus]. || <ST>. Pay !A! <R> and <B>: Enter <BS>.",
+			"DESCRIPTION": "Channel 1 [Air]. ALL <L> cards have +!M! damage and [Block] this turn. || <ST>. Pay !A! <R> and <B>: Enter <LS>.",
+			"EXTENDED_DESCRIPTION": ["[A-Light] cards have +#b{0} damage and [Block] this turn."],
 			"NAME": "Tatsumaki"
 		},
 		"pcl:Zombieman":
@@ -2990,10 +2990,9 @@
 		},
 		"pcl:Albedo":
 		{
-			"DESCRIPTION": "Gain !S! [Plated Armor]. [~Dark] gives +1 <D> on Trigger. || Once per turn, Pay X <D>: Give an Attack Exhaust and +X damage.",
+			"DESCRIPTION": "Gain !S! [Plated Armor]. Channel 1 [~Dark]. [~Dark] gives +1 <D> on Trigger. || Once per turn, Pay X <D>: Give an Attack Exhaust and +X damage.",
 			"EXTENDED_DESCRIPTION": ["[~Dark] gives +#b{0} [A-Dark] on Trigger. || Pay #b{1} [A-Dark]: Give an Attack #yExhaust and +#b{1} damage."],
-			"NAME": "Albedo",
-			"UPGRADE_DESCRIPTION": "Gain 1 [Artifact] and !S! [Plated Armor]. [~Dark] gives +1 <D> on Trigger. || Once per turn, Pay X <D>: Give an Attack Exhaust and +X damage."
+			"NAME": "Albedo"
 		},
 		"pcl:Cocytus":
 		{
@@ -3192,7 +3191,7 @@
 		},
 		"pcl:Ramiris":
 		{
-			"DESCRIPTION": "<ST>. Apply !M! [Weak] and ** !S! [Shackles] to ALL enemies. ** Gain 10 [Shackles]. || {Startup}: Gain 2 [THP].",
+			"DESCRIPTION": "Have !S! less [Focus] this turn. Apply [Shackles] and [Blinded] to ALL enemies equal to your Match Combo (Max. {0}). || {Startup}: Gain !M! [THP].",
 			"NAME": "Ramiris"
 		},
 		"pcl:Ranga":
@@ -3228,7 +3227,7 @@
 		},
 		"pcl:Souei":
 		{
-			"DESCRIPTION": "Apply !M! [Poison], then activate the target's [Poison]. ** If any damage from this card is Fatal: Gain [Blur] and spread its [Poison] to ALL enemies.",
+			"DESCRIPTION": "Apply !M! [Poison], then activate the target's [Poison]. ** If any damage from this card is Fatal: Gain [Blur] and spread the target's [Poison] to ALL enemies.",
 			"NAME": "Souei"
 		},
 		"pcl:Vesta":

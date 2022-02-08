@@ -65,6 +65,11 @@
 		"DESCRIPTIONS": ["For #b{0} turns: Deal double damage to enemies with [Freezing]. Whenever you deal unblocked damage to an enemy, apply #b{1} [Burning] and remove #b{2} [Freezing]."],
 		"NAME": "Burning Weapon"
 	},
+	"pcl:ChangeIntentPower":
+	{
+		"DESCRIPTIONS": ["Pay #b{0} {1}: This creature will {2}.{3}", " NL #gThis #gIntent #gis #gactive.", " NL #rAnother #rIntent #ris #ralready #ractive."],
+		"NAME": "Change Intent"
+	},
 	"pcl:ChlammyZellPower":
 	{
 		"DESCRIPTIONS": ["Whenever you play alternating card types this turn, deal #b{0} damage to ALL enemies and #yCycle #b1 card. NL NL Last Type played: #y{1}."],
@@ -122,7 +127,7 @@
 	},
 	"pcl:DesecratedPower":
 	{
-		"DESCRIPTIONS": ["Take #b{0}% more damage from any source. Deal #b{1}% less damage with #yAttacks. Ignores [Artifact]. Removed at the end of turn."],
+		"DESCRIPTIONS": ["Take #b{0}% more damage from any source. Deal #b{1}% less damage with #yAttacks (max. #b{2}% reduction). Ignores [Artifact]. Removed at the end of turn."],
 		"NAME": "Desecrated"
 	},
 	"pcl:DesecrationPower":
@@ -377,7 +382,7 @@
 	},
 	"pcl:LuckPower":
 	{
-		"DESCRIPTIONS": ["If a [A-Star] card #yMatches: Gain #b{0} [S]. NL At #b{1} stacks: Gains #b1 Level. NL At Level #b{2}: Gains #b1 use. NL When clicked: Spend #b1 use to gain #b{3} additional [E] each turn.{4}", " NL #rThis #rpower #ris #rdisabled."],
+		"DESCRIPTIONS": ["If a [A-Star] card #yMatches: Gain #b{0} [S]. NL At #b{1} stacks: Gains #b1 Level. NL At Level #b{2}: Gains #b1 use. NL Good effects are #b{3}% more likely to happen.{4}", " NL #rThis #rpower #ris #rdisabled."],
 		"NAME": "Luck"
 	},
 	"pcl:MagusForm":

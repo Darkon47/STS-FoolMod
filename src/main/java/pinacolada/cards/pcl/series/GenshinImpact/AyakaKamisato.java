@@ -16,7 +16,7 @@ import pinacolada.cards.base.PCLCardData;
 import pinacolada.effects.AttackEffects;
 import pinacolada.effects.SFX;
 import pinacolada.effects.VFX;
-import pinacolada.powers.special.SelfImmolationPower;
+import pinacolada.powers.pcl.SelfImmolationPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameEffects;
 import pinacolada.utilities.PCLGameUtilities;
@@ -79,7 +79,7 @@ public class AyakaKamisato extends PCLCard {
     }
 
     public boolean CheckSpecialCondition(boolean tryUse){
-        return player.currentHealth + player.currentBlock + PCLGameUtilities.GetTempHP() < secondaryValue && tryUse ? CombatStats.TryActivateLimited(cardID) : CombatStats.CanActivateLimited(cardID);
+        return (player.currentHealth + player.currentBlock + PCLGameUtilities.GetTempHP() < secondaryValue) && (tryUse ? CombatStats.TryActivateLimited(cardID) : CombatStats.CanActivateLimited(cardID));
     }
 
     protected WaitAction PreDamageAction(AbstractMonster m) {

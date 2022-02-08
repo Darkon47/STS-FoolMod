@@ -106,6 +106,9 @@ public class GranviaShieldCrest extends PCLRelic implements OnLosingHPSubscriber
 
     public String GetFullDescription()
     {
+        if (!PCLGameUtilities.InGame()) {
+            return FormatDescription(0);
+        }
         final HashSet<String> protagonists = new HashSet<>();
         for (AbstractCard card : GetProtagonists()) {
             if (card != null) {

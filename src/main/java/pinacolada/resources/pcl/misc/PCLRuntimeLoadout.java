@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import eatyourbeets.utilities.JUtils;
+import eatyourbeets.utilities.WeightedList;
 import pinacolada.cards.base.*;
 import pinacolada.resources.GR;
 import pinacolada.utilities.PCLGameUtilities;
@@ -117,6 +118,36 @@ public class PCLRuntimeLoadout
 
     public ArrayList<AbstractCard> GetSeenCards(Map<String, AbstractCard> source) {
         return JUtils.Filter(source.values(), c -> c.isSeen);
+    }
+
+    public AbstractCard GetRandomCard() {
+        return PCLGameUtilities.GetRandomElement(new ArrayList<>(GetCardPoolInPlay().values()), PCLCard.rng);
+    }
+
+    public AbstractCard GetWeightedRandomCard(boolean inCombat) {
+        WeightedList<AbstractCard> rewards = new WeightedList<>();
+
+        for (AbstractCard c : GetCardPoolInPlay().values())
+        {
+            if (c.type != AbstractCard.CardType.CURSE && c.type != AbstractCard.CardType.STATUS && (!inCombat || PCLGameUtilities.IsObtainableInCombat(c)))
+            {
+                switch (c.rarity)
+                {
+                    case COMMON:
+                        rewards.Add(c, 45);
+                        break;
+
+                    case UNCOMMON:
+                        rewards.Add(c, 40);
+                        break;
+
+                    case RARE:
+                        rewards.Add(c, 20);
+                        break;
+                }
+            }
+        }
+        return rewards.Retrieve(PCLCard.rng);
     }
 
     public AbstractCard BuildCard()

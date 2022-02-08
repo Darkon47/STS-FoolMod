@@ -4,7 +4,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import pinacolada.cards.base.*;
 import pinacolada.effects.AttackEffects;
-import pinacolada.powers.special.StolenGoldPower;
+import pinacolada.powers.pcl.StolenGoldPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 

@@ -22,7 +22,7 @@ public class Wiz extends PCLCard
     {
         super(DATA);
 
-        Initialize(0, 0, 3);
+        Initialize(0, 0, 2);
         SetCostUpgrade(-1);
 
         SetAffinity_Blue(1);

@@ -2,7 +2,7 @@ package pinacolada.cards.pcl.series.OnePunchMan;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import eatyourbeets.interfaces.subscribers.OnEndOfTurnSubscriber;
+import eatyourbeets.interfaces.subscribers.OnEndOfTurnFirstSubscriber;
 import eatyourbeets.utilities.TargetHelper;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLAffinity;
@@ -13,7 +13,7 @@ import pinacolada.powers.PCLCombatStats;
 import pinacolada.powers.PCLPowerHelper;
 import pinacolada.utilities.PCLActions;
 
-public class MetalBat extends PCLCard implements OnEndOfTurnSubscriber
+public class MetalBat extends PCLCard implements OnEndOfTurnFirstSubscriber
 {
     public static final PCLCardData DATA = Register(MetalBat.class)
             .SetAttack(0, CardRarity.COMMON)
@@ -46,7 +46,7 @@ public class MetalBat extends PCLCard implements OnEndOfTurnSubscriber
     }
 
     @Override
-    public void OnEndOfTurn(boolean isPlayer) {
+    public void OnEndOfTurnFirst(boolean isPlayer) {
         PCLActions.Bottom.StackAffinityPower(PCLAffinity.Red, -magicNumber);
         PCLCombatStats.onEndOfTurn.Unsubscribe(this);
     }

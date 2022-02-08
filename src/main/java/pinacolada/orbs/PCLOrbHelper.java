@@ -5,6 +5,7 @@ import eatyourbeets.interfaces.delegates.FuncT0;
 import eatyourbeets.utilities.WeightedList;
 import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCardTooltip;
+import pinacolada.interfaces.markers.TooltipObject;
 import pinacolada.resources.GR;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
@@ -12,7 +13,7 @@ import pinacolada.utilities.PCLJUtils;
 import java.util.HashMap;
 import java.util.Map;
 
-public class PCLOrbHelper
+public class PCLOrbHelper implements TooltipObject
 {
     public static final int COMMON_THRESHOLD = 11;
     public static final Map<String, PCLOrbHelper> ALL = new HashMap<>();
@@ -85,5 +86,10 @@ public class PCLOrbHelper
 
     public final boolean IsCommon() {
         return weight >= COMMON_THRESHOLD;
+    }
+
+    @Override
+    public PCLCardTooltip GetTooltip() {
+        return Tooltip;
     }
 }

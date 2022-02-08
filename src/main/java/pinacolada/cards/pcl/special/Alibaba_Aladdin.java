@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import pinacolada.cards.base.*;
 import pinacolada.powers.PCLPower;
-import pinacolada.powers.special.MagusFormPower;
+import pinacolada.powers.pcl.MagusFormPower;
 import pinacolada.utilities.PCLActions;
 
 public class Alibaba_Aladdin extends PCLCard

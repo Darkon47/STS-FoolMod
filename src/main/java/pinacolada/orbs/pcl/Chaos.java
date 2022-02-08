@@ -2,15 +2,18 @@ package pinacolada.orbs.pcl;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
+import eatyourbeets.effects.Projectile;
 import eatyourbeets.interfaces.subscribers.OnAfterCardPlayedSubscriber;
-import eatyourbeets.interfaces.subscribers.OnEndOfTurnSubscriber;
+import eatyourbeets.interfaces.subscribers.OnEndOfTurnFirstSubscriber;
 import eatyourbeets.ui.TextureCache;
 import eatyourbeets.utilities.Colors;
 import eatyourbeets.utilities.RandomizedList;
+import pinacolada.effects.PCLProjectile;
 import pinacolada.effects.SFX;
 import pinacolada.orbs.PCLOrb;
 import pinacolada.orbs.PCLOrbHelper;
@@ -21,16 +24,17 @@ import pinacolada.utilities.PCLGameUtilities;
 
 import java.util.ArrayList;
 
-public class Chaos extends PCLOrb implements OnEndOfTurnSubscriber, OnAfterCardPlayedSubscriber
+public class Chaos extends PCLOrb implements OnEndOfTurnFirstSubscriber, OnAfterCardPlayedSubscriber
 {
     public static final String ORB_ID = CreateFullID(Chaos.class);
 
-    public static TextureCache img1 = IMAGES.Chaos1;
-    public static TextureCache img2 = IMAGES.Chaos2;
-    public static TextureCache img3 = IMAGES.Chaos3;
+    public static TextureCache img = IMAGES.Chaos1;
+    private static final TextureCache[] orbitals = { IMAGES.Chaos2, IMAGES.Chaos3, IMAGES.Chaos4};
 
     private final boolean hFlip1;
     private AbstractOrb currentForm;
+
+    public final ArrayList<Projectile> projectiles = new ArrayList<>();
 
     public Chaos()
     {
@@ -43,6 +47,23 @@ public class Chaos extends PCLOrb implements OnEndOfTurnSubscriber, OnAfterCardP
 
         this.updateDescription();
         this.channelAnimTimer = 0.5f;
+        for (TextureCache orbital : orbitals)
+        {
+            float r = MathUtils.random(0, 10f) * 36f;
+            float vX = MathUtils.cosDeg(r);
+            float vY = MathUtils.sinDeg(r);
+            float x = 2 * hb.width * vX;
+            float y = 2 * hb.height * vY;
+            projectiles.add(new PCLProjectile(orbital.Texture(), IMAGE_SIZE * 0.8f, IMAGE_SIZE * 0.8f)
+                    .SetPosition(cX, cY)
+                    .SetColor(Colors.Random(0.8f, 1f, false))
+                    .SetScale(0.08f)
+                    .SetTargetScale(MathUtils.random(0.5f, 0.8f), null)
+                    .SetFlip(MathUtils.randomBoolean(), MathUtils.randomBoolean())
+                    .SetOffset(0f, 0f, MathUtils.random(0f, 360f), null)
+                    .SetTargetOffset(x, y, null, null)
+                    .SetSpeed(vX, vY, MathUtils.random(64f, 100f), null));
+        }
     }
 
     @Override
@@ -88,7 +109,7 @@ public class Chaos extends PCLOrb implements OnEndOfTurnSubscriber, OnAfterCardP
     }
 
     @Override
-    public void OnEndOfTurn(boolean isPlayer)
+    public void OnEndOfTurnFirst(boolean isPlayer)
     {
         PCLCombatStats.onEndOfTurn.Unsubscribe(this);
         PCLCombatStats.onAfterCardPlayed.Unsubscribe(this);
@@ -100,7 +121,17 @@ public class Chaos extends PCLOrb implements OnEndOfTurnSubscriber, OnAfterCardP
     {
         super.updateAnimation();
 
-        this.angle += GR.UI.Delta(60f);
+        final float delta = GR.UI.Delta();
+        this.angle += delta * 60;
+        for (Projectile texture : projectiles)
+        {
+
+            texture.SetPosition(cX, cY)
+                    .SetTargetRotation(angle, null)
+                    .SetSpeed(texture.target_offset.x * MathUtils.sinDeg(angle * 2) / 2, texture.target_offset.y * MathUtils.cosDeg(angle * 2) / 2, null, null)
+                    .Update(delta);
+        }
+
     }
 
     @Override
@@ -109,9 +140,24 @@ public class Chaos extends PCLOrb implements OnEndOfTurnSubscriber, OnAfterCardP
         sb.setColor(this.c);
 
         float by = bobEffect.y;
-        sb.draw(img1.Texture(), this.cX - 48f, this.cY - 48f, 48f, 48f, 96f, 96f, scale, scale, -2 * angle, 0, 0, 96, 96, hFlip1, false);
-        sb.draw(img2.Texture(), this.cX - 48f, this.cY - 48f, 48f, 48f, 96f, 96f, scale + (by * 0.03f), scale + (by * 0.03f), -angle, 0, 0, 96, 96, hFlip1, false);
-        sb.draw(img3.Texture(), this.cX - 48f, this.cY - 48f, 48f, 48f, 96f, 96f, scale + (by * 0.01f), scale + (by * 0.01f), 0.6f * angle, 0, 0, 96, 96, hFlip1, false);
+
+        sb.setBlendFunction(770, 1);
+        this.shineColor.a = Interpolation.sine.apply(0.4f,0.7f, angle / 95);
+        sb.setColor(this.shineColor);
+        float scale1 = Interpolation.sine.apply(0.8f,1f, angle / 105);
+        sb.draw(img.Texture(), this.cX - 48f, this.cY - 48f, 48f, 48f, 96f, 96f, scale1, scale1, angle, 0, 0, 96, 96, hFlip1, false);
+        this.shineColor.a = Interpolation.sine.apply(0.4f,0.7f, -angle / 65);
+        sb.setColor(this.shineColor);
+        float scale2 = Interpolation.sine.apply(0.8f,1f, -angle / 125);
+        sb.draw(img.Texture(), this.cX - 48f, this.cY - 48f, 48f, 48f, 96f, 96f, scale2, scale2, -angle, 0, 0, 96, 96, !hFlip1, false);
+        sb.setColor(this.c);
+
+        for (Projectile projectile : projectiles)
+        {
+            projectile.Render(sb, Colors.Copy(projectile.color, c.a));
+        }
+
+        sb.setBlendFunction(770, 771);
 
         //this.renderText(sb);
         this.hb.render(sb);

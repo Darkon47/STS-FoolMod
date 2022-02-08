@@ -7,13 +7,14 @@ import eatyourbeets.interfaces.delegates.FuncT2;
 import eatyourbeets.interfaces.delegates.FuncT3;
 import pinacolada.cards.base.PCLCardTooltip;
 import pinacolada.effects.AttackEffects;
+import pinacolada.interfaces.markers.TooltipObject;
 import pinacolada.powers.common.EnergizedPower;
 import pinacolada.powers.common.*;
+import pinacolada.powers.pcl.BurningWeaponPower;
+import pinacolada.powers.pcl.SelfImmolationPower;
+import pinacolada.powers.pcl.StonedPower;
+import pinacolada.powers.pcl.SwirledPower;
 import pinacolada.powers.replacement.*;
-import pinacolada.powers.special.BurningWeaponPower;
-import pinacolada.powers.special.SelfImmolationPower;
-import pinacolada.powers.special.StonedPower;
-import pinacolada.powers.special.SwirledPower;
 import pinacolada.powers.temporary.*;
 import pinacolada.resources.GR;
 import pinacolada.utilities.PCLGameUtilities;
@@ -22,8 +23,9 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-public class PCLPowerHelper extends eatyourbeets.powers.PowerHelper
+public class PCLPowerHelper extends eatyourbeets.powers.PowerHelper implements TooltipObject
 {
+
     public enum Behavior {
         Permanent,
         SingleTurn,
@@ -144,5 +146,10 @@ public class PCLPowerHelper extends eatyourbeets.powers.PowerHelper
         {
             throw new RuntimeException("Do not create a PowerHelper with a null constructor.");
         }
+    }
+
+    @Override
+    public PCLCardTooltip GetTooltip() {
+        return Tooltip;
     }
 }

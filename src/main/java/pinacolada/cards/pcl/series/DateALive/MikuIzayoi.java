@@ -4,12 +4,10 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import pinacolada.cards.base.CardUseInfo;
-import pinacolada.cards.base.PCLCard;
-import pinacolada.cards.base.PCLCardData;
-import pinacolada.cards.base.PCLCardTarget;
+import pinacolada.cards.base.*;
 import pinacolada.cards.base.attributes.AbstractAttribute;
 import pinacolada.cards.base.attributes.TempHPAttribute;
+import pinacolada.powers.PCLCombatStats;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
@@ -24,7 +22,7 @@ public class MikuIzayoi extends PCLCard
     {
         super(DATA);
 
-        Initialize(0, 0, 2, 4);
+        Initialize(0, 0, 3, 2);
         SetAffinity_Light(1, 0, 1);
         SetEthereal(true);
     }
@@ -40,11 +38,11 @@ public class MikuIzayoi extends PCLCard
         if (timesUpgraded > 0) {
             if (form == 1) {
                 SetEthereal(true);
-                Initialize(0, 0, 5, 4);
+                Initialize(0, 0, 6, 2);
             }
             else {
                 SetEthereal(false);
-                Initialize(0, 0, 2, 4);
+                Initialize(0, 0, 3, 2);
             }
         }
         return super.SetForm(form, timesUpgraded);
@@ -59,13 +57,16 @@ public class MikuIzayoi extends PCLCard
             PCLActions.Bottom.GainInspiration(1);
         }
 
-        if (PCLGameUtilities.GetCurrentMatchCombo() >= secondaryValue && PCLGameUtilities.IsSameSeries(this,info.PreviousCard) && info.TryActivateSemiLimited()) {
-            PCLActions.Bottom.Motivate(1);
+        if (info.IsSynergizing && info.TryActivateSemiLimited()) {
+            PCLCombatStats.MatchingSystem.AffinityMeter.IncreaseMatchCombo(secondaryValue);
         }
     }
 
     @Override
     public boolean CheckSpecialCondition(boolean tryUse){
+        if (PCLGameUtilities.IsPCLAffinityPowerActive(PCLAffinity.Blue)) {
+            return true;
+        }
         for (AbstractCard card : AbstractDungeon.actionManager.cardsPlayedThisTurn)
         {
             if (card.type == CardType.POWER)

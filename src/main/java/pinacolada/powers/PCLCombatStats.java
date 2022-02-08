@@ -74,6 +74,7 @@ public class PCLCombatStats extends EYBPower implements InvisiblePower
     public static final GameEvent<OnGainTempHPSubscriber> onGainTempHP = RegisterEvent(new GameEvent<>());
     public static final GameEvent<OnGainPowerBonusSubscriber> onGainTriggerablePowerBonus = RegisterEvent(new GameEvent<>());
     public static final GameEvent<OnMatchBonusSubscriber> onMatchBonus = RegisterEvent(new GameEvent<>());
+    public static final GameEvent<OnMonsterMoveSubscriber> onMonsterMove = RegisterEvent(new GameEvent<>());
     public static final GameEvent<OnOrbApplyFocusSubscriber> onOrbApplyFocus = RegisterEvent(new GameEvent<>());
     public static final GameEvent<OnOrbApplyLockOnSubscriber> onOrbApplyLockOn = RegisterEvent(new GameEvent<>());
     public static final GameEvent<OnPCLClickablePowerUsed> onPCLClickablePowerUsed = RegisterEvent(new GameEvent<>());
@@ -100,16 +101,18 @@ public class PCLCombatStats extends EYBPower implements InvisiblePower
     public static final GameEvent<OnCardResetSubscriber> onCardReset = CombatStats.onCardReset;
     public static final GameEvent<OnChannelOrbSubscriber> onChannelOrb = CombatStats.onChannelOrb;
     public static final GameEvent<OnClickablePowerUsedSubscriber> onClickablePowerUsed = CombatStats.onClickablePowerUsed;
-    public static final GameEvent<OnEndOfTurnSubscriber> onEndOfTurn = CombatStats.onEndOfTurn;
+    public static final GameEvent<OnEndOfTurnFirstSubscriber> onEndOfTurn = CombatStats.onEndOfTurnFirst;
+    public static final GameEvent<OnEndOfTurnLastSubscriber> onEndOfTurnLast = CombatStats.onEndOfTurnLast;
     public static final GameEvent<OnEnemyDyingSubscriber> onEnemyDying = CombatStats.onEnemyDying;
     public static final GameEvent<OnEvokeOrbSubscriber> onEvokeOrb = CombatStats.onEvokeOrb;
     public static final GameEvent<OnHealthBarUpdatedSubscriber> onHealthBarUpdated = CombatStats.onHealthBarUpdated;
     public static final GameEvent<OnLoseHPSubscriber> onLoseHP = CombatStats.onLoseHP;
     public static final GameEvent<OnLosingHPSubscriber> onLosingHP = CombatStats.onLosingHP;
+    public static final GameEvent<OnModifyDamageFirstSubscriber> onModifyDamageFirst = CombatStats.onModifyDamageFirst;
+    public static final GameEvent<OnModifyDamageLastSubscriber> onModifyDamageLast = CombatStats.onModifyDamageLast;
     public static final GameEvent<OnModifyDebuffSubscriber> onModifyDebuff = CombatStats.onModifyDebuff;
     public static final GameEvent<OnOrbPassiveEffectSubscriber> onOrbPassiveEffect = CombatStats.onOrbPassiveEffect;
     public static final GameEvent<OnPhaseChangedSubscriber> onPhaseChanged = CombatStats.onPhaseChanged;
-    public static final GameEvent<OnRawDamageReceivedSubscriber> onRawDamageReceived = CombatStats.onRawDamageReceived;
     public static final GameEvent<OnShuffleSubscriber> onShuffle = CombatStats.onShuffle;
     public static final GameEvent<OnStanceChangedSubscriber> onStanceChanged = CombatStats.onStanceChanged;
     public static final GameEvent<OnStartOfTurnPostDrawSubscriber> onStartOfTurnPostDraw = CombatStats.onStartOfTurnPostDraw;
@@ -219,6 +222,16 @@ public class PCLCombatStats extends EYBPower implements InvisiblePower
         {
             s.OnDamageAction(action, target, info, effect);
         }
+    }
+
+    public static boolean OnMonsterMove(AbstractMonster target)
+    {
+        boolean canMove = true;
+        for (OnMonsterMoveSubscriber s : onMonsterMove.GetSubscribers())
+        {
+            canMove = canMove & s.OnMonsterMove(target);
+        }
+        return canMove;
     }
 
     public static void OnCardMoved(AbstractCard card, CardGroup source, CardGroup destination)

@@ -22,7 +22,7 @@ import pinacolada.cards.pcl.special.ThrowingKnife;
 import pinacolada.cards.pcl.status.Status_Slimed;
 import pinacolada.effects.AttackEffects;
 import pinacolada.effects.SFX;
-import pinacolada.powers.special.HigakiRinnePower;
+import pinacolada.powers.pcl.HigakiRinnePower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLJUtils;
 

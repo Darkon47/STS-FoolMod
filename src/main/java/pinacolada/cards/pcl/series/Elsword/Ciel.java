@@ -23,6 +23,7 @@ public class Ciel extends PCLCard
 
         Initialize(0, 5, 6, 3);
         SetUpgrade(0, 2, 1, 0);
+        SetHitCount(2);
 
         SetAffinity_Orange(1, 0, 0);
         SetAffinity_Blue(1, 0, 1);
@@ -34,14 +35,16 @@ public class Ciel extends PCLCard
     @Override
     public AbstractAttribute GetBlockInfo()
     {
-        return super.GetBlockInfo().AddMultiplier(secondaryValue);
+        return super.GetBlockInfo().AddMultiplier(hitCount);
     }
 
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
-        PCLActions.Bottom.GainBlock(block);
+        for (int i = 0; i < hitCount; i++) {
+            PCLActions.Bottom.GainBlock(block);
+        }
+
         PCLActions.Bottom.ApplyLockOn(p,m,secondaryValue);
 
         PCLActions.Bottom.ModifyAllCopies(Lu.DATA.ID)

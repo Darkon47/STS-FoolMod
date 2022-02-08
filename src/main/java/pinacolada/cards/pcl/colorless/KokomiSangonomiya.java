@@ -8,7 +8,7 @@ import pinacolada.cards.base.*;
 import pinacolada.cards.pcl.special.OrbCore_Water;
 import pinacolada.effects.SFX;
 import pinacolada.effects.VFX;
-import pinacolada.powers.special.KuragesOathPower;
+import pinacolada.powers.pcl.KuragesOathPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 

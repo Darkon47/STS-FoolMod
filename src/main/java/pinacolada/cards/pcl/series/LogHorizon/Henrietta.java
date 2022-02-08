@@ -40,6 +40,9 @@ public class Henrietta extends PCLCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
+        if (upgraded) {
+            PCLActions.Bottom.GainArtifact(1);
+        }
         PCLActions.Bottom.StackPower(new HenriettaPower(p, magicNumber));
     }
 

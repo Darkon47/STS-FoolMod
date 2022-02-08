@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.vfx.BorderFlashEffect;
 import eatyourbeets.actions.EYBAction;
 import pinacolada.effects.SFX;
 import pinacolada.effects.vfx.ShootingStarsEffect;
-import pinacolada.powers.special.ElementalExposurePower;
+import pinacolada.powers.pcl.ElementalExposurePower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameEffects;
 import pinacolada.utilities.PCLGameUtilities;

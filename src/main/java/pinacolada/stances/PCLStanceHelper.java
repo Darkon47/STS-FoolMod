@@ -3,6 +3,7 @@ package pinacolada.stances;
 import eatyourbeets.interfaces.delegates.FuncT0;
 import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCardTooltip;
+import pinacolada.interfaces.markers.TooltipObject;
 import pinacolada.resources.GR;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class PCLStanceHelper
+public class PCLStanceHelper implements TooltipObject
 {
     public static final Map<String, PCLStanceHelper> ALL = new HashMap<>();
 
@@ -63,5 +64,10 @@ public class PCLStanceHelper
         {
             throw new RuntimeException("Do not create a PCLStanceHelper with a null constructor.");
         }
+    }
+
+    @Override
+    public PCLCardTooltip GetTooltip() {
+        return Tooltip;
     }
 }

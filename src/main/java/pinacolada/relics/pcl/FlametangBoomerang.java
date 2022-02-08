@@ -1,6 +1,6 @@
 package pinacolada.relics.pcl;
 
-import pinacolada.powers.special.BurningWeaponPower;
+import pinacolada.powers.pcl.BurningWeaponPower;
 import pinacolada.relics.PCLRelic;
 import pinacolada.utilities.PCLActions;
 

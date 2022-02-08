@@ -15,6 +15,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.localization.RunModStrings;
+import com.megacrit.cardcrawl.potions.AbstractPotion;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rewards.RewardItem;
@@ -36,6 +37,7 @@ public class GR extends eatyourbeets.resources.GR
 {
     public static final String BASE_PREFIX = "pcl";
     public static final String PREFIX_CARDS = "pinacolada.cards.";
+    public static final String PREFIX_POTIONS = "pinacolada.potions.";
     public static final String PREFIX_POWERS = "pinacolada.powers.";
     public static final String PREFIX_RELIC = "pinacolada.relics.";
     public static final String SHADER_GRAYSCALE_FRAGMENT = "shaders/grayscaleFragment.glsl";
@@ -44,6 +46,7 @@ public class GR extends eatyourbeets.resources.GR
 
     protected static final Logger logger = PCLJUtils.GetLogger(GR.class);
     protected static final ArrayList<String> cardClassNames = PCLJUtils.GetClassNamesFromJarFile(PREFIX_CARDS);
+    protected static final ArrayList<String> potionClassNames = PCLJUtils.GetClassNamesFromJarFile(PREFIX_POTIONS);
     protected static final ArrayList<String> powerClassNames = PCLJUtils.GetClassNamesFromJarFile(PREFIX_POWERS);
     protected static final ArrayList<String> relicClassNames = PCLJUtils.GetClassNamesFromJarFile(PREFIX_RELIC);
 
@@ -105,6 +108,49 @@ public class GR extends eatyourbeets.resources.GR
     {
         //This should be set only for beta branches.  Do not merge this into master.
         return false;//language == Settings.GameLanguage.RUS; // language == Settings.GameLanguage.ZHS || language == Settings.GameLanguage.ZHT;
+    }
+
+    protected void LoadCustomPotions(String character)
+    {
+        final String prefix = PREFIX_POTIONS + character;
+
+        for (String s : potionClassNames)
+        {
+            if (s.startsWith(prefix))
+            {
+                try
+                {
+                    logger.info("Adding: " + s);
+
+                    LoadCustomPotion(Class.forName(s));
+                }
+                catch (ClassNotFoundException e)
+                {
+                    logger.warn("Class not found : " + s);
+                }
+            }
+        }
+    }
+
+    protected void LoadCustomPotion(Class<?> type)
+    {
+        if (!CanInstantiate(type))
+        {
+            return;
+        }
+
+        AbstractPotion potion;
+        try
+        {
+            potion = (AbstractPotion)type.getConstructor().newInstance();
+        }
+        catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e)
+        {
+            e.printStackTrace();
+            return;
+        }
+
+        BaseMod.addPotion(potion.getClass(), potion.liquidColor, potion.hybridColor, potion.spotsColor, potion.ID, Enums.Characters.THE_FOOL);
     }
 
     protected void LoadCustomRelics(String character)
@@ -262,7 +308,8 @@ public class GR extends eatyourbeets.resources.GR
 
     public static class PackageNames {
         public static final String OG = "com.megacrit.cardcrawl";
-        public static final String EYB = "eatyourbeets";
+        public static final String EYB_ANIMATOR = "eatyourbeets.cards.animator";
+        public static final String EYB_UNNAMED = "eatyourbeets.cards.unnamed";
         public static final String PCL = "pinacolada";
         public static final String MARISA = "ThMod.cards.Marisa";
         public static final String GENSOKYO_ITEM = "Gensokyo.cards.Item";
@@ -275,16 +322,19 @@ public class GR extends eatyourbeets.resources.GR
         public static class Characters extends eatyourbeets.resources.GR.Enums.Characters
         {
             @SpireEnum public static AbstractPlayer.PlayerClass THE_FOOL;
+            @SpireEnum public static AbstractPlayer.PlayerClass THE_SHOGUN;
         }
 
         public static class Cards extends eatyourbeets.resources.GR.Enums.Cards
         {
             @SpireEnum public static AbstractCard.CardColor THE_FOOL;
+            @SpireEnum public static AbstractCard.CardColor THE_SHOGUN;
         }
 
         public static class Library extends eatyourbeets.resources.GR.Enums.Library
         {
             @SpireEnum public static CardLibrary.LibraryType THE_FOOL;
+            @SpireEnum public static CardLibrary.LibraryType THE_SHOGUN;
         }
 
         public static class Rewards extends eatyourbeets.resources.GR.Enums.Rewards

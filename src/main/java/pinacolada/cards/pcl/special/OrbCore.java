@@ -43,7 +43,7 @@ public abstract class OrbCore extends PCLCard
         final CardStrings strings = GR.GetCardStrings(ID);
 
         final String orbEffect = PCLJUtils.Format(data.Strings.DESCRIPTION, orbHelper.Affinity.GetPowerTooltip().id);
-        data.Strings.DESCRIPTION = PCLJUtils.Format(strings.DESCRIPTION, orbHelper.Tooltip.id, orbEffect, orbHelper.Affinity.GetTooltip().id);
+        data.Strings.DESCRIPTION = PCLJUtils.Format(strings.DESCRIPTION, orbHelper.Tooltip.id, orbEffect, (orbHelper.Affinity != PCLAffinity.Star ? orbHelper.Affinity : PCLAffinity.General).GetTooltip().id);
         data.Strings.EXTENDED_DESCRIPTION = ArrayUtils.addAll(strings.EXTENDED_DESCRIPTION,data.Strings.EXTENDED_DESCRIPTION);
         data.SetSharedData(orbHelper);
         return data;

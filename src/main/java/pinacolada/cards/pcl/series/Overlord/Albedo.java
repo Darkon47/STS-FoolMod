@@ -31,7 +31,7 @@ public class Albedo extends PCLCard
         super(DATA);
 
         Initialize(0, 0, 2, 5);
-        SetUpgrade(0, 0, 0);
+        SetUpgrade(0, 0, 0, 1);
 
         SetAffinity_Red(1, 0, 0);
         SetAffinity_Blue(1, 0, 0);
@@ -48,9 +48,7 @@ public class Albedo extends PCLCard
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
         PCLActions.Bottom.StackPower(new PlatedArmorPower(p, secondaryValue));
-        if (upgraded) {
-            PCLActions.Bottom.GainArtifact(1);
-        }
+        PCLActions.Bottom.ChannelOrb(new Dark());
         PCLActions.Bottom.StackPower(new AlbedoPower(p, magicNumber));
     }
 

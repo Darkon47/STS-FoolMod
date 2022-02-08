@@ -1,5 +1,6 @@
 package pinacolada.cards.base;
 
+import basemod.patches.whatmod.WhatMod;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
@@ -11,6 +12,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.InvisiblePower;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
@@ -28,6 +30,7 @@ import eatyourbeets.utilities.EYBFontHelper;
 import eatyourbeets.utilities.FieldInfo;
 import org.apache.commons.lang3.StringUtils;
 import pinacolada.blights.PCLBlight;
+import pinacolada.potions.PCLPotion;
 import pinacolada.powers.PCLClickablePower;
 import pinacolada.powers.PCLPower;
 import pinacolada.relics.PCLRelic;
@@ -67,6 +70,7 @@ public class PCLCardTooltip extends EYBCardTooltip
     private static PCLCardTooltip translationTooltip;
     private static boolean inHand;
     private static PCLCard card;
+    private static PCLPotion potion;
     private static PCLRelic relic;
     private static PCLBlight blight;
     private static AbstractCreature creature;
@@ -88,6 +92,20 @@ public class PCLCardTooltip extends EYBCardTooltip
         super(title, description);
         this.title = title;
         this.description = description;
+    }
+
+    public PCLCardTooltip(String title, String description, AbstractPlayer.PlayerClass playerClass)
+    {
+        super(title, description);
+        this.title = title;
+        this.description = description;
+
+        if (WhatMod.enabled && playerClass != null) {
+            String modName = WhatMod.findModName(playerClass.getClass());
+            if (modName != null) {
+                description = FontHelper.colorString(modName, "p") + " NL " + description;
+            }
+        }
     }
 
     public PCLCardTooltip(Keyword keyword)
@@ -176,6 +194,15 @@ public class PCLCardTooltip extends EYBCardTooltip
         {
             card = source;
             GR.UI.AddPostRender(PCLCardTooltip::RenderFromCard);
+        }
+    }
+
+    public static void QueueTooltips(PCLPotion source)
+    {
+        if (TryRender())
+        {
+            potion = source;
+            GR.UI.AddPostRender(PCLCardTooltip::RenderFromPotion);
         }
     }
 
@@ -318,6 +345,62 @@ public class PCLCardTooltip extends EYBCardTooltip
             pinacolada.utilities.PCLRenderHelpers.ResetFont(EYBFontHelper.CardTooltipFont);
         }
     }
+
+    public static void RenderFromPotion(SpriteBatch sb)
+    {
+        if (potion == null)
+        {
+            return;
+        }
+
+        float x;
+        float y;
+        if ((float) InputHelper.mX >= 1400.0F * Settings.scale)
+        {
+            x = InputHelper.mX - (350 * Settings.scale);
+            y = InputHelper.mY - (50 * Settings.scale);
+        }
+        else if (CardCrawlGame.mainMenuScreen.screen == MainMenuScreen.CurScreen.POTION_VIEW)
+        {
+            x = 150 * Settings.scale;
+            y = 800.0F * Settings.scale;
+        }
+        else if (AbstractDungeon.screen == AbstractDungeon.CurrentScreen.SHOP && potion.tips.size() > 2 && !AbstractDungeon.player.hasPotion(potion.ID))
+        {
+            x = InputHelper.mX + (60 * Settings.scale);
+            y = InputHelper.mY + (180 * Settings.scale);
+        }
+        else if (AbstractDungeon.player != null && AbstractDungeon.player.hasPotion(potion.ID))
+        {
+            x = InputHelper.mX + (60 * Settings.scale);
+            y = InputHelper.mY - (30 * Settings.scale);
+        }
+        else if (AbstractDungeon.screen == AbstractDungeon.CurrentScreen.COMBAT_REWARD)
+        {
+            x = 360 * Settings.scale;
+            y = InputHelper.mY + (50 * Settings.scale);
+        }
+        else
+        {
+            x = InputHelper.mX + (50 * Settings.scale);
+            y = InputHelper.mY + (50 * Settings.scale);
+        }
+
+        for (int i = 0; i < potion.pclTips.size(); i++)
+        {
+            PCLCardTooltip tip = potion.pclTips.get(i);
+            if (tip.hideDescription == null)
+            {
+                tip.hideDescription = !StringUtils.isEmpty(tip.id) && GR.PCL.Config.HideTipDescription(tip.id);
+            }
+
+            if (!tip.hideDescription)
+            {
+                y -= tip.Render(sb, x, y, i) + BOX_EDGE_H * 3.15f;
+            }
+        }
+    }
+
 
     public static void RenderFromRelic(SpriteBatch sb)
     {

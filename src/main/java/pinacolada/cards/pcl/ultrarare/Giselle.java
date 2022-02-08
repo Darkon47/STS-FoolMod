@@ -35,7 +35,7 @@ public class Giselle extends PCLCard_UltraRare
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.VFX(new FlameBarrierEffect(m.hb.cX, m.hb.cY), 0.5f);
+        PCLActions.Bottom.VFX(new FlameBarrierEffect(p.hb.cX, p.hb.cY), 0.5f);
         PCLActions.Bottom.TryChooseSpendAffinity(name, PCLCombatStats.MatchingSystem.GetAffinityLevel(PCLAffinity.General, true)).SetOptions(true, false).AddConditionalCallback(
                 cards -> {
                     if (cards.size() > 0) {

@@ -38,7 +38,8 @@ public class PCLBlurPower extends BlurPower implements CloneablePowerInterface
     {
         super.atStartOfTurn();
 
-        PCLActions.Bottom.RemovePower(owner, this);
+
+        PCLActions.Bottom.ReducePower(this, 1);
     }
 
     @Override

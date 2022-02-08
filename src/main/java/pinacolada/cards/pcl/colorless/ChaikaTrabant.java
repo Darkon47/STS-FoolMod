@@ -9,7 +9,7 @@ import pinacolada.cards.base.*;
 import pinacolada.cards.pcl.special.ChaikaBohdan;
 import pinacolada.cards.pcl.special.Layla;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.powers.special.PoisonAffinityPower;
+import pinacolada.powers.pcl.PoisonAffinityPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameEffects;
 import pinacolada.utilities.PCLGameUtilities;

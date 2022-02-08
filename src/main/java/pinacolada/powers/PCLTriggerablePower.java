@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import eatyourbeets.utilities.ColoredString;
 import pinacolada.actions.damage.LoseHP;
-import pinacolada.powers.special.ElementalExposurePower;
+import pinacolada.powers.pcl.ElementalExposurePower;
 import pinacolada.ui.combat.CombatHelper;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
