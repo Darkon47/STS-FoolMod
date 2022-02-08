@@ -8,7 +8,7 @@ import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCardAffinities;
 import pinacolada.cards.base.PCLCardAffinity;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
@@ -17,11 +17,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.player;
-import static pinacolada.resources.GR.Enums.CardTags.AFTERLIFE;
+import static pinacolada.resources.PGR.Enums.CardTags.AFTERLIFE;
 
 public class AfterLifeMod extends AbstractCardModifier
 {
-    public static final String ID = GR.PCL.CreateID("Afterlife");
+    public static final String ID = PGR.PCL.CreateID("Afterlife");
     protected static AbstractCard currentCard;
 
     public static void Add(AbstractCard card)
@@ -116,7 +116,7 @@ public class AfterLifeMod extends AbstractCardModifier
     protected static String GetDynamicLabel(ArrayList<AbstractCard> cards) {
         final boolean[] required = GetRequiredAffinities(currentCard, cards);
 
-        return BooleanArrayMet(required) ? GR.PCL.Strings.CardMods.AfterlifeMet : PCLJUtils.Format(GR.PCL.Strings.CardMods.AfterlifeRequirement,
+        return BooleanArrayMet(required) ? PGR.PCL.Strings.CardMods.AfterlifeMet : PCLJUtils.Format(PGR.PCL.Strings.CardMods.AfterlifeRequirement,
                 PCLJUtils.JoinStrings(", ",
                 PCLJUtils.Map(
                         PCLJUtils.Filter(PCLAffinity.Extended(), af -> required[af.ID])

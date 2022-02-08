@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import pinacolada.cards.base.PCLCard;
 import pinacolada.effects.AttackEffects;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
@@ -27,7 +27,7 @@ public class CounterIntentEffect_Defend_Buff extends CounterIntentEffect
     @Override
     public String GetDescription(PCLCard nanami)
     {
-        return ACTIONS.GainAmount(GetForce(nanami), GR.Tooltips.Might, true);
+        return ACTIONS.GainAmount(GetForce(nanami), PGR.Tooltips.Might, true);
     }
 
     @Override

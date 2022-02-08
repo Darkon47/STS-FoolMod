@@ -20,7 +20,7 @@ import javassist.expr.MethodCall;
 import pinacolada.cards.pcl.curse.Curse_AscendersBane;
 import pinacolada.dailymods.SeriesDeck;
 import pinacolada.events.base.PCLEvent;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLGameUtilities;
 
 import java.util.ArrayList;
@@ -34,7 +34,7 @@ public class AbstractDungeonPatches
         @SpirePrefixPatch
         public static SpireReturn<AbstractEvent> Prefix(Random rng)
         {
-            AbstractEvent event = PCLEvent.GenerateSpecialEvent(CardCrawlGame.dungeon, rng, PCLGameUtilities.IsPlayerClass(GR.PCL.PlayerClass) || GR.PCL.Config.EnableEventsForOtherCharacters.Get());
+            AbstractEvent event = PCLEvent.GenerateSpecialEvent(CardCrawlGame.dungeon, rng, PCLGameUtilities.IsPCLPlayerClass() || PGR.PCL.Config.EnableEventsForOtherCharacters.Get());
             if (event != null)
             {
                 return SpireReturn.Return(event);
@@ -94,7 +94,7 @@ public class AbstractDungeonPatches
                 }
             }
 
-            if (PCLGameUtilities.IsPlayerClass(GR.PCL.PlayerClass))
+            if (PCLGameUtilities.IsPCLPlayerClass())
             {
                 for (EYBMonsterInfo e : EYBMonster.Encounters)
                 {
@@ -123,7 +123,7 @@ public class AbstractDungeonPatches
         @SpirePostfixPatch
         public static void Postfix()
         {
-            if (!PCLGameUtilities.IsPlayerClass(GR.PCL.PlayerClass))
+            if (!PCLGameUtilities.IsPCLPlayerClass())
             {
                 return;
             }
@@ -146,9 +146,9 @@ public class AbstractDungeonPatches
         @SpirePrefixPatch
         public static void Prefix()
         {
-            if (AbstractDungeon.screen == GR.Enums.Screens.EYB_SCREEN)
+            if (AbstractDungeon.screen == PGR.Enums.Screens.EYB_SCREEN)
             {
-                GR.UI.Dispose();
+                PGR.UI.Dispose();
             }
         }
     }

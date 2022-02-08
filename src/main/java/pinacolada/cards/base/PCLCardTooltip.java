@@ -34,7 +34,7 @@ import pinacolada.potions.PCLPotion;
 import pinacolada.powers.PCLClickablePower;
 import pinacolada.powers.PCLPower;
 import pinacolada.relics.PCLRelic;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
 
@@ -164,7 +164,7 @@ public class PCLCardTooltip extends EYBCardTooltip
             tooltips.add(tooltip);
             genericTipPos.x = x;
             genericTipPos.y = y;
-            GR.UI.AddPostRender(PCLCardTooltip::RenderGeneric);
+            PGR.UI.AddPostRender(PCLCardTooltip::RenderGeneric);
         }
     }
 
@@ -175,7 +175,7 @@ public class PCLCardTooltip extends EYBCardTooltip
             tooltips.addAll(tips);
             genericTipPos.x = x;
             genericTipPos.y = y;
-            GR.UI.AddPostRender(PCLCardTooltip::RenderGeneric);
+            PGR.UI.AddPostRender(PCLCardTooltip::RenderGeneric);
         }
     }
 
@@ -184,7 +184,7 @@ public class PCLCardTooltip extends EYBCardTooltip
         if (TryRender())
         {
             creature = source;
-            GR.UI.AddPostRender(PCLCardTooltip::RenderFromCreature);
+            PGR.UI.AddPostRender(PCLCardTooltip::RenderFromCreature);
         }
     }
 
@@ -193,7 +193,7 @@ public class PCLCardTooltip extends EYBCardTooltip
         if (TryRender())
         {
             card = source;
-            GR.UI.AddPostRender(PCLCardTooltip::RenderFromCard);
+            PGR.UI.AddPostRender(PCLCardTooltip::RenderFromCard);
         }
     }
 
@@ -202,7 +202,7 @@ public class PCLCardTooltip extends EYBCardTooltip
         if (TryRender())
         {
             potion = source;
-            GR.UI.AddPostRender(PCLCardTooltip::RenderFromPotion);
+            PGR.UI.AddPostRender(PCLCardTooltip::RenderFromPotion);
         }
     }
 
@@ -211,7 +211,7 @@ public class PCLCardTooltip extends EYBCardTooltip
         if (TryRender())
         {
             relic = source;
-            GR.UI.AddPostRender(PCLCardTooltip::RenderFromRelic);
+            PGR.UI.AddPostRender(PCLCardTooltip::RenderFromRelic);
         }
     }
 
@@ -220,7 +220,7 @@ public class PCLCardTooltip extends EYBCardTooltip
         if (TryRender())
         {
             blight = source;
-            GR.UI.AddPostRender(PCLCardTooltip::RenderFromBlight);
+            PGR.UI.AddPostRender(PCLCardTooltip::RenderFromBlight);
         }
     }
 
@@ -252,12 +252,12 @@ public class PCLCardTooltip extends EYBCardTooltip
             {
                 if (tip.hideDescription == null)
                 {
-                    tip.hideDescription = GR.PCL.Config.HideTipDescription(tip.id);
+                    tip.hideDescription = PGR.PCL.Config.HideTipDescription(tip.id);
                 }
 
                 if (!inHand && alt && Gdx.input.isKeyJustPressed(Input.Keys.NUM_1 + i))
                 {
-                    GR.PCL.Config.HideTipDescription(tip.id, (tip.hideDescription ^= true), true);
+                    PGR.PCL.Config.HideTipDescription(tip.id, (tip.hideDescription ^= true), true);
                 }
             }
 
@@ -333,11 +333,11 @@ public class PCLCardTooltip extends EYBCardTooltip
             preview.Render(sb, card, card.upgraded || PCLGameUtilities.CanShowUpgrades(false));
         }
 
-        if (GR.IsTranslationSupported(Settings.language) && card.isPopup)
+        if (PGR.IsTranslationSupported(Settings.language) && card.isPopup)
         {
             if (translationTooltip == null)
             {
-                translationTooltip = new PCLCardTooltip(GR.PCL.Strings.Misc.LocalizationHelpHeader, GR.PCL.Strings.Misc.LocalizationHelp);
+                translationTooltip = new PCLCardTooltip(PGR.PCL.Strings.Misc.LocalizationHelpHeader, PGR.PCL.Strings.Misc.LocalizationHelp);
             }
 
             EYBFontHelper.CardTooltipFont.getData().setScale(0.9f);
@@ -391,7 +391,7 @@ public class PCLCardTooltip extends EYBCardTooltip
             PCLCardTooltip tip = potion.pclTips.get(i);
             if (tip.hideDescription == null)
             {
-                tip.hideDescription = !StringUtils.isEmpty(tip.id) && GR.PCL.Config.HideTipDescription(tip.id);
+                tip.hideDescription = !StringUtils.isEmpty(tip.id) && PGR.PCL.Config.HideTipDescription(tip.id);
             }
 
             if (!tip.hideDescription)
@@ -447,7 +447,7 @@ public class PCLCardTooltip extends EYBCardTooltip
             PCLCardTooltip tip = relic.tips.get(i);
             if (tip.hideDescription == null)
             {
-                tip.hideDescription = !StringUtils.isEmpty(tip.id) && GR.PCL.Config.HideTipDescription(tip.id);
+                tip.hideDescription = !StringUtils.isEmpty(tip.id) && PGR.PCL.Config.HideTipDescription(tip.id);
             }
 
             if (!tip.hideDescription)
@@ -502,7 +502,7 @@ public class PCLCardTooltip extends EYBCardTooltip
             PCLCardTooltip tip = blight.tips.get(i);
             if (tip.hideDescription == null)
             {
-                tip.hideDescription = !StringUtils.isEmpty(tip.id) && GR.PCL.Config.HideTipDescription(tip.id);
+                tip.hideDescription = !StringUtils.isEmpty(tip.id) && PGR.PCL.Config.HideTipDescription(tip.id);
             }
 
             if (!tip.hideDescription)
@@ -578,7 +578,7 @@ public class PCLCardTooltip extends EYBCardTooltip
 
             if (tip.hideDescription == null)
             {
-                tip.hideDescription = !StringUtils.isEmpty(tip.id) && GR.PCL.Config.HideTipDescription(tip.id);
+                tip.hideDescription = !StringUtils.isEmpty(tip.id) && PGR.PCL.Config.HideTipDescription(tip.id);
             }
 
             y -= tip.Render(sb, x, y, i) + BOX_EDGE_H * 3.15f;
@@ -595,7 +595,7 @@ public class PCLCardTooltip extends EYBCardTooltip
             final PCLCardTooltip tip = tooltips.get(i);
             if (tip.hideDescription == null)
             {
-                tip.hideDescription = !StringUtils.isEmpty(tip.id) && GR.PCL.Config.HideTipDescription(tip.id);
+                tip.hideDescription = !StringUtils.isEmpty(tip.id) && PGR.PCL.Config.HideTipDescription(tip.id);
             }
 
             if (!tip.hideDescription)
@@ -615,7 +615,7 @@ public class PCLCardTooltip extends EYBCardTooltip
         if (hideDescription == null)
         {
             PCLJUtils.LogWarning(this, "hideDescription was null, why?");
-            hideDescription = !StringUtils.isEmpty(id) && GR.PCL.Config.HideTipDescription(id);
+            hideDescription = !StringUtils.isEmpty(id) && PGR.PCL.Config.HideTipDescription(id);
         }
 
         BitmapFont descriptionFont = card == null ? FontHelper.tipBodyFont : EYBFontHelper.CardTooltipFont;
@@ -740,7 +740,7 @@ public class PCLCardTooltip extends EYBCardTooltip
     {
         if (backgroundColor != null) {
             sb.setColor(backgroundColor);
-            sb.draw(GR.PCL.Images.Badges.Base_Badge.Texture(), x, y, 0f, 0f,
+            sb.draw(PGR.PCL.Images.Badges.Base_Badge.Texture(), x, y, 0f, 0f,
                     width, height, Settings.scale, Settings.scale, 0f,
                     region.getRegionX(), region.getRegionY(), region.getRegionWidth(),
                     region.getRegionHeight(), false, false);

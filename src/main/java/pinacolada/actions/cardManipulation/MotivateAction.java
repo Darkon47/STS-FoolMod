@@ -10,14 +10,14 @@ import eatyourbeets.interfaces.delegates.FuncT2;
 import eatyourbeets.utilities.GenericCondition;
 import eatyourbeets.utilities.RandomizedList;
 import pinacolada.cards.base.modifiers.CostModifiers;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLGameUtilities;
 
 import java.util.List;
 
 public class MotivateAction extends EYBActionWithCallback<AbstractCard>
 {
-    public static String ID = GR.CreateID(GR.BASE_PREFIX, MotivateAction.class.getName());
+    public static String ID = PGR.CreateID(PGR.BASE_PREFIX, MotivateAction.class.getName());
 
     protected GenericCondition<AbstractCard> filter;
     protected boolean motivateZeroCost = true;

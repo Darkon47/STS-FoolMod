@@ -8,7 +8,7 @@ import eatyourbeets.ui.GUIElement;
 import eatyourbeets.utilities.EYBFontHelper;
 import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCardAffinityStatistics;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.ui.controls.GUI_Button;
 import pinacolada.ui.controls.GUI_Image;
 import pinacolada.ui.controls.GUI_Label;
@@ -35,7 +35,7 @@ public class CardAffinityCounter extends GUIElement
 
         Type = affinity;
 
-        background_button = new GUI_Button(GR.PCL.Images.Panel_Rounded_Half_H.Texture(), new RelativeHitbox(hb, 1, 1, 0.5f, 0))
+        background_button = new GUI_Button(PGR.PCL.Images.Panel_Rounded_Half_H.Texture(), new RelativeHitbox(hb, 1, 1, 0.5f, 0))
         .SetColor(PANEL_COLOR)
         .SetText("");
 

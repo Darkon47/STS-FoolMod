@@ -13,7 +13,7 @@ import pinacolada.effects.stance.StanceAura;
 import pinacolada.effects.stance.StanceParticleVertical;
 import pinacolada.powers.PCLCombatStats;
 import pinacolada.powers.affinity.AbstractPCLAffinityPower;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.ui.combat.PCLAffinityRow;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameEffects;
@@ -30,7 +30,7 @@ public abstract class PCLStance extends AbstractStance
 
     public static String CreateFullID(Class<? extends PCLStance> type)
     {
-        return GR.PCL.CreateID(type.getSimpleName());
+        return PGR.PCL.CreateID(type.getSimpleName());
     }
 
     protected static Color CreateColor(float r1, float r2, float g1, float g2, float b1, float b2)
@@ -45,7 +45,7 @@ public abstract class PCLStance extends AbstractStance
     protected PCLStance(PCLStanceHelper helper)
     {
         this.ID = helper.ID;
-        this.strings = GR.GetStanceString(helper.ID);
+        this.strings = PGR.GetStanceString(helper.ID);
         this.name = strings.NAME;
         this.affinity = helper.Affinity;
 
@@ -63,7 +63,7 @@ public abstract class PCLStance extends AbstractStance
     {
         if (!Settings.DISABLE_EFFECTS)
         {
-            this.particleTimer -= GR.UI.Delta();
+            this.particleTimer -= PGR.UI.Delta();
             if (this.particleTimer < 0f)
             {
                 this.particleTimer = 0.04f;
@@ -71,7 +71,7 @@ public abstract class PCLStance extends AbstractStance
             }
         }
 
-        this.particleTimer2 -= GR.UI.Delta();
+        this.particleTimer2 -= PGR.UI.Delta();
         if (this.particleTimer2 < 0f)
         {
             this.particleTimer2 = MathUtils.random(0.45f, 0.55f);

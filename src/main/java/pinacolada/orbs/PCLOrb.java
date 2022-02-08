@@ -9,14 +9,14 @@ import eatyourbeets.orbs.EYBOrb;
 import eatyourbeets.utilities.ColoredString;
 import pinacolada.cards.base.PCLCardTooltip;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.resources.pcl.PCLImages;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
 
 public abstract class PCLOrb extends EYBOrb implements OnStartOfTurnPostDrawSubscriber
 {
-    public static final PCLImages.Orbs IMAGES = GR.PCL.Images.Orbs;
+    public static final PCLImages.Orbs IMAGES = PGR.PCL.Images.Orbs;
     public static final int IMAGE_SIZE = 96;
     public PCLCardTooltip tooltip;
     public final boolean canOrbApplyFocusToEvoke;
@@ -24,7 +24,7 @@ public abstract class PCLOrb extends EYBOrb implements OnStartOfTurnPostDrawSubs
 
     public static String CreateFullID(Class<? extends PCLOrb> type)
     {
-        return GR.PCL.CreateID(type.getSimpleName());
+        return PGR.PCL.CreateID(type.getSimpleName());
     }
 
     public PCLOrb(String id, Timing passiveEffectTiming) {

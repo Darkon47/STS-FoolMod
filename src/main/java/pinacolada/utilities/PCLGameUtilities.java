@@ -39,7 +39,7 @@ import pinacolada.powers.PCLCombatStats;
 import pinacolada.powers.PCLPowerHelper;
 import pinacolada.powers.affinity.AbstractPCLAffinityPower;
 import pinacolada.resources.CardTooltips;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.resources.pcl.PCLResources;
 import pinacolada.stances.PCLStance;
 import pinacolada.stances.PCLStanceHelper;
@@ -52,7 +52,7 @@ import java.util.Scanner;
 
 import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.actionManager;
 import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.player;
-import static pinacolada.resources.GR.Enums.CardTags.*;
+import static pinacolada.resources.PGR.Enums.CardTags.*;
 
 public class PCLGameUtilities extends GameUtilities
 {
@@ -159,7 +159,7 @@ public class PCLGameUtilities extends GameUtilities
 
     public static boolean CanPlayTwice(AbstractCard card)
     {
-        return !card.isInAutoplay && (!card.purgeOnUse || card.hasTag(GR.Enums.CardTags.PURGE));
+        return !card.isInAutoplay && (!card.purgeOnUse || card.hasTag(PGR.Enums.CardTags.PURGE));
     }
 
     // TODO Add more possible conditions
@@ -212,7 +212,7 @@ public class PCLGameUtilities extends GameUtilities
         return SingleCardViewPopup.isViewingUpgrade && (player == null || isLibrary
                 || AbstractDungeon.screen == AbstractDungeon.CurrentScreen.COMBAT_REWARD
                 || AbstractDungeon.screen == AbstractDungeon.CurrentScreen.CARD_REWARD
-                || AbstractDungeon.screen == GR.Enums.Screens.EYB_SCREEN);
+                || AbstractDungeon.screen == PGR.Enums.Screens.EYB_SCREEN);
     }
 
     public static boolean CanSpendAffinityPower(PCLAffinity affinity)
@@ -355,10 +355,10 @@ public class PCLGameUtilities extends GameUtilities
     {
         // These two Orb tooltips use custom text
         if (Lightning.ORB_ID.equals(orb.ID)) {
-            return GR.Tooltips.Lightning;
+            return PGR.Tooltips.Lightning;
         }
         else if (Dark.ORB_ID.equals(orb.ID)) {
-            return GR.Tooltips.Dark;
+            return PGR.Tooltips.Dark;
         }
         return CardTooltips.FindByID(orb.ID.replace(PCLResources.ID + ":", ""));
     }
@@ -615,8 +615,8 @@ public class PCLGameUtilities extends GameUtilities
         RefreshCardLists();
         // Exclude Animator and PCL cards from the prismatic shard pool when playing as the opposite class
         if (fullCardPool.Size() == 0) {
-            boolean isAnimator = PCLGameUtilities.IsPlayerClass(eatyourbeets.resources.GR.Animator.PlayerClass);
-            boolean isPCL = PCLGameUtilities.IsPlayerClass(GR.PCL.PlayerClass);
+            boolean isAnimator = PCLGameUtilities.IsEYBPlayerClass();
+            boolean isPCL = PCLGameUtilities.IsPCLPlayerClass();
             RandomizedList<AbstractCard> cardPool = new RandomizedList<>();
             for (AbstractCard c : CardLibrary.cards.values()) {
                 if ((Settings.treatEverythingAsUnlocked() || !UnlockTracker.isCardLocked(c.cardID)) &&
@@ -836,7 +836,7 @@ public class PCLGameUtilities extends GameUtilities
 
     public static boolean HasEncounteredEvent(String eventID)
     {
-        return GR.PCL.Dungeon.GetMapData(eventID) != null;
+        return PGR.PCL.Dungeon.GetMapData(eventID) != null;
     }
 
     public static boolean HasUpgradableAffinities(AbstractCard c)
@@ -978,6 +978,10 @@ public class PCLGameUtilities extends GameUtilities
     {
         AbstractPCLAffinityPower po = PCLCombatStats.MatchingSystem.GetPower(affinity);
         return po != null && po.isActive;
+    }
+
+    public static boolean IsPCLPlayerClass() {
+        return AbstractDungeon.player != null && (AbstractDungeon.player.chosenClass == PGR.Fool.PlayerClass);
     }
 
     public static boolean IsSameSeries(AbstractCard card1, AbstractCard card2)

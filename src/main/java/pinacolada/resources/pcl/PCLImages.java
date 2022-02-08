@@ -25,13 +25,6 @@ public class PCLImages
         "images/pcl/ui/topPanel/canvas/layer4d.png", "images/pcl/ui/topPanel/canvas/layer5d.png"
     };
 
-    public final String CHARACTER_PNG = "images/pcl/characters/idle/animator.png";
-    public final String SKELETON_ATLAS = "images/pcl/characters/idle/animator.atlas";
-    public final String SKELETON_JSON = "images/pcl/characters/idle/animator.json";
-    public final String SHOULDER1_PNG = "images/pcl/characters/shoulder.png";
-    public final String SHOULDER2_PNG = "images/pcl/characters/shoulder2.png";
-    public final String CORPSE_PNG = "images/pcl/characters/corpse.png";
-
     public final TextureCache CARD_ENERGY_ORB_ANIMATOR    = new TextureCache(ORB_A_PNG);
     public final TextureCache CARD_ENERGY_ORB_ANIMATOR_L  = new TextureCache(ORB_B_PNG);
     public final TextureCache CARD_BACKGROUND_ATTACK      = new TextureCache("images/pcl/cardui/512/bg_attack_canvas.png");

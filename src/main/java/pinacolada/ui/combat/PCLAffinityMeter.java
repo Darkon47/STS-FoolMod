@@ -21,7 +21,7 @@ import pinacolada.cards.base.PCLCard;
 import pinacolada.cards.base.PCLCardTooltip;
 import pinacolada.effects.affinity.AffinityGlowEffect;
 import pinacolada.powers.special.RerollAffinityPower;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.resources.pcl.PCLHotkeys;
 import pinacolada.ui.common.AffinityKeywordButton;
 import pinacolada.ui.controls.GUI_Image;
@@ -31,7 +31,7 @@ import pinacolada.utilities.PCLGameEffects;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
 
-import static pinacolada.resources.GR.Enums.CardTags.HARMONIC;
+import static pinacolada.resources.PGR.Enums.CardTags.HARMONIC;
 
 public class PCLAffinityMeter extends GUIElement
 {
@@ -64,9 +64,9 @@ public class PCLAffinityMeter extends GUIElement
 
         hb = new DraggableHitbox(ScreenW(0.0366f), ScreenH(0.425f), ICON_SIZE / 2,  ICON_SIZE / 2, true);
         hb.SetBounds(hb.width * 0.6f, Settings.WIDTH - (hb.width * 0.6f), ScreenH(0.35f), ScreenH(0.85f));
-        draggable_panel = new GUI_Image(GR.PCL.Images.Panel_Rounded.Texture(), hb)
+        draggable_panel = new GUI_Image(PGR.PCL.Images.Panel_Rounded.Texture(), hb)
                 .SetColor(0.05f, 0.05f, 0.05f, 0.5f);
-        draggable_icon = new GUI_Image(GR.PCL.Images.Draggable.Texture(), new RelativeHitbox(hb, Scale(40f), Scale(40f), ICON_SIZE / 4, ICON_SIZE / 4, false))
+        draggable_icon = new GUI_Image(PGR.PCL.Images.Draggable.Texture(), new RelativeHitbox(hb, Scale(40f), Scale(40f), ICON_SIZE / 4, ICON_SIZE / 4, false))
                 .SetColor(Colors.White(0.25f));
 
         CurrentAffinity = new AffinityKeywordButton(hb, PCLAffinity.General, ICON_SIZE)
@@ -85,7 +85,7 @@ public class PCLAffinityMeter extends GUIElement
                         Reroll.OnClick();
                     }
                 });
-        glowImg = GR.PCL.Images.Affinities.Border_Silhouette.Texture();
+        glowImg = PGR.PCL.Images.Affinities.Border_Silhouette.Texture();
     }
 
     public void Initialize() {
@@ -102,10 +102,10 @@ public class PCLAffinityMeter extends GUIElement
             final DraggableHitbox hb = (DraggableHitbox) draggable_panel.hb;
             meterSavedPosition.x = hb.target_cX / (float) Settings.WIDTH;
             meterSavedPosition.y = hb.target_cY / (float) Settings.HEIGHT;
-            if (meterSavedPosition.dst2(GR.PCL.Config.AffinityMeterPosition.Get()) > Mathf.Epsilon)
+            if (meterSavedPosition.dst2(PGR.PCL.Config.AffinityMeterPosition.Get()) > Mathf.Epsilon)
             {
                 PCLJUtils.LogInfo(this, "Saved affinity meter position.");
-                GR.PCL.Config.AffinityMeterPosition.Set(meterSavedPosition.cpy(), true);
+                PGR.PCL.Config.AffinityMeterPosition.Set(meterSavedPosition.cpy(), true);
             }
         }
     }
@@ -235,7 +235,7 @@ public class PCLAffinityMeter extends GUIElement
     public void Update() {
         if (meterSavedPosition == null)
         {
-            meterSavedPosition = GR.PCL.Config.AffinityMeterPosition.Get(new Vector2(0.40f, 0.7f)).cpy();
+            meterSavedPosition = PGR.PCL.Config.AffinityMeterPosition.Get(new Vector2(0.40f, 0.7f)).cpy();
             hb.SetPosition(ScreenW(meterSavedPosition.x), ScreenH(meterSavedPosition.y));
         }
         hb.update();
@@ -268,14 +268,14 @@ public class PCLAffinityMeter extends GUIElement
                 Reroll.OnClick();
             }
 
-            isGlowing = GR.PCL.Config.FlashForReroll.Get()
+            isGlowing = PGR.PCL.Config.FlashForReroll.Get()
                             && PCLGameUtilities.InBattle()
                             && PCLGameUtilities.IsPlayerTurn(true)
                             && AbstractDungeon.getCurrMapNode() != null
                             && AbstractDungeon.actionManager.phase == GameActionManager.Phase.WAITING_ON_USER
                             && PCLJUtils.Find(AbstractDungeon.player.hand.group, c -> HasMatch(c, true) && PCLGameUtilities.IsPlayable(c)) == null
                             && Reroll.triggerCondition.uses > 0;
-            if (isGlowing && GR.UI.Elapsed(1.3f)) {
+            if (isGlowing && PGR.UI.Elapsed(1.3f)) {
                 PCLGameEffects.Queue.Add(new AffinityGlowEffect(CurrentAffinity));
             }
         }
@@ -302,11 +302,11 @@ public class PCLAffinityMeter extends GUIElement
             //    PCLRenderHelpers.DrawCentered(sb, AffinityGlowEffect.FALLBACK_COLOR, glowImg, CurrentAffinity.background_button.hb.cX, CurrentAffinity.background_button.hb.cY, CurrentAffinity.background_button.hb.width, CurrentAffinity.background_button.hb.height, 1.2f, 0, false, false);
             //}
 
-            pinacolada.utilities.PCLRenderHelpers.DrawCentered(sb, Colors.Black(0.5f), GR.PCL.Images.Panel_Elliptical_Half_H.Texture(),
+            pinacolada.utilities.PCLRenderHelpers.DrawCentered(sb, Colors.Black(0.5f), PGR.PCL.Images.Panel_Elliptical_Half_H.Texture(),
                     (CurrentAffinity.background_button.hb.cX + NextAffinity.background_button.hb.cX) / 2, CurrentAffinity.background_button.hb.y - LABEL_OFFSET / 3.2f,
                     CurrentAffinity.background_button.hb.width * 1.25f, CurrentAffinity.background_button.hb.height * 0.7f, 1, 0);
             FontHelper.renderFontCentered(sb, rerollFont,
-                    GR.PCL.Strings.Combat.Rerolls + ": " + Reroll.triggerCondition.uses + "/" + Reroll.triggerCondition.baseUses,
+                    PGR.PCL.Strings.Combat.Rerolls + ": " + Reroll.triggerCondition.uses + "/" + Reroll.triggerCondition.baseUses,
                     NextAffinity.background_button.hb.x, CurrentAffinity.background_button.hb.y - LABEL_OFFSET / 3.2f,
                     Reroll.triggerCondition.uses > 0 ? Settings.BLUE_TEXT_COLOR : Settings.RED_TEXT_COLOR);
             pinacolada.utilities.PCLRenderHelpers.ResetFont(rerollFont);
@@ -327,10 +327,10 @@ public class PCLAffinityMeter extends GUIElement
 
 
         FontHelper.renderFontCentered(sb, EYBFontHelper.CardTitleFont_Small,
-                GR.PCL.Strings.Combat.Current, CurrentAffinity.background_button.hb.cX, CurrentAffinity.background_button.hb.y + LABEL_OFFSET, Colors.Cream(1f), 1f);
+                PGR.PCL.Strings.Combat.Current, CurrentAffinity.background_button.hb.cX, CurrentAffinity.background_button.hb.y + LABEL_OFFSET, Colors.Cream(1f), 1f);
         FontHelper.renderFontCentered(sb, EYBFontHelper.CardTitleFont_Small,
-                GR.PCL.Strings.Combat.Next, NextAffinity.background_button.hb.cX, NextAffinity.background_button.hb.y + LABEL_OFFSET, Colors.Cream(1f), 1f);
+                PGR.PCL.Strings.Combat.Next, NextAffinity.background_button.hb.cX, NextAffinity.background_button.hb.y + LABEL_OFFSET, Colors.Cream(1f), 1f);
         FontHelper.renderFontCentered(sb, EYBFontHelper.CardTitleFont_Small,
-                GR.PCL.Strings.Combat.CurrentMatchCombo, NextAffinity.background_button.hb.cX + NextAffinity.background_button.hb.width * 1.25f, NextAffinity.background_button.hb.y + LABEL_OFFSET, Colors.Cream(1f), 1f);
+                PGR.PCL.Strings.Combat.CurrentMatchCombo, NextAffinity.background_button.hb.cX + NextAffinity.background_button.hb.width * 1.25f, NextAffinity.background_button.hb.y + LABEL_OFFSET, Colors.Cream(1f), 1f);
     }
 }

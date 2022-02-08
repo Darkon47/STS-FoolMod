@@ -1,29 +1,13 @@
 package pinacolada.cards.base;
 
 import com.badlogic.gdx.graphics.Color;
-import com.megacrit.cardcrawl.cards.CardQueueItem;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
+// TODO Remove
 public abstract class PCLCard_Status extends PCLCard
 {
-    protected boolean playAtEndOfTurn;
-
-    protected PCLCard_Status(PCLCardData data, boolean playAtEndOfTurn)
+    protected PCLCard_Status(PCLCardData data)
     {
         super(data);
-
-        this.playAtEndOfTurn = playAtEndOfTurn;
-    }
-
-    @Override
-    public void triggerOnEndOfTurnForPlayingCard()
-    {
-        if (playAtEndOfTurn)
-        {
-            dontTriggerOnUseCard = true;
-
-            AbstractDungeon.actionManager.cardQueue.add(new CardQueueItem(this, true));
-        }
     }
 
     @Override
@@ -35,7 +19,6 @@ public abstract class PCLCard_Status extends PCLCard
     @Override
     public void upgrade()
     {
-
     }
 
     @Override

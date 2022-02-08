@@ -4,8 +4,8 @@ import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.rooms.RestRoom;
 import com.megacrit.cardcrawl.ui.campfire.AbstractCampfireOption;
-import pinacolada.cards.pcl.colorless.Kirby;
-import pinacolada.resources.GR;
+import pinacolada.cards.fool.colorless.Kirby;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLGameEffects;
 
 public class KirbyCampfireOption extends AbstractCampfireOption
@@ -21,9 +21,9 @@ public class KirbyCampfireOption extends AbstractCampfireOption
     public KirbyCampfireOption()
     {
         kirby = (Kirby) AbstractDungeon.player.masterDeck.findCardById(Kirby.DATA.ID);
-        description = GR.PCL.Strings.CardMods.KirbyDescription;
-        label = GR.PCL.Strings.CardMods.Kirby;
-        img =  GR.PCL.Images.CampfireOption_Kirby.Texture();
+        description = PGR.PCL.Strings.CardMods.KirbyDescription;
+        label = PGR.PCL.Strings.CardMods.Kirby;
+        img =  PGR.PCL.Images.CampfireOption_Kirby.Texture();
     }
 
     @Override

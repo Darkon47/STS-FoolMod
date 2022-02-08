@@ -90,7 +90,7 @@ public class UIManager extends eatyourbeets.resources.UIManager
     {
         if ((Settings.isDebug || DevConsole.infiniteEnergy) && PCLGameUtilities.InGame())
         {
-            GR.PCL.Dungeon.SetCheating();
+            PGR.PCL.Dungeon.SetCheating();
         }
 
         if (CurrentScreen != null)

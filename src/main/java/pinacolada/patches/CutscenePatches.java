@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.cutscenes.Cutscene;
 import com.megacrit.cardcrawl.cutscenes.CutscenePanel;
 import eatyourbeets.utilities.FieldInfo;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLJUtils;
 
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ public class CutscenePatches
         @SpirePostfixPatch
         public static void Postfix(Cutscene __instance, AbstractPlayer.PlayerClass playerClass)
         {
-            if (playerClass == GR.PCL.PlayerClass)
+            if (playerClass == PGR.Fool.PlayerClass)
             {
                 _isDone.Set(__instance, true);
                 _panels.Get(__instance).clear();

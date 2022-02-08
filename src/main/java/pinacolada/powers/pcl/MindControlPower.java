@@ -24,7 +24,7 @@ import pinacolada.powers.PCLClickablePower;
 import pinacolada.powers.PCLCombatStats;
 import pinacolada.powers.PCLPowerHelper;
 import pinacolada.powers.PowerTriggerConditionType;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
@@ -188,7 +188,7 @@ public class MindControlPower extends PCLClickablePower implements OnDamageActio
             if (sb.length() > 0) {
                 sb.append(", ");
             }
-            sb.append(PCLJUtils.Format(powerStrings.DESCRIPTIONS[3], block, GR.Tooltips.Block));
+            sb.append(PCLJUtils.Format(powerStrings.DESCRIPTIONS[3], block, PGR.Tooltips.Block));
         }
         if (affinityPowers.size() > 0) {
             if (sb.length() > 0) {

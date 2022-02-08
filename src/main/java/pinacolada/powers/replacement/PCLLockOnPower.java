@@ -7,12 +7,12 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.LockOnPower;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLJUtils;
 
 public class PCLLockOnPower extends LockOnPower implements CloneablePowerInterface
 {
-    protected static final String FAKE_POWER_ID = GR.PCL.CreateID(LockOnPower.class.getSimpleName());
+    protected static final String FAKE_POWER_ID = PGR.PCL.CreateID(LockOnPower.class.getSimpleName());
 
     protected static final PowerStrings fakePowerStrings;
     public static final int ATTACK_MULTIPLIER = 25;

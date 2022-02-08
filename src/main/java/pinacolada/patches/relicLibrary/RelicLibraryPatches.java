@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 import eatyourbeets.resources.animator.AnimatorResources;
 import pinacolada.relics.PCLRelic;
 import pinacolada.relics.PCLReplacementRelic;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.resources.pcl.PCLResources;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
@@ -65,7 +65,7 @@ public class RelicLibraryPatches
 
     public static AbstractRelic GetRelic(String key)
     {
-        if (GR.IsLoaded)
+        if (PGR.IsLoaded())
         {
             // Do not replace customsavable relics
             final int sepIndex = key.indexOf(SEPARATOR);
@@ -83,13 +83,13 @@ public class RelicLibraryPatches
             }
 
             String newKey = key;
-            if (PCLGameUtilities.IsPlayerClass(GR.PCL.PlayerClass)) {
+            if (PCLGameUtilities.IsPCLPlayerClass()) {
                 newKey = GetPCLRelicReplacement(key);
                 if (PCLReplacementRelic.RELICS.containsKey(key)) {
                     return PCLReplacementRelic.RELICS.get(key).makeCopy();
                 }
             }
-            else if (PCLGameUtilities.IsPlayerClass(eatyourbeets.resources.GR.Animator.PlayerClass)) {
+            else if (PCLGameUtilities.IsEYBPlayerClass()) {
                 newKey = GetEYBRelicReplacement(key);
             }
             if (newKey != null && !key.equals(newKey)) {

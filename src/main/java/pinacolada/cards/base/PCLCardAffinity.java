@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.megacrit.cardcrawl.core.Settings;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLRenderHelpers;
 
 public class PCLCardAffinity implements Comparable<PCLCardAffinity>
@@ -60,7 +60,7 @@ public class PCLCardAffinity implements Comparable<PCLCardAffinity>
         {
             borderColor = Settings.GREEN_RELIC_COLOR.cpy();
             borderColor.a = color.a;
-            borderScale += GR.UI.Time_Sin(0.015f, 2.5f);
+            borderScale += PGR.UI.Time_Sin(0.015f, 2.5f);
         }
 
         Texture background = type.GetBackground(allowAlternateBorder ? level : Math.min(1, level), allowAlternateBorder ? upgrade : 0);
@@ -79,7 +79,7 @@ public class PCLCardAffinity implements Comparable<PCLCardAffinity>
 
         if (type == PCLAffinity.Star)
         {
-            Texture star = GR.PCL.Images.Affinities.Star_FG.Texture();
+            Texture star = PGR.PCL.Images.Affinities.Star_FG.Texture();
             PCLRenderHelpers.DrawOnCardAuto(sb, card, star, new Vector2(x, y), size, size, color, 1f, 1f, 0);
         }
     }
@@ -102,7 +102,7 @@ public class PCLCardAffinity implements Comparable<PCLCardAffinity>
 
         if (type == PCLAffinity.Star)
         {
-            PCLRenderHelpers.DrawCentered(sb, color, GR.PCL.Images.Affinities.Star_FG.Texture(), cX, cY, size, size, 1, 0);
+            PCLRenderHelpers.DrawCentered(sb, color, PGR.PCL.Images.Affinities.Star_FG.Texture(), cX, cY, size, size, 1, 0);
         }
     }
 }

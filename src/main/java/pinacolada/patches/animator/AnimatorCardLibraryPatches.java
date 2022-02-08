@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.cards.status.VoidCard;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import eatyourbeets.blights.animator.UltimateWispBlight;
 import pinacolada.patches.cardLibrary.PCLCardLibraryPatches;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
@@ -33,8 +33,8 @@ public class AnimatorCardLibraryPatches
         public static SpireReturn Prefix(UltimateWispBlight __instance, boolean triggerRelics)
         {
             // Card replacements may occur for non-Animator classes which will cause crashes when trying to generate a copy of the EYBCardData's card
-            if (!PCLGameUtilities.IsPlayerClass(GR.Animator.PlayerClass)) {
-                AbstractCard card = CardLibrary.getCopy(GR.PCL.Dungeon.IsUnnamedReign() ? VoidCard.ID : Burn.ID, 0, 0);
+            if (!PCLGameUtilities.IsPlayerClass(PGR.Animator.PlayerClass)) {
+                AbstractCard card = CardLibrary.getCopy(PGR.PCL.Dungeon.IsUnnamedReign() ? VoidCard.ID : Burn.ID, 0, 0);
                 PCLActions.Last.MakeCardInDrawPile(card);
                 __instance.flash();
                 return SpireReturn.Return();

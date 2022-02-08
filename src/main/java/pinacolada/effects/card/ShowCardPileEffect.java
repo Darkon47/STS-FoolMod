@@ -12,7 +12,7 @@ import com.megacrit.cardcrawl.screens.SingleCardViewPopup;
 import eatyourbeets.effects.EYBEffectWithCallback;
 import eatyourbeets.interfaces.delegates.ActionT0;
 import eatyourbeets.utilities.EYBFontHelper;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.resources.pcl.misc.PCLRuntimeLoadout;
 import pinacolada.ui.controls.GUI_CardGrid;
 import pinacolada.ui.controls.GUI_Toggle;
@@ -31,31 +31,31 @@ public class ShowCardPileEffect extends EYBEffectWithCallback<CardGroup>
     static
     {
         upgradeToggle = new GUI_Toggle(new Hitbox(Settings.scale * 256f, Settings.scale * 48f))
-        .SetBackground(GR.PCL.Images.Panel.Texture(), Color.DARK_GRAY)
+        .SetBackground(PGR.PCL.Images.Panel.Texture(), Color.DARK_GRAY)
         .SetPosition(Settings.WIDTH * 0.075f, Settings.HEIGHT * 0.65f)
         .SetFont(EYBFontHelper.CardDescriptionFont_Large, 0.5f)
         .SetText(SingleCardViewPopup.TEXT[6])
         .SetOnToggle(ShowCardPileEffect::ToggleViewUpgrades);
 
         zoomToggle  = new GUI_Toggle(new Hitbox(Settings.scale * 256f, Settings.scale * 48f))
-        .SetBackground(GR.PCL.Images.Panel.Texture(), Color.DARK_GRAY)
+        .SetBackground(PGR.PCL.Images.Panel.Texture(), Color.DARK_GRAY)
         .SetPosition(Settings.WIDTH * 0.075f, upgradeToggle.hb.y - upgradeToggle.hb.height)
         .SetFont(EYBFontHelper.CardDescriptionFont_Large, 0.475f)
-        .SetText(GR.PCL.Strings.Misc.DynamicPortraits)
+        .SetText(PGR.PCL.Strings.Misc.DynamicPortraits)
         .SetOnToggle(ShowCardPileEffect::ToggleCardZoom);
 
         simplifyCardUIToggle = new GUI_Toggle(new Hitbox(Settings.scale * 256f, Settings.scale * 48f))
-        .SetBackground(GR.PCL.Images.Panel.Texture(), Color.DARK_GRAY)
+        .SetBackground(PGR.PCL.Images.Panel.Texture(), Color.DARK_GRAY)
         .SetPosition(Settings.WIDTH * 0.075f, zoomToggle.hb.y - zoomToggle.hb.height)
         .SetFont(EYBFontHelper.CardDescriptionFont_Large, 0.475f)
-        .SetText(GR.PCL.Strings.Misc.SimplifyCardUI)
+        .SetText(PGR.PCL.Strings.Misc.SimplifyCardUI)
         .SetOnToggle(ShowCardPileEffect::ToggleSimplifyCardUI);
 
         toggleExpansion = new GUI_Toggle(new Hitbox(Settings.scale * 256f, Settings.scale * 48f))
-                .SetBackground(GR.PCL.Images.Panel.Texture(), Color.DARK_GRAY)
+                .SetBackground(PGR.PCL.Images.Panel.Texture(), Color.DARK_GRAY)
                 .SetPosition(Settings.WIDTH * 0.075f, simplifyCardUIToggle.hb.y - simplifyCardUIToggle.hb.height * 2)
                 .SetFont(EYBFontHelper.CardDescriptionFont_Large, 0.475f)
-                .SetText(GR.PCL.Strings.SeriesSelectionButtons.EnableExpansion);
+                .SetText(PGR.PCL.Strings.SeriesSelectionButtons.EnableExpansion);
     }
 
     private CardGroup cards;
@@ -144,8 +144,8 @@ public class ShowCardPileEffect extends EYBEffectWithCallback<CardGroup>
     {
         grid.TryUpdate();
         upgradeToggle.SetToggle(SingleCardViewPopup.isViewingUpgrade).Update();
-        zoomToggle.SetToggle(GR.PCL.Config.CropCardImages.Get()).Update();
-        simplifyCardUIToggle.SetToggle(GR.PCL.Config.SimplifyCardUI.Get()).Update();
+        zoomToggle.SetToggle(PGR.PCL.Config.CropCardImages.Get()).Update();
+        simplifyCardUIToggle.SetToggle(PGR.PCL.Config.SimplifyCardUI.Get()).Update();
         if (loadout != null && loadout.canEnableExpansion) {
             toggleExpansion.SetToggle(loadout.expansionEnabled).Update();
         }
@@ -217,11 +217,11 @@ public class ShowCardPileEffect extends EYBEffectWithCallback<CardGroup>
 
     private static void ToggleCardZoom(boolean value)
     {
-        GR.PCL.Config.CropCardImages.Set(value, true);
+        PGR.PCL.Config.CropCardImages.Set(value, true);
     }
 
     private static void ToggleSimplifyCardUI(boolean value)
     {
-        GR.PCL.Config.SimplifyCardUI.Set(value, true);
+        PGR.PCL.Config.SimplifyCardUI.Set(value, true);
     }
 }

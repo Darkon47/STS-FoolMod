@@ -4,7 +4,7 @@ import basemod.interfaces.CloneablePowerInterface;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.MetallicizePower;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 
 public class PCLMetallicizePower extends MetallicizePower implements CloneablePowerInterface
@@ -30,7 +30,7 @@ public class PCLMetallicizePower extends MetallicizePower implements CloneablePo
 
         if (maxAmount > 0 && maxAmount < 999)
         {
-            this.description += " NL " + GR.PCL.Strings.Misc.GainBlockAboveMaxStacks(maxAmount);
+            this.description += " NL " + PGR.PCL.Strings.Misc.GainBlockAboveMaxStacks(maxAmount);
         }
     }
 

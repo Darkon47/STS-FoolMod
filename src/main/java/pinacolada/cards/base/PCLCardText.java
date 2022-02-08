@@ -19,17 +19,17 @@ import org.apache.commons.lang3.StringUtils;
 import pinacolada.cards.base.attributes.AbstractAttribute;
 import pinacolada.cards.base.cardTextParsing.CTContext;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.resources.pcl.PCLImages;
 import pinacolada.utilities.PCLColors;
 import pinacolada.utilities.PCLGameUtilities;
 
-import static pinacolada.resources.GR.Enums.CardTags.AFTERLIFE;
+import static pinacolada.resources.PGR.Enums.CardTags.AFTERLIFE;
 
 public class PCLCardText
 {
-    private static final PCLImages.Badges BADGES = GR.PCL.Images.Badges;
-    private static final PCLImages.CardIcons ICONS = GR.PCL.Images.Icons;
+    private static final PCLImages.Badges BADGES = PGR.PCL.Images.Badges;
+    private static final PCLImages.CardIcons ICONS = PGR.PCL.Images.Icons;
     private static final ColoredString cs = new ColoredString("", Settings.CREAM_COLOR);
 
     private static AbstractPlayer player;
@@ -162,19 +162,19 @@ public class PCLCardText
         {
             offset_y -= RenderBadge(sb, BADGES.Unplayable.Texture(), PCLColors.COLOR_UNPLAYABLE, offset_y, alpha, null);
         }
-        if (card.hasTag(GR.Enums.CardTags.DELAYED))
+        if (card.hasTag(PGR.Enums.CardTags.DELAYED))
         {
             offset_y -= RenderBadge(sb, BADGES.Delayed.Texture(), PCLColors.COLOR_DELAYED, offset_y, alpha, null);
         }
-        else if (card.isInnate || card.hasTag(GR.Enums.CardTags.PCL_INNATE))
+        else if (card.isInnate || card.hasTag(PGR.Enums.CardTags.PCL_INNATE))
         {
             offset_y -= RenderBadge(sb, BADGES.Innate.Texture(), PCLColors.COLOR_INNATE, offset_y, alpha, null);
         }
-        if (card.hasTag(GR.Enums.CardTags.HARMONIC))
+        if (card.hasTag(PGR.Enums.CardTags.HARMONIC))
         {
             offset_y -= RenderBadge(sb, BADGES.Harmonic.Texture(), PCLColors.COLOR_HARMONIC, offset_y, alpha, null);
         }
-        if (card.hasTag(GR.Enums.CardTags.LOYAL))
+        if (card.hasTag(PGR.Enums.CardTags.LOYAL))
         {
             offset_y -= RenderBadge(sb, BADGES.Loyal.Texture(), PCLColors.COLOR_LOYAL, offset_y, alpha, null);
         }
@@ -190,16 +190,16 @@ public class PCLCardText
         {
             offset_y -= RenderBadge(sb, BADGES.Retain.Texture(), PCLColors.COLOR_RETAIN, offset_y, alpha, null);
         }
-        if (card.hasTag(GR.Enums.CardTags.HASTE_INFINITE))
+        if (card.hasTag(PGR.Enums.CardTags.HASTE_INFINITE))
         {
             offset_y -= RenderBadge(sb, BADGES.Haste.Texture(), PCLColors.COLOR_HASTE, offset_y, alpha, null, true);
         }
-        else if (card.hasTag(GR.Enums.CardTags.HASTE))
+        else if (card.hasTag(PGR.Enums.CardTags.HASTE))
         {
             offset_y -= RenderBadge(sb, BADGES.Haste.Texture(), PCLColors.COLOR_HASTE, offset_y, alpha, null);
         }
 
-        if (card.purgeOnUse || card.hasTag(GR.Enums.CardTags.PURGE))
+        if (card.purgeOnUse || card.hasTag(PGR.Enums.CardTags.PURGE))
         {
             offset_y -= RenderBadge(sb, BADGES.Purge.Texture(), PCLColors.COLOR_PURGE, offset_y, alpha, null);
         }
@@ -207,7 +207,7 @@ public class PCLCardText
         {
             offset_y -= RenderBadge(sb, BADGES.Exhaust.Texture(), PCLColors.COLOR_EXHAUST, offset_y, alpha, null);
         }
-        if (card.hasTag(GR.Enums.CardTags.AUTOPLAY))
+        if (card.hasTag(PGR.Enums.CardTags.AUTOPLAY))
         {
             //noinspection UnusedAssignment
             offset_y -= RenderBadge(sb, BADGES.Autoplay.Texture(), PCLColors.COLOR_AUTOPLAY, offset_y, alpha, null);
@@ -216,13 +216,13 @@ public class PCLCardText
         // Render card footers
         if (card.isPopup || (player != null && player.masterDeck.contains(card))) {
             offset_y = 0;
-            if (card.hasTag(GR.Enums.CardTags.UNIQUE)) {
+            if (card.hasTag(PGR.Enums.CardTags.UNIQUE)) {
                 offset_y += RenderFooter(sb, card.isPopup ? ICONS.Unique_L.Texture() : ICONS.Unique.Texture(), offset_y, Color.WHITE, null);
             }
             if (card.cardData.CanToggleFromPopup && (card.upgraded || card.cardData.UnUpgradedCanToggleForms)) {
                 offset_y += RenderFooter(sb, card.isPopup ? ICONS.Multiform_L.Texture() : ICONS.Multiform.Texture(), offset_y, card.auxiliaryData.form != 0 ? Color.WHITE : Color.DARK_GRAY, null);
             }
-            if (card.hasTag(GR.Enums.CardTags.EXPANDED) || card.cardData.CanToggleOnUpgrade) {
+            if (card.hasTag(PGR.Enums.CardTags.EXPANDED) || card.cardData.CanToggleOnUpgrade) {
                 offset_y += RenderFooter(sb, card.isPopup ? ICONS.BranchUpgrade_L.Texture() : ICONS.BranchUpgrade.Texture(), offset_y, card.auxiliaryData.form != 0 ? Color.WHITE : Color.DARK_GRAY, null);
             }
         }
@@ -260,7 +260,7 @@ public class PCLCardText
         final float offset_y = AbstractCard.RAW_H * 0.08f;//+0.28f;
         final BitmapFont font = EYBFontHelper.CardIconFont_Small;
 
-        pinacolada.utilities.PCLRenderHelpers.DrawOnCardAuto(sb, card, GR.PCL.Images.Panel_Elliptical.Texture(), new Vector2(offset_x, offset_y + y), 24, 32, backgroundColor, alpha * 0.4f, 1);
+        pinacolada.utilities.PCLRenderHelpers.DrawOnCardAuto(sb, card, PGR.PCL.Images.Panel_Elliptical.Texture(), new Vector2(offset_x, offset_y + y), 24, 32, backgroundColor, alpha * 0.4f, 1);
         pinacolada.utilities.PCLRenderHelpers.DrawOnCardAuto(sb, card, texture, new Vector2(offset_x, offset_y + y + 8), 24, 24, Color.WHITE, alpha, 1);
 
         font.getData().setScale(0.9f * card.drawScale);
@@ -278,11 +278,11 @@ public class PCLCardText
     {
         Vector2 offset = new Vector2(AbstractCard.RAW_W * 0.45f, AbstractCard.RAW_H * 0.45f + offset_y);
 
-        pinacolada.utilities.PCLRenderHelpers.DrawOnCardAuto(sb, card, GR.PCL.Images.Badges.Base_Badge.Texture(), new Vector2(AbstractCard.RAW_W * 0.45f, AbstractCard.RAW_H * 0.45f + offset_y), 64, 64, color, alpha, 1);
+        pinacolada.utilities.PCLRenderHelpers.DrawOnCardAuto(sb, card, PGR.PCL.Images.Badges.Base_Badge.Texture(), new Vector2(AbstractCard.RAW_W * 0.45f, AbstractCard.RAW_H * 0.45f + offset_y), 64, 64, color, alpha, 1);
         pinacolada.utilities.PCLRenderHelpers.DrawOnCardAuto(sb, card, texture, new Vector2(AbstractCard.RAW_W * 0.45f, AbstractCard.RAW_H * 0.45f + offset_y), 64, 64, Color.WHITE, alpha, 1);
-        pinacolada.utilities.PCLRenderHelpers.DrawOnCardAuto(sb, card, GR.PCL.Images.Badges.Base_Border.Texture(), new Vector2(AbstractCard.RAW_W * 0.45f, AbstractCard.RAW_H * 0.45f + offset_y), 64, 64, Color.WHITE, alpha, 1);
+        pinacolada.utilities.PCLRenderHelpers.DrawOnCardAuto(sb, card, PGR.PCL.Images.Badges.Base_Border.Texture(), new Vector2(AbstractCard.RAW_W * 0.45f, AbstractCard.RAW_H * 0.45f + offset_y), 64, 64, Color.WHITE, alpha, 1);
         if (isInfinite) {
-            pinacolada.utilities.PCLRenderHelpers.DrawOnCardAuto(sb, card, GR.PCL.Images.Badges.Base_Infinite.Texture(), new Vector2(AbstractCard.RAW_W * 0.45f, AbstractCard.RAW_H * 0.45f + offset_y), 64, 64, Color.WHITE, alpha, 1);
+            pinacolada.utilities.PCLRenderHelpers.DrawOnCardAuto(sb, card, PGR.PCL.Images.Badges.Base_Infinite.Texture(), new Vector2(AbstractCard.RAW_W * 0.45f, AbstractCard.RAW_H * 0.45f + offset_y), 64, 64, Color.WHITE, alpha, 1);
         }
 
         if (text != null)
@@ -304,7 +304,7 @@ public class PCLCardText
         final float offset_y = y - AbstractCard.RAW_H * 0.46f;
         final float alpha = card.transparency;
 
-        pinacolada.utilities.PCLRenderHelpers.DrawOnCardAuto(sb, card, GR.PCL.Images.ControllableCardPile.Texture(),  new Vector2(offset_x, offset_y), 40, 40, Color.BLACK, alpha * 0.6f, 0.8f);
+        pinacolada.utilities.PCLRenderHelpers.DrawOnCardAuto(sb, card, PGR.PCL.Images.ControllableCardPile.Texture(),  new Vector2(offset_x, offset_y), 40, 40, Color.BLACK, alpha * 0.6f, 0.8f);
         pinacolada.utilities.PCLRenderHelpers.DrawOnCardAuto(sb, card, texture,  new Vector2(offset_x, offset_y), 40, 40, iconColor, alpha, 0.8f);
 
         if (text != null)
@@ -335,7 +335,7 @@ public class PCLCardText
         {
             if (badgeAlphaOffset < badgeAlphaTargetOffset)
             {
-                badgeAlphaOffset += GR.UI.Delta(0.33f);
+                badgeAlphaOffset += PGR.UI.Delta(0.33f);
                 if (badgeAlphaOffset > badgeAlphaTargetOffset)
                 {
                     badgeAlphaOffset = badgeAlphaTargetOffset;
@@ -344,7 +344,7 @@ public class PCLCardText
             }
             else
             {
-                badgeAlphaOffset -= GR.UI.Delta(0.5f);
+                badgeAlphaOffset -= PGR.UI.Delta(0.5f);
                 if (badgeAlphaOffset < badgeAlphaTargetOffset)
                 {
                     badgeAlphaOffset = badgeAlphaTargetOffset;

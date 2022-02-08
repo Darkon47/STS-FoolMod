@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.Hitbox;
 import com.megacrit.cardcrawl.helpers.input.InputHelper;
 import eatyourbeets.utilities.Mathf;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 
 import static com.megacrit.cardcrawl.core.CardCrawlGame.popupMX;
 import static com.megacrit.cardcrawl.core.CardCrawlGame.popupMY;
@@ -100,7 +100,7 @@ public class AdvancedHitbox extends Hitbox
 
             float actualMX;
             float actualMY;
-            if (GR.UI.IsDropdownOpen && !isDropdownCompatbile) {
+            if (PGR.UI.IsDropdownOpen && !isDropdownCompatbile) {
                 this.hovered = false;
                 return;
             }

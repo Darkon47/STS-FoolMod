@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.rewards.RewardSave;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.rewards.PCLReward;
 import pinacolada.utilities.PCLJUtils;
 
@@ -20,7 +20,7 @@ public class SpecialGoldReward extends PCLReward
 
     public SpecialGoldReward(String text, int amount)
     {
-        super(ImageMaster.UI_GOLD,amount + GOLD_STRING + " (" + text + ")", GR.Enums.Rewards.SPECIAL_GOLD);
+        super(ImageMaster.UI_GOLD,amount + GOLD_STRING + " (" + text + ")", PGR.Enums.Rewards.SPECIAL_GOLD);
 
         this.text = text;
         this.goldAmt = amount;

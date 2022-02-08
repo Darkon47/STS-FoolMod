@@ -5,8 +5,8 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import eatyourbeets.cards.base.AnimatorCard;
 import eatyourbeets.cards.base.EYBCard;
 import eatyourbeets.utilities.FieldInfo;
-import pinacolada.cards.pcl.colorless.QuestionMark;
-import pinacolada.resources.GR;
+import pinacolada.cards.fool.colorless.QuestionMark;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
 
@@ -129,26 +129,26 @@ public class ReplacementCardBuilder extends PCLCardBuilder
 
     protected String GetModifiedText(String originalText) {
         return originalText
-                .replace("[F]", GR.Tooltips.Might.toString())
-                .replace("[A]", GR.Tooltips.Velocity.toString())
-                .replace("[I]", GR.Tooltips.Wisdom.toString())
-                .replace("[B]", GR.Tooltips.Invocation.toString())
-                .replace("[C]", GR.Tooltips.Desecration.toString())
-                .replace(eatyourbeets.resources.GR.Tooltips.Force.toString(), GR.Tooltips.Might.toString())
-                .replace(eatyourbeets.resources.GR.Tooltips.Agility.toString(), GR.Tooltips.Velocity.toString())
-                .replace(eatyourbeets.resources.GR.Tooltips.Intellect.toString(), GR.Tooltips.Wisdom.toString())
-                .replace(eatyourbeets.resources.GR.Tooltips.Blessing.toString(), GR.Tooltips.Invocation.toString())
-                .replace(eatyourbeets.resources.GR.Tooltips.Corruption.toString(), GR.Tooltips.Desecration.toString())
-                .replace(eatyourbeets.resources.GR.Tooltips.Affinity_Red.toString(), GR.Tooltips.Affinity_Red.toString())
-                .replace(eatyourbeets.resources.GR.Tooltips.Affinity_Green.toString(), GR.Tooltips.Affinity_Green.toString())
-                .replace(eatyourbeets.resources.GR.Tooltips.Affinity_Blue.toString(), GR.Tooltips.Affinity_Blue.toString())
-                .replace(eatyourbeets.resources.GR.Tooltips.Affinity_Light.toString(), GR.Tooltips.Affinity_Light.toString())
-                .replace(eatyourbeets.resources.GR.Tooltips.Affinity_Dark.toString(), GR.Tooltips.Affinity_Dark.toString())
-                .replace(eatyourbeets.resources.GR.Tooltips.Affinity_Star.toString(), GR.Tooltips.Multicolor.toString())
-                .replace(eatyourbeets.resources.GR.Tooltips.Affinity_General.toString(), GR.Tooltips.Affinity_General.toString())
-                .replace(eatyourbeets.resources.GR.Tooltips.Blur.toString(), GR.Tooltips.Blur.toString())
-                .replace(eatyourbeets.resources.GR.Tooltips.Lightning.toString(), GR.Tooltips.Lightning.toString())
-                .replace(eatyourbeets.resources.GR.Tooltips.Dark.toString(), GR.Tooltips.Dark.toString());
+                .replace("[F]", PGR.Tooltips.Might.toString())
+                .replace("[A]", PGR.Tooltips.Velocity.toString())
+                .replace("[I]", PGR.Tooltips.Wisdom.toString())
+                .replace("[B]", PGR.Tooltips.Invocation.toString())
+                .replace("[C]", PGR.Tooltips.Desecration.toString())
+                .replace(eatyourbeets.resources.GR.Tooltips.Force.toString(), PGR.Tooltips.Might.toString())
+                .replace(eatyourbeets.resources.GR.Tooltips.Agility.toString(), PGR.Tooltips.Velocity.toString())
+                .replace(eatyourbeets.resources.GR.Tooltips.Intellect.toString(), PGR.Tooltips.Wisdom.toString())
+                .replace(eatyourbeets.resources.GR.Tooltips.Blessing.toString(), PGR.Tooltips.Invocation.toString())
+                .replace(eatyourbeets.resources.GR.Tooltips.Corruption.toString(), PGR.Tooltips.Desecration.toString())
+                .replace(eatyourbeets.resources.GR.Tooltips.Affinity_Red.toString(), PGR.Tooltips.Affinity_Red.toString())
+                .replace(eatyourbeets.resources.GR.Tooltips.Affinity_Green.toString(), PGR.Tooltips.Affinity_Green.toString())
+                .replace(eatyourbeets.resources.GR.Tooltips.Affinity_Blue.toString(), PGR.Tooltips.Affinity_Blue.toString())
+                .replace(eatyourbeets.resources.GR.Tooltips.Affinity_Light.toString(), PGR.Tooltips.Affinity_Light.toString())
+                .replace(eatyourbeets.resources.GR.Tooltips.Affinity_Dark.toString(), PGR.Tooltips.Affinity_Dark.toString())
+                .replace(eatyourbeets.resources.GR.Tooltips.Affinity_Star.toString(), PGR.Tooltips.Multicolor.toString())
+                .replace(eatyourbeets.resources.GR.Tooltips.Affinity_General.toString(), PGR.Tooltips.Affinity_General.toString())
+                .replace(eatyourbeets.resources.GR.Tooltips.Blur.toString(), PGR.Tooltips.Blur.toString())
+                .replace(eatyourbeets.resources.GR.Tooltips.Lightning.toString(), PGR.Tooltips.Lightning.toString())
+                .replace(eatyourbeets.resources.GR.Tooltips.Dark.toString(), PGR.Tooltips.Dark.toString());
     }
 
     protected void GetAffinitiesFromCard(AbstractCard original) {
@@ -167,16 +167,16 @@ public class ReplacementCardBuilder extends PCLCardBuilder
         }
         else {
             String packageName = original.getClass().getPackage().getName();
-            if (packageName.startsWith(GR.PackageNames.GENSOKYO_LUNAR))
+            if (packageName.startsWith(PGR.PackageNames.GENSOKYO_LUNAR))
             {
                 affinities.Add(PCLAffinity.Light, 1);
                 affinities.Add(PCLAffinity.Dark, 1);
             }
-            else if (packageName.startsWith(GR.PackageNames.GENSOKYO_URBAN))
+            else if (packageName.startsWith(PGR.PackageNames.GENSOKYO_URBAN))
             {
                 affinities.Add(PCLAffinity.Dark, 1);
             }
-            else if (packageName.startsWith(GR.PackageNames.MARISA))
+            else if (packageName.startsWith(PGR.PackageNames.MARISA))
             {
                 affinities.Add(PCLAffinity.Blue, 1);
                 affinities.Add(PCLAffinity.Light, 1);

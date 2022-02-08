@@ -3,7 +3,7 @@ package pinacolada.patches.screens;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
 import com.megacrit.cardcrawl.screens.mainMenu.SaveSlotScreen;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 
 public class SaveSlotScreenPatches
 {
@@ -13,8 +13,8 @@ public class SaveSlotScreenPatches
         @SpirePostfixPatch
         public static void Postfix(SaveSlotScreen __instance, int slot)
         {
-            GR.PCL.Config.Load(slot);
-            GR.PCL.Data.Reload();
+            PGR.PCL.Config.Load(slot);
+            PGR.PCL.Data.Reload();
         }
     }
 }

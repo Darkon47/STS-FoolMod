@@ -4,7 +4,7 @@ package pinacolada.patches;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.map.MapEdge;
 import com.megacrit.cardcrawl.map.MapRoomNode;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 
 public class MapRoomNodePatches
 {
@@ -17,9 +17,9 @@ public class MapRoomNodePatches
     public static class MapRoomNodePatches_IsConnectedTo {
 
         public static boolean Postfix(boolean __result, MapRoomNode __instance, MapRoomNode node) {
-            if (GR.PCL.Dungeon.CanJumpNextFloor()) {
+            if (PGR.PCL.Dungeon.CanJumpNextFloor()) {
                 for (MapEdge edge : __instance.getEdges()) {
-                    if (node.y == edge.dstY || GR.PCL.Dungeon.CanJumpAnywhere()) {
+                    if (node.y == edge.dstY || PGR.PCL.Dungeon.CanJumpAnywhere()) {
                         return true;
                     }
                 }
@@ -36,7 +36,7 @@ public class MapRoomNodePatches
     {
         public static void Postfix(MapRoomNode __instance)
         {
-            GR.PCL.Dungeon.SetJumpNextFloor(false);
+            PGR.PCL.Dungeon.SetJumpNextFloor(false);
         }
     }
 }

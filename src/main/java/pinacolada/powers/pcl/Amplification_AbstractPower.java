@@ -8,7 +8,7 @@ import pinacolada.interfaces.subscribers.OnOrbApplyFocusSubscriber;
 import pinacolada.orbs.pcl.*;
 import pinacolada.powers.PCLCombatStats;
 import pinacolada.powers.PCLPower;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLJUtils;
 
 import java.util.Arrays;
@@ -25,15 +25,15 @@ public abstract class Amplification_AbstractPower extends PCLPower implements On
     protected String cachedName = "";
 
     static {
-        IMAGES.put(Air.ORB_ID, GR.PCL.Images.Tooltips.Air);
-        IMAGES.put(Chaos.ORB_ID, GR.PCL.Images.Tooltips.Chaos);
-        IMAGES.put(Dark.ORB_ID, GR.PCL.Images.Tooltips.Dark);
-        IMAGES.put(Earth.ORB_ID, GR.PCL.Images.Tooltips.Earth);
-        IMAGES.put(Fire.ORB_ID, GR.PCL.Images.Tooltips.Fire);
-        IMAGES.put(Frost.ORB_ID, GR.PCL.Images.Tooltips.Frost);
-        IMAGES.put(Lightning.ORB_ID, GR.PCL.Images.Tooltips.Lightning);
-        IMAGES.put(Plasma.ORB_ID, GR.PCL.Images.Tooltips.Plasma);
-        IMAGES.put(Water.ORB_ID, GR.PCL.Images.Tooltips.Water);
+        IMAGES.put(Air.ORB_ID, PGR.PCL.Images.Tooltips.Air);
+        IMAGES.put(Chaos.ORB_ID, PGR.PCL.Images.Tooltips.Chaos);
+        IMAGES.put(Dark.ORB_ID, PGR.PCL.Images.Tooltips.Dark);
+        IMAGES.put(Earth.ORB_ID, PGR.PCL.Images.Tooltips.Earth);
+        IMAGES.put(Fire.ORB_ID, PGR.PCL.Images.Tooltips.Fire);
+        IMAGES.put(Frost.ORB_ID, PGR.PCL.Images.Tooltips.Frost);
+        IMAGES.put(Lightning.ORB_ID, PGR.PCL.Images.Tooltips.Lightning);
+        IMAGES.put(Plasma.ORB_ID, PGR.PCL.Images.Tooltips.Plasma);
+        IMAGES.put(Water.ORB_ID, PGR.PCL.Images.Tooltips.Water);
     }
 
     public Amplification_AbstractPower(AbstractCreature owner, String powerID, String orbID, int scaling, int evokeMultiplier, PCLAffinity... affinities)

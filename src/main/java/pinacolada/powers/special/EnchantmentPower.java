@@ -2,7 +2,7 @@ package pinacolada.powers.special;
 
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import pinacolada.cards.pcl.enchantments.Enchantment;
+import pinacolada.cards.fool.enchantments.Enchantment;
 import pinacolada.powers.PCLClickablePower;
 import pinacolada.relics.PCLEnchantableRelic;
 import pinacolada.utilities.PCLGameUtilities;

@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import eatyourbeets.actions.EYBActionWithCallback;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.ui.GridCardSelectScreenHelper;
 
 import java.util.ArrayList;
@@ -60,7 +60,7 @@ public class ScryWhichActuallyTriggersDiscard extends EYBActionWithCallback<Arra
             }
         }
 
-        AbstractDungeon.gridSelectScreen.open(group, amount, true, GR.PCL.Strings.GridSelection.Scry);
+        AbstractDungeon.gridSelectScreen.open(group, amount, true, PGR.PCL.Strings.GridSelection.Scry);
     }
 
     @Override

@@ -5,11 +5,11 @@ import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import eatyourbeets.actions.EYBActionWithCallback;
-import pinacolada.cards.base.PCLCard_UltraRare;
-import pinacolada.cards.pcl.colorless.AbstractMysteryCard;
-import pinacolada.cards.pcl.colorless.Kirby;
-import pinacolada.cards.pcl.colorless.MysteryCard;
-import pinacolada.cards.pcl.colorless.MysteryCard2;
+import pinacolada.cards.fool.FoolCard_UltraRare;
+import pinacolada.cards.fool.colorless.Kirby;
+import pinacolada.cards.pcl.special.AbstractMysteryCard;
+import pinacolada.cards.pcl.special.MysteryCard;
+import pinacolada.cards.pcl.special.MysteryCard2;
 import pinacolada.ui.GridCardSelectScreenHelper;
 
 import java.util.ArrayList;
@@ -87,7 +87,7 @@ public class KirbyAction extends EYBActionWithCallback<Kirby>
         return c.cost < 0
                 || (c.rarity != AbstractCard.CardRarity.COMMON && c.rarity != AbstractCard.CardRarity.BASIC)
                 || c.purgeOnUse
-                || c instanceof PCLCard_UltraRare
+                || c instanceof FoolCard_UltraRare
                 || c instanceof Kirby
                 || c.cardID.startsWith("hubris")
                 ||  c.cardID.startsWith("ReplayTheSpireMod")

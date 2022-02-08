@@ -7,8 +7,8 @@ import com.megacrit.cardcrawl.random.Random;
 import eatyourbeets.events.base.EYBEventPhase;
 import eatyourbeets.events.base.EYBEventStrings;
 import pinacolada.events.base.PCLEvent;
-import pinacolada.relics.pcl.BountyMap;
-import pinacolada.relics.pcl.BountyMap2;
+import pinacolada.relics.fool.BountyMap;
+import pinacolada.relics.fool.BountyMap2;
 import pinacolada.utilities.PCLGameUtilities;
 
 public class ThePharmacy extends PCLEvent

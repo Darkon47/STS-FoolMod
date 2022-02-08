@@ -3,7 +3,7 @@ package pinacolada.dailymods;
 import com.megacrit.cardcrawl.daily.mods.AbstractDailyMod;
 import com.megacrit.cardcrawl.localization.RunModStrings;
 import eatyourbeets.interfaces.delegates.FuncT0;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 
 import java.util.Arrays;
 import java.util.List;
@@ -27,7 +27,7 @@ public class PCLDailyMod extends AbstractDailyMod {
     public PCLDailyMod(String modName, ModColor color, boolean noDisplaySeries) {
         super(modName, "", "", TESTIMAGE, color == ModColor.RED);
 
-        RunModStrings modStrings = GR.GetRunModStrings(modName);
+        RunModStrings modStrings = PGR.GetRunModStrings(modName);
         this.name = modStrings.NAME;
         this.description = modStrings.DESCRIPTION;
         this.noDisplaySeries = noDisplaySeries;

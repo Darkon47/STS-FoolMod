@@ -15,7 +15,7 @@ import pinacolada.cards.base.PCLCard;
 import pinacolada.cards.base.modifiers.BlockModifiers;
 import pinacolada.cards.base.modifiers.CostModifiers;
 import pinacolada.cards.base.modifiers.DamageModifiers;
-import pinacolada.cards.pcl.special.TimeParadox;
+import pinacolada.cards.fool.special.TimeParadox;
 import pinacolada.events.base.PCLEvent;
 import pinacolada.utilities.PCLGameEffects;
 import pinacolada.utilities.PCLGameUtilities;

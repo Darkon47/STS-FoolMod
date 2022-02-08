@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import eatyourbeets.utilities.EYBFontHelper;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.ui.hitboxes.FakeHitbox;
 
 public class FakeLibraryCard extends PCLCardBase
@@ -20,7 +20,7 @@ public class FakeLibraryCard extends PCLCardBase
 
     public FakeLibraryCard()
     {
-        super("","", null, 0, GR.PCL.Strings.Misc.NotEnoughCards, CardType.SKILL, CardColor.COLORLESS, CardRarity.SPECIAL, CardTarget.NONE);
+        super("","", null, 0, PGR.PCL.Strings.Misc.NotEnoughCards, CardType.SKILL, CardColor.COLORLESS, CardRarity.SPECIAL, CardTarget.NONE);
         this.hb = new FakeHitbox(hb);
     }
 
@@ -64,6 +64,6 @@ public class FakeLibraryCard extends PCLCardBase
     @Override
     public void Render(SpriteBatch sb, boolean hovered, boolean selected, boolean library)
     {
-        FontHelper.renderFontLeft(sb, EYBFontHelper.CardTitleFont_Normal, GR.PCL.Strings.Misc.NotEnoughCards, hb.cX, hb.cY + hb.height / 4, Color.WHITE);
+        FontHelper.renderFontLeft(sb, EYBFontHelper.CardTitleFont_Normal, PGR.PCL.Strings.Misc.NotEnoughCards, hb.cX, hb.cY + hb.height / 4, Color.WHITE);
     }
 }

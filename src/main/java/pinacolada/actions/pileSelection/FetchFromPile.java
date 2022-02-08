@@ -3,7 +3,7 @@ package pinacolada.actions.pileSelection;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import pinacolada.actions.basic.MoveCard;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 
 import java.util.ArrayList;
@@ -54,6 +54,6 @@ public class FetchFromPile extends SelectFromPile
     @Override
     public String UpdateMessage()
     {
-        return super.UpdateMessageInternal(GR.PCL.Strings.GridSelection.Fetch_F1);
+        return super.UpdateMessageInternal(PGR.PCL.Strings.GridSelection.Fetch_F1);
     }
 }

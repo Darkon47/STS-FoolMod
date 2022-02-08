@@ -64,7 +64,7 @@ import pinacolada.actions.special.*;
 import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCard;
 import pinacolada.cards.base.PCLCardAffinities;
-import pinacolada.cards.pcl.tokens.AffinityToken;
+import pinacolada.cards.fool.tokens.AffinityToken;
 import pinacolada.monsters.PCLAlly;
 import pinacolada.orbs.PCLOrbHelper;
 import pinacolada.powers.PCLCombatStats;
@@ -77,7 +77,7 @@ import pinacolada.powers.temporary.TemporaryArtifactPower;
 import pinacolada.powers.temporary.TemporaryFocusPower;
 import pinacolada.powers.temporary.TemporaryResistancePower;
 import pinacolada.powers.temporary.TemporaryThornsPower;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.stances.PCLStanceHelper;
 import pinacolada.ui.combat.PCLAffinityMeter;
 
@@ -511,7 +511,7 @@ public final class PCLActions
     public SelectFromHand Exchange(String sourceName, int amount)
     {
         SelectFromHand select = (SelectFromHand) new SelectFromHand(sourceName, amount, false)
-                .SetMessage(GR.PCL.Strings.HandSelection.MoveToDrawPile)
+                .SetMessage(PGR.PCL.Strings.HandSelection.MoveToDrawPile)
                 .AddCallback(selected ->
                 {
                     for (AbstractCard c : selected) {

@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.controller.CInputActionSet;
 import com.megacrit.cardcrawl.ui.FtueTip;
 import com.megacrit.cardcrawl.ui.buttons.GotItButton;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLRenderHelpers;
 
 public class GUI_Ftue extends FtueTip //TODO
@@ -64,7 +64,7 @@ public class GUI_Ftue extends FtueTip //TODO
 
     @Override
     public void render(SpriteBatch sb) {
-        PCLRenderHelpers.DrawCentered(sb, BACKDROP, GR.PCL.Images.Panel_Rounded.Texture(), x, y, Settings.WIDTH * 0.3f, Settings.HEIGHT * 0.2f, Settings.scale, 0, false, false);
+        PCLRenderHelpers.DrawCentered(sb, BACKDROP, PGR.PCL.Images.Panel_Rounded.Texture(), x, y, Settings.WIDTH * 0.3f, Settings.HEIGHT * 0.2f, Settings.scale, 0, false, false);
         sb.setColor(new Color(1.0F, 1.0F, 1.0F, 0.7F + (MathUtils.cosDeg((float)(System.currentTimeMillis() / 2L % 360L)) + 1.25F) / 5.0F));
         this.button.render(sb);
         FontHelper.renderFontLeftTopAligned(sb, FontHelper.topPanelInfoFont, LABEL[0] + this.header, this.x - 190.0F * Settings.scale, this.y + 130.0F * Settings.scale, Settings.GOLD_COLOR);

@@ -7,7 +7,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.resources.pcl.PCLHotkeys;
 import pinacolada.utilities.PCLRenderHelpers;
 
@@ -64,9 +64,9 @@ public class PCLCardPreview
 
         if (isMultiPreview)
         {
-            String cyclePreviewText = GR.PCL.Strings.Misc.PressKeyToCycle(PCLHotkeys.cycle.getKeyString());
+            String cyclePreviewText = PGR.PCL.Strings.Misc.PressKeyToCycle(PCLHotkeys.cycle.getKeyString());
             BitmapFont font = pinacolada.utilities.PCLRenderHelpers.GetDescriptionFont(preview, 0.9f);
-            pinacolada.utilities.PCLRenderHelpers.DrawOnCardAuto(sb, preview, GR.PCL.Images.Panel.Texture(), new Vector2(0, -AbstractCard.RAW_H * 0.55f),
+            pinacolada.utilities.PCLRenderHelpers.DrawOnCardAuto(sb, preview, PGR.PCL.Images.Panel.Texture(), new Vector2(0, -AbstractCard.RAW_H * 0.55f),
             AbstractCard.IMG_WIDTH * 0.6f, font.getLineHeight() * 1.8f, Color.DARK_GRAY, 0.75f, 1);
             PCLRenderHelpers.WriteOnCard(sb, preview, font, cyclePreviewText, 0, -AbstractCard.RAW_H * 0.55f, Color.MAGENTA);
             pinacolada.utilities.PCLRenderHelpers.ResetFont(font);

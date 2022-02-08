@@ -11,7 +11,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import eatyourbeets.utilities.AdvancedTexture;
 import eatyourbeets.utilities.ColoredString;
 import pinacolada.cards.base.PCLCard;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.resources.pcl.PCLImages;
 import pinacolada.utilities.PCLRenderHelpers;
 
@@ -21,7 +21,7 @@ public abstract class AbstractAttribute
 {
     protected final static HashMap<AbstractCard.CardRarity, AdvancedTexture> panels = new HashMap<>();
     protected final static HashMap<AbstractCard.CardRarity, AdvancedTexture> panelsLarge = new HashMap<>();
-    protected final static PCLImages.CardIcons ICONS = GR.PCL.Images.Icons;
+    protected final static PCLImages.CardIcons ICONS = PGR.PCL.Images.Icons;
     protected final static float DESC_OFFSET_X = (AbstractCard.IMG_WIDTH * 0.5f);
     protected final static float DESC_OFFSET_Y = (AbstractCard.IMG_HEIGHT * 0.10f);
     protected static final GlyphLayout layout = new GlyphLayout();
@@ -168,7 +168,7 @@ public abstract class AbstractAttribute
 
     protected AdvancedTexture GetPanelByRarity(PCLCard card)
     {
-        if (GR.PCL.Config.SimplifyCardUI.Get())
+        if (PGR.PCL.Config.SimplifyCardUI.Get())
         {
             return null;
         }

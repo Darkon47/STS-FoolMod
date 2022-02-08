@@ -7,13 +7,13 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.FrailPower;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
 
 public class PCLFrailPower extends FrailPower implements CloneablePowerInterface
 {
-    protected static final String FAKE_POWER_ID = GR.PCL.CreateID(FrailPower.class.getSimpleName());
+    protected static final String FAKE_POWER_ID = PGR.PCL.CreateID(FrailPower.class.getSimpleName());
 
     protected static final PowerStrings fakePowerStrings;
     private boolean justApplied = false;

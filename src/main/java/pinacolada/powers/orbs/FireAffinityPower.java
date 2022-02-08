@@ -3,7 +3,7 @@ package pinacolada.powers.orbs;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import pinacolada.orbs.pcl.Fire;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLJUtils;
 
 public class FireAffinityPower extends OrbAffinityPower<Fire>
@@ -12,7 +12,7 @@ public class FireAffinityPower extends OrbAffinityPower<Fire>
 
     public FireAffinityPower(AbstractCreature owner, int amount)
     {
-        super(POWER_ID, owner, GR.Tooltips.Fire, amount);
+        super(POWER_ID, owner, PGR.Tooltips.Fire, amount);
     }
 
     @Override

@@ -3,7 +3,7 @@ package pinacolada.powers.pcl;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import pinacolada.actions.special.HigakiRinneAction;
-import pinacolada.cards.pcl.series.Katanagatari.HigakiRinne;
+import pinacolada.cards.fool.series.Katanagatari.HigakiRinne;
 import pinacolada.powers.PCLPower;
 import pinacolada.utilities.PCLActions;
 

@@ -4,7 +4,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import eatyourbeets.utilities.ColoredString;
 import pinacolada.cards.base.PCLAffinity;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLJUtils;
 import pinacolada.utilities.PCLRenderHelpers;
 
@@ -78,7 +78,7 @@ public class VariableToken extends CTToken
     @Override
     public void Render(SpriteBatch sb, CTContext context)
     {
-        if (coloredString == null || coloredString.text == null || GR.UI.Elapsed25())
+        if (coloredString == null || coloredString.text == null || PGR.UI.Elapsed25())
         {
             UpdateString(context);
         }

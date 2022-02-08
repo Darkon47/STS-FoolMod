@@ -68,7 +68,7 @@ import com.megacrit.cardcrawl.screens.GameOverStat;
 import com.megacrit.cardcrawl.unlock.AbstractUnlock;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import eatyourbeets.utilities.FieldInfo;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
 
@@ -76,7 +76,7 @@ import java.util.ArrayList;
 
 public class GameOverScreenPatches
 {
-    public static final int MAX_LEVEL = GR.PCL.Data.MaxUnlockLevel;
+    public static final int MAX_LEVEL = PGR.PCL.Data.MaxUnlockLevel;
     public static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString("DeathScreen");
 
     public static final FieldInfo<Integer> _score = PCLJUtils.GetField("score", GameOverScreen.class);
@@ -113,7 +113,7 @@ public class GameOverScreenPatches
         @SpirePrefixPatch
         public static SpireReturn Prefix(GameOverScreen __instance)
         {
-            if (!PCLGameUtilities.IsPlayerClass(GR.PCL.PlayerClass))
+            if (!PCLGameUtilities.IsPCLPlayerClass())
             {
                 return SpireReturn.Continue();
             }
@@ -136,7 +136,7 @@ public class GameOverScreenPatches
             _unlockTargetStart.Set(__instance, _unlockProgress.Get(__instance));
             _unlockCost.Set(__instance, UnlockTracker.getCurrentScoreCost(AbstractDungeon.player.chosenClass));
             _unlockTargetProgress.Set(__instance, _unlockProgress.Get(__instance) + _score.Get(__instance));
-            _nextUnlockCost.Set(__instance, GR.PCL.GetUnlockCost(1, true));
+            _nextUnlockCost.Set(__instance, PGR.Fool.GetUnlockCost(1, true));
 
             if (_unlockTargetProgress.Get(__instance) >= _unlockCost.Get(__instance))
             {
@@ -164,7 +164,7 @@ public class GameOverScreenPatches
         @SpirePrefixPatch
         public static SpireReturn Insert(GameOverScreen __instance, SpriteBatch sb)
         {
-            if (!PCLGameUtilities.IsPlayerClass(GR.PCL.PlayerClass))
+            if (!PCLGameUtilities.IsPCLPlayerClass())
             {
                 return SpireReturn.Continue();
             }

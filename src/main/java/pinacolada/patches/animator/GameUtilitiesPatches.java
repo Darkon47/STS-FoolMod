@@ -4,7 +4,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import eatyourbeets.utilities.GameUtilities;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 
 public class GameUtilitiesPatches
 {
@@ -14,7 +14,7 @@ public class GameUtilitiesPatches
         @SpirePostfixPatch
         public static boolean Postfix(boolean __result, AbstractCard card)
         {
-            return __result && GR.PCL.Dungeon.CanObtainCopy(card);
+            return __result && PGR.PCL.Dungeon.CanObtainCopy(card);
         }
     }
 }

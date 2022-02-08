@@ -30,7 +30,7 @@ import pinacolada.powers.common.BurningPower;
 import pinacolada.powers.common.ResistancePower;
 import pinacolada.powers.common.VitalityPower;
 import pinacolada.relics.PCLRelic;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.ui.GridCardSelectScreenHelper;
 import pinacolada.ui.combat.PCLAffinitySystem;
 import pinacolada.ui.common.ControllableCardPile;
@@ -58,7 +58,7 @@ public class PCLCombatStats extends EYBPower implements InvisiblePower
     private static final FieldInfo<Map<String, Object>> _combatDataGetter = PCLJUtils.GetField("combatData", CombatStats.class);
     private static final FieldInfo<ArrayList<GameEvent<?>>> _eventsGetter = PCLJUtils.GetField("events", CombatStats.class);
     private static final FieldInfo<Map<String, Object>> _turnDataGetter = PCLJUtils.GetField("turnData", CombatStats.class);
-    public static final String POWER_ID = GR.PCL.CreateID(CombatStats.class.getSimpleName());
+    public static final String POWER_ID = PGR.PCL.CreateID(CombatStats.class.getSimpleName());
 
     public static final ArrayList<GameEvent<?>> events = _eventsGetter.Get(null);
     public static final PCLAffinitySystem MatchingSystem = new PCLAffinitySystem();
@@ -191,14 +191,14 @@ public class PCLCombatStats extends EYBPower implements InvisiblePower
     {
         ClearPCLStats();
 
-        GR.PCL.Dungeon.Reset();
+        PGR.PCL.Dungeon.Reset();
     }
 
     public static void OnStartOver()
     {
         ClearPCLStats();
 
-        GR.PCL.Dungeon.Reset();
+        PGR.PCL.Dungeon.Reset();
     }
 
     public static void OnAfterDeath()
@@ -519,7 +519,7 @@ public class PCLCombatStats extends EYBPower implements InvisiblePower
 
     public static void OnAfterCardPlayedPostActions(AbstractCard card)
     {
-        if (card.purgeOnUse || card.hasTag(GR.Enums.CardTags.PURGE)) {
+        if (card.purgeOnUse || card.hasTag(PGR.Enums.CardTags.PURGE)) {
             OnPurge(card, player.hand);
         }
     }
@@ -552,7 +552,7 @@ public class PCLCombatStats extends EYBPower implements InvisiblePower
 
     public static void OnVictory()
     {
-        GR.PCL.Dungeon.UpdateLongestMatchCombo(MatchingSystem.AffinityMeter.GetLongestMatchCombo());
+        PGR.PCL.Dungeon.UpdateLongestMatchCombo(MatchingSystem.AffinityMeter.GetLongestMatchCombo());
         ClearPCLStats();
     }
 

@@ -22,9 +22,10 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import com.megacrit.cardcrawl.screens.stats.CharStat;
 import eatyourbeets.utilities.RandomizedList;
-import pinacolada.cards.pcl.basic.Strike;
+import pinacolada.cards.fool.basic.Strike;
+import pinacolada.effects.SFX;
 import pinacolada.patches.relicLibrary.RelicLibraryPatches;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.resources.pcl.PCLResources;
 import pinacolada.resources.pcl.misc.PCLLoadout;
 import pinacolada.ui.characterSelection.PCLBaseStatEditor;
@@ -44,9 +45,9 @@ public class FoolCharacter extends CustomPlayer
 
     public FoolCharacter()
     {
-        super(ORIGINAL_NAME, GR.PCL.PlayerClass, GR.PCL.Images.ORB_TEXTURES, GR.PCL.Images.ORB_VFX_PNG, (String) null, null);
+        super(ORIGINAL_NAME, PGR.Fool.PlayerClass, PGR.PCL.Images.ORB_TEXTURES, PGR.PCL.Images.ORB_VFX_PNG, (String) null, null);
 
-        initializeClass(null, GR.PCL.Images.SHOULDER2_PNG, GR.PCL.Images.SHOULDER1_PNG, GR.PCL.Images.CORPSE_PNG,
+        initializeClass(null, PGR.Fool.Images.SHOULDER2_PNG, PGR.Fool.Images.SHOULDER1_PNG, PGR.Fool.Images.CORPSE_PNG,
         getLoadout(), 0f, -5f, 240f, 244f, new EnergyManager(3));
 
         reloadAnimation();
@@ -54,7 +55,7 @@ public class FoolCharacter extends CustomPlayer
 
     public void reloadAnimation()
     {
-        this.loadAnimation(GR.PCL.Images.SKELETON_ATLAS, GR.PCL.Images.SKELETON_JSON, 1f);
+        this.loadAnimation(PGR.Fool.Images.SKELETON_ATLAS, PGR.Fool.Images.SKELETON_JSON, 1f);
         AnimationState.TrackEntry e = this.state.setAnimation(0, "Idle", true);
         this.stateData.setMix("Hit", "Idle", 0.1f);
         e.setTimeScale(0.9f);
@@ -188,7 +189,7 @@ public class FoolCharacter extends CustomPlayer
     @Override
     public String getCustomModeCharacterButtonSoundKey()
     {
-        return "TINGSHA";
+        return SFX.TINGSHA;
     }
 
     @Override
@@ -224,7 +225,7 @@ public class FoolCharacter extends CustomPlayer
     @Override
     public AbstractCard.CardColor getCardColor()
     {
-        return GR.PCL.CardColor;
+        return PGR.Fool.CardColor;
     }
 
     @Override
@@ -256,11 +257,11 @@ public class FoolCharacter extends CustomPlayer
 
     protected PCLLoadout PrepareLoadout()
     {
-        int unlockLevel = GR.PCL.GetUnlockLevel();
-        if (unlockLevel < GR.PCL.Data.SelectedLoadout.UnlockLevel)
+        int unlockLevel = PGR.Fool.GetUnlockLevel();
+        if (unlockLevel < PGR.PCL.Data.SelectedLoadout.UnlockLevel)
         {
             RandomizedList<PCLLoadout> list = new RandomizedList<>();
-            for (PCLLoadout loadout : GR.PCL.Data.BaseLoadouts)
+            for (PCLLoadout loadout : PGR.PCL.Data.BaseLoadouts)
             {
                 if (unlockLevel >= loadout.UnlockLevel)
                 {
@@ -268,9 +269,9 @@ public class FoolCharacter extends CustomPlayer
                 }
             }
 
-            GR.PCL.Data.SelectedLoadout = list.Retrieve(new com.megacrit.cardcrawl.random.Random());
+            PGR.PCL.Data.SelectedLoadout = list.Retrieve(new com.megacrit.cardcrawl.random.Random());
         }
 
-        return GR.PCL.Data.SelectedLoadout;
+        return PGR.PCL.Data.SelectedLoadout;
     }
 }

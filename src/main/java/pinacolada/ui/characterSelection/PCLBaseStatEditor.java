@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.screens.charSelect.CharacterOption;
 import eatyourbeets.ui.GUIElement;
 import eatyourbeets.utilities.EYBFontHelper;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.resources.pcl.misc.PCLLoadoutData;
 import pinacolada.ui.controls.GUI_Button;
 import pinacolada.ui.controls.GUI_Dropdown;
@@ -59,11 +59,11 @@ public class PCLBaseStatEditor extends GUIElement
                 case HP:
                     return CharacterOption.TEXT[4] + GetAmount(data);
                 case OrbSlot:
-                    return GR.PCL.Strings.Rewards.OrbSlot + ": " + GetAmount(data);
+                    return PGR.PCL.Strings.Rewards.OrbSlot + ": " + GetAmount(data);
                 case PotionSlot:
-                    return GR.PCL.Strings.Rewards.PotionSlot + ": " + GetAmount(data);
+                    return PGR.PCL.Strings.Rewards.PotionSlot + ": " + GetAmount(data);
                 case CommonUpgrade:
-                    return GR.PCL.Strings.Rewards.CommonUpgrade + ": " + GetAmount(data);
+                    return PGR.PCL.Strings.Rewards.CommonUpgrade + ": " + GetAmount(data);
                 default:
                     return "";
             }

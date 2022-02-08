@@ -11,13 +11,13 @@ import eatyourbeets.utilities.CardSelection;
 import eatyourbeets.utilities.ColoredString;
 import pinacolada.cards.base.*;
 import pinacolada.effects.AttackEffects;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameEffects;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
 
-public class Curse_AscendersBane extends PCLCard_Curse implements OnRemovedFromDeckListener
+public class Curse_AscendersBane extends PCLCard implements OnRemovedFromDeckListener
 {
     public static final PCLCardData DATA = Register(Curse_AscendersBane.class)
             .SetCurse(-2, PCLCardTarget.None, true);
@@ -28,12 +28,12 @@ public class Curse_AscendersBane extends PCLCard_Curse implements OnRemovedFromD
 
     public static boolean CheckUnnamedReign()
     {
-        return PCLGameUtilities.GetAscensionLevel() >= ASCENSION_THRESHOLD && (GR.PCL.Dungeon.IsUnnamedReign() || (player != null && PCLGameUtilities.GetRelic(UnnamedReignRelic.class) != null));
+        return PCLGameUtilities.GetAscensionLevel() >= ASCENSION_THRESHOLD && (PGR.PCL.Dungeon.IsUnnamedReign() || (player != null && PCLGameUtilities.GetRelic(UnnamedReignRelic.class) != null));
     }
 
     public Curse_AscendersBane()
     {
-        super(DATA, false);
+        super(DATA);
 
         Initialize(0, 0, 3);
 

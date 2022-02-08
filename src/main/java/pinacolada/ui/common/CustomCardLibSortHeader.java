@@ -9,8 +9,8 @@ import com.megacrit.cardcrawl.screens.compendium.CardLibSortHeader;
 import com.megacrit.cardcrawl.screens.mainMenu.SortHeaderButton;
 import pinacolada.cards.base.CardAmountComparator;
 import pinacolada.cards.base.FakeLibraryCard;
-import pinacolada.cards.base.PCLCard_UltraRare;
-import pinacolada.resources.GR;
+import pinacolada.cards.fool.FoolCard_UltraRare;
+import pinacolada.resources.PGR;
 
 import java.util.ArrayList;
 
@@ -75,7 +75,7 @@ public class CustomCardLibSortHeader extends CardLibSortHeader
                 nameButton = buttons[3];
             }
 
-            amountButton = new SortHeaderButton(GR.PCL.Strings.SeriesUI.Amount, xPosition, 0f, this);
+            amountButton = new SortHeaderButton(PGR.PCL.Strings.SeriesUI.Amount, xPosition, 0f, this);
 
             float offsetX = -(Settings.scale * 30f);
 
@@ -110,7 +110,7 @@ public class CustomCardLibSortHeader extends CardLibSortHeader
     @Override
     public void setGroup(CardGroup group)
     {
-        GR.UI.CardFilters.Clear(false, true);
+        PGR.UI.CardFilters.Clear(false, true);
         if (this.group != null && this.originalGroup != null) {
             this.group.group = this.originalGroup;
         }
@@ -126,9 +126,9 @@ public class CustomCardLibSortHeader extends CardLibSortHeader
             return;
         }
 
-        for (PCLCard_UltraRare card : PCLCard_UltraRare.GetCards().values())
+        for (FoolCard_UltraRare card : FoolCard_UltraRare.GetCards().values())
         {
-            if (PCLCard_UltraRare.IsSeen(card.cardID))
+            if (FoolCard_UltraRare.IsSeen(card.cardID))
             {
                 if (!group.contains(card))
                 {
@@ -213,7 +213,7 @@ public class CustomCardLibSortHeader extends CardLibSortHeader
                 }
             }
             didChangeOrder(lastUsedButton, isAscending);
-            GR.UI.CardFilters.Refresh(this.group.group);
+            PGR.UI.CardFilters.Refresh(this.group.group);
         }
     }
 

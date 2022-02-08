@@ -16,7 +16,7 @@ import pinacolada.cards.base.PCLAffinity;
 import pinacolada.monsters.PCLAlly;
 import pinacolada.powers.PCLClickablePower;
 import pinacolada.powers.PowerTriggerConditionType;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.ui.hitboxes.RelativeHitbox;
 import pinacolada.utilities.PCLActions;
 
@@ -32,7 +32,7 @@ public class ChangeIntentPower extends PCLClickablePower
     public String actionString;
     public EYBMove_Special specialMove;
     public boolean active;
-    public static final String POWER_ID = GR.PCL.CreateID(ChangeIntentPower.class.getSimpleName());
+    public static final String POWER_ID = PGR.PCL.CreateID(ChangeIntentPower.class.getSimpleName());
     public RelativeHitbox rhb;
 
     public ChangeIntentPower(PCLAlly owner, AbstractMonster.Intent intent, ActionT1<AbstractCreature> action) {
@@ -51,7 +51,7 @@ public class ChangeIntentPower extends PCLClickablePower
         this.action = action;
         this.powerUpdate = powerUpdate;
         this.hideAmount = true;
-        this.img = powerImg != null ? powerImg : GR.PCL.Images.Affinities.General.Texture();
+        this.img = powerImg != null ? powerImg : PGR.PCL.Images.Affinities.General.Texture();
 
         this.specialMove = (EYBMove_Special) new EYBMove_Special()
                 .SetIntent(intent)
@@ -98,7 +98,7 @@ public class ChangeIntentPower extends PCLClickablePower
             hb.move(x, y);
         }
 
-        pinacolada.utilities.PCLRenderHelpers.DrawCentered(sb, borderColor, GR.PCL.Images.SquaredButton.Texture(), x, y, BUTTON_SIZE, BUTTON_SIZE, 1.5f, 0);
+        pinacolada.utilities.PCLRenderHelpers.DrawCentered(sb, borderColor, PGR.PCL.Images.SquaredButton.Texture(), x, y, BUTTON_SIZE, BUTTON_SIZE, 1.5f, 0);
         if (this.powerIcon != null) {
             pinacolada.utilities.PCLRenderHelpers.DrawCentered(sb, imageColor, this.powerIcon, x, y, BUTTON_SIZE, BUTTON_SIZE, 0.75f, 0);
         }
@@ -108,7 +108,7 @@ public class ChangeIntentPower extends PCLClickablePower
 
         if (enabled && hb.hovered && clickable)
         {
-            pinacolada.utilities.PCLRenderHelpers.DrawCentered(sb, Colors.White(0.3f), GR.PCL.Images.SquaredButton.Texture(), x, y, BUTTON_SIZE, BUTTON_SIZE, 1.5f, 0);
+            pinacolada.utilities.PCLRenderHelpers.DrawCentered(sb, Colors.White(0.3f), PGR.PCL.Images.SquaredButton.Texture(), x, y, BUTTON_SIZE, BUTTON_SIZE, 1.5f, 0);
         }
 
         for (AbstractGameEffect e : effects)

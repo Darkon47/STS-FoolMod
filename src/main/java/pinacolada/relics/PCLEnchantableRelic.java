@@ -15,17 +15,19 @@ import eatyourbeets.cards.base.EYBCard;
 import eatyourbeets.interfaces.listeners.OnReceiveRewardsListener;
 import eatyourbeets.utilities.RandomizedList;
 import eatyourbeets.utilities.WeightedList;
-import pinacolada.actions.pileSelection.SelectFromPile;
 import pinacolada.cards.base.CardSeries;
 import pinacolada.cards.base.PCLCard;
 import pinacolada.cards.base.PCLCardTooltip;
-import pinacolada.cards.pcl.enchantments.Enchantment;
+import pinacolada.cards.fool.enchantments.Enchantment;
 import pinacolada.powers.common.ExitStancePower;
 import pinacolada.powers.special.EnchantmentPower;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.resources.pcl.misc.PCLRuntimeLoadout;
 import pinacolada.rewards.pcl.MissingPieceReward;
-import pinacolada.utilities.*;
+import pinacolada.utilities.PCLActions;
+import pinacolada.utilities.PCLGameUtilities;
+import pinacolada.utilities.PCLInputManager;
+import pinacolada.utilities.PCLJUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -93,7 +95,7 @@ public abstract class PCLEnchantableRelic extends PCLRelic implements OnReceiveR
         super.renderCounter(sb, inTopPanel);
         if (showAffinities)
         {
-            GR.UI.CardAffinities.TryRender(sb);
+            PGR.UI.CardAffinities.TryRender(sb);
         }
     }
 
@@ -107,7 +109,7 @@ public abstract class PCLEnchantableRelic extends PCLRelic implements OnReceiveR
             enchantment.drawScale = enchantment.targetDrawScale = 0.8f;
             enchantment.current_x = enchantment.target_x = InputHelper.mX + (((InputHelper.mX > (Settings.WIDTH * 0.5f)) ? -1.505f : 1.505f) * PCLCardTooltip.BOX_W);
             enchantment.current_y = enchantment.target_y = InputHelper.mY - (AbstractCard.IMG_HEIGHT * 0.5f);
-            GR.UI.AddPostRender(enchantment::render);
+            PGR.UI.AddPostRender(enchantment::render);
         }
     }
 
@@ -192,7 +194,7 @@ public abstract class PCLEnchantableRelic extends PCLRelic implements OnReceiveR
         {
             if (AbstractDungeon.screen == AbstractDungeon.CurrentScreen.COMBAT_REWARD)
             {
-                GR.UI.CardAffinities.TryUpdate();
+                PGR.UI.CardAffinities.TryUpdate();
             }
             else
             {
@@ -205,7 +207,7 @@ public abstract class PCLEnchantableRelic extends PCLRelic implements OnReceiveR
     {
         if (counter > 0 && GetEnchantmentLevel() < 2)
         {
-            PCLGameEffects.Queue.Callback(new SelectFromPile(name, 1, CreateUpgradeGroup())
+            PCLActions.Bottom.SelectFromPile(name, 1, CreateUpgradeGroup())
                     .CancellableFromPlayer(true)
                     .AddCallback(selection -> {
                         if (selection.size() > 0) {
@@ -217,7 +219,7 @@ public abstract class PCLEnchantableRelic extends PCLRelic implements OnReceiveR
                                 Use();
                             }
                         }
-                    }));
+                    });
         }
     }
 
@@ -236,7 +238,7 @@ public abstract class PCLEnchantableRelic extends PCLRelic implements OnReceiveR
     @Override
     public boolean canSpawn()
     {
-        return AbstractDungeon.player.chosenClass == GR.PCL.PlayerClass;
+        return AbstractDungeon.player.chosenClass == PGR.Fool.PlayerClass;
     }
 
     @Override
@@ -280,7 +282,7 @@ public abstract class PCLEnchantableRelic extends PCLRelic implements OnReceiveR
             }
         }
 
-        GR.UI.CardAffinities.Open(player.masterDeck.group);
+        PGR.UI.CardAffinities.Open(player.masterDeck.group);
         showAffinities = true;
     }
 
@@ -289,12 +291,12 @@ public abstract class PCLEnchantableRelic extends PCLRelic implements OnReceiveR
         final WeightedList<CardSeries> list = new WeightedList<>();
         final Map<CardSeries, List<AbstractCard>> synergyListMap = CardSeries.GetCardsBySynergy(player.masterDeck.group);
 
-        if (GR.PCL.Dungeon.Loadouts.isEmpty())
+        if (PGR.PCL.Dungeon.Loadouts.isEmpty())
         {
-            GR.PCL.Dungeon.AddAllLoadouts();
+            PGR.PCL.Dungeon.AddAllLoadouts();
         }
 
-        for (PCLRuntimeLoadout series : GR.PCL.Dungeon.Loadouts)
+        for (PCLRuntimeLoadout series : PGR.PCL.Dungeon.Loadouts)
         {
             if (series.GetCardPoolInPlay().size() >= MINIMUM_SERIES)
             {
@@ -317,7 +319,7 @@ public abstract class PCLEnchantableRelic extends PCLRelic implements OnReceiveR
 
         if (allowColorless)
         {
-            list.Add(CardSeries.COLORLESS, 1 + (GR.PCL.Dungeon.Loadouts.size() / 2));
+            list.Add(CardSeries.COLORLESS, 1 + (PGR.PCL.Dungeon.Loadouts.size() / 2));
         }
 
         return list;

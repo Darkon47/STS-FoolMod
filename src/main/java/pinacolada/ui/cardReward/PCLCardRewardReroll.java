@@ -7,10 +7,10 @@ import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.vfx.cardManip.ExhaustCardEffect;
 import eatyourbeets.interfaces.delegates.ActionT1;
 import eatyourbeets.ui.GUIElement;
-import pinacolada.cards.pcl.series.Katanagatari.HigakiRinne;
+import pinacolada.cards.fool.series.Katanagatari.HigakiRinne;
 import pinacolada.effects.SFX;
 import pinacolada.effects.card.HideCardEffect;
-import pinacolada.relics.pcl.AbstractCubes;
+import pinacolada.relics.fool.AbstractCubes;
 import pinacolada.utilities.PCLGameEffects;
 import pinacolada.utilities.PCLGameUtilities;
 

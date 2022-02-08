@@ -13,8 +13,8 @@ import eatyourbeets.utilities.WeightedList;
 import pinacolada.cards.base.CardSeries;
 import pinacolada.cards.base.PCLCard;
 import pinacolada.cards.base.PCLCardData;
-import pinacolada.cards.base.PCLCard_UltraRare;
-import pinacolada.resources.GR;
+import pinacolada.cards.fool.FoolCard_UltraRare;
+import pinacolada.resources.PGR;
 import pinacolada.resources.pcl.misc.PCLLoadout;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
@@ -25,13 +25,13 @@ public abstract class PCLReward extends CustomReward
 {
     public static String CreateFullID(Class<? extends PCLReward> type)
     {
-        return GR.PCL.CreateID(type.getSimpleName());
+        return PGR.PCL.CreateID(type.getSimpleName());
     }
 
     public static float GetUltraRareChance(PCLLoadout loadout)
     {
         float bonus = 1;
-        int level = GR.PCL.Data.SpecialTrophies.Trophy1;
+        int level = PGR.PCL.Data.SpecialTrophies.Trophy1;
         if (level > 0)
         {
             bonus += level / (level + 100f);
@@ -53,7 +53,7 @@ public abstract class PCLReward extends CustomReward
 
     public PCLReward(String id, String text, RewardType type)
     {
-        super(new Texture(GR.GetRewardImage(id)), text, type);
+        super(new Texture(PGR.GetRewardImage(id)), text, type);
     }
 
     public PCLReward(Texture rewardImage, String text, RewardType type)
@@ -134,19 +134,19 @@ public abstract class PCLReward extends CustomReward
 
     private void AddUltraRare(ArrayList<AbstractCard> cards, CardSeries series)
     {
-        int currentLevel = GR.PCL.GetUnlockLevel();
+        int currentLevel = PGR.Fool.GetUnlockLevel();
         if (currentLevel <= 2 || AbstractDungeon.floorNum < 8 || AbstractDungeon.floorNum > 36 || cards.isEmpty())
         {
             return;
         }
 
-        final PCLLoadout loadout = GR.PCL.Data.GetLoadout(series);
+        final PCLLoadout loadout = PGR.PCL.Data.GetLoadout(series);
         float chances = GetUltraRareChance(loadout);
         for (AbstractCard c : AbstractDungeon.player.masterDeck.group)
         {
-            if (c instanceof PCLCard_UltraRare)
+            if (c instanceof FoolCard_UltraRare)
             {
-                CardSeries s = ((PCLCard_UltraRare) c).series;
+                CardSeries s = ((FoolCard_UltraRare) c).series;
                 if (s != null && series.ID == s.ID)
                 {
                     return; // No duplicates
@@ -161,7 +161,7 @@ public abstract class PCLReward extends CustomReward
         float roll = AbstractDungeon.cardRng.random(100f);
         if (roll < chances)
         {
-            PCLCardData data = PCLCard_UltraRare.GetCardData(loadout);
+            PCLCardData data = FoolCard_UltraRare.GetCardData(loadout);
             if (data != null)
             {
                 cards.set(Math.min(1, cards.size() - 1), data.CreateNewInstance());

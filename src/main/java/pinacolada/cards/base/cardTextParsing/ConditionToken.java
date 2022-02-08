@@ -3,7 +3,7 @@ package pinacolada.cards.base.cardTextParsing;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.core.Settings;
 import eatyourbeets.utilities.ColoredString;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLGameUtilities;
 
 public class ConditionToken extends CTToken
@@ -61,7 +61,7 @@ public class ConditionToken extends CTToken
     @Override
     public void Render(SpriteBatch sb, CTContext context)
     {
-        if (coloredString.text == null || GR.UI.Elapsed25())
+        if (coloredString.text == null || PGR.UI.Elapsed25())
         {
             UpdateString(context);
         }

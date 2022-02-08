@@ -17,7 +17,7 @@ import eatyourbeets.utilities.FieldInfo;
 import pinacolada.cards.base.PCLCardTooltip;
 import pinacolada.dailymods.AllRelicPCLRun;
 import pinacolada.dailymods.NoRelics;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.resources.pcl.PCLDungeonData;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
@@ -38,7 +38,7 @@ public abstract class PCLRelic extends CustomRelic
 
     public static String CreateFullID(Class<? extends PCLRelic> type)
     {
-        return GR.PCL.CreateID(type.getSimpleName());
+        return PGR.PCL.CreateID(type.getSimpleName());
     }
 
     protected PCLRelic(String id, Texture texture, RelicTier tier, LandingSound sfx)
@@ -48,7 +48,7 @@ public abstract class PCLRelic extends CustomRelic
 
     public PCLRelic(String id, String imageID, RelicTier tier, LandingSound sfx)
     {
-        super(id, GR.GetTexture(GR.GetRelicImage(imageID)), tier, sfx);
+        super(id, PGR.GetTexture(PGR.GetRelicImage(imageID)), tier, sfx);
     }
 
     public PCLRelic(String id, RelicTier tier, LandingSound sfx)
@@ -213,7 +213,7 @@ public abstract class PCLRelic extends CustomRelic
             tips.clear();
         }
 
-        mainTooltip = new PCLCardTooltip(name, description, GR.Enums.Characters.THE_FOOL);
+        mainTooltip = new PCLCardTooltip(name, description, PGR.Enums.Characters.THE_FOOL);
         tips.add(mainTooltip);
         PCLGameUtilities.ScanForTips(description, tips);
     }
@@ -232,7 +232,7 @@ public abstract class PCLRelic extends CustomRelic
     {
         if (isPCLCharacter)
         {
-            final PCLDungeonData data = GR.PCL.Dungeon;
+            final PCLDungeonData data = PGR.PCL.Dungeon;
 
             if (!ModHelper.isModEnabled(AllRelicPCLRun.ID)) {
                 data.RemoveRelic(PenNib.ID);
@@ -317,8 +317,7 @@ public abstract class PCLRelic extends CustomRelic
     }
 
     // Prevents duplicate relics from showing up for the Animator
-    // TODO replace your versions of Animator relics with different ones
     public boolean canSpawn() {
-        return PCLGameUtilities.IsPlayerClass(GR.PCL.PlayerClass) || (GR.PCL.Config.EnableRelicsForOtherCharacters.Get() && !PCLGameUtilities.IsPlayerClass(eatyourbeets.resources.GR.Animator.PlayerClass));
+        return PCLGameUtilities.IsPlayerClass(PGR.Fool.PlayerClass) || (PGR.PCL.Config.EnableRelicsForOtherCharacters.Get() && !PCLGameUtilities.IsPlayerClass(eatyourbeets.resources.GR.Animator.PlayerClass));
     }
 }

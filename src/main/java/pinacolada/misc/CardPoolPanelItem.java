@@ -3,7 +3,7 @@ package pinacolada.misc;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import pinacolada.cards.base.PCLCardTooltip;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.resources.pcl.misc.PCLRuntimeLoadout;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
@@ -16,15 +16,15 @@ public class CardPoolPanelItem extends PCLTopPanelItem
     protected CardGroup cardGroup;
 
     public CardPoolPanelItem() {
-        super(GR.PCL.Images.CardPool, ID);
-        SetTooltip(new PCLCardTooltip(GR.PCL.Strings.Misc.ViewCardPool, GR.PCL.Strings.Misc.ViewCardPoolDescription));
+        super(PGR.PCL.Images.CardPool, ID);
+        SetTooltip(new PCLCardTooltip(PGR.PCL.Strings.Misc.ViewCardPool, PGR.PCL.Strings.Misc.ViewCardPoolDescription));
     }
 
     @Override
     protected void onClick() {
         super.onClick();
 
-        GR.UI.CardsScreen.Open(GetAllCards());
+        PGR.UI.CardsScreen.Open(GetAllCards());
     }
 
     protected CardGroup GetAllCards() {
@@ -54,17 +54,17 @@ public class CardPoolPanelItem extends PCLTopPanelItem
 
     public String GetFullDescription()
     {
-        String base = GR.PCL.Strings.Misc.ViewCardPoolDescription;
-        if (GR.PCL.Dungeon.Loadouts.isEmpty())
+        String base = PGR.PCL.Strings.Misc.ViewCardPoolDescription;
+        if (PGR.PCL.Dungeon.Loadouts.isEmpty())
         {
             return base;
         }
 
         StringJoiner joiner = new StringJoiner(" NL ");
-        for (PCLRuntimeLoadout series : GR.PCL.Dungeon.Loadouts)
+        for (PCLRuntimeLoadout series : PGR.PCL.Dungeon.Loadouts)
         {
             String line;
-            if (GR.PCL.Data.SelectedLoadout.Series.equals(series.Loadout.Series))
+            if (PGR.PCL.Data.SelectedLoadout.Series.equals(series.Loadout.Series))
             {
                 line = "- #y" + PCLJUtils.ModifyString(series.Loadout.Name, w -> "#y" + w);
             }
@@ -81,6 +81,6 @@ public class CardPoolPanelItem extends PCLTopPanelItem
             joiner.add(line);
         }
 
-        return base + " NL  NL " + PCLJUtils.ModifyString(GR.PCL.Strings.Misc.ViewCardPoolSeries, w -> "#p" + w) + ": NL " + joiner;
+        return base + " NL  NL " + PCLJUtils.ModifyString(PGR.PCL.Strings.Misc.ViewCardPoolSeries, w -> "#p" + w) + ": NL " + joiner;
     }
 }

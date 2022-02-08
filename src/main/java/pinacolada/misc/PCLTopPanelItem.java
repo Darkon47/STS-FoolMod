@@ -4,7 +4,7 @@ import basemod.TopPanelItem;
 import eatyourbeets.ui.TextureCache;
 import eatyourbeets.utilities.GenericCallback;
 import pinacolada.cards.base.PCLCardTooltip;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 
 public abstract class PCLTopPanelItem extends TopPanelItem
 {
@@ -14,7 +14,7 @@ public abstract class PCLTopPanelItem extends TopPanelItem
 
     public static String CreateFullID(Class<? extends PCLTopPanelItem> type)
     {
-        return GR.PCL.CreateID(type.getSimpleName());
+        return PGR.PCL.CreateID(type.getSimpleName());
     }
 
     public PCLTopPanelItem(TextureCache tc, String id) {

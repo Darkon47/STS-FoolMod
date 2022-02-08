@@ -15,7 +15,7 @@ import eatyourbeets.utilities.Mathf;
 import pinacolada.effects.vfx.*;
 import pinacolada.effects.vfx.megacritCopy.*;
 import pinacolada.orbs.pcl.Earth;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.resources.pcl.PCLImages;
 import pinacolada.utilities.PCLColors;
 import pinacolada.utilities.PCLGameEffects;
@@ -24,7 +24,7 @@ import pinacolada.utilities.PCLRenderHelpers;
 
 public class VFX
 {
-    public static final PCLImages.Effects IMAGES = GR.PCL.Images.Effects;
+    public static final PCLImages.Effects IMAGES = PGR.PCL.Images.Effects;
 
     public static float RandomX(Hitbox hb, float variance)
     {

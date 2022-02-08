@@ -18,7 +18,7 @@ import pinacolada.actions.orbs.DarkOrbEvokeAction;
 import pinacolada.actions.orbs.LightningOrbAction;
 import pinacolada.cards.base.PCLCardTooltip;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
@@ -32,7 +32,7 @@ public class AbstractOrbPatches
     protected static final HashMap<String, PCLCardTooltip> tooltips = new HashMap<>();
 
     protected static OrbStrings GetOrbStrings(String orbID) {
-        return orbStrings.getOrDefault(orbID, GR.GetOrbStrings(GR.PCL.CreateID(orbID)));
+        return orbStrings.getOrDefault(orbID, PGR.GetOrbStrings(PGR.PCL.CreateID(orbID)));
     }
 
     protected static PCLCardTooltip GetTooltip(AbstractOrb orb) {
@@ -76,7 +76,7 @@ public class AbstractOrbPatches
         @SpirePrefixPatch
         public static SpireReturn Prefix(AbstractOrb __instance)
         {
-            if (PCLGameUtilities.IsPlayerClass(GR.PCL.PlayerClass) && PCLGameUtilities.IsValidOrb(__instance)) {
+            if (PCLGameUtilities.IsPCLPlayerClass() && PCLGameUtilities.IsValidOrb(__instance)) {
                 __instance.hb.update();
                 if (__instance.hb.hovered)
                 {
@@ -107,7 +107,7 @@ public class AbstractOrbPatches
         @SpirePrefixPatch
         public static SpireReturn Prefix(Dark __instance)
         {
-            if (PCLGameUtilities.IsPlayerClass(GR.PCL.PlayerClass)) {
+            if (PCLGameUtilities.IsPCLPlayerClass()) {
                 PCLActions.Top.Add(new DarkOrbEvokeAction(__instance.evokeAmount));
                 return SpireReturn.Return(null);
             }
@@ -121,7 +121,7 @@ public class AbstractOrbPatches
         @SpirePostfixPatch
         public static void Postfix(Dark __instance)
         {
-            if (PCLGameUtilities.IsPlayerClass(GR.PCL.PlayerClass)) {
+            if (PCLGameUtilities.IsPCLPlayerClass()) {
                 __instance.description = PCLJUtils.Format(GetOrbStrings(__instance.ID).DESCRIPTION[0], __instance.passiveAmount, __instance.evokeAmount);
             }
         }
@@ -133,7 +133,7 @@ public class AbstractOrbPatches
         @SpirePostfixPatch
         public static void Postfix(Frost __instance)
         {
-            if (PCLGameUtilities.IsPlayerClass(GR.PCL.PlayerClass)) {
+            if (PCLGameUtilities.IsPCLPlayerClass()) {
                 __instance.description = PCLJUtils.Format(GetOrbStrings(__instance.ID).DESCRIPTION[0], __instance.passiveAmount, __instance.evokeAmount);
             }
         }
@@ -145,7 +145,7 @@ public class AbstractOrbPatches
         @SpirePrefixPatch
         public static SpireReturn Prefix(Lightning __instance)
         {
-            if (PCLGameUtilities.IsPlayerClass(GR.PCL.PlayerClass)) {
+            if (PCLGameUtilities.IsPCLPlayerClass()) {
                 PCLActions.Top.Add(new LightningOrbAction(null, __instance.evokeAmount, AbstractDungeon.player.hasPower(ElectroPower.POWER_ID)));
                 return SpireReturn.Return(null);
             }
@@ -159,7 +159,7 @@ public class AbstractOrbPatches
         @SpirePrefixPatch
         public static SpireReturn Prefix(Lightning __instance)
         {
-            if (PCLGameUtilities.IsPlayerClass(GR.PCL.PlayerClass)) {
+            if (PCLGameUtilities.IsPCLPlayerClass()) {
                 PCLActions.Top.Add(new LightningOrbAction(__instance, __instance.passiveAmount, AbstractDungeon.player.hasPower(ElectroPower.POWER_ID)));
                 return SpireReturn.Return(null);
             }
@@ -173,7 +173,7 @@ public class AbstractOrbPatches
         @SpirePrefixPatch
         public static SpireReturn Prefix(Lightning __instance, DamageInfo info, boolean hitAll)
         {
-            if (PCLGameUtilities.IsPlayerClass(GR.PCL.PlayerClass)) {
+            if (PCLGameUtilities.IsPCLPlayerClass()) {
                 PCLActions.Top.Add(new LightningOrbAction(__instance, info.output, hitAll));
                 return SpireReturn.Return(null);
             }
@@ -187,7 +187,7 @@ public class AbstractOrbPatches
         @SpirePostfixPatch
         public static void Postfix(Lightning __instance)
         {
-            if (PCLGameUtilities.IsPlayerClass(GR.PCL.PlayerClass)) {
+            if (PCLGameUtilities.IsPCLPlayerClass()) {
                 __instance.description = PCLJUtils.Format(GetOrbStrings(__instance.ID).DESCRIPTION[0], __instance.passiveAmount, __instance.evokeAmount);
             }
         }
@@ -199,7 +199,7 @@ public class AbstractOrbPatches
         @SpirePostfixPatch
         public static void Postfix(Plasma __instance)
         {
-            if (PCLGameUtilities.IsPlayerClass(GR.PCL.PlayerClass)) {
+            if (PCLGameUtilities.IsPCLPlayerClass()) {
                 __instance.description = PCLJUtils.Format(GetOrbStrings(__instance.ID).DESCRIPTION[0], __instance.passiveAmount, __instance.evokeAmount);
             }
         }

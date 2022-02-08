@@ -3,7 +3,7 @@ package pinacolada.cards.base.cardeffects.CounterIntentEffects;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import pinacolada.cards.base.PCLCard;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
@@ -28,7 +28,7 @@ public class CounterIntentEffect_Attack_Debuff extends CounterIntentEffect
     @Override
     public String GetDescription(PCLCard nanami)
     {
-        return ACTIONS.Apply(GetWeak(nanami), GR.Tooltips.Weak, true);
+        return ACTIONS.Apply(GetWeak(nanami), PGR.Tooltips.Weak, true);
     }
 
     @Override

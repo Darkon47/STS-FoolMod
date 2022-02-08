@@ -23,7 +23,7 @@ import pinacolada.cards.base.PCLCard;
 import pinacolada.cards.base.PCLCardBase;
 import pinacolada.cards.base.PCLCardTooltip;
 import pinacolada.resources.CardTooltips;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.ui.controls.GUI_Image;
 
 import java.util.ArrayList;
@@ -413,11 +413,11 @@ public class PCLRenderHelpers
     }
 
     public static void DrawGrayscale(SpriteBatch sb, ActionT0 drawFunc) {
-        DrawWithShader(sb, GR.GetGrayscaleShader(), drawFunc);
+        DrawWithShader(sb, PGR.GetGrayscaleShader(), drawFunc);
     }
 
     public static void DrawSepia(SpriteBatch sb, ActionT0 drawFunc) {
-        DrawWithShader(sb, GR.GetSepiaShader(), drawFunc);
+        DrawWithShader(sb, PGR.GetSepiaShader(), drawFunc);
     }
 
     public static void DrawWithShader(SpriteBatch sb, ShaderProgram shader, ActionT0 drawFunc) {
@@ -603,7 +603,7 @@ public class PCLRenderHelpers
                             curHeight -= lineSpacing;
                             if (backgroundColor != null) {
                                 sb.setColor(backgroundColor);
-                                sb.draw(GR.PCL.Images.Badges.Base_Badge.Texture(), x - orbWidth / 2f + 13f * Settings.scale, y + curHeight - orbHeight / 2f - 8f * Settings.scale,
+                                sb.draw(PGR.PCL.Images.Badges.Base_Badge.Texture(), x - orbWidth / 2f + 13f * Settings.scale, y + curHeight - orbHeight / 2f - 8f * Settings.scale,
                                         orbWidth / 2f, orbHeight / 2f,
                                         orbWidth, orbHeight, scaleX, scaleY, 0f,
                                         icon.getRegionX(), icon.getRegionY(), icon.getRegionWidth(),
@@ -617,7 +617,7 @@ public class PCLRenderHelpers
                         {
                             if (backgroundColor != null) {
                                 sb.setColor(backgroundColor);
-                                sb.draw(GR.PCL.Images.Badges.Base_Badge.Texture(), x + curWidth - orbWidth / 2f + 13f * Settings.scale, y + curHeight - orbHeight / 2f - 8f * Settings.scale,
+                                sb.draw(PGR.PCL.Images.Badges.Base_Badge.Texture(), x + curWidth - orbWidth / 2f + 13f * Settings.scale, y + curHeight - orbHeight / 2f - 8f * Settings.scale,
                                         orbWidth / 2f, orbHeight / 2f, orbWidth, orbHeight, scaleX, scaleY, 0f,
                                         icon.getRegionX(), icon.getRegionY(), icon.getRegionWidth(),
                                         icon.getRegionHeight(), false, false);
@@ -804,22 +804,22 @@ public class PCLRenderHelpers
         switch (id)
         {
             case "R":
-                return GR.Tooltips.Might.icon;
+                return PGR.Tooltips.Might.icon;
             case "G":
-                return GR.Tooltips.Velocity.icon;
+                return PGR.Tooltips.Velocity.icon;
             case "B":
-                return GR.Tooltips.Wisdom.icon;
+                return PGR.Tooltips.Wisdom.icon;
             case "O":
-                return GR.Tooltips.Endurance.icon;
+                return PGR.Tooltips.Endurance.icon;
             case "L":
-                return GR.Tooltips.Invocation.icon;
+                return PGR.Tooltips.Invocation.icon;
             case "D":
-                return GR.Tooltips.Desecration.icon;
+                return PGR.Tooltips.Desecration.icon;
             case "S":
-                return GR.Tooltips.Technic.icon;
+                return PGR.Tooltips.Technic.icon;
 
             case "E":
-                return AbstractDungeon.player != null ? AbstractDungeon.player.getOrb() : GR.Tooltips.Energy.icon;
+                return AbstractDungeon.player != null ? AbstractDungeon.player.getOrb() : PGR.Tooltips.Energy.icon;
             case "CARD":
                 return AbstractCard.orb_card;
             case "POTION":

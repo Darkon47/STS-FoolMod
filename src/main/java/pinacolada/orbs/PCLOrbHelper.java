@@ -6,7 +6,7 @@ import eatyourbeets.utilities.WeightedList;
 import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCardTooltip;
 import pinacolada.interfaces.markers.TooltipObject;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
 
@@ -19,16 +19,16 @@ public class PCLOrbHelper implements TooltipObject
     public static final Map<String, PCLOrbHelper> ALL = new HashMap<>();
     protected static final WeightedList<PCLOrbHelper> WEIGHTED = new WeightedList<>();
 
-    public static final PCLOrbHelper Air = new PCLOrbHelper(pinacolada.orbs.pcl.Air.ORB_ID, GR.Tooltips.Air, PCLAffinity.Green, pinacolada.orbs.pcl.Air::new, 7);
-    public static final PCLOrbHelper Chaos = new PCLOrbHelper(pinacolada.orbs.pcl.Chaos.ORB_ID, GR.Tooltips.Chaos, PCLAffinity.Star, pinacolada.orbs.pcl.Chaos::new, 2);
-    public static final PCLOrbHelper Dark = new PCLOrbHelper(com.megacrit.cardcrawl.orbs.Dark.ORB_ID, GR.Tooltips.Dark, PCLAffinity.Dark, com.megacrit.cardcrawl.orbs.Dark::new, COMMON_THRESHOLD);
-    public static final PCLOrbHelper Earth = new PCLOrbHelper(pinacolada.orbs.pcl.Earth.ORB_ID, GR.Tooltips.Earth, PCLAffinity.Orange, pinacolada.orbs.pcl.Earth::new, 7);
-    public static final PCLOrbHelper Fire = new PCLOrbHelper(pinacolada.orbs.pcl.Fire.ORB_ID, GR.Tooltips.Fire, PCLAffinity.Red, pinacolada.orbs.pcl.Fire::new, COMMON_THRESHOLD);
-    public static final PCLOrbHelper Frost = new PCLOrbHelper(com.megacrit.cardcrawl.orbs.Frost.ORB_ID, GR.Tooltips.Frost, PCLAffinity.Blue, com.megacrit.cardcrawl.orbs.Frost::new, COMMON_THRESHOLD);
-    public static final PCLOrbHelper Lightning = new PCLOrbHelper(com.megacrit.cardcrawl.orbs.Lightning.ORB_ID, GR.Tooltips.Lightning, PCLAffinity.Light, com.megacrit.cardcrawl.orbs.Lightning::new, COMMON_THRESHOLD);
-    public static final PCLOrbHelper Metal = new PCLOrbHelper(pinacolada.orbs.pcl.Air.ORB_ID, GR.Tooltips.Metal, PCLAffinity.Silver, pinacolada.orbs.pcl.Metal::new, 2);
-    public static final PCLOrbHelper Plasma = new PCLOrbHelper(com.megacrit.cardcrawl.orbs.Plasma.ORB_ID, GR.Tooltips.Plasma, PCLAffinity.Silver, com.megacrit.cardcrawl.orbs.Plasma::new, 2);
-    public static final PCLOrbHelper Water = new PCLOrbHelper(pinacolada.orbs.pcl.Air.ORB_ID, GR.Tooltips.Water, PCLAffinity.Blue, pinacolada.orbs.pcl.Water::new, 2);
+    public static final PCLOrbHelper Air = new PCLOrbHelper(pinacolada.orbs.pcl.Air.ORB_ID, PGR.Tooltips.Air, PCLAffinity.Green, pinacolada.orbs.pcl.Air::new, 7);
+    public static final PCLOrbHelper Chaos = new PCLOrbHelper(pinacolada.orbs.pcl.Chaos.ORB_ID, PGR.Tooltips.Chaos, PCLAffinity.Star, pinacolada.orbs.pcl.Chaos::new, 2);
+    public static final PCLOrbHelper Dark = new PCLOrbHelper(com.megacrit.cardcrawl.orbs.Dark.ORB_ID, PGR.Tooltips.Dark, PCLAffinity.Dark, com.megacrit.cardcrawl.orbs.Dark::new, COMMON_THRESHOLD);
+    public static final PCLOrbHelper Earth = new PCLOrbHelper(pinacolada.orbs.pcl.Earth.ORB_ID, PGR.Tooltips.Earth, PCLAffinity.Orange, pinacolada.orbs.pcl.Earth::new, 7);
+    public static final PCLOrbHelper Fire = new PCLOrbHelper(pinacolada.orbs.pcl.Fire.ORB_ID, PGR.Tooltips.Fire, PCLAffinity.Red, pinacolada.orbs.pcl.Fire::new, COMMON_THRESHOLD);
+    public static final PCLOrbHelper Frost = new PCLOrbHelper(com.megacrit.cardcrawl.orbs.Frost.ORB_ID, PGR.Tooltips.Frost, PCLAffinity.Blue, com.megacrit.cardcrawl.orbs.Frost::new, COMMON_THRESHOLD);
+    public static final PCLOrbHelper Lightning = new PCLOrbHelper(com.megacrit.cardcrawl.orbs.Lightning.ORB_ID, PGR.Tooltips.Lightning, PCLAffinity.Light, com.megacrit.cardcrawl.orbs.Lightning::new, COMMON_THRESHOLD);
+    public static final PCLOrbHelper Metal = new PCLOrbHelper(pinacolada.orbs.pcl.Air.ORB_ID, PGR.Tooltips.Metal, PCLAffinity.Silver, pinacolada.orbs.pcl.Metal::new, 2);
+    public static final PCLOrbHelper Plasma = new PCLOrbHelper(com.megacrit.cardcrawl.orbs.Plasma.ORB_ID, PGR.Tooltips.Plasma, PCLAffinity.Silver, com.megacrit.cardcrawl.orbs.Plasma::new, 2);
+    public static final PCLOrbHelper Water = new PCLOrbHelper(pinacolada.orbs.pcl.Air.ORB_ID, PGR.Tooltips.Water, PCLAffinity.Blue, pinacolada.orbs.pcl.Water::new, 2);
 
     public final PCLCardTooltip Tooltip;
     public final PCLAffinity Affinity;

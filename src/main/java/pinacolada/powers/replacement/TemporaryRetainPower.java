@@ -4,7 +4,7 @@ import basemod.interfaces.CloneablePowerInterface;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.RetainCardPower;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 
 public class TemporaryRetainPower extends RetainCardPower implements CloneablePowerInterface
@@ -13,7 +13,7 @@ public class TemporaryRetainPower extends RetainCardPower implements CloneablePo
     {
         super(owner, numCards);
 
-        this.ID = GR.PCL.CreateID(TemporaryRetainPower.class.getSimpleName());
+        this.ID = PGR.PCL.CreateID(TemporaryRetainPower.class.getSimpleName());
     }
 
     @Override

@@ -14,7 +14,7 @@ import com.megacrit.cardcrawl.helpers.controller.CInputActionSet;
 import com.megacrit.cardcrawl.helpers.input.InputHelper;
 import eatyourbeets.interfaces.delegates.ActionT1;
 import eatyourbeets.ui.GUIElement;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLRenderHelpers;
 
 public class GUI_Toggle extends GUIElement
@@ -161,7 +161,7 @@ public class GUI_Toggle extends GUIElement
             return;
         }
 
-        if (GR.UI.TryHover(hb))
+        if (PGR.UI.TryHover(hb))
         {
             if (hb.justHovered)
             {

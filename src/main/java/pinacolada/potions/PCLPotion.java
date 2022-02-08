@@ -12,7 +12,7 @@ import com.megacrit.cardcrawl.vfx.FlashPotionEffect;
 import eatyourbeets.utilities.FieldInfo;
 import eatyourbeets.utilities.MethodInfo;
 import pinacolada.cards.base.PCLCardTooltip;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
 
@@ -34,7 +34,7 @@ public abstract class PCLPotion extends AbstractPotion
 
     public static String CreateFullID(Class<? extends PCLPotion> type)
     {
-        return GR.PCL.CreateID(type.getSimpleName());
+        return PGR.PCL.CreateID(type.getSimpleName());
     }
 
     public final String[] DESCRIPTIONS;
@@ -82,7 +82,7 @@ public abstract class PCLPotion extends AbstractPotion
 
     protected void initializeTips() {
         pclTips.clear();
-        pclTips.add(new PCLCardTooltip(name, description, GR.Enums.Characters.THE_FOOL));
+        pclTips.add(new PCLCardTooltip(name, description, PGR.Enums.Characters.THE_FOOL));
         PCLGameUtilities.ScanForTips(description, pclTips);
     }
 

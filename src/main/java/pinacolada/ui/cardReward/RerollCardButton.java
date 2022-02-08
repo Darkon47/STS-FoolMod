@@ -4,7 +4,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.ui.controls.GUI_Button;
 import pinacolada.ui.hitboxes.AdvancedHitbox;
 
@@ -19,7 +19,7 @@ public class RerollCardButton extends GUI_Button
 
     public RerollCardButton(PCLCardRewardReroll container, int cardIndex)
     {
-        super(GR.PCL.Images.LongButton.Texture(), 0, 0);
+        super(PGR.PCL.Images.LongButton.Texture(), 0, 0);
 
         this.container = container;
         this.hitbox = (AdvancedHitbox) hb;
@@ -28,8 +28,8 @@ public class RerollCardButton extends GUI_Button
 
         SetDimensions(AbstractCard.IMG_WIDTH * 0.85f, AbstractCard.IMG_HEIGHT * 0.175f);
         SetColor(new Color(0.8f, 0.2f, 0.2f, 1f));
-        SetBorder(GR.PCL.Images.LongButtonBorder.Texture(), Settings.GOLD_COLOR);
-        SetText(GR.PCL.Strings.Rewards.Reroll);
+        SetBorder(PGR.PCL.Images.LongButtonBorder.Texture(), Settings.GOLD_COLOR);
+        SetText(PGR.PCL.Strings.Rewards.Reroll);
         SetOnClick(() -> this.container.Reroll(this));
         SetPosition(GetTargetCX(card), GetTargetCY(card));
     }

@@ -1,19 +1,18 @@
 package pinacolada.cards.pcl.glyphs;
 
-import pinacolada.cards.base.PCLCardTarget;
 import eatyourbeets.interfaces.markers.Hidden;
 import eatyourbeets.utilities.AdvancedTexture;
 import pinacolada.cards.base.PCLCard;
 import pinacolada.cards.base.PCLCardData;
-import pinacolada.cards.base.PCLCard_Curse;
+import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.base.attributes.AbstractAttribute;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 
 import java.util.ArrayList;
 
-public abstract class Glyph extends PCLCard_Curse implements Hidden
+public abstract class Glyph extends PCLCard implements Hidden
 {
-    public static final String ID = GR.PCL.CreateID(Glyph.class.getSimpleName());
+    public static final String ID = PGR.PCL.CreateID(Glyph.class.getSimpleName());
     private static final ArrayList<Glyph> cards = new ArrayList<>();
 
     public static PCLCardData RegisterInternal(Class<? extends PCLCard> type)
@@ -55,14 +54,13 @@ public abstract class Glyph extends PCLCard_Curse implements Hidden
 
     protected Glyph(PCLCardData cardData)
     {
-        super(cardData, false);
+        super(cardData);
 
         this.cropPortrait = false;
         this.portraitForeground = portraitImg;
-        this.portraitImg = new AdvancedTexture(GR.GetTexture(GR.GetCardImage(ID), true));
+        this.portraitImg = new AdvancedTexture(PGR.GetTexture(PGR.GetCardImage(ID), true));
         this.showTypeText = false;
         this.maxUpgradeLevel = -1;
-        this.canUpgrade = true;
     }
 
     @Override

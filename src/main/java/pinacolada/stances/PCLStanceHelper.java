@@ -4,7 +4,7 @@ import eatyourbeets.interfaces.delegates.FuncT0;
 import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCardTooltip;
 import pinacolada.interfaces.markers.TooltipObject;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
 
@@ -16,12 +16,12 @@ public class PCLStanceHelper implements TooltipObject
 {
     public static final Map<String, PCLStanceHelper> ALL = new HashMap<>();
 
-    public static final PCLStanceHelper MightStance = new PCLStanceHelper(pinacolada.stances.pcl.MightStance.STANCE_ID, GR.Tooltips.MightStance, PCLAffinity.Red, pinacolada.stances.pcl.MightStance::new);
-    public static final PCLStanceHelper VelocityStance = new PCLStanceHelper(pinacolada.stances.pcl.VelocityStance.STANCE_ID, GR.Tooltips.VelocityStance, PCLAffinity.Green, pinacolada.stances.pcl.VelocityStance::new);
-    public static final PCLStanceHelper WisdomStance = new PCLStanceHelper(pinacolada.stances.pcl.WisdomStance.STANCE_ID, GR.Tooltips.WisdomStance, PCLAffinity.Blue, pinacolada.stances.pcl.WisdomStance::new);
-    public static final PCLStanceHelper EnduranceStance = new PCLStanceHelper(pinacolada.stances.pcl.EnduranceStance.STANCE_ID, GR.Tooltips.EnduranceStance, PCLAffinity.Orange, pinacolada.stances.pcl.EnduranceStance::new);
-    public static final PCLStanceHelper InvocationStance = new PCLStanceHelper(pinacolada.stances.pcl.InvocationStance.STANCE_ID, GR.Tooltips.InvocationStance, PCLAffinity.Light, pinacolada.stances.pcl.InvocationStance::new);
-    public static final PCLStanceHelper DesecrationStance = new PCLStanceHelper(pinacolada.stances.pcl.DesecrationStance.STANCE_ID, GR.Tooltips.DesecrationStance, PCLAffinity.Dark, pinacolada.stances.pcl.DesecrationStance::new);
+    public static final PCLStanceHelper MightStance = new PCLStanceHelper(pinacolada.stances.pcl.MightStance.STANCE_ID, PGR.Tooltips.MightStance, PCLAffinity.Red, pinacolada.stances.pcl.MightStance::new);
+    public static final PCLStanceHelper VelocityStance = new PCLStanceHelper(pinacolada.stances.pcl.VelocityStance.STANCE_ID, PGR.Tooltips.VelocityStance, PCLAffinity.Green, pinacolada.stances.pcl.VelocityStance::new);
+    public static final PCLStanceHelper WisdomStance = new PCLStanceHelper(pinacolada.stances.pcl.WisdomStance.STANCE_ID, PGR.Tooltips.WisdomStance, PCLAffinity.Blue, pinacolada.stances.pcl.WisdomStance::new);
+    public static final PCLStanceHelper EnduranceStance = new PCLStanceHelper(pinacolada.stances.pcl.EnduranceStance.STANCE_ID, PGR.Tooltips.EnduranceStance, PCLAffinity.Orange, pinacolada.stances.pcl.EnduranceStance::new);
+    public static final PCLStanceHelper InvocationStance = new PCLStanceHelper(pinacolada.stances.pcl.InvocationStance.STANCE_ID, PGR.Tooltips.InvocationStance, PCLAffinity.Light, pinacolada.stances.pcl.InvocationStance::new);
+    public static final PCLStanceHelper DesecrationStance = new PCLStanceHelper(pinacolada.stances.pcl.DesecrationStance.STANCE_ID, PGR.Tooltips.DesecrationStance, PCLAffinity.Dark, pinacolada.stances.pcl.DesecrationStance::new);
 
     public final PCLCardTooltip Tooltip;
     public final PCLAffinity Affinity;

@@ -12,15 +12,15 @@ import eatyourbeets.events.base.EYBEventStrings;
 import pinacolada.effects.special.GenericChooseCardsToObtainEffect;
 import pinacolada.effects.special.GenericChooseCardsToRemoveEffect;
 import pinacolada.events.base.PCLEvent;
-import pinacolada.relics.pcl.GranviaShieldCrest;
-import pinacolada.resources.GR;
+import pinacolada.relics.fool.GranviaShieldCrest;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLGameEffects;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
 
 import java.util.ArrayList;
 
-import static pinacolada.resources.GR.Enums.CardTags.PROTAGONIST;
+import static pinacolada.resources.PGR.Enums.CardTags.PROTAGONIST;
 
 public class TheHeroAssociation extends PCLEvent
 {
@@ -34,7 +34,7 @@ public class TheHeroAssociation extends PCLEvent
         if (PCLGameUtilities.HasEncounteredEvent(ID)) {
             return null;
         }
-        if (PCLGameUtilities.IsPlayerClass(GR.PCL.PlayerClass)
+        if (PCLGameUtilities.IsPlayerClass(PGR.Fool.PlayerClass)
                 && AbstractDungeon.floorNum > 8
                 && !(PCLGameUtilities.HasRelic(GranviaShieldCrest.ID))
                 && rng.randomBoolean(0.1f)) {

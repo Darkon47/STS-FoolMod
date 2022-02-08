@@ -6,7 +6,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireReturn;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.powers.PenNibPower;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 
 @SpirePatch(clz = PenNibPower.class, method = "onUseCard")
 public class PenNibPatches
@@ -14,7 +14,7 @@ public class PenNibPatches
     @SpirePrefixPatch
     public static SpireReturn Prefix(PenNibPower __instance, AbstractCard card, UseCardAction action)
     {
-        if (card == null || card.hasTag(GR.Enums.CardTags.IGNORE_PEN_NIB))
+        if (card == null || card.hasTag(PGR.Enums.CardTags.IGNORE_PEN_NIB))
         {
             return SpireReturn.Return(null);
         }

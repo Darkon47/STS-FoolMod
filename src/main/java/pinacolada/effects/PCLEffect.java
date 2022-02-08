@@ -6,13 +6,13 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.core.Settings;
 import eatyourbeets.effects.EYBEffect;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.resources.pcl.PCLImages;
 import pinacolada.utilities.PCLRenderHelpers;
 
 public abstract class PCLEffect extends EYBEffect
 {
-    public static final PCLImages.Effects IMAGES = GR.PCL.Images.Effects;
+    public static final PCLImages.Effects IMAGES = PGR.PCL.Images.Effects;
 
     public PCLEffect()
     {

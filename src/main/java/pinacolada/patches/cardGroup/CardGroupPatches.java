@@ -7,7 +7,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireReturn;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.random.Random;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLGameUtilities;
 
 import java.util.ArrayList;
@@ -61,7 +61,7 @@ public class CardGroupPatches
         for (int i = 0; i < cards.size(); i++)
         {
             final AbstractCard c = cards.get(i);
-            if (c.hasTag(GR.Enums.CardTags.DELAYED))
+            if (c.hasTag(PGR.Enums.CardTags.DELAYED))
             {
                 if (i != delayedIndex)
                 {
@@ -78,7 +78,7 @@ public class CardGroupPatches
         for (int i = cards.size() - 1; i >= 0; i--)
         {
             final AbstractCard c = cards.get(i);
-            if (c.hasTag(GR.Enums.CardTags.PCL_INNATE)) {
+            if (c.hasTag(PGR.Enums.CardTags.PCL_INNATE)) {
                 if (i != innateIndex) {
                     final AbstractCard temp = cards.get(innateIndex);
                     cards.set(innateIndex, c);

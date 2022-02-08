@@ -4,7 +4,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import pinacolada.actions.basic.MoveCard;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 
 import java.util.ArrayList;
@@ -56,6 +56,6 @@ public class PurgeFromPile extends SelectFromPile
     @Override
     public String UpdateMessage()
     {
-        return super.UpdateMessageInternal(GR.PCL.Strings.GridSelection.Purge(amount));
+        return super.UpdateMessageInternal(PGR.PCL.Strings.GridSelection.Purge(amount));
     }
 }

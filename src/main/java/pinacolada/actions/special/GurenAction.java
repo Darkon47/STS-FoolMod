@@ -4,7 +4,7 @@ import com.megacrit.cardcrawl.actions.common.EmptyDeckShuffleAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import pinacolada.actions.cardManipulation.PlayCard;
-import pinacolada.cards.pcl.series.OwariNoSeraph.Guren;
+import pinacolada.cards.fool.series.OwariNoSeraph.Guren;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 

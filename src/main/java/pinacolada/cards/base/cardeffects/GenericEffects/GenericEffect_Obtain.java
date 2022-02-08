@@ -7,7 +7,7 @@ import pinacolada.cards.base.PCLCard;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.base.cardeffects.GenericEffect;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLJUtils;
 
@@ -36,7 +36,7 @@ public class GenericEffect_Obtain extends GenericEffect
     public String GetText()
     {
         String joinedString = PCLJUtils.JoinStrings(" ", PCLJUtils.Map(cardData, card -> card.Strings.NAME));
-        return GR.PCL.Strings.Actions.Obtain(joinedString, true);
+        return PGR.PCL.Strings.Actions.Obtain(joinedString, true);
     }
 
     @Override

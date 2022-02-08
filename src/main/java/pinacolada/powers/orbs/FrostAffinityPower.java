@@ -3,7 +3,7 @@ package pinacolada.powers.orbs;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.orbs.Frost;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLJUtils;
 
 public class FrostAffinityPower extends OrbAffinityPower<Frost>
@@ -12,7 +12,7 @@ public class FrostAffinityPower extends OrbAffinityPower<Frost>
 
     public FrostAffinityPower(AbstractCreature owner, int amount)
     {
-        super(POWER_ID, owner, GR.Tooltips.Frost, amount);
+        super(POWER_ID, owner, PGR.Tooltips.Frost, amount);
     }
 
     @Override

@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import pinacolada.cards.base.PCLCard;
 import pinacolada.cards.base.attributes.AbstractAttribute;
 import pinacolada.cards.base.attributes.TempHPAttribute;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 
 public class CounterIntentEffect_Unknown extends CounterIntentEffect
@@ -26,7 +26,7 @@ public class CounterIntentEffect_Unknown extends CounterIntentEffect
     @Override
     public String GetDescription(PCLCard nanami)
     {
-        return ACTIONS.GainAmount(1, GR.Tooltips.Energy,true);
+        return ACTIONS.GainAmount(1, PGR.Tooltips.Energy,true);
     }
 
     @Override

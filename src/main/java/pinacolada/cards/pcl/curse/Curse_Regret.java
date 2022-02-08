@@ -4,19 +4,19 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import pinacolada.cards.base.CardUseInfo;
+import pinacolada.cards.base.PCLCard;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.PCLCardTarget;
-import pinacolada.cards.base.PCLCard_Curse;
 import pinacolada.utilities.PCLActions;
 
-public class Curse_Regret extends PCLCard_Curse
+public class Curse_Regret extends PCLCard
 {
     public static final PCLCardData DATA = Register(Curse_Regret.class)
-            .SetCurse(-2, PCLCardTarget.None, false);
+            .SetCurse(-2, PCLCardTarget.None, false, true);
 
     public Curse_Regret()
     {
-        super(DATA, true);
+        super(DATA);
 
         Initialize(0, 0, 1, 2);
 

@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.helpers.Hitbox;
 import eatyourbeets.ui.GUIElement;
 import eatyourbeets.utilities.EYBFontHelper;
 import pinacolada.cards.base.PCLCardTooltip;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.ui.controls.GUI_Image;
 import pinacolada.ui.controls.GUI_TextBox;
 import pinacolada.utilities.PCLRenderHelpers;
@@ -20,7 +20,7 @@ public class PCLKeywordLegend extends GUIElement
     public PCLKeywordLegend(PCLCardTooltip tooltip)
     {
         image = PCLRenderHelpers.ForTexture(tooltip.icon.getTexture());
-        textBox = new GUI_TextBox(GR.PCL.Images.Panel.Texture(), new Hitbox(0, 0, Scale(148), Scale(36)))
+        textBox = new GUI_TextBox(PGR.PCL.Images.Panel.Texture(), new Hitbox(0, 0, Scale(148), Scale(36)))
         .SetAlignment(0.5f, 0.31f) // 0.1f
         .SetColors(Color.DARK_GRAY, Settings.CREAM_COLOR)
         .SetFont(EYBFontHelper.CardDescriptionFont_Normal, 1)

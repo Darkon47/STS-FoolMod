@@ -18,7 +18,7 @@ import pinacolada.cards.base.PCLCardTooltip;
 import pinacolada.powers.PCLClickablePower;
 import pinacolada.powers.PowerTriggerConditionType;
 import pinacolada.resources.CardTooltips;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.ui.combat.PCLAffinityRow;
 import pinacolada.utilities.PCLJUtils;
 import pinacolada.utilities.PCLRenderHelpers;
@@ -250,15 +250,15 @@ public abstract class AbstractPCLAffinityPower extends PCLClickablePower
         Color amountColor = !IsEnabled() ? Colors.Cream(0.6f) : Colors.White(1f);
         Color usesColor = triggerCondition.uses > 0 ? Colors.Gold(1).cpy() : Colors.Cream(0.6f);
         Color levelColor = level > 0 ? Colors.Green(1).cpy() : Colors.Cream(0.6f);
-        PCLRenderHelpers.DrawCentered(sb, Colors.Black(0.6f), GR.PCL.Images.Panel_Elliptical_Half_H.Texture(), cX, cY, w / scale2, h / scale, 1, 0);
+        PCLRenderHelpers.DrawCentered(sb, Colors.Black(0.6f), PGR.PCL.Images.Panel_Elliptical_Half_H.Texture(), cX, cY, w / scale2, h / scale, 1, 0);
         if (effectMultiplier > 1)
         {
-            PCLRenderHelpers.DrawCentered(sb, Colors.Gold(0.7f), GR.PCL.Images.Panel_Elliptical_Half_H.Texture(), cX2 , cY, (w / scale2) + 8, (h / scale) + 8, 1, 0);
-            PCLRenderHelpers.DrawCentered(sb, Colors.Black(0.9f), GR.PCL.Images.Panel_Elliptical_Half_H.Texture(), cX2, cY, w / scale2, h / scale, 1, 0);
+            PCLRenderHelpers.DrawCentered(sb, Colors.Gold(0.7f), PGR.PCL.Images.Panel_Elliptical_Half_H.Texture(), cX2 , cY, (w / scale2) + 8, (h / scale) + 8, 1, 0);
+            PCLRenderHelpers.DrawCentered(sb, Colors.Black(0.9f), PGR.PCL.Images.Panel_Elliptical_Half_H.Texture(), cX2, cY, w / scale2, h / scale, 1, 0);
         }
         else
         {
-            pinacolada.utilities.PCLRenderHelpers.DrawCentered(sb, Colors.Black(0.6f), GR.PCL.Images.Panel_Elliptical_Half_H.Texture(), cX2, cY, w / scale2, h / scale, 1, 0);
+            pinacolada.utilities.PCLRenderHelpers.DrawCentered(sb, Colors.Black(0.6f), PGR.PCL.Images.Panel_Elliptical_Half_H.Texture(), cX2, cY, w / scale2, h / scale, 1, 0);
         }
 
         final Color imgColor = Colors.White(IsEnabled() ? 1 : 0.5f);

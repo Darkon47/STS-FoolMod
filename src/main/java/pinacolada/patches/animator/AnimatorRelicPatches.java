@@ -5,7 +5,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpirePrefixPatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpireReturn;
 import eatyourbeets.relics.AnimatorRelic;
 import eatyourbeets.relics.animator.*;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLGameUtilities;
 
 import java.util.HashSet;
@@ -36,8 +36,8 @@ public class AnimatorRelicPatches
         @SpirePrefixPatch
         public static SpireReturn<Boolean> Prefix(AnimatorRelic __instance)
         {
-            if ((PCLGameUtilities.IsPlayerClass(GR.PCL.PlayerClass) && (FOOL_COMPATIBLE_RELICS.contains(__instance.relicId) || OTHER_COMPATIBLE_RELICS.contains(__instance.relicId)))
-            || (GR.PCL.Config.EnableRelicsForOtherCharacters.Get() && OTHER_COMPATIBLE_RELICS.contains(__instance.relicId)))
+            if ((PCLGameUtilities.IsPlayerClass(PGR.Fool.PlayerClass) && (FOOL_COMPATIBLE_RELICS.contains(__instance.relicId) || OTHER_COMPATIBLE_RELICS.contains(__instance.relicId)))
+            || (PGR.PCL.Config.EnableRelicsForOtherCharacters.Get() && OTHER_COMPATIBLE_RELICS.contains(__instance.relicId)))
             {
                 return SpireReturn.Return(true);
             }

@@ -10,7 +10,7 @@ import eatyourbeets.ui.GUIElement;
 import eatyourbeets.utilities.Colors;
 import pinacolada.blights.common.AbstractGlyphBlight;
 import pinacolada.cards.base.PCLCardTooltip;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.ui.controls.GUI_Button;
 import pinacolada.ui.controls.GUI_Image;
 import pinacolada.ui.hitboxes.RelativeHitbox;
@@ -72,7 +72,7 @@ public class PCLGlyphEditor extends GUIElement
     }
 
     public void Refresh(int ascensionLevel) {
-        enabled = GR.PCL.GetUnlockLevel() >= blight.ascensionRequirement;
+        enabled = PGR.Fool.GetUnlockLevel() >= blight.ascensionRequirement;
         minimumLevel = blight.GetMinimumLevel(ascensionLevel);
         if (blight.counter < minimumLevel) {
             blight.setAmount(minimumLevel);

@@ -12,8 +12,8 @@ import pinacolada.blights.common.GlyphBlight;
 import pinacolada.blights.common.GlyphBlight1;
 import pinacolada.blights.common.GlyphBlight2;
 import pinacolada.cards.base.CardSeries;
-import pinacolada.resources.GR;
-import pinacolada.resources.pcl.loadouts.*;
+import pinacolada.resources.PGR;
+import pinacolada.resources.fool.loadouts.*;
 import pinacolada.resources.pcl.misc.*;
 import pinacolada.ui.characterSelection.PCLBaseStatEditor;
 import pinacolada.utilities.PCLJUtils;
@@ -37,8 +37,6 @@ public class PCLPlayerData
     public PCLTrophies SpecialTrophies = new PCLTrophies(-1);
     public PCLLoadout SelectedLoadout = new _FakeLoadout();
 
-    // TODO use a serialized string to store glyph data
-
     public void Initialize()
     {
         AddBaseLoadouts();
@@ -48,10 +46,10 @@ public class PCLPlayerData
 
     public void Reload()
     {
-        DeserializeTrophies(GR.PCL.Config.Trophies.Get());
-        DeserializeCustomLoadouts(GR.PCL.Config.CustomLoadouts.Get());
+        DeserializeTrophies(PGR.PCL.Config.Trophies.Get());
+        DeserializeCustomLoadouts(PGR.PCL.Config.CustomLoadouts.Get());
 
-        final Integer version = GR.PCL.Config.MajorVersion.Get(null);
+        final Integer version = PGR.PCL.Config.MajorVersion.Get(null);
         if (version == null || version < MajorVersion)
         {
             UpdateMajorVersion(version);
@@ -190,7 +188,7 @@ public class PCLPlayerData
             return;
         }
 
-        boolean isUnnamedReign = GR.PCL.Dungeon.IsUnnamedReign();
+        boolean isUnnamedReign = PGR.PCL.Dungeon.IsUnnamedReign();
 
         if (isUnnamedReign)
         {
@@ -213,19 +211,19 @@ public class PCLPlayerData
     {
         PCLJUtils.LogInfo(PCLPlayerData.class, "Saving Trophies");
 
-        GR.PCL.Config.Trophies.Set(SerializeTrophies(), flush);
+        PGR.PCL.Config.Trophies.Set(SerializeTrophies(), flush);
     }
 
     public void SaveLoadouts(boolean flush)
     {
         PCLJUtils.LogInfo(PCLPlayerData.class, "Saving Loadouts");
 
-        GR.PCL.Config.CustomLoadouts.Set(SerializeCustomLoadouts(), flush);
+        PGR.PCL.Config.CustomLoadouts.Set(SerializeCustomLoadouts(), flush);
     }
 
     private void UpdateMajorVersion(Integer previousVersion)
     {
-        GR.PCL.Config.MajorVersion.Set(MajorVersion, true);
+        PGR.PCL.Config.MajorVersion.Set(MajorVersion, true);
     }
 
     private void AddBaseLoadouts()
@@ -273,9 +271,9 @@ public class PCLPlayerData
             final CustomUnlock unlock = new CustomUnlock(AbstractUnlock.UnlockType.MISC, cardID);
             unlock.type = AbstractUnlock.UnlockType.CARD;
             unlock.card = new PCLRuntimeLoadout(loadout).BuildCard();
-            unlock.key = unlock.card.cardID = GR.PCL.CreateID("series:" + loadout.Name);
+            unlock.key = unlock.card.cardID = PGR.PCL.CreateID("series:" + loadout.Name);
 
-            CustomUnlockBundle bundle = BaseMod.getUnlockBundleFor(GR.PCL.PlayerClass, loadout.UnlockLevel - 1);
+            CustomUnlockBundle bundle = BaseMod.getUnlockBundleFor(PGR.Fool.PlayerClass, loadout.UnlockLevel - 1);
             if (bundle == null)
             {
                 bundle = new CustomUnlockBundle(AbstractUnlock.UnlockType.MISC, "", "", "");
@@ -291,7 +289,7 @@ public class PCLPlayerData
                 bundle.getUnlocks().add(unlock);
             }
 
-            BaseMod.addUnlockBundle(bundle, GR.PCL.PlayerClass, loadout.UnlockLevel - 1);
+            BaseMod.addUnlockBundle(bundle, PGR.Fool.PlayerClass, loadout.UnlockLevel - 1);
         }
     }
 
@@ -375,7 +373,7 @@ public class PCLPlayerData
         final StringJoiner sj = new StringJoiner("|");
         final StringBuilder sb = new StringBuilder();
 
-        final int level = GR.PCL.GetUnlockLevel();
+        final int level = PGR.Fool.GetUnlockLevel();
         for (PCLLoadout loadout : GetEveryLoadout())
         {
             if (loadout.UnlockLevel <= level)

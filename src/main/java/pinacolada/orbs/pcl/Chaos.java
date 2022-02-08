@@ -18,7 +18,7 @@ import pinacolada.effects.SFX;
 import pinacolada.orbs.PCLOrb;
 import pinacolada.orbs.PCLOrbHelper;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
@@ -121,7 +121,7 @@ public class Chaos extends PCLOrb implements OnEndOfTurnFirstSubscriber, OnAfter
     {
         super.updateAnimation();
 
-        final float delta = GR.UI.Delta();
+        final float delta = PGR.UI.Delta();
         this.angle += delta * 60;
         for (Projectile texture : projectiles)
         {

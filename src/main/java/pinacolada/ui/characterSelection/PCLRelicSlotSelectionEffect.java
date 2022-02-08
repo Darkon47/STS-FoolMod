@@ -12,7 +12,7 @@ import com.megacrit.cardcrawl.helpers.Hitbox;
 import eatyourbeets.effects.EYBEffect;
 import eatyourbeets.rooms.FakeEventRoom;
 import pinacolada.relics.PCLRelic;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.resources.pcl.misc.PCLRelicSlot;
 import pinacolada.ui.controls.GUI_Label;
 import pinacolada.ui.controls.GUI_Relic;
@@ -28,8 +28,8 @@ public class PCLRelicSlotSelectionEffect extends EYBEffect
     public static final float START_XY = Settings.WIDTH * 0.5f;
 
     private static final GUI_TextBox cardValue_text = new
-    GUI_TextBox(GR.PCL.Images.Panel_Rounded_Half_H.Texture(), new Hitbox(AbstractCard.IMG_WIDTH * 0.15f, AbstractCard.IMG_HEIGHT * 0.15f))
-    .SetBackgroundTexture(GR.PCL.Images.Panel_Rounded_Half_H.Texture(), new Color(0.5f, 0.5f, 0.5f , 1f), 1.05f)
+    GUI_TextBox(PGR.PCL.Images.Panel_Rounded_Half_H.Texture(), new Hitbox(AbstractCard.IMG_WIDTH * 0.15f, AbstractCard.IMG_HEIGHT * 0.15f))
+    .SetBackgroundTexture(PGR.PCL.Images.Panel_Rounded_Half_H.Texture(), new Color(0.5f, 0.5f, 0.5f , 1f), 1.05f)
     .SetColors(new Color(0, 0, 0, 0.85f), Settings.CREAM_COLOR)
     .SetAlignment(0.5f, 0.5f)
     .SetFont(FontHelper.cardEnergyFont_L, 0.75f);
@@ -96,7 +96,7 @@ public class PCLRelicSlotSelectionEffect extends EYBEffect
 
         if (TickDuration(deltaTime))
         {
-            if (PCLInputManager.LeftClick.IsJustReleased() && GR.UI.TryHover(null))
+            if (PCLInputManager.LeftClick.IsJustReleased() && PGR.UI.TryHover(null))
             {
                 for (RenderItem item : relics)
                 {

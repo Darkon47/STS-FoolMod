@@ -11,7 +11,7 @@ import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.base.cardeffects.GenericEffects.*;
 import pinacolada.orbs.PCLOrbHelper;
 import pinacolada.powers.PCLPowerHelper;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.stances.PCLStanceHelper;
 import pinacolada.utilities.PCLJUtils;
 
@@ -29,7 +29,7 @@ public abstract class GenericEffect
     private static final HashMap<String, Class<? extends GenericEffect>> EFFECT_MAP = new HashMap<>();
 
     public static String Register(Class<? extends GenericEffect> type) {
-        String id = GR.PCL.CreateID(type.getSimpleName());
+        String id = PGR.PCL.CreateID(type.getSimpleName());
         EFFECT_MAP.put(id, type);
         return id;
     }

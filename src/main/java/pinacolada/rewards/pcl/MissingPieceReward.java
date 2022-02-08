@@ -19,8 +19,8 @@ import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCardAffinityStatistics;
 import pinacolada.cards.base.PCLCardTooltip;
 import pinacolada.effects.card.ShowCardPileEffect;
-import pinacolada.resources.GR;
-import pinacolada.resources.pcl.loadouts._FakeLoadout;
+import pinacolada.resources.PGR;
+import pinacolada.resources.fool.loadouts._FakeLoadout;
 import pinacolada.resources.pcl.misc.PCLRuntimeLoadout;
 import pinacolada.rewards.PCLReward;
 import pinacolada.utilities.PCLGameEffects;
@@ -43,11 +43,11 @@ public class MissingPieceReward extends PCLReward
     {
         if (series.ID == CardSeries.ANY.ID)
         {
-            return PCLJUtils.ModifyString(GR.PCL.Strings.Series.RandomSeries, w -> "#y" + w);
+            return PCLJUtils.ModifyString(PGR.PCL.Strings.Series.RandomSeries, w -> "#y" + w);
         }
         else if (series.ID == CardSeries.COLORLESS.ID)
         {
-            return PCLJUtils.ModifyString(GR.PCL.Strings.Series.Colorless, w -> "#y" + w);
+            return PCLJUtils.ModifyString(PGR.PCL.Strings.Series.Colorless, w -> "#y" + w);
         }
         else
         {
@@ -57,7 +57,7 @@ public class MissingPieceReward extends PCLReward
 
     public MissingPieceReward(CardSeries series)
     {
-        super(ID, GenerateRewardTitle(series), GR.Enums.Rewards.SERIES_CARDS);
+        super(ID, GenerateRewardTitle(series), PGR.Enums.Rewards.SERIES_CARDS);
 
         this.series = series;
         this.cards = GenerateCardReward(series);
@@ -69,7 +69,7 @@ public class MissingPieceReward extends PCLReward
             return;
         }
 
-        loadout = GR.PCL.Dungeon.GetLoadout(series);
+        loadout = PGR.PCL.Dungeon.GetLoadout(series);
         if (loadout != null)
         {
             statistics = loadout.AffinityStatistics;
@@ -85,14 +85,14 @@ public class MissingPieceReward extends PCLReward
         {
             if (tooltip == null)
             {
-                tooltip = new PCLCardTooltip(series.LocalizedName, GR.PCL.Strings.Rewards.Description);
+                tooltip = new PCLCardTooltip(series.LocalizedName, PGR.PCL.Strings.Rewards.Description);
 
                 if (statistics != null)
                 {
-                    tooltip.description += " NL NL " + GR.PCL.Strings.Rewards.PossibleAffinities + ":";
+                    tooltip.description += " NL NL " + PGR.PCL.Strings.Rewards.PossibleAffinities + ":";
                     if (loadout != null)
                     {
-                        tooltip.description += " NL ( " + GR.PCL.Strings.Rewards.RightClickPreview + " )";
+                        tooltip.description += " NL ( " + PGR.PCL.Strings.Rewards.RightClickPreview + " )";
                     }
 
                     final StringBuilder builder = new StringBuilder();

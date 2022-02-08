@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.screens.charSelect.CharacterOption;
 import com.megacrit.cardcrawl.screens.charSelect.CharacterSelectScreen;
 import eatyourbeets.utilities.EYBFontHelper;
 import pinacolada.patches.unlockTracker.UnlockTrackerPatches;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.resources.pcl.PCLStrings;
 import pinacolada.ui.controls.GUI_Button;
 import pinacolada.ui.controls.GUI_Label;
@@ -32,11 +32,11 @@ public class PCLCharacterSelectScreen
 
         final float size = Settings.scale * 36;
 
-        DiscordButton = new GUI_Button(GR.PCL.Images.Discord.Texture(), new AdvancedHitbox(0, 0, size, size))
+        DiscordButton = new GUI_Button(PGR.PCL.Images.Discord.Texture(), new AdvancedHitbox(0, 0, size, size))
         .SetPosition(Settings.WIDTH * 0.025f, Settings.HEIGHT * 0.95f).SetText("")
         .SetOnClick(() -> Browse(DiscordButton));
 
-        SteamButton = new GUI_Button(GR.PCL.Images.Steam.Texture(), new AdvancedHitbox(0, 0, size, size))
+        SteamButton = new GUI_Button(PGR.PCL.Images.Steam.Texture(), new AdvancedHitbox(0, 0, size, size))
         .SetPosition(Settings.WIDTH * 0.025f, Settings.HEIGHT * 0.95f - DiscordButton.hb.height * 1.1f).SetText("")
         .SetOnClick(() -> Browse(SteamButton));
 
@@ -46,7 +46,7 @@ public class PCLCharacterSelectScreen
                 new AdvancedHitbox(0, 0, Settings.WIDTH * 0.55f, size * 2f))
                 .SetPosition(Settings.WIDTH * 0.29f, Settings.HEIGHT * 0.93f)
                 .SetAlignment(0.95f, 0.05f, true) // 0.1f
-                .SetText(GR.PCL.Strings.Misc.UnofficialDisclaimer);
+                .SetText(PGR.PCL.Strings.Misc.UnofficialDisclaimer);
 
         UnlockTrackerPatches.Validate();
     }
@@ -82,7 +82,7 @@ public class PCLCharacterSelectScreen
         {
             if (o.selected)
             {
-                if (o.c.chosenClass == GR.Enums.Characters.THE_FOOL)
+                if (o.c.chosenClass == PGR.Enums.Characters.THE_FOOL)
                 {
                     selectedOption = o;
 
@@ -114,7 +114,7 @@ public class PCLCharacterSelectScreen
 
         final float offsetX = 60 * Settings.scale;
         final float offsetY = 0;
-        final PCLStrings.Misc misc = GR.PCL.Strings.Misc;
+        final PCLStrings.Misc misc = PGR.PCL.Strings.Misc;
 
         if (DiscordButton.interactable && DiscordButton.hb.hovered)
         {

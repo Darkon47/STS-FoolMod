@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.ui.panels.TopPanel;
 import javassist.CtBehavior;
 import pinacolada.cards.base.PCLCardTooltip;
 import pinacolada.potions.PCLPotion;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLJUtils;
 
 public class TopPanelPatches {
@@ -21,7 +21,7 @@ public class TopPanelPatches {
         public static SpireReturn Method(TopPanel __instance)
         {
             // To simulate AbstractDungeon.screen == CurrentScreen.NO_INTERACT
-            if (AbstractDungeon.screen == GR.Enums.Screens.EYB_SCREEN || Settings.hideTopBar)
+            if (AbstractDungeon.screen == PGR.Enums.Screens.EYB_SCREEN || Settings.hideTopBar)
             {
                 return SpireReturn.Return(null);
             }

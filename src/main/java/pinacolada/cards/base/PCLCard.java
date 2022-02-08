@@ -10,6 +10,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.evacipated.cardcrawl.modthespire.lib.SpireOverride;
 import com.google.gson.reflect.TypeToken;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.CardQueueItem;
 import com.megacrit.cardcrawl.cards.green.Tactician;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -39,12 +40,13 @@ import pinacolada.cards.base.attributes.AbstractAttribute;
 import pinacolada.cards.base.attributes.BlockAttribute;
 import pinacolada.cards.base.attributes.DamageAttribute;
 import pinacolada.cards.base.modifiers.AfterLifeMod;
+import pinacolada.cards.fool.FoolCard_UltraRare;
 import pinacolada.patches.screens.GridCardSelectScreenPatches;
 import pinacolada.powers.PCLCombatStats;
 import pinacolada.powers.affinity.AbstractPCLAffinityPower;
 import pinacolada.powers.pcl.ElementalExposurePower;
 import pinacolada.powers.replacement.PlayerFlightPower;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.resources.pcl.PCLImages;
 import pinacolada.ui.cards.DrawPileCardPreview;
 import pinacolada.utilities.PCLActions;
@@ -59,23 +61,24 @@ import java.util.Map;
 
 import static pinacolada.powers.pcl.ElementalExposurePower.ELEMENTAL_MODIFIER;
 import static pinacolada.powers.replacement.PCLLockOnPower.GetAttackMultiplier;
-import static pinacolada.resources.GR.Enums.CardTags.*;
+import static pinacolada.resources.PGR.Enums.CardTags.*;
 
 public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscriber, OnStartOfTurnPostDrawSubscriber, CustomSavable<PCLCardSaveData>
 {
     public static final Color MUTED_TEXT_COLOR = Colors.Lerp(Color.DARK_GRAY, Settings.CREAM_COLOR, 0.5f);
-    public static final CardTags HASTE = GR.Enums.CardTags.HASTE;
-    public static final CardTags HASTE_INFINITE = GR.Enums.CardTags.HASTE_INFINITE;
-    public static final CardTags PURGE = GR.Enums.CardTags.PURGE;
-    public static final CardTags DELAYED = GR.Enums.CardTags.DELAYED;
-    public static final CardTags AUTOPLAY = GR.Enums.CardTags.AUTOPLAY;
-    public static final CardTags LOYAL = GR.Enums.CardTags.LOYAL;
-    public static final CardTags HARMONIC = GR.Enums.CardTags.HARMONIC;
-    public static final CardTags PCL_INNATE = GR.Enums.CardTags.PCL_INNATE;
-    public static final PCLImages IMAGES = GR.PCL.Images;
+    public static final CardTags HASTE = PGR.Enums.CardTags.HASTE;
+    public static final CardTags HASTE_INFINITE = PGR.Enums.CardTags.HASTE_INFINITE;
+    public static final CardTags PURGE = PGR.Enums.CardTags.PURGE;
+    public static final CardTags DELAYED = PGR.Enums.CardTags.DELAYED;
+    public static final CardTags AUTOPLAY = PGR.Enums.CardTags.AUTOPLAY;
+    public static final CardTags LOYAL = PGR.Enums.CardTags.LOYAL;
+    public static final CardTags HARMONIC = PGR.Enums.CardTags.HARMONIC;
+    public static final CardTags PCL_INNATE = PGR.Enums.CardTags.PCL_INNATE;
+    public static final PCLImages IMAGES = PGR.PCL.Images;
     protected static final Color defaultGlowColor = AbstractCard.BLUE_BORDER_GLOW_COLOR;
     protected static final Color synergyGlowColor = new Color(1, 0.843f, 0, 0.25f);
     private static final Color COLORLESS_ORB_COLOR = new Color(0.7f, 0.7f, 0.7f, 1);
+    private static final Color CURSE_COLOR = new Color(0.22f, 0.22f, 0.22f, 1);
     public final PCLCardText cardText;
     public final PCLCardData cardData;
     public final PCLCardAffinities affinities;
@@ -89,6 +92,7 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
     public int maxUpgradeLevel;
     public CardSeries series;
     protected boolean unplayable;
+    protected boolean playAtEndOfTurn;
     protected int upgrade_damage;
     protected int upgrade_magicNumber;
     protected int upgrade_secondaryValue;
@@ -106,12 +110,17 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
         return staticCardData.get(cardID);
     }
 
-    public static PCLCardData RegisterCardData(Class<? extends PCLCard> type, String cardID)
+    protected static PCLCardData Register(Class<? extends PCLCard> type)
+    {
+        return RegisterCardData(type, PGR.PCL.CreateID(type.getSimpleName())).SetColor(CardColor.COLORLESS);
+    }
+
+    protected static PCLCardData RegisterCardData(Class<? extends PCLCard> type, String cardID)
     {
         return RegisterCardData(new PCLCardData(type, cardID));
     }
 
-    public static PCLCardData RegisterCardData(PCLCardData cardData)
+    protected static PCLCardData RegisterCardData(PCLCardData cardData)
     {
         staticCardData.put(cardData.ID, cardData);
         return cardData;
@@ -140,6 +149,8 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
         this.tooltips = new ArrayList<>();
         this.cardText = new PCLCardText(this);
         this.affinities = new PCLCardAffinities(this);
+        this.playAtEndOfTurn = cardData.PlayAtEndOfTurn;
+        this.maxUpgradeLevel = cardData.MaxUpgradeLevel;
 
         SetMultiDamage(cardData.CardTarget == PCLCardTarget.AoE);
         if (cardData.CardTarget != null) {
@@ -170,11 +181,6 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
         return card;
     }
 
-    protected static PCLCardData Register(Class<? extends PCLCard> type)
-    {
-        return RegisterCardData(type, GR.PCL.CreateID(type.getSimpleName())).SetColor(GR.PCL.CardColor);
-    }
-
     public boolean HasSynergy()
     {
         return PCLCombatStats.MatchingSystem.IsSynergizing(this) || WouldSynergize();
@@ -187,11 +193,6 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
 
     public boolean HasDirectSynergy(AbstractCard other)
     {
-        if (hasTag(HARMONIC)) {
-            if (PCLGameUtilities.IsSameSeries(this,other)) {
-                return true;
-            }
-        }
         return PCLCombatStats.MatchingSystem.HasDirectSynergy(this, other);
     }
 
@@ -489,6 +490,17 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
     }
 
     @Override
+    public void triggerOnEndOfTurnForPlayingCard()
+    {
+        if (playAtEndOfTurn)
+        {
+            dontTriggerOnUseCard = true;
+
+            AbstractDungeon.actionManager.cardQueue.add(new CardQueueItem(this, true));
+        }
+    }
+
+    @Override
     public void triggerWhenDrawn()
     {
         super.triggerWhenDrawn();
@@ -549,7 +561,7 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
         untip();
         stopGlowing();
 
-        SetTag(GR.Enums.CardTags.PURGING, true);
+        SetTag(PGR.Enums.CardTags.PURGING, true);
         PCLGameEffects.List.Add(new ExhaustCardEffect(this));
     }
 
@@ -638,73 +650,73 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
         if (!PCLGameUtilities.InBattle() || isPopup || (player != null && player.masterDeck.contains(this))) {
             if (cardData.CanToggleFromPopup && upgraded || cardData.UnUpgradedCanToggleForms)
             {
-                dynamicTooltips.add(GR.Tooltips.Multiform);
+                dynamicTooltips.add(PGR.Tooltips.Multiform);
             }
             if (hasTag(UNIQUE))
             {
-                dynamicTooltips.add(GR.Tooltips.Unique);
+                dynamicTooltips.add(PGR.Tooltips.Unique);
             }
             if (cardData.CanToggleOnUpgrade)
             {
-                dynamicTooltips.add(GR.Tooltips.BranchUpgrade);
+                dynamicTooltips.add(PGR.Tooltips.BranchUpgrade);
             }
         }
 
         if (hasTag(AFTERLIFE))
         {
-            dynamicTooltips.add(GR.Tooltips.Afterlife);
+            dynamicTooltips.add(PGR.Tooltips.Afterlife);
         }
         if (unplayable || hasTag(PCL_UNPLAYABLE) || (PCLGameUtilities.IsUnplayableThisTurn(this)))
         {
-            dynamicTooltips.add(GR.Tooltips.Unplayable);
+            dynamicTooltips.add(PGR.Tooltips.Unplayable);
         }
         if (isInnate || hasTag(PCL_INNATE))
         {
-            dynamicTooltips.add(GR.Tooltips.Innate);
+            dynamicTooltips.add(PGR.Tooltips.Innate);
         }
         if (hasTag(DELAYED))
         {
-            dynamicTooltips.add(GR.Tooltips.Delayed);
+            dynamicTooltips.add(PGR.Tooltips.Delayed);
         }
         if (isEthereal)
         {
-            dynamicTooltips.add(GR.Tooltips.Ethereal);
+            dynamicTooltips.add(PGR.Tooltips.Ethereal);
         }
         if (selfRetain)
         {
-            dynamicTooltips.add(PCLGameUtilities.InGame() ? GR.Tooltips.RetainInfinite : GR.Tooltips.Retain);
+            dynamicTooltips.add(PCLGameUtilities.InGame() ? PGR.Tooltips.RetainInfinite : PGR.Tooltips.Retain);
         }
         else if (retain)
         {
-            dynamicTooltips.add(PCLGameUtilities.InGame() ? GR.Tooltips.RetainOnce : GR.Tooltips.Retain);
+            dynamicTooltips.add(PCLGameUtilities.InGame() ? PGR.Tooltips.RetainOnce : PGR.Tooltips.Retain);
         }
         if (hasTag(HASTE_INFINITE))
         {
-            dynamicTooltips.add(PCLGameUtilities.InGame() ? GR.Tooltips.HasteInfinite : GR.Tooltips.Haste);
+            dynamicTooltips.add(PCLGameUtilities.InGame() ? PGR.Tooltips.HasteInfinite : PGR.Tooltips.Haste);
         }
         else if (hasTag(HASTE))
         {
-            dynamicTooltips.add(PCLGameUtilities.InGame() ? GR.Tooltips.HasteOnce : GR.Tooltips.Haste);
+            dynamicTooltips.add(PCLGameUtilities.InGame() ? PGR.Tooltips.HasteOnce : PGR.Tooltips.Haste);
         }
         if (purgeOnUse || hasTag(PURGE))
         {
-            dynamicTooltips.add(GR.Tooltips.Purge);
+            dynamicTooltips.add(PGR.Tooltips.Purge);
         }
         if (exhaust || exhaustOnUseOnce)
         {
-            dynamicTooltips.add(GR.Tooltips.Exhaust);
+            dynamicTooltips.add(PGR.Tooltips.Exhaust);
         }
         if (hasTag(AUTOPLAY))
         {
-            dynamicTooltips.add(GR.Tooltips.Autoplay);
+            dynamicTooltips.add(PGR.Tooltips.Autoplay);
         }
         if (hasTag(LOYAL))
         {
-            dynamicTooltips.add(GR.Tooltips.Loyal);
+            dynamicTooltips.add(PGR.Tooltips.Loyal);
         }
         if (hasTag(HARMONIC))
         {
-            dynamicTooltips.add(GR.Tooltips.Harmonic);
+            dynamicTooltips.add(PGR.Tooltips.Harmonic);
         }
         //if (affinities.HasStar())
         //{
@@ -713,36 +725,36 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
 
         if (attackType == PCLAttackType.Brutal)
         {
-            dynamicTooltips.add(GR.Tooltips.Brutal);
+            dynamicTooltips.add(PGR.Tooltips.Brutal);
         }
         else if (attackType == PCLAttackType.Dark)
         {
-            dynamicTooltips.add(GR.Tooltips.DarkDamage);
+            dynamicTooltips.add(PGR.Tooltips.DarkDamage);
         }
         else if (attackType == PCLAttackType.Electric)
         {
-            dynamicTooltips.add(GR.Tooltips.ElectricDamage);
+            dynamicTooltips.add(PGR.Tooltips.ElectricDamage);
         }
         else if (attackType == PCLAttackType.Fire)
         {
-            dynamicTooltips.add(GR.Tooltips.FireDamage);
+            dynamicTooltips.add(PGR.Tooltips.FireDamage);
         }
         else if (attackType == PCLAttackType.Ice)
         {
-            dynamicTooltips.add(GR.Tooltips.IceDamage);
+            dynamicTooltips.add(PGR.Tooltips.IceDamage);
         }
         else if (attackType == PCLAttackType.Piercing)
         {
-            dynamicTooltips.add(GR.Tooltips.Piercing);
+            dynamicTooltips.add(PGR.Tooltips.Piercing);
         }
         else if (attackType == PCLAttackType.Ranged)
         {
-            dynamicTooltips.add(GR.Tooltips.Ranged);
+            dynamicTooltips.add(PGR.Tooltips.Ranged);
         }
 
         if (cardData.BlockScalingAttack)
         {
-            dynamicTooltips.add(GR.Tooltips.BlockScaling);
+            dynamicTooltips.add(PGR.Tooltips.BlockScaling);
         }
 
     }
@@ -887,12 +899,12 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
 
     public void SetLoyal(boolean value)
     {
-        SetTag(GR.Enums.CardTags.LOYAL, value);
+        SetTag(PGR.Enums.CardTags.LOYAL, value);
     }
 
     public void SetAutoplay(boolean value)
     {
-        SetTag(GR.Enums.CardTags.AUTOPLAY, value);
+        SetTag(PGR.Enums.CardTags.AUTOPLAY, value);
     }
 
     public void SetDelayed(boolean value)
@@ -908,7 +920,7 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
 
     public void SetHarmonic(boolean value)
     {
-        SetTag(GR.Enums.CardTags.HARMONIC, value);
+        SetTag(PGR.Enums.CardTags.HARMONIC, value);
     }
 
     public void SetHaste(boolean value)
@@ -945,7 +957,7 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
 
     public void SetVolatile(boolean value)
     {
-        SetTag(GR.Enums.CardTags.VOLATILE, value);
+        SetTag(PGR.Enums.CardTags.VOLATILE, value);
     }
 
     public void SetHealing(boolean value)
@@ -971,7 +983,7 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
 
         if (!value)
         {
-            tags.remove(GR.Enums.CardTags.PURGING);
+            tags.remove(PGR.Enums.CardTags.PURGING);
             purgeOnUse = false;
         }
     }
@@ -1581,7 +1593,7 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
     @Override
     protected Texture GetCardBackground()
     {
-        if (color == GR.PCL.CardColor || color == CardColor.COLORLESS)
+        if (color == PGR.Fool.CardColor || color == CardColor.COLORLESS)
         {
 
             switch (type)
@@ -1643,9 +1655,11 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
     {
         Texture card = GetCardBackground();
         float popUpMultiplier = isPopup ? 0.5f : 1f;
-        if (this.color == CardColor.COLORLESS) {
+        if (this.color == CardColor.COLORLESS || this.color == CardColor.CURSE) {
             pinacolada.utilities.PCLRenderHelpers.DrawGrayscale(sb, () ->
-                pinacolada.utilities.PCLRenderHelpers.DrawOnCardAuto(sb, this, card, new Vector2(0,0), card.getWidth(), card.getHeight(), PCLCard.COLORLESS_ORB_COLOR, transparency, popUpMultiplier));
+                pinacolada.utilities.PCLRenderHelpers.DrawOnCardAuto(sb, this, card,
+                        new Vector2(0,0), card.getWidth(), card.getHeight(),
+                        this.color == CardColor.CURSE ? PCLCard.CURSE_COLOR : PCLCard.COLORLESS_ORB_COLOR, transparency, popUpMultiplier));
         }
         else {
             pinacolada.utilities.PCLRenderHelpers.DrawOnCardAuto(sb, this, card, new Vector2(0,0), card.getWidth(), card.getHeight(), _renderColor.Get(this), transparency, popUpMultiplier);
@@ -1661,7 +1675,7 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
             float popUpMultiplier = isPopup ? 0.5f : 1f;
             Vector2 offset = new Vector2(-baseCard.getWidth() / (isPopup ? 7.7f : 3.85f), baseCard.getHeight() / (isPopup ? 5.3f : 2.64f));
             Texture energyOrb = GetEnergyOrb();
-            if (this.color == CardColor.COLORLESS && !(this instanceof PCLCard_UltraRare)) {
+            if ((this.color == CardColor.COLORLESS || this.color == CardColor.CURSE) && !(this instanceof FoolCard_UltraRare)) {
                 pinacolada.utilities.PCLRenderHelpers.DrawGrayscale(sb, () ->
                     pinacolada.utilities.PCLRenderHelpers.DrawOnCardAuto(sb, this, energyOrb, offset, energyOrb.getWidth(), energyOrb.getHeight(), PCLCard.COLORLESS_ORB_COLOR, transparency, popUpMultiplier));
             }

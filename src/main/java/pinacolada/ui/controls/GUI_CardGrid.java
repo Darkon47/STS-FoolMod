@@ -13,7 +13,7 @@ import com.megacrit.cardcrawl.helpers.input.InputHelper;
 import eatyourbeets.interfaces.delegates.ActionT1;
 import eatyourbeets.interfaces.delegates.ActionT2;
 import eatyourbeets.ui.GUIElement;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLInputManager;
 
 import java.util.Collection;
@@ -239,7 +239,7 @@ public class GUI_CardGrid extends GUIElement
 
         UpdateCards();
 
-        if (hoveredCard != null && GR.UI.TryHover(hoveredCard.hb))
+        if (hoveredCard != null && PGR.UI.TryHover(hoveredCard.hb))
         {
             if (PCLInputManager.RightClick.IsJustPressed() && onCardRightClick != null)
             {
@@ -311,7 +311,7 @@ public class GUI_CardGrid extends GUIElement
         {
             if (draggingScreen)
             {
-                if (InputHelper.isMouseDown && GR.UI.TryDragging())
+                if (InputHelper.isMouseDown && PGR.UI.TryDragging())
                 {
                     scrollDelta = InputHelper.mY - scrollStart;
                 }
@@ -331,7 +331,7 @@ public class GUI_CardGrid extends GUIElement
                     scrollDelta -= Settings.SCROLL_SPEED;
                 }
 
-                if (canDragScreen && InputHelper.justClickedLeft && GR.UI.TryDragging())
+                if (canDragScreen && InputHelper.justClickedLeft && PGR.UI.TryDragging())
                 {
                     draggingScreen = true;
                     scrollStart = InputHelper.mY - scrollDelta;

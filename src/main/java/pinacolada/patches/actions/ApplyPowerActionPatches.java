@@ -13,7 +13,6 @@ import pinacolada.powers.common.EnergizedPower;
 import pinacolada.powers.common.*;
 import pinacolada.powers.pcl.BurningWeaponPower;
 import pinacolada.powers.replacement.*;
-import pinacolada.resources.GR;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
 
@@ -36,7 +35,7 @@ public class ApplyPowerActionPatches
             _powerToApply.Set(__instance, powerToApply[0]);
         }
 
-        if (PCLGameUtilities.IsPlayerClass(GR.PCL.PlayerClass))
+        if (PCLGameUtilities.IsPCLPlayerClass())
         {
             if (power instanceof VulnerablePower && !(power instanceof PCLVulnerablePower))
             {

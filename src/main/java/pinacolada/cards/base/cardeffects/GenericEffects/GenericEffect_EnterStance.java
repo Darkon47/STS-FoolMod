@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import pinacolada.cards.base.PCLCard;
 import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.base.cardeffects.GenericEffect;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.stances.PCLStanceHelper;
 import pinacolada.utilities.PCLActions;
 
@@ -25,7 +25,7 @@ public class GenericEffect_EnterStance extends GenericEffect
     public String GetText()
     {
         String text = stance.Tooltip.title.replace(stance.Affinity.PowerName, stance.Affinity.GetFormattedPowerSymbol());
-        return GR.PCL.Strings.Actions.EnterStance("{" + text + "}", true);
+        return PGR.PCL.Strings.Actions.EnterStance("{" + text + "}", true);
     }
 
     @Override

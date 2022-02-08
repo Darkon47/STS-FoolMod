@@ -6,12 +6,12 @@ import com.megacrit.cardcrawl.core.Settings;
 import eatyourbeets.actions.EYBActionWithCallback;
 import eatyourbeets.utilities.RandomizedList;
 import pinacolada.cards.base.modifiers.CostModifiers;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLGameUtilities;
 
 public class RandomCostReduction extends EYBActionWithCallback<AbstractCard>
 {
-    public static String ID = GR.CreateID(GR.BASE_PREFIX, RandomCostReduction.class.getName());
+    public static String ID = PGR.CreateID(PGR.BASE_PREFIX, RandomCostReduction.class.getName());
 
     private final boolean permanent;
 

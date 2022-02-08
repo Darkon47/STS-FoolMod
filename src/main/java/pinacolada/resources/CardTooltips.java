@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.rewards.RewardItem;
 import eatyourbeets.ui.TextureCache;
 import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCardTooltip;
-import pinacolada.cards.pcl.curse.Curse_GriefSeed;
+import pinacolada.cards.fool.curse.Curse_GriefSeed;
 import pinacolada.characters.FakeCharacter;
 import pinacolada.powers.PCLPower;
 import pinacolada.powers.common.EnergizedPower;
@@ -190,7 +190,7 @@ public class CardTooltips
     public PCLCardTooltip Affinity_Power = FindByID("Affinity Power");
     public PCLCardTooltip Affinity_Token = FindByID("Affinity Token");
     public PCLCardTooltip RandomOrb = new PCLCardTooltip("Random Orb", null);
-    public PCLCardTooltip ThrowingKnife = new PCLCardTooltip(pinacolada.cards.pcl.special.ThrowingKnife.DATA.Strings.NAME, null);
+    public PCLCardTooltip ThrowingKnife = new PCLCardTooltip(pinacolada.cards.fool.special.ThrowingKnife.DATA.Strings.NAME, null);
     public PCLCardTooltip GriefSeed = new PCLCardTooltip(Curse_GriefSeed.DATA.Strings.NAME, null);
     public PCLCardTooltip Gold = new PCLCardTooltip(RewardItem.TEXT[1].trim(), null);
 
@@ -265,7 +265,7 @@ public class CardTooltips
 
     public void InitializeIcons()
     {
-        PCLImages.Badges badges = GR.PCL.Images.Badges;
+        PCLImages.Badges badges = PGR.PCL.Images.Badges;
         Afterlife.SetIcon(badges.Afterlife.Texture(), 6).SetBadgeBackground(PCLColors.COLOR_AFTERLIFE);
         Autoplay.SetIcon(badges.Autoplay.Texture(), 6).SetBadgeBackground(PCLColors.COLOR_AUTOPLAY);
         Delayed.SetIcon(badges.Delayed.Texture(), 6).SetBadgeBackground(PCLColors.COLOR_DELAYED);
@@ -283,7 +283,7 @@ public class CardTooltips
         RetainOnce.SetIcon(badges.Retain.Texture(), 6).SetBadgeBackground(PCLColors.COLOR_RETAIN);
         Unplayable.SetIcon(badges.Unplayable.Texture(), 6).SetBadgeBackground(PCLColors.COLOR_UNPLAYABLE);
 
-        PCLImages.CardIcons icons = GR.PCL.Images.Icons;
+        PCLImages.CardIcons icons = PGR.PCL.Images.Icons;
         Ranged.SetIcon(icons.Ranged.Texture(), 6);
         Piercing.SetIcon(icons.Piercing.Texture(), 6);
         DarkDamage.SetIcon(icons.Dark.Texture(), 6).SetIconSizeMulti(0.75f, 0.75f);
@@ -300,7 +300,7 @@ public class CardTooltips
         Unique.SetIcon(icons.Unique.Texture(), 6);
         Multiform.SetIcon(icons.Multiform.Texture(), 6);
 
-        PCLImages.AffinityIcons affinities = GR.PCL.Images.Affinities;
+        PCLImages.AffinityIcons affinities = PGR.PCL.Images.Affinities;
         Affinity_Red.SetIcon(affinities.Red.Texture(), 8);
         Affinity_Green.SetIcon(affinities.Green.Texture(), 8);
         Affinity_Blue.SetIcon(affinities.Blue.Texture(), 8);
@@ -313,7 +313,7 @@ public class CardTooltips
         MulticolorScaling.icon = Multicolor.icon;
         Affinity_Power.icon = Affinity_Token.icon = Affinity_General.icon;
 
-        PCLImages.Tooltips tooltips = GR.PCL.Images.Tooltips;
+        PCLImages.Tooltips tooltips = PGR.PCL.Images.Tooltips;
         ThrowingKnife.SetIcon(tooltips.ThrowingKnife.Texture(), 6);
         GriefSeed.SetIcon(tooltips.GriefSeed.Texture(), 6);
         Lightning.SetIcon(tooltips.Lightning.Texture(), 6);
@@ -388,9 +388,9 @@ public class CardTooltips
         LoadFromPower(Vulnerable, new VulnerablePower(null, 0, false));
         LoadFromPower(Frail, new FrailPower(null, 0, false));
 
-        Trophy1.SetIcon(GR.PCL.Images.BRONZE_TROPHY.Texture());
-        Trophy2.SetIcon(GR.PCL.Images.SILVER_TROPHY.Texture());
-        Trophy3.SetIcon(GR.PCL.Images.GOLD_TROPHY.Texture());
+        Trophy1.SetIcon(PGR.PCL.Images.BRONZE_TROPHY.Texture());
+        Trophy2.SetIcon(PGR.PCL.Images.SILVER_TROPHY.Texture());
+        Trophy3.SetIcon(PGR.PCL.Images.GOLD_TROPHY.Texture());
 
         //Common Debuff/Buff require loading powers for existing tooltips
         CommonBuff.description = PCLJUtils.JoinStrings(", ", new HashSet<>(PCLJUtils.Map(PCLGameUtilities.GetPCLCommonBuffs(), ph -> "[" + ph.Tooltip.id + "]")));

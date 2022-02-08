@@ -3,7 +3,7 @@ package pinacolada.ui.config;
 import basemod.ModPanel;
 import eatyourbeets.ui.config.ConfigOption;
 import pinacolada.cards.base.CardSeries;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLJUtils;
 
 import java.util.ArrayList;
@@ -33,7 +33,7 @@ public class ConfigOption_SeriesList extends ConfigOption<ArrayList<CardSeries>>
         {
             if (defaultValue == null)
             {
-                defaultValue = PCLJUtils.Map(GR.PCL.Data.GetEveryLoadout(), loadout -> loadout.Series);
+                defaultValue = PCLJUtils.Map(PGR.PCL.Data.GetEveryLoadout(), loadout -> loadout.Series);
             }
 
             Value = defaultValue;

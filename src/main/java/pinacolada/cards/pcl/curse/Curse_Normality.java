@@ -12,9 +12,9 @@ import eatyourbeets.interfaces.subscribers.OnStartOfTurnSubscriber;
 import eatyourbeets.powers.CombatStats;
 import eatyourbeets.utilities.TargetHelper;
 import pinacolada.cards.base.CardUseInfo;
+import pinacolada.cards.base.PCLCard;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.PCLCardTarget;
-import pinacolada.cards.base.PCLCard_Curse;
 import pinacolada.interfaces.subscribers.OnCardMovedSubscriber;
 import pinacolada.powers.PCLCombatStats;
 import pinacolada.powers.PCLPowerHelper;
@@ -25,12 +25,12 @@ import pinacolada.utilities.PCLJUtils;
 import java.util.HashMap;
 import java.util.UUID;
 
-public class Curse_Normality extends PCLCard_Curse implements OnApplyPowerSubscriber, OnStartOfTurnSubscriber, OnCardMovedSubscriber
+public class Curse_Normality extends PCLCard implements OnApplyPowerSubscriber, OnStartOfTurnSubscriber, OnCardMovedSubscriber
 {
     protected static final HashMap<AbstractCreature, HashMap<String, Integer>> POWERS = new HashMap<>();
     protected static UUID battleID;
     public static final PCLCardData DATA = Register(Curse_Normality.class)
-            .SetCurse(-2, PCLCardTarget.None, false);
+            .SetCurse(-2, PCLCardTarget.None, false, true);
 
     protected static void CheckForNewBattle() {
         if (CombatStats.BattleID != battleID)
@@ -42,7 +42,7 @@ public class Curse_Normality extends PCLCard_Curse implements OnApplyPowerSubscr
 
     public Curse_Normality()
     {
-        super(DATA, true);
+        super(DATA);
 
         Initialize(0, 0, 3, 50);
 

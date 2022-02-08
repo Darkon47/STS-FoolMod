@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import eatyourbeets.interfaces.delegates.ActionT2;
 import eatyourbeets.interfaces.delegates.FuncT1;
 import eatyourbeets.utilities.RotatingList;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 
 import java.util.ArrayList;
 
@@ -67,7 +67,7 @@ public class DrawPileCardPreview
 
     public void Update(AbstractCard source, AbstractMonster target)
     {
-        final float currentTime = GR.UI.Time();
+        final float currentTime = PGR.UI.Time();
         if (lastTarget != target || (currentTime - lastTime) > REFRESH_DELAY)
         {
             if (target == null && (requireTarget || AbstractDungeon.player.hoveredCard != source || !AbstractDungeon.player.isDraggingCard))
@@ -103,7 +103,7 @@ public class DrawPileCardPreview
         }
         else if (timer > 0)
         {
-            timer -= GR.UI.Delta();
+            timer -= PGR.UI.Delta();
         }
 
         render = timer <= 0;
@@ -125,7 +125,7 @@ public class DrawPileCardPreview
     {
         if (render && card != null)
         {
-            if ((GR.UI.Time() - lastTime) > REFRESH_DELAY)
+            if ((PGR.UI.Time() - lastTime) > REFRESH_DELAY)
             {
                 render = false;
             }
@@ -164,7 +164,7 @@ public class DrawPileCardPreview
                 }
             }
 
-            if (index >= 0 && (findCard == null || findCard.Invoke(c)) && !c.hasTag(GR.Enums.CardTags.VOLATILE))
+            if (index >= 0 && (findCard == null || findCard.Invoke(c)) && !c.hasTag(PGR.Enums.CardTags.VOLATILE))
             {
                 list.add(index, c);
             }

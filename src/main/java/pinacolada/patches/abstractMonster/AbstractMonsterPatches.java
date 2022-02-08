@@ -14,7 +14,7 @@ import javassist.expr.MethodCall;
 import pinacolada.cards.base.PCLCardTooltip;
 import pinacolada.monsters.PCLEnemyIntent;
 import pinacolada.powers.pcl.MindControlPower;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLJUtils;
 
 public class AbstractMonsterPatches
@@ -31,7 +31,7 @@ public class AbstractMonsterPatches
         @SpirePrefixPatch
         public static void Method(AbstractMonster __instance, SpriteBatch sb)
         {
-            GR.UI.CombatScreen.Intents.RenderMonsterInfo(__instance, sb);
+            PGR.UI.CombatScreen.Intents.RenderMonsterInfo(__instance, sb);
         }
     }
 

@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.PurgeCardEffect;
 import eatyourbeets.actions.EYBActionWithCallback;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameEffects;
 import pinacolada.utilities.PCLGameUtilities;
@@ -42,7 +42,7 @@ public class PurgeAnywhere extends EYBActionWithCallback<Boolean>
 
         if (this.card != null)
         {
-            PCLGameUtilities.SetCardTag(this.card, GR.Enums.CardTags.PURGING, true);
+            PCLGameUtilities.SetCardTag(this.card, PGR.Enums.CardTags.PURGING, true);
         }
 
         Initialize(repeat);

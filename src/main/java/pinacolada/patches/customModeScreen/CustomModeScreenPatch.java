@@ -19,8 +19,8 @@ import eatyourbeets.utilities.MethodInfo;
 import javassist.CtBehavior;
 import org.apache.logging.log4j.util.Strings;
 import pinacolada.dailymods.PCLDailyMod;
-import pinacolada.resources.GR;
-import pinacolada.resources.pcl.loadouts._FakeLoadout;
+import pinacolada.resources.PGR;
+import pinacolada.resources.fool.loadouts._FakeLoadout;
 import pinacolada.resources.pcl.misc.PCLLoadout;
 import pinacolada.ui.controls.GUI_Button;
 import pinacolada.ui.controls.GUI_Dropdown;
@@ -100,7 +100,7 @@ public class CustomModeScreenPatch {
         @SpirePostfixPatch
         public static void Postfix(CustomModeScreen __instance, SpriteBatch sb)
         {
-            FontHelper.renderSmartText(sb, FontHelper.panelNameFont, GR.PCL.Strings.SeriesUI.SeriesUI, SeriesLeftButton.hb.cX - 24.0F, _scrollY.Get(__instance) - 460.0F * Settings.scale + 850.0F * Settings.scale, 9999.0F, 32.0F * Settings.scale, Settings.GOLD_COLOR);
+            FontHelper.renderSmartText(sb, FontHelper.panelNameFont, PGR.PCL.Strings.SeriesUI.SeriesUI, SeriesLeftButton.hb.cX - 24.0F, _scrollY.Get(__instance) - 460.0F * Settings.scale + 850.0F * Settings.scale, 9999.0F, 32.0F * Settings.scale, Settings.GOLD_COLOR);
         }
     }
 
@@ -187,8 +187,8 @@ public class CustomModeScreenPatch {
         loadouts.clear();
         availableLoadouts.clear();
 
-        final int unlockLevel = GR.PCL.GetUnlockLevel();
-        for (PCLLoadout loadout : GR.PCL.Data.BaseLoadouts)
+        final int unlockLevel = PGR.Fool.GetUnlockLevel();
+        for (PCLLoadout loadout : PGR.PCL.Data.BaseLoadouts)
         {
             loadouts.add(loadout);
             if (unlockLevel >= loadout.UnlockLevel)
@@ -197,9 +197,9 @@ public class CustomModeScreenPatch {
             }
         }
 
-        if (GR.PCL.Config.DisplayBetaSeries.Get())
+        if (PGR.PCL.Config.DisplayBetaSeries.Get())
         {
-            for (PCLLoadout loadout : GR.PCL.Data.BetaLoadouts)
+            for (PCLLoadout loadout : PGR.PCL.Data.BetaLoadouts)
             {
                 if (loadout.GetPreset().CardsSize() > 0)
                 {
@@ -215,7 +215,7 @@ public class CustomModeScreenPatch {
         loadouts.sort((a, b) ->
         {
             final int diff = a.Name.compareTo(b.Name);
-            final int level = GR.PCL.GetUnlockLevel();
+            final int level = PGR.Fool.GetUnlockLevel();
             final int levelA = a.UnlockLevel - level;
             final int levelB = b.UnlockLevel - level;
             if (levelA > 0 || levelB > 0)
@@ -226,13 +226,13 @@ public class CustomModeScreenPatch {
             return diff;
         });
 
-        startingLoadout = GR.PCL.Data.SelectedLoadout;
+        startingLoadout = PGR.PCL.Data.SelectedLoadout;
         if (startingLoadout.GetStartingDeck().isEmpty() || !loadouts.contains(startingLoadout))
         {
-            startingLoadout = GR.PCL.Data.SelectedLoadout = loadouts.get(0);
+            startingLoadout = PGR.PCL.Data.SelectedLoadout = loadouts.get(0);
         }
         SeriesDropdown.SetItems(loadouts);
-        SeriesDropdown.SetSelection(GR.PCL.Data.SelectedLoadout, false);
+        SeriesDropdown.SetSelection(PGR.PCL.Data.SelectedLoadout, false);
     }
 
     private static void InitializeAllAnimatorMods()
@@ -263,12 +263,12 @@ public class CustomModeScreenPatch {
         SeriesDropdown.TryUpdate();
         SeriesRightButton.TryUpdate();
 
-        startingLoadout = GR.PCL.Data.SelectedLoadout;
+        startingLoadout = PGR.PCL.Data.SelectedLoadout;
     }
 
     private static void UpdateDisplaySeries(CustomModeScreen __instance)
     {
-        if (CardCrawlGame.chosenCharacter != null && CardCrawlGame.chosenCharacter.equals(GR.Enums.Characters.THE_FOOL))
+        if (CardCrawlGame.chosenCharacter != null && CardCrawlGame.chosenCharacter.equals(PGR.Enums.Characters.THE_FOOL))
         {
             for (CustomMod mod : _modList.Get(__instance))
             {
@@ -311,8 +311,8 @@ public class CustomModeScreenPatch {
 
     private static void ChangeLoadout(PCLLoadout loadout)
     {
-        GR.PCL.Data.SelectedLoadout = loadout;
-        SeriesDropdown.SetSelection(GR.PCL.Data.SelectedLoadout, false);
+        PGR.PCL.Data.SelectedLoadout = loadout;
+        SeriesDropdown.SetSelection(PGR.PCL.Data.SelectedLoadout, false);
     }
 
     private static boolean ShouldHideSeries() {

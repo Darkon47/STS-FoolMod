@@ -11,7 +11,7 @@ import com.megacrit.cardcrawl.helpers.input.InputHelper;
 import javassist.CannotCompileException;
 import javassist.CtBehavior;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 
 public class CardCrawlGamePatches
 {
@@ -21,7 +21,7 @@ public class CardCrawlGamePatches
         @SpirePrefixPatch
         public static void Insert(AbstractPlayer __instance, SpriteBatch sb)
         {
-            GR.UI.PreRender(sb);
+            PGR.UI.PreRender(sb);
         }
     }
 
@@ -31,7 +31,7 @@ public class CardCrawlGamePatches
         @SpireInsertPatch(locator = Locator.class, localvars = {"sb"})
         public static void Insert(CardCrawlGame __instance, SpriteBatch sb)
         {
-            GR.UI.Render(sb);
+            PGR.UI.Render(sb);
         }
 
         private static class Locator extends SpireInsertLocator
@@ -51,8 +51,8 @@ public class CardCrawlGamePatches
         public static void Insert(CardCrawlGame __instance, SpriteBatch sb)
         {
             //TODO make a generic overlay property for UI
-            GR.UI.CardFilters.TryRender(sb);
-            GR.UI.PostRender(sb);
+            PGR.UI.CardFilters.TryRender(sb);
+            PGR.UI.PostRender(sb);
         }
 
         private static class Locator extends SpireInsertLocator
@@ -71,19 +71,19 @@ public class CardCrawlGamePatches
         @SpirePrefixPatch
         public static void Prefix(CardCrawlGame __instance)
         {
-            GR.UI.PreUpdate();
+            PGR.UI.PreUpdate();
         }
 
         @SpirePostfixPatch
         public static void Postfix(CardCrawlGame __instance)
         {
-            GR.UI.PostUpdate();
+            PGR.UI.PostUpdate();
         }
 
         @SpireInsertPatch(locator = Locator.class)
         public static void Insert(CardCrawlGame __instance)
         {
-            GR.UI.Update();
+            PGR.UI.Update();
         }
 
         private static class Locator extends SpireInsertLocator

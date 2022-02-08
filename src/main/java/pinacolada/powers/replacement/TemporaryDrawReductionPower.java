@@ -4,7 +4,7 @@ import basemod.interfaces.CloneablePowerInterface;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.DrawReductionPower;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 
 public class TemporaryDrawReductionPower extends DrawReductionPower implements CloneablePowerInterface
@@ -20,7 +20,7 @@ public class TemporaryDrawReductionPower extends DrawReductionPower implements C
     {
         super(owner, turns);
 
-        this.ID = GR.PCL.CreateID(TemporaryDrawReductionPower.class.getSimpleName());
+        this.ID = PGR.PCL.CreateID(TemporaryDrawReductionPower.class.getSimpleName());
 
         if (unique)
         {

@@ -2,22 +2,22 @@ package pinacolada.cards.pcl.status;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.base.CardUseInfo;
+import pinacolada.cards.base.PCLCard;
 import pinacolada.cards.base.PCLCardData;
-import pinacolada.cards.base.PCLCard_Status;
+import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.effects.AttackEffects;
 import pinacolada.effects.SFX;
 import pinacolada.utilities.PCLActions;
 
-public class Crystallize extends PCLCard_Status
+public class Crystallize extends PCLCard
 {
     public static final PCLCardData DATA = Register(Crystallize.class)
             .SetStatus(1, CardRarity.UNCOMMON, PCLCardTarget.None);
 
     public Crystallize()
     {
-        super(DATA, false);
+        super(DATA);
 
         Initialize(0, 0, 4, 3);
 

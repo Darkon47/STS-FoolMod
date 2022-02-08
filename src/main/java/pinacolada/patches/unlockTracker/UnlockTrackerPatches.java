@@ -55,12 +55,12 @@ import com.evacipated.cardcrawl.modthespire.lib.SpirePrefixPatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpireReturn;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLJUtils;
 
 public class UnlockTrackerPatches
 {
-    private static final String base = GR.PCL.PlayerClass.toString();
+    private static final String base = PGR.Fool.PlayerClass.toString();
     private static final String key_unlock_level = base + "UnlockLevel";
     private static final String key_progress = base + "Progress";
     private static final String key_current_cost = base + "CurrentCost";
@@ -69,9 +69,9 @@ public class UnlockTrackerPatches
     
     public static void Validate()
     {
-        final float progress = UnlockTracker.getCurrentProgress(GR.PCL.PlayerClass);
-        final int cost = UnlockTracker.getCurrentScoreCost(GR.PCL.PlayerClass);
-        final int expectedCost = GR.PCL.GetUnlockCost();
+        final float progress = UnlockTracker.getCurrentProgress(PGR.Fool.PlayerClass);
+        final int cost = UnlockTracker.getCurrentScoreCost(PGR.Fool.PlayerClass);
+        final int expectedCost = PGR.Fool.GetUnlockCost();
         if (cost != expectedCost)
         {
             UnlockTracker.unlockProgress.putInteger(key_current_cost, expectedCost);
@@ -83,9 +83,9 @@ public class UnlockTrackerPatches
 
         if (progress >= expectedCost)
         {
-            if (GR.PCL.GetUnlockLevel() < GR.PCL.Data.MaxUnlockLevel)
+            if (PGR.Fool.GetUnlockLevel() < PGR.PCL.Data.MaxUnlockLevel)
             {
-                UnlockTracker.addScore(GR.PCL.PlayerClass, 1);
+                UnlockTracker.addScore(PGR.Fool.PlayerClass, 1);
             }
         }
     }
@@ -96,7 +96,7 @@ public class UnlockTrackerPatches
         @SpirePrefixPatch
         public static SpireReturn Prefix(AbstractPlayer.PlayerClass c, int scoreGained)
         {
-            if (c != GR.PCL.PlayerClass)
+            if (c != PGR.Fool.PlayerClass)
             {
                 return SpireReturn.Continue();
             }
@@ -105,7 +105,7 @@ public class UnlockTrackerPatches
             p += scoreGained;
             int total;
             int highscore;
-            int unlockCost = GR.PCL.GetUnlockCost();
+            int unlockCost = PGR.Fool.GetUnlockCost();
             if (p >= unlockCost)
             {
                 PCLJUtils.LogInfo(UnlockTrackerPatches.class, "[DEBUG] Level up!");
@@ -115,7 +115,7 @@ public class UnlockTrackerPatches
                 UnlockTracker.unlockProgress.putInteger(key_progress, p);
                 PCLJUtils.LogInfo(UnlockTrackerPatches.class, "[DEBUG] Score Progress: " + key_progress);
                 //highscore = UnlockTracker.unlockProgress.getInteger(key_current_cost, defaultCost);
-                int nextUnlockCost = GR.PCL.GetUnlockCost();
+                int nextUnlockCost = PGR.Fool.GetUnlockCost();
                 UnlockTracker.unlockProgress.putInteger(key_current_cost, nextUnlockCost);
                 if (p > nextUnlockCost)
                 {

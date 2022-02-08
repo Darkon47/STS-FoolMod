@@ -10,7 +10,7 @@ import eatyourbeets.interfaces.delegates.FuncT2;
 import eatyourbeets.interfaces.delegates.FuncT3;
 import eatyourbeets.utilities.Colors;
 import pinacolada.effects.vfx.GenericRenderEffect;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.resources.pcl.PCLImages;
 import pinacolada.utilities.PCLJUtils;
 
@@ -22,7 +22,7 @@ import static com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect;
 public class AttackEffects
 {
     private static final HashMap<AttackEffect, AttackEffectData> map = new HashMap();
-    private static final PCLImages.Effects IMAGES = GR.PCL.Images.Effects;
+    private static final PCLImages.Effects IMAGES = PGR.PCL.Images.Effects;
     private static final ArrayList<AttackEffect> melee = new ArrayList<>();
     private static final ArrayList<AttackEffect> magic = new ArrayList<>();
     private static final ArrayList<AttackEffect> other = new ArrayList<>();
@@ -40,23 +40,23 @@ public class AttackEffects
    public static final AttackEffect SLASH_VERTICAL = AttackEffect.SLASH_VERTICAL;
    public static final AttackEffect SMASH = AttackEffect.SMASH;
    // Custom:
-   public static final AttackEffect BITE = GR.Enums.AttackEffect.BITE;
-   public static final AttackEffect CLAW = GR.Enums.AttackEffect.CLAW;
-   public static final AttackEffect DAGGER = GR.Enums.AttackEffect.DAGGER;
-   public static final AttackEffect DARK = GR.Enums.AttackEffect.DARK;
-   public static final AttackEffect DARKNESS = GR.Enums.AttackEffect.DARKNESS;
-   public static final AttackEffect ELECTRIC = GR.Enums.AttackEffect.ELECTRIC;
-   public static final AttackEffect FIRE_EXPLOSION = GR.Enums.AttackEffect.FIRE_EXPLOSION;
-   public static final AttackEffect GUNSHOT = GR.Enums.AttackEffect.GUNSHOT;
-   public static final AttackEffect ICE = GR.Enums.AttackEffect.ICE;
-   public static final AttackEffect PSYCHOKINESIS = GR.Enums.AttackEffect.PSYCHOKINESIS;
-   public static final AttackEffect PUNCH = GR.Enums.AttackEffect.PUNCH;
-   public static final AttackEffect SHIELD_FROST = GR.Enums.AttackEffect.SHIELD_FROST;
-   public static final AttackEffect SMALL_EXPLOSION = GR.Enums.AttackEffect.SMALL_EXPLOSION;
-   public static final AttackEffect SPARK = GR.Enums.AttackEffect.SPARK;
-   public static final AttackEffect SPEAR = GR.Enums.AttackEffect.SPEAR;
-   public static final AttackEffect WATER = GR.Enums.AttackEffect.WATER;
-   public static final AttackEffect WAVE = GR.Enums.AttackEffect.WAVE;
+   public static final AttackEffect BITE = PGR.Enums.AttackEffect.BITE;
+   public static final AttackEffect CLAW = PGR.Enums.AttackEffect.CLAW;
+   public static final AttackEffect DAGGER = PGR.Enums.AttackEffect.DAGGER;
+   public static final AttackEffect DARK = PGR.Enums.AttackEffect.DARK;
+   public static final AttackEffect DARKNESS = PGR.Enums.AttackEffect.DARKNESS;
+   public static final AttackEffect ELECTRIC = PGR.Enums.AttackEffect.ELECTRIC;
+   public static final AttackEffect FIRE_EXPLOSION = PGR.Enums.AttackEffect.FIRE_EXPLOSION;
+   public static final AttackEffect GUNSHOT = PGR.Enums.AttackEffect.GUNSHOT;
+   public static final AttackEffect ICE = PGR.Enums.AttackEffect.ICE;
+   public static final AttackEffect PSYCHOKINESIS = PGR.Enums.AttackEffect.PSYCHOKINESIS;
+   public static final AttackEffect PUNCH = PGR.Enums.AttackEffect.PUNCH;
+   public static final AttackEffect SHIELD_FROST = PGR.Enums.AttackEffect.SHIELD_FROST;
+   public static final AttackEffect SMALL_EXPLOSION = PGR.Enums.AttackEffect.SMALL_EXPLOSION;
+   public static final AttackEffect SPARK = PGR.Enums.AttackEffect.SPARK;
+   public static final AttackEffect SPEAR = PGR.Enums.AttackEffect.SPEAR;
+   public static final AttackEffect WATER = PGR.Enums.AttackEffect.WATER;
+   public static final AttackEffect WAVE = PGR.Enums.AttackEffect.WAVE;
 
     public static EYBEffect GetVFX(AttackEffect effect, AbstractCreature source, float t_cX, float t_cY)
     {

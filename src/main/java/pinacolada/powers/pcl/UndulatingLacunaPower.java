@@ -15,7 +15,7 @@ import pinacolada.powers.common.RippledPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
-import static pinacolada.cards.pcl.special.UndulatingLacuna.DARK_BONUS;
+import static pinacolada.cards.fool.special.UndulatingLacuna.DARK_BONUS;
 
 public class UndulatingLacunaPower extends PCLPower implements OnOrbPassiveEffectSubscriber
 {

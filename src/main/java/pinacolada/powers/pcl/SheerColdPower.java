@@ -20,8 +20,8 @@ import pinacolada.utilities.PCLGameUtilities;
 
 import java.util.ArrayList;
 
-import static pinacolada.cards.pcl.special.SheerCold.FROST_EVOKE_BONUS;
-import static pinacolada.cards.pcl.special.SheerCold.FROST_TRIGGER_BONUS;
+import static pinacolada.cards.fool.special.SheerCold.FROST_EVOKE_BONUS;
+import static pinacolada.cards.fool.special.SheerCold.FROST_TRIGGER_BONUS;
 
 public class SheerColdPower extends PCLPower implements OnOrbPassiveEffectSubscriber
 {

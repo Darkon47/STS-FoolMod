@@ -8,7 +8,7 @@ import eatyourbeets.interfaces.delegates.FuncT1;
 import eatyourbeets.interfaces.delegates.FuncT2;
 import eatyourbeets.utilities.GenericCondition;
 import eatyourbeets.utilities.RandomizedList;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLGameUtilities;
 
 import java.util.ArrayList;
@@ -38,7 +38,7 @@ public class SelectFromHand extends EYBActionWithCallback<ArrayList<AbstractCard
 
         Initialize(amount, sourceName);
 
-        this.message = GR.PCL.Strings.HandSelection.Activate;
+        this.message = PGR.PCL.Strings.HandSelection.Activate;
         this.isRandom = isRandom;
     }
 

@@ -17,7 +17,7 @@ import eatyourbeets.utilities.EYBFontHelper;
 import eatyourbeets.utilities.Mathf;
 import org.apache.commons.lang3.StringUtils;
 import pinacolada.cards.base.*;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.ui.controls.GUI_Button;
 import pinacolada.ui.controls.GUI_Dropdown;
 import pinacolada.ui.controls.GUI_Label;
@@ -58,9 +58,9 @@ public class CardKeywordFilters extends GUIElement
 
     public enum OriginFilter
     {
-        BaseGame("Base Game", GR.PackageNames.OG),
-        Animator("Animator",GR.PackageNames.EYB_ANIMATOR),
-        PCL("Fool",GR.PackageNames.PCL);
+        BaseGame("Base Game", PGR.PackageNames.OG),
+        Animator("Animator", PGR.PackageNames.EYB_ANIMATOR),
+        PCL("Fool", PGR.PackageNames.PCL);
 
         public final String name;
         public final String packagePrefix;
@@ -228,13 +228,13 @@ public class CardKeywordFilters extends GUIElement
     {
         isActive = false;
         hb = new AdvancedHitbox(DRAW_START_X, DRAW_START_Y, Scale(180), Scale(70)).SetIsPopupCompatible(true);
-        closeButton = new GUI_Button(GR.PCL.Images.HexagonalButton.Texture(), new DraggableHitbox(0, 0, Settings.WIDTH * 0.07f, Settings.HEIGHT * 0.07f, false).SetIsPopupCompatible(true))
-                .SetBorder(GR.PCL.Images.HexagonalButtonBorder.Texture(), Color.WHITE)
+        closeButton = new GUI_Button(PGR.PCL.Images.HexagonalButton.Texture(), new DraggableHitbox(0, 0, Settings.WIDTH * 0.07f, Settings.HEIGHT * 0.07f, false).SetIsPopupCompatible(true))
+                .SetBorder(PGR.PCL.Images.HexagonalButtonBorder.Texture(), Color.WHITE)
                 .SetPosition(Settings.WIDTH * 0.96f, Settings.HEIGHT * 0.95f).SetText(CombatRewardScreen.TEXT[6])
                 .SetOnClick(this::Close)
                 .SetColor(Color.GRAY);
-        clearButton = new GUI_Button(GR.PCL.Images.HexagonalButton.Texture(), new DraggableHitbox(0, 0, Settings.WIDTH * 0.07f, Settings.HEIGHT * 0.07f).SetIsPopupCompatible(true))
-                .SetBorder(GR.PCL.Images.HexagonalButtonBorder.Texture(), Color.WHITE)
+        clearButton = new GUI_Button(PGR.PCL.Images.HexagonalButton.Texture(), new DraggableHitbox(0, 0, Settings.WIDTH * 0.07f, Settings.HEIGHT * 0.07f).SetIsPopupCompatible(true))
+                .SetBorder(PGR.PCL.Images.HexagonalButtonBorder.Texture(), Color.WHITE)
                 .SetColor(Color.FIREBRICK)
                 .SetPosition(Settings.WIDTH * 0.96f, Settings.HEIGHT * 0.86f).SetText("Clear")
                 .SetOnClick(() -> this.Clear(true, isAccessedFromCardPool));
@@ -252,7 +252,7 @@ public class CardKeywordFilters extends GUIElement
                         onClick.Invoke(null);
                     }
                 })
-                .SetHeader(EYBFontHelper.CardTitleFont_Small, 0.8f, Settings.GOLD_COLOR, GR.PCL.Strings.SeriesUI.SeriesUI)
+                .SetHeader(EYBFontHelper.CardTitleFont_Small, 0.8f, Settings.GOLD_COLOR, PGR.PCL.Strings.SeriesUI.SeriesUI)
                 .SetIsMultiSelect(true)
                 .SetCanAutosizeButton(true);
 
@@ -269,14 +269,14 @@ public class CardKeywordFilters extends GUIElement
                 })
                 .SetLabelFunctionForButton(items -> {
                     if (items.size() == 0) {
-                        return GR.PCL.Strings.Misc.Any;
+                        return PGR.PCL.Strings.Misc.Any;
                     }
                     if (items.size() > 1) {
-                        return items.size() + " " + GR.PCL.Strings.SeriesUI.ItemsSelected;
+                        return items.size() + " " + PGR.PCL.Strings.SeriesUI.ItemsSelected;
                     }
                     return StringUtils.join(PCLJUtils.Map(items, item -> item.name), ", ");
                 }, null,false)
-                .SetHeader(EYBFontHelper.CardTitleFont_Small, 0.8f, Settings.GOLD_COLOR, GR.PCL.Strings.SeriesUI.Origins)
+                .SetHeader(EYBFontHelper.CardTitleFont_Small, 0.8f, Settings.GOLD_COLOR, PGR.PCL.Strings.SeriesUI.Origins)
                 .SetIsMultiSelect(true)
                 .SetCanAutosizeButton(true)
                 .SetItems(OriginFilter.values());
@@ -294,14 +294,14 @@ public class CardKeywordFilters extends GUIElement
                 })
                 .SetLabelFunctionForButton(items -> {
                     if (items.size() == 0) {
-                        return GR.PCL.Strings.Misc.Any;
+                        return PGR.PCL.Strings.Misc.Any;
                     }
                     if (items.size() > 1) {
-                        return items.size() + " " + GR.PCL.Strings.SeriesUI.ItemsSelected;
+                        return items.size() + " " + PGR.PCL.Strings.SeriesUI.ItemsSelected;
                     }
                     return StringUtils.join(PCLJUtils.Map(items, item -> item.name), ", ");
                 }, null,false)
-                .SetHeader(EYBFontHelper.CardTitleFont_Small, 0.8f, Settings.GOLD_COLOR, GR.PCL.Strings.SeriesUI.Costs)
+                .SetHeader(EYBFontHelper.CardTitleFont_Small, 0.8f, Settings.GOLD_COLOR, PGR.PCL.Strings.SeriesUI.Costs)
                 .SetIsMultiSelect(true)
                 .SetCanAutosizeButton(true)
                 .SetItems(CostFilter.values());
@@ -320,14 +320,14 @@ public class CardKeywordFilters extends GUIElement
                 })
                 .SetLabelFunctionForButton(items -> {
                     if (items.size() == 0) {
-                        return GR.PCL.Strings.Misc.Any;
+                        return PGR.PCL.Strings.Misc.Any;
                     }
                     if (items.size() > 1) {
-                        return items.size() + " " + GR.PCL.Strings.SeriesUI.ItemsSelected;
+                        return items.size() + " " + PGR.PCL.Strings.SeriesUI.ItemsSelected;
                     }
                     return StringUtils.join(PCLJUtils.Map(items, item -> StringUtils.capitalize(item.toString().toLowerCase())), ", ");
                 }, null,false)
-                .SetHeader(EYBFontHelper.CardTitleFont_Small, 0.8f, Settings.GOLD_COLOR, GR.PCL.Strings.SeriesUI.Rarities)
+                .SetHeader(EYBFontHelper.CardTitleFont_Small, 0.8f, Settings.GOLD_COLOR, PGR.PCL.Strings.SeriesUI.Rarities)
                 .SetIsMultiSelect(true)
                 .SetCanAutosizeButton(true)
                 .SetItems(AbstractCard.CardRarity.values());
@@ -346,14 +346,14 @@ public class CardKeywordFilters extends GUIElement
                 })
                 .SetLabelFunctionForButton(items -> {
                     if (items.size() == 0) {
-                        return GR.PCL.Strings.Misc.Any;
+                        return PGR.PCL.Strings.Misc.Any;
                     }
                     if (items.size() > 1) {
-                        return items.size() + " " + GR.PCL.Strings.SeriesUI.ItemsSelected;
+                        return items.size() + " " + PGR.PCL.Strings.SeriesUI.ItemsSelected;
                     }
                     return StringUtils.join(PCLJUtils.Map(items, item -> StringUtils.capitalize(item.toString().toLowerCase())), ", ");
                 }, null,false)
-                .SetHeader(EYBFontHelper.CardTitleFont_Small, 0.8f, Settings.GOLD_COLOR, GR.PCL.Strings.SeriesUI.Types)
+                .SetHeader(EYBFontHelper.CardTitleFont_Small, 0.8f, Settings.GOLD_COLOR, PGR.PCL.Strings.SeriesUI.Types)
                 .SetIsMultiSelect(true)
                 .SetCanAutosizeButton(true)
                 .SetItems(AbstractCard.CardType.values());
@@ -372,28 +372,28 @@ public class CardKeywordFilters extends GUIElement
                 })
                 .SetLabelFunctionForButton(items -> {
                     if (items.size() == 0) {
-                        return GR.PCL.Strings.Misc.Any;
+                        return PGR.PCL.Strings.Misc.Any;
                     }
                     if (items.size() > 1) {
-                        return items.size() + " " + GR.PCL.Strings.SeriesUI.ItemsSelected;
+                        return items.size() + " " + PGR.PCL.Strings.SeriesUI.ItemsSelected;
                     }
                     return StringUtils.join(PCLJUtils.Map(items, item -> StringUtils.capitalize(item.toString().toLowerCase())), ", ");
                 }, null,false)
-                .SetHeader(EYBFontHelper.CardTitleFont_Small, 0.8f, Settings.GOLD_COLOR, GR.PCL.Strings.SeriesUI.Colors)
+                .SetHeader(EYBFontHelper.CardTitleFont_Small, 0.8f, Settings.GOLD_COLOR, PGR.PCL.Strings.SeriesUI.Colors)
                 .SetIsMultiSelect(true)
                 .SetCanAutosizeButton(true);
 
         affinitiesSectionLabel = new GUI_Label(EYBFontHelper.CardTitleFont_Small,
                 new AdvancedHitbox(TypesDropdown.hb.x + TypesDropdown.hb.width + SPACING * 4, hb.y + SPACING * 6.1f, Scale(48), Scale(48)))
                 .SetFont(EYBFontHelper.CardTitleFont_Small, 0.8f)
-                .SetText(GR.PCL.Strings.SeriesUI.Affinities)
+                .SetText(PGR.PCL.Strings.SeriesUI.Affinities)
                 .SetColor(Settings.GOLD_COLOR)
                 .SetAlignment(0.5f, 0.0f, false);
-        keywordsSectionLabel = affinitiesSectionLabel.MakeCopy().SetText(GR.PCL.Strings.SeriesUI.Keywords);
+        keywordsSectionLabel = affinitiesSectionLabel.MakeCopy().SetText(PGR.PCL.Strings.SeriesUI.Keywords);
         currentTotalHeaderLabel = new GUI_Label(EYBFontHelper.CardTitleFont_Normal,
                 new AdvancedHitbox(Settings.WIDTH * 0.01f, Settings.HEIGHT * 0.94f, Scale(48), Scale(48)))
                 .SetFont(EYBFontHelper.CardTitleFont_Small, 1f)
-                .SetText(GR.PCL.Strings.SeriesUI.Total)
+                .SetText(PGR.PCL.Strings.SeriesUI.Total)
                 .SetColor(Settings.GOLD_COLOR)
                 .SetAlignment(0.5f, 0.0f, false);
         currentTotalLabel = new GUI_Label(EYBFontHelper.CardTitleFont_Normal,
@@ -611,7 +611,7 @@ public class CardKeywordFilters extends GUIElement
             RefreshButtons();
         }
 
-        if (!GR.UI.IsDropdownOpen) {
+        if (!PGR.UI.IsDropdownOpen) {
             for (CardKeywordButton c : FilterButtons)
             {
                 c.TryUpdate();
@@ -678,7 +678,7 @@ public class CardKeywordFilters extends GUIElement
 
     protected void OnScroll(float newPercent)
     {
-        if (!GR.UI.IsDropdownOpen) {
+        if (!PGR.UI.IsDropdownOpen) {
             scrollDelta = MathHelper.valueFromPercentBetween(lowerScrollBound, upperScrollBound, newPercent);
         }
     }
@@ -723,7 +723,7 @@ public class CardKeywordFilters extends GUIElement
         {
             if (draggingScreen)
             {
-                if (InputHelper.isMouseDown && GR.UI.TryDragging())
+                if (InputHelper.isMouseDown && PGR.UI.TryDragging())
                 {
                     scrollDelta = InputHelper.mY - scrollStart;
                 }
@@ -743,7 +743,7 @@ public class CardKeywordFilters extends GUIElement
                     scrollDelta -= Settings.SCROLL_SPEED;
                 }
 
-                if (canDragScreen && InputHelper.justClickedLeft && GR.UI.TryDragging())
+                if (canDragScreen && InputHelper.justClickedLeft && PGR.UI.TryDragging())
                 {
                     draggingScreen = true;
                     scrollStart = InputHelper.mY - scrollDelta;

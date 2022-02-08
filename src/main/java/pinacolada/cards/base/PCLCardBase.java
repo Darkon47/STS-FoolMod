@@ -19,9 +19,9 @@ import eatyourbeets.cards.base.EYBCardBase;
 import eatyourbeets.utilities.AdvancedTexture;
 import eatyourbeets.utilities.ColoredString;
 import eatyourbeets.utilities.EYBFontHelper;
-import pinacolada.cards.pcl.colorless.QuestionMark;
+import pinacolada.cards.fool.colorless.QuestionMark;
 import pinacolada.effects.card.PCLCardGlowBorderEffect;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLGameUtilities;
 
 import java.util.ArrayList;
@@ -77,7 +77,7 @@ public abstract class PCLCardBase extends EYBCardBase
 
     public void LoadImage(String suffix)
     {
-        portraitImg = new AdvancedTexture(GR.GetTexture(suffix == null ? assetUrl : assetUrl.replace(".png", suffix + ".png"), true), null);
+        portraitImg = new AdvancedTexture(PGR.GetTexture(suffix == null ? assetUrl : assetUrl.replace(".png", suffix + ".png"), true), null);
     }
 
     public boolean IsOnScreen()
@@ -103,7 +103,7 @@ public abstract class PCLCardBase extends EYBCardBase
 
         if (this.hb.hovered) {
             this.hover();
-            this.hoverDuration += GR.UI.Delta();
+            this.hoverDuration += PGR.UI.Delta();
             this.renderTip = this.hoverDuration > 0.2F && !Settings.hideCards;
         } else {
             this.unhover();
@@ -328,7 +328,7 @@ public abstract class PCLCardBase extends EYBCardBase
     {
         if (!isSeen || isLocked)
         {
-            RenderPortraitImage(sb, GR.GetTexture(QuestionMark.DATA.ImagePath), _renderColor.Get(this), 1, false, false, false);
+            RenderPortraitImage(sb, PGR.GetTexture(QuestionMark.DATA.ImagePath), _renderColor.Get(this), 1, false, false, false);
             return;
         }
 
@@ -337,7 +337,7 @@ public abstract class PCLCardBase extends EYBCardBase
             return;
         }
 
-        final boolean cropPortrait = canCropPortraits && (this.cropPortrait && GR.PCL.Config.CropCardImages.Get());
+        final boolean cropPortrait = canCropPortraits && (this.cropPortrait && PGR.PCL.Config.CropCardImages.Get());
         AdvancedTexture image = GetPortraitImage();
         if (image != null)
         {
@@ -364,7 +364,7 @@ public abstract class PCLCardBase extends EYBCardBase
             final int width = texture.getWidth();
             final int offset_x = (int) ((1 - drawScale) * (0.5f * width));
             TextureAtlas.AtlasRegion region = foreground ? jokePortrait : portrait;
-            if (region == null || texture != region.getTexture() || (region.getRegionX() != offset_x) || GR.UI.Elapsed50())
+            if (region == null || texture != region.getTexture() || (region.getRegionX() != offset_x) || PGR.UI.Elapsed50())
             {
                 final int height = texture.getHeight();
                 final int offset_y1 = 0;//(int) ((1-drawScale) * (0.5f * height));

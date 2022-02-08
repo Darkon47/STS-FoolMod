@@ -18,7 +18,7 @@ import eatyourbeets.utilities.GenericCallback;
 import org.apache.commons.lang3.StringUtils;
 import pinacolada.cards.base.PCLCardTooltip;
 import pinacolada.effects.SFX;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.ui.hitboxes.AdvancedHitbox;
 import pinacolada.utilities.PCLInputManager;
 import pinacolada.utilities.PCLRenderHelpers;
@@ -228,7 +228,7 @@ public class GUI_Button extends GUIElement
     {
         if (currentClickDelay > 0)
         {
-            this.currentClickDelay -= GR.UI.Delta();
+            this.currentClickDelay -= PGR.UI.Delta();
         }
 
         this.currentAlpha = MathHelper.fadeLerpSnap(currentAlpha, targetAlpha);
@@ -239,7 +239,7 @@ public class GUI_Button extends GUIElement
 
         this.hb.update();
 
-        if (IsInteractable() && GR.UI.TryHover(hb))
+        if (IsInteractable() && PGR.UI.TryHover(hb))
         {
             if (this.hb.justHovered)
             {

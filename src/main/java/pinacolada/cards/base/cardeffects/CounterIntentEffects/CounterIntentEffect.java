@@ -6,7 +6,7 @@ import pinacolada.cards.base.PCLCard;
 import pinacolada.cards.base.attributes.AbstractAttribute;
 import pinacolada.cards.base.attributes.BlockAttribute;
 import pinacolada.cards.base.attributes.DamageAttribute;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.resources.pcl.PCLStrings;
 
 import java.util.HashMap;
@@ -15,7 +15,7 @@ import java.util.Map;
 public abstract class CounterIntentEffect
 {
     protected static final Map<AbstractMonster.Intent, CounterIntentEffect> effects = new HashMap<>();
-    protected static final PCLStrings.Actions ACTIONS = GR.PCL.Strings.Actions;
+    protected static final PCLStrings.Actions ACTIONS = PGR.PCL.Strings.Actions;
 
     private static CounterIntentEffect AddToCache(AbstractMonster.Intent intent, CounterIntentEffect effect)
     {

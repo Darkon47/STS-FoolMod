@@ -3,7 +3,7 @@ package pinacolada.ui.seriesSelection;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import eatyourbeets.utilities.Mathf;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.resources.pcl.misc.PCLLoadout;
 import pinacolada.resources.pcl.misc.PCLRuntimeLoadout;
 import pinacolada.utilities.PCLJUtils;
@@ -30,7 +30,7 @@ public class PCLLoadoutsContainer
     public static void PreloadResources()
     {
         CardCrawlGame.sound.preload("CARD_SELECT");
-        for (PCLLoadout loadout : GR.PCL.Data.BaseLoadouts)
+        for (PCLLoadout loadout : PGR.PCL.Data.BaseLoadouts)
         {
             PCLRuntimeLoadout temp = PCLRuntimeLoadout.TryCreate(loadout);
             if (temp != null)
@@ -51,7 +51,7 @@ public class PCLLoadoutsContainer
         allCards.clear();
 
         final ArrayList<PCLRuntimeLoadout> seriesSelectionItems = new ArrayList<>();
-        for (PCLLoadout loadout : GR.PCL.Data.BaseLoadouts)
+        for (PCLLoadout loadout : PGR.PCL.Data.BaseLoadouts)
         {
             final PCLRuntimeLoadout card = PCLRuntimeLoadout.TryCreate(loadout);
             if (card != null)
@@ -60,7 +60,7 @@ public class PCLLoadoutsContainer
             }
         }
 
-        for (PCLLoadout loadout : GR.PCL.Data.BetaLoadouts)
+        for (PCLLoadout loadout : PGR.PCL.Data.BetaLoadouts)
         {
             final PCLRuntimeLoadout card = PCLRuntimeLoadout.TryCreate(loadout);
             if (card != null)
@@ -82,7 +82,7 @@ public class PCLLoadoutsContainer
                     allCards.add(card);
                 }
 
-                if (GR.PCL.Config.SelectedSeries.Get().contains(c.Loadout.Series)) {
+                if (PGR.PCL.Config.SelectedSeries.Get().contains(c.Loadout.Series)) {
                     TotalCardsInPool += c.GetCardPoolInPlay().size();
                     currentCards.add(card);
                     card.targetTransparency = 1f;
@@ -91,12 +91,12 @@ public class PCLLoadoutsContainer
                     card.targetTransparency = 0.5f;
                 }
 
-                if (GR.PCL.Config.ExpandedSeries.Get().contains(c.Loadout.Series)) {
+                if (PGR.PCL.Config.ExpandedSeries.Get().contains(c.Loadout.Series)) {
                     expandedCards.add(card);
                     c.ToggleExpansion(true);
                 }
 
-                if (c.Loadout.Series.equals(GR.PCL.Data.SelectedLoadout.Series)) {
+                if (c.Loadout.Series.equals(PGR.PCL.Data.SelectedLoadout.Series)) {
                     currentSeriesCard = card;
                     card.rarity = AbstractCard.CardRarity.RARE;
                     card.beginGlowing();
@@ -108,7 +108,7 @@ public class PCLLoadoutsContainer
             }
         }
 
-        CurrentSeriesLimit = Mathf.Clamp(GR.PCL.Config.SeriesSize.Get(), MINIMUM_SERIES, currentCards.size());
+        CurrentSeriesLimit = Mathf.Clamp(PGR.PCL.Config.SeriesSize.Get(), MINIMUM_SERIES, currentCards.size());
         shouldShowExpansionButton = PCLJUtils.Any(cardsMap.values(), c -> c.canEnableExpansion);
     }
 
@@ -195,14 +195,14 @@ public class PCLLoadoutsContainer
 
     public void CommitChanges()
     {
-        GR.PCL.Data.SelectedLoadout = Find(currentSeriesCard).Loadout;
-        GR.PCL.Config.SelectedSeries.Set(PCLJUtils.Map(currentCards, card -> Find(card).Loadout.Series), true);
-        GR.PCL.Config.ExpandedSeries.Set(PCLJUtils.Map(expandedCards, card -> Find(card).Loadout.Series), true);
-        GR.PCL.Config.SeriesSize.Set(Mathf.Max(MINIMUM_SERIES, CurrentSeriesLimit), true);
+        PGR.PCL.Data.SelectedLoadout = Find(currentSeriesCard).Loadout;
+        PGR.PCL.Config.SelectedSeries.Set(PCLJUtils.Map(currentCards, card -> Find(card).Loadout.Series), true);
+        PGR.PCL.Config.ExpandedSeries.Set(PCLJUtils.Map(expandedCards, card -> Find(card).Loadout.Series), true);
+        PGR.PCL.Config.SeriesSize.Set(Mathf.Max(MINIMUM_SERIES, CurrentSeriesLimit), true);
 
-        PCLJUtils.LogInfo(this, "Selected Loadout: " + GR.PCL.Data.SelectedLoadout.Series);
-        PCLJUtils.LogInfo(this, "Selected Series: " + PCLJUtils.JoinStrings(",", GR.PCL.Config.SelectedSeries.Get()));
-        PCLJUtils.LogInfo(this, "Series Size: " + GR.PCL.Config.SeriesSize.Get());
+        PCLJUtils.LogInfo(this, "Selected Loadout: " + PGR.PCL.Data.SelectedLoadout.Series);
+        PCLJUtils.LogInfo(this, "Selected Series: " + PCLJUtils.JoinStrings(",", PGR.PCL.Config.SelectedSeries.Get()));
+        PCLJUtils.LogInfo(this, "Series Size: " + PGR.PCL.Config.SeriesSize.Get());
     }
 
     public ArrayList<AbstractCard> GetAllCardsInPool()

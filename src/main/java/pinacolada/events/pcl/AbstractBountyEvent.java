@@ -9,7 +9,7 @@ import eatyourbeets.events.base.EYBEventOption;
 import eatyourbeets.events.base.EYBEventPhase;
 import eatyourbeets.events.base.EYBEventStrings;
 import eatyourbeets.utilities.RandomizedList;
-import pinacolada.cards.pcl.special.Ganyu;
+import pinacolada.cards.fool.special.Ganyu;
 import pinacolada.events.base.PCLEvent;
 import pinacolada.utilities.PCLGameEffects;
 

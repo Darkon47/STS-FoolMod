@@ -6,7 +6,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpirePrefixPatch;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.screens.MasterDeckViewScreen;
 import pinacolada.cards.base.CardAffinityComparator;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 
 public class MasterDeckViewScreenPatches
 {
@@ -16,7 +16,7 @@ public class MasterDeckViewScreenPatches
         @SpirePrefixPatch
         public static void Prefix(MasterDeckViewScreen __instance)
         {
-            GR.UI.CardAffinities.TryUpdate();
+            PGR.UI.CardAffinities.TryUpdate();
         }
     }
 
@@ -32,7 +32,7 @@ public class MasterDeckViewScreenPatches
         @SpirePrefixPatch
         public static void Prefix(MasterDeckViewScreen __instance, SpriteBatch sb)
         {
-            GR.UI.CardAffinities.TryRender(sb);
+            PGR.UI.CardAffinities.TryRender(sb);
         }
     }
 
@@ -45,7 +45,7 @@ public class MasterDeckViewScreenPatches
         public static void Prefix(MasterDeckViewScreen __instance)
         {
             screen = __instance;
-            GR.UI.CardAffinities.Open(AbstractDungeon.player.masterDeck.group, false, c -> screen.setSortOrder(new CardAffinityComparator(c.Type)), false);
+            PGR.UI.CardAffinities.Open(AbstractDungeon.player.masterDeck.group, false, c -> screen.setSortOrder(new CardAffinityComparator(c.Type)), false);
         }
     }
 

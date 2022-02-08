@@ -25,7 +25,7 @@ import pinacolada.cards.base.PCLCardData;
 import pinacolada.effects.powers.EYBFlashPowerEffect;
 import pinacolada.effects.powers.EYBGainPowerEffect;
 import pinacolada.relics.PCLRelic;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameEffects;
 import pinacolada.utilities.PCLJUtils;
@@ -58,7 +58,7 @@ public abstract class PCLPower extends AbstractPower implements CloneablePowerIn
 
     public static String CreateFullID(Class<? extends PCLPower> type)
     {
-        return GR.PCL.CreateID(type.getSimpleName());
+        return PGR.PCL.CreateID(type.getSimpleName());
     }
 
     public static String DeriveID(String base)
@@ -74,14 +74,14 @@ public abstract class PCLPower extends AbstractPower implements CloneablePowerIn
 
         if (originalID != null)
         {
-            final String imagePath = GR.GetPowerImage(originalID);
+            final String imagePath = PGR.GetPowerImage(originalID);
             if (Gdx.files.internal(imagePath).exists())
             {
-                this.img = GR.GetTexture(imagePath);
+                this.img = PGR.GetTexture(imagePath);
             }
             if (this.img == null)
             {
-                this.img = GR.GetTexture(GR.PCL.CreateID("UnknownPower"));
+                this.img = PGR.GetTexture(PGR.PCL.CreateID("UnknownPower"));
             }
 
             this.ID = originalID;

@@ -21,7 +21,7 @@ import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.PCLCardTooltip;
 import pinacolada.effects.SFX;
 import pinacolada.relics.PCLRelic;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
@@ -135,10 +135,10 @@ public abstract class PCLClickablePower extends PCLPower
         tooltip.description = description = GetUpdatedDescription();
 
         int uses = triggerCondition.uses;
-        if (uses >= 0 && GR.IsLoaded)
+        if (uses >= 0 && PGR.IsLoaded())
         {
             tooltip.subText.color = uses == 0 ? Settings.RED_TEXT_COLOR : Settings.GREEN_TEXT_COLOR;
-            tooltip.subText.text = uses + "/" + triggerCondition.baseUses + " " + GR.PCL.Strings.Combat.Uses;
+            tooltip.subText.text = uses + "/" + triggerCondition.baseUses + " " + PGR.PCL.Strings.Combat.Uses;
         }
     }
 
@@ -170,7 +170,7 @@ public abstract class PCLClickablePower extends PCLPower
         super.update(slot);
 
         final GameActionManager.Phase phase = AbstractDungeon.actionManager.phase;
-        if (currentPhase != phase || GR.UI.Elapsed50())
+        if (currentPhase != phase || PGR.UI.Elapsed50())
         {
             triggerCondition.Refresh(false);
             currentPhase = phase;
@@ -219,7 +219,7 @@ public abstract class PCLClickablePower extends PCLPower
             hb.move(x, y);
         }
 
-        pinacolada.utilities.PCLRenderHelpers.DrawCentered(sb, borderColor, GR.PCL.Images.SquaredButton_EmptyCenter.Texture(), x, y, ICON_SIZE, ICON_SIZE, 1.5f, 0);
+        pinacolada.utilities.PCLRenderHelpers.DrawCentered(sb, borderColor, PGR.PCL.Images.SquaredButton_EmptyCenter.Texture(), x, y, ICON_SIZE, ICON_SIZE, 1.5f, 0);
         if (this.powerIcon != null) {
             pinacolada.utilities.PCLRenderHelpers.DrawCentered(sb, imageColor, this.powerIcon, x, y, ICON_SIZE, ICON_SIZE, 0.75f, 0);
         }
@@ -229,7 +229,7 @@ public abstract class PCLClickablePower extends PCLPower
 
         if (enabled && hb.hovered && clickable)
         {
-            pinacolada.utilities.PCLRenderHelpers.DrawCentered(sb, Colors.White(0.3f), GR.PCL.Images.SquaredButton.Texture(), x, y, ICON_SIZE, ICON_SIZE, 1.5f, 0);
+            pinacolada.utilities.PCLRenderHelpers.DrawCentered(sb, Colors.White(0.3f), PGR.PCL.Images.SquaredButton.Texture(), x, y, ICON_SIZE, ICON_SIZE, 1.5f, 0);
         }
 
         for (AbstractGameEffect e : effects)

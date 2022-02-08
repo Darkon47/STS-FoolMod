@@ -17,7 +17,7 @@ import eatyourbeets.interfaces.delegates.FuncT1;
 import eatyourbeets.ui.GUIElement;
 import eatyourbeets.utilities.EYBFontHelper;
 import eatyourbeets.utilities.Mathf;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.ui.hitboxes.AdvancedHitbox;
 import pinacolada.ui.hitboxes.RelativeHitbox;
 import pinacolada.utilities.PCLJUtils;
@@ -92,13 +92,13 @@ public class GUI_Dropdown<T> extends GUIElement
                 new AdvancedHitbox(hb.x + hb.width - SCROLLBAR_PADDING, hb.y + CalculateScrollbarOffset(), SCROLLBAR_WIDTH,rowHeight * this.visibleRowCount())
                 .SetIsPopupCompatible(true))
         .SetOnScroll(this::OnScroll);
-        this.button = new GUI_Button(GR.PCL.Images.RectangularButton.Texture(), this.hb)
+        this.button = new GUI_Button(PGR.PCL.Images.RectangularButton.Texture(), this.hb)
                 .SetColor(Color.GRAY)
                 .SetFont(font, fontScale)
-                .SetText(currentIndices.size() + " " + GR.PCL.Strings.SeriesUI.ItemsSelected)
+                .SetText(currentIndices.size() + " " + PGR.PCL.Strings.SeriesUI.ItemsSelected)
                 .SetOnClick(this::OpenOrCloseMenu);
         //noinspection SuspiciousNameCombination
-        this.clearButton = new GUI_Button(GR.PCL.Images.X.Texture(), new AdvancedHitbox(hb.x + hb.width, hb.y, hb.height, hb.height)
+        this.clearButton = new GUI_Button(PGR.PCL.Images.X.Texture(), new AdvancedHitbox(hb.x + hb.width, hb.y, hb.height, hb.height)
                 .SetIsPopupCompatible(true)
                 .SetIsDropdownCompatible(true))
                 .SetOnClick(() -> {SetSelectionIndices(new int[] {}, true);});
@@ -337,12 +337,12 @@ public class GUI_Dropdown<T> extends GUIElement
 
     public void OpenOrCloseMenu() {
         if (this.isOpen) {
-            GR.UI.IsDropdownOpen = false;
+            PGR.UI.IsDropdownOpen = false;
             CardCrawlGame.isPopupOpen = false;
             this.isOpen = false;
         }
         else {
-            GR.UI.IsDropdownOpen = true;
+            PGR.UI.IsDropdownOpen = true;
             CardCrawlGame.isPopupOpen = true;
             this.isOpen = true;
             this.updateNonMouseStartPosition();
@@ -566,7 +566,7 @@ public class GUI_Dropdown<T> extends GUIElement
     public void updateForSelection(boolean shouldInvoke) {
         int temp = currentIndices.size() > 0 ? currentIndices.first() : 0;
         if (isMultiSelect) {
-            this.button.text = labelFunctionButton != null ? labelFunctionButton.Invoke(GetCurrentItems()) : currentIndices.size() + " " + GR.PCL.Strings.SeriesUI.ItemsSelected;
+            this.button.text = labelFunctionButton != null ? labelFunctionButton.Invoke(GetCurrentItems()) : currentIndices.size() + " " + PGR.PCL.Strings.SeriesUI.ItemsSelected;
         }
         else if (currentIndices.size() > 0) {
             this.topVisibleRowIndex = Math.min(temp, this.rows.size() - this.visibleRowCount());

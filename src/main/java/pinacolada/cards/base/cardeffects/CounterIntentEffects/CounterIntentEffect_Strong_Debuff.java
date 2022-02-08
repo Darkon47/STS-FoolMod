@@ -3,7 +3,7 @@ package pinacolada.cards.base.cardeffects.CounterIntentEffects;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import pinacolada.cards.base.PCLCard;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
@@ -31,9 +31,9 @@ public class CounterIntentEffect_Strong_Debuff extends CounterIntentEffect
     public String GetDescription(PCLCard nanami)
     {
         int stacks = GetStacks(nanami);
-        return ACTIONS.Apply(stacks, GR.Tooltips.Weak, true) + " NL " +
-               ACTIONS.Apply(stacks, GR.Tooltips.Vulnerable, true)  + " NL " +
-               ACTIONS.Apply(GetPoison(nanami), GR.Tooltips.Poison, true);
+        return ACTIONS.Apply(stacks, PGR.Tooltips.Weak, true) + " NL " +
+               ACTIONS.Apply(stacks, PGR.Tooltips.Vulnerable, true)  + " NL " +
+               ACTIONS.Apply(GetPoison(nanami), PGR.Tooltips.Poison, true);
     }
 
     private int GetStacks(PCLCard nanami)

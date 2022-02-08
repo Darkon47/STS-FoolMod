@@ -6,14 +6,14 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.RestRoom;
 import com.megacrit.cardcrawl.ui.campfire.AbstractCampfireOption;
 import pinacolada.relics.PCLEnchantableRelic;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLGameEffects;
 import pinacolada.utilities.PCLJUtils;
 
 public class RespecCampfireOption extends AbstractCampfireOption
 {
-    private static final String LABEL_GOLD_F1 = GR.PCL.Strings.CardMods.RespecLivingPicture;
-    private static final String LABEL_MAX = GR.PCL.Strings.CardMods.RespecLivingPictureLocked;
+    private static final String LABEL_GOLD_F1 = PGR.PCL.Strings.CardMods.RespecLivingPicture;
+    private static final String LABEL_MAX = PGR.PCL.Strings.CardMods.RespecLivingPictureLocked;
 
     private PCLEnchantableRelic relic;
     private RestRoom room;
@@ -34,8 +34,8 @@ public class RespecCampfireOption extends AbstractCampfireOption
 
     public RespecCampfireOption()
     {
-        this.description = GR.PCL.Strings.CardMods.RespecLivingPictureDescription;
-        this.img = GR.PCL.Images.CampfireOption_Enchant.Texture();
+        this.description = PGR.PCL.Strings.CardMods.RespecLivingPictureDescription;
+        this.img = PGR.PCL.Images.CampfireOption_Enchant.Texture();
         Refresh();
     }
 
@@ -44,7 +44,7 @@ public class RespecCampfireOption extends AbstractCampfireOption
     {
         super.update();
 
-        if (GR.UI.Elapsed100())
+        if (PGR.UI.Elapsed100())
         {
             Refresh();
         }

@@ -13,7 +13,7 @@ import eatyourbeets.effects.EYBEffectWithCallback;
 import eatyourbeets.interfaces.delegates.FuncT1;
 import eatyourbeets.utilities.GenericCondition;
 import eatyourbeets.utilities.RandomizedList;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLGameEffects;
 import pinacolada.utilities.PCLJUtils;
 
@@ -128,6 +128,6 @@ public class GenericChooseCardsToObtainEffect extends EYBEffectWithCallback<Gene
         }
 
         AbstractDungeon.getCurrRoom().phase = AbstractRoom.RoomPhase.INCOMPLETE;
-        AbstractDungeon.gridSelectScreen.open(cardGroup, cardsToAdd, GR.PCL.Strings.GridSelection.ChooseCards(cardsToAdd), false, false, false, false);
+        AbstractDungeon.gridSelectScreen.open(cardGroup, cardsToAdd, PGR.PCL.Strings.GridSelection.ChooseCards(cardsToAdd), false, false, false, false);
     }
 }

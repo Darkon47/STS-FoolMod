@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Interpolation;
 import com.megacrit.cardcrawl.core.Settings;
 import eatyourbeets.effects.EYBEffect;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.ui.common.AffinityKeywordButton;
 import pinacolada.utilities.PCLRenderHelpers;
 
@@ -27,7 +27,7 @@ public class AffinityGlowEffect extends EYBEffect {
         this.color = gColor != null ? gColor : FALLBACK_COLOR.cpy();
         this.color.a = 0.45f;
         this.scale = 0.73f;
-        this.img = GR.PCL.Images.Affinities.Border_Silhouette.Texture();
+        this.img = PGR.PCL.Images.Affinities.Border_Silhouette.Texture();
         this.source = source;
     }
 

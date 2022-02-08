@@ -16,8 +16,8 @@ import pinacolada.powers.PCLPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
-import static pinacolada.cards.pcl.special.BlazingHeat.FIRE_EVOKE_BONUS;
-import static pinacolada.cards.pcl.special.BlazingHeat.FIRE_TRIGGER_BONUS;
+import static pinacolada.cards.fool.special.BlazingHeat.FIRE_EVOKE_BONUS;
+import static pinacolada.cards.fool.special.BlazingHeat.FIRE_TRIGGER_BONUS;
 
 public class BlazingHeatPower extends PCLPower implements OnOrbPassiveEffectSubscriber
 {

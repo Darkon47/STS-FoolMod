@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.helpers.input.InputHelper;
 import eatyourbeets.utilities.RandomizedList;
 import pinacolada.cards.base.PCLCardTooltip;
 import pinacolada.cards.pcl.glyphs.Glyph;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.resources.pcl.PCLPlayerData;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
@@ -22,7 +22,7 @@ public class GlyphBlight extends AbstractGlyphBlight
 
     public GlyphBlight()
     {
-        super(ID, GR.PCL.Config.AscensionGlyph0, PCLPlayerData.ASCENSION_GLYPH1_UNLOCK, PCLPlayerData.ASCENSION_GLYPH1_LEVEL_STEP, 0, 1);
+        super(ID, PGR.PCL.Config.AscensionGlyph0, PCLPlayerData.ASCENSION_GLYPH1_UNLOCK, PCLPlayerData.ASCENSION_GLYPH1_LEVEL_STEP, 0, 1);
     }
 
     @Override
@@ -35,7 +35,7 @@ public class GlyphBlight extends AbstractGlyphBlight
             glyph.drawScale = glyph.targetDrawScale = 0.8f;
             glyph.current_x = glyph.target_x = InputHelper.mX + (((InputHelper.mX > (Settings.WIDTH * 0.5f)) ? -1.505f : 1.505f) * PCLCardTooltip.BOX_W);
             glyph.current_y = glyph.target_y = InputHelper.mY - (AbstractCard.IMG_HEIGHT * 0.5f);
-            GR.UI.AddPostRender(glyph::render);
+            PGR.UI.AddPostRender(glyph::render);
         }
     }
 

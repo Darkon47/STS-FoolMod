@@ -3,7 +3,7 @@ package pinacolada.ui.combat;
 import com.evacipated.cardcrawl.mod.stslib.patches.core.AbstractCreature.TempHPField;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import eatyourbeets.utilities.Mathf;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLGameUtilities;
 
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ public class CombatHelper
             return;
         }
 
-        if (GR.UI.Elapsed100() && !PCLGameUtilities.InBattle())
+        if (PGR.UI.Elapsed100() && !PCLGameUtilities.InBattle())
         {
             Clear();
         }

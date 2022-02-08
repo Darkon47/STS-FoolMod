@@ -6,7 +6,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePrefixPatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpireReturn;
 import com.megacrit.cardcrawl.screens.charSelect.CharacterOption;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.ui.characterSelection.PCLCharacterSelectScreen;
 
 public class CharacterOptionPatches
@@ -17,7 +17,7 @@ public class CharacterOptionPatches
         @SpirePostfixPatch
         public static void Postfix(CharacterOption __instance, SpriteBatch sb)
         {
-            if (__instance.selected && __instance.c != null && __instance.c.chosenClass == GR.PCL.PlayerClass)
+            if (__instance.selected && __instance.c != null && __instance.c.chosenClass == PGR.Fool.PlayerClass)
             {
                 PCLCharacterSelectScreen.RenderOption(__instance, sb);
             }
@@ -30,7 +30,7 @@ public class CharacterOptionPatches
         @SpirePrefixPatch
         public static SpireReturn Prefix(CharacterOption __instance)
         {
-            return (GR.UI.CurrentScreen != null) ? SpireReturn.Return() : SpireReturn.Continue();
+            return (PGR.UI.CurrentScreen != null) ? SpireReturn.Return() : SpireReturn.Continue();
         }
     }
 
@@ -40,7 +40,7 @@ public class CharacterOptionPatches
         @SpirePostfixPatch
         public static void Postfix(CharacterOption __instance)
         {
-            if (__instance.selected && __instance.c != null && __instance.c.chosenClass == GR.PCL.PlayerClass)
+            if (__instance.selected && __instance.c != null && __instance.c.chosenClass == PGR.Fool.PlayerClass)
             {
                 PCLCharacterSelectScreen.UpdateOption(__instance);
             }

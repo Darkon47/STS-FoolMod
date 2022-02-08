@@ -13,7 +13,7 @@ import pinacolada.monsters.PCLAlly;
 import pinacolada.orbs.PCLOrbHelper;
 import pinacolada.powers.PCLPowerHelper;
 import pinacolada.powers.special.ChangeIntentPower;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
@@ -163,7 +163,7 @@ public class KirakishouPuppet extends PCLAlly {
                 PCLActions.Bottom.StackAffinityPower(af.getKey(), af.getValue(), false);
             }
         }, power ->  {
-            power.actionString = GR.PCL.Strings.Actions.GainAmount(StringUtils.join(PCLJUtils.Map(affinityPowers.keySet(), item -> item + " " + affinityPowers.get(item))), "", true);
+            power.actionString = PGR.PCL.Strings.Actions.GainAmount(StringUtils.join(PCLJUtils.Map(affinityPowers.keySet(), item -> item + " " + affinityPowers.get(item))), "", true);
             power.triggerCondition.requiredAmount = COST_AFFINITY + PCLJUtils.SumInt(affinityPowers.values(), i -> i);
             power.triggerCondition.affinities = new PCLAffinity[] {target};
         }
@@ -173,7 +173,7 @@ public class KirakishouPuppet extends PCLAlly {
                 PCLActions.Bottom.ApplyPower(TargetHelper.Player(), ph.getKey(), ph.getValue());
             }
         }, power ->  {
-            power.actionString = GR.PCL.Strings.Actions.GainAmount(StringUtils.join(PCLJUtils.Map(buffs.keySet(), item -> item + " " + buffs.get(item))), "", true);
+            power.actionString = PGR.PCL.Strings.Actions.GainAmount(StringUtils.join(PCLJUtils.Map(buffs.keySet(), item -> item + " " + buffs.get(item))), "", true);
             power.triggerCondition.requiredAmount = COST_BUFF + PCLJUtils.SumInt(buffs.values(), i -> i);
             power.triggerCondition.affinities = new PCLAffinity[] {target};
         }, ImageMaster.INTENT_BUFF).AddToMoveset(moveset));
@@ -182,7 +182,7 @@ public class KirakishouPuppet extends PCLAlly {
                 PCLActions.Bottom.ApplyPower(TargetHelper.RandomEnemy(), ph.getKey(), ph.getValue());
             }
         }, power ->  {
-            power.actionString = GR.PCL.Strings.Actions.Apply(StringUtils.join(PCLJUtils.Map(debuffs.keySet(), item -> item + " " + debuffs.get(item))), GR.PCL.Strings.Actions.ToARandomEnemy, true);
+            power.actionString = PGR.PCL.Strings.Actions.Apply(StringUtils.join(PCLJUtils.Map(debuffs.keySet(), item -> item + " " + debuffs.get(item))), PGR.PCL.Strings.Actions.ToARandomEnemy, true);
             power.triggerCondition.requiredAmount = COST_DEBUFF + PCLJUtils.SumInt(debuffs.values(), i -> i);
             power.triggerCondition.affinities = new PCLAffinity[] {target};
         }, ImageMaster.INTENT_DEBUFF2).AddToMoveset(moveset));
@@ -191,7 +191,7 @@ public class KirakishouPuppet extends PCLAlly {
                 PCLActions.Bottom.ChannelOrbs(o.getKey(), o.getValue());
             }
         }, power ->  {
-            power.actionString = GR.PCL.Strings.Actions.Channel(StringUtils.join(PCLJUtils.Map(orbs.keySet(), item -> item + " " + orbs.get(item))), "", true);
+            power.actionString = PGR.PCL.Strings.Actions.Channel(StringUtils.join(PCLJUtils.Map(orbs.keySet(), item -> item + " " + orbs.get(item))), "", true);
             power.triggerCondition.requiredAmount = COST_ORB + PCLJUtils.SumInt(orbs.entrySet(), e -> e.getValue() * e.getKey().weight);
             power.triggerCondition.affinities = new PCLAffinity[] {target};
         }, ImageMaster.INTENT_MAGIC).AddToMoveset(moveset));

@@ -6,7 +6,7 @@ import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCard;
 import pinacolada.cards.base.PCLCardTooltip;
 import pinacolada.resources.CardTooltips;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLJUtils;
 
 import java.util.HashMap;
@@ -112,7 +112,7 @@ public class SymbolToken extends CTToken
 
             if (tooltip.backgroundColor != null) {
                 sb.setColor(tooltip.backgroundColor);
-                sb.draw(GR.PCL.Images.Badges.Base_Badge.Texture(), context.start_x - diff * 2.2f, context.start_y - (partial * 6) * 1.2f, iconW * 1.2f, iconH * 1.2f);
+                sb.draw(PGR.PCL.Images.Badges.Base_Badge.Texture(), context.start_x - diff * 2.2f, context.start_y - (partial * 6) * 1.2f, iconW * 1.2f, iconH * 1.2f);
             }
             sb.setColor(context.color);
             sb.draw(tooltip.icon, context.start_x - diff, context.start_y - (partial * 6), iconW, iconH);

@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.helpers.CardLibrary;
 import eatyourbeets.utilities.JUtils;
 import eatyourbeets.utilities.WeightedList;
 import pinacolada.cards.base.*;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
 
@@ -14,12 +14,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import static pinacolada.resources.GR.Enums.CardTags.EXPANDED;
+import static pinacolada.resources.PGR.Enums.CardTags.EXPANDED;
 
 public class PCLRuntimeLoadout
 {
-    private final static PCLCardTooltip BetaTooltip = new PCLCardTooltip(GR.PCL.Strings.SeriesSelection.Beta, GR.PCL.Strings.SeriesSelection.TooltipBeta);
-    private final static PCLCardTooltip ExpansionTooltip = new PCLCardTooltip(GR.PCL.Strings.SeriesSelection.ExpansionHeader, GR.PCL.Strings.SeriesSelection.ExpansionCardBody);
+    private final static PCLCardTooltip BetaTooltip = new PCLCardTooltip(PGR.PCL.Strings.SeriesSelection.Beta, PGR.PCL.Strings.SeriesSelection.TooltipBeta);
+    private final static PCLCardTooltip ExpansionTooltip = new PCLCardTooltip(PGR.PCL.Strings.SeriesSelection.ExpansionHeader, PGR.PCL.Strings.SeriesSelection.ExpansionCardBody);
 
     public final int ID;
     public final boolean IsBeta;
@@ -58,17 +58,17 @@ public class PCLRuntimeLoadout
         this.canEnableExpansion = loadout.CanEnableExpansion();
         this.Trophies = Loadout.GetTrophies();
 
-        this.expansionEnabled = GR.PCL.Config.ExpandedSeries.Get().contains(loadout.Series);
-        this.Trophy1Tooltip = new PCLCardTooltip(GR.PCL.Strings.Trophies.Bronze, Trophies != null && Trophies.Trophy1 >= 0 ? GR.PCL.Strings.Trophies.BronzeFormatted(Trophies.Trophy1) : GR.PCL.Strings.Trophies.BronzeLocked);
-        this.Trophy2Tooltip = new PCLCardTooltip(GR.PCL.Strings.Trophies.Silver, Trophies != null && Trophies.Trophy2 >= 0 ? GR.PCL.Strings.Trophies.SilverFormatted(Trophies.Trophy2) : GR.PCL.Strings.Trophies.SilverLocked);
-        this.Trophy3Tooltip = new PCLCardTooltip(GR.PCL.Strings.Trophies.Gold, Trophies != null && Trophies.Trophy3 >= 0 ? GR.PCL.Strings.Trophies.GoldFormatted(Trophies.Trophy3) : GR.PCL.Strings.Trophies.GoldLocked);
-        this.UnlockTooltip = new PCLCardTooltip(GR.PCL.Strings.CharSelect.RightText, GR.PCL.Strings.CharSelect.UnlocksAtLevel(loadout.UnlockLevel, GR.PCL.GetUnlockLevel()));
+        this.expansionEnabled = PGR.PCL.Config.ExpandedSeries.Get().contains(loadout.Series);
+        this.Trophy1Tooltip = new PCLCardTooltip(PGR.PCL.Strings.Trophies.Bronze, Trophies != null && Trophies.Trophy1 >= 0 ? PGR.PCL.Strings.Trophies.BronzeFormatted(Trophies.Trophy1) : PGR.PCL.Strings.Trophies.BronzeLocked);
+        this.Trophy2Tooltip = new PCLCardTooltip(PGR.PCL.Strings.Trophies.Silver, Trophies != null && Trophies.Trophy2 >= 0 ? PGR.PCL.Strings.Trophies.SilverFormatted(Trophies.Trophy2) : PGR.PCL.Strings.Trophies.SilverLocked);
+        this.Trophy3Tooltip = new PCLCardTooltip(PGR.PCL.Strings.Trophies.Gold, Trophies != null && Trophies.Trophy3 >= 0 ? PGR.PCL.Strings.Trophies.GoldFormatted(Trophies.Trophy3) : PGR.PCL.Strings.Trophies.GoldLocked);
+        this.UnlockTooltip = new PCLCardTooltip(PGR.PCL.Strings.CharSelect.RightText, PGR.PCL.Strings.CharSelect.UnlocksAtLevel(loadout.UnlockLevel, PGR.Fool.GetUnlockLevel()));
         InitializeCards(loadout.Series);
 
         this.AffinityStatistics = new PCLCardAffinityStatistics(GetCardPoolInPlay().values(), false);
 
         this.card = null;
-        this.isLocked = GR.PCL.GetUnlockLevel() < Loadout.UnlockLevel;
+        this.isLocked = PGR.Fool.GetUnlockLevel() < Loadout.UnlockLevel;
     }
 
     public CardGroup GetCardPool()
@@ -177,8 +177,8 @@ public class PCLRuntimeLoadout
         {
             card = builder
             .SetText(Loadout.Name,
-                    GR.PCL.Strings.SeriesSelection.ContainsNCards_Beta("!M!"),
-                    GR.PCL.Strings.SeriesSelection.ContainsNCards_Beta("!S!"))
+                    PGR.PCL.Strings.SeriesSelection.ContainsNCards_Beta("!M!"),
+                    PGR.PCL.Strings.SeriesSelection.ContainsNCards_Beta("!S!"))
             .SetProperties(AbstractCard.CardType.SKILL, AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardTarget.NONE).Build();
             card.tooltips.add(BetaTooltip);
         }
@@ -189,8 +189,8 @@ public class PCLRuntimeLoadout
             String trophyString3 = (Trophies.Trophy3 > -1 ? Trophies.Trophy3 : "--") + "/" + PCLTrophies.MAXIMUM_TROPHY;
             card = builder
             .SetText(Loadout.Name,
-                    GR.PCL.Strings.SeriesSelection.ContainsNCards_Full("!M!", trophyString1, trophyString2, trophyString3),
-                    GR.PCL.Strings.SeriesSelection.ContainsNCards_Full("!S!", trophyString1, trophyString2, trophyString3))
+                    PGR.PCL.Strings.SeriesSelection.ContainsNCards_Full("!M!", trophyString1, trophyString2, trophyString3),
+                    PGR.PCL.Strings.SeriesSelection.ContainsNCards_Full("!S!", trophyString1, trophyString2, trophyString3))
             .SetProperties(AbstractCard.CardType.SKILL, AbstractCard.CardRarity.COMMON, AbstractCard.CardTarget.NONE).Build();
             card.tooltips.add(Trophy1Tooltip);
             card.tooltips.add(Trophy2Tooltip);
@@ -237,7 +237,7 @@ public class PCLRuntimeLoadout
             for (AbstractCard card : CardLibrary.getAllCards())
             {
                 PCLCard c = PCLJUtils.SafeCast(card, PCLCard.class);
-                if (c != null && card.color == GR.PCL.CardColor && (series.equals(c.series) || series.equals(CardSeries.ANY))
+                if (c != null && card.color == PGR.Fool.CardColor && (series.equals(c.series) || series.equals(CardSeries.ANY))
                     && card.rarity != AbstractCard.CardRarity.SPECIAL
                     && card.rarity != AbstractCard.CardRarity.BASIC)
                 {

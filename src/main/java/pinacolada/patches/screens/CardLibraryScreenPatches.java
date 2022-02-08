@@ -11,7 +11,7 @@ import com.megacrit.cardcrawl.screens.compendium.CardLibSortHeader;
 import com.megacrit.cardcrawl.screens.compendium.CardLibraryScreen;
 import com.megacrit.cardcrawl.screens.mainMenu.ColorTabBar;
 import eatyourbeets.utilities.FieldInfo;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.ui.controls.GUI_Button;
 import pinacolada.ui.hitboxes.DraggableHitbox;
 import pinacolada.utilities.PCLJUtils;
@@ -48,29 +48,29 @@ public class CardLibraryScreenPatches
             if (!IsAnimator(screen)) {
                 Hitbox upgradeHitbox = tabBar.viewUpgradeHb;
                 upgradeHitbox.width = 260 * Settings.scale;
-                if (_sortHeader.Get(screen) != GR.UI.CustomHeader)
+                if (_sortHeader.Get(screen) != PGR.UI.CustomHeader)
                 {
-                    _sortHeader.Set(screen, GR.UI.CustomHeader);
+                    _sortHeader.Set(screen, PGR.UI.CustomHeader);
                 }
 
-                GR.UI.CustomHeader.SetupButtons(!(newSelection == ColorTabBarFix.Enums.MOD && ColorTabBarFix.Fields.getModTab().color.equals(GR.Enums.Cards.THE_FOOL)));
+                PGR.UI.CustomHeader.SetupButtons(!(newSelection == ColorTabBarFix.Enums.MOD && ColorTabBarFix.Fields.getModTab().color.equals(PGR.Enums.Cards.THE_FOOL)));
             }
         }
 
         @SpirePostfixPatch
         public static void Postfix(CardLibraryScreen screen, ColorTabBar tabBar, ColorTabBar.CurrentTab newSelection) {
-            GR.UI.CardFilters.Initialize(__ -> GR.UI.CustomHeader.UpdateForFilters(), GR.UI.CustomHeader.originalGroup, GR.UI.CustomHeader.IsColorless());
-            GR.UI.CustomHeader.UpdateForFilters();
+            PGR.UI.CardFilters.Initialize(__ -> PGR.UI.CustomHeader.UpdateForFilters(), PGR.UI.CustomHeader.originalGroup, PGR.UI.CustomHeader.IsColorless());
+            PGR.UI.CustomHeader.UpdateForFilters();
             if (openButton == null) {
-                openButton = new GUI_Button(GR.PCL.Images.HexagonalButton.Texture(), new DraggableHitbox(0, 0, Settings.WIDTH * 0.07f, Settings.HEIGHT * 0.07f, false).SetIsPopupCompatible(true))
-                        .SetBorder(GR.PCL.Images.HexagonalButtonBorder.Texture(), Color.WHITE)
-                        .SetPosition(Settings.WIDTH * 0.96f, Settings.HEIGHT * 0.95f).SetText(GR.PCL.Strings.Misc.Filters)
+                openButton = new GUI_Button(PGR.PCL.Images.HexagonalButton.Texture(), new DraggableHitbox(0, 0, Settings.WIDTH * 0.07f, Settings.HEIGHT * 0.07f, false).SetIsPopupCompatible(true))
+                        .SetBorder(PGR.PCL.Images.HexagonalButtonBorder.Texture(), Color.WHITE)
+                        .SetPosition(Settings.WIDTH * 0.96f, Settings.HEIGHT * 0.95f).SetText(PGR.PCL.Strings.Misc.Filters)
                         .SetOnClick(() -> {
-                            if (GR.UI.CardFilters.isActive) {
-                                GR.UI.CardFilters.Close();
+                            if (PGR.UI.CardFilters.isActive) {
+                                PGR.UI.CardFilters.Close();
                             }
                             else {
-                                GR.UI.CardFilters.Open();
+                                PGR.UI.CardFilters.Open();
                             }
                         })
                         .SetColor(Color.GRAY);
@@ -86,10 +86,10 @@ public class CardLibraryScreenPatches
         @SpirePrefixPatch
         public static void Prefix(CardLibraryScreen __instance)
         {
-            if (!GR.UI.CardFilters.isActive && openButton != null && !IsAnimator(__instance)) {
+            if (!PGR.UI.CardFilters.isActive && openButton != null && !IsAnimator(__instance)) {
                 openButton.TryUpdate();
             }
-            if (GR.UI.CardFilters.TryUpdate())
+            if (PGR.UI.CardFilters.TryUpdate())
             {
                 _grabbedScreen.Set(__instance, false);
             }
@@ -102,7 +102,7 @@ public class CardLibraryScreenPatches
         @SpirePrefixPatch
         public static SpireReturn<AbstractCard> Prefix(CardLibraryScreen __instance)
         {
-            if (GR.UI.CardFilters.TryUpdate()) {
+            if (PGR.UI.CardFilters.TryUpdate()) {
                 return SpireReturn.Return(null);
             }
             return SpireReturn.Continue();
@@ -115,7 +115,7 @@ public class CardLibraryScreenPatches
         @SpirePrefixPatch
         public static void Postfix(CardLibraryScreen __instance, SpriteBatch sb)
         {
-            if (!GR.UI.CardFilters.isActive && openButton != null && !IsAnimator(__instance)) {
+            if (!PGR.UI.CardFilters.isActive && openButton != null && !IsAnimator(__instance)) {
                 openButton.TryRender(sb);
             }
         }

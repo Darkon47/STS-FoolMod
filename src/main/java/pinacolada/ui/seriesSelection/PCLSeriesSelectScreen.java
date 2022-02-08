@@ -23,7 +23,7 @@ import eatyourbeets.utilities.RandomizedList;
 import pinacolada.cards.base.CardAffinityComparator;
 import pinacolada.cards.base.CardSeriesComparator;
 import pinacolada.effects.card.ShowCardPileEffect;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.resources.pcl.PCLHotkeys;
 import pinacolada.resources.pcl.PCLStrings;
 import pinacolada.resources.pcl.misc.PCLRuntimeLoadout;
@@ -43,10 +43,10 @@ public class PCLSeriesSelectScreen extends AbstractScreen
 {
     public enum ContextOption
     {
-        Deselect(GR.PCL.Strings.SeriesSelection.RemoveFromPool, PCLSeriesSelectScreen::RemoveFromPool),
-        Select(GR.PCL.Strings.SeriesSelection.AddToPool, PCLSeriesSelectScreen::AddToPool),
-        ToggleExpansion(GR.PCL.Strings.SeriesSelectionButtons.EnableExpansion, PCLSeriesSelectScreen::ToggleExpansion),
-        ViewCards(GR.PCL.Strings.SeriesSelection.ViewPool, (screen, card) -> {
+        Deselect(PGR.PCL.Strings.SeriesSelection.RemoveFromPool, PCLSeriesSelectScreen::RemoveFromPool),
+        Select(PGR.PCL.Strings.SeriesSelection.AddToPool, PCLSeriesSelectScreen::AddToPool),
+        ToggleExpansion(PGR.PCL.Strings.SeriesSelectionButtons.EnableExpansion, PCLSeriesSelectScreen::ToggleExpansion),
+        ViewCards(PGR.PCL.Strings.SeriesSelection.ViewPool, (screen, card) -> {
             if (screen.previewCardsEffect == null) {
                 screen.PreviewCardPool(card);
             }
@@ -62,7 +62,7 @@ public class PCLSeriesSelectScreen extends AbstractScreen
     }
 
     protected static final Random rng = new Random();
-    protected static final PCLStrings.SeriesSelectionButtons buttonStrings = GR.PCL.Strings.SeriesSelectionButtons;
+    protected static final PCLStrings.SeriesSelectionButtons buttonStrings = PGR.PCL.Strings.SeriesSelectionButtons;
     protected AbstractCard selectedCard;
     protected ActionT0 onClose;
     protected ShowCardPileEffect previewCardsEffect;
@@ -93,15 +93,15 @@ public class PCLSeriesSelectScreen extends AbstractScreen
 
     public PCLSeriesSelectScreen()
     {
-        final PCLStrings.SeriesSelection textboxStrings = GR.PCL.Strings.SeriesSelection;
+        final PCLStrings.SeriesSelection textboxStrings = PGR.PCL.Strings.SeriesSelection;
 
-        final Texture panelTexture = GR.PCL.Images.Panel.Texture();
+        final Texture panelTexture = PGR.PCL.Images.Panel.Texture();
         final FuncT1<Float, Float> getY = (delta) -> ScreenH(0.95f) - ScreenH(0.08f * delta);
         final float buttonHeight = ScreenH(0.07f);
         final float buttonWidth = ScreenW(0.18f);
         final float xPos = ScreenW(0.82f);
 
-        background_image = new GUI_Image(GR.PCL.Images.FullSquare.Texture(), new Hitbox(ScreenW(1), ScreenH(1)))
+        background_image = new GUI_Image(PGR.PCL.Images.FullSquare.Texture(), new Hitbox(ScreenW(1), ScreenH(1)))
                 .SetPosition(ScreenW(0.5f), ScreenH(0.5f))
                 .SetColor(0, 0, 0, 0.85f);
 
@@ -115,9 +115,9 @@ public class PCLSeriesSelectScreen extends AbstractScreen
         .SetFont(EYBFontHelper.CardDescriptionFont_Normal, 0.9f)
         .SetColor(Settings.CREAM_COLOR);
 
-        loadoutEditor = new GUI_Button(GR.PCL.Images.SwapCards.Texture(), new AdvancedHitbox(0, 0, Scale(64), Scale(64)))
+        loadoutEditor = new GUI_Button(PGR.PCL.Images.SwapCards.Texture(), new AdvancedHitbox(0, 0, Scale(64), Scale(64)))
                 .SetPosition(startingDeck.hb.x + Scale(80), startingDeck.hb.y - Scale(48)).SetText("")
-                .SetTooltip(GR.PCL.Strings.CharSelect.DeckEditor, GR.PCL.Strings.CharSelect.DeckEditorInfo)
+                .SetTooltip(PGR.PCL.Strings.CharSelect.DeckEditor, PGR.PCL.Strings.CharSelect.DeckEditorInfo)
                 .SetOnClick(this::OpenLoadoutEditor);
 
         upgradeToggle = new GUI_Toggle(new Hitbox(xPos, getY.Invoke(0.5f), buttonWidth, buttonHeight * 0.8f))
@@ -233,8 +233,8 @@ public class PCLSeriesSelectScreen extends AbstractScreen
         cardGrid.AddCards(container.allCards);
         UpdateStartingDeckText();
 
-        GR.UI.CardAffinities.SetActive(true);
-        GR.UI.CardAffinities.Open(container.GetAllCardsInPool(),
+        PGR.UI.CardAffinities.SetActive(true);
+        PGR.UI.CardAffinities.Open(container.GetAllCardsInPool(),
                 false,
                 (c) -> {
                     CardGroup group = PCLGameUtilities.CreateCardGroup(c.AffinityGroup.GetCards());
@@ -248,8 +248,8 @@ public class PCLSeriesSelectScreen extends AbstractScreen
                 },
                 true);
 
-        seriesCountDropdown.SetItems(PCLJUtils.RangeArray(PCLLoadoutsContainer.MINIMUM_SERIES, GR.PCL.Data.GetEveryLoadout().size()));
-        seriesCountDropdown.SetSelection(GR.PCL.Config.SeriesSize.Get(), false);
+        seriesCountDropdown.SetItems(PCLJUtils.RangeArray(PCLLoadoutsContainer.MINIMUM_SERIES, PGR.PCL.Data.GetEveryLoadout().size()));
+        seriesCountDropdown.SetSelection(PGR.PCL.Config.SeriesSize.Get(), false);
 
         massExpansionButton.SetActive(container.shouldShowExpansionButton);
     }
@@ -288,7 +288,7 @@ public class PCLSeriesSelectScreen extends AbstractScreen
             previewCardsEffect.render(sb);
         }
         else {
-            GR.UI.CardAffinities.TryRender(sb);
+            PGR.UI.CardAffinities.TryRender(sb);
         }
 
         contextMenu.TryRender(sb);
@@ -298,7 +298,7 @@ public class PCLSeriesSelectScreen extends AbstractScreen
     public void Update()
     {
         background_image.Update();
-        GR.UI.CardAffinities.TryUpdate();
+        PGR.UI.CardAffinities.TryUpdate();
 
         if (previewCardsEffect != null)
         {
@@ -320,7 +320,7 @@ public class PCLSeriesSelectScreen extends AbstractScreen
             TotalCardsChanged(totalCardsCache);
         }
 
-        toggleBeta.SetToggle(GR.PCL.Config.DisplayBetaSeries.Get()).TryUpdate();
+        toggleBeta.SetToggle(PGR.PCL.Config.DisplayBetaSeries.Get()).TryUpdate();
 
         startingDeck.TryUpdate();
         loadoutEditor.TryUpdate();
@@ -351,7 +351,7 @@ public class PCLSeriesSelectScreen extends AbstractScreen
         PCLRuntimeLoadout current = container.Find(container.currentSeriesCard);
         if (characterOption != null && current != null) {
             Proceed();
-            GR.UI.LoadoutEditor.Open(current.Loadout, characterOption, this.onClose);
+            PGR.UI.LoadoutEditor.Open(current.Loadout, characterOption, this.onClose);
         }
     }
 
@@ -540,7 +540,7 @@ public class PCLSeriesSelectScreen extends AbstractScreen
             }
         }
 
-        GR.PCL.Config.DisplayBetaSeries.Set(value, true);
+        PGR.PCL.Config.DisplayBetaSeries.Set(value, true);
         UpdateStartingDeckText();
     }
 
@@ -565,9 +565,9 @@ public class PCLSeriesSelectScreen extends AbstractScreen
 
     protected void TotalCardsChanged(int totalCards)
     {
-        if (GR.UI.CardAffinities.isActive)
+        if (PGR.UI.CardAffinities.isActive)
         {
-            GR.UI.CardAffinities.Open(container.GetAllCardsInPool(), true, c ->
+            PGR.UI.CardAffinities.Open(container.GetAllCardsInPool(), true, c ->
             {
                 CardGroup group = PCLGameUtilities.CreateCardGroup(c.AffinityGroup.GetCards());
                 if (group.size() > 0 && previewCardsEffect == null)
@@ -582,8 +582,8 @@ public class PCLSeriesSelectScreen extends AbstractScreen
             }, true);
         }
 
-        seriesAmount.SetText(GR.PCL.Strings.SeriesSelection.SeriesSelected(container.currentCards.size()));
-        cardsAmount.SetText(GR.PCL.Strings.SeriesSelection.CardsSelected(totalCards));
+        seriesAmount.SetText(PGR.PCL.Strings.SeriesSelection.SeriesSelected(container.currentCards.size()));
+        cardsAmount.SetText(PGR.PCL.Strings.SeriesSelection.CardsSelected(totalCards));
 
         if (container.currentCards.size() >= MINIMUM_SERIES)
         {
@@ -625,8 +625,8 @@ public class PCLSeriesSelectScreen extends AbstractScreen
 
     protected void UpdateStartingDeckText()
     {
-        String text = GR.PCL.Strings.CharSelect.LeftText + " NL #y" + ((container.currentSeriesCard != null) ? PCLJUtils.ModifyString(container.currentSeriesCard.name, w -> "#y" + w).replace("+","") : "");
-        if (GR.PCL.Config.DisplayBetaSeries.Get() && GR.PCL.Data.BetaLoadouts.size() > 0)
+        String text = PGR.PCL.Strings.CharSelect.LeftText + " NL #y" + ((container.currentSeriesCard != null) ? PCLJUtils.ModifyString(container.currentSeriesCard.name, w -> "#y" + w).replace("+","") : "");
+        if (PGR.PCL.Config.DisplayBetaSeries.Get() && PGR.PCL.Data.BetaLoadouts.size() > 0)
         {
             text += " NL Beta: Ascension and NL Trophies disabled.";
         }

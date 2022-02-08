@@ -7,14 +7,14 @@ import pinacolada.cards.base.PCLAffinity;
 import pinacolada.powers.PCLClickablePower;
 import pinacolada.powers.PCLCombatStats;
 import pinacolada.powers.PowerTriggerConditionType;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.ui.combat.PCLAffinityMeter;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLJUtils;
 
 public class RerollAffinityPower extends PCLClickablePower
 {
-    public static final String POWER_ID = GR.PCL.CreateID(RerollAffinityPower.class.getSimpleName());
+    public static final String POWER_ID = PGR.PCL.CreateID(RerollAffinityPower.class.getSimpleName());
     public boolean canChoose;
 
     public RerollAffinityPower(int amount)
@@ -23,7 +23,7 @@ public class RerollAffinityPower extends PCLClickablePower
 
         this.triggerCondition.SetOneUsePerPower(true);
         this.hideAmount = true;
-        this.img = GR.PCL.Images.Affinities.General.Texture();
+        this.img = PGR.PCL.Images.Affinities.General.Texture();
 
         Initialize(amount);
     }
@@ -50,10 +50,10 @@ public class RerollAffinityPower extends PCLClickablePower
         tooltip.description = description = GetUpdatedDescription();
 
         int uses = triggerCondition.uses;
-        if (uses >= 0 && GR.IsLoaded)
+        if (uses >= 0 && PGR.IsLoaded())
         {
             tooltip.subText.color = uses == 0 ? Settings.RED_TEXT_COLOR : Settings.GREEN_TEXT_COLOR;
-            tooltip.subText.text = uses + "/" + triggerCondition.baseUses + " " + GR.PCL.Strings.Combat.Rerolls;
+            tooltip.subText.text = uses + "/" + triggerCondition.baseUses + " " + PGR.PCL.Strings.Combat.Rerolls;
         }
     }
 

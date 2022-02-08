@@ -5,13 +5,13 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.stances.NeutralStance;
 import pinacolada.powers.PCLClickablePower;
 import pinacolada.powers.PowerTriggerConditionType;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
 public class ExitStancePower extends PCLClickablePower
 {
-    public static final String POWER_ID = GR.PCL.CreateID(ExitStancePower.class.getSimpleName());
+    public static final String POWER_ID = PGR.PCL.CreateID(ExitStancePower.class.getSimpleName());
 
     public ExitStancePower(AbstractCreature owner, int amount)
     {

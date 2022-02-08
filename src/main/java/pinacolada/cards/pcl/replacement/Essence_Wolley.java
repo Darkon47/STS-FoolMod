@@ -7,7 +7,7 @@ import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCard;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.PCLCardTarget;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 
 public class Essence_Wolley extends PCLCard
@@ -29,7 +29,7 @@ public class Essence_Wolley extends PCLCard
         SetExhaust(true);
 
         this.assetUrl = eatyourbeets.cards.animator.special.Essence_Wolley.DATA.ImagePath;
-        this.portraitImg = new AdvancedTexture(GR.GetTexture(assetUrl, true));
+        this.portraitImg = new AdvancedTexture(PGR.GetTexture(assetUrl, true));
     }
 
     public boolean canUpgrade() {

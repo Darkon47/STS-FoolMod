@@ -14,13 +14,13 @@ import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 import eatyourbeets.events.base.EYBEventPhase;
 import eatyourbeets.events.base.EYBEventStrings;
 import eatyourbeets.utilities.JUtils;
-import pinacolada.cards.pcl.special.BlazingHeat;
-import pinacolada.cards.pcl.special.IonizingStorm;
-import pinacolada.cards.pcl.special.SheerCold;
+import pinacolada.cards.fool.special.BlazingHeat;
+import pinacolada.cards.fool.special.IonizingStorm;
+import pinacolada.cards.fool.special.SheerCold;
 import pinacolada.events.base.PCLEvent;
-import pinacolada.relics.pcl.SpiritPoop2;
-import pinacolada.relics.pcl.SpiritPoop3;
-import pinacolada.resources.GR;
+import pinacolada.relics.fool.SpiritPoop2;
+import pinacolada.relics.fool.SpiritPoop3;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLGameEffects;
 import pinacolada.utilities.PCLGameUtilities;
 
@@ -35,7 +35,7 @@ public class TheFloatyThing extends PCLEvent
 
     public static TheFloatyThing TryCreate(Random rng)
     {
-        String data = GR.PCL.Dungeon.GetMapData(ID);
+        String data = PGR.PCL.Dungeon.GetMapData(ID);
         if (data != null) {
             try {
                 rolls = Integer.parseInt(data);
@@ -128,7 +128,7 @@ public class TheFloatyThing extends PCLEvent
         {
             player.loseGold(PRICE);
             rolls += 1;
-            GR.PCL.Dungeon.SetMapData(ID, rolls);
+            PGR.PCL.Dungeon.SetMapData(ID, rolls);
 
             if (MathUtils.randomBoolean(GetChance())) {
                 ObtainReward();
@@ -174,7 +174,7 @@ public class TheFloatyThing extends PCLEvent
             relic.instantObtain();
             CardCrawlGame.metricData.addRelicObtainData(relic);
             AbstractRoom room = AbstractDungeon.getCurrRoom();
-            RewardItem rewardItem = new RewardItem(GR.PCL.CardColor);
+            RewardItem rewardItem = new RewardItem(PGR.Fool.CardColor);
 
             room.rewards.clear();
             rewardItem.cards.clear();
@@ -231,7 +231,7 @@ public class TheFloatyThing extends PCLEvent
             if (randomCurse != null) {
                 PCLGameEffects.List.Add(new ShowCardAndObtainEffect(randomCurse, (float) Settings.WIDTH * 0.45f, (float) Settings.HEIGHT / 2f));
             }
-            GR.PCL.Dungeon.SetMapData(ID, -1);
+            PGR.PCL.Dungeon.SetMapData(ID, -1);
             AddText(text.Eat());
             AddLeaveOption();
         }

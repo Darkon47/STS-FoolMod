@@ -6,7 +6,7 @@ import pinacolada.cards.base.PCLCard;
 import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.base.cardeffects.GenericEffect;
 import pinacolada.powers.PCLPowerHelper;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLJUtils;
 
@@ -43,16 +43,16 @@ public class GenericEffect_StackPower extends GenericEffect
         String joinedString = PCLJUtils.JoinStrings(" ", PCLJUtils.Map(powers, power -> power.Tooltip));
         switch (target) {
             case Random:
-                return GR.PCL.Strings.Actions.ApplyToRandom(amount, joinedString, true);
+                return PGR.PCL.Strings.Actions.ApplyToRandom(amount, joinedString, true);
             case Normal:
-                return GR.PCL.Strings.Actions.Apply(amount, joinedString, true);
+                return PGR.PCL.Strings.Actions.Apply(amount, joinedString, true);
             case AoE:
-                return GR.PCL.Strings.Actions.ApplyToALL(amount, joinedString, true);
+                return PGR.PCL.Strings.Actions.ApplyToALL(amount, joinedString, true);
             default:
                 return powers.size() > 0 && powers.get(0).EndTurnBehavior == PCLPowerHelper.Behavior.Temporary
-                        ? GR.PCL.Strings.Actions.GainTemporaryAmount(amount, joinedString, true)
-                        : amount < 0 ? GR.PCL.Strings.Actions.LosePower(amount, joinedString, true)
-                        : GR.PCL.Strings.Actions.GainAmount(amount, joinedString, true);
+                        ? PGR.PCL.Strings.Actions.GainTemporaryAmount(amount, joinedString, true)
+                        : amount < 0 ? PGR.PCL.Strings.Actions.LosePower(amount, joinedString, true)
+                        : PGR.PCL.Strings.Actions.GainAmount(amount, joinedString, true);
         }
     }
 

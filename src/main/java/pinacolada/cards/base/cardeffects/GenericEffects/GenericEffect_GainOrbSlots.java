@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import pinacolada.cards.base.PCLCard;
 import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.base.cardeffects.GenericEffect;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 
 public class GenericEffect_GainOrbSlots extends GenericEffect
@@ -20,7 +20,7 @@ public class GenericEffect_GainOrbSlots extends GenericEffect
     @Override
     public String GetText()
     {
-        return GR.PCL.Strings.Actions.GainOrbSlots(amount, true);
+        return PGR.PCL.Strings.Actions.GainOrbSlots(amount, true);
     }
 
     @Override

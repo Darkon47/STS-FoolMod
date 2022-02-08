@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import eatyourbeets.ui.GUIElement;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLGameUtilities;
 
 import java.util.ArrayList;
@@ -26,7 +26,7 @@ public class PCLCardRewardScreen extends GUIElement
             return;
         }
 
-        GR.UI.CardAffinities.Open(AbstractDungeon.player.masterDeck.group);
+        PGR.UI.CardAffinities.Open(AbstractDungeon.player.masterDeck.group);
         rewardBundle.Open(rItem, cards);
         purgingStoneUI.Open(rItem, cards);
         cardBadgeLegend.Open();
@@ -34,7 +34,7 @@ public class PCLCardRewardScreen extends GUIElement
 
     public void Close()
     {
-        GR.UI.CardAffinities.Close();
+        PGR.UI.CardAffinities.Close();
         cardBadgeLegend.Close();
         rewardBundle.Close();
         purgingStoneUI.Close();
@@ -42,7 +42,7 @@ public class PCLCardRewardScreen extends GUIElement
 
     public void Update()
     {
-        GR.UI.CardAffinities.TryUpdate();
+        PGR.UI.CardAffinities.TryUpdate();
         purgingStoneUI.TryUpdate();
         rewardBundle.TryUpdate();
         cardBadgeLegend.TryUpdate();
@@ -50,7 +50,7 @@ public class PCLCardRewardScreen extends GUIElement
 
     public void PreRender(SpriteBatch sb)
     {
-        GR.UI.CardAffinities.TryRender(sb);
+        PGR.UI.CardAffinities.TryRender(sb);
         cardBadgeLegend.TryRender(sb);
         purgingStoneUI.TryRender(sb);
     }

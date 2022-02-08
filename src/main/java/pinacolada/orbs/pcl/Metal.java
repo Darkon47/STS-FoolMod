@@ -9,7 +9,7 @@ import eatyourbeets.ui.TextureCache;
 import pinacolada.effects.SFX;
 import pinacolada.orbs.PCLOrb;
 import pinacolada.powers.temporary.TemporaryEnchantedArmorPower;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 
 public class Metal extends PCLOrb
@@ -49,7 +49,7 @@ public class Metal extends PCLOrb
     {
         super.updateAnimation();
 
-        this.angle += GR.UI.Delta(13f);
+        this.angle += PGR.UI.Delta(13f);
     }
 
     @Override

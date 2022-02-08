@@ -5,13 +5,13 @@ import com.megacrit.cardcrawl.random.Random;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import eatyourbeets.events.base.EYBEventPhase;
 import eatyourbeets.events.base.EYBEventStrings;
-import pinacolada.cards.pcl.series.GenshinImpact.Zhongli;
+import pinacolada.cards.fool.series.GenshinImpact.Zhongli;
 import pinacolada.events.base.PCLEvent;
-import pinacolada.relics.pcl.SoulGem1;
-import pinacolada.relics.pcl.SoulGem2;
-import pinacolada.relics.pcl.SoulGem3;
-import pinacolada.relics.pcl.SoulGem4;
-import pinacolada.resources.GR;
+import pinacolada.relics.fool.SoulGem1;
+import pinacolada.relics.fool.SoulGem2;
+import pinacolada.relics.fool.SoulGem3;
+import pinacolada.relics.fool.SoulGem4;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
 
@@ -130,7 +130,7 @@ public class ContractEvent extends PCLEvent
         {
             AddText(text.Ending2());
             AddLeaveOption();
-            GR.PCL.Dungeon.SetJumpNextFloor(true);
+            PGR.PCL.Dungeon.SetJumpNextFloor(true);
         }
     }
 

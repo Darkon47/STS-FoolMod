@@ -3,7 +3,7 @@ package pinacolada.cards.base.cardeffects.CounterIntentEffects;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import pinacolada.cards.base.PCLCard;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 
 public class CounterIntentEffect_Sleep extends CounterIntentEffect
@@ -17,7 +17,7 @@ public class CounterIntentEffect_Sleep extends CounterIntentEffect
     @Override
     public String GetDescription(PCLCard nanami)
     {
-        return ACTIONS.Apply(GetPoison(nanami), GR.Tooltips.Poison, true);
+        return ACTIONS.Apply(GetPoison(nanami), PGR.Tooltips.Poison, true);
     }
 
     private int GetPoison(PCLCard nanami)

@@ -12,7 +12,7 @@ import com.megacrit.cardcrawl.helpers.input.InputHelper;
 import eatyourbeets.effects.EYBEffectWithCallback;
 import eatyourbeets.rooms.FakeEventRoom;
 import pinacolada.cards.base.PCLCard;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.resources.pcl.misc.PCLCardSlot;
 import pinacolada.ui.controls.GUI_CardGrid;
 import pinacolada.ui.controls.GUI_TextBox;
@@ -22,8 +22,8 @@ import java.util.ArrayList;
 public class PCLCardSlotSelectionEffect extends EYBEffectWithCallback<Object>
 {
     private static final GUI_TextBox cardValue_text = new
-    GUI_TextBox(GR.PCL.Images.Panel_Rounded_Half_H.Texture(), new Hitbox(AbstractCard.IMG_WIDTH * 0.6f, AbstractCard.IMG_HEIGHT * 0.15f))
-    .SetBackgroundTexture(GR.PCL.Images.Panel_Rounded_Half_H.Texture(), new Color(0.5f, 0.5f, 0.5f , 1f), 1.05f)
+    GUI_TextBox(PGR.PCL.Images.Panel_Rounded_Half_H.Texture(), new Hitbox(AbstractCard.IMG_WIDTH * 0.6f, AbstractCard.IMG_HEIGHT * 0.15f))
+    .SetBackgroundTexture(PGR.PCL.Images.Panel_Rounded_Half_H.Texture(), new Color(0.5f, 0.5f, 0.5f , 1f), 1.05f)
     .SetColors(new Color(0, 0, 0, 0.85f), Settings.CREAM_COLOR)
     .SetAlignment(0.5f, 0.5f)
     .SetFont(FontHelper.cardEnergyFont_L, 0.75f);

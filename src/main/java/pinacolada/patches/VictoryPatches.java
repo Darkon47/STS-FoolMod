@@ -12,7 +12,7 @@ import com.megacrit.cardcrawl.screens.GameOverStat;
 import com.megacrit.cardcrawl.screens.VictoryScreen;
 import eatyourbeets.monsters.Bosses.TheUnnamed;
 import eatyourbeets.utilities.FieldInfo;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
 
@@ -28,7 +28,7 @@ public class VictoryPatches
 
     private static GameOverStat GetAscensionGlyphStats()
     {
-        return new GameOverStat(GR.PCL.Strings.CharSelect.AscensionGlyph, data.strings.DIALOG[28], String.valueOf(glyphBonus));
+        return new GameOverStat(PGR.PCL.Strings.CharSelect.AscensionGlyph, data.strings.DIALOG[28], String.valueOf(glyphBonus));
     }
 
     private static GameOverStat GetUnnamedGameOverStats()
@@ -38,12 +38,12 @@ public class VictoryPatches
 
     private static GameOverStat GetLongestComboStats()
     {
-        return new GameOverStat(GR.PCL.Strings.Combat.Rerolls, null, String.valueOf(GR.PCL.Dungeon.GetLongestMatchCombo()));
+        return new GameOverStat(PGR.PCL.Strings.Combat.Rerolls, null, String.valueOf(PGR.PCL.Dungeon.GetLongestMatchCombo()));
     }
 
     private static int GetAscensionGlyphScoreBonus(int baseScore)
     {
-        return MathUtils.round((float)baseScore * 0.02F * PCLJUtils.Sum(GR.PCL.Dungeon.AscensionGlyphCounters, Integer::floatValue));
+        return MathUtils.round((float)baseScore * 0.02F * PCLJUtils.Sum(PGR.PCL.Dungeon.AscensionGlyphCounters, Integer::floatValue));
     }
 
     private static int GetUnnamedScoreBonus()
@@ -58,9 +58,9 @@ public class VictoryPatches
         public static void Method(VictoryRoom __instance)
         {
             if (Settings.isStandardRun() && __instance.eType == VictoryRoom.EventType.HEART // this is the room you enter after defeating act 3 Boss
-                && AbstractDungeon.player.chosenClass == GR.PCL.PlayerClass)
+                && AbstractDungeon.player.chosenClass == PGR.Fool.PlayerClass)
             {
-                GR.PCL.Data.RecordVictory(PCLGameUtilities.GetActualAscensionLevel());
+                PGR.PCL.Data.RecordVictory(PCLGameUtilities.GetActualAscensionLevel());
             }
         }
     }
@@ -77,15 +77,15 @@ public class VictoryPatches
             }
 
             stats.add(Math.max(0, stats.size() - 2), GetLongestComboStats());
-            if (GR.PCL.Dungeon.IsUnnamedReign())
+            if (PGR.PCL.Dungeon.IsUnnamedReign())
             {
                 _bossPoints.Set(__instance, _bossPoints.Get(__instance) + GetUnnamedScoreBonus());
                 stats.add(Math.max(0, stats.size() - 2), GetUnnamedGameOverStats());
             }
 
-            if (Settings.isStandardRun() && PCLGameUtilities.IsPlayerClass(GR.PCL.PlayerClass))
+            if (Settings.isStandardRun() && PCLGameUtilities.IsPCLPlayerClass())
             {
-                GR.PCL.Data.RecordTrueVictory(PCLGameUtilities.GetActualAscensionLevel(), (GR.PCL.Dungeon.IsUnnamedReign() ? 3 : CardCrawlGame.dungeon instanceof TheEnding ? 2 : 1));
+                PGR.PCL.Data.RecordTrueVictory(PCLGameUtilities.GetActualAscensionLevel(), (PGR.PCL.Dungeon.IsUnnamedReign() ? 3 : CardCrawlGame.dungeon instanceof TheEnding ? 2 : 1));
             }
         }
     }
@@ -107,7 +107,7 @@ public class VictoryPatches
         @SpireInsertPatch(rloc = 1, localvars = {"points"})
         public static void Method(boolean isVictory, @ByRef int[] points)
         {
-            points[0] += GR.PCL.Dungeon.GetLongestMatchCombo();
+            points[0] += PGR.PCL.Dungeon.GetLongestMatchCombo();
         }
    }
 }

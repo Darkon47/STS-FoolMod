@@ -9,13 +9,13 @@ import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import eatyourbeets.interfaces.markers.Hidden;
 import eatyourbeets.utilities.TupleT2;
 import pinacolada.cards.base.*;
-import pinacolada.cards.pcl.basic.Defend;
-import pinacolada.cards.pcl.basic.Strike;
+import pinacolada.cards.fool.basic.Defend;
+import pinacolada.cards.fool.basic.Strike;
 import pinacolada.cards.pcl.curse.*;
 import pinacolada.characters.FoolCharacter;
 import pinacolada.relics.PCLRelic;
-import pinacolada.relics.pcl.*;
-import pinacolada.resources.GR;
+import pinacolada.relics.fool.*;
+import pinacolada.resources.PGR;
 import pinacolada.ui.characterSelection.PCLBaseStatEditor;
 import pinacolada.utilities.PCLJUtils;
 
@@ -378,11 +378,11 @@ public abstract class PCLLoadout
             return null;
         }
 
-        PCLTrophies trophies = GR.PCL.Data.GetTrophies(ID);
+        PCLTrophies trophies = PGR.PCL.Data.GetTrophies(ID);
         if (trophies == null)
         {
             trophies = new PCLTrophies(ID);
-            GR.PCL.Data.Trophies.add(trophies);
+            PGR.PCL.Data.Trophies.add(trophies);
         }
 
         return trophies;
@@ -412,15 +412,15 @@ public abstract class PCLLoadout
     {
         if (trophy == 1)
         {
-            return GR.PCL.Strings.Trophies.BronzeDescription;
+            return PGR.PCL.Strings.Trophies.BronzeDescription;
         }
         else if (trophy == 2)
         {
-            return GR.PCL.Strings.Trophies.SilverDescription;
+            return PGR.PCL.Strings.Trophies.SilverDescription;
         }
         else if (trophy == 3)
         {
-            return GR.PCL.Strings.Trophies.GoldDescription;
+            return PGR.PCL.Strings.Trophies.GoldDescription;
         }
 
         return null;
@@ -429,7 +429,7 @@ public abstract class PCLLoadout
     public void OnVictory(int ascensionLevel, int trophyLevel)
     {
         PCLTrophies trophies = GetTrophies();
-        if (GR.PCL.Data.SelectedLoadout.ID == ID)
+        if (PGR.PCL.Data.SelectedLoadout.ID == ID)
         {
             switch (trophyLevel) {
                 case 2:

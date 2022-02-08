@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.helpers.Hitbox;
 import com.megacrit.cardcrawl.screens.SingleCardViewPopup;
 import eatyourbeets.ui.GUIElement;
 import eatyourbeets.utilities.EYBFontHelper;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.ui.controls.GUI_Toggle;
 import pinacolada.utilities.PCLGameUtilities;
 
@@ -24,31 +24,31 @@ public class PCLCardRewardInfo extends GUIElement
     public PCLCardRewardInfo()
     {
         upgradeToggle = new GUI_Toggle(new Hitbox(Scale(256), Scale(48f)))
-        .SetBackground(GR.PCL.Images.Panel.Texture(), Color.DARK_GRAY)
+        .SetBackground(PGR.PCL.Images.Panel.Texture(), Color.DARK_GRAY)
         .SetPosition(ScreenW(0.9f), ScreenH(0.65f))
         .SetFont(EYBFontHelper.CardDescriptionFont_Large, 0.5f)
         .SetText(SingleCardViewPopup.TEXT[6])
         .SetOnToggle(this::ToggleViewUpgrades);
 
         zoomToggle = new GUI_Toggle(new Hitbox(Scale(256), Scale(48f)))
-        .SetBackground(GR.PCL.Images.Panel.Texture(), Color.DARK_GRAY)
+        .SetBackground(PGR.PCL.Images.Panel.Texture(), Color.DARK_GRAY)
         .SetPosition(ScreenW(0.9f), upgradeToggle.hb.y - upgradeToggle.hb.height)
-        .SetText(GR.PCL.Strings.Misc.DynamicPortraits)
+        .SetText(PGR.PCL.Strings.Misc.DynamicPortraits)
         .SetFont(EYBFontHelper.CardDescriptionFont_Large, 0.475f)
         .SetOnToggle(this::ToggleCardZoom);
 
         simplifyCardUIToggle = new GUI_Toggle(new Hitbox(Scale(256), Scale(48f)))
-        .SetBackground(GR.PCL.Images.Panel.Texture(), Color.DARK_GRAY)
+        .SetBackground(PGR.PCL.Images.Panel.Texture(), Color.DARK_GRAY)
         .SetPosition(ScreenW(0.9f), zoomToggle.hb.y - zoomToggle.hb.height)
-        .SetText(GR.PCL.Strings.Misc.SimplifyCardUI)
+        .SetText(PGR.PCL.Strings.Misc.SimplifyCardUI)
         .SetFont(EYBFontHelper.CardDescriptionFont_Large, 0.475f)
         .SetOnToggle(this::ToggleSimplifyCardUI);
 
-        exhaust = new PCLKeywordLegend(GR.Tooltips.Exhaust);
-        ethereal = new PCLKeywordLegend(GR.Tooltips.Ethereal);
-        retain = new PCLKeywordLegend(GR.Tooltips.Retain);
-        innate = new PCLKeywordLegend(GR.Tooltips.Innate);
-        purge = new PCLKeywordLegend(GR.Tooltips.Purge);
+        exhaust = new PCLKeywordLegend(PGR.Tooltips.Exhaust);
+        ethereal = new PCLKeywordLegend(PGR.Tooltips.Ethereal);
+        retain = new PCLKeywordLegend(PGR.Tooltips.Retain);
+        innate = new PCLKeywordLegend(PGR.Tooltips.Innate);
+        purge = new PCLKeywordLegend(PGR.Tooltips.Purge);
     }
 
     public void Close()
@@ -59,7 +59,7 @@ public class PCLCardRewardInfo extends GUIElement
 
     public void Open()
     {
-        isActive = PCLGameUtilities.IsPlayerClass(GR.PCL.PlayerClass);
+        isActive = PCLGameUtilities.IsPCLPlayerClass();
         upgradeToggle.Toggle(false);
     }
 
@@ -67,8 +67,8 @@ public class PCLCardRewardInfo extends GUIElement
     public void Update()
     {
         upgradeToggle.SetToggle(SingleCardViewPopup.isViewingUpgrade).Update();
-        zoomToggle.SetToggle(GR.PCL.Config.CropCardImages.Get()).Update();
-        simplifyCardUIToggle.SetToggle(GR.PCL.Config.SimplifyCardUI.Get()).Update();
+        zoomToggle.SetToggle(PGR.PCL.Config.CropCardImages.Get()).Update();
+        simplifyCardUIToggle.SetToggle(PGR.PCL.Config.SimplifyCardUI.Get()).Update();
 
         float x = zoomToggle.hb.x + (zoomToggle.hb.width - (exhaust.textBox.hb.width * 0.5f));
         float step = exhaust.textBox.hb.height;
@@ -101,11 +101,11 @@ public class PCLCardRewardInfo extends GUIElement
 
     private void ToggleCardZoom(boolean value)
     {
-        GR.PCL.Config.CropCardImages.Set(value, true);
+        PGR.PCL.Config.CropCardImages.Set(value, true);
     }
 
     private void ToggleSimplifyCardUI(boolean value)
     {
-        GR.PCL.Config.SimplifyCardUI.Set(value, true);
+        PGR.PCL.Config.SimplifyCardUI.Set(value, true);
     }
 }

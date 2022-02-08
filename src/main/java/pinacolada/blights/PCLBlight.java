@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.blights.AbstractBlight;
 import com.megacrit.cardcrawl.localization.BlightStrings;
 import pinacolada.cards.base.PCLCardTooltip;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
 
@@ -21,25 +21,25 @@ public abstract class PCLBlight extends AbstractBlight
 
     public static String CreateFullID(Class<? extends PCLBlight> type)
     {
-        return GR.PCL.CreateID(type.getSimpleName());
+        return PGR.PCL.CreateID(type.getSimpleName());
     }
 
     public PCLBlight(String id)
     {
-        this(id, GR.GetBlightStrings(id), -1);
+        this(id, PGR.GetBlightStrings(id), -1);
     }
 
     public PCLBlight(String id, int amount)
     {
-        this(id, GR.GetBlightStrings(id), amount);
+        this(id, PGR.GetBlightStrings(id), amount);
     }
 
     public PCLBlight(String id, BlightStrings strings, int amount)
     {
         super(id, strings.NAME, PCLJUtils.Format(strings.DESCRIPTION[0], amount), "durian.png", true);
 
-        this.img = GR.GetTexture(GR.GetBlightImage(id));
-        this.outlineImg = GR.GetTexture(GR.GetBlightOutlineImage(id));
+        this.img = PGR.GetTexture(PGR.GetBlightImage(id));
+        this.outlineImg = PGR.GetTexture(PGR.GetBlightOutlineImage(id));
         this.initialAmount = amount;
         this.counter = amount;
         this.strings = strings;

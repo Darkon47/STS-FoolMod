@@ -6,7 +6,7 @@ import pinacolada.cards.base.PCLCard;
 import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.base.cardeffects.GenericEffect;
 import pinacolada.orbs.PCLOrbHelper;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 
 public class GenericEffect_ChannelOrb extends GenericEffect
@@ -24,7 +24,7 @@ public class GenericEffect_ChannelOrb extends GenericEffect
     @Override
     public String GetText()
     {
-        return orb != null ? GR.PCL.Strings.Actions.Channel(amount, orb.Tooltip, true) : GR.PCL.Strings.Actions.ChannelRandomOrbs(amount, true);
+        return orb != null ? PGR.PCL.Strings.Actions.Channel(amount, orb.Tooltip, true) : PGR.PCL.Strings.Actions.ChannelRandomOrbs(amount, true);
     }
 
     @Override

@@ -6,27 +6,27 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import eatyourbeets.ui.TextureCache;
 import pinacolada.interfaces.markers.TooltipObject;
 import pinacolada.powers.affinity.*;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLJUtils;
 
 public enum PCLAffinity implements TooltipObject, Comparable<PCLAffinity>
 {
-    Red(0, "Red", "Might", "R", GR.PCL.Images.Affinities.Red),
-    Green(1, "Green", "Velocity", "G", GR.PCL.Images.Affinities.Green),
-    Blue(2, "Blue", "Wisdom", "B", GR.PCL.Images.Affinities.Blue),
-    Orange(3, "Orange", "Endurance", "O", GR.PCL.Images.Affinities.Orange),
-    Light(4, "Light", "Invocation", "L", GR.PCL.Images.Affinities.Light),
-    Dark(5, "Dark", "Desecration", "D", GR.PCL.Images.Affinities.Dark),
-    Silver(6, "Silver", "Technic", "S", GR.PCL.Images.Affinities.Silver),
-    Star(-1, "Star", "Multicolor", "A", GR.PCL.Images.Affinities.Star),
-    General(-2, "Gen", "Multicolor","W", GR.PCL.Images.Affinities.General);// Don't use directly
+    Red(0, "Red", "Might", "R", PGR.PCL.Images.Affinities.Red),
+    Green(1, "Green", "Velocity", "G", PGR.PCL.Images.Affinities.Green),
+    Blue(2, "Blue", "Wisdom", "B", PGR.PCL.Images.Affinities.Blue),
+    Orange(3, "Orange", "Endurance", "O", PGR.PCL.Images.Affinities.Orange),
+    Light(4, "Light", "Invocation", "L", PGR.PCL.Images.Affinities.Light),
+    Dark(5, "Dark", "Desecration", "D", PGR.PCL.Images.Affinities.Dark),
+    Silver(6, "Silver", "Technic", "S", PGR.PCL.Images.Affinities.Silver),
+    Star(-1, "Star", "Multicolor", "A", PGR.PCL.Images.Affinities.Star),
+    General(-2, "Gen", "Multicolor","W", PGR.PCL.Images.Affinities.General);// Don't use directly
 
     public static final int MAX_ID = 4;
 
-    protected static final TextureCache BorderBG = GR.PCL.Images.Affinities.BorderBG;
-    protected static final TextureCache BorderFG = GR.PCL.Images.Affinities.BorderFG;
-    protected static final TextureCache BorderLV2 = GR.PCL.Images.Affinities.Border_Strong;
-    protected static final TextureCache BorderLV1 = GR.PCL.Images.Affinities.Border_Weak;
+    protected static final TextureCache BorderBG = PGR.PCL.Images.Affinities.BorderBG;
+    protected static final TextureCache BorderFG = PGR.PCL.Images.Affinities.BorderFG;
+    protected static final TextureCache BorderLV2 = PGR.PCL.Images.Affinities.Border_Strong;
+    protected static final TextureCache BorderLV1 = PGR.PCL.Images.Affinities.Border_Weak;
     protected static final PCLAffinity[] BASIC_TYPES = new PCLAffinity[6];
     protected static final PCLAffinity[] EXTENDED_TYPES = new PCLAffinity[7];
     protected static final PCLAffinity[] ALL_TYPES = new PCLAffinity[8];
@@ -161,15 +161,15 @@ public enum PCLAffinity implements TooltipObject, Comparable<PCLAffinity>
 
     public static PCLAffinity FromTooltip(PCLCardTooltip tooltip)
     {   //@Formatter: Off
-        if (tooltip.Is(GR.Tooltips.Affinity_Red)    ) { return PCLAffinity.Red;     }
-        if (tooltip.Is(GR.Tooltips.Affinity_Green)  ) { return PCLAffinity.Green;   }
-        if (tooltip.Is(GR.Tooltips.Affinity_Blue)   ) { return PCLAffinity.Blue;    }
-        if (tooltip.Is(GR.Tooltips.Affinity_Orange) ) { return PCLAffinity.Orange;  }
-        if (tooltip.Is(GR.Tooltips.Affinity_Light)  ) { return PCLAffinity.Light;   }
-        if (tooltip.Is(GR.Tooltips.Affinity_Dark)   ) { return PCLAffinity.Dark;    }
-        if (tooltip.Is(GR.Tooltips.Affinity_Silver) ) { return PCLAffinity.Silver;  }
-        if (tooltip.Is(GR.Tooltips.Multicolor)   ) { return PCLAffinity.Star;    }
-        if (tooltip.Is(GR.Tooltips.Affinity_General)) { return PCLAffinity.General; }
+        if (tooltip.Is(PGR.Tooltips.Affinity_Red)    ) { return PCLAffinity.Red;     }
+        if (tooltip.Is(PGR.Tooltips.Affinity_Green)  ) { return PCLAffinity.Green;   }
+        if (tooltip.Is(PGR.Tooltips.Affinity_Blue)   ) { return PCLAffinity.Blue;    }
+        if (tooltip.Is(PGR.Tooltips.Affinity_Orange) ) { return PCLAffinity.Orange;  }
+        if (tooltip.Is(PGR.Tooltips.Affinity_Light)  ) { return PCLAffinity.Light;   }
+        if (tooltip.Is(PGR.Tooltips.Affinity_Dark)   ) { return PCLAffinity.Dark;    }
+        if (tooltip.Is(PGR.Tooltips.Affinity_Silver) ) { return PCLAffinity.Silver;  }
+        if (tooltip.Is(PGR.Tooltips.Multicolor)   ) { return PCLAffinity.Star;    }
+        if (tooltip.Is(PGR.Tooltips.Affinity_General)) { return PCLAffinity.General; }
         return null;
     }   //@Formatter: On
 
@@ -177,15 +177,15 @@ public enum PCLAffinity implements TooltipObject, Comparable<PCLAffinity>
     {
         switch (this)
         {
-            case Red: return GR.Tooltips.Affinity_Red;
-            case Green: return GR.Tooltips.Affinity_Green;
-            case Blue: return GR.Tooltips.Affinity_Blue;
-            case Orange: return GR.Tooltips.Affinity_Orange;
-            case Light: return GR.Tooltips.Affinity_Light;
-            case Dark: return GR.Tooltips.Affinity_Dark;
-            case Silver: return GR.Tooltips.Affinity_Silver;
-            case Star: return GR.Tooltips.Multicolor;
-            case General: return GR.Tooltips.Affinity_General;
+            case Red: return PGR.Tooltips.Affinity_Red;
+            case Green: return PGR.Tooltips.Affinity_Green;
+            case Blue: return PGR.Tooltips.Affinity_Blue;
+            case Orange: return PGR.Tooltips.Affinity_Orange;
+            case Light: return PGR.Tooltips.Affinity_Light;
+            case Dark: return PGR.Tooltips.Affinity_Dark;
+            case Silver: return PGR.Tooltips.Affinity_Silver;
+            case Star: return PGR.Tooltips.Multicolor;
+            case General: return PGR.Tooltips.Affinity_General;
             default: throw new EnumConstantNotPresentException(PCLAffinity.class, this.name());
         }
     }
@@ -194,16 +194,16 @@ public enum PCLAffinity implements TooltipObject, Comparable<PCLAffinity>
     {
         switch (this)
         {
-            case Red: return GR.Tooltips.Might;
-            case Green: return GR.Tooltips.Velocity;
-            case Blue: return GR.Tooltips.Wisdom;
-            case Orange: return GR.Tooltips.Endurance;
-            case Light: return GR.Tooltips.Invocation;
-            case Dark: return GR.Tooltips.Desecration;
-            case Silver: return GR.Tooltips.Technic;
+            case Red: return PGR.Tooltips.Might;
+            case Green: return PGR.Tooltips.Velocity;
+            case Blue: return PGR.Tooltips.Wisdom;
+            case Orange: return PGR.Tooltips.Endurance;
+            case Light: return PGR.Tooltips.Invocation;
+            case Dark: return PGR.Tooltips.Desecration;
+            case Silver: return PGR.Tooltips.Technic;
             case Star:
             case General:
-                return GR.Tooltips.Multicolor;
+                return PGR.Tooltips.Multicolor;
             default: throw new EnumConstantNotPresentException(PCLAffinity.class, this.name());
         }
     }

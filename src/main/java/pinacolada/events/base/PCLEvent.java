@@ -15,26 +15,26 @@ import eatyourbeets.events.base.EYBEventPhase;
 import eatyourbeets.events.base.EYBEventStrings;
 import eatyourbeets.rooms.AnimatorCustomEventRoom;
 import pinacolada.events.pcl.*;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.resources.pcl.PCLImages;
 
 import java.util.ArrayList;
 
 public abstract class PCLEvent extends EYBEvent
 {
-    public static final PCLImages.Events IMAGES = GR.PCL.Images.Events;
+    public static final PCLImages.Events IMAGES = PGR.PCL.Images.Events;
     public final ArrayList<EYBEventPhase> phases = new ArrayList<>();
     public EYBEventPhase currentPhase;
     public final String id;
 
     public static String CreateFullID(Class<? extends EYBEvent> type)
     {
-        return GR.PCL.CreateID(type.getSimpleName());
+        return PGR.PCL.CreateID(type.getSimpleName());
     }
 
-    public static AbstractEvent GenerateSpecialEvent(AbstractDungeon dungeon, Random rng, boolean isAnimator)
+    public static AbstractEvent GenerateSpecialEvent(AbstractDungeon dungeon, Random rng, boolean isPCL)
     {
-        if (isAnimator)
+        if (isPCL)
         {
             PCLEvent event = TheCursedForest.TryCreate(rng);
             if (event == null) {
@@ -54,7 +54,7 @@ public abstract class PCLEvent extends EYBEvent
             }
 
             if (event != null) {
-                GR.PCL.Dungeon.SetMapData(event.id, "");
+                PGR.PCL.Dungeon.SetMapData(event.id, "");
             }
             return event;
         }
@@ -111,7 +111,7 @@ public abstract class PCLEvent extends EYBEvent
 
     public PCLEvent(String id, EYBEventStrings strings)
     {
-        this(id, strings, GR.PCL.Images.Events.Placeholder.Path());
+        this(id, strings, PGR.PCL.Images.Events.Placeholder.Path());
     }
 
     public PCLEvent(String id, EYBEventStrings strings, String imageUrl)

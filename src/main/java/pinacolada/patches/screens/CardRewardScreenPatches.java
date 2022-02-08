@@ -7,7 +7,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpirePrefixPatch;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.screens.CardRewardScreen;
-import pinacolada.cards.base.PCLCard_UltraRare;
+import pinacolada.cards.fool.FoolCard_UltraRare;
 import pinacolada.ui.cardReward.PCLCardRewardScreen;
 
 import java.util.ArrayList;
@@ -82,9 +82,9 @@ public class CardRewardScreenPatches
 
             for (AbstractCard c : cards)
             {
-                if (c instanceof PCLCard_UltraRare)
+                if (c instanceof FoolCard_UltraRare)
                 {
-                    PCLCard_UltraRare.MarkAsSeen(c.cardID);
+                    FoolCard_UltraRare.MarkAsSeen(c.cardID);
                 }
             }
         }

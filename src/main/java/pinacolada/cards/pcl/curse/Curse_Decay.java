@@ -4,20 +4,20 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.WeakPower;
 import pinacolada.cards.base.CardUseInfo;
+import pinacolada.cards.base.PCLCard;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.PCLCardTarget;
-import pinacolada.cards.base.PCLCard_Curse;
 import pinacolada.effects.AttackEffects;
 import pinacolada.utilities.PCLActions;
 
-public class Curse_Decay extends PCLCard_Curse
+public class Curse_Decay extends PCLCard
 {
     public static final PCLCardData DATA = Register(Curse_Decay.class)
-            .SetCurse(-2, PCLCardTarget.None, false);
+            .SetCurse(-2, PCLCardTarget.None, false, true);
 
     public Curse_Decay()
     {
-        super(DATA, true);
+        super(DATA);
 
         Initialize(0, 0, 2, 1);
 

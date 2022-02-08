@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.helpers.MathHelper;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import javassist.CannotCompileException;
 import javassist.CtBehavior;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLGameUtilities;
 
 public class AbstractRelicPatches
@@ -19,7 +19,7 @@ public class AbstractRelicPatches
         @SpirePrefixPatch
         public static SpireReturn Insert(AbstractRelic __instance)
         {
-            if (PCLGameUtilities.IsPlayerClass(GR.PCL.PlayerClass) && __instance.tier == AbstractRelic.RelicTier.BOSS)
+            if (PCLGameUtilities.IsPCLPlayerClass() && __instance.tier == AbstractRelic.RelicTier.BOSS)
             {
                 return SpireReturn.Return(333);
             }
@@ -36,7 +36,7 @@ public class AbstractRelicPatches
         @SpireInsertPatch(locator = Locator.class)
         public static SpireReturn Insert(AbstractRelic __instance)
         {
-            if (AbstractDungeon.screen == GR.Enums.Screens.EYB_SCREEN)
+            if (AbstractDungeon.screen == PGR.Enums.Screens.EYB_SCREEN)
             {
                 __instance.scale = MathHelper.scaleLerpSnap(__instance.scale, Settings.scale);
                 __instance.hb.unhover();

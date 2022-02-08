@@ -21,7 +21,7 @@ import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import eatyourbeets.ui.GUIElement;
 import eatyourbeets.utilities.EYBFontHelper;
 import pinacolada.cards.base.PCLCard;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.resources.pcl.PCLStrings;
 import pinacolada.ui.controls.GUI_Button;
 import pinacolada.ui.controls.GUI_Label;
@@ -61,7 +61,7 @@ public class PCLSingleCardPopup extends GUIElement
     private final Hitbox changeVariantPrevHb;
     private final Hitbox changeVariantValueHb;
 
-    private final PCLStrings.SingleCardPopupButtons buttonStrings = GR.PCL.Strings.SingleCardPopupButtons;
+    private final PCLStrings.SingleCardPopupButtons buttonStrings = PGR.PCL.Strings.SingleCardPopupButtons;
 
     private PCLCard baseCard;
     private PCLCard card;
@@ -108,8 +108,8 @@ public class PCLSingleCardPopup extends GUIElement
         .SetFont(FontHelper.cardTitleFont, 1)
         .SetOnToggle(this::ToggleBetaArt);
 
-        this.changeVariant = new GUI_Button(GR.PCL.Images.HexagonalButton.Texture(), changeVariantHb)
-                .SetBorder(GR.PCL.Images.HexagonalButtonBorder.Texture(), Color.WHITE)
+        this.changeVariant = new GUI_Button(PGR.PCL.Images.HexagonalButton.Texture(), changeVariantHb)
+                .SetBorder(PGR.PCL.Images.HexagonalButtonBorder.Texture(), Color.WHITE)
                 .SetClickDelay(0.3f)
                 .SetDimensions(ScreenW(0.18f), ScreenH(0.07f))
                 .SetText(buttonStrings.ChangeVariant)
@@ -124,8 +124,8 @@ public class PCLSingleCardPopup extends GUIElement
                 .SetOnClick(() -> ChangePreviewForm(currentForm - 1))
                 .SetText(null);
 
-        this.changeVariantNumber = new GUI_TextBox(GR.PCL.Images.Panel_Rounded_Half_H.Texture(), changeVariantValueHb)
-                .SetBackgroundTexture(GR.PCL.Images.Panel_Rounded_Half_H.Texture(), new Color(0.5f, 0.5f, 0.5f , 1f), 1.05f)
+        this.changeVariantNumber = new GUI_TextBox(PGR.PCL.Images.Panel_Rounded_Half_H.Texture(), changeVariantValueHb)
+                .SetBackgroundTexture(PGR.PCL.Images.Panel_Rounded_Half_H.Texture(), new Color(0.5f, 0.5f, 0.5f , 1f), 1.05f)
                 .SetColors(new Color(0, 0, 0, 0.85f), Settings.CREAM_COLOR)
                 .SetAlignment(0.5f, 0.5f)
                 .SetFont(FontHelper.cardEnergyFont_L, 0.75f);

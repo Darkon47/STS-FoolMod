@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.BlurPower;
 import eatyourbeets.powers.CombatStats;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 
 public class PCLBlurPower extends BlurPower implements CloneablePowerInterface
@@ -49,7 +49,7 @@ public class PCLBlurPower extends BlurPower implements CloneablePowerInterface
 
         if (maxBlock > 0 && maxBlock < 999)
         {
-            this.description += " NL " + GR.PCL.Strings.Misc.MaxBlock(maxBlock);
+            this.description += " NL " + PGR.PCL.Strings.Misc.MaxBlock(maxBlock);
         }
     }
 

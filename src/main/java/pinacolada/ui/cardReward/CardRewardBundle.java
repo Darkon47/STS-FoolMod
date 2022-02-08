@@ -10,13 +10,13 @@ import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.Hitbox;
 import com.megacrit.cardcrawl.helpers.TipHelper;
 import eatyourbeets.interfaces.delegates.ActionT1;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.resources.pcl.PCLStrings;
 import pinacolada.utilities.PCLRenderHelpers;
 
 public class CardRewardBundle
 {
-    private static final PCLStrings.Rewards text = GR.PCL.Strings.Rewards;
+    private static final PCLStrings.Rewards text = PGR.PCL.Strings.Rewards;
     public final AbstractCard card;
     public final ActionT1<CardRewardBundle> onSelect;
     public float textOffsetX;

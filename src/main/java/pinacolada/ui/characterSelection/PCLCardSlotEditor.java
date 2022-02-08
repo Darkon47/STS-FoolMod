@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.input.InputHelper;
 import eatyourbeets.ui.GUIElement;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.resources.pcl.misc.PCLCardSlot;
 import pinacolada.ui.controls.GUI_Button;
 import pinacolada.ui.controls.GUI_TextBox;
@@ -36,29 +36,29 @@ public class PCLCardSlotEditor extends GUIElement
     {
         this.loadoutEditor = loadoutEditor;
 
-        cardValue_text = new GUI_TextBox(GR.PCL.Images.Panel_Rounded_Half_H.Texture(), new AdvancedHitbox(cX, cY, AbstractCard.IMG_WIDTH * 0.2f, ITEM_HEIGHT))
-                .SetBackgroundTexture(GR.PCL.Images.Panel_Rounded_Half_H.Texture(), new Color(0.5f, 0.5f, 0.5f , 1f), 1.05f)
+        cardValue_text = new GUI_TextBox(PGR.PCL.Images.Panel_Rounded_Half_H.Texture(), new AdvancedHitbox(cX, cY, AbstractCard.IMG_WIDTH * 0.2f, ITEM_HEIGHT))
+                .SetBackgroundTexture(PGR.PCL.Images.Panel_Rounded_Half_H.Texture(), new Color(0.5f, 0.5f, 0.5f , 1f), 1.05f)
                 .SetColors(new Color(0, 0, 0, 0.85f), Settings.CREAM_COLOR)
                 .SetAlignment(0.5f, 0.5f)
                 .SetFont(FontHelper.cardEnergyFont_L, 0.75f);
 
-        cardAmount_text = new GUI_TextBox(GR.PCL.Images.Panel_Rounded_Half_H.Texture(), new AdvancedHitbox(cardValue_text.hb.x + cardValue_text.hb.width, cY, AbstractCard.IMG_HEIGHT * 0.15f, ITEM_HEIGHT ))
+        cardAmount_text = new GUI_TextBox(PGR.PCL.Images.Panel_Rounded_Half_H.Texture(), new AdvancedHitbox(cardValue_text.hb.x + cardValue_text.hb.width, cY, AbstractCard.IMG_HEIGHT * 0.15f, ITEM_HEIGHT ))
         .SetColors(Settings.HALF_TRANSPARENT_BLACK_COLOR, Settings.CREAM_COLOR)
         .SetAlignment(0.5f, 0.5f)
         .SetFont(FontHelper.cardTitleFont, 1);
 
-        cardName_text = new GUI_TextBox(GR.PCL.Images.Panel_Rounded_Half_H.Texture(), new AdvancedHitbox(cardAmount_text.hb.x + cardAmount_text.hb.width, cY, AbstractCard.IMG_WIDTH * 1.1f, ITEM_HEIGHT))
+        cardName_text = new GUI_TextBox(PGR.PCL.Images.Panel_Rounded_Half_H.Texture(), new AdvancedHitbox(cardAmount_text.hb.x + cardAmount_text.hb.width, cY, AbstractCard.IMG_WIDTH * 1.1f, ITEM_HEIGHT))
                 .SetColors(Settings.HALF_TRANSPARENT_BLACK_COLOR, Settings.GOLD_COLOR)
                 .SetAlignment(0.5f, 0.5f)
                 .SetFont(FontHelper.cardTitleFont, 1);
 
-        decrement_button = new GUI_Button(GR.PCL.Images.Minus.Texture(), new AdvancedHitbox(cardName_text.hb.x + cardName_text.hb.width, cardName_text.hb.y,64,64))
+        decrement_button = new GUI_Button(PGR.PCL.Images.Minus.Texture(), new AdvancedHitbox(cardName_text.hb.x + cardName_text.hb.width, cardName_text.hb.y,64,64))
                 .SetClickDelay(0.02f);
-        add_button = new GUI_Button(GR.PCL.Images.Plus.Texture(), new AdvancedHitbox(decrement_button.hb.x + decrement_button.hb.width, cardName_text.hb.y,64,64))
+        add_button = new GUI_Button(PGR.PCL.Images.Plus.Texture(), new AdvancedHitbox(decrement_button.hb.x + decrement_button.hb.width, cardName_text.hb.y,64,64))
                 .SetClickDelay(0.02f);
-        clear_button = new GUI_Button(GR.PCL.Images.X.Texture(), new AdvancedHitbox(add_button.hb.x + add_button.hb.width, cardName_text.hb.y,64,64))
+        clear_button = new GUI_Button(PGR.PCL.Images.X.Texture(), new AdvancedHitbox(add_button.hb.x + add_button.hb.width, cardName_text.hb.y,64,64))
                 .SetClickDelay(0.02f);
-        change_button = new GUI_Button(GR.PCL.Images.Edit.Texture(), new AdvancedHitbox(clear_button.hb.x + clear_button.hb.width, cardName_text.hb.y,64,64))
+        change_button = new GUI_Button(PGR.PCL.Images.Edit.Texture(), new AdvancedHitbox(clear_button.hb.x + clear_button.hb.width, cardName_text.hb.y,64,64))
                 .SetClickDelay(0.02f);
 
         SetSlot(null);

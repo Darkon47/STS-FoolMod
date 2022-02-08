@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import javassist.CannotCompileException;
 import javassist.expr.ExprEditor;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 
 @SpirePatch(clz = UseCardAction.class, method = "update")
 public class UseCardAction_Update
@@ -26,7 +26,7 @@ public class UseCardAction_Update
 
     public static boolean Patch(AbstractCard card)
     {
-        return card.purgeOnUse || card.tags.contains(GR.Enums.CardTags.PURGE);
+        return card.purgeOnUse || card.tags.contains(PGR.Enums.CardTags.PURGE);
     }
 }
 

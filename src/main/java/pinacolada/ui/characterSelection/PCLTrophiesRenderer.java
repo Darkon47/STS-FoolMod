@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.Hitbox;
 import eatyourbeets.ui.GUIElement;
 import pinacolada.cards.base.PCLCardTooltip;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.resources.pcl.PCLImages;
 import pinacolada.resources.pcl.PCLStrings;
 import pinacolada.resources.pcl.misc.PCLLoadout;
@@ -17,8 +17,8 @@ import pinacolada.ui.hitboxes.AdvancedHitbox;
 
 public class PCLTrophiesRenderer extends GUIElement
 {
-    protected static final PCLStrings.Trophies trophyStrings = GR.PCL.Strings.Trophies;
-    protected static final PCLImages images = GR.PCL.Images;
+    protected static final PCLStrings.Trophies trophyStrings = PGR.PCL.Strings.Trophies;
+    protected static final PCLImages images = PGR.PCL.Images;
 
     protected final GUI_Image trophy1_image;
     protected final GUI_Image trophy2_image;

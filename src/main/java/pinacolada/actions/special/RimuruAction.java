@@ -5,9 +5,9 @@ import com.megacrit.cardcrawl.cards.CardGroup;
 import eatyourbeets.actions.EYBAction;
 import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCard;
-import pinacolada.cards.pcl.series.TenseiSlime.Rimuru;
+import pinacolada.cards.fool.series.TenseiSlime.Rimuru;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLGameUtilities;
 
 public class RimuruAction extends EYBAction
@@ -59,7 +59,7 @@ public class RimuruAction extends EYBAction
                 PCLGameUtilities.Retain(newCopy);
             }
 
-            PCLGameUtilities.ModifyCardTag(newCopy, GR.Enums.CardTags.VOLATILE, true);
+            PCLGameUtilities.ModifyCardTag(newCopy, PGR.Enums.CardTags.VOLATILE, true);
             PCLGameUtilities.ModifyAffinityLevel(newCopy, PCLAffinity.Star, 1, false);
             PCLGameUtilities.ChangeCardName(newCopy, rimuru.originalName);
             PCLGameUtilities.CopyVisualProperties(newCopy, copy);

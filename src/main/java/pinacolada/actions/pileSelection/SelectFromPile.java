@@ -12,7 +12,7 @@ import eatyourbeets.interfaces.delegates.FuncT2;
 import eatyourbeets.utilities.CardSelection;
 import eatyourbeets.utilities.GenericCondition;
 import eatyourbeets.utilities.ListSelection;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.ui.GridCardSelectScreenHelper;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
@@ -52,7 +52,7 @@ public class SelectFromPile extends EYBActionWithCallback<ArrayList<AbstractCard
 
         this.groups = groups;
         this.canPlayerCancel = false;
-        this.message = GR.PCL.Strings.GridSelection.ChooseCards_F1;
+        this.message = PGR.PCL.Strings.GridSelection.ChooseCards_F1;
 
         Initialize(amount, sourceName);
     }

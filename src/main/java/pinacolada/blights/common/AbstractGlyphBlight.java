@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.MathHelper;
 import eatyourbeets.ui.config.ConfigOption_Integer;
 import pinacolada.blights.PCLBlight;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
 
@@ -31,7 +31,7 @@ public abstract class AbstractGlyphBlight extends PCLBlight
     public AbstractGlyphBlight(String ID, ConfigOption_Integer configOption, int ascensionRequirement, int ascensionStep, int baseAmount, int baseAmountStep)
     {
         super(ID);
-        this.outlineImg = GR.GetTexture(GR.GetBlightOutlineImage(ID));
+        this.outlineImg = PGR.GetTexture(PGR.GetBlightOutlineImage(ID));
         this.ascensionRequirement = ascensionRequirement;
         this.ascensionStep = Math.max(1, ascensionStep);
         this.baseAmount = baseAmount;

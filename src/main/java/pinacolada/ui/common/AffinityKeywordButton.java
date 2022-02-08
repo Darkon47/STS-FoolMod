@@ -9,7 +9,7 @@ import eatyourbeets.ui.GUIElement;
 import eatyourbeets.ui.TextureCache;
 import pinacolada.cards.base.PCLAffinity;
 import pinacolada.effects.affinity.ChangeAffinityCountEffect;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.ui.controls.GUI_Button;
 import pinacolada.ui.hitboxes.RelativeHitbox;
 import pinacolada.utilities.PCLGameEffects;
@@ -19,7 +19,7 @@ public class AffinityKeywordButton extends GUIElement
 {
     public static final float ICON_SIZE = Scale(48);
     protected static final Color PANEL_COLOR = new Color(0.3f, 0.3f, 0.3f, 1f);
-    protected static final TextureCache STAR_TEXTURE = GR.PCL.Images.Affinities.Star_FG;
+    protected static final TextureCache STAR_TEXTURE = PGR.PCL.Images.Affinities.Star_FG;
     protected ActionT1<AffinityKeywordButton> onClick;
     protected Texture borderTexture;
     protected Texture borderBGTexture;
@@ -79,21 +79,21 @@ public class AffinityKeywordButton extends GUIElement
         background_button.SetColor(currentLevel == 0 ? PANEL_COLOR : Color.WHITE);
         switch (currentLevel) {
             case 1:
-                borderTexture = GR.PCL.Images.Affinities.Border_Weak.Texture();
+                borderTexture = PGR.PCL.Images.Affinities.Border_Weak.Texture();
                 borderBGTexture = null;
                 borderFGTexture = null;
                 radiusBG = background_button.hb.width;
                 break;
             case 2:
-                borderTexture = GR.PCL.Images.Affinities.Border_Strong.Texture();
-                borderBGTexture = GR.PCL.Images.Affinities.BorderBG3.Texture();
+                borderTexture = PGR.PCL.Images.Affinities.Border_Strong.Texture();
+                borderBGTexture = PGR.PCL.Images.Affinities.BorderBG3.Texture();
                 borderFGTexture = null;
                 radiusBG = background_button.hb.width;
                 break;
             case 3:
-                borderTexture = GR.PCL.Images.Affinities.Border.Texture();
-                borderBGTexture = GR.PCL.Images.Affinities.BorderBG2.Texture();
-                borderFGTexture = GR.PCL.Images.Affinities.BorderFG.Texture();
+                borderTexture = PGR.PCL.Images.Affinities.Border.Texture();
+                borderBGTexture = PGR.PCL.Images.Affinities.BorderBG2.Texture();
+                borderFGTexture = PGR.PCL.Images.Affinities.BorderFG.Texture();
                 radiusBG = background_button.hb.width * 1.125f;
                 break;
             default:
@@ -122,7 +122,7 @@ public class AffinityKeywordButton extends GUIElement
     {
         background_button.SetInteractable(PCLGameEffects.IsEmpty()).Update();
         if (currentLevel > 2) {
-            borderRotation = GR.UI.Time_Multi(-20);
+            borderRotation = PGR.UI.Time_Multi(-20);
         }
     }
 

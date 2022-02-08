@@ -16,7 +16,7 @@ import eatyourbeets.utilities.Colors;
 import eatyourbeets.utilities.EYBFontHelper;
 import pinacolada.cards.base.PCLCardBase;
 import pinacolada.cards.base.PCLCardTooltip;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.resources.pcl.misc.PCLCardSlot;
 import pinacolada.resources.pcl.misc.PCLLoadout;
 import pinacolada.resources.pcl.misc.PCLLoadoutData;
@@ -32,11 +32,11 @@ public class PCLLoadoutEditor extends AbstractScreen
 {
     public enum ContextOption
     {
-        CopyTo(GR.PCL.Strings.CharSelect.CopyTo, (screen, index) -> {
+        CopyTo(PGR.PCL.Strings.CharSelect.CopyTo, (screen, index) -> {
             screen.presets[index] = screen.presets[screen.preset];
             screen.ChangePreset(index);
         }),
-        CopyFrom(GR.PCL.Strings.CharSelect.CopyFrom, (screen, index) -> {
+        CopyFrom(PGR.PCL.Strings.CharSelect.CopyFrom, (screen, index) -> {
             screen.presets[screen.preset] = screen.presets[index];
             screen.SetSlotsActive(true);
         });
@@ -93,7 +93,7 @@ public class PCLLoadoutEditor extends AbstractScreen
         final float labelWidth = ScreenW(0.20f);
         final float button_cY = buttonHeight * 1.5f;
 
-        background_image = new GUI_Image(GR.PCL.Images.FullSquare.Texture(), new Hitbox(ScreenW(1), ScreenH(1)))
+        background_image = new GUI_Image(PGR.PCL.Images.FullSquare.Texture(), new Hitbox(ScreenW(1), ScreenH(1)))
         .SetPosition(ScreenW(0.5f), ScreenH(0.5f))
         .SetColor(0, 0, 0, 0.9f);
 
@@ -104,32 +104,32 @@ public class PCLLoadoutEditor extends AbstractScreen
 
         deck_text = new GUI_Label(EYBFontHelper.CardTitleFont_Large,
                 new Hitbox(ScreenW(0.1f), ScreenH(0.8f), buttonHeight, buttonHeight))
-                .SetText(GR.PCL.Strings.CharSelect.DeckHeader)
+                .SetText(PGR.PCL.Strings.CharSelect.DeckHeader)
                 .SetFontScale(0.8f)
                 .SetAlignment(0.5f, 0.5f);
 
         relic_text = new GUI_Label(EYBFontHelper.CardTitleFont_Large,
                 new Hitbox(ScreenW(0.1f), ScreenH(0.4f), buttonHeight, buttonHeight))
-                .SetText(GR.PCL.Strings.CharSelect.RelicsHeader)
+                .SetText(PGR.PCL.Strings.CharSelect.RelicsHeader)
                 .SetFontScale(0.8f)
                 .SetAlignment(0.5f, 0.5f);
 
         attributes_text = new GUI_Label(EYBFontHelper.CardTitleFont_Large,
                 new Hitbox(ScreenW(0.57f), ScreenH(0.8f), buttonHeight, buttonHeight))
-                .SetText(GR.PCL.Strings.CharSelect.AttributesHeader)
+                .SetText(PGR.PCL.Strings.CharSelect.AttributesHeader)
                 .SetFontScale(0.8f)
                 .SetAlignment(0.5f, 0.5f);
 
-        seriesButton = new GUI_Button(GR.PCL.Images.Edit.Texture(), new AdvancedHitbox(0, 0, Scale(64), Scale(64)))
+        seriesButton = new GUI_Button(PGR.PCL.Images.Edit.Texture(), new AdvancedHitbox(0, 0, Scale(64), Scale(64)))
                 .SetPosition(startingDeck.hb.x + Scale(80), startingDeck.hb.y - Scale(48)).SetText("")
-                .SetTooltip(GR.PCL.Strings.CharSelect.SeriesEditor, GR.PCL.Strings.CharSelect.SeriesEditorInfo)
+                .SetTooltip(PGR.PCL.Strings.CharSelect.SeriesEditor, PGR.PCL.Strings.CharSelect.SeriesEditorInfo)
                 .SetOnClick(this::OpenSeriesSelect);
 
         preset_buttons = new GUI_Button[PCLLoadout.MAX_PRESETS];
         for (int i = 0; i < preset_buttons.length; i++)
         {
             //noinspection SuspiciousNameCombination
-            preset_buttons[i] = new GUI_Button(GR.PCL.Images.SquaredButton.Texture(), new Hitbox(0, 0, buttonHeight, buttonHeight))
+            preset_buttons[i] = new GUI_Button(PGR.PCL.Images.SquaredButton.Texture(), new Hitbox(0, 0, buttonHeight, buttonHeight))
             .SetPosition(ScreenW(0.45f) + ((i - 1f) * buttonHeight), ScreenH(1f) - (buttonHeight * 0.85f))
             .SetText(String.valueOf(i + 1))
             .SetOnClick(i, (preset, __) -> ChangePreset(preset))
@@ -152,34 +152,34 @@ public class PCLLoadoutEditor extends AbstractScreen
         clear_button = CreateHexagonalButton(0, 0, buttonWidth, buttonHeight)
                 .SetPosition(save_button.hb.cX, save_button.hb.y + save_button.hb.height + labelHeight * 0.8f)
                 .SetColor(Color.WHITE)
-                .SetText(GR.PCL.Strings.CharSelect.Clear)
+                .SetText(PGR.PCL.Strings.CharSelect.Clear)
                 .SetOnClick(this::Clear);
 
         upgrade_toggle = new GUI_Toggle(new Hitbox(0, 0, labelWidth * 0.75f, labelHeight))
         .SetPosition(ScreenW(0.5f), ScreenH(0.055f))
-        .SetBackground(GR.PCL.Images.Panel_Rounded.Texture(), new Color(0, 0, 0, 0.85f))
+        .SetBackground(PGR.PCL.Images.Panel_Rounded.Texture(), new Color(0, 0, 0, 0.85f))
         .SetText(SingleCardViewPopup.TEXT[6])
         .SetOnToggle(this::ToggleViewUpgrades);
 
-        cardsValue_text = new GUI_TextBox(GR.PCL.Images.Panel_Rounded.Texture(), new Hitbox(labelWidth, labelHeight))
+        cardsValue_text = new GUI_TextBox(PGR.PCL.Images.Panel_Rounded.Texture(), new Hitbox(labelWidth, labelHeight))
         .SetColors(Settings.HALF_TRANSPARENT_BLACK_COLOR, Settings.CREAM_COLOR)
         .SetAlignment(0.5f, 0.5f)
         .SetPosition(save_button.hb.cX, ScreenH(0.65f))
         .SetFont(FontHelper.tipHeaderFont, 1);
 
-        cardsCount_text = new GUI_TextBox(GR.PCL.Images.Panel_Rounded.Texture(), new Hitbox(labelWidth, labelHeight))
+        cardsCount_text = new GUI_TextBox(PGR.PCL.Images.Panel_Rounded.Texture(), new Hitbox(labelWidth, labelHeight))
         .SetColors(Settings.HALF_TRANSPARENT_BLACK_COLOR, Settings.CREAM_COLOR)
         .SetAlignment(0.5f, 0.5f)
         .SetPosition(save_button.hb.cX, cardsValue_text.hb.y + cardsValue_text.hb.height + labelHeight * 0.5f)
         .SetFont(FontHelper.tipHeaderFont, 1);
 
-        affinityValue_text = new GUI_TextBox(GR.PCL.Images.Panel_Rounded.Texture(), new Hitbox(labelWidth, labelHeight))
+        affinityValue_text = new GUI_TextBox(PGR.PCL.Images.Panel_Rounded.Texture(), new Hitbox(labelWidth, labelHeight))
         .SetColors(Settings.HALF_TRANSPARENT_BLACK_COLOR, Settings.CREAM_COLOR)
         .SetAlignment(0.5f, 0.5f)
         .SetPosition(save_button.hb.cX, cardsCount_text.hb.y + cardsCount_text.hb.height + labelHeight * 0.5f)
         .SetFont(FontHelper.tipHeaderFont, 1);
 
-        hindranceValue_text = new GUI_TextBox(GR.PCL.Images.Panel_Rounded.Texture(), new Hitbox(labelWidth, labelHeight))
+        hindranceValue_text = new GUI_TextBox(PGR.PCL.Images.Panel_Rounded.Texture(), new Hitbox(labelWidth, labelHeight))
                 .SetColors(Settings.HALF_TRANSPARENT_BLACK_COLOR, Settings.CREAM_COLOR)
                 .SetAlignment(0.5f, 0.5f)
                 .SetPosition(save_button.hb.cX, affinityValue_text.hb.y + affinityValue_text.hb.height + labelHeight * 0.5f)
@@ -198,9 +198,9 @@ public class PCLLoadoutEditor extends AbstractScreen
             baseStatEditors.add(new PCLBaseStatEditor(statTypes[i], ScreenW(0.6f), ScreenH(0.78f - i * 0.1f), this));
         }
 
-        ascensionRequirement = new GUI_TextBox(GR.PCL.Images.Panel_Rounded.Texture(), new Hitbox(labelWidth, labelHeight * 4))
+        ascensionRequirement = new GUI_TextBox(PGR.PCL.Images.Panel_Rounded.Texture(), new Hitbox(labelWidth, labelHeight * 4))
         .SetColors(Colors.Black(0.4f), Colors.Cream(0.9f))
-        .SetText(GR.PCL.Strings.CharSelect.UnlocksAtAscension(PCLLoadout.GOLD_AND_HP_EDITOR_ASCENSION_REQUIRED))
+        .SetText(PGR.PCL.Strings.CharSelect.UnlocksAtAscension(PCLLoadout.GOLD_AND_HP_EDITOR_ASCENSION_REQUIRED))
         .SetAlignment(0.5f, 0.5f)
         .SetPosition(ScreenW(0.62f), ScreenH(0.78f))
         .SetFont(FontHelper.charDescFont, 0.9f);
@@ -246,7 +246,7 @@ public class PCLLoadoutEditor extends AbstractScreen
         this.onClose = onClose;
         this.characterOption = option;
 
-        startingDeck.SetText(GR.PCL.Strings.CharSelect.LeftText + " NL #y" + (loadout.Series.LocalizedName.replace(" ", " #y")));
+        startingDeck.SetText(PGR.PCL.Strings.CharSelect.LeftText + " NL #y" + (loadout.Series.LocalizedName.replace(" ", " #y")));
 
         PCLCardBase.canCropPortraits = false;
         ToggleViewUpgrades(false);
@@ -304,7 +304,7 @@ public class PCLLoadoutEditor extends AbstractScreen
         {
             seriesButton.TryUpdate();
 
-            if (!GR.UI.IsDropdownOpen) {
+            if (!PGR.UI.IsDropdownOpen) {
                 for (int i = 0; i < preset_buttons.length; i++)
                 {
                     final GUI_Button button = preset_buttons[i];
@@ -337,18 +337,18 @@ public class PCLLoadoutEditor extends AbstractScreen
             }
         }
 
-        hindranceValue_text.SetText(GR.PCL.Strings.CharSelect.HindranceValue(val.HindranceLevel)).TryUpdate();
-        affinityValue_text.SetText(GR.PCL.Strings.CharSelect.AffinityValue(val.AffinityLevel)).TryUpdate();
-        cardsCount_text.SetText(GR.PCL.Strings.CharSelect.CardsCount(val.CardsCount.V1)).SetFontColor(val.CardsCount.V2 ? Settings.GREEN_TEXT_COLOR : Settings.RED_TEXT_COLOR).TryUpdate();
-        cardsValue_text.SetText(GR.PCL.Strings.CharSelect.TotalValue(val.TotalValue.V1, PCLLoadout.MAX_VALUE)).SetFontColor(val.TotalValue.V2 ? Settings.GREEN_TEXT_COLOR : Settings.RED_TEXT_COLOR).TryUpdate();
+        hindranceValue_text.SetText(PGR.PCL.Strings.CharSelect.HindranceValue(val.HindranceLevel)).TryUpdate();
+        affinityValue_text.SetText(PGR.PCL.Strings.CharSelect.AffinityValue(val.AffinityLevel)).TryUpdate();
+        cardsCount_text.SetText(PGR.PCL.Strings.CharSelect.CardsCount(val.CardsCount.V1)).SetFontColor(val.CardsCount.V2 ? Settings.GREEN_TEXT_COLOR : Settings.RED_TEXT_COLOR).TryUpdate();
+        cardsValue_text.SetText(PGR.PCL.Strings.CharSelect.TotalValue(val.TotalValue.V1, PCLLoadout.MAX_VALUE)).SetFontColor(val.TotalValue.V2 ? Settings.GREEN_TEXT_COLOR : Settings.RED_TEXT_COLOR).TryUpdate();
         save_button.SetInteractable(val.IsValid).TryUpdate();
 
         if (hindranceValue_text.hb.hovered) {
-            infoTip.SetText(hindranceValue_text.label.text, GR.PCL.Strings.CharSelect.HindranceDescription);
+            infoTip.SetText(hindranceValue_text.label.text, PGR.PCL.Strings.CharSelect.HindranceDescription);
             PCLCardTooltip.QueueTooltip(infoTip);
         }
         else if (affinityValue_text.hb.hovered) {
-            infoTip.SetText(affinityValue_text.label.text, GR.PCL.Strings.CharSelect.AffinityDescription);
+            infoTip.SetText(affinityValue_text.label.text, PGR.PCL.Strings.CharSelect.AffinityDescription);
             PCLCardTooltip.QueueTooltip(infoTip);
         }
 
@@ -418,7 +418,7 @@ public class PCLLoadoutEditor extends AbstractScreen
     {
         if (characterOption != null)
         {
-            GR.UI.SeriesSelection.Open(characterOption, this.onClose);
+            PGR.UI.SeriesSelection.Open(characterOption, this.onClose);
         }
     }
 
@@ -474,7 +474,7 @@ public class PCLLoadoutEditor extends AbstractScreen
         }
 
         loadout.Preset = preset;
-        GR.PCL.Data.SaveLoadouts(true);
+        PGR.PCL.Data.SaveLoadouts(true);
         AbstractDungeon.closeCurrentScreen();
     }
 

@@ -13,7 +13,7 @@ import pinacolada.actions.orbs.FireOrbPassiveAction;
 import pinacolada.effects.SFX;
 import pinacolada.effects.vfx.FadingParticleEffect;
 import pinacolada.orbs.PCLOrb;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameEffects;
 import pinacolada.utilities.PCLRenderHelpers;
@@ -66,7 +66,7 @@ public class Fire extends PCLOrb {
     public void updateAnimation() {
         super.updateAnimation();
 
-        this.angle += GR.UI.Delta(90f);
+        this.angle += PGR.UI.Delta(90f);
         this.vfxTimer -= Gdx.graphics.getDeltaTime();
         if (this.vfxTimer < 0.0F) {
             PCLGameEffects.Queue.Add(new FadingParticleEffect(GetRandomTexture(), hb.cX + MathUtils.random(-32, 32), hb.cY - 32)

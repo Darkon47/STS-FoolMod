@@ -6,7 +6,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePrefixPatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpireReturn;
 import com.megacrit.cardcrawl.screens.charSelect.CharacterSelectScreen;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.ui.characterSelection.PCLCharacterSelectScreen;
 
 public class CharacterSelectScreenPatches
@@ -43,7 +43,7 @@ public class CharacterSelectScreenPatches
         @SpirePrefixPatch
         public static SpireReturn Prefix(CharacterSelectScreen __instance)
         {
-            return (GR.UI.CurrentScreen != null) ? SpireReturn.Return() : SpireReturn.Continue();
+            return (PGR.UI.CurrentScreen != null) ? SpireReturn.Return() : SpireReturn.Continue();
         }
 
         @SpirePostfixPatch

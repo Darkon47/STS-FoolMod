@@ -15,9 +15,9 @@ import pinacolada.cards.base.AffinityChoice;
 import pinacolada.cards.base.AffinityChoiceBuilder;
 import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCardAffinities;
-import pinacolada.cards.pcl.tokens.AffinityToken;
+import pinacolada.cards.fool.tokens.AffinityToken;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.ui.GridCardSelectScreenHelper;
 import pinacolada.ui.combat.PCLAffinitySystem;
 import pinacolada.utilities.PCLGameUtilities;
@@ -69,7 +69,7 @@ public class TryChooseAffinity extends EYBActionWithCallback<ArrayList<AffinityC
         }
         this.canPlayerCancel = false;
         this.cost = cost;
-        this.message = GR.PCL.Strings.GridSelection.ChooseCards_F1;
+        this.message = PGR.PCL.Strings.GridSelection.ChooseCards_F1;
 
         Initialize(amount, sourceName);
     }

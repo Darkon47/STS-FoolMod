@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.Settings;
 import eatyourbeets.actions.EYBActionWithCallback;
 import eatyourbeets.interfaces.delegates.ActionT1;
-import pinacolada.cards.pcl.curse.Curse_GriefSeed;
+import pinacolada.cards.fool.curse.Curse_GriefSeed;
 import pinacolada.utilities.PCLActions;
 
 public class CreateGriefSeeds extends EYBActionWithCallback<AbstractCard>

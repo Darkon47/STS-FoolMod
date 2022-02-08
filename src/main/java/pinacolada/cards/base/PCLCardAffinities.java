@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import eatyourbeets.cards.base.EYBCardAffinities;
 import eatyourbeets.cards.base.EYBCardAffinity;
 import eatyourbeets.utilities.AdvancedTexture;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
 
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class PCLCardAffinities
 {
-    private static final AdvancedTexture upgradeCircle = new AdvancedTexture(GR.PCL.Images.Circle.Texture(), Settings.GREEN_RELIC_COLOR);
+    private static final AdvancedTexture upgradeCircle = new AdvancedTexture(PGR.PCL.Images.Circle.Texture(), Settings.GREEN_RELIC_COLOR);
 
     public final ArrayList<PCLCardAffinity> List = new ArrayList<>();
     public PCLCard Card;

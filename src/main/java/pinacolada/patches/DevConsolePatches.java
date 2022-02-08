@@ -3,7 +3,7 @@ package pinacolada.patches;
 import basemod.DevConsole;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePrefixPatch;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLGameUtilities;
 
 public class DevConsolePatches
@@ -14,9 +14,9 @@ public class DevConsolePatches
         @SpirePrefixPatch
         public static void Prefix()
         {
-            if (PCLGameUtilities.InGame() && PCLGameUtilities.IsPlayerClass(GR.PCL.PlayerClass))
+            if (PCLGameUtilities.InGame() && PCLGameUtilities.IsPCLPlayerClass())
             {
-                GR.PCL.Dungeon.SetCheating();
+                PGR.PCL.Dungeon.SetCheating();
             }
         }
     }

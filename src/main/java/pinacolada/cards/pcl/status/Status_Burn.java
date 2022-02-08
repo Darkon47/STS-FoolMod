@@ -12,11 +12,11 @@ import pinacolada.utilities.PCLActions;
 public class Status_Burn extends PCLCard_Status
 {
     public static final PCLCardData DATA = Register(Status_Burn.class)
-            .SetStatus(-2, CardRarity.COMMON, PCLCardTarget.AoE);
+            .SetStatus(-2, CardRarity.COMMON, PCLCardTarget.AoE, true);
 
     public Status_Burn()
     {
-        super(DATA, true);
+        super(DATA);
 
         Initialize(0, 0, 2, 3);
         SetUpgrade(0, 0, 2, 2);

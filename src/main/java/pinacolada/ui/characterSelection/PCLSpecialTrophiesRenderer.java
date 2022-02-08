@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.Hitbox;
 import eatyourbeets.ui.GUIElement;
 import pinacolada.cards.base.PCLCardTooltip;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.resources.pcl.PCLImages;
 import pinacolada.resources.pcl.PCLStrings;
 import pinacolada.resources.pcl.misc.PCLTrophies;
@@ -16,8 +16,8 @@ import pinacolada.ui.hitboxes.AdvancedHitbox;
 
 public class PCLSpecialTrophiesRenderer extends GUIElement
 {
-    protected static final PCLStrings.Trophies trophyStrings = GR.PCL.Strings.Trophies;
-    protected static final PCLImages images = GR.PCL.Images;
+    protected static final PCLStrings.Trophies trophyStrings = PGR.PCL.Strings.Trophies;
+    protected static final PCLImages images = PGR.PCL.Images;
 
     protected final GUI_Image trophy_image;
     protected final Hitbox trophySpecialHb;
@@ -40,7 +40,7 @@ public class PCLSpecialTrophiesRenderer extends GUIElement
 
     public void Refresh()
     {
-        this.specialTrophies = GR.PCL.Data.SpecialTrophies;
+        this.specialTrophies = PGR.PCL.Data.SpecialTrophies;
     }
 
     public void Update()
@@ -50,7 +50,7 @@ public class PCLSpecialTrophiesRenderer extends GUIElement
             return;
         }
 
-        trophyString = (specialTrophies.Trophy1 > 0) ? (" " + String.format("%.2f", PCLReward.GetUltraRareChance(GR.PCL.Data.SelectedLoadout)) + "%") : null;
+        trophyString = (specialTrophies.Trophy1 > 0) ? (" " + String.format("%.2f", PCLReward.GetUltraRareChance(PGR.PCL.Data.SelectedLoadout)) + "%") : null;
         trophy_image.SetTexture(trophyString != null ? images.PLATINUM_TROPHY.Texture() : images.LOCKED_TROPHY.Texture()).Update();
 
         if (trophy_image.hb.hovered)

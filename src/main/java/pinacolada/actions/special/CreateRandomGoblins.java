@@ -6,10 +6,10 @@ import com.megacrit.cardcrawl.random.Random;
 import eatyourbeets.actions.EYBActionWithCallback;
 import eatyourbeets.interfaces.delegates.ActionT1;
 import pinacolada.cards.base.PCLCard;
-import pinacolada.cards.pcl.status.GoblinChampion;
-import pinacolada.cards.pcl.status.GoblinKing;
-import pinacolada.cards.pcl.status.GoblinShaman;
-import pinacolada.cards.pcl.status.GoblinSoldier;
+import pinacolada.cards.fool.status.GoblinChampion;
+import pinacolada.cards.fool.status.GoblinKing;
+import pinacolada.cards.fool.status.GoblinShaman;
+import pinacolada.cards.fool.status.GoblinSoldier;
 import pinacolada.utilities.PCLActions;
 
 public class CreateRandomGoblins extends EYBActionWithCallback<AbstractCard>

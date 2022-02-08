@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.ui.controls.GUI_TextBox;
 import pinacolada.ui.hitboxes.AdvancedHitbox;
 import pinacolada.utilities.PCLInputManager;
@@ -31,7 +31,7 @@ public class PCLModInitializer implements OnStartBattleSubscriber, PostBattleSub
         BaseMod.subscribe(instance);
         battleStart.remove(instance);
         battleStart.add(0, instance);
-        GR.Initialize();
+        PGR.Initialize();
     }
 
     @Override
@@ -67,11 +67,11 @@ public class PCLModInitializer implements OnStartBattleSubscriber, PostBattleSub
     @Override
     public void receivePostRender(SpriteBatch sb)
     {
-        if (GR.TEST_MODE)
+        if (PGR.TEST_MODE)
         {
             if (testModeLabel == null)
             {
-                testModeLabel = new GUI_TextBox(GR.PCL.Images.Panel.Texture(),
+                testModeLabel = new GUI_TextBox(PGR.PCL.Images.Panel.Texture(),
                 new AdvancedHitbox(Settings.WIDTH * 0.16f, Settings.HEIGHT * 0.12f))
                 .SetPosition(Settings.WIDTH * 0.5f, Settings.HEIGHT * 0.85f)
                 .SetAlignment(0.5f, 0.5f)
@@ -79,7 +79,7 @@ public class PCLModInitializer implements OnStartBattleSubscriber, PostBattleSub
                 .SetText("TEST MODE");
             }
 
-            if (GR.UI.Elapsed(40))
+            if (PGR.UI.Elapsed(40))
             {
                 testModeLabel.SetActive(true);
             }

@@ -10,9 +10,9 @@ import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 import eatyourbeets.events.base.EYBEventPhase;
 import eatyourbeets.events.base.EYBEventStrings;
 import eatyourbeets.utilities.RandomizedList;
-import pinacolada.cards.pcl.colorless.Yoimiya;
+import pinacolada.cards.fool.colorless.Yoimiya;
 import pinacolada.events.base.PCLEvent;
-import pinacolada.relics.pcl.BountyMap2;
+import pinacolada.relics.fool.BountyMap2;
 import pinacolada.utilities.PCLGameEffects;
 import pinacolada.utilities.PCLGameUtilities;
 

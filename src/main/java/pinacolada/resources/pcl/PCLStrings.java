@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.actions.unique.RetainCardsAction;
 import com.megacrit.cardcrawl.localization.LocalizedStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.screens.CardRewardScreen;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLJUtils;
 
 public class PCLStrings
@@ -253,9 +253,9 @@ public class PCLStrings
         public final String ContainsNCards_Full(Object cardCount, Object bronzeLevel, Object silverLevel, Object goldLevel)
         {
             return ContainsNCards(cardCount)
-                    + " NL  NL " + GR.Tooltips.Trophy1 + ": " + bronzeLevel
-                    + " NL  NL " + GR.Tooltips.Trophy2 + ": " + silverLevel
-                    + " NL  NL " + GR.Tooltips.Trophy3 + ": " + goldLevel;
+                    + " NL  NL " + PGR.Tooltips.Trophy1 + ": " + bronzeLevel
+                    + " NL  NL " + PGR.Tooltips.Trophy2 + ": " + silverLevel
+                    + " NL  NL " + PGR.Tooltips.Trophy3 + ": " + goldLevel;
         }
 
         public final String ContainsNCards_Beta(Object cardCount)
@@ -736,6 +736,6 @@ public class PCLStrings
 
     private static UIStrings GetUIStrings(String id)
     {
-        return GR.GetUIStrings(GR.CreateID(PCLResources.ID, id));
+        return PGR.GetUIStrings(PGR.CreateID(PCLResources.ID, id));
     }
 }

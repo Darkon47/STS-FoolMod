@@ -6,7 +6,7 @@ import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCard;
 import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.base.cardeffects.GenericEffect;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLJUtils;
 
@@ -35,7 +35,7 @@ public class GenericEffect_GainAffinityPower extends GenericEffect
     public String GetText()
     {
         String joinedString = PCLJUtils.JoinStrings(" ", PCLJUtils.Map(affinities, PCLAffinity::GetPowerTooltip));
-        return GR.PCL.Strings.Actions.GainAmount(amount, joinedString, true);
+        return PGR.PCL.Strings.Actions.GainAmount(amount, joinedString, true);
     }
 
     @Override

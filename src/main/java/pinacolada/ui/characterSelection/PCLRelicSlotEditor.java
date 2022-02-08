@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.input.InputHelper;
 import eatyourbeets.ui.GUIElement;
 import pinacolada.relics.PCLRelic;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.resources.pcl.misc.PCLRelicSlot;
 import pinacolada.ui.controls.GUI_Button;
 import pinacolada.ui.controls.GUI_Relic;
@@ -35,20 +35,20 @@ public class PCLRelicSlotEditor extends GUIElement
     {
         this.loadoutEditor = loadoutEditor;
 
-        relicValue_text = new GUI_TextBox(GR.PCL.Images.Panel_Rounded_Half_H.Texture(), new AdvancedHitbox(cX, cY, AbstractCard.IMG_WIDTH * 0.2f, ITEM_HEIGHT))
-                .SetBackgroundTexture(GR.PCL.Images.Panel_Rounded_Half_H.Texture(), new Color(0.5f, 0.5f, 0.5f , 1f), 1.05f)
+        relicValue_text = new GUI_TextBox(PGR.PCL.Images.Panel_Rounded_Half_H.Texture(), new AdvancedHitbox(cX, cY, AbstractCard.IMG_WIDTH * 0.2f, ITEM_HEIGHT))
+                .SetBackgroundTexture(PGR.PCL.Images.Panel_Rounded_Half_H.Texture(), new Color(0.5f, 0.5f, 0.5f , 1f), 1.05f)
                 .SetColors(new Color(0, 0, 0, 0.85f), Settings.CREAM_COLOR)
                 .SetAlignment(0.5f, 0.5f)
                 .SetFont(FontHelper.cardEnergyFont_L, 0.75f);
 
-        relicName_text = new GUI_TextBox(GR.PCL.Images.Panel_Rounded_Half_H.Texture(), new AdvancedHitbox(relicValue_text.hb.x + relicValue_text.hb.width + SPACING, cY, AbstractCard.IMG_WIDTH * 1.1f, ITEM_HEIGHT))
+        relicName_text = new GUI_TextBox(PGR.PCL.Images.Panel_Rounded_Half_H.Texture(), new AdvancedHitbox(relicValue_text.hb.x + relicValue_text.hb.width + SPACING, cY, AbstractCard.IMG_WIDTH * 1.1f, ITEM_HEIGHT))
                 .SetColors(Settings.HALF_TRANSPARENT_BLACK_COLOR, Settings.GOLD_COLOR)
                 .SetAlignment(0.5f, 0.5f)
                 .SetFont(FontHelper.cardTitleFont, 1);
 
-        clear_button = new GUI_Button(GR.PCL.Images.X.Texture(), new AdvancedHitbox(relicName_text.hb.x + relicName_text.hb.width, relicName_text.hb.y,64,64))
+        clear_button = new GUI_Button(PGR.PCL.Images.X.Texture(), new AdvancedHitbox(relicName_text.hb.x + relicName_text.hb.width, relicName_text.hb.y,64,64))
                 .SetClickDelay(0.02f);
-        change_button = new GUI_Button(GR.PCL.Images.Edit.Texture(), new AdvancedHitbox(clear_button.hb.x + clear_button.hb.width, relicName_text.hb.y,64,64))
+        change_button = new GUI_Button(PGR.PCL.Images.Edit.Texture(), new AdvancedHitbox(clear_button.hb.x + clear_button.hb.width, relicName_text.hb.y,64,64))
                 .SetClickDelay(0.02f);
 
         SetSlot(null);

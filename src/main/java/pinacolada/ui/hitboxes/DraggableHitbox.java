@@ -5,7 +5,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.Hitbox;
 import com.megacrit.cardcrawl.helpers.input.InputHelper;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLJUtils;
 
 public class DraggableHitbox extends AdvancedHitbox
@@ -80,7 +80,7 @@ public class DraggableHitbox extends AdvancedHitbox
             {
                 if (InputHelper.justClickedLeft)
                 {
-                    if (GR.UI.TryDragging())
+                    if (PGR.UI.TryDragging())
                     {
                         dragStart = new Vector2(mX, mY);
                         return;
@@ -91,7 +91,7 @@ public class DraggableHitbox extends AdvancedHitbox
                     target_cX = Math.min(max_x, Math.max(min_x, target_cX + (mX - dragStart.x)));
                     target_cY = Math.min(max_y, Math.max(min_y, target_cY + (mY - dragStart.y)));
 
-                    if (GR.UI.TryDragging())
+                    if (PGR.UI.TryDragging())
                     {
                         dragStart.set(mX, mY);
                         return;

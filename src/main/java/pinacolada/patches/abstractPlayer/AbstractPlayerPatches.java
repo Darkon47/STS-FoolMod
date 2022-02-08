@@ -20,7 +20,7 @@ import pinacolada.orbs.pcl.Chaos;
 import pinacolada.orbs.pcl.Earth;
 import pinacolada.orbs.pcl.Fire;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
 
@@ -36,7 +36,7 @@ public class AbstractPlayerPatches
         {
             // Convert Orbs specific to Animator/PCL into their PCL/Animator equivalents
             AbstractOrb orb = orbToSet[0];
-            if (PCLGameUtilities.IsPlayerClass(GR.PCL.PlayerClass)) {
+            if (PCLGameUtilities.IsPCLPlayerClass()) {
                 if (orb instanceof Aether) {
                     orbToSet[0] = new Air();
                 }
@@ -50,7 +50,7 @@ public class AbstractPlayerPatches
                     orbToSet[0] = new Chaos();
                 }
             }
-            else if (PCLGameUtilities.IsPlayerClass(eatyourbeets.resources.GR.Animator.PlayerClass)) {
+            else if (PCLGameUtilities.IsEYBPlayerClass()) {
                 if (orb instanceof Air) {
                     orbToSet[0] = new Aether();
                 }
@@ -135,7 +135,7 @@ public class AbstractPlayerPatches
 
                 ArrayList<PCLCard> cards = new ArrayList<>();
 
-                CardSeries series = GR.PCL.Data.SelectedLoadout.Series;
+                CardSeries series = PGR.PCL.Data.SelectedLoadout.Series;
                 CardSeries.AddCards(series, CardLibrary.getAllCards(), cards);
 
                 for (PCLCard card : cards)

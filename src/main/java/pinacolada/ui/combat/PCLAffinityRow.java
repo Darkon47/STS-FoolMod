@@ -17,7 +17,7 @@ import pinacolada.cards.base.PCLCardAffinity;
 import pinacolada.effects.affinity.ChangeAffinityCountEffect;
 import pinacolada.powers.PCLCombatStats;
 import pinacolada.powers.affinity.AbstractPCLAffinityPower;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.ui.controls.GUI_Image;
 import pinacolada.ui.controls.GUI_Label;
 import pinacolada.ui.hitboxes.RelativeHitbox;
@@ -61,7 +61,7 @@ public class PCLAffinityRow extends GUIElement
             Power.hb = new RelativeHitbox(hb, 1, 1, 1.7f, offset_y);
         }
 
-        image_background = new GUI_Image(GR.PCL.Images.Panel_Elliptical_Half_H.Texture(),
+        image_background = new GUI_Image(PGR.PCL.Images.Panel_Elliptical_Half_H.Texture(),
         new RelativeHitbox(hb, 1, 1, 0.5f, offset_y))
         .SetColor(COLOR_DEFAULT);
 
@@ -73,7 +73,7 @@ public class PCLAffinityRow extends GUIElement
         .SetAlignment(0.5f, 0.5f)
         .SetText("-");
 
-        image_synergy = new GUI_Image(GR.PCL.Images.Divider.Texture(),
+        image_synergy = new GUI_Image(PGR.PCL.Images.Divider.Texture(),
         new RelativeHitbox(hb, Scale(20), Scale(32), hb.width - Scale(4), offset_y * hb.height, false));
 
         image_synergy.SetActive(Power != null);

@@ -4,7 +4,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import pinacolada.cards.base.PCLCard;
 import pinacolada.effects.AttackEffects;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
@@ -26,7 +26,7 @@ public class CounterIntentEffect_Stun extends CounterIntentEffect
     @Override
     public String GetDescription(PCLCard nanami)
     {
-        return ACTIONS.Apply(GetVulnerable(nanami), GR.Tooltips.Vulnerable, true);
+        return ACTIONS.Apply(GetVulnerable(nanami), PGR.Tooltips.Vulnerable, true);
     }
 
     @Override

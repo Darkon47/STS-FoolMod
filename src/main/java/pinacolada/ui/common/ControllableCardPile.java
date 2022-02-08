@@ -14,7 +14,7 @@ import pinacolada.cards.base.PCLCardTooltip;
 import pinacolada.interfaces.subscribers.OnCardMovedSubscriber;
 import pinacolada.interfaces.subscribers.OnPurgeSubscriber;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.resources.pcl.PCLHotkeys;
 import pinacolada.ui.controls.GUI_Button;
 import pinacolada.utilities.PCLActions;
@@ -43,9 +43,9 @@ public class ControllableCardPile implements OnPhaseChangedSubscriber, OnPurgeSu
 
     public ControllableCardPile()
     {
-        TOOLTIP = new PCLCardTooltip(GR.PCL.Strings.Combat.ControlPile, GR.PCL.Strings.Combat.ControlPileDescription);
-        cardButton = new GUI_Button(GR.PCL.Images.ControllableCardPile.Texture(), hb)
-                .SetBorder(GR.PCL.Images.ControllableCardPileBorder.Texture(), Color.WHITE)
+        TOOLTIP = new PCLCardTooltip(PGR.PCL.Strings.Combat.ControlPile, PGR.PCL.Strings.Combat.ControlPileDescription);
+        cardButton = new GUI_Button(PGR.PCL.Images.ControllableCardPile.Texture(), hb)
+                .SetBorder(PGR.PCL.Images.ControllableCardPileBorder.Texture(), Color.WHITE)
                 .SetText("")
                 .SetFont(FontHelper.energyNumFontBlue, 1f)
                 .SetOnClick(() -> {
@@ -162,13 +162,13 @@ public class ControllableCardPile implements OnPhaseChangedSubscriber, OnPurgeSu
 
             if (showPreview)
             {
-                GR.UI.AddPostRender(this::PostRender);
+                PGR.UI.AddPostRender(this::PostRender);
                 if (PCLHotkeys.cycle.isJustPressed()) {
                     SelectNextCard();
                 }
 
                 if (TOOLTIP != null) {
-                    TOOLTIP.description = GR.PCL.Strings.Combat.ControlPileDescriptionFull(PCLHotkeys.cycle.getKeyString());
+                    TOOLTIP.description = PGR.PCL.Strings.Combat.ControlPileDescriptionFull(PCLHotkeys.cycle.getKeyString());
                     PCLCardTooltip.QueueTooltip(TOOLTIP, hb.x, hb.y + TOOLTIP_OFFSET_Y);
                 }
             }

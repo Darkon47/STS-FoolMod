@@ -10,7 +10,7 @@ import eatyourbeets.ui.GUIElement;
 import eatyourbeets.utilities.EYBFontHelper;
 import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCardAffinityStatistics;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.resources.pcl.PCLImages;
 import pinacolada.ui.controls.GUI_Toggle;
 import pinacolada.ui.hitboxes.AdvancedHitbox;
@@ -24,7 +24,7 @@ public class CardAffinityPanel extends GUIElement
 {
     public static final float ICON_SIZE = Scale(40);
 
-    private static final PCLImages.AffinityIcons ICONS = GR.PCL.Images.Affinities;
+    private static final PCLImages.AffinityIcons ICONS = PGR.PCL.Images.Affinities;
 
     private final AdvancedHitbox hb;
     private final ArrayList<CardAffinityCounter> counters = new ArrayList<>();
@@ -43,7 +43,7 @@ public class CardAffinityPanel extends GUIElement
         }
 
         upgrade_toggle = new GUI_Toggle(new RelativeHitbox(hb, 1.3f, 1, 0.5f * (1 - (ICON_SIZE/hb.width)), -(0.5f + counters.size())))
-        .SetBackground(GR.PCL.Images.Panel.Texture(), Color.DARK_GRAY)
+        .SetBackground(PGR.PCL.Images.Panel.Texture(), Color.DARK_GRAY)
         .SetFont(EYBFontHelper.CardDescriptionFont_Large, 0.4f)
         .SetText(SingleCardViewPopup.TEXT[6])
         .SetOnToggle(this::ToggleViewUpgrades);
@@ -61,7 +61,7 @@ public class CardAffinityPanel extends GUIElement
 
     public void Open(ArrayList<AbstractCard> cards, boolean showUpgradeToggle, ActionT1<CardAffinityCounter> onClick, boolean force)
     {
-        isActive = (force || GR.PCL.IsSelected()) && cards != null;
+        isActive = (force || PGR.Fool.IsSelected()) && cards != null;
 
         if (!isActive)
         {

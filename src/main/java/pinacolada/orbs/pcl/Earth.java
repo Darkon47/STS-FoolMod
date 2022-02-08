@@ -24,7 +24,7 @@ import pinacolada.effects.PCLProjectile;
 import pinacolada.effects.SFX;
 import pinacolada.orbs.PCLOrb;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
@@ -150,7 +150,7 @@ public class Earth extends PCLOrb implements OnStartOfTurnPostDrawSubscriber, On
     {
         super.updateAnimation();
 
-        final float delta = GR.UI.Delta();
+        final float delta = PGR.UI.Delta();
         for (Projectile texture : projectiles)
         {
             texture.SetPosition(cX, cY).SetTargetRotation(angle, null).Update(delta);

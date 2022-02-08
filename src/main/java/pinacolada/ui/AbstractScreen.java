@@ -7,13 +7,13 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import eatyourbeets.ui.GUIElement;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.ui.controls.GUI_Button;
 import pinacolada.utilities.PCLGameUtilities;
 
 public abstract class AbstractScreen extends GUIElement
 {
-    public static final AbstractDungeon.CurrentScreen ScreenType = GR.Enums.Screens.EYB_SCREEN;
+    public static final AbstractDungeon.CurrentScreen ScreenType = PGR.Enums.Screens.EYB_SCREEN;
 
     public boolean CanOpen()
     {
@@ -22,7 +22,7 @@ public abstract class AbstractScreen extends GUIElement
 
     protected void Open()
     {
-        GR.UI.CurrentScreen = this;
+        PGR.UI.CurrentScreen = this;
         Settings.hideTopBar = true;
         Settings.hideRelics = true;
 
@@ -53,7 +53,7 @@ public abstract class AbstractScreen extends GUIElement
     public void Dispose()
     {
         // Modified Logic from AbstractDungeon.closeCurrentScreen and AbstractDungeon.genericScreenOverlayReset
-        GR.UI.CurrentScreen = null;
+        PGR.UI.CurrentScreen = null;
         Settings.hideTopBar = false;
         Settings.hideRelics = false;
 
@@ -103,8 +103,8 @@ public abstract class AbstractScreen extends GUIElement
 
     protected static GUI_Button CreateHexagonalButton(float x, float y, float width, float height)
     {
-        final Texture buttonTexture = GR.PCL.Images.HexagonalButton.Texture();
-        final Texture buttonBorderTexture = GR.PCL.Images.HexagonalButtonBorder.Texture();
+        final Texture buttonTexture = PGR.PCL.Images.HexagonalButton.Texture();
+        final Texture buttonBorderTexture = PGR.PCL.Images.HexagonalButtonBorder.Texture();
         return new GUI_Button(buttonTexture, x, y)
         .SetBorder(buttonBorderTexture, Color.WHITE)
         .SetClickDelay(0.3f)

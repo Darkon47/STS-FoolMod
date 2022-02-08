@@ -10,7 +10,7 @@ import eatyourbeets.interfaces.delegates.ActionT1;
 import eatyourbeets.ui.GUIElement;
 import eatyourbeets.utilities.EYBFontHelper;
 import pinacolada.cards.base.PCLCardTooltip;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.ui.cardReward.CardAffinityPanel;
 import pinacolada.ui.controls.GUI_Button;
 import pinacolada.ui.controls.GUI_Label;
@@ -46,7 +46,7 @@ public class CardKeywordButton extends GUIElement
 
         Tooltip = tooltip;
 
-        background_button = new GUI_Button(GR.PCL.Images.Panel_Rounded_Half_H.Texture(), new RelativeHitbox(hb, 1, 1, 0.5f, 0).SetIsPopupCompatible(true))
+        background_button = new GUI_Button(PGR.PCL.Images.Panel_Rounded_Half_H.Texture(), new RelativeHitbox(hb, 1, 1, 0.5f, 0).SetIsPopupCompatible(true))
         .SetColor(CardKeywordFilters.CurrentFilters.contains(Tooltip) ? ACTIVE_COLOR : PANEL_COLOR)
         .SetText("")
                 .SetOnClick(button -> {

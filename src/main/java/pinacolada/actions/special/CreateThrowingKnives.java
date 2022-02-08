@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.Settings;
 import eatyourbeets.actions.EYBActionWithCallback;
 import eatyourbeets.interfaces.delegates.ActionT1;
-import pinacolada.cards.pcl.special.ThrowingKnife;
+import pinacolada.cards.fool.special.ThrowingKnife;
 import pinacolada.utilities.PCLActions;
 
 public class CreateThrowingKnives extends EYBActionWithCallback<AbstractCard>

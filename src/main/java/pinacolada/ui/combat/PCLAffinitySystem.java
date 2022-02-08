@@ -17,7 +17,7 @@ import eatyourbeets.utilities.RotatingList;
 import pinacolada.cards.base.*;
 import pinacolada.powers.PCLCombatStats;
 import pinacolada.powers.affinity.AbstractPCLAffinityPower;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.resources.pcl.PCLHotkeys;
 import pinacolada.ui.controls.GUI_Button;
 import pinacolada.ui.controls.GUI_Ftue;
@@ -64,9 +64,9 @@ public class PCLAffinitySystem extends GUIElement
 
         AffinityMeter = new PCLAffinityMeter(this);
 
-        dragAmount_image = new GUI_Image(GR.PCL.Images.Panel_Rounded.Texture(), hb)
+        dragAmount_image = new GUI_Image(PGR.PCL.Images.Panel_Rounded.Texture(), hb)
         .SetColor(0.05f, 0.05f, 0.05f, 0.5f);
-        draggable_icon = new GUI_Image(GR.PCL.Images.Draggable.Texture(), new RelativeHitbox(hb, Scale(40f), Scale(40f), Scale(40f), Scale(20f), false))
+        draggable_icon = new GUI_Image(PGR.PCL.Images.Draggable.Texture(), new RelativeHitbox(hb, Scale(40f), Scale(40f), Scale(40f), Scale(20f), false))
         .SetColor(Colors.White(0.75f));
         info_icon = new GUI_Button(ImageMaster.INTENT_UNKNOWN, new RelativeHitbox(hb, Scale(40f), Scale(40f), Scale(100f), Scale(20f), false))
                 .SetText("");
@@ -425,10 +425,10 @@ public class PCLAffinitySystem extends GUIElement
             final DraggableHitbox hb = (DraggableHitbox) dragAmount_image.hb;
             amountsSavedPosition.x = hb.target_cX / (float) Settings.WIDTH;
             amountsSavedPosition.y = hb.target_cY / (float) Settings.HEIGHT;
-            if (amountsSavedPosition.dst2(GR.PCL.Config.AffinitySystemPosition.Get()) > Mathf.Epsilon)
+            if (amountsSavedPosition.dst2(PGR.PCL.Config.AffinitySystemPosition.Get()) > Mathf.Epsilon)
             {
                 PCLJUtils.LogInfo(this, "Saved PCL affinity panel position.");
-                GR.PCL.Config.AffinitySystemPosition.Set(amountsSavedPosition.cpy(), true);
+                PGR.PCL.Config.AffinitySystemPosition.Set(amountsSavedPosition.cpy(), true);
             }
         }
 
@@ -440,12 +440,12 @@ public class PCLAffinitySystem extends GUIElement
         AffinityMeter.Initialize();
 
         if (tooltipDescriptions.Count() == 0 || tooltipTitles.Count() == 0) {
-            for (String tip : GR.PCL.Strings.Tutorial.TutorialItems()) {
+            for (String tip : PGR.PCL.Strings.Tutorial.TutorialItems()) {
                 tooltipDescriptions.Add(tip);
             }
-            tooltipTitles.Add(GR.Tooltips.Affinity_General.title);
-            tooltipTitles.Add(GR.Tooltips.Match.title);
-            tooltipTitles.Add(GR.Tooltips.Match.title);
+            tooltipTitles.Add(PGR.Tooltips.Affinity_General.title);
+            tooltipTitles.Add(PGR.Tooltips.Match.title);
+            tooltipTitles.Add(PGR.Tooltips.Match.title);
 
             SetTipIndex(0);
         }
@@ -461,7 +461,7 @@ public class PCLAffinitySystem extends GUIElement
 
         if (amountsSavedPosition == null)
         {
-            amountsSavedPosition = GR.PCL.Config.AffinitySystemPosition.Get(new Vector2(0.0522f, 0.43f)).cpy();
+            amountsSavedPosition = PGR.PCL.Config.AffinitySystemPosition.Get(new Vector2(0.0522f, 0.43f)).cpy();
             hb.SetPosition(ScreenW(amountsSavedPosition.x), ScreenH(amountsSavedPosition.y));
         }
 
@@ -521,8 +521,8 @@ public class PCLAffinitySystem extends GUIElement
         draggable_icon.Render(sb);
         info_icon.Render(sb);
 
-        FontHelper.renderFontRightTopAligned(sb, FontHelper.powerAmountFont, GR.PCL.Strings.Combat.Experience, info_icon.hb.cX + Scale(92), info_icon.hb.y, 1f, Colors.Blue(1f));
-        FontHelper.renderFontRightTopAligned(sb, FontHelper.powerAmountFont, GR.PCL.Strings.Combat.Uses, info_icon.hb.cX + Scale(156), info_icon.hb.y, 1f, Colors.Blue(1f));
+        FontHelper.renderFontRightTopAligned(sb, FontHelper.powerAmountFont, PGR.PCL.Strings.Combat.Experience, info_icon.hb.cX + Scale(92), info_icon.hb.y, 1f, Colors.Blue(1f));
+        FontHelper.renderFontRightTopAligned(sb, FontHelper.powerAmountFont, PGR.PCL.Strings.Combat.Uses, info_icon.hb.cX + Scale(156), info_icon.hb.y, 1f, Colors.Blue(1f));
 
         for (PCLAffinityRow t : rows)
         {
@@ -546,7 +546,7 @@ public class PCLAffinitySystem extends GUIElement
         tooltipDescriptions.SetIndex(tooltipTitles.GetIndex());
         tooltip.description = tooltipDescriptions.Current();
         tooltip.title = tooltipTitles.Current();
-        tooltip.subText.SetText(GR.PCL.Strings.Misc.PressKeyToCycle(PCLHotkeys.cycle.getKeyString()) + " (" + (tooltipDescriptions.GetIndex() + 1) + "/" + tooltipDescriptions.Count() + ")");
+        tooltip.subText.SetText(PGR.PCL.Strings.Misc.PressKeyToCycle(PCLHotkeys.cycle.getKeyString()) + " (" + (tooltipDescriptions.GetIndex() + 1) + "/" + tooltipDescriptions.Count() + ")");
     }
 
     public static class AffinityCounts {

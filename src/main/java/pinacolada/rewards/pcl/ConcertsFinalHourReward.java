@@ -8,8 +8,8 @@ import com.megacrit.cardcrawl.relics.BustedCrown;
 import com.megacrit.cardcrawl.relics.QuestionCard;
 import com.megacrit.cardcrawl.rewards.RewardSave;
 import pinacolada.cards.base.CardSeries;
-import pinacolada.relics.pcl.ConcertsFinalHour;
-import pinacolada.resources.GR;
+import pinacolada.relics.fool.ConcertsFinalHour;
+import pinacolada.resources.PGR;
 import pinacolada.rewards.PCLReward;
 import pinacolada.utilities.PCLJUtils;
 
@@ -21,7 +21,7 @@ public class ConcertsFinalHourReward extends PCLReward
 
     public ConcertsFinalHourReward(CardSeries series)
     {
-        super(ImageMaster.REWARD_CARD_NORMAL, GR.GetRelicStrings(ConcertsFinalHour.ID).NAME, GR.Enums.Rewards.SERIES_CARDS);
+        super(ImageMaster.REWARD_CARD_NORMAL, PGR.GetRelicStrings(ConcertsFinalHour.ID).NAME, PGR.Enums.Rewards.SERIES_CARDS);
 
         this.series = series;
         this.cards = GenerateCardReward(series, AbstractDungeon.srcUncommonCardPool, AbstractDungeon.srcRareCardPool);

@@ -9,7 +9,7 @@ import eatyourbeets.ui.config.ConfigOption_Integer;
 import eatyourbeets.ui.config.ConfigOption_String;
 import eatyourbeets.ui.config.ConfigOption_Vector2;
 import pinacolada.characters.FoolCharacter;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.ui.config.ConfigOption_SeriesList;
 import pinacolada.utilities.PCLJUtils;
 
@@ -27,7 +27,7 @@ public class PCLConfig
 {
     public static String CreateFullID(String name)
     {
-        return GR.BASE_PREFIX.toUpperCase(Locale.ROOT) + "-" + name;
+        return PGR.BASE_PREFIX.toUpperCase(Locale.ROOT) + "-" + name;
     }
 
     private static final String TROPHY_DATA_KEY = "TDAL";
@@ -128,7 +128,7 @@ public class PCLConfig
     protected void InitializeOptions()
     {
         final ModPanel panel = new ModPanel();
-        final PCLStrings.Misc misc = GR.PCL.Strings.Misc;
+        final PCLStrings.Misc misc = PGR.PCL.Strings.Misc;
 
         //FadeCardsWithoutSynergy.AddToPanel(panel, misc.FadeCardsWithoutSynergy, 400, 700);
         CropCardImages.AddToPanel(panel, misc.UseCardHoveringAnimation, 400, 650);
@@ -139,7 +139,7 @@ public class PCLConfig
         ReplaceCardsFool.AddToPanel(panel, misc.ReplaceCardsFool, 400, 400);
         ReplaceCardsAnimator.AddToPanel(panel, misc.ReplaceCardsAnimator, 400, 350);
 
-        if (GR.PCL.Data.BetaLoadouts.size() > 0)
+        if (PGR.PCL.Data.BetaLoadouts.size() > 0)
         {
             DisplayBetaSeries.AddToPanel(panel, misc.DisplayBetaSeries, 400, 300);
         }
@@ -148,7 +148,7 @@ public class PCLConfig
             DisplayBetaSeries.Set(false, false);
         }
 
-        BaseMod.registerModBadge(GR.GetTexture(GR.GetPowerImage(LightningCubePower.POWER_ID)), FoolCharacter.ORIGINAL_NAME, "PinaColada", "", panel);
+        BaseMod.registerModBadge(PGR.GetTexture(PGR.GetPowerImage(LightningCubePower.POWER_ID)), FoolCharacter.ORIGINAL_NAME, "PinaColada", "", panel);
     }
 
     public boolean HideTipDescription(String id)

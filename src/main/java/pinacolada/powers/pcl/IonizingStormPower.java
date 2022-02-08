@@ -12,7 +12,7 @@ import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
 
-import static pinacolada.cards.pcl.special.IonizingStorm.LIGHTNING_BONUS;
+import static pinacolada.cards.fool.special.IonizingStorm.LIGHTNING_BONUS;
 
 public class IonizingStormPower extends PCLPower implements OnOrbPassiveEffectSubscriber
 {

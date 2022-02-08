@@ -2,7 +2,7 @@ package pinacolada.cards.base;
 
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLJUtils;
 
 import java.util.*;
@@ -125,7 +125,7 @@ public class CardSeries
         for (Integer k : mapIDs.keySet())
         {
             CardSeries s = mapIDs.get(k);
-            s.LocalizedName = GR.PCL.Strings.Series.SeriesName(k);
+            s.LocalizedName = PGR.PCL.Strings.Series.SeriesName(k);
         }
     }
 
@@ -216,7 +216,7 @@ public class CardSeries
 
     public static String GetLocalizedSeriesString()
     {
-        return GR.PCL.Strings.Series.Series;
+        return PGR.PCL.Strings.Series.Series;
     }
 
     public static ArrayList<PCLCard> GetNonColorlessCard()

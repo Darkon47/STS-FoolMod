@@ -4,7 +4,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 
 public class EnergyPanelPatches
 {
@@ -14,7 +14,7 @@ public class EnergyPanelPatches
         @SpirePostfixPatch
         public static void Postfix(EnergyPanel __instance, SpriteBatch sb)
         {
-            GR.UI.CombatScreen.TryRender(sb);
+            PGR.UI.CombatScreen.TryRender(sb);
         }
     }
 }

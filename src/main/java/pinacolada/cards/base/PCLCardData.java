@@ -10,7 +10,7 @@ import eatyourbeets.interfaces.delegates.ActionT1;
 import eatyourbeets.interfaces.markers.Hidden;
 import eatyourbeets.utilities.RotatingList;
 import eatyourbeets.utilities.TupleT2;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.resources.pcl.PCLHotkeys;
 
 import java.lang.reflect.Constructor;
@@ -20,7 +20,7 @@ import java.util.List;
 
 public class PCLCardData
 {
-    public static final String CARD_DATA_PREFIX = "pinacolada.cards.pcl.";
+    public static final String SERIES_FOOL_PREFIX = "pinacolada.cards.fool.series.";
     private static final ArrayList<TupleT2<PCLCardData, ActionT1<PCLCardData>>> postInitialize = new ArrayList<>();
     private Constructor<? extends PCLCard> constructor;
 
@@ -36,6 +36,7 @@ public class PCLCardData
     public boolean cropPortrait;
 
     public int MaxForms = 1;
+    public int MaxUpgradeLevel = 1;
     public boolean CanToggleFromPopup = false;
     public boolean CanToggleOnUpgrade = false;
     public boolean CanToggleFromAlternateForm = false;
@@ -52,14 +53,15 @@ public class PCLCardData
     public boolean CanScaleMagicNumber = false;
     public boolean CanGrantAffinity = true;
     public boolean IsExpansionCard;
+    public boolean PlayAtEndOfTurn = false;
 
     private TextureAtlas.AtlasRegion cardIcon = null;
 
     public PCLCardData(Class<? extends PCLCard> type, String cardID)
     {
-        this(type, cardID, GR.GetCardStrings(cardID));
+        this(type, cardID, PGR.GetCardStrings(cardID));
 
-        this.ImagePath = GR.GetCardImage(cardID);
+        this.ImagePath = PGR.GetCardImage(cardID);
     }
 
     public PCLCardData(Class<? extends PCLCard> type, String cardID, CardStrings strings)
@@ -146,7 +148,7 @@ public class PCLCardData
     {
         if (cardIcon == null)
         {
-            final Texture texture = GR.GetTexture(ImagePath);
+            final Texture texture = PGR.GetTexture(ImagePath);
             final int h = texture.getHeight();
             final int w = texture.getWidth();
             final int section = h / 2;
@@ -185,9 +187,9 @@ public class PCLCardData
 
     public PCLCardData SetSeriesFromClassPackage(boolean isExpansionCard)
     {
-        final int length = CARD_DATA_PREFIX.length();
+        final int length = SERIES_FOOL_PREFIX.length();
         final String name = type.getPackage().getName();
-        final CardSeries series = CardSeries.GetByName(name.substring(length + ((name.charAt(length) == 'b') ? "beta.series." : "series.").length()), false);
+        final CardSeries series = CardSeries.GetByName(name.substring(length), false);
         if (series == null)
         {
             throw new RuntimeException("Couldn't find card series from class package: " + type);
@@ -211,6 +213,13 @@ public class PCLCardData
         return this;
     }
 
+    public PCLCardData SetMaxUpgradeLevel(int maxUpgradeLevel)
+    {
+        MaxUpgradeLevel = maxUpgradeLevel;
+
+        return this;
+    }
+
     public PCLCardData SetCanGrantAffinity(boolean canGrant) {
         this.CanGrantAffinity = canGrant;
 
@@ -219,6 +228,12 @@ public class PCLCardData
 
     public PCLCardData SetCanScaleMagicNumber(boolean canScale) {
         this.CanScaleMagicNumber = canScale;
+
+        return this;
+    }
+
+    public PCLCardData SetPlayAtEndOfTurn(boolean playAtEndOfTurn) {
+        this.PlayAtEndOfTurn = playAtEndOfTurn;
 
         return this;
     }
@@ -325,7 +340,11 @@ public class PCLCardData
         return this;
     }
 
-    public PCLCardData SetCurse(int cost, PCLCardTarget target, boolean special)
+    public PCLCardData SetCurse(int cost, PCLCardTarget target, boolean special) {
+        return SetCurse(cost, target, special, false);
+    }
+
+    public PCLCardData SetCurse(int cost, PCLCardTarget target, boolean special, boolean playAtEndOfTurn)
     {
         SetRarity(special ? AbstractCard.CardRarity.SPECIAL : AbstractCard.CardRarity.CURSE);
 
@@ -334,11 +353,17 @@ public class PCLCardData
         AttackType = PCLAttackType.None;
         CardTarget = target;
         BaseCost = cost;
+        PlayAtEndOfTurn = playAtEndOfTurn;
+        MaxUpgradeLevel = 0;
 
         return this;
     }
 
-    public PCLCardData SetStatus(int cost, AbstractCard.CardRarity rarity, PCLCardTarget target)
+    public PCLCardData SetStatus(int cost, AbstractCard.CardRarity rarity, PCLCardTarget target) {
+        return SetStatus(cost, rarity, target, false);
+    }
+
+    public PCLCardData SetStatus(int cost, AbstractCard.CardRarity rarity, PCLCardTarget target, boolean playAtEndOfTurn)
     {
         SetRarity(rarity);
 
@@ -347,6 +372,8 @@ public class PCLCardData
         AttackType = PCLAttackType.None;
         CardTarget = target;
         BaseCost = cost;
+        PlayAtEndOfTurn = playAtEndOfTurn;
+        MaxUpgradeLevel = 0;
 
         return this;
     }

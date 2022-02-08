@@ -6,7 +6,7 @@ import pinacolada.cards.base.PCLCard;
 import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.base.cardeffects.GenericEffect;
 import pinacolada.orbs.PCLOrbHelper;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 
 public class GenericEffect_TriggerOrb extends GenericEffect
@@ -24,7 +24,7 @@ public class GenericEffect_TriggerOrb extends GenericEffect
     @Override
     public String GetText()
     {
-        return GR.PCL.Strings.Actions.Trigger(orb.Tooltip, amount, true);
+        return PGR.PCL.Strings.Actions.Trigger(orb.Tooltip, amount, true);
     }
 
     @Override

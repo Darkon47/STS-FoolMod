@@ -11,11 +11,11 @@ import pinacolada.utilities.PCLActions;
 
 public class Status_Frostbite extends PCLCard_Status
 {
-    public static final PCLCardData DATA = Register(Status_Frostbite.class).SetMultiformData(2).SetStatus(-2, CardRarity.COMMON, PCLCardTarget.AoE);
+    public static final PCLCardData DATA = Register(Status_Frostbite.class).SetMultiformData(2).SetStatus(-2, CardRarity.COMMON, PCLCardTarget.AoE, true);
 
     public Status_Frostbite()
     {
-        super(DATA, true);
+        super(DATA);
 
         Initialize(0, 0, 2, 3);
         SetUpgrade(0, 0, 2, 2);

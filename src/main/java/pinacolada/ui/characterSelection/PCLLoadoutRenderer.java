@@ -12,7 +12,7 @@ import eatyourbeets.utilities.EYBFontHelper;
 import eatyourbeets.utilities.FieldInfo;
 import pinacolada.blights.common.AbstractGlyphBlight;
 import pinacolada.cards.base.PCLCardTooltip;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.resources.pcl.misc.PCLLoadout;
 import pinacolada.ui.controls.GUI_Button;
 import pinacolada.ui.controls.GUI_Label;
@@ -27,8 +27,8 @@ import static pinacolada.resources.pcl.misc.PCLLoadout.BRONZE_REQUIRED_EXPANSION
 
 public class PCLLoadoutRenderer extends GUIElement
 {
-    private final static PCLCardTooltip ExpansionLockedTooltip = new PCLCardTooltip(GR.PCL.Strings.SeriesSelection.ExpansionHeader, PCLJUtils.Format(GR.PCL.Strings.SeriesSelection.ExpansionSeriesLocked, BRONZE_REQUIRED_EXPANSION));
-    private final static PCLCardTooltip ExpansionUnlockedTooltip = new PCLCardTooltip(GR.PCL.Strings.SeriesSelection.ExpansionHeader, GR.PCL.Strings.SeriesSelection.ExpansionSeriesUnlocked);
+    private final static PCLCardTooltip ExpansionLockedTooltip = new PCLCardTooltip(PGR.PCL.Strings.SeriesSelection.ExpansionHeader, PCLJUtils.Format(PGR.PCL.Strings.SeriesSelection.ExpansionSeriesLocked, BRONZE_REQUIRED_EXPANSION));
+    private final static PCLCardTooltip ExpansionUnlockedTooltip = new PCLCardTooltip(PGR.PCL.Strings.SeriesSelection.ExpansionHeader, PGR.PCL.Strings.SeriesSelection.ExpansionSeriesUnlocked);
 
     protected static final FieldInfo<String> _hp = PCLJUtils.GetField("hp", CharacterOption.class);
     protected static final FieldInfo<Integer> _gold = PCLJUtils.GetField("gold", CharacterOption.class);
@@ -56,8 +56,8 @@ public class PCLLoadoutRenderer extends GUIElement
 
     public PCLLoadoutRenderer()
     {
-        final float leftTextWidth = FontHelper.getSmartWidth(FontHelper.cardTitleFont, GR.PCL.Strings.CharSelect.LeftText, 9999f, 0f); // Ascension
-        final float rightTextWidth = FontHelper.getSmartWidth(FontHelper.cardTitleFont, GR.PCL.Strings.CharSelect.RightText, 9999f, 0f); // Level 22
+        final float leftTextWidth = FontHelper.getSmartWidth(FontHelper.cardTitleFont, PGR.PCL.Strings.CharSelect.LeftText, 9999f, 0f); // Ascension
+        final float rightTextWidth = FontHelper.getSmartWidth(FontHelper.cardTitleFont, PGR.PCL.Strings.CharSelect.RightText, 9999f, 0f); // Level 22
 
         textScale = Settings.scale;
 
@@ -75,22 +75,22 @@ public class PCLLoadoutRenderer extends GUIElement
                 new AdvancedHitbox(POS_X, POS_Y, leftTextWidth, 50f * Settings.scale))
                 .SetColor(Settings.GOLD_COLOR)
                 .SetAlignment(0.5f, 0.5f, false)
-                .SetText(GR.PCL.Strings.CharSelect.LeftText);
+                .SetText(PGR.PCL.Strings.CharSelect.LeftText);
 
-        StartingCardsListLabel = new GUI_TextBox(GR.PCL.Images.Panel_Rounded.Texture(),
+        StartingCardsListLabel = new GUI_TextBox(PGR.PCL.Images.Panel_Rounded.Texture(),
                 new AdvancedHitbox(POS_X + ROW_OFFSET * 3.5f, POS_Y, leftTextWidth, 50f * Settings.scale))
                 .SetColors(Settings.HALF_TRANSPARENT_BLACK_COLOR, Settings.GREEN_TEXT_COLOR)
                 .SetFont(EYBFontHelper.CardTitleFont_Small, 0.8f)
                 .SetAlignment(0.5f, 0.5f, false);
 
-        SeriesButton = new GUI_Button(GR.PCL.Images.Edit.Texture(), new AdvancedHitbox(0, 0, Scale(64), Scale(64)))
+        SeriesButton = new GUI_Button(PGR.PCL.Images.Edit.Texture(), new AdvancedHitbox(0, 0, Scale(64), Scale(64)))
                 .SetPosition(StartingCardsListLabel.hb.x + Scale(240), StartingCardsListLabel.hb.y + Scale(192)).SetText("")
-                .SetTooltip(GR.PCL.Strings.CharSelect.SeriesEditor, GR.PCL.Strings.CharSelect.SeriesEditorInfo)
+                .SetTooltip(PGR.PCL.Strings.CharSelect.SeriesEditor, PGR.PCL.Strings.CharSelect.SeriesEditorInfo)
                 .SetOnClick(this::OpenSeriesSelect);
 
-        LoadoutEditorButton = new GUI_Button(GR.PCL.Images.SwapCards.Texture(), new AdvancedHitbox(0, 0, Scale(64), Scale(64)))
+        LoadoutEditorButton = new GUI_Button(PGR.PCL.Images.SwapCards.Texture(), new AdvancedHitbox(0, 0, Scale(64), Scale(64)))
                 .SetPosition(SeriesButton.hb.x + SeriesButton.hb.width + Scale(40), StartingCardsListLabel.hb.y + Scale(192)).SetText("")
-                .SetTooltip(GR.PCL.Strings.CharSelect.DeckEditor, GR.PCL.Strings.CharSelect.DeckEditorInfo)
+                .SetTooltip(PGR.PCL.Strings.CharSelect.DeckEditor, PGR.PCL.Strings.CharSelect.DeckEditorInfo)
                 .SetOnRightClick(this::ChangePreset)
                 .SetOnClick(this::OpenLoadoutEditor);
 
@@ -98,10 +98,10 @@ public class PCLLoadoutRenderer extends GUIElement
                 new AdvancedHitbox(POS_X * 6, POS_Y, leftTextWidth, 50f * Settings.scale))
                 .SetColor(Settings.GOLD_COLOR)
                 .SetAlignment(0.5f, 0.5f, false)
-                .SetText(GR.PCL.Strings.CharSelect.AscensionGlyph);
+                .SetText(PGR.PCL.Strings.CharSelect.AscensionGlyph);
 
         float xOffset = AscensionGlyphsLabel.hb.x + ROW_OFFSET * 4f;
-        for (AbstractGlyphBlight glyph : GR.PCL.Data.Glyphs) {
+        for (AbstractGlyphBlight glyph : PGR.PCL.Data.Glyphs) {
             glyphEditors.add(new PCLGlyphEditor(glyph, new AdvancedHitbox(xOffset, POS_Y, glyph.hb.width, glyph.hb.height)));
             xOffset += ROW_OFFSET * 1.7f;
         }
@@ -111,7 +111,7 @@ public class PCLLoadoutRenderer extends GUIElement
     {
         if (loadout != null && characterOption != null)
         {
-            GR.UI.LoadoutEditor.Open(loadout, characterOption, () -> Refresh(selectScreen, characterOption));
+            PGR.UI.LoadoutEditor.Open(loadout, characterOption, () -> Refresh(selectScreen, characterOption));
         }
     }
 
@@ -119,7 +119,7 @@ public class PCLLoadoutRenderer extends GUIElement
     {
         if (characterOption != null)
         {
-            GR.UI.SeriesSelection.Open(characterOption, () -> Refresh(selectScreen, characterOption));
+            PGR.UI.SeriesSelection.Open(characterOption, () -> Refresh(selectScreen, characterOption));
         }
     }
 
@@ -129,13 +129,13 @@ public class PCLLoadoutRenderer extends GUIElement
         if (actualIndex < 0) {
             actualIndex = loadouts.size() - 1;
         }
-        GR.PCL.Data.SelectedLoadout = loadouts.get(actualIndex);
+        PGR.PCL.Data.SelectedLoadout = loadouts.get(actualIndex);
         Refresh(selectScreen, characterOption);
     }
 
     private void ChangeLoadout(PCLLoadout loadout)
     {
-        GR.PCL.Data.SelectedLoadout = loadout;
+        PGR.PCL.Data.SelectedLoadout = loadout;
         Refresh(selectScreen, characterOption);
     }
 
@@ -153,9 +153,9 @@ public class PCLLoadoutRenderer extends GUIElement
     {
         if (availableLoadouts.size() > 1)
         {
-            while (loadout == GR.PCL.Data.SelectedLoadout)
+            while (loadout == PGR.PCL.Data.SelectedLoadout)
             {
-                GR.PCL.Data.SelectedLoadout = PCLGameUtilities.GetRandomElement(availableLoadouts, RNG);
+                PGR.PCL.Data.SelectedLoadout = PCLGameUtilities.GetRandomElement(availableLoadouts, RNG);
             }
 
             Refresh(selectScreen, characterOption);
@@ -170,8 +170,8 @@ public class PCLLoadoutRenderer extends GUIElement
         this.loadouts.clear();
         this.availableLoadouts.clear();
 
-        final int unlockLevel = GR.PCL.GetUnlockLevel();
-        for (PCLLoadout loadout : GR.PCL.Data.BaseLoadouts)
+        final int unlockLevel = PGR.Fool.GetUnlockLevel();
+        for (PCLLoadout loadout : PGR.PCL.Data.BaseLoadouts)
         {
             this.loadouts.add(loadout);
             if (unlockLevel >= loadout.UnlockLevel)
@@ -180,9 +180,9 @@ public class PCLLoadoutRenderer extends GUIElement
             }
         }
 
-        if (GR.PCL.Config.DisplayBetaSeries.Get())
+        if (PGR.PCL.Config.DisplayBetaSeries.Get())
         {
-            for (PCLLoadout loadout : GR.PCL.Data.BetaLoadouts)
+            for (PCLLoadout loadout : PGR.PCL.Data.BetaLoadouts)
             {
                 if (loadout.GetPreset().CardsSize() > 0)
                 {
@@ -198,7 +198,7 @@ public class PCLLoadoutRenderer extends GUIElement
         this.loadouts.sort((a, b) ->
         {
             final int diff = a.Name.compareTo(b.Name);
-            final int level = GR.PCL.GetUnlockLevel();
+            final int level = PGR.Fool.GetUnlockLevel();
             final int levelA = a.UnlockLevel - level;
             final int levelB = b.UnlockLevel - level;
             if (levelA > 0 || levelB > 0)
@@ -209,10 +209,10 @@ public class PCLLoadoutRenderer extends GUIElement
             return diff;
         });
 
-        this.loadout = GR.PCL.Data.SelectedLoadout;
+        this.loadout = PGR.PCL.Data.SelectedLoadout;
         if (this.loadout.GetStartingDeck().isEmpty() || !loadouts.contains(this.loadout))
         {
-            this.loadout = GR.PCL.Data.SelectedLoadout = loadouts.get(0);
+            this.loadout = PGR.PCL.Data.SelectedLoadout = loadouts.get(0);
         }
 
         for (PCLGlyphEditor geditor : glyphEditors) {
@@ -231,16 +231,16 @@ public class PCLLoadoutRenderer extends GUIElement
         _charSelectInfo.Get(characterOption).relics = loadout.GetStartingRelics();
 
 
-        int currentLevel = GR.PCL.GetUnlockLevel();
+        int currentLevel = PGR.Fool.GetUnlockLevel();
         if (currentLevel < loadout.UnlockLevel)
         {
-            StartingCardsListLabel.SetText(GR.PCL.Strings.CharSelect.UnlocksAtLevel(loadout.UnlockLevel, currentLevel)).SetFontColor(Settings.RED_TEXT_COLOR);
+            StartingCardsListLabel.SetText(PGR.PCL.Strings.CharSelect.UnlocksAtLevel(loadout.UnlockLevel, currentLevel)).SetFontColor(Settings.RED_TEXT_COLOR);
             LoadoutEditorButton.SetInteractable(false);
             selectScreen.confirmButton.isDisabled = true;
         }
         else if (!loadout.Validate().IsValid)
         {
-            StartingCardsListLabel.SetText(GR.PCL.Strings.CharSelect.InvalidLoadout).SetFontColor(Settings.RED_TEXT_COLOR);
+            StartingCardsListLabel.SetText(PGR.PCL.Strings.CharSelect.InvalidLoadout).SetFontColor(Settings.RED_TEXT_COLOR);
             LoadoutEditorButton.SetInteractable(true);
             selectScreen.confirmButton.isDisabled = true;
         }

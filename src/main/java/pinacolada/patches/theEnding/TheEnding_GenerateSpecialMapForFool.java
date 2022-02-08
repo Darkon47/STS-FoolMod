@@ -17,7 +17,7 @@ import patches.theEnding.TheEnding_GenerateSpecialMap;
 import pinacolada.cards.pcl.replacement.Essence_Egnaro;
 import pinacolada.cards.pcl.replacement.Essence_Eruza;
 import pinacolada.cards.pcl.replacement.Essence_Wolley;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 
 import java.util.ArrayList;
 
@@ -28,7 +28,7 @@ public class TheEnding_GenerateSpecialMapForFool
     @SpirePostfixPatch
     public static void Postfix(TheEnding __instance)
     {
-        if (AbstractDungeon.player.chosenClass == GR.PCL.PlayerClass)
+        if (AbstractDungeon.player.chosenClass == PGR.Fool.PlayerClass)
         {
             TheEnding_GenerateSpecialMap.Postfix(__instance);
             MapRoomNode rest = (MapRoomNode)((ArrayList)__instance.getMap().get(0)).get(3);

@@ -11,8 +11,8 @@ import eatyourbeets.interfaces.delegates.FuncT1;
 import eatyourbeets.interfaces.delegates.FuncT2;
 import eatyourbeets.utilities.AdvancedTexture;
 import pinacolada.cards.base.attributes.AbstractAttribute;
-import pinacolada.cards.pcl.colorless.QuestionMark;
-import pinacolada.resources.GR;
+import pinacolada.cards.fool.colorless.QuestionMark;
+import pinacolada.resources.PGR;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -110,7 +110,7 @@ public class PCLCardBuilder
 
     public PCLCardBuilder SetProperties(AbstractCard.CardType type, AbstractCard.CardRarity rarity, AbstractCard.CardTarget target)
     {
-        return SetProperties(type, GR.Enums.Cards.THE_FOOL, rarity, target);
+        return SetProperties(type, PGR.Enums.Cards.THE_FOOL, rarity, target);
     }
 
     public PCLCardBuilder SetProperties(AbstractCard.CardType type, AbstractCard.CardColor color, AbstractCard.CardRarity rarity, AbstractCard.CardTarget target)
@@ -174,22 +174,22 @@ public class PCLCardBuilder
     public PCLCardBuilder SetTags(AbstractCard card) {
         ArrayList<AbstractCard.CardTags> tags = new ArrayList<>(card.tags);
         if (card.exhaust || card.exhaustOnUseOnce) {
-            tags.add(GR.Enums.CardTags.PCL_EXHAUST);
+            tags.add(PGR.Enums.CardTags.PCL_EXHAUST);
         }
         if (card.retain) {
-            tags.add(GR.Enums.CardTags.PCL_RETAIN_ONCE);
+            tags.add(PGR.Enums.CardTags.PCL_RETAIN_ONCE);
         }
         if (card.selfRetain) {
-            tags.add(GR.Enums.CardTags.PCL_RETAIN);
+            tags.add(PGR.Enums.CardTags.PCL_RETAIN);
         }
         if (card.isEthereal) {
-            tags.add(GR.Enums.CardTags.PCL_ETHEREAL);
+            tags.add(PGR.Enums.CardTags.PCL_ETHEREAL);
         }
         if (card.isInnate) {
-            tags.add(GR.Enums.CardTags.PCL_INNATE);
+            tags.add(PGR.Enums.CardTags.PCL_INNATE);
         }
         if (card.purgeOnUse) {
-            tags.add(GR.Enums.CardTags.PURGE);
+            tags.add(PGR.Enums.CardTags.PURGE);
         }
         return SetTags(tags);
     }

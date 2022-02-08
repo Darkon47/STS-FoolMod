@@ -7,7 +7,7 @@ import eatyourbeets.powers.CombatStats;
 import eatyourbeets.utilities.ColoredString;
 import pinacolada.cards.base.PCLCardTooltip;
 import pinacolada.resources.CardTooltips;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLJUtils;
 
 public class WordToken extends CTToken
@@ -155,7 +155,7 @@ public class WordToken extends CTToken
     @Override
     public void Render(SpriteBatch sb, CTContext context)
     {
-        if (coloredString.text == null || GR.UI.Elapsed25())
+        if (coloredString.text == null || PGR.UI.Elapsed25())
         {
             UpdateString(context);
         }
@@ -179,18 +179,18 @@ public class WordToken extends CTToken
         {
             coloredString.color.a = 1;
 
-            if (GR.Tooltips.Starter.Is(tooltip) && !AbstractDungeon.actionManager.cardsPlayedThisTurn.isEmpty())
+            if (PGR.Tooltips.Starter.Is(tooltip) && !AbstractDungeon.actionManager.cardsPlayedThisTurn.isEmpty())
             {
                 coloredString.color.a = 0.6f;
             }
             else
             {
                 Integer t = null;
-                if (GR.Tooltips.Limited.Is(tooltip))
+                if (PGR.Tooltips.Limited.Is(tooltip))
                 {
                     t = CombatStats.GetCombatData(context.card.cardID, null);
                 }
-                else if (GR.Tooltips.SemiLimited.Is(tooltip))
+                else if (PGR.Tooltips.SemiLimited.Is(tooltip))
                 {
                     t = CombatStats.GetTurnData(context.card.cardID, null);
                 }

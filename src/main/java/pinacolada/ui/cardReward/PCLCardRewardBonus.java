@@ -11,11 +11,11 @@ import com.megacrit.cardcrawl.rewards.RewardItem;
 import eatyourbeets.interfaces.listeners.OnAddingToCardRewardListener;
 import eatyourbeets.ui.GUIElement;
 import pinacolada.cards.base.PCLCard;
-import pinacolada.cards.base.PCLCard_UltraRare;
+import pinacolada.cards.fool.FoolCard_UltraRare;
 import pinacolada.effects.SFX;
 import pinacolada.effects.card.PermanentUpgradeEffect;
-import pinacolada.relics.pcl.CursedGlyph;
-import pinacolada.resources.GR;
+import pinacolada.relics.fool.CursedGlyph;
+import pinacolada.resources.PGR;
 import pinacolada.resources.pcl.PCLStrings;
 import pinacolada.resources.pcl.misc.PCLRuntimeLoadout;
 import pinacolada.utilities.PCLGameEffects;
@@ -28,7 +28,7 @@ public class PCLCardRewardBonus extends GUIElement
 {
     private static final CursedGlyph CURSED_GLYPH = new CursedGlyph();
 
-    private final PCLStrings.Rewards REWARDS = GR.PCL.Strings.Rewards;
+    private final PCLStrings.Rewards REWARDS = PGR.PCL.Strings.Rewards;
     private final ArrayList<CardRewardBundle> bundles = new ArrayList<>();
     private RewardItem rewardItem;
 
@@ -61,7 +61,7 @@ public class PCLCardRewardBonus extends GUIElement
 
         for (AbstractCard card : toRemove)
         {
-            final AbstractCard replacement = GR.PCL.Dungeon.GetRandomRewardCard(cards, true, false);
+            final AbstractCard replacement = PGR.PCL.Dungeon.GetRandomRewardCard(cards, true, false);
             if (replacement != null)
             {
                 PCLGameUtilities.CopyVisualProperties(replacement, card);
@@ -134,13 +134,13 @@ public class PCLCardRewardBonus extends GUIElement
 
     private CardRewardBundle GetBundle(AbstractCard card)
     {
-        if (card instanceof PCLCard_UltraRare)
+        if (card instanceof FoolCard_UltraRare)
         {
             return GetCursedRelicBundle(card);
         }
-        else if (card instanceof PCLCard && !GR.PCL.Dungeon.IsUnnamedReign())
+        else if (card instanceof PCLCard && !PGR.PCL.Dungeon.IsUnnamedReign())
         {
-            for (PCLRuntimeLoadout series : GR.PCL.Dungeon.Loadouts)
+            for (PCLRuntimeLoadout series : PGR.PCL.Dungeon.Loadouts)
             {
                 if (MathUtils.randomBoolean(0.25f) && series.bonus < 8)
                 {
@@ -191,7 +191,7 @@ public class PCLCardRewardBonus extends GUIElement
 
     private void ReceiveGold(CardRewardBundle bundle)
     {
-        for (PCLRuntimeLoadout series : GR.PCL.Dungeon.Loadouts)
+        for (PCLRuntimeLoadout series : PGR.PCL.Dungeon.Loadouts)
         {
             if (series.GetCardPoolInPlay().containsKey(bundle.card.cardID))
             {
@@ -207,7 +207,7 @@ public class PCLCardRewardBonus extends GUIElement
 
     private void ReceiveMaxHP(CardRewardBundle bundle)
     {
-        for (PCLRuntimeLoadout series : GR.PCL.Dungeon.Loadouts)
+        for (PCLRuntimeLoadout series : PGR.PCL.Dungeon.Loadouts)
         {
             if (series.GetCardPoolInPlay().containsKey(bundle.card.cardID))
             {
@@ -222,7 +222,7 @@ public class PCLCardRewardBonus extends GUIElement
 
     private void ReceiveUpgrade(CardRewardBundle bundle)
     {
-        for (PCLRuntimeLoadout series : GR.PCL.Dungeon.Loadouts)
+        for (PCLRuntimeLoadout series : PGR.PCL.Dungeon.Loadouts)
         {
             if (series.GetCardPoolInPlay().containsKey(bundle.card.cardID))
             {

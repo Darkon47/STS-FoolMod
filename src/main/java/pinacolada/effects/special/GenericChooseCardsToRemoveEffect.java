@@ -12,7 +12,7 @@ import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import eatyourbeets.effects.EYBEffectWithCallback;
 import eatyourbeets.interfaces.delegates.FuncT1;
 import eatyourbeets.utilities.GenericCondition;
-import pinacolada.resources.GR;
+import pinacolada.resources.PGR;
 
 import java.util.ArrayList;
 
@@ -113,6 +113,6 @@ public class GenericChooseCardsToRemoveEffect extends EYBEffectWithCallback<Gene
         }
 
         AbstractDungeon.getCurrRoom().phase = AbstractRoom.RoomPhase.INCOMPLETE;
-        AbstractDungeon.gridSelectScreen.open(cardGroup, cardsToRemove, GR.PCL.Strings.GridSelection.ChooseCards(cardsToRemove), false, false, false, true);
+        AbstractDungeon.gridSelectScreen.open(cardGroup, cardsToRemove, PGR.PCL.Strings.GridSelection.ChooseCards(cardsToRemove), false, false, false, true);
     }
 }
