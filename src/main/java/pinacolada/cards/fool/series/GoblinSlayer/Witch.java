@@ -11,8 +11,8 @@ import eatyourbeets.interfaces.subscribers.OnStartOfTurnPostDrawSubscriber;
 import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.orbs.pcl.Fire;
+import pinacolada.powers.FoolPower;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.powers.PCLPower;
 import pinacolada.utilities.PCLActions;
 
 public class Witch extends FoolCard implements OnStartOfTurnPostDrawSubscriber
@@ -70,7 +70,7 @@ public class Witch extends FoolCard implements OnStartOfTurnPostDrawSubscriber
         PCLCombatStats.onStartOfTurnPostDraw.Unsubscribe(this);
     }
 
-    public static class WitchPower extends PCLPower
+    public static class WitchPower extends FoolPower
     {
         public WitchPower(AbstractCreature owner, int amount)
         {

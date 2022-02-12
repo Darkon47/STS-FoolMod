@@ -13,7 +13,7 @@ import eatyourbeets.utilities.TargetHelper;
 import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard_UltraRare;
 import pinacolada.monsters.pcl.KirakishouPuppet;
-import pinacolada.powers.pcl.MindControlPower;
+import pinacolada.powers.fool.MindControlPower;
 import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameEffects;

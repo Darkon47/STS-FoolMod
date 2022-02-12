@@ -1,0 +1,9 @@
+
+{
+	"eternal:MusouNoHitotachi":
+	{
+		"DESCRIPTIONS": ["On your first #yMatch each turn, draw #b1 card. NL #yResolve cannot decrease when you are at maximum #yResolve and #yMusou #yIsshin is not active."],
+		"FLAVOR": "Where there is progress, there must be loss.",
+		"NAME": "Musou no Hitotachi"
+	}
+}

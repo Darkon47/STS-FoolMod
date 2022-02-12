@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.fool.special.Vesta_Elixir;
-import pinacolada.powers.PCLPower;
+import pinacolada.powers.FoolPower;
 import pinacolada.utilities.PCLActions;
 
 public class Vesta extends FoolCard
@@ -53,7 +53,7 @@ public class Vesta extends FoolCard
         PCLActions.Bottom.StackPower(new VestaPower(player, elixir, TrySpendAffinity(PCLAffinity.Blue) ? magicNumber - 1 : magicNumber));
     }
 
-    public static class VestaPower extends PCLPower
+    public static class VestaPower extends FoolPower
     {
         private static int counter = 0;
         private final Vesta_Elixir elixir;

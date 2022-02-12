@@ -72,7 +72,7 @@ public class ModifyAffinityScaling extends GenericCardSelection
         }
         else if (affinity == PCLAffinity.General) // Modify all existing scaling
         {
-            for (PCLCardAffinity a : affinities.List)
+            for (PCLCardAffinity a : affinities.GetCardAffinities(false))
             {
                 if (a.scaling > 0)
                 {

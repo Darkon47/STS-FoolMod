@@ -11,7 +11,7 @@ import eatyourbeets.interfaces.delegates.FuncT1;
 import eatyourbeets.interfaces.delegates.FuncT2;
 import eatyourbeets.utilities.AdvancedTexture;
 import pinacolada.cards.base.attributes.AbstractAttribute;
-import pinacolada.cards.fool.colorless.QuestionMark;
+import pinacolada.cards.pcl.special.QuestionMark;
 import pinacolada.resources.PGR;
 
 import java.util.ArrayList;

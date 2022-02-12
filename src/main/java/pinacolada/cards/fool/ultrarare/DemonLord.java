@@ -9,7 +9,7 @@ import eatyourbeets.utilities.GameActions;
 import eatyourbeets.utilities.JUtils;
 import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard_UltraRare;
-import pinacolada.powers.PCLClickablePower;
+import pinacolada.powers.FoolClickablePower;
 import pinacolada.powers.PowerTriggerConditionType;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLJUtils;
@@ -42,7 +42,7 @@ public class DemonLord extends FoolCard_UltraRare
         PCLActions.Bottom.ApplyPower(p, p, new DemonLordPower(p, 1));
     }
 
-    public static class DemonLordPower extends PCLClickablePower
+    public static class DemonLordPower extends FoolClickablePower
     {
         public DemonLordPower(AbstractPlayer owner, int amount)
         {

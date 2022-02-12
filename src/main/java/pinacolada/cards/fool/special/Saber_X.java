@@ -15,7 +15,7 @@ import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.fool.series.Fate.Saber;
 import pinacolada.effects.AttackEffects;
 import pinacolada.effects.VFX;
-import pinacolada.powers.PCLPower;
+import pinacolada.powers.FoolPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameEffects;
 
@@ -55,7 +55,7 @@ public class Saber_X extends FoolCard
         PCLActions.Bottom.StackPower(new Saber_XPower(p, magicNumber));
     }
 
-    public static class Saber_XPower extends PCLPower
+    public static class Saber_XPower extends FoolPower
     {
         public Saber_XPower(AbstractCreature owner, int amount)
         {

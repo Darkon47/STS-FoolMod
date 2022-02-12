@@ -10,8 +10,8 @@ import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
+import pinacolada.powers.FoolPower;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.powers.PCLPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLJUtils;
 
@@ -64,7 +64,7 @@ public class MorganLeFay extends FoolCard
         }
     }
 
-    public static class MorganLeFayPower extends PCLPower
+    public static class MorganLeFayPower extends FoolPower
     {
         public AbstractCard card;
 

@@ -26,34 +26,33 @@ public class PCLCardData
 
     public final Class<? extends PCLCard> type;
     public final CardStrings Strings;
+    public final RotatingList<PCLCardPreview> previews = new RotatingList<>();
 
     public Object Shared;
     public String ImagePath;
     public String ID;
     public AbstractCard.CardType CardType;
-    public int BaseCost;
-    public int MaxCopies;
-    public boolean cropPortrait;
-
-    public int MaxForms = 1;
-    public int MaxUpgradeLevel = 1;
+    public AbstractCard.CardColor CardColor;
+    public AbstractCard.CardRarity CardRarity;
+    public CardSeries Series;
+    public PCLAttackType AttackType;
+    public PCLCard tempCard = null;
+    public PCLCardTarget CardTarget;
+    public boolean BlockScalingAttack;
+    public boolean CanAppearForOtherCharacters = false;
+    public boolean CanGrantAffinity = true;
+    public boolean CanScaleMagicNumber = false;
+    public boolean CanToggleFromAlternateForm = false;
     public boolean CanToggleFromPopup = false;
     public boolean CanToggleOnUpgrade = false;
-    public boolean CanToggleFromAlternateForm = false;
-    public boolean UnUpgradedCanToggleForms = false;
-
-    public final RotatingList<PCLCardPreview> previews = new RotatingList<>();
-    public AbstractCard.CardRarity CardRarity;
-    public AbstractCard.CardColor CardColor;
-    public PCLCardTarget CardTarget;
-    public PCLAttackType AttackType;
-    public CardSeries Series;
-    public PCLCard tempCard = null;
-    public boolean BlockScalingAttack;
-    public boolean CanScaleMagicNumber = false;
-    public boolean CanGrantAffinity = true;
     public boolean IsExpansionCard;
     public boolean PlayAtEndOfTurn = false;
+    public boolean UnUpgradedCanToggleForms = false;
+    public boolean cropPortrait;
+    public int BaseCost;
+    public int MaxCopies;
+    public int MaxForms = 1;
+    public int MaxUpgradeLevel = 1;
 
     private TextureAtlas.AtlasRegion cardIcon = null;
 
@@ -241,6 +240,19 @@ public class PCLCardData
     public PCLCardData SetColor(AbstractCard.CardColor color)
     {
         CardColor = color;
+
+        return this;
+    }
+
+    public PCLCardData SetColorless()
+    {
+        return SetColorless(false);
+    }
+
+    public PCLCardData SetColorless(boolean canAppearForOtherCharacters)
+    {
+        CardColor = AbstractCard.CardColor.COLORLESS;
+        CanAppearForOtherCharacters = canAppearForOtherCharacters;
 
         return this;
     }

@@ -70,7 +70,7 @@ public class PCLGameUtilities extends GameUtilities
     public static void AddAffinity(PCLAffinity affinity, int amount, boolean showEffect) {
         PCLCombatStats.MatchingSystem.AddAffinity(affinity, amount);
         if (showEffect) {
-            PCLCombatStats.MatchingSystem.Flash(affinity);
+            PCLCombatStats.MatchingSystem.AffinityRows.Flash(affinity);
         }
     }
 
@@ -78,7 +78,7 @@ public class PCLGameUtilities extends GameUtilities
         PCLCombatStats.MatchingSystem.AddAffinities(affinities);
         if (showEffect) {
             for (PCLAffinity affinity : affinities.GetAffinities()) {
-                PCLCombatStats.MatchingSystem.Flash(affinity);
+                PCLCombatStats.MatchingSystem.AffinityRows.Flash(affinity);
             }
         }
     }
@@ -86,7 +86,7 @@ public class PCLGameUtilities extends GameUtilities
     public static void SpendAffinity(PCLAffinity affinity, int amount, boolean showEffect) {
         PCLCombatStats.MatchingSystem.SpendAffinity(affinity, amount);
         if (showEffect) {
-            PCLCombatStats.MatchingSystem.Flash(affinity);
+            PCLCombatStats.MatchingSystem.AffinityRows.Flash(affinity);
         }
     }
 
@@ -313,6 +313,10 @@ public class PCLGameUtilities extends GameUtilities
         ModifySecondaryValue(card, Math.max(0, card.baseSecondaryValue - amount), temporary);
     }
 
+    public static ArrayList<AbstractPCLAffinityPower> GetAllPCLAffinityPowers() {
+        return PCLCombatStats.MatchingSystem.Powers;
+    }
+
     public static int GetAffinityCount(PCLAffinity affinity)
     {
         return PCLCombatStats.MatchingSystem.GetAffinityLevel(affinity, true);
@@ -378,6 +382,11 @@ public class PCLGameUtilities extends GameUtilities
     {
         final PCLCardAffinities a = GetPCLAffinities(card);
         return a != null ? a.GetLevel(affinity, useStarLevel) : 0;
+    }
+
+    public static AbstractPCLAffinityPower GetPCLAffinityPower(PCLAffinity affinity)
+    {
+        return affinity != null ? PCLCombatStats.MatchingSystem.GetPower(affinity) : PCLGameUtilities.GetRandomElement(PCLGameUtilities.GetAllPCLAffinityPowers(), PCLCard.rng);
     }
 
     public static int GetPCLAffinityPowerLevel(PCLAffinity affinity)
@@ -849,7 +858,7 @@ public class PCLGameUtilities extends GameUtilities
                 return true;
             }
 
-            for (PCLCardAffinity affinity : a.List)
+            for (PCLCardAffinity affinity : a.GetCardAffinities(false))
             {
                 if (affinity.level == 1)
                 {
@@ -974,6 +983,11 @@ public class PCLGameUtilities extends GameUtilities
         return target == null || target.isDeadOrEscaped() || target.currentHealth <= 0;
     }
 
+    public static boolean IsMismatch(AbstractCard card, PCLAffinity targetAffinity)
+    {
+        return targetAffinity != PCLAffinity.General && targetAffinity != PCLAffinity.Star && targetAffinity != PCLAffinity.Silver && PCLGameUtilities.GetPCLAffinityLevel(card, PCLAffinity.General, true) > 0 && PCLGameUtilities.GetPCLAffinityLevel(card, targetAffinity, true) == 0 && !PCLGameUtilities.HasSilverAffinity(card);
+    }
+
     public static boolean IsPCLAffinityPowerActive(PCLAffinity affinity)
     {
         AbstractPCLAffinityPower po = PCLCombatStats.MatchingSystem.GetPower(affinity);
@@ -981,7 +995,7 @@ public class PCLGameUtilities extends GameUtilities
     }
 
     public static boolean IsPCLPlayerClass() {
-        return AbstractDungeon.player != null && (AbstractDungeon.player.chosenClass == PGR.Fool.PlayerClass);
+        return AbstractDungeon.player != null && (AbstractDungeon.player.chosenClass == PGR.Fool.PlayerClass || AbstractDungeon.player.chosenClass == PGR.Eternal.PlayerClass);
     }
 
     public static boolean IsSameSeries(AbstractCard card1, AbstractCard card2)
@@ -1001,7 +1015,7 @@ public class PCLGameUtilities extends GameUtilities
         final PCLCardAffinities affinities = pC.affinities;
         if (affinity == PCLAffinity.General) // Modify all existing levels
         {
-            for (PCLCardAffinity a : affinities.List)
+            for (PCLCardAffinity a : affinities.GetCardAffinities(false))
             {
                 if (a.level > 0)
                 {

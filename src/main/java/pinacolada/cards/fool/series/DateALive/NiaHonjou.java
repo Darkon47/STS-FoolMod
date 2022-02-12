@@ -8,8 +8,8 @@ import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.fool.FoolCard;
+import pinacolada.powers.FoolPower;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.powers.PCLPower;
 import pinacolada.utilities.PCLActions;
 
 public class NiaHonjou extends FoolCard
@@ -45,7 +45,7 @@ public class NiaHonjou extends FoolCard
         PCLActions.Top.GainTemporaryHP(secondaryValue);
     }
 
-    public static class NiaHonjouPower extends PCLPower implements OnSynergySubscriber
+    public static class NiaHonjouPower extends FoolPower implements OnSynergySubscriber
     {
         public NiaHonjouPower(AbstractPlayer owner, int amount)
         {

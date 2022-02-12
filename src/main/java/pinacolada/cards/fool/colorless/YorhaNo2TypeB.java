@@ -11,8 +11,8 @@ import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.interfaces.subscribers.OnGainAffinitySubscriber;
+import pinacolada.powers.FoolPower;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.powers.PCLPower;
 import pinacolada.powers.PCLPowerHelper;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
@@ -41,7 +41,7 @@ public class YorhaNo2TypeB extends FoolCard
         PCLActions.Bottom.StackPower(new YohraNo2TypeBPower(p, this.magicNumber));
     }
 
-    public static class YohraNo2TypeBPower extends PCLPower implements OnShuffleSubscriber, OnGainAffinitySubscriber
+    public static class YohraNo2TypeBPower extends FoolPower implements OnShuffleSubscriber, OnGainAffinitySubscriber
     {
 
         public YohraNo2TypeBPower(AbstractPlayer owner, int amount)

@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.powers.DrawCardNextTurnPower;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
-import pinacolada.powers.PCLClickablePower;
+import pinacolada.powers.FoolClickablePower;
 import pinacolada.powers.PowerTriggerConditionType;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
@@ -56,7 +56,7 @@ public class PinaCoLada extends FoolCard
         PCLActions.Bottom.StackPower(new PinaCoLadaPower(p, 1));
     }
 
-    public static class PinaCoLadaPower extends PCLClickablePower
+    public static class PinaCoLadaPower extends FoolClickablePower
     {
 
         public PinaCoLadaPower(AbstractCreature owner, int amount)

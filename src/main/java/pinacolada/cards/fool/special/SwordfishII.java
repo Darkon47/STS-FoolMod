@@ -17,7 +17,7 @@ import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
-import pinacolada.powers.PCLPower;
+import pinacolada.powers.FoolPower;
 import pinacolada.utilities.PCLActions;
 
 import java.util.ArrayList;
@@ -59,7 +59,7 @@ public class SwordfishII extends FoolCard
         PCLActions.Bottom.StackPower(new SwordfishIIPower(p, magicNumber));
     }
 
-    public static class SwordfishIIPower extends PCLPower
+    public static class SwordfishIIPower extends FoolPower
     {
         public static final String POWER_ID = CreateFullID(SwordfishIIPower.class);
 

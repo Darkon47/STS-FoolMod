@@ -11,7 +11,7 @@ import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
 import pinacolada.powers.replacement.TemporaryDrawReductionPower;
-import pinacolada.ui.combat.PCLAffinityMeter;
+import pinacolada.ui.combat.FoolAffinityMeter;
 import pinacolada.utilities.PCLActions;
 
 public class Sloth extends FoolCard
@@ -37,7 +37,7 @@ public class Sloth extends FoolCard
         super.triggerOnExhaust();
 
         PCLActions.Bottom.GainBlock(secondaryValue);
-        PCLActions.Bottom.RerollAffinity(PCLAffinityMeter.Target.CurrentAffinity, PCLAffinity.Red, PCLAffinity.Dark)
+        PCLActions.Bottom.RerollAffinity(FoolAffinityMeter.TARGET_CURRENT, PCLAffinity.Red, PCLAffinity.Dark)
                 .SetOptions(false, true);
     }
 

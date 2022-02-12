@@ -11,7 +11,6 @@ import pinacolada.cards.base.PCLAffinity;
 import pinacolada.effects.affinity.ChangeAffinityCountEffect;
 import pinacolada.resources.PGR;
 import pinacolada.ui.controls.GUI_Button;
-import pinacolada.ui.hitboxes.RelativeHitbox;
 import pinacolada.utilities.PCLGameEffects;
 import pinacolada.utilities.PCLRenderHelpers;
 
@@ -31,17 +30,13 @@ public class AffinityKeywordButton extends GUIElement
     public GUI_Button background_button;
     public int currentLevel;
     public float borderRotation;
+    public boolean showBorders = true;
 
-    public AffinityKeywordButton(Hitbox hb, PCLAffinity affinity) {
-        this(hb, affinity, ICON_SIZE);
-    }
-
-    public AffinityKeywordButton(Hitbox hb, PCLAffinity affinity, float iconSize)
+    public AffinityKeywordButton(Hitbox hb, PCLAffinity affinity)
     {
         Type = affinity;
 
-        background_button = new GUI_Button(affinity.GetIcon(), new RelativeHitbox(hb, iconSize, iconSize, 0f, 0f, true)
-                .SetIsPopupCompatible(true))
+        background_button = new GUI_Button(affinity.GetIcon(), hb)
                 .SetText("")
                 .SetColor(currentLevel == 0 ? PANEL_COLOR : Color.WHITE)
                 .SetOnClick(() -> {
@@ -61,15 +56,16 @@ public class AffinityKeywordButton extends GUIElement
         return this;
     }
 
-    public AffinityKeywordButton SetOffsets(float xOffset, float yOffset)
-    {
-        RelativeHitbox.SetPercentageOffset(background_button.hb, xOffset, yOffset);
-        return this;
-    }
-
     public AffinityKeywordButton SetOnClick(ActionT1<AffinityKeywordButton> onClick)
     {
         this.onClick = onClick;
+
+        return this;
+    }
+
+    public AffinityKeywordButton ShowBorders(boolean showBorders)
+    {
+        this.showBorders = showBorders;
 
         return this;
     }
@@ -91,7 +87,7 @@ public class AffinityKeywordButton extends GUIElement
                 radiusBG = background_button.hb.width;
                 break;
             case 3:
-                borderTexture = PGR.PCL.Images.Affinities.Border.Texture();
+                borderTexture = PGR.PCL.Images.Affinities.Border_Highlight.Texture();
                 borderBGTexture = PGR.PCL.Images.Affinities.BorderBG2.Texture();
                 borderFGTexture = PGR.PCL.Images.Affinities.BorderFG.Texture();
                 radiusBG = background_button.hb.width * 1.125f;
@@ -130,7 +126,7 @@ public class AffinityKeywordButton extends GUIElement
     public void Render(SpriteBatch sb)
     {
         sb.setColor(background_button.buttonColor);
-        if (borderBGTexture != null) {
+        if (borderBGTexture != null && showBorders) {
             PCLRenderHelpers.DrawCentered(sb,
                     background_button.buttonColor,
                     borderBGTexture,
@@ -143,25 +139,27 @@ public class AffinityKeywordButton extends GUIElement
         }
         background_button.Render(sb);
         sb.setColor(background_button.buttonColor);
-        if (borderTexture != null) {
-            sb.draw(borderTexture,
-                    background_button.hb.x, background_button.hb.y,
-                    background_button.hb.width/2f, background_button.hb.height/2f,
-                    background_button.hb.width, background_button.hb.height,
-                    background_button.background.scaleX, background_button.background.scaleY,
-                    borderRotation, 0,0,
-                    borderTexture.getWidth(), borderTexture.getHeight(), false, false
-            );
-        }
-        if (borderFGTexture != null) {
-            sb.draw(borderFGTexture,
-                    background_button.hb.x, background_button.hb.y,
-                    background_button.hb.width/2f, background_button.hb.height/2f,
-                    background_button.hb.width, background_button.hb.height,
-                    background_button.background.scaleX, background_button.background.scaleY,
-                    -borderRotation, 0,0,
-                    borderFGTexture.getWidth(), borderFGTexture.getHeight(), false, false
-            );
+        if (showBorders) {
+            if (borderTexture != null) {
+                sb.draw(borderTexture,
+                        background_button.hb.x, background_button.hb.y,
+                        background_button.hb.width/2f, background_button.hb.height/2f,
+                        background_button.hb.width, background_button.hb.height,
+                        background_button.background.scaleX, background_button.background.scaleY,
+                        borderRotation, 0,0,
+                        borderTexture.getWidth(), borderTexture.getHeight(), false, false
+                );
+            }
+            if (borderFGTexture != null) {
+                sb.draw(borderFGTexture,
+                        background_button.hb.x, background_button.hb.y,
+                        background_button.hb.width/2f, background_button.hb.height/2f,
+                        background_button.hb.width, background_button.hb.height,
+                        background_button.background.scaleX, background_button.background.scaleY,
+                        -borderRotation, 0,0,
+                        borderFGTexture.getWidth(), borderFGTexture.getHeight(), false, false
+                );
+            }
         }
         if (Type  == PCLAffinity.Star) {
             Texture star = STAR_TEXTURE.Texture();

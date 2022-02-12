@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
+import com.megacrit.cardcrawl.localization.RelicStrings;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.characters.FoolCharacter;
@@ -62,7 +63,7 @@ public class FoolResources extends PCLAbstractResources {
 
     protected void InitializeCharacter()
     {
-        BaseMod.addCharacter(new FoolCharacter(), PGR.PCL.Images.CHAR_BUTTON_PNG, PGR.PCL.Images.CHAR_BACKGROUND, PlayerClass);
+        BaseMod.addCharacter(new FoolCharacter(), PGR.Fool.Images.CHAR_BUTTON_PNG, PGR.Fool.Images.CHAR_BACKGROUND, PlayerClass);
     }
 
     protected void InitializeStrings()
@@ -71,6 +72,7 @@ public class FoolResources extends PCLAbstractResources {
 
         LoadCustomStrings(CharacterStrings.class);
         LoadCustomCardStrings();
+        LoadCustomStrings(RelicStrings.class);
     }
 
     protected void InitializeCards()
@@ -78,6 +80,7 @@ public class FoolResources extends PCLAbstractResources {
         PCLJUtils.LogInfo(this, "InitializeCards();");
 
         LoadCustomCards();
+        LoadCustomRelics();
         PCLCardData.PostInitialize();
     }
 

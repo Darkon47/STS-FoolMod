@@ -9,7 +9,7 @@ import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
 import pinacolada.effects.VFX;
-import pinacolada.powers.PCLPower;
+import pinacolada.powers.FoolPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
@@ -54,7 +54,7 @@ public class EulaLawrence extends FoolCard
         }
     }
 
-    public static class EulaLawrencePower extends PCLPower
+    public static class EulaLawrencePower extends FoolPower
     {
         public EulaLawrencePower(AbstractCreature owner, int amount)
         {

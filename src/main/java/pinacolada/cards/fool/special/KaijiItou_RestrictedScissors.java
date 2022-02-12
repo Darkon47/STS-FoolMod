@@ -11,8 +11,8 @@ import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.monsters.PCLEnemyIntent;
+import pinacolada.powers.FoolPower;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.powers.PCLPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
@@ -61,7 +61,7 @@ public class KaijiItou_RestrictedScissors extends FoolCard
         PCLActions.Bottom.StackPower(new KaijiItou_RestrictedScissorsPower(p, secondaryValue));
     }
 
-    public static class KaijiItou_RestrictedScissorsPower extends PCLPower
+    public static class KaijiItou_RestrictedScissorsPower extends FoolPower
     {
         private static final int MODIFIER = 50;
 

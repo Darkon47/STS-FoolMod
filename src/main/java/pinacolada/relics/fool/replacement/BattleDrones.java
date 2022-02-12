@@ -9,12 +9,12 @@ import pinacolada.effects.AttackEffects;
 import pinacolada.effects.SFX;
 import pinacolada.effects.VFX;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.relics.PCLReplacementRelic;
+import pinacolada.relics.FoolReplacementRelic;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameEffects;
 import pinacolada.utilities.PCLJUtils;
 
-public class BattleDrones extends PCLReplacementRelic implements OnSynergySubscriber
+public class BattleDrones extends FoolReplacementRelic implements OnSynergySubscriber
 {
     public static final String ID = CreateFullID(BattleDrones.class);
     public static final int DAMAGE_AMOUNT = 3;

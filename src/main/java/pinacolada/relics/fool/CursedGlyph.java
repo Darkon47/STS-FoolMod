@@ -4,11 +4,11 @@ import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import eatyourbeets.interfaces.listeners.OnEquipUnnamedReignRelicListener;
-import pinacolada.relics.PCLRelic;
+import pinacolada.relics.FoolRelic;
 import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 
-public class CursedGlyph extends PCLRelic implements OnEquipUnnamedReignRelicListener
+public class CursedGlyph extends FoolRelic implements OnEquipUnnamedReignRelicListener
 {
     public static final String ID = CreateFullID(CursedGlyph.class);
     public static final int MAX_HP_LOSS = 4;

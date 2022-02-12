@@ -10,7 +10,8 @@ import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.fool.FoolCard;
-import pinacolada.powers.pcl.GeassPower;
+import pinacolada.effects.SFX;
+import pinacolada.powers.fool.GeassPower;
 import pinacolada.utilities.PCLActions;
 
 import java.util.ArrayList;
@@ -76,7 +77,7 @@ public class Lelouch extends FoolCard
                 if (enemies.size() > 0)
                 {
                     PCLActions.Bottom.VFX(new BorderFlashEffect(Color.RED));
-                    PCLActions.Bottom.SFX("MONSTER_COLLECTOR_DEBUFF");
+                    PCLActions.Bottom.SFX(SFX.MONSTER_COLLECTOR_DEBUFF);
                     for (AbstractMonster m2 : enemies)
                     {
                         PCLActions.Bottom.ApplyPower(player, new GeassPower(m2));

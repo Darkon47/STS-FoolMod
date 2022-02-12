@@ -9,13 +9,14 @@ import pinacolada.cards.base.CardSeries;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.PCLCardTarget;
+import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.fool.series.RozenMaiden.Suigintou;
 import pinacolada.effects.AttackEffects;
 import pinacolada.powers.PCLCombatStats;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
-public class Suigintou_BlackFeather extends FoolCard_Curse implements OnStartOfTurnPostDrawSubscriber
+public class Suigintou_BlackFeather extends FoolCard implements OnStartOfTurnPostDrawSubscriber
 {
     public static final PCLCardData DATA = Register(Suigintou_BlackFeather.class)
     		.SetCurse(0, PCLCardTarget.None, true)
@@ -24,7 +25,7 @@ public class Suigintou_BlackFeather extends FoolCard_Curse implements OnStartOfT
 
     public Suigintou_BlackFeather()
     {
-        super(DATA, false);
+        super(DATA);
 
         Initialize(0, 0, 2, 5);
         SetUpgrade(0, 0, 0);

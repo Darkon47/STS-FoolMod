@@ -13,7 +13,7 @@ import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.cardeffects.GenericEffect;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.pcl.status.Crystallize;
-import pinacolada.powers.PCLPower;
+import pinacolada.powers.FoolPower;
 import pinacolada.powers.PCLPowerHelper;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
@@ -63,7 +63,7 @@ public class Greed extends FoolCard
         PCLActions.Bottom.StackPower(new GreedPower(p, 1));
     }
 
-    public static class GreedPower extends PCLPower
+    public static class GreedPower extends FoolPower
     {
         protected int counter;
         public GreedPower(AbstractCreature owner, int amount)

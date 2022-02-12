@@ -98,13 +98,13 @@ public class PCLCardLibraryPatches
             case Doubt.ID: return Curse_Doubt.DATA;
             case Enlightenment.ID: return pinacolada.cards.pcl.replacement.Enlightenment.DATA;
             case Injury.ID: return Curse_Injury.DATA;
-            case JAX.ID: return pinacolada.cards.fool.replacement.JAX.DATA;
+            case JAX.ID: return pinacolada.cards.pcl.replacement.JAX.DATA;
             case Miracle.ID: return pinacolada.cards.pcl.replacement.Miracle.DATA;
             case Normality.ID: return Curse_Normality.DATA;
             case Pain.ID: return Curse_Pain.DATA;
             case Parasite.ID: return Curse_Parasite.DATA;
             case Regret.ID: return Curse_Regret.DATA;
-            case RitualDagger.ID: return pinacolada.cards.fool.replacement.RitualDagger.DATA;
+            case RitualDagger.ID: return pinacolada.cards.pcl.replacement.RitualDagger.DATA;
             case Shame.ID: return Curse_Shame.DATA;
             case Slimed.ID: return Status_Slimed.DATA;
             case VoidCard.ID: return Status_Void.DATA;

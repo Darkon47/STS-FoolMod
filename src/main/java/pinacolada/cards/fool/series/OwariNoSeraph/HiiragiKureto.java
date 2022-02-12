@@ -12,7 +12,7 @@ import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
-import pinacolada.powers.PCLPower;
+import pinacolada.powers.FoolPower;
 import pinacolada.powers.common.ElectrifiedPower;
 import pinacolada.utilities.PCLActions;
 
@@ -69,7 +69,7 @@ public class HiiragiKureto extends FoolCard
         }
     }
 
-    public static class HiiragiKuretoPower extends PCLPower
+    public static class HiiragiKuretoPower extends FoolPower
     {
         public HiiragiKuretoPower(AbstractCreature owner, int amount)
         {

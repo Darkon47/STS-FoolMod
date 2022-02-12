@@ -9,7 +9,7 @@ import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.powers.common.ImpairedPower;
-import pinacolada.powers.pcl.InvertPower;
+import pinacolada.powers.fool.InvertPower;
 import pinacolada.utilities.PCLActions;
 
 public class YukariYakumo extends FoolCard

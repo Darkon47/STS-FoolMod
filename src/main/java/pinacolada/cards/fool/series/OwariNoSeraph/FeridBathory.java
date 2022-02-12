@@ -10,7 +10,7 @@ import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
 import pinacolada.effects.vfx.megacritCopy.HemokinesisEffect2;
-import pinacolada.powers.PCLClickablePower;
+import pinacolada.powers.FoolClickablePower;
 import pinacolada.powers.PowerTriggerConditionType;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameEffects;
@@ -50,7 +50,7 @@ public class FeridBathory extends FoolCard
         PCLActions.Bottom.StackPower(new FeridBathoryPower(p, magicNumber));
     }
 
-    public static class FeridBathoryPower extends PCLClickablePower
+    public static class FeridBathoryPower extends FoolClickablePower
     {
         public static final int EXHAUST_PILE_THRESHOLD = 2;
         public static final int FORCE_AMOUNT = 1;

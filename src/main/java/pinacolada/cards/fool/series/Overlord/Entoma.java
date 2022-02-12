@@ -11,7 +11,7 @@ import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
 import pinacolada.effects.VFX;
-import pinacolada.powers.PCLPower;
+import pinacolada.powers.FoolPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameEffects;
 import pinacolada.utilities.PCLGameUtilities;
@@ -45,7 +45,7 @@ public class Entoma extends FoolCard
         }
     }
 
-    public static class EntomaPower extends PCLPower
+    public static class EntomaPower extends FoolPower
     {
         public EntomaPower(AbstractCreature owner, int amount)
         {

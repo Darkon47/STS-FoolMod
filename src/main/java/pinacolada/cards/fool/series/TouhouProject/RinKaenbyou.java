@@ -10,7 +10,7 @@ import pinacolada.cards.base.PCLCard;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.fool.FoolCard;
-import pinacolada.cards.fool.special.RinKaenbyou_VengefulSpirit;
+import pinacolada.cards.fool.curse.RinKaenbyou_VengefulSpirit;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;

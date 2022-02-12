@@ -3,11 +3,11 @@ package pinacolada.relics.fool;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import pinacolada.powers.common.ResistancePower;
-import pinacolada.relics.PCLRelic;
+import pinacolada.relics.FoolRelic;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
-public class SoulGem4 extends PCLRelic
+public class SoulGem4 extends FoolRelic
 {
     public static final String ID = CreateFullID(SoulGem4.class);
     public static final int POWER_AMOUNT = 3;

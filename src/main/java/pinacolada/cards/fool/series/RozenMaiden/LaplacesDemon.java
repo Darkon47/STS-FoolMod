@@ -9,8 +9,8 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
+import pinacolada.powers.FoolPower;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.powers.PCLPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
@@ -91,7 +91,7 @@ public class LaplacesDemon extends FoolCard
         }
     }
 
-    public static class LaplacesDemonPower extends PCLPower
+    public static class LaplacesDemonPower extends FoolPower
     {
 
         public LaplacesDemonPower(AbstractCreature owner, int amount)

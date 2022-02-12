@@ -13,7 +13,7 @@ import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.fool.FoolCard;
-import pinacolada.powers.PCLPower;
+import pinacolada.powers.FoolPower;
 import pinacolada.powers.PCLPowerHelper;
 import pinacolada.powers.common.BlindedPower;
 import pinacolada.powers.common.ResistancePower;
@@ -56,7 +56,7 @@ public class KanameTousen extends FoolCard {
     }
 
 
-    public static class KanameTousenPower extends PCLPower
+    public static class KanameTousenPower extends FoolPower
     {
         private static final String[] POWER_IDS = {StrengthPower.POWER_ID, DexterityPower.POWER_ID, FocusPower.POWER_ID, ResistancePower.POWER_ID};
         private final HashMap<String, Integer> counts = new HashMap<>();

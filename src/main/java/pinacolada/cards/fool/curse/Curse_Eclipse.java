@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import eatyourbeets.powers.CombatStats;
 import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
-import pinacolada.powers.pcl.SelfImmolationPower;
+import pinacolada.powers.fool.SelfImmolationPower;
 import pinacolada.utilities.PCLActions;
 
 public class Curse_Eclipse extends FoolCard

@@ -1,11 +1,11 @@
 package pinacolada.relics.fool;
 
 import eatyourbeets.utilities.TargetHelper;
-import pinacolada.relics.PCLRelic;
+import pinacolada.relics.FoolRelic;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLJUtils;
 
-public class ChiliPepper extends PCLRelic
+public class ChiliPepper extends FoolRelic
 {
     public static final String ID = CreateFullID(ChiliPepper.class);
     public static final int AMOUNT = 2;

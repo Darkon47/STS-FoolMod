@@ -11,7 +11,7 @@ import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
-import pinacolada.powers.PCLPower;
+import pinacolada.powers.FoolPower;
 import pinacolada.powers.common.CounterAttackPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
@@ -44,7 +44,7 @@ public class PuriPuriPrisoner extends FoolCard
         }
     }
 
-    public static class PuriPuriPrisonerPower extends PCLPower
+    public static class PuriPuriPrisonerPower extends FoolPower
     {
         public PuriPuriPrisonerPower(AbstractCreature owner, int amount)
         {

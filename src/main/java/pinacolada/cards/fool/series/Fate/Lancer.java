@@ -12,8 +12,8 @@ import pinacolada.cards.base.PCLAttackType;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
+import pinacolada.powers.FoolPower;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.powers.PCLPower;
 import pinacolada.utilities.PCLActions;
 
 public class Lancer extends FoolCard
@@ -49,7 +49,7 @@ public class Lancer extends FoolCard
         }
     }
 
-    public static class LancerPower extends PCLPower
+    public static class LancerPower extends FoolPower
     {
         public LancerPower(AbstractCreature owner, int amount)
         {

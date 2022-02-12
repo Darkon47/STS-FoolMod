@@ -16,8 +16,8 @@ import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
 import pinacolada.effects.SFX;
 import pinacolada.effects.VFX;
+import pinacolada.powers.FoolPower;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.powers.PCLPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
@@ -66,7 +66,7 @@ public class Megumin extends FoolCard
         PCLActions.Bottom.StackPower(new MeguminPower(player, this));
     }
 
-    public static class MeguminPower extends PCLPower implements OnSynergySubscriber
+    public static class MeguminPower extends FoolPower implements OnSynergySubscriber
     {
         private final PCLCard sourceCard;
         private final int secondaryAmount;

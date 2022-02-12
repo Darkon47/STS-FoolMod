@@ -10,11 +10,11 @@ import pinacolada.effects.SFX;
 import pinacolada.effects.VFX;
 import pinacolada.powers.PCLClickablePower;
 import pinacolada.powers.PowerTriggerConditionType;
+import pinacolada.relics.FoolReplacementRelic;
 import pinacolada.relics.PCLRelic;
-import pinacolada.relics.PCLReplacementRelic;
 import pinacolada.utilities.PCLActions;
 
-public class CursedBlade extends PCLReplacementRelic
+public class CursedBlade extends FoolReplacementRelic
 {
     public static final String ID = CreateFullID(CursedBlade.class);
     public static final int BUFF_AMOUNT = 5;

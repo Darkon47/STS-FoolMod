@@ -1,0 +1,216 @@
+{
+	"BASIC":
+	{
+		"eternal:Defend":
+		{
+			"DESCRIPTION": "[MI]: Gives [Block] next turn instead.",
+			"NAME": "Defend"
+		},
+		"eternal:ImprovedStrike":
+		{
+			"DESCRIPTION": "[MI]: Deal +!M! damage and Exhaust.",
+			"NAME": "Improved Strike"
+		},
+		"eternal:Strike":
+		{
+			"DESCRIPTION": "",
+			"NAME": "Strike"
+		}
+	},
+	"NORMAL":
+	{
+		"eternal:AllPreserver":
+		{
+			"DESCRIPTION": "Retain up to !M! card(s). || [MI]: Retain them permanently, then Exhaust.",
+			"NAME": "All-Preserver"
+		},
+		"eternal:BalefulOmen":
+		{
+			"DESCRIPTION": "Take !M! damage. ALL enemies gain !S! [Vulnerable] and [Weak]. || [MI]: Do not take damage.",
+			"NAME": "Baleful Omen"
+		},
+		"eternal:Centering":
+		{
+			"DESCRIPTION": "Set ALL of the Next <W> to <S>. Gain !M! [Block] for each Next <W> that was not <S>.",
+			"NAME": "Centering"
+		},
+		"eternal:DesperateSacrifice":
+		{
+			"DESCRIPTION": "Lose !S! HP. Gain !M! Resolve. || <LIM>. If you would die: Survive with 1 HP and <DRW-S>.",
+			"NAME": "Desperate Sacrifice"
+		},
+		"eternal:Dominate":
+		{
+			"DESCRIPTION": "Deal +!M! damage per Resolve. || [MI]: Deals +20% damage.",
+			"NAME": "Dominate"
+		},
+		"eternal:Erosion":
+		{
+			"DESCRIPTION": "Whenever you make a Mismatch with this in hand: This gains +!M! damage.",
+			"NAME": "Erosion"
+		},
+		"eternal:ForcedComposure":
+		{
+			"DESCRIPTION": "Gain !M! Resolve. || You cannot gain Resolve for !S! turn(s).",
+			"EXTENDED_DESCRIPTION": ["You cannot gain #yResolve for #b{0} turn(s)."],
+			"NAME": "Forced Composure"
+		},
+		"eternal:FutureSight":
+		{
+			"DESCRIPTION": "Scry !M!. If you discard a {Hindrance}: Gain [Energized].",
+			"NAME": "Future Sight"
+		},
+		"eternal:GreatExpectations":
+		{
+			"DESCRIPTION": "This combat: Resolve gains and losses are increased by !M!.",
+			"NAME": "Great Expectations"
+		},
+		"eternal:HardenedWill":
+		{
+			"DESCRIPTION": "Lose !M! Resolve to gain !S! [Metallicize]. || [MI]: Gain +!S! [Metallicize].",
+			"NAME": "Hardened Will"
+		},
+		"eternal:ImperialOrder":
+		{
+			"DESCRIPTION": "If the top card of your pile is an Eternal card: Play it. || <SLM>. If it wasn't: <CYC>.",
+			"NAME": "Imperial Order"
+		},
+		"eternal:Indignation":
+		{
+			"DESCRIPTION": "Add !M! {Spite} to your draw pile. || Match: Add them to your hand instead.",
+			"NAME": "Indignation"
+		},
+		"eternal:HastyJudgment":
+		{
+			"DESCRIPTION": "ALL Next <W> are changed to <L> or <D>.",
+			"NAME": "Hasty Judgment"
+		},
+		"eternal:Leadership":
+		{
+			"DESCRIPTION": "<ST>. Motivate !M! || [MI]: <SLM>. <DRW>.",
+			"NAME": "Leadership"
+		},
+		"eternal:LordOfTheFiles":
+		{
+			"DESCRIPTION": "Whenever you Mismatch: Steal !M! [THP] from a random enemy. || Whenever you Match: Take !S! damage.",
+			"EXTENDED_DESCRIPTION": ["Whenever you #yMismatch: Steal #b{0} [THP] from a random enemy. NL Whenever you #yMatch: Take #b{1} damage."],
+			"NAME": "Lord of the Files"
+		},
+		"eternal:NegativeStreak":
+		{
+			"DESCRIPTION": "Set the Next !M! <W> to <D>. ** Match: Refund [E] and put a copy of this on top of your draw pile.",
+			"NAME": "Negative Streak"
+		},
+		"eternal:OminousInscription":
+		{
+			"DESCRIPTION": "Match: Apply !M! [Weak] to ALL enemies. || Mismatch: Gain !M! [Weak].",
+			"NAME": "Ominous Inscription"
+		},
+		"eternal:Omniscience":
+		{
+			"DESCRIPTION": "Increase the number of Next <W> that you can see by !M! (Max. 8).",
+			"NAME": "Omniscience"
+		},
+		"eternal:Origin":
+		{
+			"DESCRIPTION": "Your next Mismatch this turn will not lower Resolve.",
+			"EXTENDED_DESCRIPTION": ["The next #b{0} #yMismatches will not lower #yResolve. Reduced by #b1 each turn."],
+			"NAME": "Origin"
+		},
+		"eternal:PlaneOfEuthymia":
+		{
+			"DESCRIPTION": "Channel 1 [Dark]. || Whenever you make a #yMatch: Trigger your first Orb. Whenever you shuffle your deck: Channel !M! [~Dark].",
+			"EXTENDED_DESCRIPTION": ["Whenever you make a #yMatch: Trigger your first Orb. NL Whenever you shuffle your deck: Channel #b{0} [~Dark]."],
+			"NAME": "Plane Of Euthymia"
+		},
+		"eternal:PledgeOfPropriety":
+		{
+			"DESCRIPTION": "Next turn: Gain !M! [Block] per Resolve (!X!). || You may Exhaust a card to Gain +!S! [Block] next turn.",
+			"NAME": "Pledge of Propriety"
+		},
+		"eternal:PolaritySwitch":
+		{
+			"DESCRIPTION": "ALL <L> cards become <D>. ALL <D> cards become <L>.",
+			"NAME": "Polarity Switch"
+		},
+		"eternal:PositiveStreak":
+		{
+			"DESCRIPTION": "Set the Next !M! <W> to <L>. ** Match: Refund [E] and put a copy of this on top of your draw pile.",
+			"NAME": "Positive Streak"
+		},
+		"eternal:PrayerOfTheMantis":
+		{
+			"DESCRIPTION": "Next turn: <D> Attacks deal double damage. || [MI]. Takes effect this turn instead.",
+			"EXTENDED_DESCRIPTION": ["For #b{0} turn(s): [A-Dark] #yAttacks deal double damage."],
+			"NAME": "Prayer Of The Mantis"
+		},
+		"eternal:PurpleHaze":
+		{
+			"DESCRIPTION": "Gain !M! [Blur]. || Match: Set the Current <W> to <D>.",
+			"NAME": "Purple Haze"
+		},
+		"eternal:RoarOfTime":
+		{
+			"DESCRIPTION": "Scry !M!. Next turn, the target loses !S! HP per Attack discarded.",
+			"NAME": "RoarOfTime"
+		},
+		"eternal:Seclusion":
+		{
+			"DESCRIPTION": "Gives !M! less [Block] per Resolve. || [MI]: Gain !S! [Blur] and Exhaust.",
+			"NAME": "Seclusion"
+		},
+		"eternal:SpacialRend":
+		{
+			"DESCRIPTION": "Deal +!M! damage per card played this turn. || <slm>. Match. <DRW>.",
+			"NAME": "Spacial Rend"
+		},
+		"eternal:Steelbreaker":
+		{
+			"DESCRIPTION": "Apply !M! [Vulnerable]. || Match: Remove the target's [Block]. If it had none: Apply +!M! [Vulnerable].",
+			"NAME": "Steelbreaker"
+		},
+		"eternal:Transcendence":
+		{
+			"DESCRIPTION": "If you would die while having maximum Resolve: Lose ALL Resolve and revert your HP to the value it was at the start of the previous turn.",
+			"NAME": "Transcendence"
+		},
+		"eternal:ViciousLunge":
+		{
+			"DESCRIPTION": "Mismatch: Take !M! damage. || [MI]: Damage dealt and taken from this is increased by +!S!%.",
+			"NAME": "Vicious Lunge"
+		},
+		"eternal:WideLeap":
+		{
+			"DESCRIPTION": "Discard !S! to Draw !M! next turn. || [MI]. The discarded cards cost 0 until played.",
+			"NAME": "Wide Leap"
+		},
+		"eternal:Willbreaker":
+		{
+			"DESCRIPTION": "Lose !M! Resolve to make the target lose !S! [Strength]. || <LIM>. [MI]: Steal that [Strength].",
+			"NAME": "Willbreaker"
+		},
+		"eternal:WishesUnnumbered":
+		{
+			"DESCRIPTION": "Whenever you make a Match with this card in hand: Increase this card's [THP] gain by !S!.",
+			"NAME": "Wishes Unnumbered"
+		}
+	},
+	"SPECIAL":
+	{
+		"eternal:Curse_Spite":
+		{
+			"DESCRIPTION": "At the end of turn: ** Take !S! damage. || On Discard, Exhaust, or Purge: ALL enemies lose !M! [HP].",
+			"NAME": "Spite"
+		},
+		"eternal:Firefly":
+		{
+			"DESCRIPTION": "Apply !M! [Rippled] and [Electrified].",
+			"NAME": "Firefly"
+		},
+		"eternal:VisionHuntDecree":
+		{
+			"DESCRIPTION": "ALL characters gain !M! [Blinded]. || When a character with [Blinded] targets another character, they have a 50% chance to target another random character.",
+			"NAME": "Vision Hunt Decree"
+		}
+	}
+}

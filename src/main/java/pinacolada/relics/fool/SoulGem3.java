@@ -5,11 +5,11 @@ import com.megacrit.cardcrawl.powers.FocusPower;
 import eatyourbeets.interfaces.subscribers.OnChannelOrbSubscriber;
 import pinacolada.actions.special.CreateRandomCurses;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.relics.PCLRelic;
+import pinacolada.relics.FoolRelic;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
-public class SoulGem3 extends PCLRelic implements OnChannelOrbSubscriber
+public class SoulGem3 extends FoolRelic implements OnChannelOrbSubscriber
 {
     public static final String ID = CreateFullID(SoulGem3.class);
     public static final int POWER_AMOUNT = 3;

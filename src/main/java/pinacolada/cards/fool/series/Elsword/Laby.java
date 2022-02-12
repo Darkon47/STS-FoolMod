@@ -15,7 +15,7 @@ import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.SFX;
-import pinacolada.powers.PCLPower;
+import pinacolada.powers.FoolPower;
 import pinacolada.powers.PCLPowerHelper;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
@@ -53,7 +53,7 @@ public class Laby extends FoolCard
         PCLActions.Bottom.StackPower(new LabyPower(p, secondaryValue));
     }
 
-    public static class LabyPower extends PCLPower implements OnTryApplyPowerListener
+    public static class LabyPower extends FoolPower implements OnTryApplyPowerListener
     {
         public LabyPower(AbstractCreature owner, int amount)
         {

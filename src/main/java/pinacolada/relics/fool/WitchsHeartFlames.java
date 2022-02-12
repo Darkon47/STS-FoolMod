@@ -8,11 +8,11 @@ import pinacolada.cards.pcl.curse.Curse_SearingBurn;
 import pinacolada.cards.pcl.status.Status_Burn;
 import pinacolada.powers.PCLCombatStats;
 import pinacolada.powers.common.BurningPower;
-import pinacolada.relics.PCLRelic;
+import pinacolada.relics.FoolRelic;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameEffects;
 
-public class WitchsHeartFlames extends PCLRelic implements OnCardCreatedSubscriber
+public class WitchsHeartFlames extends FoolRelic implements OnCardCreatedSubscriber
 {
     public static final String ID = CreateFullID(WitchsHeartFlames.class);
     public static final int BURNING_ATTACK_BONUS = 15;

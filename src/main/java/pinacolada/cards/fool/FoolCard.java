@@ -10,6 +10,10 @@ public class FoolCard extends PCLCard {
         super(cardData);
     }
 
+    protected FoolCard(PCLCardData cardData, int form, int timesUpgraded) {
+        super(cardData, form, timesUpgraded);
+    }
+
     protected static PCLCardData Register(Class<? extends PCLCard> type)
     {
         return RegisterCardData(type, PGR.Fool.CreateID(type.getSimpleName())).SetColor(PGR.Fool.CardColor);

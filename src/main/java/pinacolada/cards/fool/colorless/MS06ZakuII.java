@@ -8,8 +8,8 @@ import pinacolada.blights.common.UpgradedHand;
 import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.interfaces.subscribers.OnReloadPreDiscardSubscriber;
+import pinacolada.powers.FoolPower;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.powers.PCLPower;
 import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
@@ -75,7 +75,7 @@ public class MS06ZakuII extends FoolCard
         return !player.hasBlight(UpgradedHand.ID) && CheckAffinity(PCLAffinity.General) && PCLJUtils.Find(PCLAffinity.Extended(), a -> PCLCombatStats.MatchingSystem.GetPowerAmount(a) > secondaryValue) != null;
     }
 
-    public static class MS06ZakuIIPower extends PCLPower implements OnReloadPreDiscardSubscriber
+    public static class MS06ZakuIIPower extends FoolPower implements OnReloadPreDiscardSubscriber
     {
         public MS06ZakuIIPower(AbstractPlayer owner, int amount)
         {

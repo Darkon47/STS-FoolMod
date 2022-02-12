@@ -13,8 +13,8 @@ import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.interfaces.subscribers.OnOrbApplyFocusSubscriber;
+import pinacolada.powers.FoolPower;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.powers.PCLPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
@@ -79,7 +79,7 @@ public class UruhaRushia extends FoolCard implements OnOrbApplyFocusSubscriber
         }
     }
 
-    public static class UruhaRushiaPower extends PCLPower implements OnModifyDamageLastSubscriber
+    public static class UruhaRushiaPower extends FoolPower implements OnModifyDamageLastSubscriber
     {
         public UruhaRushiaPower(AbstractPlayer owner, int amount)
         {

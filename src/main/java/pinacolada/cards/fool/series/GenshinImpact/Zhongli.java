@@ -12,7 +12,7 @@ import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.orbs.pcl.Earth;
-import pinacolada.powers.PCLClickablePower;
+import pinacolada.powers.FoolClickablePower;
 import pinacolada.powers.PCLCombatStats;
 import pinacolada.powers.PowerTriggerConditionType;
 import pinacolada.utilities.PCLActions;
@@ -56,7 +56,7 @@ public class Zhongli extends FoolCard
         PCLActions.Bottom.ApplyPower(new ZhongliPower(p, this, this.magicNumber, this.secondaryValue));
     }
 
-    public static class ZhongliPower extends PCLClickablePower implements OnStartOfTurnPostDrawSubscriber
+    public static class ZhongliPower extends FoolClickablePower implements OnStartOfTurnPostDrawSubscriber
     {
         private static final CardEffectChoice choices = new CardEffectChoice();
 

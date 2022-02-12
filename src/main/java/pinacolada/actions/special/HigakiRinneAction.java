@@ -23,7 +23,7 @@ import pinacolada.effects.AttackEffects;
 import pinacolada.effects.SFX;
 import pinacolada.powers.PCLPowerHelper;
 import pinacolada.powers.common.EnchantedArmorPower;
-import pinacolada.powers.deprecated.MarkOfPoisonPower;
+import pinacolada.powers.fool.SilencedPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameEffects;
 import pinacolada.utilities.PCLGameUtilities;
@@ -98,8 +98,8 @@ public class HigakiRinneAction extends EYBAction
         // Debuffs
         actions.Add(this::DamageRandomEnemy, 3);
         actions.Add(this::ApplyRandomDebuff, 3);
-        actions.Add(this::ApplyMarkOfPoison, 2);
         actions.Add(this::BouncingFlask, 2);
+        actions.Add(this::ApplySilence, 1);
 
         // Orbs
         actions.Add(this::ChannelRandomOrb, 3);
@@ -153,12 +153,12 @@ public class HigakiRinneAction extends EYBAction
         PCLActions.Bottom.Add(new HigakiRinneAction(higakiRinne, 3));
     }
 
-    private void ApplyMarkOfPoison()
+    private void ApplySilence()
     {
         AbstractMonster m = PCLGameUtilities.GetRandomEnemy(true);
         if (m != null)
         {
-            PCLActions.Bottom.StackPower(player, new MarkOfPoisonPower(m, player, 2));
+            PCLActions.Bottom.StackPower(player, new SilencedPower(m, 1));
         }
     }
 
@@ -169,20 +169,22 @@ public class HigakiRinneAction extends EYBAction
 
     private void GainRandomBuff()
     {
-        switch (rng.random(5))
+        switch (rng.random(7))
         {
-            case 0: PCLActions.Bottom.GainPlatedArmor(1); break;
+            case 0: PCLActions.Bottom.GainPlatedArmor(2); break;
             case 1: PCLActions.Bottom.GainMetallicize(1); break;
             case 2: PCLActions.Bottom.GainInspiration(1); break;
             case 3: PCLActions.Bottom.GainBlur(1); break;
             case 4: PCLActions.Bottom.GainMalleable(2); break;
-            case 5: PCLActions.Bottom.GainTemporaryThorns(9); break;
+            case 5: PCLActions.Bottom.GainThorns(2); break;
+            case 6: PCLActions.Bottom.GainSorcery(2); break;
+            case 7: PCLActions.Bottom.GainSupportDamage(2); break;
         }
     }
 
     private void ApplyRandomDebuff()
     {
-        switch (rng.random(6))
+        switch (rng.random(7))
         {
             case 0: PCLActions.Bottom.StackPower(TargetHelper.RandomEnemy(), PCLPowerHelper.Poison, 3); break;
             case 1: PCLActions.Bottom.StackPower(TargetHelper.RandomEnemy(), PCLPowerHelper.Weak, 1); break;
@@ -190,7 +192,8 @@ public class HigakiRinneAction extends EYBAction
             case 3: PCLActions.Bottom.StackPower(TargetHelper.RandomEnemy(), PCLPowerHelper.LockOn, 2); break;
             case 4: PCLActions.Bottom.StackPower(TargetHelper.RandomEnemy(), PCLPowerHelper.Burning, 3); break;
             case 5: PCLActions.Bottom.StackPower(TargetHelper.RandomEnemy(), PCLPowerHelper.Freezing, 3); break;
-            case 6: PCLActions.Bottom.StackPower(TargetHelper.RandomEnemy(), PCLPowerHelper.Constricted, 2); break;
+            case 6: PCLActions.Bottom.StackPower(TargetHelper.RandomEnemy(), PCLPowerHelper.Electrified, 3); break;
+            case 7: PCLActions.Bottom.StackPower(TargetHelper.RandomEnemy(), PCLPowerHelper.Constricted, 2); break;
         }
     }
 

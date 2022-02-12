@@ -15,6 +15,7 @@ import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.fool.special.KaedeAkamatsu;
+import pinacolada.powers.FoolPower;
 import pinacolada.powers.PCLPower;
 import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
@@ -59,7 +60,7 @@ public class ShuichiSaihara extends FoolCard
                 });
     }
 
-    public static class ShuichiSaiharaPower extends PCLPower
+    public static class ShuichiSaiharaPower extends FoolPower
     {
         private AbstractCard card;
         public ShuichiSaiharaPower(AbstractPlayer owner, AbstractCard card)

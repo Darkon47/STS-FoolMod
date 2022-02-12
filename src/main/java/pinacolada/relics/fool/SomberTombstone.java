@@ -3,12 +3,12 @@ package pinacolada.relics.fool;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import eatyourbeets.interfaces.subscribers.OnCardCreatedSubscriber;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.relics.PCLRelic;
+import pinacolada.relics.FoolRelic;
 import pinacolada.utilities.PCLActions;
 
 import static pinacolada.resources.PGR.Enums.CardTags.AFTERLIFE;
 
-public class SomberTombstone extends PCLRelic  implements OnCardCreatedSubscriber
+public class SomberTombstone extends FoolRelic implements OnCardCreatedSubscriber
 {
     public static final String ID = CreateFullID(SomberTombstone.class);
 

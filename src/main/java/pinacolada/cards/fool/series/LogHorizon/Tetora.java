@@ -11,7 +11,7 @@ import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
-import pinacolada.powers.PCLClickablePower;
+import pinacolada.powers.FoolClickablePower;
 import pinacolada.powers.PCLCombatStats;
 import pinacolada.powers.PowerTriggerConditionType;
 import pinacolada.utilities.PCLActions;
@@ -58,7 +58,7 @@ public class Tetora extends FoolCard
         });
     }
 
-    public static class TetoraPower extends PCLClickablePower implements OnSynergySubscriber
+    public static class TetoraPower extends FoolClickablePower implements OnSynergySubscriber
     {
         private final int baseSecondaryValue;
         private int secondaryValue;

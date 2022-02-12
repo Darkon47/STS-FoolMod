@@ -3,7 +3,7 @@ package pinacolada.resources.fool.loadouts;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.basic.Defend;
 import pinacolada.cards.fool.basic.Strike;
-import pinacolada.cards.fool.colorless.QuestionMark;
+import pinacolada.cards.pcl.special.QuestionMark;
 import pinacolada.resources.pcl.misc.PCLLoadout;
 import pinacolada.resources.pcl.misc.PCLTrophies;
 

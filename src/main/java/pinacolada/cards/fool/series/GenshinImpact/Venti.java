@@ -11,10 +11,10 @@ import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.orbs.pcl.Air;
+import pinacolada.powers.FoolPower;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.powers.PCLPower;
 import pinacolada.powers.common.SupportDamagePower;
-import pinacolada.powers.pcl.SwirledPower;
+import pinacolada.powers.fool.SwirledPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
@@ -84,7 +84,7 @@ public class Venti extends FoolCard
         });
 
     }
-    public static class VentiPower extends PCLPower implements OnOrbPassiveEffectSubscriber
+    public static class VentiPower extends FoolPower implements OnOrbPassiveEffectSubscriber
     {
         public VentiPower(AbstractCreature owner, int amount)
         {

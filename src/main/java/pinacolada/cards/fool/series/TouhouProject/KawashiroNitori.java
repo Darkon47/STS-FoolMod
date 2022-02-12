@@ -9,6 +9,7 @@ import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.interfaces.subscribers.OnPCLClickablePowerUsed;
+import pinacolada.powers.FoolClickablePower;
 import pinacolada.powers.PCLClickablePower;
 import pinacolada.powers.PCLCombatStats;
 import pinacolada.powers.PowerTriggerConditionType;
@@ -47,7 +48,7 @@ public class KawashiroNitori extends FoolCard
         PCLActions.Bottom.StackPower(new KawashiroNitoriPower(p, 1, magicNumber));
     }
 
-    public static class KawashiroNitoriPower extends PCLClickablePower implements OnPCLClickablePowerUsed
+    public static class KawashiroNitoriPower extends FoolClickablePower implements OnPCLClickablePowerUsed
     {
         protected int secondaryAmount;
 

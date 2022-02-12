@@ -74,7 +74,7 @@ public class JotaroKujo extends FoolCard
                                 {
                                     for (AbstractCard c2 : cards2)
                                     {
-                                        for (PCLCardAffinity cardAffinity : eCard.affinities.List) {
+                                        for (PCLCardAffinity cardAffinity : eCard.affinities.GetCardAffinities(true)) {
                                             PCLActions.Top.IncreaseScaling(c2, cardAffinity.type, cardAffinity.scaling);
                                         }
                                         if (eCard.affinities.Star != null) {

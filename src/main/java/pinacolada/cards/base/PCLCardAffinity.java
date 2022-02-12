@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
 import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLRenderHelpers;
@@ -11,6 +12,7 @@ import pinacolada.utilities.PCLRenderHelpers;
 public class PCLCardAffinity implements Comparable<PCLCardAffinity>
 {
     public final PCLAffinity type;
+    public AbstractCard.CardColor renderType = PGR.Enums.Cards.THE_FOOL;
 
     public int level;
     public int scaling;
@@ -36,12 +38,7 @@ public class PCLCardAffinity implements Comparable<PCLCardAffinity>
 
     public int calculateRank()
     {
-        if (type == PCLAffinity.Star)
-        {
-            return 500 + level;
-        }
-
-        return (level * 1000) + (upgrade * 10) + (PCLAffinity.MAX_ID - type.ID);
+        return level;
     }
 
     @Override

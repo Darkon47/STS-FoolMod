@@ -12,9 +12,9 @@ import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.interfaces.subscribers.OnPCLClickablePowerUsed;
 import pinacolada.orbs.PCLOrbHelper;
+import pinacolada.powers.FoolPower;
 import pinacolada.powers.PCLClickablePower;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.powers.PCLPower;
 import pinacolada.powers.affinity.InvocationPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
@@ -43,7 +43,7 @@ public class Miko extends FoolCard
         PCLActions.Bottom.StackPower(new MikoPower(p, magicNumber));
     }
 
-    public static class MikoPower extends PCLPower implements OnOrbPassiveEffectSubscriber, OnPCLClickablePowerUsed
+    public static class MikoPower extends FoolPower implements OnOrbPassiveEffectSubscriber, OnPCLClickablePowerUsed
     {
         public MikoPower(AbstractCreature owner, int amount)
         {

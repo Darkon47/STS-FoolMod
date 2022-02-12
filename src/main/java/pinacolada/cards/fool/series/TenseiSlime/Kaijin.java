@@ -9,7 +9,7 @@ import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.card.PermanentUpgradeEffect;
-import pinacolada.powers.PCLPower;
+import pinacolada.powers.FoolPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameEffects;
 import pinacolada.utilities.PCLGameUtilities;
@@ -50,7 +50,7 @@ public class Kaijin extends FoolCard implements OnAddToDeckListener
         return true;
     }
 
-    public static class KaijinPower extends PCLPower
+    public static class KaijinPower extends FoolPower
     {
         public static final String POWER_ID = CreateFullID(KaijinPower.class);
 

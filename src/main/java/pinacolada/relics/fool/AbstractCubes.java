@@ -7,12 +7,12 @@ import com.megacrit.cardcrawl.rooms.MonsterRoom;
 import com.megacrit.cardcrawl.rooms.MonsterRoomBoss;
 import com.megacrit.cardcrawl.rooms.MonsterRoomElite;
 import eatyourbeets.utilities.FieldInfo;
-import pinacolada.relics.PCLRelic;
+import pinacolada.relics.FoolRelic;
 import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
 
-public abstract class AbstractCubes extends PCLRelic
+public abstract class AbstractCubes extends FoolRelic
 {
     private static final FieldInfo<Boolean> _isBoss = PCLJUtils.GetField("isBoss", RewardItem.class);
 

@@ -411,7 +411,7 @@
 		},
 		"fool:HaruhiSuzumiya":
         {
-            "DESCRIPTION": "Replace ALL cards in play with cards from 1 of !M! Series. Reshuffle them, then draw. || You may pay !A! <W>: Make all enemies Reactive.",
+            "DESCRIPTION": "Replace ALL cards in play with cards from 1 of !M! Series. Reshuffle them, then draw and Motivate !S!. || You may pay !A! <W>: All enemies will act unpredictably this combat.",
             "NAME": "Haruhi Suzumiya"
         },
 		"fool:HatsuneMiku":
@@ -424,11 +424,6 @@
 		{
 			"DESCRIPTION": "Channel !M! [~Lightning]. [~Lightning] applies {0}% of [Focus] as [Electrified] to a random enemy on Trigger and to ALL enemies on Evoke. || At the start of turn: Gain [L] for each enemy with [Electrified].",
 			"NAME": "Ionizing Storm"
-		},
-		"fool:JAX":
-		{
-			"DESCRIPTION": "Take !S! [DD]. || Gain !M! [R] and [D].",
-			"NAME": "J.A.X."
 		},
 		"fool:JetBlack":
 		{
@@ -499,11 +494,11 @@
 		},
 		"fool:Kirby":
 		{
-			"DESCRIPTION": "When Obtained: Remove up to 2 Basic or Common cards from your deck. Give this card their combined cost, and effects.",
+			"DESCRIPTION": "When Obtained: Remove up to 2 Basic or Common cards from your deck. Give this card their combined <W>, costs, and effects.",
 			"EXTENDED_DESCRIPTION": [
-			"This card has the effects of {{0}} ** and {{1}}.",
-			"Choose the first card to be played when playing this card.",
-			"Choose the second card to be played when playing this card.",
+			"This card has the effects and properties of {{0}} and {{1}}. || When played: Gain the <W> of those cards.",
+			"Choose the first card to be fused.",
+			"Choose the second card to be fused.",
 			"At #yRest #ySites, you may retrieve the un-upgraded versions of the cards fused into this card and choose #b2 different cards to combine."],
 			"NAME": "Kirby"
 		},
@@ -608,11 +603,6 @@
 		{
 			"DESCRIPTION": "The first Attack you play each turn applies Burn equal to 20% of its damage and Exhausts.",
 			"NAME": "Pyra"
-		},
-		"fool:RitualDagger":
-		{
-			"DESCRIPTION": "Remove [Artifact] and [~Intangible]. Deal double damage if the enemy has [Blinded]. || <LIM>. If {Fatal}: Permanently upgrade this.",
-			"NAME": "Ritual Dagger"
 		},
 		"fool:Senku":
 		{
@@ -1563,12 +1553,6 @@
 			"DESCRIPTION": "<CYC-M>. Motivate !S!. || Whenever you Match ** while this is in your hand: ** Increase this card's ** Motivate by 1.",
 			"NAME": "Nonon Jakuzure"
 		},
-		"fool:QuestionMark":
-		{
-			"DESCRIPTION": "When drawn: Transforms into a random card and gains <A>.",
-			"NAME": "Question Mark",
-			"UPGRADE_DESCRIPTION": "When drawn: Transforms into a random upgraded card and gains <A>."
-		},
 		"fool:Shimakaze":
 		{
 			"DESCRIPTION": "Gain +!S! of a random <W>. || <DRW-M>. ** Add 1 Dazed to ** your draw pile.",
@@ -2219,6 +2203,7 @@
 		"fool:HigakiRinne":
 		{
 			"DESCRIPTION": "Behaves erratically...",
+			"EXTENDED_DESCRIPTION": ["???"],
 			"NAME": "Higaki Rinne",
 			"UPGRADE_DESCRIPTION": "Behaves very ** erratically..."
 		},
@@ -2620,6 +2605,7 @@
 		"fool:ChlammyZell_Scheme":
 		{
 			"DESCRIPTION": "Whenever you play ** alternating card types ** this turn: <CYC> ** and deal !M! damage to ** ALL enemies.",
+			"EXTENDED_DESCRIPTION": ["Whenever you play alternating card types this turn, deal #b{0} damage to ALL enemies and #yCycle #b1 card. NL NL Last Type played: #y{1}."],
 			"NAME": "Scheme"
 		},
 		"fool:DolaCouronne":
@@ -3232,9 +3218,9 @@
 			"EXTENDED_DESCRIPTION": ["<S>", "T"],
 			"NAME": "Affinity Token"
 		},
-		"fool:AffinityToken_General":
+		"fool:AffinityToken_Star":
 		{
-			"DESCRIPTION": "When obtained: ** Turn this card ** into an {<W> Token} ** of your choice.",
+			"DESCRIPTION": "Play a {<W> Token} of your choice. || While in hand: If you would spend <W>, ** Purge this instead.",
 			"NAME": "Affinity Token"
 		},
 		"fool:GiftBox":

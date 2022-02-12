@@ -13,7 +13,7 @@ import pinacolada.effects.PCLProjectile;
 import pinacolada.effects.SFX;
 import pinacolada.effects.VFX;
 import pinacolada.orbs.pcl.Metal;
-import pinacolada.powers.PCLClickablePower;
+import pinacolada.powers.FoolClickablePower;
 import pinacolada.powers.PCLCombatStats;
 import pinacolada.powers.PowerTriggerConditionType;
 import pinacolada.utilities.PCLActions;
@@ -61,7 +61,7 @@ public class Rose extends FoolCard_UltraRare
         PCLActions.Bottom.StackPower(p, new RosePower(p));
     }
 
-    public static class RosePower extends PCLClickablePower implements OnOrbPassiveEffectSubscriber {
+    public static class RosePower extends FoolClickablePower implements OnOrbPassiveEffectSubscriber {
         boolean isActive;
 
         public RosePower(AbstractCreature owner) {

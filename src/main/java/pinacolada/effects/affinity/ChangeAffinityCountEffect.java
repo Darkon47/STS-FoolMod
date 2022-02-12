@@ -7,16 +7,17 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Interpolation;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
-import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
+import eatyourbeets.effects.EYBEffect;
 import pinacolada.ui.combat.PCLAffinityRow;
 import pinacolada.ui.common.AffinityKeywordButton;
 
-public class ChangeAffinityCountEffect extends AbstractGameEffect
+public class ChangeAffinityCountEffect extends EYBEffect
 {
     private static final float EFFECT_DUR = 2f;
     private final float x;
     private final float y;
     private float scale;
+    private float baseScale;
     private int size = 32;
     private final Texture img;
 
@@ -40,10 +41,17 @@ public class ChangeAffinityCountEffect extends AbstractGameEffect
 
         this.duration = 1.5f;
         this.startingDuration = 1.5f;
-        this.scale = Settings.scale;
+        this.baseScale = this.scale = Settings.scale;
         this.color = new Color(1f, 1f, 1f, 0.5f);
         this.x = x;
         this.y = y;
+    }
+
+    public ChangeAffinityCountEffect SetScale(float scale)
+    {
+        this.baseScale = this.scale = scale;
+
+        return this;
     }
 
     public void update()
@@ -51,7 +59,7 @@ public class ChangeAffinityCountEffect extends AbstractGameEffect
         this.duration -= Gdx.graphics.getDeltaTime();
         if (this.duration > 0.5f)
         {
-            this.scale = Interpolation.exp5Out.apply(3f * Settings.scale, Settings.scale, -(this.duration - 2f) / 1.5f);
+            this.scale = Interpolation.exp5Out.apply(3f * baseScale, baseScale, -(this.duration - 2f) / 1.5f);
         }
         else
         {

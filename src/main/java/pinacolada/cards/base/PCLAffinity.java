@@ -21,14 +21,14 @@ public enum PCLAffinity implements TooltipObject, Comparable<PCLAffinity>
     Star(-1, "Star", "Multicolor", "A", PGR.PCL.Images.Affinities.Star),
     General(-2, "Gen", "Multicolor","W", PGR.PCL.Images.Affinities.General);// Don't use directly
 
-    public static final int MAX_ID = 4;
+    public static final int TOTAL_AFFINITIES = 7;
 
     protected static final TextureCache BorderBG = PGR.PCL.Images.Affinities.BorderBG;
     protected static final TextureCache BorderFG = PGR.PCL.Images.Affinities.BorderFG;
     protected static final TextureCache BorderLV2 = PGR.PCL.Images.Affinities.Border_Strong;
     protected static final TextureCache BorderLV1 = PGR.PCL.Images.Affinities.Border_Weak;
     protected static final PCLAffinity[] BASIC_TYPES = new PCLAffinity[6];
-    protected static final PCLAffinity[] EXTENDED_TYPES = new PCLAffinity[7];
+    protected static final PCLAffinity[] EXTENDED_TYPES = new PCLAffinity[TOTAL_AFFINITIES];
     protected static final PCLAffinity[] ALL_TYPES = new PCLAffinity[8];
 
     static

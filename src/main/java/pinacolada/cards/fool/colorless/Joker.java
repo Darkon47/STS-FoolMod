@@ -13,9 +13,9 @@ import pinacolada.cards.fool.special.Joker_Arsene;
 import pinacolada.effects.AttackEffects;
 import pinacolada.interfaces.subscribers.OnCooldownTriggeredSubscriber;
 import pinacolada.interfaces.subscribers.OnPCLClickablePowerUsed;
+import pinacolada.powers.FoolPower;
 import pinacolada.powers.PCLClickablePower;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.powers.PCLPower;
 import pinacolada.powers.affinity.AbstractPCLAffinityPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
@@ -97,7 +97,7 @@ public class Joker extends FoolCard
                 });
     }
 
-    public static class JokerPower extends PCLPower implements OnCooldownTriggeredSubscriber, OnPCLClickablePowerUsed
+    public static class JokerPower extends FoolPower implements OnCooldownTriggeredSubscriber, OnPCLClickablePowerUsed
     {
         public AbstractCard card;
 

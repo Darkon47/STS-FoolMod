@@ -12,7 +12,7 @@ import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.fool.special.Shizu_Ifrit;
 import pinacolada.effects.AttackEffects;
 import pinacolada.orbs.pcl.Fire;
-import pinacolada.powers.pcl.BurningWeaponPower;
+import pinacolada.powers.common.BurningWeaponPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameEffects;
 import pinacolada.utilities.PCLGameUtilities;

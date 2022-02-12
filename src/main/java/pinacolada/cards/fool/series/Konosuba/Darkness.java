@@ -7,7 +7,7 @@ import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.fool.FoolCard;
-import pinacolada.powers.PCLPower;
+import pinacolada.powers.FoolPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
@@ -42,7 +42,7 @@ public class Darkness extends FoolCard
         }
     }
 
-    public static class DarknessPower extends PCLPower
+    public static class DarknessPower extends FoolPower
     {
         public DarknessPower(AbstractPlayer owner, int amount)
         {

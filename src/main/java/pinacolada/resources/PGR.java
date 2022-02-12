@@ -23,7 +23,8 @@ import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.Logger;
 import pinacolada.cards.base.PCLCardTooltip;
 import pinacolada.interfaces.markers.Replacement;
-import pinacolada.relics.PCLReplacementRelic;
+import pinacolada.relics.FoolReplacementRelic;
+import pinacolada.resources.eternal.EternalResources;
 import pinacolada.resources.fool.FoolResources;
 import pinacolada.resources.pcl.PCLResources;
 import pinacolada.utilities.PCLJUtils;
@@ -55,11 +56,12 @@ public class PGR extends eatyourbeets.resources.GR
     public static UIManager UI = new UIManager();
     public static PCLResources PCL;
     public static FoolResources Fool;
+    public static EternalResources Eternal;
     public static ShaderProgram GrayscaleShader;
     public static ShaderProgram SepiaShader;
 
     public static boolean IsLoaded() {
-        return PCL != null && PCL.isLoaded && Fool.isLoaded;
+        return PCL != null && PCL.isLoaded && Fool.isLoaded && Eternal.isLoaded;
     }
 
     public static void Initialize()
@@ -71,9 +73,11 @@ public class PGR extends eatyourbeets.resources.GR
 
         PCL = new PCLResources();
         Fool = new FoolResources();
+        Eternal = new EternalResources();
 
         Initialize(PCL);
         Initialize(Fool);
+        Initialize(Eternal);
     }
 
     protected static void Initialize(PCLAbstractResources resources)
@@ -201,7 +205,7 @@ public class PGR extends eatyourbeets.resources.GR
         }
 
         if (Replacement.class.isAssignableFrom(type)) {
-            PCLReplacementRelic.RELICS.put(relic.relicId, relic);
+            FoolReplacementRelic.RELICS.put(relic.relicId, relic);
             return;
         }
 
@@ -329,19 +333,19 @@ public class PGR extends eatyourbeets.resources.GR
         public static class Characters extends eatyourbeets.resources.GR.Enums.Characters
         {
             @SpireEnum public static AbstractPlayer.PlayerClass THE_FOOL;
-            @SpireEnum public static AbstractPlayer.PlayerClass THE_SHOGUN;
+            @SpireEnum public static AbstractPlayer.PlayerClass THE_ETERNAL;
         }
 
         public static class Cards extends eatyourbeets.resources.GR.Enums.Cards
         {
             @SpireEnum public static AbstractCard.CardColor THE_FOOL;
-            @SpireEnum public static AbstractCard.CardColor THE_SHOGUN;
+            @SpireEnum public static AbstractCard.CardColor THE_ETERNAL;
         }
 
         public static class Library extends eatyourbeets.resources.GR.Enums.Library
         {
             @SpireEnum public static CardLibrary.LibraryType THE_FOOL;
-            @SpireEnum public static CardLibrary.LibraryType THE_SHOGUN;
+            @SpireEnum public static CardLibrary.LibraryType THE_ETERNAL;
         }
 
         public static class Rewards extends eatyourbeets.resources.GR.Enums.Rewards

@@ -36,7 +36,7 @@ public class PCLJUtils extends JUtils
     {
         for (T t : list)
         {
-            if (predicate.test(t))
+            if (t != null && predicate.test(t))
             {
                 return true;
             }
@@ -50,7 +50,7 @@ public class PCLJUtils extends JUtils
         final ArrayList<T> res = new ArrayList<>();
         for (T t : array)
         {
-            if (predicate.test(t))
+            if (t != null && predicate.test(t))
             {
                 res.add(t);
             }
@@ -63,7 +63,7 @@ public class PCLJUtils extends JUtils
     {
         for (T t : array)
         {
-            if (predicate.test(t))
+            if (t != null && predicate.test(t))
             {
                 return t;
             }
@@ -79,7 +79,7 @@ public class PCLJUtils extends JUtils
         for (T t : list)
         {
             N prop = getProperty.Invoke(t);
-            if (best == null || prop.compareTo(best) > 0)
+            if (prop != null && (best == null || prop.compareTo(best) > 0))
             {
                 best = prop;
                 result = t;
@@ -95,7 +95,7 @@ public class PCLJUtils extends JUtils
         for (T t : list)
         {
             N prop = getProperty.Invoke(t);
-            if (best == null || prop.compareTo(best) > 0)
+            if (prop != null && (best == null || prop.compareTo(best) > 0))
             {
                 best = prop;
             }
@@ -111,7 +111,7 @@ public class PCLJUtils extends JUtils
         for (T t : list)
         {
             N prop = getProperty.Invoke(t);
-            if (best == null || prop.compareTo(best) > 0)
+            if (prop != null && (best == null || prop.compareTo(best) > 0))
             {
                 best = prop;
             }
@@ -127,7 +127,7 @@ public class PCLJUtils extends JUtils
         for (T t : list)
         {
             N prop = getProperty.Invoke(t);
-            if (best == null || prop.compareTo(best) < 0)
+            if (prop != null && (best == null || prop.compareTo(best) < 0))
             {
                 best = prop;
                 result = t;
@@ -143,7 +143,7 @@ public class PCLJUtils extends JUtils
         for (T t : list)
         {
             N prop = getProperty.Invoke(t);
-            if (best == null || prop.compareTo(best) < 0)
+            if (prop != null && (best == null || prop.compareTo(best) < 0))
             {
                 best = prop;
             }
@@ -158,7 +158,7 @@ public class PCLJUtils extends JUtils
         for (T t : list)
         {
             N prop = getProperty.Invoke(t);
-            if (best == null || prop.compareTo(best) < 0)
+            if (prop != null && (best == null || prop.compareTo(best) < 0))
             {
                 best = prop;
             }

@@ -10,12 +10,12 @@ import pinacolada.effects.AttackEffects;
 import pinacolada.effects.SFX;
 import pinacolada.powers.PCLClickablePower;
 import pinacolada.powers.PowerTriggerConditionType;
+import pinacolada.relics.FoolReplacementRelic;
 import pinacolada.relics.PCLRelic;
-import pinacolada.relics.PCLReplacementRelic;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
-public class WizardHat extends PCLReplacementRelic
+public class WizardHat extends FoolReplacementRelic
 {
     public static final String ID = CreateFullID(WizardHat.class);
     public static final int INTELLECT_AMOUNT = 2;

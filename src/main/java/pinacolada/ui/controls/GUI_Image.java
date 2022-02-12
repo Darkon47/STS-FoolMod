@@ -1,5 +1,6 @@
 package pinacolada.ui.controls;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -7,6 +8,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.Hitbox;
 import eatyourbeets.ui.GUIElement;
 import eatyourbeets.utilities.AdvancedTexture;
+import eatyourbeets.utilities.Colors;
 import pinacolada.utilities.PCLRenderHelpers;
 
 public class GUI_Image extends GUIElement
@@ -15,10 +17,15 @@ public class GUI_Image extends GUIElement
     public AdvancedTexture background;
     public AdvancedTexture foreground;
     public Texture texture;
+    public PCLRenderHelpers.BlendingMode blendingMode = PCLRenderHelpers.BlendingMode.Normal;
     public Color color;
+    public Color sourceColor;
+    public Color targetColor;
     public float scaleX = 1;
     public float scaleY = 1;
     public float rotation;
+    public float baseTransitionTime;
+    public float transitionTime;
     public int srcWidth;
     public int srcHeight;
     public boolean flipX;
@@ -33,6 +40,7 @@ public class GUI_Image extends GUIElement
     public GUI_Image(Texture texture, Hitbox hb)
     {
         this(texture, Color.WHITE);
+        this.sourceColor = this.color.cpy();
 
         this.hb = hb;
     }
@@ -41,6 +49,7 @@ public class GUI_Image extends GUIElement
     {
         this.texture = texture;
         this.color = color.cpy();
+        this.sourceColor = this.color.cpy();
         this.srcWidth = texture.getWidth();
         this.srcHeight = texture.getHeight();
     }
@@ -112,9 +121,15 @@ public class GUI_Image extends GUIElement
         return this;
     }
 
+    public GUI_Image SetBlendingMode(PCLRenderHelpers.BlendingMode blendingMode) {
+        this.blendingMode = blendingMode;
+        return this;
+    }
+
     public GUI_Image SetColor(float r, float g, float b, float a)
     {
         this.color = new Color(r, g, b, a);
+        this.sourceColor = this.color.cpy();
 
         return this;
     }
@@ -122,6 +137,22 @@ public class GUI_Image extends GUIElement
     public GUI_Image SetColor(Color color)
     {
         this.color = color.cpy();
+        this.sourceColor = this.color.cpy();
+
+        return this;
+    }
+
+    public GUI_Image SetTargetColor(Color color)
+    {
+        return SetTargetColor(color, 0.3f);
+    }
+
+    public GUI_Image SetTargetColor(Color color, float transitionTime)
+    {
+        if (!color.equals(targetColor)) {
+            this.targetColor = color.cpy();
+            this.baseTransitionTime = this.transitionTime = Math.max(Gdx.graphics.getRawDeltaTime(), transitionTime);
+        }
 
         return this;
     }
@@ -171,6 +202,15 @@ public class GUI_Image extends GUIElement
         {
             hb.update();
         }
+
+        if (targetColor != null && baseTransitionTime > 0) {
+            transitionTime -= Gdx.graphics.getRawDeltaTime();
+            this.color = Colors.Lerp(targetColor, sourceColor, transitionTime / baseTransitionTime);
+            if (transitionTime <= 0) {
+                this.color = this.sourceColor = this.targetColor;
+                this.targetColor = null;
+            }
+        }
     }
 
     public void Render(SpriteBatch sb)
@@ -196,6 +236,7 @@ public class GUI_Image extends GUIElement
     }
 
     protected void RenderImpl(SpriteBatch sb, float x, float y, float width, float height) {
+        sb.setBlendFunction(blendingMode.srcFunc, blendingMode.dstFunc);
         if (background != null)
         {
             final float w = width * background.pos.scale;
@@ -218,6 +259,7 @@ public class GUI_Image extends GUIElement
             sb.setColor(foreground.color != null ? foreground.color : color);
             sb.draw(foreground.texture, x + ((width-w)*0.5f), y + ((height-h)*0.5f), 0, 0, w, h, scaleX, scaleY, rotation, 0, 0, s_w, s_h, flipX, flipY);
         }
+        sb.setBlendFunction(770, 771);
     }
 
     public void RenderCentered(SpriteBatch sb)
@@ -243,6 +285,7 @@ public class GUI_Image extends GUIElement
 
     protected void RenderCenteredImpl(SpriteBatch sb, float x, float y, float width, float height)
     {
+        sb.setBlendFunction(blendingMode.srcFunc, blendingMode.dstFunc);
         if (background != null)
         {
             final float scale = background.pos.scale * Settings.scale;
@@ -263,5 +306,6 @@ public class GUI_Image extends GUIElement
             sb.setColor(foreground.color != null ? foreground.color : color);
             sb.draw(foreground.texture, x, y, width/2f, height/2f, width, height, scaleX * scale, scaleY * scale, rotation, 0, 0, s_w, s_h, flipX, flipY);
         }
+        sb.setBlendFunction(770, 771);
     }
 }

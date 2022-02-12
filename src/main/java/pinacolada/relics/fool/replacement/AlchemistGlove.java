@@ -1,10 +1,10 @@
 package pinacolada.relics.fool.replacement;
 
 import pinacolada.orbs.pcl.Fire;
-import pinacolada.relics.PCLReplacementRelic;
+import pinacolada.relics.FoolReplacementRelic;
 import pinacolada.utilities.PCLActions;
 
-public class AlchemistGlove extends PCLReplacementRelic
+public class AlchemistGlove extends FoolReplacementRelic
 {
     public static final String ID = CreateFullID(AlchemistGlove.class);
 

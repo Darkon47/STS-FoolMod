@@ -16,7 +16,7 @@ import pinacolada.cards.fool.FoolCard;
 import pinacolada.interfaces.subscribers.OnTrySpendAffinitySubscriber;
 import pinacolada.powers.PCLCombatStats;
 import pinacolada.resources.PGR;
-import pinacolada.ui.combat.PCLAffinityMeter;
+import pinacolada.ui.combat.FoolAffinityMeter;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameEffects;
 import pinacolada.utilities.PCLGameUtilities;
@@ -26,7 +26,7 @@ import java.util.ArrayList;
 
 public abstract class AffinityToken extends FoolCard implements OnTrySpendAffinitySubscriber
 {
-    public static final String ID = PGR.PCL.CreateID(AffinityToken.class.getSimpleName());
+    public static final String ID = PGR.Fool.CreateID(AffinityToken.class.getSimpleName());
 
     protected static final ArrayList<PCLCardData> cards = new ArrayList<>();
     protected final PCLAffinity affinity;
@@ -164,7 +164,7 @@ public abstract class AffinityToken extends FoolCard implements OnTrySpendAffini
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.RerollAffinity(PCLAffinityMeter.Target.CurrentAffinity)
+        PCLActions.Bottom.RerollAffinity(FoolAffinityMeter.TARGET_CURRENT)
                 .SetAffinityChoices(this.affinity)
                 .SetOptions(true, true);
     }

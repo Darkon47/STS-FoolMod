@@ -13,7 +13,7 @@ import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
-import pinacolada.powers.PCLPower;
+import pinacolada.powers.FoolPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
@@ -52,7 +52,7 @@ public class Gobta extends FoolCard
         }
     }
 
-    public static class GobtaPower extends PCLPower
+    public static class GobtaPower extends FoolPower
     {
 
         public GobtaPower(AbstractCreature owner, int amount)

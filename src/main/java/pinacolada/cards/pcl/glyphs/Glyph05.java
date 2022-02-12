@@ -3,7 +3,6 @@ package pinacolada.cards.pcl.glyphs;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCardData;
-import pinacolada.powers.PCLCombatStats;
 import pinacolada.powers.PCLPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
@@ -62,14 +61,14 @@ public class Glyph05 extends Glyph
         public void onInitialApplication()
         {
             super.onInitialApplication();
-            PCLCombatStats.MatchingSystem.Powers.get(affinity.ID).SetEnabled(false);
+            PCLGameUtilities.GetPCLAffinityPower(affinity).SetEnabled(false);
         }
 
         @Override
         public void onRemove()
         {
             super.onRemove();
-            PCLCombatStats.MatchingSystem.Powers.get(affinity.ID).SetEnabled(true);
+            PCLGameUtilities.GetPCLAffinityPower(affinity).SetEnabled(true);
         }
 
         @Override

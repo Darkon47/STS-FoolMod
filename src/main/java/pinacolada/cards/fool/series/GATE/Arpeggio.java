@@ -11,7 +11,7 @@ import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.interfaces.subscribers.OnMatchBonusSubscriber;
 import pinacolada.orbs.pcl.Earth;
-import pinacolada.powers.PCLClickablePower;
+import pinacolada.powers.FoolClickablePower;
 import pinacolada.powers.PCLCombatStats;
 import pinacolada.powers.PowerTriggerConditionType;
 import pinacolada.utilities.PCLActions;
@@ -66,7 +66,7 @@ public class Arpeggio extends FoolCard
         PCLActions.Bottom.StackPower(new ArpeggioPower(p, magicNumber, secondaryValue));
     }
 
-    public static class ArpeggioPower extends PCLClickablePower implements OnMatchBonusSubscriber
+    public static class ArpeggioPower extends FoolClickablePower implements OnMatchBonusSubscriber
     {
         private static final int MAX_BONUS = 6;
         private static final int EARTH_BONUS = 1;

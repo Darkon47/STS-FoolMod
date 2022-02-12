@@ -9,7 +9,7 @@ import org.apache.commons.lang3.StringUtils;
 import pinacolada.cards.base.*;
 import pinacolada.cards.base.cardeffects.GenericEffect;
 import pinacolada.cards.fool.FoolCard_UltraRare;
-import pinacolada.powers.PCLPower;
+import pinacolada.powers.FoolPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLJUtils;
 
@@ -56,7 +56,7 @@ public class Azriel extends FoolCard_UltraRare
         PCLActions.Bottom.StackPower(new AzrielPower(p, this, magicNumber));
     }
 
-    public static class AzrielPower extends PCLPower
+    public static class AzrielPower extends FoolPower
     {
         private final PCLCard source;
         protected CardType cardType;

@@ -9,7 +9,7 @@ import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
-import pinacolada.powers.PCLPower;
+import pinacolada.powers.FoolPower;
 import pinacolada.utilities.PCLActions;
 
 public class ShuuOuma extends FoolCard
@@ -57,7 +57,7 @@ public class ShuuOuma extends FoolCard
         });
     }
 
-    public static class ShuuOumaPower extends PCLPower
+    public static class ShuuOumaPower extends FoolPower
     {
         public ShuuOumaPower(AbstractPlayer owner, int amount)
         {

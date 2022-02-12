@@ -10,7 +10,7 @@ import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCard;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
-import pinacolada.powers.PCLClickablePower;
+import pinacolada.powers.FoolClickablePower;
 import pinacolada.powers.PowerTriggerConditionType;
 import pinacolada.utilities.PCLActions;
 
@@ -42,7 +42,7 @@ public class Hitei extends FoolCard
         PCLActions.Bottom.StackPower(new HiteiPower(p, 1));
     }
 
-    public static class HiteiPower extends PCLClickablePower
+    public static class HiteiPower extends FoolClickablePower
     {
         public HiteiPower(AbstractPlayer owner, int amount)
         {

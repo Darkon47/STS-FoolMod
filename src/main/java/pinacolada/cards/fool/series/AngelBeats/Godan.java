@@ -11,7 +11,7 @@ import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.interfaces.subscribers.OnPurgeSubscriber;
-import pinacolada.powers.PCLClickablePower;
+import pinacolada.powers.FoolClickablePower;
 import pinacolada.powers.PCLCombatStats;
 import pinacolada.powers.PowerTriggerConditionType;
 import pinacolada.resources.PGR;
@@ -52,7 +52,7 @@ public class Godan extends FoolCard
         PCLActions.Bottom.StackPower(new GodanPower(p, magicNumber, secondaryValue));
     }
 
-    public static class GodanPower extends PCLClickablePower implements OnPurgeSubscriber
+    public static class GodanPower extends FoolClickablePower implements OnPurgeSubscriber
     {
         public int secondaryValue;
 

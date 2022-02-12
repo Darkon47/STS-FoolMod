@@ -504,11 +504,23 @@
 		"NAMES": ["[r] stance", "might stance"],
 		"PROPER_NAME": "Might Stance"
 	},
+	"Mismatch":
+	{
+		"DESCRIPTION": "A card #yMismatches if it does not have the [A-Gen] of the #yCurrent #yAffinity, and if neither #yAffinity is [A-Silver].",
+		"NAMES": ["mismatch", "mismatches", "mismatching", "mismatched"],
+		"PROPER_NAME": "Mismatch"
+	},
 	"Motivate":
 	{
 		"DESCRIPTION": "Reduce the cost of a random card in hand by 1 until played. Repeated N times.",
 		"NAMES": ["motivate"],
 		"PROPER_NAME": "Motivate"
+	},
+	"MusouIsshin":
+	{
+		"DESCRIPTION": "While in this state: ALL #yEternal cards cost 0 and reduce #yResolve by #b2 when played, and effects prefixed with [MI] can activate. Leave this state at the end of your turn.",
+		"NAMES": ["musou isshin"],
+		"PROPER_NAME": "Musou Isshin"
 	},
 	"Multicolor":
 	{

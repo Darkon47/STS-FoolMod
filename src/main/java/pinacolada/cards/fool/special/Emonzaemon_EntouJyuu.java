@@ -10,7 +10,7 @@ import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.fool.series.Katanagatari.Emonzaemon;
-import pinacolada.powers.PCLPower;
+import pinacolada.powers.FoolPower;
 import pinacolada.powers.PCLPowerHelper;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
@@ -40,7 +40,7 @@ public class Emonzaemon_EntouJyuu extends FoolCard
         PCLActions.Bottom.StackPower(new Emonzaemon_EntouJyuuPower(p, secondaryValue));
     }
 
-    public static class Emonzaemon_EntouJyuuPower extends PCLPower
+    public static class Emonzaemon_EntouJyuuPower extends FoolPower
     {
         public Emonzaemon_EntouJyuuPower(AbstractCreature owner, int amount)
         {

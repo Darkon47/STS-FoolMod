@@ -194,6 +194,11 @@ public class VFX
                 .SetFading(30);
     }
 
+    public static IntimidateEffect Intimidate(Hitbox source)
+    {
+        return new IntimidateEffect(source.cX, source.cY);
+    }
+
     public static IronWaveEffect2 IronWave(Hitbox source, Hitbox target)
     {
         return IronWave(source.cX, source.cY, target.cX);

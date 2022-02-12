@@ -7,8 +7,6 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.combat.PowerBuffEffect;
 import eatyourbeets.actions.EYBActionWithCallback;
 import pinacolada.cards.base.PCLAffinity;
-import pinacolada.cards.base.PCLCard;
-import pinacolada.powers.PCLCombatStats;
 import pinacolada.powers.affinity.AbstractPCLAffinityPower;
 import pinacolada.utilities.PCLGameEffects;
 import pinacolada.utilities.PCLGameUtilities;
@@ -29,15 +27,7 @@ public class ApplyAffinityPower extends EYBActionWithCallback<AbstractPower>
         super(ActionType.POWER, Settings.ACTION_DUR_XFAST);
 
         this.maintain = maintain;
-
-        if (affinity != null)
-        {
-            this.power = PCLCombatStats.MatchingSystem.GetPower(affinity);
-        }
-        else
-        {
-            this.power = PCLGameUtilities.GetRandomElement(PCLCombatStats.MatchingSystem.Powers, PCLCard.rng);
-        }
+        this.power = PCLGameUtilities.GetPCLAffinityPower(affinity);
 
         if (power == null || AbstractDungeon.getMonsters().areMonstersBasicallyDead())
         {

@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard_UltraRare;
 import pinacolada.orbs.pcl.Chaos;
-import pinacolada.powers.pcl.DainsleifAbyssPower;
+import pinacolada.powers.fool.DainsleifAbyssPower;
 import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLJUtils;

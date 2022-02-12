@@ -12,7 +12,7 @@ import eatyourbeets.actions.EYBActionWithCallback;
 import eatyourbeets.interfaces.delegates.FuncT1;
 import pinacolada.cards.base.PCLAttackType;
 import pinacolada.effects.AttackEffects;
-import pinacolada.powers.pcl.StolenGoldPower;
+import pinacolada.powers.fool.StolenGoldPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameEffects;
 import pinacolada.utilities.PCLGameUtilities;
@@ -76,7 +76,6 @@ public class DealDamage extends EYBActionWithCallback<AbstractCreature>
     {
         super(ActionType.DAMAGE, Settings.ACTION_DUR_XFAST);
 
-        this.applyPowers = card != null;
         this.card = card;
         this.goldAmount = 0;
         this.skipWait = false;
@@ -87,6 +86,7 @@ public class DealDamage extends EYBActionWithCallback<AbstractCreature>
         Initialize(info.owner,
                 isInvalid ? PCLGameUtilities.GetRandomEnemy(true) : target,
                 isInvalid ? info.base : info.output);
+        this.applyPowers = card != null && isInvalid;
     }
 
     public DealDamage ApplyPowers(boolean applyPowers)

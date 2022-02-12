@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.helpers.CardLibrary;
 import eatyourbeets.utilities.WeightedList;
 import pinacolada.cards.base.CardSeries;
 import pinacolada.cards.base.PCLCard;
-import pinacolada.relics.PCLReplacementRelic;
+import pinacolada.relics.FoolReplacementRelic;
 import pinacolada.resources.PGR;
 import pinacolada.resources.pcl.misc.PCLRuntimeLoadout;
 import pinacolada.utilities.PCLGameEffects;
@@ -17,7 +17,7 @@ import pinacolada.utilities.PCLJUtils;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-public class RacePiece extends PCLReplacementRelic
+public class RacePiece extends FoolReplacementRelic
 {
     public static final String ID = CreateFullID(RacePiece.class);
 

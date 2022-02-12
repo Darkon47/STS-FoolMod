@@ -7,7 +7,7 @@ import pinacolada.cards.base.CardSeries;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
-import pinacolada.powers.PCLPower;
+import pinacolada.powers.FoolPower;
 import pinacolada.utilities.PCLActions;
 
 public class HatsuneMiku extends FoolCard
@@ -37,7 +37,7 @@ public class HatsuneMiku extends FoolCard
         PCLActions.Bottom.StackPower(new HatsuneMikuPower(p, this.magicNumber));
     }
 
-    public static class HatsuneMikuPower extends PCLPower
+    public static class HatsuneMikuPower extends FoolPower
     {
         public HatsuneMikuPower(AbstractPlayer owner, int amount)
         {

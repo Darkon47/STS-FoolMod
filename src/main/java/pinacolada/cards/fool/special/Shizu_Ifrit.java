@@ -10,7 +10,7 @@ import pinacolada.cards.base.cardeffects.GenericEffect;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.fool.series.TenseiSlime.Shizu;
 import pinacolada.powers.common.BurningPower;
-import pinacolada.powers.pcl.BurningWeaponPower;
+import pinacolada.powers.common.BurningWeaponPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLJUtils;
 

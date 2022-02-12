@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import eatyourbeets.actions.EYBAction;
 import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCard;
-import pinacolada.cards.fool.colorless.QuestionMark;
+import pinacolada.cards.pcl.special.QuestionMark;
 import pinacolada.powers.PCLCombatStats;
 import pinacolada.utilities.PCLGameUtilities;
 

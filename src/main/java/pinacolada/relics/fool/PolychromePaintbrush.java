@@ -11,12 +11,12 @@ import pinacolada.actions.pileSelection.SelectFromPile;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.basic.ImprovedDefend;
 import pinacolada.cards.fool.basic.ImprovedStrike;
-import pinacolada.relics.PCLRelic;
+import pinacolada.relics.FoolRelic;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameEffects;
 import pinacolada.utilities.PCLInputManager;
 
-public class PolychromePaintbrush extends PCLRelic
+public class PolychromePaintbrush extends FoolRelic
 {
     public static final String ID = CreateFullID(PolychromePaintbrush.class);
     public static final int MAX_STORED_USES = 3;

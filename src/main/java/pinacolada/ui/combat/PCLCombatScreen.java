@@ -3,11 +3,9 @@ package pinacolada.ui.combat;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import eatyourbeets.interfaces.subscribers.OnBattleStartSubscriber;
 import eatyourbeets.interfaces.subscribers.OnStatsClearedSubscriber;
-import eatyourbeets.monsters.PlayerMinions.UnnamedDoll;
 import eatyourbeets.powers.CombatStats;
 import eatyourbeets.ui.GUIElement;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLGameUtilities;
 
 public class PCLCombatScreen extends GUIElement implements OnStatsClearedSubscriber, OnBattleStartSubscriber
@@ -28,7 +26,7 @@ public class PCLCombatScreen extends GUIElement implements OnStatsClearedSubscri
     @Override public void OnBattleStart() { OnStatsCleared(); }
     @Override public void OnStatsCleared()
     {
-        SetActive(PCLGameUtilities.InBattle() && PGR.Fool.IsSelected());
+        SetActive(PCLGameUtilities.InBattle() && PCLGameUtilities.IsPCLPlayerClass());
         PCLCombatStats.onBattleStart.Subscribe(this);
         PCLCombatStats.MatchingSystem.SetActive(isActive);
         Intents.Clear();
@@ -51,10 +49,5 @@ public class PCLCombatScreen extends GUIElement implements OnStatsClearedSubscri
     {
         PCLCombatStats.MatchingSystem.TryRender(sb);
         PCLCombatStats.ControlPile.Render(sb);
-        for (UnnamedDoll doll : CombatStats.Dolls.Slots) {
-            if (doll != null && doll.Visible) {
-                PGR.UI.AddPreRender(doll::render);
-            }
-        }
     }
 }

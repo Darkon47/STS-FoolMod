@@ -16,7 +16,7 @@ import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
 import pinacolada.effects.SFX;
 import pinacolada.effects.VFX;
-import pinacolada.powers.pcl.SelfImmolationPower;
+import pinacolada.powers.fool.SelfImmolationPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameEffects;
 import pinacolada.utilities.PCLGameUtilities;

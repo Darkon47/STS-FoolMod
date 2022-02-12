@@ -9,7 +9,7 @@ import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
-import pinacolada.powers.PCLClickablePower;
+import pinacolada.powers.FoolClickablePower;
 import pinacolada.powers.PowerTriggerConditionType;
 import pinacolada.utilities.PCLActions;
 
@@ -54,7 +54,7 @@ public class Biyorigo extends FoolCard
         PCLActions.Bottom.StackPower(new BiyorigoPower(p, magicNumber));
     }
 
-    public static class BiyorigoPower extends PCLClickablePower
+    public static class BiyorigoPower extends FoolClickablePower
     {
 
         public BiyorigoPower(AbstractCreature owner, int amount)

@@ -1,12 +1,12 @@
 package pinacolada.relics.fool.replacement;
 
 import com.megacrit.cardcrawl.powers.RegenPower;
-import pinacolada.relics.PCLReplacementRelic;
+import pinacolada.relics.FoolReplacementRelic;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
 
-public class HallowedScabbard extends PCLReplacementRelic
+public class HallowedScabbard extends FoolReplacementRelic
 {
     public static final String ID = CreateFullID(HallowedScabbard.class);
     public static final int DAMAGE_THRESHOLD = 12;

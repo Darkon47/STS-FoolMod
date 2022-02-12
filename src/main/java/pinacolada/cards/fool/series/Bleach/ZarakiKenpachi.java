@@ -8,8 +8,8 @@ import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
+import pinacolada.powers.FoolPower;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.powers.PCLPower;
 import pinacolada.powers.affinity.AbstractPCLAffinityPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
@@ -35,7 +35,7 @@ public class ZarakiKenpachi extends FoolCard
         PCLActions.Bottom.StackPower(new ZarakiKenpachiPower(p, magicNumber));
     }
 
-    public static class ZarakiKenpachiPower extends PCLPower implements OnBlockBrokenSubscriber
+    public static class ZarakiKenpachiPower extends FoolPower implements OnBlockBrokenSubscriber
     {
         public static final String POWER_ID = CreateFullID(ZarakiKenpachiPower.class);
 
@@ -53,7 +53,7 @@ public class ZarakiKenpachi extends FoolCard
         {
             super.onInitialApplication();
 
-            for (AbstractPCLAffinityPower po : PCLCombatStats.MatchingSystem.Powers) {
+            for (AbstractPCLAffinityPower po : PCLGameUtilities.GetAllPCLAffinityPowers()) {
                 if (PCLAffinity.Red.equals(po.affinity)) {
                     po.SetGainMultiplier(po.gainMultiplier + 1);
                     po.SetEnabled(true);
@@ -73,7 +73,7 @@ public class ZarakiKenpachi extends FoolCard
         {
             super.onRemove();
 
-            for (AbstractPCLAffinityPower po : PCLCombatStats.MatchingSystem.Powers) {
+            for (AbstractPCLAffinityPower po : PCLGameUtilities.GetAllPCLAffinityPowers()) {
                 if (PCLAffinity.Red.equals(po.affinity)) {
                     po.SetGainMultiplier(po.gainMultiplier - 1);
                 }

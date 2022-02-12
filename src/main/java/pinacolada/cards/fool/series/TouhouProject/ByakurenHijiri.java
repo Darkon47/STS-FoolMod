@@ -9,7 +9,7 @@ import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.fool.FoolCard;
-import pinacolada.powers.PCLPower;
+import pinacolada.powers.FoolPower;
 import pinacolada.powers.common.ResistancePower;
 import pinacolada.stances.pcl.WisdomStance;
 import pinacolada.utilities.PCLActions;
@@ -56,7 +56,7 @@ public class ByakurenHijiri extends FoolCard
         PCLActions.Bottom.ApplyPower(new ByakurenHijiriPower(player, magicNumber));
     }
 
-    public static class ByakurenHijiriPower extends PCLPower
+    public static class ByakurenHijiriPower extends FoolPower
     {
         public ByakurenHijiriPower(AbstractPlayer owner, int amount)
         {

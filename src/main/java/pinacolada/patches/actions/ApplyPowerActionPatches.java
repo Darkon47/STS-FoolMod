@@ -11,7 +11,6 @@ import com.megacrit.cardcrawl.powers.*;
 import eatyourbeets.utilities.FieldInfo;
 import pinacolada.powers.common.EnergizedPower;
 import pinacolada.powers.common.*;
-import pinacolada.powers.pcl.BurningWeaponPower;
 import pinacolada.powers.replacement.*;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;

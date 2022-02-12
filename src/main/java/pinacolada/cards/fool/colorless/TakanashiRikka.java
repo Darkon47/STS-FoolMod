@@ -9,7 +9,7 @@ import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.fool.FoolCard;
-import pinacolada.powers.PCLPower;
+import pinacolada.powers.FoolPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
@@ -43,7 +43,7 @@ public class TakanashiRikka extends FoolCard
         PCLActions.Bottom.StackPower(new TakanashiRikkaPower(p, magicNumber));
     }
 
-    public static class TakanashiRikkaPower extends PCLPower
+    public static class TakanashiRikkaPower extends FoolPower
     {
         public TakanashiRikkaPower(AbstractCreature owner, int amount)
         {

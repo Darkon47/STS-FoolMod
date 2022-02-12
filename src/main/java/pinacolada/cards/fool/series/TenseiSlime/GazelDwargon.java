@@ -8,8 +8,8 @@ import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
+import pinacolada.powers.FoolPower;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.powers.PCLPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
@@ -41,7 +41,7 @@ public class GazelDwargon extends FoolCard
         PCLActions.Bottom.StackPower(new GazelDwargonPower(p, stacks * magicNumber));
     }
 
-    public static class GazelDwargonPower extends PCLPower
+    public static class GazelDwargonPower extends FoolPower
     {
         public GazelDwargonPower(AbstractPlayer owner, int amount)
         {

@@ -24,6 +24,7 @@ import pinacolada.ui.controls.GUI_Label;
 import pinacolada.ui.controls.GUI_VerticalScrollBar;
 import pinacolada.ui.hitboxes.AdvancedHitbox;
 import pinacolada.ui.hitboxes.DraggableHitbox;
+import pinacolada.ui.hitboxes.RelativeHitbox;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
 
@@ -195,7 +196,7 @@ public class CardKeywordFilters extends GUIElement
                     }
 
                     //Affinity check
-                    for (PCLCardAffinity cAffinity : CurrentAffinities.List) {
+                    for (PCLCardAffinity cAffinity : CurrentAffinities.GetCardAffinities(false)) {
                         if (PCLGameUtilities.GetPCLAffinityLevel(c, cAffinity.type, true) < cAffinity.level) {
                             return false;
                         }
@@ -406,9 +407,9 @@ public class CardKeywordFilters extends GUIElement
         for (int i = 0; i < PCLAffinity.All().length; i++)
         {
             PCLAffinity a = PCLAffinity.All()[i];
-            AffinityButtons.add(new AffinityKeywordButton(affinitiesSectionLabel.hb, a)
+            AffinityButtons.add(new AffinityKeywordButton(
+                    new RelativeHitbox(affinitiesSectionLabel.hb, ICON_SIZE, ICON_SIZE, 0.5f + (i * 1.05f), -0.5f * (ICON_SIZE / affinitiesSectionLabel.hb.width), true).SetIsPopupCompatible(true), a)
                             .SetLevel(CardKeywordFilters.CurrentAffinities.GetLevel(a))
-                            .SetOffsets(0.5f + (i * 1.05f), -0.5f * (ICON_SIZE / affinitiesSectionLabel.hb.width))
                             .SetOnClick((button) -> {
                                 button.SetLevel((button.currentLevel + 1) % 2);
                                 CurrentAffinities.Set(button.Type, button.currentLevel);

@@ -11,7 +11,7 @@ import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
 import pinacolada.powers.common.BurningPower;
-import pinacolada.powers.pcl.SwirledPower;
+import pinacolada.powers.fool.SwirledPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameEffects;
 import pinacolada.utilities.PCLGameUtilities;

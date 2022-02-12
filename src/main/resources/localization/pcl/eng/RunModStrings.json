@@ -1,14 +1,14 @@
 {
   "All Relic Animator Run": {
     "NAME": "All Relic Animator Run",
-    "DESCRIPTION": "All relics for all non-modded characters are unlocked (except for ones that affect non-Animator stances).  Animator only."
+    "DESCRIPTION": "All relics for all non-modded characters are unlocked (except for ones that affect non-Animator stances). Fool only."
   },
   "No Relics": {
     "NAME": "No Relics",
-    "DESCRIPTION": "Non-Event, non-Boss relics are replaced with Circlets.  Animator only."
+    "DESCRIPTION": "Non-Event, non-Boss relics are replaced with Circlets. Fool only."
   },
   "Series Deck": {
     "NAME": "Series Deck",
-    "DESCRIPTION": "Starts with 1 copy of each card in your starting series.  Animator only."
+    "DESCRIPTION": "Starts with 1 copy of each card in your starting series. Fool only."
   }
 }

@@ -8,7 +8,7 @@ import pinacolada.cards.base.CardSeries;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
-import pinacolada.powers.PCLClickablePower;
+import pinacolada.powers.FoolClickablePower;
 import pinacolada.powers.PCLCombatStats;
 import pinacolada.powers.PowerTriggerConditionType;
 import pinacolada.powers.common.SupportDamagePower;
@@ -42,7 +42,7 @@ public class InverseOrigami extends FoolCard
                     PCLActions.Bottom.PlayCard(c.get(0), m);}}));
     }
 
-    public static class InverseOrigamiPower extends PCLClickablePower implements OnEvokeOrbSubscriber {
+    public static class InverseOrigamiPower extends FoolClickablePower implements OnEvokeOrbSubscriber {
         public static final int REFRESH_TIMES = 2;
 
         public InverseOrigamiPower(AbstractPlayer owner, int amount) {

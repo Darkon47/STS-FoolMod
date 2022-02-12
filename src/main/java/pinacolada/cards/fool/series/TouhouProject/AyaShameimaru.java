@@ -10,8 +10,8 @@ import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.interfaces.subscribers.OnOrbApplyFocusSubscriber;
 import pinacolada.orbs.pcl.Air;
+import pinacolada.powers.FoolPower;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.powers.PCLPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
@@ -45,7 +45,7 @@ public class AyaShameimaru extends FoolCard
         PCLActions.Bottom.StackPower(new AyaShameimaruPower(p, magicNumber));
     }
 
-    public static class AyaShameimaruPower extends PCLPower implements OnOrbApplyFocusSubscriber
+    public static class AyaShameimaruPower extends FoolPower implements OnOrbApplyFocusSubscriber
     {
         private static final CardEffectChoice choices = new CardEffectChoice();
 

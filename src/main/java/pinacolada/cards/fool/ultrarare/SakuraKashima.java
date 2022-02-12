@@ -7,8 +7,8 @@ import com.megacrit.cardcrawl.stances.AbstractStance;
 import pinacolada.cards.base.*;
 import pinacolada.cards.base.cardeffects.GenericEffect;
 import pinacolada.cards.fool.FoolCard_UltraRare;
+import pinacolada.powers.FoolPower;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.powers.PCLPower;
 import pinacolada.powers.affinity.AbstractPCLAffinityPower;
 import pinacolada.stances.PCLStance;
 import pinacolada.stances.PCLStanceHelper;
@@ -50,7 +50,7 @@ public class SakuraKashima extends FoolCard_UltraRare {
         PCLActions.Bottom.StackPower(new SakuraKashimaPower(p, magicNumber));
     }
 
-    public static class SakuraKashimaPower extends PCLPower
+    public static class SakuraKashimaPower extends FoolPower
     {
         public SakuraKashimaPower(AbstractCreature owner, int amount)
         {

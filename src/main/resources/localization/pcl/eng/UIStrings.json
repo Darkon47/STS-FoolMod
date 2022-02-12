@@ -338,7 +338,11 @@
 			"#pLeft-Click to play the displayed card. NL #pRight-Click to change this card. NL Press #p{0} to cycle through playable cards.",
 			"Total Matches",
 			"Combo",
-			"Longest Match Combo"
+			"Longest Match Combo",
+			"Resolve Meter",
+			"#pCurrent #pResolve: #g{0}/#g{1}. NL NL Gain #b{2} #yResolve when you make a #yMatch. Lose #b{2} #yResolve when you make a #yMismatch.{3}",
+			" NL NL You may click the button to the right of the meter to activate #yMusou #yIsshin for this turn.",
+			" NL NL #gMusou #gIsshin #gis #gactive. NL At the end of your turn: Exit this state and lose ALL #yResolve."
 		]
 	},
 
@@ -347,8 +351,18 @@
 		"TEXT":
 		[
 			"Whenever you play a card, the #yAffinity #yCounter of each of its #yAffinities will increase by #b1 (shown on the left). #yCounters are spent to active #yPay effects on cards and #yInteractables. If a #yPay effect is listed as requiring [A-Gen], you may pay any #yAffinity to activate it.",
-			"If the card #yMatches, the #yAffinity #yPower of each of its #yAffinities will also increase by #b1 (shown on the right). For every #b5 stacks of a #yPower gained, increase its #yPower #yLevel by 1.",
-			"Whenever you gain a #yPower #yLevel, gain #b1 #yUse of the #yAffinity #yPower, which can be used any time during your turn by clicking on the power's icon. Each #yLevel also increases the effectiveness of its corresponding #yAffinity #yScaling by 1 and allows you to hold an additional #yPower #yUse."
+			"A #yMatch occurs whenever you play a card with an #yAffinity that matches the #yCurrent #yAffinity. If a card #yMatches, the #yAffinity #yPower of each of its #yAffinities will also increase by #b1 (shown on the right). For every #b5 stacks of a #yPower gained, increase its #yPower #yLevel by 1.",
+			"Whenever your #yPower #yLevel reaches a multiple of #b2: Gain #b1 #yUse of the #yAffinity #yPower, which can be used any time during your turn by clicking on the power's icon. Each #yLevel also increases the effectiveness of its corresponding #yAffinity #yScaling by 1 and allows you to hold an additional #yPower #yUse."
+		]
+	},
+
+	"pcl:Tutorial2":
+	{
+		"TEXT":
+		[
+			"A #yMatch occurs whenever you play a card with an #yAffinity that matches the #yCurrent #yAffinity. A #yMismatch occurs whenever you play a card with #yAffinities that does not have the #yCurrent #yAffinity, unless either the card or the #yCurrent #yAffinity is [A-Silver].",
+			"Your #yResolve is displayed in the bar below this tip. Whenever you make a #yMatch: Gain #b2 #yResolve. Whenever you make a #yMismatch: Lose #b2 #yResolve.",
+			"When you reach #b20 #yResolve: You may click on the purple button to the right of the bar to enter the #yMusou #yIsshin state. In this state, cards from this character will reduce your #yResolve by #b2 instead of using [E]. If this state is active at the end of your turn, leave it and lose ALL #yResolve."
 		]
 	},
 

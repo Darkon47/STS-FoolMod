@@ -12,7 +12,7 @@ import pinacolada.cards.base.attributes.AbstractAttribute;
 import pinacolada.cards.base.attributes.TempHPAttribute;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.pcl.replacement.Miracle;
-import pinacolada.powers.PCLPower;
+import pinacolada.powers.FoolPower;
 import pinacolada.utilities.PCLActions;
 
 public class SanaeKochiya extends FoolCard {
@@ -61,7 +61,7 @@ public class SanaeKochiya extends FoolCard {
                 );
     }
 
-    public static class NextTurnMiracle extends PCLPower {
+    public static class NextTurnMiracle extends FoolPower {
         public NextTurnMiracle(AbstractCreature owner, int amount) {
             super(owner, SanaeKochiya.DATA);
             this.amount = amount;

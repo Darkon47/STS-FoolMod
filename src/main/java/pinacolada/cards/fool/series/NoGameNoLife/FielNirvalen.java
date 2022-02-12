@@ -10,8 +10,8 @@ import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.fool.tokens.AffinityToken;
+import pinacolada.powers.FoolPower;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.powers.PCLPower;
 import pinacolada.utilities.PCLActions;
 
 public class FielNirvalen extends FoolCard
@@ -50,7 +50,7 @@ public class FielNirvalen extends FoolCard
         PCLActions.Bottom.StackPower(new FielNirvalenPower(p, magicNumber, magicNumber, secondaryValue));
     }
 
-    public static class FielNirvalenPower extends PCLPower implements OnShuffleSubscriber, OnSynergySubscriber
+    public static class FielNirvalenPower extends FoolPower implements OnShuffleSubscriber, OnSynergySubscriber
     {
         private boolean canObtain = true;
         private final int secondaryAmount;

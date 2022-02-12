@@ -8,7 +8,7 @@ import eatyourbeets.powers.CombatStats;
 import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
-import pinacolada.powers.PCLPower;
+import pinacolada.powers.FoolPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
@@ -45,7 +45,7 @@ public class JetBlack extends FoolCard
         return CheckAffinity(PCLAffinity.General) && CombatStats.CanActivateLimited(cardID);
     }
 
-    public static class JetBlackPower extends PCLPower
+    public static class JetBlackPower extends FoolPower
     {
         private boolean shouldRetain;
         public JetBlackPower(AbstractPlayer owner, int amount, boolean shouldRetain)

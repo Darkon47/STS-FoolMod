@@ -19,7 +19,7 @@ import pinacolada.cards.fool.special.OrbCore;
 import pinacolada.effects.AttackEffects;
 import pinacolada.effects.SFX;
 import pinacolada.effects.VFX;
-import pinacolada.powers.PCLClickablePower;
+import pinacolada.powers.FoolClickablePower;
 import pinacolada.powers.PCLCombatStats;
 import pinacolada.powers.PowerTriggerConditionType;
 import pinacolada.utilities.PCLActions;
@@ -93,7 +93,7 @@ public class Eve extends FoolCard
         PCLActions.Bottom.StackPower(new EvePower(p, magicNumber, auxiliaryData.form));
     }
 
-    public static class EvePower extends PCLClickablePower
+    public static class EvePower extends FoolClickablePower
     {
         private static int[] availableChoices = new int[] {0, 0};
         private static UUID battleID;

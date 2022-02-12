@@ -14,7 +14,7 @@ import pinacolada.characters.FakeCharacter;
 import pinacolada.powers.PCLPower;
 import pinacolada.powers.common.EnergizedPower;
 import pinacolada.powers.common.*;
-import pinacolada.powers.pcl.*;
+import pinacolada.powers.fool.*;
 import pinacolada.powers.replacement.AntiArtifactSlowPower;
 import pinacolada.powers.replacement.PCLCurlUpPower;
 import pinacolada.powers.replacement.PlayerFlightPower;
@@ -138,6 +138,7 @@ public class CardTooltips
     public PCLCardTooltip Multicolor = FindByID("Multicolor");
     public PCLCardTooltip MulticolorScaling = FindByID("Multicolor Scaling");
     public PCLCardTooltip Multiform = FindByID("~Multiform");
+    public PCLCardTooltip MusouIsshin = FindByID("MusouIsshin");
     public PCLCardTooltip NeutralStance = FindByID("Neutral Stance");
     public PCLCardTooltip NextTurnBlock = FindByID("Next Turn Block");
     public PCLCardTooltip NextTurnDraw = FindByID("Next Turn Draw");
@@ -249,6 +250,7 @@ public class CardTooltips
         RegisterID("DD", DelayedDamage);
         RegisterID("NTB", NextTurnBlock);
         RegisterID("NTD", NextTurnDraw);
+        RegisterID("MI", MusouIsshin);
         RegisterID("~BD", Brutal);
         RegisterID("~DD", DarkDamage);
         RegisterID("~ED", ElectricDamage);
@@ -331,6 +333,7 @@ public class CardTooltips
         OrbSlot.SetIcon(tooltips.OrbSlot.Texture(), 6);
         RandomOrb.SetIcon(tooltips.RandomOrb.Texture(), 6);
         Regeneration.SetIcon(tooltips.Regeneration.Texture(), 6);
+        MusouIsshin.SetIcon(tooltips.MusouIsshin.Texture());
 
         LoadFromPower(Burning, new BurningPower(FakeCharacter.Instance, null, 0));
         LoadFromPower(Blinded, new BlindedPower(FakeCharacter.Instance, null, 0));

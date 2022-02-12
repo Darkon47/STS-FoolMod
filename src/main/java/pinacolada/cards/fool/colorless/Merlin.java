@@ -15,7 +15,7 @@ import pinacolada.cards.base.cardeffects.GenericEffects.GenericEffect_GainTempHP
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.fool.special.OrbCore;
 import pinacolada.orbs.pcl.*;
-import pinacolada.powers.PCLPower;
+import pinacolada.powers.FoolPower;
 import pinacolada.powers.PCLPowerHelper;
 import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
@@ -120,7 +120,7 @@ public class Merlin extends FoolCard
         }
     }
 
-    public static class MerlinPower extends PCLPower
+    public static class MerlinPower extends FoolPower
     {
         private final AbstractCard card;
         private final GenericEffect effect;

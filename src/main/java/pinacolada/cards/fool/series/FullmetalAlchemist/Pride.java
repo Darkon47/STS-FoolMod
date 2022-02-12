@@ -12,7 +12,7 @@ import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.orbs.PCLOrbHelper;
-import pinacolada.powers.PCLPower;
+import pinacolada.powers.FoolPower;
 import pinacolada.utilities.PCLActions;
 
 import java.util.ArrayList;
@@ -51,7 +51,7 @@ public class Pride extends FoolCard
         PCLActions.Bottom.StackPower(new PridePower(p, secondaryValue));
     }
 
-    public static class PridePower extends PCLPower
+    public static class PridePower extends FoolPower
     {
         public PridePower(AbstractPlayer owner, int amount)
         {

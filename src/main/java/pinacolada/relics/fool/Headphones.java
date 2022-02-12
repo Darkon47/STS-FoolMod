@@ -3,12 +3,12 @@ package pinacolada.relics.fool;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import eatyourbeets.interfaces.markers.Hidden;
 import pinacolada.cards.base.PCLCard;
-import pinacolada.relics.PCLRelic;
+import pinacolada.relics.FoolRelic;
 import pinacolada.utilities.PCLActions;
 
 import static pinacolada.cards.base.PCLCard.HARMONIC;
 
-public class Headphones extends PCLRelic implements Hidden
+public class Headphones extends FoolRelic implements Hidden
 {
     public static final String ID = CreateFullID(Headphones.class);
 

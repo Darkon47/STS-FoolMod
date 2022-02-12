@@ -19,7 +19,7 @@ import eatyourbeets.cards.base.EYBCardBase;
 import eatyourbeets.utilities.AdvancedTexture;
 import eatyourbeets.utilities.ColoredString;
 import eatyourbeets.utilities.EYBFontHelper;
-import pinacolada.cards.fool.colorless.QuestionMark;
+import pinacolada.cards.pcl.special.QuestionMark;
 import pinacolada.effects.card.PCLCardGlowBorderEffect;
 import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLGameUtilities;
@@ -77,7 +77,11 @@ public abstract class PCLCardBase extends EYBCardBase
 
     public void LoadImage(String suffix)
     {
-        portraitImg = new AdvancedTexture(PGR.GetTexture(suffix == null ? assetUrl : assetUrl.replace(".png", suffix + ".png"), true), null);
+        Texture t = PGR.GetTexture(suffix == null ? assetUrl : assetUrl.replace(".png", suffix + ".png"), true);
+        if (t == null) {
+            t = PGR.PCL.Images.EMPTY_CARD.Texture();
+        }
+        portraitImg = new AdvancedTexture(t, null);
     }
 
     public boolean IsOnScreen()

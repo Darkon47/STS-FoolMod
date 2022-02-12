@@ -11,9 +11,9 @@ import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
-import pinacolada.powers.PCLPower;
-import pinacolada.powers.pcl.Amplification_DarkPower;
-import pinacolada.powers.pcl.Amplification_LightningPower;
+import pinacolada.powers.FoolPower;
+import pinacolada.powers.fool.Amplification_DarkPower;
+import pinacolada.powers.fool.Amplification_LightningPower;
 import pinacolada.utilities.PCLActions;
 
 public class RaidenShogun extends FoolCard
@@ -59,7 +59,7 @@ public class RaidenShogun extends FoolCard
         PCLActions.Bottom.StackPower(new Amplification_LightningPower(p, secondaryValue, PCLAffinity.Dark));
     }
 
-    public static class RaidenShogunPower extends PCLPower
+    public static class RaidenShogunPower extends FoolPower
     {
 
         public RaidenShogunPower(AbstractCreature owner, int amount)

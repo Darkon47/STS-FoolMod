@@ -7,8 +7,7 @@ import pinacolada.cards.base.*;
 import pinacolada.cards.base.cardeffects.GenericEffect;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.SFX;
-import pinacolada.powers.PCLCombatStats;
-import pinacolada.powers.PCLPower;
+import pinacolada.powers.FoolPower;
 import pinacolada.powers.PCLPowerHelper;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
@@ -52,7 +51,7 @@ public class Ainz extends FoolCard
         PCLActions.Bottom.StackPower(new AinzPower(p, this, magicNumber));
     }
 
-    public static class AinzPower extends PCLPower
+    public static class AinzPower extends FoolPower
     {
         private final PCLCard source;
 
@@ -71,7 +70,7 @@ public class Ainz extends FoolCard
             PCLActions.Bottom.SFX(SFX.ORB_LIGHTNING_EVOKE, 0.9f, 1.1f);
             PCLActions.Bottom.BorderLongFlash(Color.valueOf("3d0066"));
             PCLActions.Bottom.SFX(SFX.ORB_DARK_EVOKE, 0.9f, 1.1f);
-            PCLCombatStats.MatchingSystem.Powers.get(PCLAffinity.Dark.ID).SetEnabled(true);
+            PCLGameUtilities.GetPCLAffinityPower(PCLAffinity.Dark).SetEnabled(true);
         }
 
         @Override

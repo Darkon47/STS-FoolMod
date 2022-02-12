@@ -47,8 +47,8 @@ public class Verdia extends FoolCard
                 {
                     for (AbstractCard c : cards)
                     {
-                        for (PCLCardAffinity af : affinities.List) {
-                            PCLActions.Bottom.IncreaseScaling(c, PCLAffinity.Red, affinities.GetScaling(af.type,false));
+                        for (PCLCardAffinity af : affinities.GetCardAffinities(false)) {
+                            PCLActions.Bottom.IncreaseScaling(c, af.type, af.scaling);
                         }
                         c.flash();
                     }

@@ -15,7 +15,7 @@ import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
 import pinacolada.effects.SFX;
-import pinacolada.powers.PCLPower;
+import pinacolada.powers.FoolPower;
 import pinacolada.powers.common.BurningPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameEffects;
@@ -75,7 +75,7 @@ public class Xingqiu extends FoolCard
         PCLActions.Bottom.StackPower(new XingqiuPower(p, secondaryValue));
     }
 
-    public static class XingqiuPower extends PCLPower
+    public static class XingqiuPower extends FoolPower
     {
         public XingqiuPower(AbstractCreature owner, int amount)
         {

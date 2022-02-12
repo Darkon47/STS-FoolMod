@@ -6,7 +6,7 @@ import eatyourbeets.interfaces.listeners.OnReceiveRewardsListener;
 import eatyourbeets.interfaces.subscribers.OnLosingHPSubscriber;
 import pinacolada.cards.base.CardSeries;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.relics.PCLRelic;
+import pinacolada.relics.FoolRelic;
 import pinacolada.resources.PGR;
 import pinacolada.rewards.pcl.ConcertsFinalHourReward;
 import pinacolada.utilities.PCLActions;
@@ -14,7 +14,7 @@ import pinacolada.utilities.PCLGameUtilities;
 
 import java.util.ArrayList;
 
-public class ConcertsFinalHour extends PCLRelic implements OnLosingHPSubscriber, OnReceiveRewardsListener
+public class ConcertsFinalHour extends FoolRelic implements OnLosingHPSubscriber, OnReceiveRewardsListener
 {
     public static final String ID = CreateFullID(ConcertsFinalHour.class);
 

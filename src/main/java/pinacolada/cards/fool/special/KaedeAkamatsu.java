@@ -12,7 +12,7 @@ import pinacolada.cards.base.attributes.AbstractAttribute;
 import pinacolada.cards.base.attributes.TempHPAttribute;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.fool.colorless.ShuichiSaihara;
-import pinacolada.powers.PCLPower;
+import pinacolada.powers.FoolPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
@@ -61,7 +61,7 @@ public class KaedeAkamatsu extends FoolCard
                 });
     }
 
-    public static class KaedeAkamatsuPower extends PCLPower
+    public static class KaedeAkamatsuPower extends FoolPower
     {
 
         public KaedeAkamatsuPower(AbstractCreature owner, int amount)

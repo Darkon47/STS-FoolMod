@@ -8,7 +8,7 @@ import pinacolada.powers.PCLClickablePower;
 import pinacolada.powers.PCLCombatStats;
 import pinacolada.powers.PowerTriggerConditionType;
 import pinacolada.resources.PGR;
-import pinacolada.ui.combat.PCLAffinityMeter;
+import pinacolada.ui.combat.FoolAffinityMeter;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLJUtils;
 
@@ -62,8 +62,8 @@ public class RerollAffinityPower extends PCLClickablePower
         if (triggerCondition.CanUse())
         {
             PCLAffinity next = PCLCombatStats.MatchingSystem.AffinityMeter.GetNextAffinity();
-            PCLActions.Bottom.RerollAffinity(PCLAffinityMeter.Target.NextAffinity).SetOptions(!canChoose, true);
-            PCLActions.Bottom.RerollAffinity(PCLAffinityMeter.Target.CurrentAffinity).SetAffinityChoices(next).SetOptions(true, true);
+            PCLActions.Bottom.RerollAffinity(FoolAffinityMeter.TARGET_NEXT).SetOptions(!canChoose, true);
+            PCLActions.Bottom.RerollAffinity(FoolAffinityMeter.TARGET_CURRENT).SetAffinityChoices(next).SetOptions(true, true);
             this.triggerCondition.uses -= 1;
             this.triggerCondition.Refresh(false);
             updateDescription();

@@ -9,6 +9,7 @@ import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCard;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.PCLCardTarget;
+import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.fool.colorless.MakiseKurisu;
 import pinacolada.powers.PCLCombatStats;
 import pinacolada.utilities.PCLActions;
@@ -18,17 +19,17 @@ import pinacolada.utilities.PCLJUtils;
 
 import java.util.ArrayList;
 
-public class TimeParadox extends FoolCard_Curse implements OnStartOfTurnPostDrawSubscriber
+public class TimeParadox extends FoolCard implements OnStartOfTurnPostDrawSubscriber
 {
     public static final PCLCardData DATA = Register(TimeParadox.class)
-            .SetCurse(-1, PCLCardTarget.None, true)
+            .SetCurse(-1, PCLCardTarget.None, true, true)
             .SetSeries(MakiseKurisu.DATA.Series);
     protected final ArrayList<AbstractCard> cards = new ArrayList<>();
     protected int turns = 0;
 
     public TimeParadox()
     {
-        super(DATA, true);
+        super(DATA);
 
         Initialize(0, 0, 1, 5);
         SetUpgrade(0, 0, 1, -3);

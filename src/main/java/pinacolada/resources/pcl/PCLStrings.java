@@ -23,6 +23,7 @@ public class PCLStrings
     public Actions Actions;
     public Trophies Trophies;
     public Tutorial Tutorial;
+    public EternalTutorial EternalTutorial;
     public Combat Combat;
     public Hotkeys Hotkeys;
     public CardMods CardMods;
@@ -40,6 +41,7 @@ public class PCLStrings
         Actions = new Actions();
         Trophies = new Trophies();
         Tutorial = new Tutorial();
+        EternalTutorial = new EternalTutorial();
         SeriesSelection = new SeriesSelection();
         SeriesSelectionButtons = new SeriesSelectionButtons();
         SingleCardPopupButtons = new SingleCardPopupButtons();
@@ -330,9 +332,17 @@ public class PCLStrings
         public final String TotalMatches = Strings.TEXT[7];
         public final String CurrentMatchCombo = Strings.TEXT[8];
         public final String LongestMatchCombo = Strings.TEXT[9];
+        public final String ResolveMeter = Strings.TEXT[10];
+        public final String ResolveMeterDescription1 = Strings.TEXT[11];
+        public final String ResolveMeterDescription2 = Strings.TEXT[12];
+        public final String ResolveMeterDescription3 = Strings.TEXT[13];
 
         public final String ControlPileDescriptionFull(String keyName) {
             return PCLJUtils.Format(ControlPileDescription, keyName);
+        }
+
+        public final String ResolveMeterDescriptionFull(int curResolve, int maxResolve, int resolveGain, boolean isActive) {
+            return PCLJUtils.Format(ResolveMeterDescription1, curResolve, maxResolve, resolveGain, isActive ? ResolveMeterDescription3 : curResolve >= maxResolve ? ResolveMeterDescription2 : "");
         }
     }
 
@@ -648,6 +658,18 @@ public class PCLStrings
     public static class Tutorial
     {
         private final UIStrings Strings = GetUIStrings("Tutorial");
+
+        public final String AffinityInfo = Strings.TEXT[0];
+        public final String AffinityTutorial1 = Strings.TEXT[1];
+
+        public final String[] TutorialItems() {
+            return Strings.TEXT;
+        }
+    }
+
+    public static class EternalTutorial
+    {
+        private final UIStrings Strings = GetUIStrings("Tutorial2");
 
         public final String AffinityInfo = Strings.TEXT[0];
         public final String AffinityTutorial1 = Strings.TEXT[1];

@@ -47,10 +47,7 @@ import pinacolada.actions.cardManipulation.*;
 import pinacolada.actions.damage.DealDamage;
 import pinacolada.actions.damage.DealDamageToAll;
 import pinacolada.actions.damage.LoseHP;
-import pinacolada.actions.handSelection.CycleCards;
-import pinacolada.actions.handSelection.DiscardFromHand;
-import pinacolada.actions.handSelection.ExhaustFromHand;
-import pinacolada.actions.handSelection.SelectFromHand;
+import pinacolada.actions.handSelection.*;
 import pinacolada.actions.orbs.ChannelOrb;
 import pinacolada.actions.orbs.EvokeOrb;
 import pinacolada.actions.orbs.InduceOrb;
@@ -79,7 +76,6 @@ import pinacolada.powers.temporary.TemporaryResistancePower;
 import pinacolada.powers.temporary.TemporaryThornsPower;
 import pinacolada.resources.PGR;
 import pinacolada.stances.PCLStanceHelper;
-import pinacolada.ui.combat.PCLAffinityMeter;
 
 import java.util.ArrayList;
 import java.util.UUID;
@@ -1110,12 +1106,17 @@ public final class PCLActions
         return Add(new ReplaceCard(uuid, replacement));
     }
 
-    public RerollAffinity RerollAffinity(PCLAffinityMeter.Target target)
+    public RerollAffinity RerollAffinity()
+    {
+        return Add(new RerollAffinity(0));
+    }
+
+    public RerollAffinity RerollAffinity(int target)
     {
         return Add(new RerollAffinity(target));
     }
 
-    public RerollAffinity RerollAffinity(PCLAffinityMeter.Target target, PCLAffinity... affinities)
+    public RerollAffinity RerollAffinity(int target, PCLAffinity... affinities)
     {
         return Add(new RerollAffinity(target)).SetAffinityChoices(affinities);
     }
@@ -1127,6 +1128,11 @@ public final class PCLActions
 
     public ReshuffleFromHand ReshuffleFromHand(String sourceName, int amount, boolean isRandom) {
         return this.Add(new ReshuffleFromHand(sourceName, amount, isRandom));
+    }
+
+    public RetainFromHand RetainFromHand(String sourceName, int amount, boolean isRandom)
+    {
+        return Add(new RetainFromHand(sourceName, amount, isRandom));
     }
 
     public ApplyAffinityPower RetainPower(PCLAffinity affinity)

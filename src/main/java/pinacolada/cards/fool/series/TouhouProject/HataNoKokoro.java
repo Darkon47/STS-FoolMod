@@ -60,7 +60,7 @@ public class HataNoKokoro extends FoolCard {
                                     if (((PCLCard) c).CanScale()) {
                                         newAffinities.SetScaling(choice.Affinity, magicNumber);
                                     }
-                                    for (PCLCardAffinity cAff : affinities.List) {
+                                    for (PCLCardAffinity cAff : affinities.GetCardAffinities(false)) {
                                         newAffinities.SetRequirement(cAff.type, cAff.requirement);
                                     }
                                     ((PCLCard) c).affinities.Initialize(newAffinities);

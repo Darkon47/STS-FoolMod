@@ -15,7 +15,7 @@ import pinacolada.cards.base.CardSeries;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
-import pinacolada.powers.PCLClickablePower;
+import pinacolada.powers.FoolClickablePower;
 import pinacolada.powers.PCLCombatStats;
 import pinacolada.powers.PowerTriggerConditionType;
 import pinacolada.utilities.PCLActions;
@@ -50,7 +50,7 @@ public class Rorona extends FoolCard
         PCLActions.Bottom.StackPower(new RoronaPower(p, this, 1));
     }
 
-    public static class RoronaPower extends PCLClickablePower implements OnBattleEndSubscriber
+    public static class RoronaPower extends FoolClickablePower implements OnBattleEndSubscriber
     {
         private final WeightedList<AbstractCard> toUpgrade = new WeightedList<>();
         private final Rorona rorona;

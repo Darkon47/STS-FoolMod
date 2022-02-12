@@ -7,7 +7,7 @@ import eatyourbeets.utilities.RandomizedList;
 import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard_UltraRare;
 import pinacolada.interfaces.subscribers.OnCooldownTriggeredSubscriber;
-import pinacolada.powers.PCLClickablePower;
+import pinacolada.powers.FoolClickablePower;
 import pinacolada.powers.PCLCombatStats;
 import pinacolada.powers.PowerTriggerConditionType;
 import pinacolada.utilities.PCLActions;
@@ -39,7 +39,7 @@ public class Walpurgisnacht extends FoolCard_UltraRare
         PCLActions.Bottom.ApplyPower(p, p, new WalpurgisnachtPower(p, magicNumber));
     }
 
-    public static class WalpurgisnachtPower extends PCLClickablePower implements OnCooldownTriggeredSubscriber
+    public static class WalpurgisnachtPower extends FoolClickablePower implements OnCooldownTriggeredSubscriber
     {
         public WalpurgisnachtPower(AbstractPlayer owner, int amount)
         {

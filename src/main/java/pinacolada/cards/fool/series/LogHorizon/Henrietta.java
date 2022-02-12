@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
-import pinacolada.powers.PCLClickablePower;
+import pinacolada.powers.FoolClickablePower;
 import pinacolada.powers.PowerTriggerConditionType;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
@@ -46,7 +46,7 @@ public class Henrietta extends FoolCard
         PCLActions.Bottom.StackPower(new HenriettaPower(p, magicNumber));
     }
 
-    public static class HenriettaPower extends PCLClickablePower
+    public static class HenriettaPower extends FoolClickablePower
     {
         public HenriettaPower(AbstractPlayer owner, int amount)
         {

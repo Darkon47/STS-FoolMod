@@ -42,6 +42,7 @@ public class PCLConfig
     private static final String HIDE_BLOCK_DAMAGE_BACKGROUND = PCLConfig.CreateFullID("HideBlockDamageBackground");
     private static final String AFFINITY_METER_POSITION = PCLConfig.CreateFullID("AffinityMeterPosition");
     private static final String AFFINITY_SYSTEM_POSITION = PCLConfig.CreateFullID("AffinitySystemPosition");
+    private static final String RESOLVE_METER_POSITION = PCLConfig.CreateFullID("ResolveMeterPosition");
     private static final String VERSION = PCLConfig.CreateFullID("Version");
     private static final String SELECTED_SERIES = PCLConfig.CreateFullID("SelectedSeries");
     private static final String EXPANDED_SERIES = PCLConfig.CreateFullID("ExpandedSeries");
@@ -69,6 +70,7 @@ public class PCLConfig
     public ConfigOption_Boolean EnableRelicsForOtherCharacters = new ConfigOption_Boolean(ENABLE_RELICS_FOR_OTHER_CHARACTERS, false);
     public ConfigOption_Vector2 AffinitySystemPosition = new ConfigOption_Vector2(AFFINITY_SYSTEM_POSITION, null);
     public ConfigOption_Vector2 AffinityMeterPosition = new ConfigOption_Vector2(AFFINITY_METER_POSITION, null);
+    public ConfigOption_Vector2 ResolveMeterPosition = new ConfigOption_Vector2(RESOLVE_METER_POSITION, null);
     public ConfigOption_Integer MajorVersion = new ConfigOption_Integer(VERSION, null);
     public ConfigOption_SeriesList SelectedSeries = new ConfigOption_SeriesList(SELECTED_SERIES, null);
     public ConfigOption_SeriesList ExpandedSeries = new ConfigOption_SeriesList(EXPANDED_SERIES, new ArrayList<>());
@@ -112,6 +114,7 @@ public class PCLConfig
             FlashForReroll.SetConfig(config);
             AffinityMeterPosition.SetConfig(config);
             AffinitySystemPosition.SetConfig(config);
+            ResolveMeterPosition.SetConfig(config);
             SelectedSeries.SetConfig(config);
             ExpandedSeries.SetConfig(config);
             SeriesSize.SetConfig(config);

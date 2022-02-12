@@ -7,11 +7,11 @@ import com.megacrit.cardcrawl.helpers.input.InputHelper;
 import pinacolada.cards.base.PCLCardTooltip;
 import pinacolada.cards.fool.FoolCard_UltraRare;
 import pinacolada.cards.fool.ultrarare.HolyGrail;
-import pinacolada.relics.PCLReplacementRelic;
+import pinacolada.relics.FoolReplacementRelic;
 import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 
-public class HolyGrailRelic extends PCLReplacementRelic
+public class HolyGrailRelic extends FoolReplacementRelic
 {
     private static HolyGrail grail;
 

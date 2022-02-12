@@ -1,10 +1,10 @@
 package pinacolada.relics.fool;
 
 import pinacolada.powers.common.InspirationPower;
-import pinacolada.relics.PCLRelic;
+import pinacolada.relics.FoolRelic;
 import pinacolada.utilities.PCLActions;
 
-public class SpiritPoop3 extends PCLRelic
+public class SpiritPoop3 extends FoolRelic
 {
     public static final String ID = CreateFullID(SpiritPoop3.class);
 

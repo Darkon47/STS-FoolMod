@@ -7,7 +7,7 @@ import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
-import pinacolada.powers.PCLClickablePower;
+import pinacolada.powers.FoolClickablePower;
 import pinacolada.powers.PowerTriggerConditionType;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
@@ -42,7 +42,7 @@ public class Envy extends FoolCard
         PCLActions.Bottom.StackPower(new EnvyPower(p, magicNumber));
     }
 
-    public static class EnvyPower extends PCLClickablePower
+    public static class EnvyPower extends FoolClickablePower
     {
 
         public EnvyPower(AbstractPlayer owner, int amount)

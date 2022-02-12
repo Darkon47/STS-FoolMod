@@ -67,10 +67,11 @@ public abstract class PCLPower extends AbstractPower implements CloneablePowerIn
     }
 
     /** cardData, relic and originalID are exclusive of one another */
-    protected PCLPower(AbstractCreature owner, PCLCardData cardData, PCLRelic relic, String originalID)
+    protected PCLPower(AbstractCreature owner, AbstractCreature source, PCLCardData cardData, PCLRelic relic, String originalID)
     {
         this.effects = _effect.Get(this);
         this.owner = owner;
+        this.source = source;
 
         if (originalID != null)
         {
@@ -112,25 +113,33 @@ public abstract class PCLPower extends AbstractPower implements CloneablePowerIn
 
     public PCLPower(AbstractCreature owner, PCLRelic relic)
     {
-        this(owner, null, relic, null);
+        this(owner, null, null, relic, null);
+    }
+
+    public PCLPower(AbstractCreature owner, AbstractCreature source, PCLRelic relic)
+    {
+        this(owner, source, null, relic, null);
     }
 
     public PCLPower(AbstractCreature owner, PCLCardData cardData)
     {
-        this(owner, cardData, null, null);
+        this(owner, null, cardData, null, null);
+    }
+
+    public PCLPower(AbstractCreature owner, AbstractCreature source, PCLCardData cardData)
+    {
+        this(owner, source, cardData, null, null);
     }
 
     public PCLPower(AbstractCreature owner, String id)
     {
-        this(owner, null, null, id);
+        this(owner, null, id);
     }
 
     public PCLPower(AbstractCreature owner, AbstractCreature source, String id)
     {
-        this(owner, id);
-        this.source = source;
+        this(owner, source, null, null, id);
     }
-
 
     protected void Initialize(int amount)
     {

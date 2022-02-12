@@ -11,7 +11,7 @@ import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.orbs.pcl.Air;
-import pinacolada.powers.PCLPower;
+import pinacolada.powers.FoolPower;
 import pinacolada.stances.pcl.InvocationStance;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
@@ -30,9 +30,8 @@ public class Tatsumaki extends FoolCard
         SetUpgrade(0, 1, 1);
 
         SetAffinity_Red(1, 0, 0);
+        SetAffinity_Green(1,0,1);
         SetAffinity_Blue(1, 0, 2);
-        SetAffinity_Light(1);
-        SetAffinity_Green(0,0,1);
 
         SetEvokeOrbCount(1);
         SetAffinityRequirement(PCLAffinity.Red, 3);
@@ -50,7 +49,7 @@ public class Tatsumaki extends FoolCard
         }
     }
 
-    public static class TatsumakiPower extends PCLPower
+    public static class TatsumakiPower extends FoolPower
     {
         public TatsumakiPower(AbstractCreature owner, int amount)
         {

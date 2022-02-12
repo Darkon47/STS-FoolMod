@@ -9,8 +9,8 @@ import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
+import pinacolada.powers.FoolPower;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.powers.PCLPower;
 import pinacolada.powers.common.SupportDamagePower;
 import pinacolada.utilities.PCLActions;
 
@@ -45,7 +45,7 @@ public class Bozes extends FoolCard
         PCLActions.Bottom.StackPower(new BozesPower(p, this.secondaryValue));
     }
 
-    public static class BozesPower extends PCLPower implements OnSynergySubscriber
+    public static class BozesPower extends FoolPower implements OnSynergySubscriber
     {
         public BozesPower(AbstractCreature owner, int amount)
         {

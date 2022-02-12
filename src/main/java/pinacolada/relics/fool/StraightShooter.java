@@ -2,10 +2,10 @@ package pinacolada.relics.fool;
 
 import pinacolada.cards.base.PCLCard;
 import pinacolada.cards.fool.special.JumpyDumpty;
-import pinacolada.relics.PCLRelic;
+import pinacolada.relics.FoolRelic;
 import pinacolada.utilities.PCLActions;
 
-public class StraightShooter extends PCLRelic
+public class StraightShooter extends FoolRelic
 {
     public static final String ID = CreateFullID(StraightShooter.class);
 

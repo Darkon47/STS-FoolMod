@@ -7,8 +7,8 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireReturn;
 import com.megacrit.cardcrawl.helpers.RelicLibrary;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import eatyourbeets.resources.animator.AnimatorResources;
+import pinacolada.relics.FoolReplacementRelic;
 import pinacolada.relics.PCLRelic;
-import pinacolada.relics.PCLReplacementRelic;
 import pinacolada.resources.PGR;
 import pinacolada.resources.pcl.PCLResources;
 import pinacolada.utilities.PCLGameUtilities;
@@ -22,7 +22,7 @@ public class RelicLibraryPatches
     public static final String SEPARATOR = "~";
 
     public static boolean IsARelic(String relicID) {
-        return (RelicLibrary.isARelic(relicID) || PCLReplacementRelic.RELICS.containsKey(relicID));
+        return (RelicLibrary.isARelic(relicID) || FoolReplacementRelic.RELICS.containsKey(relicID));
     }
 
     public static String GetEYBRelicReplacement(String relicID)
@@ -85,8 +85,8 @@ public class RelicLibraryPatches
             String newKey = key;
             if (PCLGameUtilities.IsPCLPlayerClass()) {
                 newKey = GetPCLRelicReplacement(key);
-                if (PCLReplacementRelic.RELICS.containsKey(key)) {
-                    return PCLReplacementRelic.RELICS.get(key).makeCopy();
+                if (FoolReplacementRelic.RELICS.containsKey(key)) {
+                    return FoolReplacementRelic.RELICS.get(key).makeCopy();
                 }
             }
             else if (PCLGameUtilities.IsEYBPlayerClass()) {

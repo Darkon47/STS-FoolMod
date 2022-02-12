@@ -9,8 +9,8 @@ import eatyourbeets.utilities.TargetHelper;
 import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.interfaces.subscribers.OnMatchBonusSubscriber;
+import pinacolada.powers.FoolPower;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.powers.PCLPower;
 import pinacolada.utilities.PCLActions;
 
 public class Fischl_Oz extends FoolCard
@@ -43,7 +43,7 @@ public class Fischl_Oz extends FoolCard
         PCLActions.Bottom.StackPower(new OzPower(p, this.secondaryValue));
     }
 
-    public static class OzPower extends PCLPower implements OnMatchBonusSubscriber
+    public static class OzPower extends FoolPower implements OnMatchBonusSubscriber
     {
         public OzPower(AbstractPlayer owner, int amount)
         {

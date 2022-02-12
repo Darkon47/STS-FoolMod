@@ -5,10 +5,10 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import eatyourbeets.interfaces.subscribers.OnApplyPowerSubscriber;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.relics.PCLReplacementRelic;
+import pinacolada.relics.FoolReplacementRelic;
 import pinacolada.utilities.PCLActions;
 
-public class HeavyHalberd extends PCLReplacementRelic implements OnApplyPowerSubscriber
+public class HeavyHalberd extends FoolReplacementRelic implements OnApplyPowerSubscriber
 {
     public static final String ID = CreateFullID(HeavyHalberd.class);
     public static final int FORCE_AMOUNT = 1;

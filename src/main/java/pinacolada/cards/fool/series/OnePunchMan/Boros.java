@@ -11,7 +11,7 @@ import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.SFX;
-import pinacolada.powers.PCLClickablePower;
+import pinacolada.powers.FoolClickablePower;
 import pinacolada.powers.PowerTriggerConditionType;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
@@ -55,7 +55,7 @@ public class Boros extends FoolCard
         PCLActions.Bottom.StackPower(new BorosPower(p, magicNumber));
     }
 
-    public static class BorosPower extends PCLClickablePower
+    public static class BorosPower extends FoolClickablePower
     {
         protected boolean playPowersTwice;
 

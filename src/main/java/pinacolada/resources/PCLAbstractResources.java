@@ -104,7 +104,7 @@ public abstract class PCLAbstractResources extends PGR
 
     protected void LoadCustomCardStrings() {
         String json = GetFallbackFile(JSON_CARDS).readString(StandardCharsets.UTF_8.name());
-        LoadGroupedCardStrings(ProcessJson(json, true));
+        LoadGroupedCardStrings(ProcessCardJson(json, true));
 
         if (testFolder.isDirectory() || IsTranslationSupported(Settings.language))
         {
@@ -112,18 +112,22 @@ public abstract class PCLAbstractResources extends PGR
             if (file.exists())
             {
                 String json2 = file.readString(StandardCharsets.UTF_8.name());
-                LoadGroupedCardStrings(ProcessJson(json2, false));
+                LoadGroupedCardStrings(ProcessCardJson(json2, false));
             }
         }
     }
 
-    public String ProcessJson(String originalString, boolean useFallback)
+    public String ProcessCardJson(String originalString, boolean useFallback)
     {
-        final FileHandle file = useFallback ? GetFallbackFile(JSON_SHORTCUTS) : GetFile(Settings.language, JSON_SHORTCUTS);
+        FileHandle file = useFallback ? GetFallbackFile(JSON_SHORTCUTS) : GetFile(Settings.language, JSON_SHORTCUTS);
 
+        // Default to using the base mod shortcuts if a shortcut file for a character does not exist
         if (!file.exists())
         {
-            return originalString;
+            file = useFallback ? PGR.PCL.GetFallbackFile(JSON_SHORTCUTS) : PGR.PCL.GetFile(Settings.language, JSON_SHORTCUTS);
+            if (!file.exists()) {
+                return originalString;
+            }
         }
 
         String shortcutsJson = file.readString(String.valueOf(StandardCharsets.UTF_8));

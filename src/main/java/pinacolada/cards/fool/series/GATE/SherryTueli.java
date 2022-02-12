@@ -6,8 +6,8 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
-import pinacolada.powers.PCLPower;
-import pinacolada.ui.combat.PCLAffinityMeter;
+import pinacolada.powers.FoolPower;
+import pinacolada.ui.combat.FoolAffinityMeter;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
@@ -55,7 +55,7 @@ public class SherryTueli extends FoolCard
         }
     }
 
-    public static class SherryTueliPower extends PCLPower
+    public static class SherryTueliPower extends FoolPower
     {
         private PCLCard card;
 
@@ -70,7 +70,7 @@ public class SherryTueli extends FoolCard
         {
             super.atStartOfTurnPostDraw();
 
-            PCLActions.Bottom.RerollAffinity(PCLAffinityMeter.Target.CurrentAffinity)
+            PCLActions.Bottom.RerollAffinity(FoolAffinityMeter.TARGET_CURRENT)
                     .SetAffinityChoices(PCLGameUtilities.GetPCLAffinities(card).GetAffinitiesAsArray())
                     .SetOptions(false, true);
             ReducePower(1);

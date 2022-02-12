@@ -34,7 +34,6 @@ public class PCLAffinityRow extends GUIElement
     public static final int SYNERGY_MULTIPLIER = 1;
 
     public final PCLAffinity Type;
-    public final PCLAffinitySystem System;
     public final AbstractPCLAffinityPower Power;
 
     public int ActivationPowerAmount;
@@ -47,13 +46,11 @@ public class PCLAffinityRow extends GUIElement
     public final GUI_Label current_affinity;
     public final GUI_Image image_synergy;
 
-    public PCLAffinityRow(PCLAffinitySystem system, PCLAffinity affinity, int index)
+    public PCLAffinityRow(PCLAffinitySystem system, Hitbox hb, PCLAffinity affinity, int index)
     {
-        final Hitbox hb = system.hb;
         final float offset_y = -0.5f -(index * 0.975f);
 
         Type = affinity;
-        System = system;
         Power = system.GetPower(affinity);
 
         if (Power != null)
@@ -117,7 +114,7 @@ public class PCLAffinityRow extends GUIElement
         PCLGameEffects.List.Add(new ChangeAffinityCountEffect(this, true));
     }
 
-    public void Update(PCLAffinitySystem.AffinityCounts previewAffinities, PCLCard hoveredCard, PCLCardAffinities synergies, boolean draggingCard)
+    public void Update(PCLAffinityCounts previewAffinities, PCLCard hoveredCard, PCLCardAffinities synergies, boolean draggingCard)
     {
         image_background.SetColor(COLOR_DEFAULT);
         image_synergy.color.a = Power.enabled ? 1f : 0.25f;
@@ -128,7 +125,7 @@ public class PCLAffinityRow extends GUIElement
             int am = previewAffinities.GetAmount(PCLAffinity.General);
             Level = previewAffinities.GetAmount(Type) + am;
 
-            if (!draggingCard && image_background.hb.hovered && !System.hb.IsDragging())
+            if (!draggingCard && image_background.hb.hovered)
             {
                 final int best = previewAffinities.GetAmount(PCLAffinity.General);
                 for (PCLAffinity affinity : PCLAffinity.Extended()) {
@@ -150,7 +147,7 @@ public class PCLAffinityRow extends GUIElement
                     Total += addLevel;
                 }
                 final PCLCardAffinity a = (synergies != null && synergies.GetLevel(PCLAffinity.Star) == 0) ? synergies.Get(Type) : null;
-                if (System.CanActivateSynergyBonus(a))
+                if (PCLCombatStats.MatchingSystem.AffinityRows.CanActivateSynergyBonus(a))
                 {
                     image_background.SetColor(COLOR_HIGHLIGHT_STRONG);
                 }
@@ -166,7 +163,7 @@ public class PCLAffinityRow extends GUIElement
                 }
             }
 
-            if (!draggingCard && image_background.hb.hovered && !System.hb.IsDragging())
+            if (!draggingCard && image_background.hb.hovered)
             {
                 PCLGameUtilities.HighlightMatchingCards(Type);
             }

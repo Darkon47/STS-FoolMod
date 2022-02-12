@@ -10,7 +10,7 @@ import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.ui.combat.PCLAffinityMeter;
+import pinacolada.ui.combat.FoolAffinityMeter;
 import pinacolada.utilities.PCLActions;
 
 public class Diarmuid extends FoolCard
@@ -43,7 +43,7 @@ public class Diarmuid extends FoolCard
         }
 
         if (!info.IsSynergizing) {
-            PCLActions.Bottom.RerollAffinity(PCLAffinityMeter.Target.NextAffinity)
+            PCLActions.Bottom.RerollAffinity(FoolAffinityMeter.TARGET_NEXT)
                     .SetAffinityChoices(PCLAffinity.Red)
                     .SetOptions(true, true);
         }

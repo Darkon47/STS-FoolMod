@@ -6,7 +6,7 @@ import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.fool.special.InverseOrigami;
-import pinacolada.powers.PCLPower;
+import pinacolada.powers.FoolPower;
 import pinacolada.powers.common.SupportDamagePower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
@@ -54,7 +54,7 @@ public class OrigamiTobiichi extends FoolCard
         PCLActions.Bottom.StackPower(new OrigamiTobiichiPower(p, magicNumber));
     }
 
-    public static class OrigamiTobiichiPower extends PCLPower
+    public static class OrigamiTobiichiPower extends FoolPower
     {
 
         public OrigamiTobiichiPower(AbstractPlayer owner, int amount)

@@ -11,7 +11,7 @@ import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
 import pinacolada.effects.VFX;
-import pinacolada.powers.PCLPower;
+import pinacolada.powers.FoolPower;
 import pinacolada.utilities.PCLActions;
 
 public class Curse_Destroyer extends FoolCard
@@ -62,7 +62,7 @@ public class Curse_Destroyer extends FoolCard
     {
     }
 
-    public static class DestroyerPower extends PCLPower
+    public static class DestroyerPower extends FoolPower
     {
 
         public DestroyerPower(AbstractPlayer owner, int amount)

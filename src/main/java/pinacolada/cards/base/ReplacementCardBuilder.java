@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import eatyourbeets.cards.base.AnimatorCard;
 import eatyourbeets.cards.base.EYBCard;
 import eatyourbeets.utilities.FieldInfo;
-import pinacolada.cards.fool.colorless.QuestionMark;
+import pinacolada.cards.pcl.special.QuestionMark;
 import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;

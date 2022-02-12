@@ -11,7 +11,7 @@ import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
 import pinacolada.effects.VFX;
-import pinacolada.powers.PCLClickablePower;
+import pinacolada.powers.FoolClickablePower;
 import pinacolada.powers.PowerTriggerConditionType;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
@@ -50,7 +50,7 @@ public class Archer extends FoolCard
         PCLActions.Bottom.StackPower(new ArcherPower(p, magicNumber));
     }
 
-    public static class ArcherPower extends PCLClickablePower
+    public static class ArcherPower extends FoolClickablePower
     {
 
         public ArcherPower(AbstractCreature owner, int amount)

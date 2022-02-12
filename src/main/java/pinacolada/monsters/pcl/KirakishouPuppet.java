@@ -3,6 +3,7 @@ package pinacolada.monsters.pcl;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import eatyourbeets.powers.CombatStats;
+import eatyourbeets.ui.animator.combat.UnnamedDollSlot;
 import eatyourbeets.utilities.TargetHelper;
 import org.apache.commons.lang3.StringUtils;
 import pinacolada.cards.base.PCLAffinity;
@@ -109,12 +110,13 @@ public class KirakishouPuppet extends PCLAlly {
         summonData.Health = BASE_HP + PCLJUtils.SumInt(cards, c -> c.cost * (c.rarity == AbstractCard.CardRarity.RARE ? 6 : 3));
         summonData.Strength = BASE_ATTACK + PCLJUtils.SumInt(cards, c -> c.baseDamage) / 3;
         summonData.Dexterity = BASE_BLOCK + PCLJUtils.SumInt(cards, c -> c.baseBlock) / 3;
-        summonData.Slot = CombatStats.Dolls.GetAvailableSlot();
         summonData.Intent = StartingIntent.Random;
-        if (summonData.Slot < 0) {
-            summonData.Slot = 0;
+        UnnamedDollSlot slot = CombatStats.Dolls.GetAvailableSlot();
+        if (slot == null) {
+            slot = CombatStats.Dolls.GetSlot(0);
         }
-        summonData.Position = CombatStats.Dolls.GetSlotPosition(summonData.Slot);
+        summonData.Position = slot.GetPosition();
+        summonData.Slot = slot.Index;
         return summonData;
     }
 
@@ -151,7 +153,8 @@ public class KirakishouPuppet extends PCLAlly {
         PCLCardAffinities other = PCLGameUtilities.GetPCLAffinities(card);
         if (other != null) {
             cardAffinities.Add(other);
-            target = cardAffinities.GetLevel(PCLAffinity.General) <= 0 || cardAffinities.GetLevel(PCLAffinity.Star) > 0 ? PCLAffinity.General : PCLJUtils.FindMax(cardAffinities.List, af -> af.level).type;
+            target = cardAffinities.GetLevel(PCLAffinity.General) <= 0 || cardAffinities.GetLevel(PCLAffinity.Star) > 0 ? PCLAffinity.General
+                    : PCLJUtils.FindMax(cardAffinities.GetCardAffinities(true), af -> af.level).type;
         }
     }
 
@@ -167,7 +170,7 @@ public class KirakishouPuppet extends PCLAlly {
             power.triggerCondition.requiredAmount = COST_AFFINITY + PCLJUtils.SumInt(affinityPowers.values(), i -> i);
             power.triggerCondition.affinities = new PCLAffinity[] {target};
         }
-        , ImageMaster.INTENT_DEBUFF).AddToMoveset(moveset));
+                , ImageMaster.INTENT_DEBUFF).AddToMoveset(moveset));
         this.specialMoves.put(Intent.BUFF, new ChangeIntentPower(this, Intent.BUFF, __ -> {
             for (Map.Entry<PCLPowerHelper, Integer> ph : buffs.entrySet()) {
                 PCLActions.Bottom.ApplyPower(TargetHelper.Player(), ph.getKey(), ph.getValue());

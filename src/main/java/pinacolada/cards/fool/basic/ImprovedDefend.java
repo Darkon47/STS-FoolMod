@@ -3,6 +3,7 @@ package pinacolada.cards.fool.basic;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import pinacolada.cards.base.*;
+import pinacolada.cards.fool.FoolCard;
 import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 
@@ -30,7 +31,7 @@ public abstract class ImprovedDefend extends ImprovedBasicCard
 
     protected static PCLCardData Register(Class<? extends PCLCard> type)
     {
-        return PCLCard.Register(type).SetColor(CardColor.COLORLESS).SetSkill(1, CardRarity.BASIC, PCLCardTarget.None)
+        return FoolCard.Register(type).SetColor(CardColor.COLORLESS).SetSkill(1, CardRarity.BASIC, PCLCardTarget.None)
                 .SetImagePath(PGR.GetCardImage(Defend.DATA.ID + "Alt1"));
     }
 

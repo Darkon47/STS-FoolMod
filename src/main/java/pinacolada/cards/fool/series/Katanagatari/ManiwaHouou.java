@@ -12,7 +12,7 @@ import pinacolada.cards.base.CardSeries;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
-import pinacolada.powers.PCLClickablePower;
+import pinacolada.powers.FoolClickablePower;
 import pinacolada.powers.PCLCombatStats;
 import pinacolada.powers.PowerTriggerConditionType;
 import pinacolada.stances.PCLStanceHelper;
@@ -53,7 +53,7 @@ public class ManiwaHouou extends FoolCard
         PCLActions.Bottom.StackPower(new ManiwaHououPower(p, magicNumber, secondaryValue));
     }
 
-    public static class ManiwaHououPower extends PCLClickablePower implements OnAfterCardDiscardedSubscriber
+    public static class ManiwaHououPower extends FoolClickablePower implements OnAfterCardDiscardedSubscriber
     {
         private int secondaryAmount;
 

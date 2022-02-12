@@ -6,11 +6,11 @@ import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.rooms.ShopRoom;
 import pinacolada.powers.PCLClickablePower;
 import pinacolada.powers.PowerTriggerConditionType;
+import pinacolada.relics.FoolReplacementRelic;
 import pinacolada.relics.PCLRelic;
-import pinacolada.relics.PCLReplacementRelic;
 import pinacolada.utilities.PCLActions;
 
-public class CerealBox extends PCLReplacementRelic
+public class CerealBox extends FoolReplacementRelic
 {
     public static final String ID = CreateFullID(CerealBox.class);
     public static final int HEAL_COST = 1;

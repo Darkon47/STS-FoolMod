@@ -13,7 +13,7 @@ import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard_UltraRare;
 import pinacolada.effects.SFX;
-import pinacolada.powers.PCLClickablePower;
+import pinacolada.powers.FoolClickablePower;
 import pinacolada.powers.PCLPowerHelper;
 import pinacolada.powers.PowerTriggerConditionType;
 import pinacolada.utilities.PCLActions;
@@ -52,7 +52,7 @@ public class ShikizakiKiki extends FoolCard_UltraRare
         PCLActions.Bottom.StackPower(new ShikizakiKikiPower(p, 1));
     }
 
-    public static class ShikizakiKikiPower extends PCLClickablePower implements OnAfterCardDiscardedSubscriber
+    public static class ShikizakiKikiPower extends FoolClickablePower implements OnAfterCardDiscardedSubscriber
     {
         private int stacks;
 

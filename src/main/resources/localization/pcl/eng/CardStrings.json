@@ -176,6 +176,11 @@
 			"DESCRIPTION": "<DRW-M>. ** Discard 1 card.",
 			"NAME": "Wolley Essence"
 		},
+		"pcl:JAX":
+		{
+			"DESCRIPTION": "Take !S! [DD]. || Gain !M! [Vigor] and [Sorcery].",
+			"NAME": "J.A.X."
+		},
 		"pcl:Miracle":
 		{
 			"DESCRIPTION": "Gain !M! [E].",
@@ -229,6 +234,17 @@
 		{
 			"DESCRIPTION": "<DRW>. Add ** {Burn} to your draw pile. || <SLM>. On ** Exhaust: Take !M! [DD].",
 			"NAME": "Overheat"
+		},
+		"pcl:QuestionMark":
+		{
+			"DESCRIPTION": "When drawn: Transforms into a random card and gains <A>.",
+			"NAME": "Question Mark",
+			"UPGRADE_DESCRIPTION": "When drawn: Transforms into a random upgraded card and gains <A>."
+		},
+		"pcl:RitualDagger":
+		{
+			"DESCRIPTION": "Remove [Artifact] and [~Intangible]. Deal double damage if the enemy has [Blinded]. || <LIM>. If {Fatal}: Permanently upgrade this.",
+			"NAME": "Ritual Dagger"
 		}
 	},
 	"STATUS":

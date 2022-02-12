@@ -9,7 +9,7 @@ import eatyourbeets.utilities.JUtils;
 import eatyourbeets.utilities.RandomizedList;
 import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
-import pinacolada.ui.combat.PCLAffinityMeter;
+import pinacolada.ui.combat.FoolAffinityMeter;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
@@ -51,7 +51,7 @@ public class AkiraInoue extends FoolCard
                         for (AbstractCard c : cards) {
                             PCLCardAffinities a = PCLGameUtilities.GetPCLAffinities(c);
                             if (a != null) {
-                                PCLActions.Top.RerollAffinity(PCLAffinityMeter.Target.CurrentAffinity)
+                                PCLActions.Top.RerollAffinity(FoolAffinityMeter.TARGET_CURRENT)
                                         .SetAffinityChoices(a.GetAffinitiesAsArray())
                                         .SetOptions(false, true);
                             }

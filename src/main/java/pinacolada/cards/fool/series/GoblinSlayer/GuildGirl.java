@@ -8,8 +8,8 @@ import pinacolada.actions.player.GainGold;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
+import pinacolada.powers.FoolPower;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.powers.PCLPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
@@ -44,7 +44,7 @@ public class GuildGirl extends FoolCard
         PCLActions.Bottom.StackPower(new GuildGirlPower(p, 1));
     }
 
-    public static class GuildGirlPower extends PCLPower implements OnEnemyDyingSubscriber
+    public static class GuildGirlPower extends FoolPower implements OnEnemyDyingSubscriber
     {
         public GuildGirlPower(AbstractCreature owner, int amount)
         {

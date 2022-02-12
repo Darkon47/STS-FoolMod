@@ -15,9 +15,9 @@ import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.fool.colorless.TakashiNatsume;
 import pinacolada.cards.fool.series.GenshinImpact.AyakaKamisato;
 import pinacolada.effects.AttackEffects;
-import pinacolada.powers.PCLPower;
+import pinacolada.powers.FoolPower;
 import pinacolada.powers.common.DeenergizedPower;
-import pinacolada.powers.pcl.InvertPower;
+import pinacolada.powers.fool.InvertPower;
 import pinacolada.powers.temporary.TemporaryThousandCutsPower;
 import pinacolada.resources.PGR;
 import pinacolada.resources.pcl.PCLStrings;
@@ -242,7 +242,7 @@ public class TakashiNatsume_Circle extends FoolCard
         }
     }
 
-    public static class TakashiNatsumeCirclePower extends PCLPower
+    public static class TakashiNatsumeCirclePower extends FoolPower
     {
         public TakashiNatsumeCirclePower(AbstractPlayer owner, int amount)
         {

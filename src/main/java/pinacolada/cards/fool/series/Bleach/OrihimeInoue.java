@@ -9,7 +9,7 @@ import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.orbs.pcl.Fire;
-import pinacolada.powers.PCLPower;
+import pinacolada.powers.FoolPower;
 import pinacolada.stances.pcl.InvocationStance;
 import pinacolada.utilities.PCLActions;
 
@@ -43,7 +43,7 @@ public class OrihimeInoue extends FoolCard
         }
     }
 
-    public static class OrihimeInouePower extends PCLPower
+    public static class OrihimeInouePower extends FoolPower
     {
         public OrihimeInouePower(AbstractPlayer owner, int amount)
         {

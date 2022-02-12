@@ -10,7 +10,7 @@ import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.interfaces.subscribers.OnPurgeSubscriber;
-import pinacolada.powers.PCLClickablePower;
+import pinacolada.powers.FoolClickablePower;
 import pinacolada.powers.PowerTriggerConditionType;
 import pinacolada.utilities.PCLActions;
 
@@ -47,7 +47,7 @@ public class YachiyoNanami extends FoolCard
         PCLActions.Bottom.StackPower(new YachiyoNanamiPower(p, magicNumber, secondaryValue));
     }
 
-    public static class YachiyoNanamiPower extends PCLClickablePower implements OnPurgeSubscriber
+    public static class YachiyoNanamiPower extends FoolClickablePower implements OnPurgeSubscriber
     {
         private int secondaryAmount;
 

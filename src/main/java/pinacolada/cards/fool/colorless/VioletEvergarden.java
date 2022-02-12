@@ -8,7 +8,7 @@ import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.fool.FoolCard;
-import pinacolada.powers.PCLPower;
+import pinacolada.powers.FoolPower;
 import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameEffects;
@@ -54,7 +54,7 @@ public class VioletEvergarden extends FoolCard
                 });
     }
 
-    public static class VioletEvergardenPower extends PCLPower
+    public static class VioletEvergardenPower extends FoolPower
     {
         private final AbstractCard card;
         public VioletEvergardenPower(AbstractPlayer owner, AbstractCard card, int amount)

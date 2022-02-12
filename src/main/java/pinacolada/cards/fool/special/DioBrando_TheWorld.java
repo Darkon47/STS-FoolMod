@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import eatyourbeets.powers.CombatStats;
 import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
-import pinacolada.powers.PCLClickablePower;
+import pinacolada.powers.FoolClickablePower;
 import pinacolada.powers.PowerTriggerConditionType;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
@@ -40,7 +40,7 @@ public class DioBrando_TheWorld extends FoolCard
         PCLActions.Bottom.StackPower(new TheWorldPower(p, COST));
     }
 
-    public static class TheWorldPower extends PCLClickablePower
+    public static class TheWorldPower extends FoolClickablePower
     {
         public TheWorldPower(AbstractPlayer owner, int amount)
         {

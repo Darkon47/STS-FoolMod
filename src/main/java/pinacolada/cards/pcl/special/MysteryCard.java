@@ -2,7 +2,6 @@ package pinacolada.cards.pcl.special;
 
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.PCLCardTarget;
-import pinacolada.cards.fool.colorless.QuestionMark;
 
 public class MysteryCard extends AbstractMysteryCard
 {

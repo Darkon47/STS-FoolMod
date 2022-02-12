@@ -75,6 +75,7 @@ public class PCLCombatStats extends EYBPower implements InvisiblePower
     public static final GameEvent<OnGainPowerBonusSubscriber> onGainTriggerablePowerBonus = RegisterEvent(new GameEvent<>());
     public static final GameEvent<OnMatchBonusSubscriber> onMatchBonus = RegisterEvent(new GameEvent<>());
     public static final GameEvent<OnMonsterMoveSubscriber> onMonsterMove = RegisterEvent(new GameEvent<>());
+    public static final GameEvent<OnNotSynergySubscriber> onNotSynergy = RegisterEvent(new GameEvent<>());
     public static final GameEvent<OnOrbApplyFocusSubscriber> onOrbApplyFocus = RegisterEvent(new GameEvent<>());
     public static final GameEvent<OnOrbApplyLockOnSubscriber> onOrbApplyLockOn = RegisterEvent(new GameEvent<>());
     public static final GameEvent<OnPCLClickablePowerUsed> onPCLClickablePowerUsed = RegisterEvent(new GameEvent<>());
@@ -83,7 +84,9 @@ public class PCLCombatStats extends EYBPower implements InvisiblePower
     public static final GameEvent<OnReloadPreDiscardSubscriber> onReloadPreDiscard = RegisterEvent(new GameEvent<>());
     public static final GameEvent<OnSpendEnergySubscriber> onSpendEnergy = RegisterEvent(new GameEvent<>());
     public static final GameEvent<OnTagChangedSubscriber> onTagChanged = RegisterEvent(new GameEvent<>());
+    public static final GameEvent<OnTryGainResolveSubscriber> onTryGainResolve = RegisterEvent(new GameEvent<>());
     public static final GameEvent<OnTrySpendAffinitySubscriber> onTrySpendAffinity = RegisterEvent(new GameEvent<>());
+    public static final GameEvent<OnTrySpendEnergySubscriber> onTrySpendEnergy = RegisterEvent(new GameEvent<>());
 
     public static final GameEvent<OnAfterCardDiscardedSubscriber> onAfterCardDiscarded = CombatStats.onAfterCardDiscarded;
     public static final GameEvent<OnAfterCardDrawnSubscriber> onAfterCardDrawn = CombatStats.onAfterCardDrawn;
@@ -234,6 +237,14 @@ public class PCLCombatStats extends EYBPower implements InvisiblePower
         return canMove;
     }
 
+    public static void OnNotSynergy(AbstractCard card)
+    {
+        for (OnNotSynergySubscriber s : onNotSynergy.GetSubscribers())
+        {
+            s.OnNotSynergy(card);
+        }
+    }
+
     public static void OnCardMoved(AbstractCard card, CardGroup source, CardGroup destination)
     {
         for (OnCardMovedSubscriber s : onCardMoved.GetSubscribers())
@@ -350,6 +361,9 @@ public class PCLCombatStats extends EYBPower implements InvisiblePower
         {
             CombatStats.OnSynergy(card);
         }
+        else {
+            PCLCombatStats.OnNotSynergy(card);
+        }
 
         final ArrayList<AbstractGameAction> actions = PCLActions.GetActions();
 
@@ -361,10 +375,10 @@ public class PCLCombatStats extends EYBPower implements InvisiblePower
 
         if (info.IsSynergizing)
         {
-            MatchingSystem.OnSynergy(card);
+            MatchingSystem.OnMatch(card);
         }
         else {
-            MatchingSystem.OnNotSynergy(card);
+            MatchingSystem.OnNotMatch(card);
         }
 
         if (actions.isEmpty())
@@ -389,8 +403,9 @@ public class PCLCombatStats extends EYBPower implements InvisiblePower
         p.cardInUse = card;
         card.target_x = (float)(Settings.WIDTH / 2);
         card.target_y = (float)(Settings.HEIGHT / 2);
-        // TODO make a proper subscriber for this
-        if (card.costForTurn > 0 && !card.freeToPlay() && !card.isInAutoplay && (!p.hasPower(CorruptionPower.POWER_ID) || card.type != AbstractCard.CardType.SKILL)) {
+
+        int spendEnergy = PCLCombatStats.OnTrySpendEnergy(card, p, card.costForTurn);
+        if (spendEnergy > 0 && !card.freeToPlay() && !card.isInAutoplay && (!p.hasPower(CorruptionPower.POWER_ID) || card.type != AbstractCard.CardType.SKILL)) {
             p.energy.use(card.costForTurn);
         }
 
@@ -438,6 +453,26 @@ public class PCLCombatStats extends EYBPower implements InvisiblePower
         }
 
         return amount;
+    }
+
+    public static int OnTryGainResolve(AbstractCard card, AbstractPlayer p, int cost, boolean isActuallyGaining)
+    {
+        for (OnTryGainResolveSubscriber s : onTryGainResolve.GetSubscribers())
+        {
+            cost = s.OnTryGainResolve(card, p, cost, isActuallyGaining);
+        }
+
+        return cost;
+    }
+
+    public static int OnTrySpendEnergy(AbstractCard card, AbstractPlayer p, int cost)
+    {
+        for (OnTrySpendEnergySubscriber s : onTrySpendEnergy.GetSubscribers())
+        {
+            cost = s.OnTrySpendEnergy(card, p, cost);
+        }
+
+        return cost;
     }
 
     public static boolean OnTryUsingCard(AbstractCard card, AbstractPlayer p, AbstractMonster m, boolean canPlay)
@@ -527,7 +562,7 @@ public class PCLCombatStats extends EYBPower implements InvisiblePower
     public static void OnAfterUseCardPostActions(AbstractCard card)
     {
         PCLActions.Last.Callback(() -> {
-            for (AbstractPCLAffinityPower po : PCLCombatStats.MatchingSystem.Powers) {
+            for (AbstractPCLAffinityPower po : PCLGameUtilities.GetAllPCLAffinityPowers()) {
                 po.OnUsingCard(card);
             }
         });

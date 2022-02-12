@@ -9,8 +9,8 @@ import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.interfaces.subscribers.OnTrySpendAffinitySubscriber;
+import pinacolada.powers.FoolPower;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.powers.PCLPower;
 import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 
@@ -37,7 +37,7 @@ public class AliceMargatroid extends FoolCard
         PCLActions.Bottom.StackPower(new AlicePower(p, magicNumber, secondaryValue));
     }
 
-    public static class AlicePower extends PCLPower implements OnTrySpendAffinitySubscriber
+    public static class AlicePower extends FoolPower implements OnTrySpendAffinitySubscriber
     {
         private int secondaryValue;
 

@@ -8,7 +8,7 @@ import pinacolada.cards.base.PCLCard;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.fool.FoolCard;
-import pinacolada.ui.combat.PCLAffinityMeter;
+import pinacolada.ui.combat.FoolAffinityMeter;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
@@ -44,7 +44,7 @@ public class Cecily extends FoolCard
             PCLActions.Top.Cycle(name, magicNumber);
         }
 
-        PCLActions.Bottom.RerollAffinity(PCLAffinityMeter.Target.CurrentAffinity).AddCallback(a -> {
+        PCLActions.Bottom.RerollAffinity(FoolAffinityMeter.TARGET_CURRENT).AddCallback(a -> {
             PCLActions.Last.SelectFromHand(name, secondaryValue, false)
                     .SetOptions(false, false, false)
                     .SetMessage(cardData.Strings.EXTENDED_DESCRIPTION[0])

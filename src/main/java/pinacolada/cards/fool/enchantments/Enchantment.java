@@ -21,7 +21,7 @@ import java.util.ArrayList;
 
 public abstract class Enchantment extends FoolCard implements Hidden
 {
-    public static final String ID = PGR.PCL.CreateID(Enchantment.class.getSimpleName());
+    public static final String ID = PGR.Fool.CreateID(Enchantment.class.getSimpleName());
     private static final ArrayList<Enchantment> cards = new ArrayList<>();
 
     public int index;

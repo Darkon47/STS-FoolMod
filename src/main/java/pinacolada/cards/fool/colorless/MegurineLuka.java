@@ -9,8 +9,8 @@ import pinacolada.cards.base.*;
 import pinacolada.cards.base.attributes.AbstractAttribute;
 import pinacolada.cards.base.attributes.TempHPAttribute;
 import pinacolada.cards.fool.FoolCard;
+import pinacolada.powers.FoolPower;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.powers.PCLPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
@@ -45,7 +45,7 @@ public class MegurineLuka extends FoolCard
         PCLActions.Bottom.StackPower(new MegurineLukaPower(p, magicNumber, shouldRetain));
     }
 
-    public static class MegurineLukaPower extends PCLPower implements OnSynergyCheckSubscriber
+    public static class MegurineLukaPower extends FoolPower implements OnSynergyCheckSubscriber
     {
         private boolean shouldRetain;
         public MegurineLukaPower(AbstractPlayer owner, int amount, boolean shouldRetain)

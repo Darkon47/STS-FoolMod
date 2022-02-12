@@ -9,8 +9,8 @@ import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.fool.FoolCard;
+import pinacolada.powers.FoolPower;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.powers.PCLPower;
 import pinacolada.utilities.PCLActions;
 
 public class IsuzuTonan extends FoolCard
@@ -47,7 +47,7 @@ public class IsuzuTonan extends FoolCard
         PCLActions.Bottom.StackPower(new IsuzuTonanPower(p, magicNumber));
     }
 
-    public static class IsuzuTonanPower extends PCLPower implements OnSynergySubscriber
+    public static class IsuzuTonanPower extends FoolPower implements OnSynergySubscriber
     {
         public IsuzuTonanPower(AbstractPlayer owner, int amount)
         {

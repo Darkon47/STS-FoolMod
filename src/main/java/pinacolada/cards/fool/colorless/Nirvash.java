@@ -172,7 +172,7 @@ public class Nirvash extends FoolCard
                 if (eCard.affinities.HasStar()) {
                     newAffinities.SetStar(eCard.affinities.Star.level);
                 }
-                for (PCLCardAffinity cAff : eCard.affinities.List) {
+                for (PCLCardAffinity cAff : eCard.affinities.GetCardAffinities(false)) {
                     newAffinities.SetRequirement(cAff.type, cAff.requirement);
                 }
                 eCard.affinities.Initialize(newAffinities);

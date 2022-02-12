@@ -11,7 +11,7 @@ import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.fool.FoolCard;
-import pinacolada.powers.PCLPower;
+import pinacolada.powers.FoolPower;
 import pinacolada.powers.PCLPowerHelper;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
@@ -62,7 +62,7 @@ public class LuciaKonohana extends FoolCard
         }
     }
 
-    public static class LuciaKonohanaPower extends PCLPower
+    public static class LuciaKonohanaPower extends FoolPower
     {
         public LuciaKonohanaPower(AbstractCreature owner, int amount)
         {

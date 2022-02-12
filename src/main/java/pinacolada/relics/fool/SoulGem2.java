@@ -4,11 +4,11 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 import pinacolada.actions.special.CreateRandomCurses;
-import pinacolada.relics.PCLRelic;
+import pinacolada.relics.FoolRelic;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
-public class SoulGem2 extends PCLRelic
+public class SoulGem2 extends FoolRelic
 {
     public static final String ID = CreateFullID(SoulGem2.class);
     public static final int POWER_AMOUNT = 3;

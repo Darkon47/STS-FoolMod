@@ -157,6 +157,7 @@ public class Kirby extends FoolCard implements
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info) {
         ArrayList<AbstractCard> played = AbstractDungeon.actionManager.cardsPlayedThisTurn;
+        // Allow Starter effects on inherited cards to take effect
         if (played != null && (played.isEmpty() || (played.size() == 1 && played.get(0) == this))) {
             AbstractDungeon.actionManager.cardsPlayedThisTurn.clear();
         }
@@ -164,6 +165,7 @@ public class Kirby extends FoolCard implements
             if (card instanceof PCLCard) {
                 ((PCLCard) card).OnUse(p, m, info);
                 ((PCLCard) card).OnLateUse(p, m, info);
+                PCLActions.Bottom.AddAffinities(((PCLCard) card).affinities);
             } else {
                 card.use(p, m);
             }
@@ -213,6 +215,26 @@ public class Kirby extends FoolCard implements
         super.triggerOnManualDiscard();
         for (AbstractCard card : inheritedCards) {
             card.triggerOnManualDiscard();
+        }
+    }
+
+    @Override
+    public void triggerOnPurge() {
+        super.triggerOnPurge();
+        for (AbstractCard card : inheritedCards) {
+            if (card instanceof PCLCard) {
+                ((PCLCard) card).triggerOnPurge();
+            }
+        }
+    }
+
+    @Override
+    public void triggerOnAfterlife() {
+        super.triggerOnAfterlife();
+        for (AbstractCard card : inheritedCards) {
+            if (card instanceof PCLCard) {
+                ((PCLCard) card).triggerOnAfterlife();
+            }
         }
     }
 
@@ -412,6 +434,8 @@ public class Kirby extends FoolCard implements
         this.cost = -2;
         this.exhaust = false;
         this.isEthereal = false;
+        this.isInnate = false;
+        this.purgeOnUse = false;
         this.type = CardType.SKILL;
         for (AbstractCard card : inheritedCards) {
             addCardProperties(card);

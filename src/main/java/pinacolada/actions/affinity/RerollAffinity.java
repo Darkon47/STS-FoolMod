@@ -11,18 +11,20 @@ import pinacolada.utilities.PCLJUtils;
 
 public class RerollAffinity extends EYBActionWithCallback<PCLAffinity>
 {
+    protected PCLAffinityMeter meter;
     protected PCLAffinity affinity;
     protected PCLAffinity[] affinityChoices;
-    protected PCLAffinityMeter.Target target;
+    protected int target;
     public boolean isRandom;
     public boolean showEffect;
 
-    public RerollAffinity(PCLAffinityMeter.Target target)
+    public RerollAffinity(int target)
     {
         super(ActionType.POWER, Settings.ACTION_DUR_XFAST);
 
         this.target = target;
         this.isRandom = true;
+        this.meter = PCLCombatStats.MatchingSystem.GetActiveMeter();
     }
 
     public RerollAffinity SetAffinityChoices(PCLAffinity... affinities)
@@ -44,18 +46,18 @@ public class RerollAffinity extends EYBActionWithCallback<PCLAffinity>
     protected void FirstUpdate()
     {
         if (isRandom) {
-            affinity = PCLCombatStats.MatchingSystem.AffinityMeter.Set(PCLGameUtilities.GetRandomElement(GetAffinityChoices()), target);
+            affinity = meter.Set(PCLGameUtilities.GetRandomElement(GetAffinityChoices()), target);
         }
         else {
             PCLActions.Top.TryChooseAffinity(name, 1, GetAffinityChoices()).AddConditionalCallback(choices -> {
                if (choices.size() > 0) {
-                   affinity = PCLCombatStats.MatchingSystem.AffinityMeter.Set(choices.get(0).Affinity, target);
+                   affinity = meter.Set(choices.get(0).Affinity, target);
                }
             });
         }
 
         if (showEffect) {
-            PCLCombatStats.MatchingSystem.AffinityMeter.Flash(target);
+            meter.Flash(target);
         }
     }
 
@@ -69,6 +71,8 @@ public class RerollAffinity extends EYBActionWithCallback<PCLAffinity>
     }
 
     protected PCLAffinity[] GetAffinityChoices() {
-        return affinityChoices != null ? affinityChoices : isRandom ? PCLJUtils.Filter(PCLAffinity.Basic(), a -> PCLCombatStats.MatchingSystem.AffinityMeter.GetCurrentAffinity() != a).toArray(new PCLAffinity[]{}) : PCLAffinity.Extended();
+        return affinityChoices != null ? affinityChoices : isRandom ?
+                PCLJUtils.Filter(PCLAffinity.Basic(), a -> meter.GetCurrentAffinity() != a).toArray(new PCLAffinity[]{})
+                : PCLAffinity.Extended();
     }
 }

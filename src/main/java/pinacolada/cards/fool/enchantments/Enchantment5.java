@@ -3,7 +3,7 @@ package pinacolada.cards.fool.enchantments;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCardData;
-import pinacolada.ui.combat.PCLAffinityMeter;
+import pinacolada.ui.combat.FoolAffinityMeter;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLJUtils;
 
@@ -39,29 +39,29 @@ public class Enchantment5 extends Enchantment
     {
         if (!upgraded)
         {
-            PCLActions.Bottom.RerollAffinity(PCLAffinityMeter.Target.CurrentAffinity)
+            PCLActions.Bottom.RerollAffinity(FoolAffinityMeter.TARGET_CURRENT)
                     .SetOptions(true, true);
-            PCLActions.Bottom.RerollAffinity(PCLAffinityMeter.Target.NextAffinity)
+            PCLActions.Bottom.RerollAffinity(FoolAffinityMeter.TARGET_NEXT)
                     .SetOptions(true, true);
             return;
         }
 
         currentAffinity = GetAffinity();
         if (currentAffinity != null) {
-            PCLActions.Bottom.RerollAffinity(PCLAffinityMeter.Target.CurrentAffinity)
+            PCLActions.Bottom.RerollAffinity(FoolAffinityMeter.TARGET_CURRENT)
                     .SetAffinityChoices(this.currentAffinity)
                     .SetOptions(true, true);
-            PCLActions.Bottom.RerollAffinity(PCLAffinityMeter.Target.NextAffinity)
+            PCLActions.Bottom.RerollAffinity(FoolAffinityMeter.TARGET_NEXT)
                     .SetAffinityChoices(this.currentAffinity)
                     .SetOptions(true, true);
         }
         else {
             PCLAffinity af1 = PCLJUtils.Random(PCLAffinity.Basic());
             PCLAffinity af2 = PCLJUtils.Random(PCLJUtils.Filter(PCLAffinity.Extended(), a -> a != af1));
-            PCLActions.Bottom.RerollAffinity(PCLAffinityMeter.Target.CurrentAffinity)
+            PCLActions.Bottom.RerollAffinity(FoolAffinityMeter.TARGET_CURRENT)
                     .SetAffinityChoices(af1, af2)
                     .SetOptions(false, true).AddCallback(newAf -> {
-                        PCLActions.Bottom.RerollAffinity(PCLAffinityMeter.Target.NextAffinity)
+                        PCLActions.Bottom.RerollAffinity(FoolAffinityMeter.TARGET_NEXT)
                                 .SetAffinityChoices(newAf)
                                 .SetOptions(true, true);
                     });

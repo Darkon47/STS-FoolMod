@@ -5,10 +5,10 @@ import eatyourbeets.utilities.TargetHelper;
 import eatyourbeets.utilities.TupleT2;
 import eatyourbeets.utilities.WeightedList;
 import pinacolada.powers.PCLPowerHelper;
-import pinacolada.relics.PCLReplacementRelic;
+import pinacolada.relics.FoolReplacementRelic;
 import pinacolada.utilities.PCLActions;
 
-public class OldCoffin extends PCLReplacementRelic
+public class OldCoffin extends FoolReplacementRelic
 {
     public static final String ID = CreateFullID(OldCoffin.class);
 

@@ -6,20 +6,21 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Interpolation;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
+import eatyourbeets.effects.EYBEffect;
 import pinacolada.cards.base.PCLAffinity;
 
-public class FlashAffinityEffect extends AbstractGameEffect
+public class FlashAffinityEffect extends EYBEffect
 {
     private float x;
     private float y;
     private final Texture img;
     private static final int W = 32;
     private float scale;
+    private float baseScale;
 
     public FlashAffinityEffect(PCLAffinity affinity)
     {
-        this.scale = Settings.scale;
+        this.baseScale = this.scale = Settings.scale;
 
         if (AbstractDungeon.player != null)
         {
@@ -34,12 +35,21 @@ public class FlashAffinityEffect extends AbstractGameEffect
         this.renderBehind = false;
     }
 
+    public FlashAffinityEffect SetScale(float scale)
+    {
+        this.baseScale = this.scale = scale;
+
+        return this;
+    }
+
+    @Override
     public void update()
     {
         super.update();
-        this.scale = Interpolation.exp5In.apply(Settings.scale, Settings.scale * 0.3f, this.duration / this.startingDuration);
+        this.scale = Interpolation.exp5In.apply(baseScale, baseScale * 0.3f, this.duration / this.startingDuration);
     }
 
+    @Override
     public void render(SpriteBatch sb)
     {
         sb.setBlendFunction(770, 1);

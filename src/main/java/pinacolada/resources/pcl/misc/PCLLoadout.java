@@ -116,9 +116,14 @@ public abstract class PCLLoadout
             // Hindrance level is determined by the proportion of your deck that is "bad"
             // Strikes/Defends and harmless hindrances have a weaker influence
             // Curses and damaging hindrances have a stronger influence
-            int strongHindranceLevel = (int) Math.max(0, (30 * Math.pow(strongHindrances, 1.5) / CardsCount.V1) - 7);
-            int weakHindranceLevel = Math.max(0, (30 * (weakHindrances + strongHindrances) / CardsCount.V1) - 20);
-            HindranceLevel = -strongHindranceLevel -weakHindranceLevel;
+            if (CardsCount.V1 > 0) {
+                int strongHindranceLevel = (int) Math.max(0, (30 * Math.pow(strongHindrances, 1.5) / CardsCount.V1) - 7);
+                int weakHindranceLevel = Math.max(0, (30 * (weakHindrances + strongHindrances) / CardsCount.V1) - 20);
+                HindranceLevel = -strongHindranceLevel -weakHindranceLevel;
+            }
+            else {
+                HindranceLevel = 0;
+            }
 
             Values.putAll(data.Values);
             TotalValue.V1 += (int) PCLJUtils.Sum(Values.values(), Float::valueOf) + AffinityLevel + HindranceLevel;

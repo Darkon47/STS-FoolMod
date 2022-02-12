@@ -8,8 +8,8 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
+import pinacolada.powers.FoolPower;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.powers.PCLPower;
 import pinacolada.utilities.PCLActions;
 
 public class Wrath extends FoolCard
@@ -41,7 +41,7 @@ public class Wrath extends FoolCard
 
     }
 
-    public static class WrathPower extends PCLPower
+    public static class WrathPower extends FoolPower
     {
         public WrathPower(AbstractPlayer owner, int amount)
         {

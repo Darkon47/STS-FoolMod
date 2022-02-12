@@ -12,7 +12,7 @@ import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.fool.FoolCard;
-import pinacolada.powers.PCLPower;
+import pinacolada.powers.FoolPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
@@ -58,7 +58,7 @@ public class Victim extends FoolCard
 
     }
 
-    public static class VictimPower extends PCLPower
+    public static class VictimPower extends FoolPower
     {
         private AbstractCard targetCard;
         private int secondaryAmount;

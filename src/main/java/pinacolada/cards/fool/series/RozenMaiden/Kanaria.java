@@ -12,7 +12,7 @@ import pinacolada.cards.base.attributes.AbstractAttribute;
 import pinacolada.cards.base.attributes.TempHPAttribute;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.fool.special.Kanaria_Pizzicato;
-import pinacolada.powers.PCLClickablePower;
+import pinacolada.powers.FoolClickablePower;
 import pinacolada.powers.PCLCombatStats;
 import pinacolada.powers.PowerTriggerConditionType;
 import pinacolada.utilities.PCLActions;
@@ -58,7 +58,7 @@ public class Kanaria extends FoolCard
         PCLActions.Bottom.StackPower(new KanariaPower(p, 1, magicNumber));
     }
 
-    public static class KanariaPower extends PCLClickablePower implements OnCardCreatedSubscriber
+    public static class KanariaPower extends FoolClickablePower implements OnCardCreatedSubscriber
     {
         protected int secondaryAmount;
 
@@ -91,7 +91,7 @@ public class Kanaria extends FoolCard
             super.onInitialApplication();
 
             PCLCombatStats.onCardCreated.Subscribe(this);
-            PCLCombatStats.MatchingSystem.Powers.get(PCLAffinity.Light.ID).SetEnabled(true);
+            PCLGameUtilities.GetPCLAffinityPower(PCLAffinity.Light).SetEnabled(true);
         }
 
         @Override

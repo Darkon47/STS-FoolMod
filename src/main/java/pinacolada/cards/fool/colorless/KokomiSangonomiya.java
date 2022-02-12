@@ -12,7 +12,7 @@ import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.fool.special.OrbCore_Water;
 import pinacolada.effects.SFX;
 import pinacolada.effects.VFX;
-import pinacolada.powers.pcl.KuragesOathPower;
+import pinacolada.powers.fool.KuragesOathPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 

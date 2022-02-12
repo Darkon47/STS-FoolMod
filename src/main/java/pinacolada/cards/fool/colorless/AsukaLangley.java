@@ -12,8 +12,8 @@ import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
 import pinacolada.interfaces.subscribers.OnDamageOverrideSubscriber;
+import pinacolada.powers.FoolPower;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.powers.PCLPower;
 import pinacolada.powers.PCLPowerHelper;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLJUtils;
@@ -76,7 +76,7 @@ public class AsukaLangley extends FoolCard
         });
     }
 
-    public static class AsukaLangleyPower extends PCLPower implements OnDamageOverrideSubscriber
+    public static class AsukaLangleyPower extends FoolPower implements OnDamageOverrideSubscriber
     {
         public AsukaLangleyPower(AbstractPlayer owner)
         {

@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.IntangiblePlayerPower;
 import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
-import pinacolada.powers.PCLPower;
+import pinacolada.powers.FoolPower;
 import pinacolada.utilities.PCLActions;
 
 public class JotaroKujo_StarPlatinum extends FoolCard
@@ -32,7 +32,7 @@ public class JotaroKujo_StarPlatinum extends FoolCard
         PCLActions.Bottom.StackPower(new StarPlatinumPower(p, this.secondaryValue));
     }
 
-    public static class StarPlatinumPower extends PCLPower
+    public static class StarPlatinumPower extends FoolPower
     {
 
         public StarPlatinumPower(AbstractPlayer owner, int amount)

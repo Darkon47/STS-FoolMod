@@ -9,7 +9,7 @@ import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.pcl.replacement.Miracle;
-import pinacolada.powers.PCLPower;
+import pinacolada.powers.FoolPower;
 import pinacolada.utilities.PCLActions;
 
 public class HinaKagiyama extends FoolCard
@@ -45,7 +45,7 @@ public class HinaKagiyama extends FoolCard
         return super.SetForm(form, timesUpgraded);
     }
 
-    public static class HinaKagiyamaPower extends PCLPower
+    public static class HinaKagiyamaPower extends FoolPower
     {
         public static final int CARD_DRAW_AMOUNT = 2;
 

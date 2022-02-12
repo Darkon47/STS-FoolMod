@@ -13,7 +13,7 @@ import javassist.expr.ExprEditor;
 import javassist.expr.MethodCall;
 import pinacolada.cards.base.PCLCardTooltip;
 import pinacolada.monsters.PCLEnemyIntent;
-import pinacolada.powers.pcl.MindControlPower;
+import pinacolada.powers.fool.MindControlPower;
 import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLJUtils;
 

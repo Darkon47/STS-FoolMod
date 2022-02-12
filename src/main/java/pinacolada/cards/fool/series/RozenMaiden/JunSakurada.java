@@ -9,7 +9,7 @@ import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.fool.curse.Curse_JunTormented;
-import pinacolada.powers.PCLPower;
+import pinacolada.powers.FoolPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
@@ -62,7 +62,7 @@ public class JunSakurada extends FoolCard
         PCLActions.Last.Purge(this);
     }
 
-    public static class JunSakuradaPower extends PCLPower
+    public static class JunSakuradaPower extends FoolPower
     {
         public JunSakuradaPower(AbstractCreature owner, int amount)
         {

@@ -11,8 +11,8 @@ import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.fool.FoolCard;
+import pinacolada.powers.FoolPower;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.powers.PCLPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
@@ -68,7 +68,7 @@ public class NobleFencer extends FoolCard
         PCLActions.Bottom.StackPower(new NobleFencerPower(p, magicNumber));
     }
 
-    public static class NobleFencerPower extends PCLPower implements OnSynergySubscriber {
+    public static class NobleFencerPower extends FoolPower implements OnSynergySubscriber {
         public NobleFencerPower(AbstractCreature owner, int amount) {
             super(owner, NobleFencer.DATA);
             this.Initialize(amount);

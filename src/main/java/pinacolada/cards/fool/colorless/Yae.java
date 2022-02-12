@@ -12,7 +12,8 @@ import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.fool.FoolCard;
-import pinacolada.powers.pcl.SilencedPower;
+import pinacolada.effects.SFX;
+import pinacolada.powers.fool.SilencedPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
@@ -30,7 +31,7 @@ public class Yae extends FoolCard
         SetAffinity_Blue(1);
         SetAffinity_Dark(1);
         SetEthereal(true);
-        SetPurge(true, true);
+        SetExhaust(true);
     }
 
     @Override
@@ -42,6 +43,7 @@ public class Yae extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
+        PCLActions.Bottom.SFX(SFX.NECRONOMICON,1.5f,1.5f);
         int lightningCount = 0;
         for (AbstractMonster enemy : PCLGameUtilities.GetEnemies(true)) {
             PCLActions.Bottom.StackPower(new SilencedPower(enemy, magicNumber));

@@ -8,7 +8,7 @@ import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.SFX;
-import pinacolada.powers.PCLClickablePower;
+import pinacolada.powers.FoolClickablePower;
 import pinacolada.powers.PCLCombatStats;
 import pinacolada.powers.PowerTriggerConditionType;
 import pinacolada.utilities.PCLActions;
@@ -46,7 +46,7 @@ public class WinryRockbell extends FoolCard
         PCLActions.Bottom.StackPower(new WinryRockbellPower(p, 1));
     }
 
-    public static class WinryRockbellPower extends PCLClickablePower implements OnAfterCardDiscardedSubscriber
+    public static class WinryRockbellPower extends FoolClickablePower implements OnAfterCardDiscardedSubscriber
     {
         public WinryRockbellPower(AbstractCreature owner, int amount)
         {

@@ -38,12 +38,12 @@ public abstract class PCLClickablePower extends PCLPower
 
     private PCLClickablePower(AbstractCreature owner, PCLCardData cardData, PCLRelic relic)
     {
-        this(owner, cardData, relic, null);
+        this(owner, owner, cardData, relic, null);
     }
 
-    private PCLClickablePower(AbstractCreature owner, PCLCardData cardData, PCLRelic relic, String originalID)
+    private PCLClickablePower(AbstractCreature owner, AbstractCreature source, PCLCardData cardData, PCLRelic relic, String originalID)
     {
-        super(owner, cardData, relic, originalID);
+        super(owner, source, cardData, relic, originalID);
 
         priority = PCLCombatStats.PRIORITY + 1;
         tooltip = new PCLCardTooltip(name, description);
@@ -105,21 +105,21 @@ public abstract class PCLClickablePower extends PCLPower
 
     public PCLClickablePower(AbstractCreature owner, String originalID, PowerTriggerConditionType type, int requiredAmount)
     {
-        this(owner, null, null, originalID);
+        this(owner, null, null, null, originalID);
 
         triggerCondition = new PCLPowerTriggerCondition(this, type, requiredAmount);
     }
 
     public PCLClickablePower(AbstractCreature owner, String originalID, PowerTriggerConditionType type, int requiredAmount, FuncT1<Boolean, Integer> checkCondition, ActionT1<Integer> payCost)
     {
-        this(owner, null, null, originalID);
+        this(owner, null,null, null, originalID);
 
         triggerCondition = new PCLPowerTriggerCondition(this, type, requiredAmount, checkCondition, payCost);
     }
 
     public PCLClickablePower(AbstractCreature owner, String originalID, PowerTriggerConditionType type, int requiredAmount, FuncT1<Boolean, Integer> checkCondition, ActionT1<Integer> payCost, PCLAffinity... affinities)
     {
-        this(owner, null, null, originalID);
+        this(owner, null,null, null, originalID);
 
         triggerCondition = new PCLPowerTriggerCondition(this, type, requiredAmount, checkCondition, payCost, affinities);
     }

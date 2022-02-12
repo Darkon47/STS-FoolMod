@@ -13,7 +13,7 @@ import com.megacrit.cardcrawl.relics.FrozenEye;
 import eatyourbeets.powers.CombatStats;
 import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
-import pinacolada.powers.PCLPower;
+import pinacolada.powers.FoolPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
@@ -72,7 +72,7 @@ public class SatoriKomeiji extends FoolCard
         }
     }
 
-    public static class SatoriPower extends PCLPower
+    public static class SatoriPower extends FoolPower
     {
         public SatoriPower(AbstractCreature owner, int amount)
         {

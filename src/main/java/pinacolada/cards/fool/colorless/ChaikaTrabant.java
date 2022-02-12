@@ -10,7 +10,7 @@ import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.fool.special.ChaikaBohdan;
 import pinacolada.cards.fool.special.Layla;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.powers.pcl.PoisonAffinityPower;
+import pinacolada.powers.fool.PoisonAffinityPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameEffects;
 import pinacolada.utilities.PCLGameUtilities;

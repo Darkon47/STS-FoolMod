@@ -14,8 +14,8 @@ import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard_UltraRare;
 import pinacolada.effects.vfx.CherryBlossomEffect;
+import pinacolada.powers.FoolPower;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.powers.PCLPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
@@ -52,7 +52,7 @@ public class YuyukoSaigyouji extends FoolCard_UltraRare implements StartupCard
         return true;
     }
 
-    public static class YuyukoSaigyoujiPower extends PCLPower
+    public static class YuyukoSaigyoujiPower extends FoolPower
     {
         public YuyukoSaigyoujiPower(AbstractCreature owner, int amount)
         {

@@ -1,10 +1,10 @@
 package pinacolada.relics.fool;
 
-import pinacolada.powers.pcl.BurningWeaponPower;
-import pinacolada.relics.PCLRelic;
+import pinacolada.powers.common.BurningWeaponPower;
+import pinacolada.relics.FoolRelic;
 import pinacolada.utilities.PCLActions;
 
-public class FlametangBoomerang extends PCLRelic
+public class FlametangBoomerang extends FoolRelic
 {
     public static final String ID = CreateFullID(FlametangBoomerang.class);
 

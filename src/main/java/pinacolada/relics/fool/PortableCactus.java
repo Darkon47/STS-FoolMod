@@ -1,11 +1,11 @@
 package pinacolada.relics.fool;
 
 import com.megacrit.cardcrawl.cards.DamageInfo;
-import pinacolada.relics.PCLRelic;
+import pinacolada.relics.FoolRelic;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLJUtils;
 
-public class PortableCactus extends PCLRelic
+public class PortableCactus extends FoolRelic
 {
     public static final String ID = CreateFullID(PortableCactus.class);
     public static final int AMOUNT = 1;

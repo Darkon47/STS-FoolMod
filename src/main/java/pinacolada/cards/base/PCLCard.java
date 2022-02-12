@@ -44,7 +44,7 @@ import pinacolada.cards.fool.FoolCard_UltraRare;
 import pinacolada.patches.screens.GridCardSelectScreenPatches;
 import pinacolada.powers.PCLCombatStats;
 import pinacolada.powers.affinity.AbstractPCLAffinityPower;
-import pinacolada.powers.pcl.ElementalExposurePower;
+import pinacolada.powers.fool.ElementalExposurePower;
 import pinacolada.powers.replacement.PlayerFlightPower;
 import pinacolada.resources.PGR;
 import pinacolada.resources.pcl.PCLImages;
@@ -59,7 +59,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import static pinacolada.powers.pcl.ElementalExposurePower.ELEMENTAL_MODIFIER;
+import static pinacolada.powers.fool.ElementalExposurePower.ELEMENTAL_MODIFIER;
 import static pinacolada.powers.replacement.PCLLockOnPower.GetAttackMultiplier;
 import static pinacolada.resources.PGR.Enums.CardTags.*;
 
@@ -74,6 +74,7 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
     public static final CardTags LOYAL = PGR.Enums.CardTags.LOYAL;
     public static final CardTags HARMONIC = PGR.Enums.CardTags.HARMONIC;
     public static final CardTags PCL_INNATE = PGR.Enums.CardTags.PCL_INNATE;
+    public static final CardTags PCL_RETAIN_INFINITE = PGR.Enums.CardTags.PCL_RETAIN;
     public static final PCLImages IMAGES = PGR.PCL.Images;
     protected static final Color defaultGlowColor = AbstractCard.BLUE_BORDER_GLOW_COLOR;
     protected static final Color synergyGlowColor = new Color(1, 0.843f, 0, 0.25f);
@@ -1402,7 +1403,7 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
 
         }
 
-        for (AbstractPCLAffinityPower p : PCLCombatStats.MatchingSystem.Powers) {
+        for (AbstractPCLAffinityPower p : PCLGameUtilities.GetAllPCLAffinityPowers()) {
             tempBlock = p.modifyBlock(tempBlock, this);
             tempDamage = p.atDamageGive(tempDamage, damageTypeForTurn, this);
         }
@@ -1593,18 +1594,12 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
     @Override
     protected Texture GetCardBackground()
     {
-        if (color == PGR.Fool.CardColor || color == CardColor.COLORLESS)
+        switch (type)
         {
-
-            switch (type)
-            {
-                case ATTACK: return isPopup ? PCLCard.IMAGES.CARD_BACKGROUND_ATTACK_L.Texture() : PCLCard.IMAGES.CARD_BACKGROUND_ATTACK.Texture();
-                case POWER: return isPopup ? PCLCard.IMAGES.CARD_BACKGROUND_POWER_L.Texture() : PCLCard.IMAGES.CARD_BACKGROUND_POWER.Texture();
-                default: return isPopup ? PCLCard.IMAGES.CARD_BACKGROUND_SKILL_L.Texture() : PCLCard.IMAGES.CARD_BACKGROUND_SKILL.Texture();
-            }
+            case ATTACK: return isPopup ? PCLCard.IMAGES.CARD_BACKGROUND_ATTACK_L.Texture() : PCLCard.IMAGES.CARD_BACKGROUND_ATTACK.Texture();
+            case POWER: return isPopup ? PCLCard.IMAGES.CARD_BACKGROUND_POWER_L.Texture() : PCLCard.IMAGES.CARD_BACKGROUND_POWER.Texture();
+            default: return isPopup ? PCLCard.IMAGES.CARD_BACKGROUND_SKILL_L.Texture() : PCLCard.IMAGES.CARD_BACKGROUND_SKILL.Texture();
         }
-
-        return super.GetCardBackground();
     }
 
     @Override

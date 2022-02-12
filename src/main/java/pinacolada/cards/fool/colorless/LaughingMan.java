@@ -11,8 +11,8 @@ import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.fool.FoolCard;
+import pinacolada.powers.FoolPower;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.powers.PCLPower;
 import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameEffects;
@@ -68,7 +68,7 @@ public class LaughingMan extends FoolCard implements OnEndOfTurnFirstSubscriber,
         }
     }
 
-    public static class LaughingManPower extends PCLPower
+    public static class LaughingManPower extends FoolPower
     {
         private final CardType cardType;
         public LaughingManPower(AbstractPlayer owner, int amount, CardType cardType)

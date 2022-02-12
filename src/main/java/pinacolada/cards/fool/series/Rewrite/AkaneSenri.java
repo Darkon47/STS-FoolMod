@@ -9,7 +9,7 @@ import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
-import pinacolada.powers.PCLClickablePower;
+import pinacolada.powers.FoolClickablePower;
 import pinacolada.powers.PCLCombatStats;
 import pinacolada.powers.PowerTriggerConditionType;
 import pinacolada.utilities.PCLActions;
@@ -54,7 +54,7 @@ public class AkaneSenri extends FoolCard
         PCLActions.Bottom.ModifyTag(player.drawPile, magicNumber, HASTE, true);
     }
 
-    public static class AkaneSenriPower extends PCLClickablePower implements OnShuffleSubscriber
+    public static class AkaneSenriPower extends FoolClickablePower implements OnShuffleSubscriber
     {
         protected int secondaryAmount;
 

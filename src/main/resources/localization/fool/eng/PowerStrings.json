@@ -1,0 +1,102 @@
+{
+	"pcl:Amplification_DarkPower":
+	{
+		"DESCRIPTIONS": ["[~Dark] has #b+{0} #y{1} #yScaling when Triggered and #b+{0} #y{1} #yScaling when Evoked."],
+		"NAME": "Dark Amplification"
+	},
+	"pcl:Amplification_LightningPower":
+	{
+		"DESCRIPTIONS": ["[~Lightning] has #b+{0} #y{1} #yScaling when Triggered and #b+{0} #y{1} #yScaling when Evoked."],
+		"NAME": "Lightning Amplification"
+	},
+	"pcl:BlazingHeatPower":
+	{
+		"DESCRIPTIONS": ["[Fire] deals #b+{0}% damage on Trigger and #b+{1}% damage on Evoke to the highest health enemy."],
+		"NAME": "Blazing Heat"
+	},
+	"pcl:DainsleifAbyssPower":
+	{
+		"DESCRIPTIONS": ["Whenever you play a card, gains stacks equal to the card's cost + 1. Whenever this reaches #b{0} stacks, remove #b{0} stacks, end your turn, and choose 1 out of 3 random effects with positive and negative effects."],
+		"NAME": "Phase of the Abyssal Moon"
+	},
+	"pcl:ElementalExposurePower":
+	{
+		"DESCRIPTIONS": ["The effects and damage of [Burning], [Freezing], and [Electrified] are multiplied by #b{0}%. Receives #b{1}% more damage from #yElemental attacks. Removed in #b{2} turn(s)."],
+		"NAME": "Elemental Exposure"
+	},
+	"pcl:ElementalMasteryPower":
+	{
+		"DESCRIPTIONS": ["For #b{0} turn(s): At the end of the turn, apply [Elemental Exposure] to all enemies, ignoring [Artifact]. Increase this amount by #b{1} whenever an Orb is Channeled or Evoked."],
+		"NAME": "Elemental Mastery"
+	},
+	"pcl:GeassPower":
+	{
+		"DESCRIPTIONS": ["Will attack itself or be stunned once. This power can only affect the same character once."],
+		"NAME": "Geass"
+	},
+	"pcl:IonizingStormPower":
+	{
+		"DESCRIPTIONS": ["[~Lightning] applies #b{0}% of [Focus] as [Electrified] to a random enemy when #yTriggered and to ALL enemies when #yEvoked. NL At the start of turn: Gain #b{1} [L] for each enemy with [Electrified]."],
+		"NAME": "Ionizing Storm"
+	},
+	"pcl:KuragesOathPower":
+	{
+		"DESCRIPTIONS": ["[Water] has #b+{0} [Focus] and reflects unblocked attack damage. You can no longer gain [Block] from cards. At the end of turn: Take #b{1} non-lethal damage and channel [Water] (this can't kill you)."],
+		"NAME": "Kurage's Oath"
+	},
+	"pcl:MagusForm":
+	{
+		"DESCRIPTIONS": ["At the start of turn: Gain #b{0} [Focus] and lose #b{1} [Strength] and [Dexterity]."],
+		"NAME": "Magus Form"
+	},
+	"pcl:PhasingPower":
+	{
+		"DESCRIPTIONS": ["You have a #b{0}% chance to dodge each attack.", " This chance starts decaying in #b{0} turn(s).", " Reduce this chance by #b{0}% each turn."],
+		"NAME": "Phasing"
+	},
+	"pcl:PoisonAffinityPower":
+	{
+		"DESCRIPTIONS": ["Whenever you apply [Poison], apply #b{0} more."],
+		"NAME": "Poison Affinity"
+	},
+	"pcl:ProvokedPower":
+	{
+		"DESCRIPTIONS": ["Takes #b{0}% more damage from #yAttacks. Will always #yAttack this turn."],
+		"NAME": "Provoked"
+	},
+	"pcl:SelfImmolationPower":
+	{
+		"DESCRIPTIONS": ["When you play a card that gives [Block]: ALL characters take [DD] equal to #b{0} times its [Block]."],
+		"NAME": "Self-Immolation"
+	},
+	"pcl:SheerColdPower":
+	{
+		"DESCRIPTIONS": ["[Frost] deals [~ID] damage (#b{0}% of [Focus] on #yTrigger and #b{1}% on #yEvoke) and applies half that much [Freezing] to the enemy with the highest damage."],
+		"NAME": "Sheer Cold"
+	},
+	"pcl:SilencedPower":
+	{
+		"DESCRIPTIONS": ["You cannot gain #yCommon #yBuffs."],
+		"NAME": "Silenced"
+	},
+	"pcl:StolenGoldPower":
+	{
+		"DESCRIPTIONS": ["You stole #b{0} Gold. You can steal #b{1} more Gold."],
+		"NAME": "Stolen Gold"
+	},
+	"pcl:StonedPower":
+	{
+		"DESCRIPTIONS": ["If [Burning], [Freezing], [Electrified], [Rippled], or [Swirled] would be reduced: Remove #b1 stack of this power instead."],
+		"NAME": "Stoned"
+	},
+	"pcl:SwirledPower":
+	{
+		"DESCRIPTIONS": ["If the target has [Burning], [Freezing], [Electrified], or [Rippled]: Apply #b1 of each to ALL other enemies, then reduce this by #b1. If there are no other enemies: Increase stacks of those powers by #b1."],
+		"NAME": "Swirled"
+	},
+	"pcl:UndulatingLacunaPower":
+	{
+		"DESCRIPTIONS": ["[~Dark] applies #b{0}% of [Focus] as [Rippled] to ALL enemies on #yTrigger and #yEvoke. NL Whenever you draw an #yUnplayable card: [Rippled] gains +#b{1}% effect bonus."],
+		"NAME": "Undulating Lacuna"
+	}
+}

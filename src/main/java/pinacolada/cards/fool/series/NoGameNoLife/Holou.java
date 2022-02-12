@@ -16,8 +16,8 @@ import pinacolada.cards.base.PCLCard;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.pcl.curse.Curse_Doubt;
+import pinacolada.powers.FoolPower;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.powers.PCLPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
@@ -52,7 +52,7 @@ public class Holou extends FoolCard
         PCLActions.Bottom.StackPower(new HolouPower(p, magicNumber));
     }
 
-    public static class HolouPower extends PCLPower implements OnShuffleSubscriber, OnCardCreatedSubscriber
+    public static class HolouPower extends FoolPower implements OnShuffleSubscriber, OnCardCreatedSubscriber
     {
         public HolouPower(AbstractCreature owner, int amount)
         {

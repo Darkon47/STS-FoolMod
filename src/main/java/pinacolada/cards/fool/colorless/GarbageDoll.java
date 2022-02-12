@@ -71,14 +71,14 @@ public class GarbageDoll extends FoolCard
                     if (aCard.affinities.GetLevel(PCLAffinity.Star) > 0) {
                         for (AbstractCard possibleCard : player.discardPile.group)
                         {
-                            if (possibleCard instanceof PCLCard && PCLJUtils.Find(((PCLCard) possibleCard).affinities.List, a -> a.level > 0) != null)
+                            if (PCLGameUtilities.GetPCLAffinityLevel(possibleCard, PCLAffinity.General, true) > 0)
                             {
                                 possiblePicks.addToBottom(possibleCard);
                             }
                         }
                     }
                     else {
-                        ArrayList<PCLCardAffinity> aCardAffinities = PCLJUtils.Filter(aCard.affinities.List, a -> a.level > 0);
+                        ArrayList<PCLCardAffinity> aCardAffinities = aCard.affinities.GetCardAffinities(true);
                         for (AbstractCard possibleCard : player.discardPile.group) {
                             for (PCLCardAffinity aCardAffinity : aCardAffinities) {
                                 if (possibleCard instanceof PCLCard && ((PCLCard) possibleCard).affinities.GetLevel(aCardAffinity.type) > 0) {

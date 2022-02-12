@@ -9,8 +9,8 @@ import pinacolada.cards.base.PCLCard;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard_UltraRare;
 import pinacolada.cards.fool.series.DateALive.ShidoItsuka;
-import pinacolada.powers.PCLPower;
-import pinacolada.powers.pcl.MagusFormPower;
+import pinacolada.powers.FoolPower;
+import pinacolada.powers.fool.MagusFormPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
@@ -41,7 +41,7 @@ public class MioTakamiya extends FoolCard_UltraRare
         PCLActions.Bottom.StackPower(new MioTakamiyaPower(p, magicNumber));
     }
 
-    public static class MioTakamiyaPower extends PCLPower
+    public static class MioTakamiyaPower extends FoolPower
     {
         public MioTakamiyaPower(AbstractPlayer owner, int amount)
         {

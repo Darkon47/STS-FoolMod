@@ -21,7 +21,7 @@ import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.interfaces.subscribers.OnOrbApplyFocusSubscriber;
 import pinacolada.orbs.PCLOrbHelper;
-import pinacolada.powers.PCLClickablePower;
+import pinacolada.powers.FoolClickablePower;
 import pinacolada.powers.PCLCombatStats;
 import pinacolada.powers.PowerTriggerConditionType;
 import pinacolada.resources.PGR;
@@ -33,7 +33,7 @@ import java.util.ArrayList;
 
 public abstract class OrbCore extends FoolCard
 {
-    public static final String ID = PGR.PCL.CreateID(OrbCore.class.getSimpleName());
+    public static final String ID = PGR.Fool.CreateID(OrbCore.class.getSimpleName());
 
     private static final WeightedList<OrbCore> cores = new WeightedList<>();
 
@@ -136,7 +136,7 @@ public abstract class OrbCore extends FoolCard
     public boolean EvokeEffect(OrbCorePower power) {return false;}
     public boolean PassiveEffect(OrbCorePower power) {return false;}
 
-    public static class OrbCorePower extends PCLClickablePower implements OnOrbApplyFocusSubscriber, OnOrbPassiveEffectSubscriber
+    public static class OrbCorePower extends FoolClickablePower implements OnOrbApplyFocusSubscriber, OnOrbPassiveEffectSubscriber
     {
         protected final OrbCore card;
 

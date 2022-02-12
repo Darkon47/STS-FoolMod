@@ -5,8 +5,8 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
-import pinacolada.powers.PCLPower;
-import pinacolada.powers.pcl.MagusFormPower;
+import pinacolada.powers.FoolPower;
+import pinacolada.powers.fool.MagusFormPower;
 import pinacolada.utilities.PCLActions;
 
 public class Alibaba_Aladdin extends FoolCard
@@ -33,7 +33,7 @@ public class Alibaba_Aladdin extends FoolCard
         PCLActions.Bottom.StackPower(new AladdinPower(p, this.secondaryValue));
     }
 
-    public static class AladdinPower extends PCLPower
+    public static class AladdinPower extends FoolPower
     {
 
         public AladdinPower(AbstractPlayer owner, int amount)

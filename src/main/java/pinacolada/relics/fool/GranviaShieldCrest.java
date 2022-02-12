@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import eatyourbeets.interfaces.subscribers.OnLosingHPSubscriber;
 import eatyourbeets.powers.CombatStats;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.relics.PCLRelic;
+import pinacolada.relics.FoolRelic;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
@@ -16,7 +16,7 @@ import java.util.StringJoiner;
 
 import static pinacolada.resources.PGR.Enums.CardTags.PROTAGONIST;
 
-public class GranviaShieldCrest extends PCLRelic implements OnLosingHPSubscriber
+public class GranviaShieldCrest extends FoolRelic implements OnLosingHPSubscriber
 {
     public static final String ID = CreateFullID(GranviaShieldCrest.class);
 

@@ -1,14 +1,17 @@
 package pinacolada.cards.fool.colorless;
 
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.ReactivePower;
+import com.megacrit.cardcrawl.vfx.BorderFlashEffect;
 import eatyourbeets.utilities.RandomizedList;
 import eatyourbeets.utilities.WeightedList;
 import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
+import pinacolada.effects.SFX;
 import pinacolada.resources.PGR;
 import pinacolada.resources.pcl.misc.PCLRuntimeLoadout;
 import pinacolada.utilities.PCLActions;
@@ -31,10 +34,10 @@ public class HaruhiSuzumiya extends FoolCard
     {
         super(DATA);
 
-        Initialize(0, 0, 3, 20);
+        Initialize(0, 0, 3, 2);
         SetCostUpgrade(-1);
         SetEthereal(true);
-        SetExhaust(true);
+        SetPurge(true);
 
         SetAffinity_Star(1, 0, 0);
 
@@ -70,7 +73,11 @@ public class HaruhiSuzumiya extends FoolCard
                                 for (AbstractCard c : CreateDeck(loadout, cards.size())) {
                                     PCLActions.Bottom.MakeCardInDrawPile(c);
                                 }
-                                PCLActions.Bottom.Draw(player.masterHandSize);
+                                PCLActions.Bottom.Draw(secondaryValue).AddCallback(cards2 -> {
+                                    for (AbstractCard c : cards2) {
+                                        PCLActions.Bottom.Motivate(c, 1);
+                                    }
+                                });
                             });
                 }
 
@@ -80,6 +87,8 @@ public class HaruhiSuzumiya extends FoolCard
 
         PCLActions.Bottom.TryChooseSpendAffinity(this).CancellableFromPlayer(true)
                 .AddConditionalCallback(() -> {
+                    PCLActions.Bottom.VFX(new BorderFlashEffect(Color.YELLOW));
+                    PCLActions.Bottom.SFX(SFX.MONSTER_COLLECTOR_DEBUFF,1.5f,1.5f);
                    for (AbstractMonster mo : PCLGameUtilities.GetEnemies(true)) {
                        PCLActions.Bottom.ApplyPower(new ReactivePower(mo));
                    }
@@ -91,7 +100,7 @@ public class HaruhiSuzumiya extends FoolCard
 
         for (AbstractCard c : loadout.GetCardPoolInPlay().values())
         {
-            if (!PCLGameUtilities.IsHindrance (c) && PCLGameUtilities.IsObtainableInCombat(c))
+            if (!PCLGameUtilities.IsHindrance(c) && PCLGameUtilities.IsObtainableInCombat(c))
             {
                 switch (c.rarity)
                 {

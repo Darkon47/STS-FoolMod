@@ -7,10 +7,10 @@ import com.megacrit.cardcrawl.rooms.MonsterRoomElite;
 import eatyourbeets.rooms.AnimatorCustomEventRoom;
 import pinacolada.cards.base.PCLCardTooltip;
 import pinacolada.events.base.PCLEvent;
-import pinacolada.relics.PCLRelic;
+import pinacolada.relics.FoolRelic;
 import pinacolada.utilities.PCLJUtils;
 
-public abstract class AbstractBountyMap extends PCLRelic
+public abstract class AbstractBountyMap extends FoolRelic
 {
     public AbstractBountyMap(String id)
     {

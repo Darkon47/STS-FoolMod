@@ -6,6 +6,7 @@ import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCard;
 import pinacolada.cards.base.PCLCardData;
+import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
 import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
@@ -34,7 +35,7 @@ public abstract class ImprovedStrike extends ImprovedBasicCard
 
     protected static PCLCardData Register(Class<? extends PCLCard> type)
     {
-        return PCLCard.Register(type).SetColor(CardColor.COLORLESS).SetAttack(1, CardRarity.BASIC)
+        return FoolCard.Register(type).SetColor(CardColor.COLORLESS).SetAttack(1, CardRarity.BASIC)
                 .SetImagePath(PGR.GetCardImage(Strike.DATA.ID + "Alt1"));
     }
 

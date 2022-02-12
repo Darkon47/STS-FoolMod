@@ -87,7 +87,7 @@ public class AfterLifeMod extends AbstractCardModifier
     {
         return !controlCard.cardID.equals(card.cardID)
                 && (pAffinities == null || (pAffinities.HasStar() && PCLGameUtilities.GetPCLAffinityLevel(card, PCLAffinity.General, true) > 0)
-                || PCLJUtils.Any(pAffinities.List, af -> af.level > 0 && PCLGameUtilities.GetPCLAffinityLevel(card, af.type, true) > 0));
+                || PCLJUtils.Any(pAffinities.GetCardAffinities(true), af -> PCLGameUtilities.GetPCLAffinityLevel(card, af.type, true) > 0));
     }
 
     private static boolean CanUse(AbstractCard card)
@@ -136,8 +136,8 @@ public class AfterLifeMod extends AbstractCardModifier
             }
         }
         else {
-            for (PCLCardAffinity cf : pAffinities.List) {
-                requiredAffinities[cf.type.ID] = cf.level > 0;
+            for (PCLCardAffinity cf : pAffinities.GetCardAffinities(true)) {
+                requiredAffinities[cf.type.ID] = true;
             }
         }
 
@@ -149,7 +149,7 @@ public class AfterLifeMod extends AbstractCardModifier
                         Arrays.fill(requiredAffinities, false);
                     }
                     else {
-                        for (PCLCardAffinity cf : PCLGameUtilities.GetPCLAffinities(c2).List) {
+                        for (PCLCardAffinity cf : PCLGameUtilities.GetPCLAffinities(c2).GetCardAffinities(false)) {
                             requiredAffinities[cf.type.ID] = requiredAffinities[cf.type.ID] & cf.level == 0;
                         }
                     }

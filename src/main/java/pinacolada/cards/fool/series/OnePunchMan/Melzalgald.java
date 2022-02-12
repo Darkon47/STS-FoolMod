@@ -11,7 +11,7 @@ import pinacolada.cards.fool.special.Melzalgald_2;
 import pinacolada.cards.fool.special.Melzalgald_3;
 import pinacolada.effects.AttackEffects;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.ui.combat.PCLAffinityMeter;
+import pinacolada.ui.combat.FoolAffinityMeter;
 import pinacolada.utilities.PCLActions;
 
 public class Melzalgald extends FoolCard
@@ -47,7 +47,7 @@ public class Melzalgald extends FoolCard
         PCLActions.Bottom.DealCardDamage(this, m, AttackEffects.SLASH_HEAVY);
         PCLActions.Bottom.GainBlock(block);
         if (PCLCombatStats.MatchingSystem.AffinityMeter.GetCurrentAffinity() != PCLAffinity.Star) {
-            PCLActions.Bottom.RerollAffinity(PCLAffinityMeter.Target.CurrentAffinity, PCLAffinity.Red, PCLAffinity.Green, PCLAffinity.Blue)
+            PCLActions.Bottom.RerollAffinity(FoolAffinityMeter.TARGET_CURRENT, PCLAffinity.Red, PCLAffinity.Green, PCLAffinity.Blue)
                     .SetOptions(false, true);
         }
 

@@ -11,7 +11,7 @@ import pinacolada.cards.base.CardSeries;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard_UltraRare;
-import pinacolada.powers.PCLPower;
+import pinacolada.powers.FoolPower;
 import pinacolada.powers.replacement.PlayerFlightPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
@@ -59,7 +59,7 @@ public class Veldora extends FoolCard_UltraRare
         PCLActions.Bottom.StackPower(new VeldoraPower(p, 1));
     }
 
-    public static class VeldoraPower extends PCLPower
+    public static class VeldoraPower extends FoolPower
     {
         public VeldoraPower(AbstractCreature owner, int amount)
         {

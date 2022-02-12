@@ -8,7 +8,7 @@ import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.fool.FoolCard;
-import pinacolada.powers.PCLPower;
+import pinacolada.powers.FoolPower;
 import pinacolada.powers.common.BurningPower;
 import pinacolada.utilities.PCLActions;
 
@@ -33,7 +33,7 @@ public class Xiangling_Guoba extends FoolCard
         PCLActions.Bottom.StackPower(new GuobaPower(p, this.magicNumber));
     }
 
-    public static class GuobaPower extends PCLPower
+    public static class GuobaPower extends FoolPower
     {
 
         public GuobaPower(AbstractPlayer owner, int amount)
