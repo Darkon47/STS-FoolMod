@@ -1,17 +1,21 @@
-package pinacolada.resources.pcl;
+package pinacolada.resources.fool;
 
 import basemod.BaseMod;
 import basemod.abstracts.CustomUnlock;
 import basemod.abstracts.CustomUnlockBundle;
 import com.badlogic.gdx.utils.Base64Coder;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.unlock.AbstractUnlock;
 import eatyourbeets.interfaces.delegates.ActionT2;
+import eatyourbeets.utilities.Mathf;
+import eatyourbeets.utilities.RandomizedList;
 import org.apache.commons.lang3.StringUtils;
 import pinacolada.blights.common.AbstractGlyphBlight;
 import pinacolada.blights.common.GlyphBlight;
 import pinacolada.blights.common.GlyphBlight1;
 import pinacolada.blights.common.GlyphBlight2;
 import pinacolada.cards.base.CardSeries;
+import pinacolada.resources.PCLAbstractPlayerData;
 import pinacolada.resources.PGR;
 import pinacolada.resources.fool.loadouts.*;
 import pinacolada.resources.pcl.misc.*;
@@ -23,7 +27,9 @@ import java.util.List;
 import java.util.StringJoiner;
 import java.util.regex.Pattern;
 
-public class PCLPlayerData
+import static pinacolada.ui.seriesSelection.PCLLoadoutsContainer.MINIMUM_SERIES;
+
+public class FoolPlayerData extends PCLAbstractPlayerData
 {
     public static final int ASCENSION_GLYPH1_LEVEL_STEP = 2;
     public static final int ASCENSION_GLYPH1_UNLOCK = 18;
@@ -68,6 +74,50 @@ public class PCLPlayerData
         Glyphs.add(new GlyphBlight());
         Glyphs.add(new GlyphBlight1());
         Glyphs.add(new GlyphBlight2());
+    }
+
+    @Override
+    public void InitializeCardPool(boolean startGame)
+    {
+        // The series may not be immediately initialized if the user starts a fresh save
+        if (PGR.PCL.Config.SelectedSeries.Get() == null || PGR.PCL.Config.SelectedSeries.Get().size() < MINIMUM_SERIES) {
+            PGR.PCL.Config.SelectedSeries.Set(PCLJUtils.Map(PGR.Fool.Data.GetEveryLoadout(), loadout -> loadout.Series), true);
+        }
+
+        // Always include the selected loadout. If for some reason none exists, assign one at random
+        if (PGR.Fool.Data.SelectedLoadout == null) {
+            PGR.Fool.Data.SelectedLoadout = PCLJUtils.Random(PCLJUtils.Filter(PGR.Fool.Data.GetEveryLoadout(), loadout -> PGR.Fool.GetUnlockLevel() >= loadout.UnlockLevel));
+        }
+        if (PGR.Fool.Data.SelectedLoadout != null) {
+            final PCLRuntimeLoadout rloadout = PCLRuntimeLoadout.TryCreate(PGR.Fool.Data.SelectedLoadout);
+            PGR.PCL.Dungeon.AddLoadout(rloadout);
+            if (PGR.Fool.Data.SelectedLoadout.IsBeta)
+            {
+                Settings.seedSet = true;
+            }
+        }
+
+        RandomizedList<PCLLoadout> rList = new RandomizedList<>(PGR.Fool.Data.GetEveryLoadout());
+        int numberOfSeries = Mathf.Max(MINIMUM_SERIES, PGR.PCL.Config.SeriesSize.Get());
+        while (PGR.PCL.Dungeon.Loadouts.size() < numberOfSeries && rList.Size() > 0) {
+            PCLLoadout loadout = rList.Retrieve(GetRNG(), true);
+            if ((PGR.Fool.Data.SelectedLoadout == null || !PGR.Fool.Data.SelectedLoadout.Series.equals(loadout.Series)) && PGR.PCL.Config.SelectedSeries.Get().contains(loadout.Series)) {
+                if (loadout.IsBeta)
+                {
+                    // Do not unlock trophies or ascension
+                    Settings.seedSet = true;
+                }
+
+                final PCLRuntimeLoadout rloadout = PCLRuntimeLoadout.TryCreate(loadout);
+                // Series must be unlocked to be present in-game
+                if (rloadout != null && !rloadout.isLocked) {
+                    PGR.PCL.Dungeon.AddLoadout(rloadout);
+                }
+            }
+        }
+
+        PCLJUtils.LogInfo(this, "Starting Loadout: " + PGR.Fool.Data.SelectedLoadout.Series);
+        PCLJUtils.LogInfo(this, "Starting Series: " + PCLJUtils.JoinStrings(",", PCLJUtils.Map(PGR.PCL.Dungeon.Loadouts, l -> l.Loadout.Series)));
     }
 
     public List<PCLLoadout> GetEveryLoadout()
@@ -209,14 +259,14 @@ public class PCLPlayerData
 
     public void SaveTrophies(boolean flush)
     {
-        PCLJUtils.LogInfo(PCLPlayerData.class, "Saving Trophies");
+        PCLJUtils.LogInfo(FoolPlayerData.class, "Saving Trophies");
 
         PGR.PCL.Config.Trophies.Set(SerializeTrophies(), flush);
     }
 
     public void SaveLoadouts(boolean flush)
     {
-        PCLJUtils.LogInfo(PCLPlayerData.class, "Saving Loadouts");
+        PCLJUtils.LogInfo(FoolPlayerData.class, "Saving Loadouts");
 
         PGR.PCL.Config.CustomLoadouts.Set(SerializeCustomLoadouts(), flush);
     }

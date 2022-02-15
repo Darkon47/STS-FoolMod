@@ -18,7 +18,7 @@ import pinacolada.utilities.PCLGameUtilities;
 
 public class KaedeAkamatsu extends FoolCard
 {
-    public static final PCLCardData DATA = Register(KaedeAkamatsu.class).SetColor(CardColor.COLORLESS)
+    public static final PCLCardData DATA = Register(KaedeAkamatsu.class).SetColorless()
     		.SetSkill(1, CardRarity.SPECIAL, PCLCardTarget.None, true).SetSeries(CardSeries.Danganronpa);
 
     public KaedeAkamatsu()

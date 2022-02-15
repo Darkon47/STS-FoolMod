@@ -26,7 +26,7 @@ public class HaruhiSuzumiya extends FoolCard
     public static final PCLCardData DATA = Register(HaruhiSuzumiya.class)
             .SetSkill(2, CardRarity.RARE, PCLCardTarget.None)
             .SetMaxCopies(1)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless(PGR.Enums.Cards.THE_FOOL)
             .SetSeries(CardSeries.HaruhiSuzumiya);
     private CardType cardType;
 

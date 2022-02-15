@@ -23,7 +23,7 @@ public class Origin extends EternalCard
     {
         super(DATA);
 
-        Initialize(7, 0, 1);
+        Initialize(7, 0, 2);
         SetUpgrade(4, 0);
 
         SetDark();
@@ -34,6 +34,9 @@ public class Origin extends EternalCard
     {
         PCLActions.Bottom.DealCardDamage(this, m, AttackEffects.SLASH_VERTICAL);
         PCLActions.Bottom.StackPower(new OriginPower(player, 1));
+        if (info.IsSynergizing) {
+            PCLCombatStats.MatchingSystem.ResolveMeter.AddResolve(magicNumber);
+        }
     }
 
     public static class OriginPower extends EternalPower implements OnTryGainResolveSubscriber
@@ -75,8 +78,8 @@ public class Origin extends EternalCard
         }
 
         @Override
-        public int OnTryGainResolve(AbstractCard card, AbstractPlayer p, int originalCost, boolean isActuallyGaining) {
-            if (isActuallyGaining && PCLGameUtilities.IsMismatch(card, PCLCombatStats.MatchingSystem.GetActiveMeter().GetCurrentAffinity()) && originalCost < 0) {
+        public int OnTryGainResolve(AbstractCard card, AbstractPlayer p, int originalCost, boolean isActuallyGaining, boolean isFromMatch) {
+            if (isFromMatch && isActuallyGaining && PCLGameUtilities.IsMismatch(card, PCLCombatStats.MatchingSystem.GetActiveMeter().GetCurrentAffinity()) && originalCost < 0) {
                 ReducePower(1);
                 return 0;
             }

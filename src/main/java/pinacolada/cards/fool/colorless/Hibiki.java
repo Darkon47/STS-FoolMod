@@ -6,6 +6,7 @@ import eatyourbeets.utilities.GameUtilities;
 import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
@@ -13,7 +14,7 @@ public class Hibiki extends FoolCard
 {
     public static final PCLCardData DATA = Register(Hibiki.class)
             .SetAttack(1, CardRarity.RARE, PCLAttackType.Ranged, PCLCardTarget.Random)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless(PGR.Enums.Cards.THE_FOOL)
             .SetSeries(CardSeries.Kancolle);
 
     public Hibiki()

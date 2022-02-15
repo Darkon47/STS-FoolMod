@@ -9,6 +9,7 @@ import eatyourbeets.utilities.JUtils;
 import eatyourbeets.utilities.RandomizedList;
 import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
@@ -16,7 +17,7 @@ public class EruChitanda extends FoolCard
 {
     public static final PCLCardData DATA = Register(EruChitanda.class)
             .SetSkill(1, CardRarity.UNCOMMON, PCLCardTarget.Self)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless(PGR.Enums.Cards.THE_FOOL)
             .SetMaxCopies(2)
             .SetSeries(CardSeries.Hyouka);
 

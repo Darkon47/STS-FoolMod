@@ -17,7 +17,7 @@ public class Kanami extends FoolCard_UltraRare
 {
     public static final PCLCardData DATA = Register(Kanami.class)
             .SetAttack(2, CardRarity.SPECIAL, PCLAttackType.Normal, PCLCardTarget.AoE)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless()
             .SetSeries(CardSeries.LogHorizon)
             .PostInitialize(data -> data.AddPreview(new KanamiAlt(), true));
 

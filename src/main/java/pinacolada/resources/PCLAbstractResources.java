@@ -5,8 +5,11 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import org.apache.commons.lang3.StringUtils;
+import pinacolada.cards.base.PCLCardMetadata;
 import pinacolada.utilities.PCLJUtils;
 
 import java.io.File;
@@ -21,15 +24,21 @@ public abstract class PCLAbstractResources extends PGR
 {
     public static final String JSON_CARDS = "CardStrings.json";
     public static final String JSON_KEYWORDS = "KeywordStrings.json";
+    public static final String JSON_METADATA = "CardMetadata.json";
     public static final String JSON_SHORTCUTS = "CardStringsShortcuts.json";
+    public Map<String, PCLCardMetadata> CardData;
+    public final AbstractCard.CardColor CardColor;
+    public final AbstractPlayer.PlayerClass PlayerClass;
     protected final FileHandle testFolder;
     protected final String prefix;
     protected String defaultLanguagePath;
     protected boolean isLoaded;
 
-    protected PCLAbstractResources(String prefix)
+    protected PCLAbstractResources(String prefix, AbstractCard.CardColor color, AbstractPlayer.PlayerClass playerClass)
     {
         this.prefix = prefix;
+        this.CardColor = color;
+        this.PlayerClass = playerClass;
         this.testFolder = new FileHandle("c:/temp/" + prefix + "-localization/");
     }
 
@@ -115,6 +124,12 @@ public abstract class PCLAbstractResources extends PGR
                 LoadGroupedCardStrings(ProcessCardJson(json2, false));
             }
         }
+    }
+
+    protected void LoadMetadata() {
+        String jsonString = GetFile(Settings.language, JSON_METADATA).readString(String.valueOf(StandardCharsets.UTF_8));
+        this.CardData = (new Gson()).fromJson(jsonString, (new TypeToken<Map<String, PCLCardMetadata>>() {
+        }).getType());
     }
 
     public String ProcessCardJson(String originalString, boolean useFallback)

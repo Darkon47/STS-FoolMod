@@ -8,9 +8,11 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import eatyourbeets.utilities.ColoredString;
-import eatyourbeets.utilities.Colors;
-import eatyourbeets.utilities.Mathf;
+import com.megacrit.cardcrawl.helpers.ImageMaster;
+import com.megacrit.cardcrawl.vfx.BorderFlashEffect;
+import com.megacrit.cardcrawl.vfx.combat.AdditiveSlashImpactEffect;
+import com.megacrit.cardcrawl.vfx.combat.AnimatedSlashEffect;
+import eatyourbeets.utilities.*;
 import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCard;
 import pinacolada.cards.base.PCLCardTooltip;
@@ -42,18 +44,21 @@ public class EternalResolveMeter extends PCLAffinityMeter implements OnTrySpendE
     public static final float ROTATION_SPEED_ULTIMATE = 160f;
     public static final float ROTATION_CHANGE_DURATION = 1.5f;
     public static final float ICON_SIZE = Scale(48);
-    public static final PCLAffinity[] PICKS = new PCLAffinity[] {PCLAffinity.Light, PCLAffinity.Dark, PCLAffinity.Silver};
+    private static final WeightedList<PCLAffinity> PICKS = new WeightedList<>();
     public static final Color BEGIN_COLOR = new Color(0.55f, 0.4f, 0.8f, 1f);
     public static final Color END_COLOR = new Color(0.55f, 0.8f, 0.4f, 1f);
 
     public final ArrayList<AffinityKeywordButton> Next = new ArrayList<>();
     public final ArrayList<GUI_Image> progressBarTicks = new ArrayList<>();
     public final ArrayList<GUI_Image> progressBarTickOverlays = new ArrayList<>();
+    protected final RotatingList<String> tooltipTitles = new RotatingList<>();
+    protected final RotatingList<String> tooltipDescriptions = new RotatingList<>();
     protected final GUI_Image draggable_panel;
     protected final GUI_Image draggable_icon;
     protected final GUI_Image progressBar;
     protected final GUI_Image UltimateButtonBG;
     protected final GUI_Button UltimateButton;
+    protected final GUI_Button info_icon;
     protected float rotationSpeed;
     protected float rotationTimer;
     protected boolean inUltimateMode;
@@ -66,6 +71,12 @@ public class EternalResolveMeter extends PCLAffinityMeter implements OnTrySpendE
     private final DraggableHitbox hb;
     public RerollAffinityEternalPower Reroll;
 
+    static {
+        PICKS.Add(PCLAffinity.Light, 4);
+        PICKS.Add(PCLAffinity.Dark, 4);
+        PICKS.Add(PCLAffinity.Silver, 2);
+    }
+
     public EternalResolveMeter() {
         final Texture pbTexture = PGR.PCL.Images.ProgressBar.Texture();
         final Texture pbTextureTick = PGR.PCL.Images.ProgressBarPart.Texture();
@@ -77,6 +88,8 @@ public class EternalResolveMeter extends PCLAffinityMeter implements OnTrySpendE
                 .SetColor(0.05f, 0.05f, 0.05f, 0.5f);
         draggable_icon = new GUI_Image(PGR.PCL.Images.Draggable.Texture(), new RelativeHitbox(hb, Scale(40f), Scale(40f), ICON_SIZE / 2, ICON_SIZE / 2, false))
                 .SetColor(Colors.White(0.25f));
+        info_icon = new GUI_Button(ImageMaster.INTENT_UNKNOWN, new RelativeHitbox(hb, Scale(40f), Scale(40f), Scale(100f), Scale(20f), false))
+                .SetText("");
 
         this.progressBar = new GUI_Image(pbTexture,
                 new RelativeHitbox(hb, pbTexture.getWidth(), pbTexture.getHeight(), hb.width + ICON_SIZE * 5, 0, false))
@@ -137,6 +150,18 @@ public class EternalResolveMeter extends PCLAffinityMeter implements OnTrySpendE
                 PGR.PCL.Config.ResolveMeterPosition.Set(meterSavedPosition.cpy(), true);
             }
         }
+
+        if (tooltipDescriptions.Count() == 0 || tooltipTitles.Count() == 0) {
+            for (String tip : PGR.PCL.Strings.EternalTutorial.TutorialItems()) {
+                tooltipDescriptions.Add(tip);
+            }
+            tooltipTitles.Add(PGR.PCL.Strings.Combat.ResolveMeter);
+            tooltipTitles.Add(PGR.PCL.Strings.Combat.ResolveMeter);
+            tooltipTitles.Add(PGR.PCL.Strings.Combat.ResolveMeter);
+
+            SetTipIndex(0);
+        }
+
         Reroll = new RerollAffinityEternalPower(DEFAULT_REROLLS);
 
         PCLCombatStats.onTrySpendEnergy.Subscribe(this);
@@ -153,15 +178,24 @@ public class EternalResolveMeter extends PCLAffinityMeter implements OnTrySpendE
 
         draggable_panel.TryUpdate();
         draggable_icon.TryUpdate();
+        info_icon.TryUpdate();
 
-        boolean isHovered = draggable_panel.hb.hovered || UltimateButton.hb.hovered || progressBar.hb.hovered;
+        boolean isHovered = draggable_panel.hb.hovered || UltimateButton.hb.hovered || progressBar.hb.hovered || info_icon.hb.hovered ;
         draggable_panel.SetColor(0.05f, 0.05f, 0.05f, isHovered ? 0.5f : 0.05f);
         draggable_icon.SetColor(Colors.White(isHovered ? 0.75f : 0.1f));
 
+        if (info_icon.hb.hovered)
+        {
+            PCLCardTooltip.QueueTooltip(tooltipInfo);
+            if (PCLHotkeys.cycle.isJustPressed()) {
+                CycleTips();
+            }
+        }
+
         int PreviewResolve = Resolve;
         if (card != null) {
-            PreviewResolve = HasMatch(card) ? Resolve + PCLCombatStats.OnTryGainResolve(card, AbstractDungeon.player, ResolveGain, false) :
-            PCLGameUtilities.IsMismatch(card, GetCurrentAffinity()) ? Resolve + PCLCombatStats.OnTryGainResolve(card, AbstractDungeon.player, -ResolveGain, false) :
+            PreviewResolve = HasMatch(card) ? Resolve + PCLCombatStats.OnTryGainResolve(card, AbstractDungeon.player, ResolveGain, false, true) :
+            PCLGameUtilities.IsMismatch(card, GetCurrentAffinity()) ? Resolve + PCLCombatStats.OnTryGainResolve(card, AbstractDungeon.player, -ResolveGain, false, true) :
                             Resolve;
         }
 
@@ -183,8 +217,8 @@ public class EternalResolveMeter extends PCLAffinityMeter implements OnTrySpendE
         }
         progressBar.TryUpdate();
 
-        UltimateButtonBG.SetColor(Resolve < MAX_RESOLVE ? Color.DARK_GRAY : Color.WHITE).TryUpdate();
-        UltimateButton.SetInteractable(Resolve == MAX_RESOLVE).SetColor(Resolve < MAX_RESOLVE ? Color.DARK_GRAY : Color.WHITE).TryUpdate();
+        UltimateButtonBG.SetColor(Resolve < MAX_RESOLVE && !InUltimateMode() ? Color.DARK_GRAY : Color.WHITE).TryUpdate();
+        UltimateButton.SetInteractable(Resolve == MAX_RESOLVE).SetColor(Resolve < MAX_RESOLVE && !InUltimateMode() ? Color.DARK_GRAY : Color.WHITE).TryUpdate();
 
         if (progressBar.hb.hovered || UltimateButtonBG.hb.hovered) {
             tooltipBar.description = PGR.PCL.Strings.Combat.ResolveMeterDescriptionFull(Resolve, MAX_RESOLVE, ResolveGain, InUltimateMode());
@@ -242,8 +276,9 @@ public class EternalResolveMeter extends PCLAffinityMeter implements OnTrySpendE
 
     @Override
     public PCLAffinity OnMatch(AbstractCard card) {
-        PCLAffinity current = GetCurrentAffinity();
-        AddResolve(PCLCombatStats.OnTryGainResolve(card, AbstractDungeon.player, ResolveGain, true) - (InUltimateMode() ? ResolveCost : 0));
+        PCLActions.Bottom.Callback(() -> {
+            AddResolve(PCLCombatStats.OnTryGainResolve(card, AbstractDungeon.player, ResolveGain, true, true) - (InUltimateMode() ? ResolveCost : 0));
+        });
 
         return AdvanceAffinities(1);
     }
@@ -251,7 +286,9 @@ public class EternalResolveMeter extends PCLAffinityMeter implements OnTrySpendE
     @Override
     public PCLAffinity OnNotMatch(AbstractCard card) {
         if (PCLGameUtilities.IsMismatch(card, GetCurrentAffinity())) {
-            AddResolve(PCLCombatStats.OnTryGainResolve(card, AbstractDungeon.player, -ResolveGain, true) - (InUltimateMode() ? ResolveCost : 0));
+            PCLActions.Bottom.Callback(() -> {
+                AddResolve(PCLCombatStats.OnTryGainResolve(card, AbstractDungeon.player, -ResolveGain, true, true) - (InUltimateMode() ? ResolveCost : 0));
+            });
         }
 
         return AdvanceAffinities(1);
@@ -293,17 +330,36 @@ public class EternalResolveMeter extends PCLAffinityMeter implements OnTrySpendE
 
     public void EnterUltimateMode() {
         PCLActions.Bottom.Callback(() -> {
-            SFX.Play(SFX.GHOST_FLAMES);
-           inUltimateMode = true;
-           PCLGameUtilities.RefreshHandLayout();
+            if (PCLCombatStats.OnTryChangeUltimateState(AbstractDungeon.player, this, true)) {
+                PCLGameEffects.Queue.RoomTint(Color.BLACK, 0.85F);
+                PCLActions.Bottom.VFX(new BorderFlashEffect(Color.PURPLE));
+                SFX.Play(SFX.ATTACK_SCYTHE, 0.75f, 0.75f);
+                SFX.Play(SFX.ATTACK_SCYTHE, 0.55f, 0.55f, 0.75f);
+                PCLGameEffects.Queue.Add(new AdditiveSlashImpactEffect(AbstractDungeon.player.hb.cX - 100f * Settings.scale, AbstractDungeon.player.hb.cY + 100f * Settings.scale, Color.PURPLE.cpy()));
+                PCLGameEffects.Queue.Add(new AnimatedSlashEffect(AbstractDungeon.player.hb.cX, AbstractDungeon.player.hb.cY + 20f * Settings.scale,
+                        -500f, 0f, 260f, 8f, Color.PURPLE.cpy(), Color.VIOLET.cpy()));
+                float wait = PCLGameEffects.Queue.Add(new AnimatedSlashEffect(AbstractDungeon.player.hb.cX, AbstractDungeon.player.hb.cY + 20f * Settings.scale,
+                        500f, 0f, 80f, 8f, Color.PURPLE.cpy(), Color.VIOLET.cpy())).duration * 6f;
+                for (int i = 0; i < 4; i++) {
+                    PCLActions.Top.Wait(0.2f);
+                    PCLGameEffects.Queue.Add(new AnimatedSlashEffect(AbstractDungeon.player.hb.cX - i * 10f * Settings.scale, AbstractDungeon.player.hb.cY + 20f * Settings.scale,
+                            500f, 0f, 80f, 8f, Color.PURPLE.cpy(), Color.VIOLET.cpy()));
+                }
+                SFX.Play(SFX.GHOST_FLAMES);
+                inUltimateMode = true;
+                PCLGameUtilities.RefreshHandLayout();
+            }
+
         });
     }
 
     public void ExitUltimateMode() {
         PCLActions.Bottom.Callback(() -> {
-            inUltimateMode = false;
-            Resolve = 0;
-            PCLGameUtilities.RefreshHandLayout();
+            if (PCLCombatStats.OnTryChangeUltimateState(AbstractDungeon.player, this, false)) {
+                inUltimateMode = false;
+                Resolve = 0;
+                PCLGameUtilities.RefreshHandLayout();
+            }
         });
     }
 
@@ -314,7 +370,7 @@ public class EternalResolveMeter extends PCLAffinityMeter implements OnTrySpendE
     protected void AddQueueItem(int i) {
         if (Next.size() < MAX_PREVIEWS) {
             Next.add(new AffinityKeywordButton(new RelativeHitbox(hb, ICON_SIZE, ICON_SIZE, hb.width + (i + 2) * ICON_SIZE, -ICON_SIZE * 1.7f, false)
-                    ,PCLGameUtilities.GetRandomElement(PICKS))
+                    ,PICKS.Retrieve(PCLGameUtilities.GetRNG(), false))
                     .SetLevel(1)
                     .ShowBorders(i == 0)
                     .SetOnClick(__ -> {
@@ -333,7 +389,7 @@ public class EternalResolveMeter extends PCLAffinityMeter implements OnTrySpendE
             for (int i = 0; i <= Next.size() - 2; i++) {
                 Next.get(i).SetAffinity(Next.get(i+1).Type);
             }
-            Next.get(Next.size() - 1).SetAffinity(PCLGameUtilities.GetRandomElement(PICKS));
+            Next.get(Next.size() - 1).SetAffinity(PICKS.Retrieve(PCLGameUtilities.GetRNG(), false));
         }
         return Next.get(0).Type;
     }
@@ -372,5 +428,22 @@ public class EternalResolveMeter extends PCLAffinityMeter implements OnTrySpendE
             return 0;
         }
         return originalCost;
+    }
+
+    public void CycleTips() {
+        tooltipTitles.Next(true);
+        UpdateTipContent();
+    }
+
+    public void SetTipIndex(int index) {
+        tooltipTitles.SetIndex(index);
+        UpdateTipContent();
+    }
+
+    protected void UpdateTipContent() {
+        tooltipDescriptions.SetIndex(tooltipTitles.GetIndex());
+        tooltipInfo.description = tooltipDescriptions.Current();
+        tooltipInfo.title = tooltipTitles.Current();
+        tooltipInfo.subText.SetText(PGR.PCL.Strings.Misc.PressKeyToCycle(PCLHotkeys.cycle.getKeyString()) + " (" + (tooltipDescriptions.GetIndex() + 1) + "/" + tooltipDescriptions.Count() + ")");
     }
 }

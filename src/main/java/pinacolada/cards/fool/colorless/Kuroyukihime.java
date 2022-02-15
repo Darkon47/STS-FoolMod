@@ -5,13 +5,14 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.fool.special.Kuroyukihime_BlackLotus;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 
 public class Kuroyukihime extends FoolCard
 {
     public static final PCLCardData DATA = Register(Kuroyukihime.class)
             .SetSkill(1, CardRarity.UNCOMMON, PCLCardTarget.None)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless(PGR.Enums.Cards.THE_FOOL)
             .SetSeries(CardSeries.AccelWorld)
             .PostInitialize(data -> data.AddPreview(new Kuroyukihime_BlackLotus(), true));
 

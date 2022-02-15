@@ -10,6 +10,7 @@ import eatyourbeets.interfaces.delegates.ActionT1;
 import eatyourbeets.interfaces.markers.Hidden;
 import eatyourbeets.utilities.RotatingList;
 import eatyourbeets.utilities.TupleT2;
+import pinacolada.resources.PCLAbstractResources;
 import pinacolada.resources.PGR;
 import pinacolada.resources.pcl.PCLHotkeys;
 
@@ -33,10 +34,12 @@ public class PCLCardData
     public String ID;
     public AbstractCard.CardType CardType;
     public AbstractCard.CardColor CardColor;
+    public AbstractCard.CardColor ColorlessCardColor;
     public AbstractCard.CardRarity CardRarity;
     public CardSeries Series;
     public PCLAttackType AttackType;
     public PCLCard tempCard = null;
+    public PCLCardMetadata MetaData;
     public PCLCardTarget CardTarget;
     public boolean BlockScalingAttack;
     public boolean CanAppearForOtherCharacters = false;
@@ -198,6 +201,14 @@ public class PCLCardData
         return SetSeries(series);
     }
 
+    public PCLCardData SetResource(PCLAbstractResources Resource)
+    {
+        this.CardColor = Resource.CardColor;
+        this.MetaData = Resource.CardData.get(this.ID);
+
+        return this;
+    }
+
     public PCLCardData SetSeries(CardSeries series)
     {
         Series = series;
@@ -215,6 +226,13 @@ public class PCLCardData
     public PCLCardData SetMaxUpgradeLevel(int maxUpgradeLevel)
     {
         MaxUpgradeLevel = maxUpgradeLevel;
+
+        return this;
+    }
+
+    public PCLCardData SetMetadata(PCLCardMetadata MetaData)
+    {
+        this.MetaData = MetaData;
 
         return this;
     }
@@ -239,20 +257,23 @@ public class PCLCardData
 
     public PCLCardData SetColor(AbstractCard.CardColor color)
     {
-        CardColor = color;
+        if (color == AbstractCard.CardColor.COLORLESS) {
+            return SetColorless(null);
+        }
+        ColorlessCardColor = CardColor = color;
 
         return this;
     }
 
     public PCLCardData SetColorless()
     {
-        return SetColorless(false);
+        return SetColorless(null);
     }
 
-    public PCLCardData SetColorless(boolean canAppearForOtherCharacters)
+    public PCLCardData SetColorless(AbstractCard.CardColor color)
     {
         CardColor = AbstractCard.CardColor.COLORLESS;
-        CanAppearForOtherCharacters = canAppearForOtherCharacters;
+        ColorlessCardColor = color;
 
         return this;
     }

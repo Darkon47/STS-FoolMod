@@ -15,7 +15,7 @@ public class HarukoHaruhara extends FoolCard
 {
     public static final PCLCardData DATA = Register(HarukoHaruhara.class)
             .SetSkill(1, CardRarity.RARE)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless()
             .SetSeries(CardSeries.FLCL);
 
     public HarukoHaruhara()

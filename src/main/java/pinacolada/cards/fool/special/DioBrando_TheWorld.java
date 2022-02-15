@@ -18,7 +18,7 @@ import java.util.UUID;
 public class DioBrando_TheWorld extends FoolCard
 {
     public static final PCLCardData DATA = Register(DioBrando_TheWorld.class).SetPower(2, CardRarity.SPECIAL)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless()
             .SetSeries(CardSeries.Jojo);
     public static final int COST = 3;
     protected static HashSet<UUID> buffs;

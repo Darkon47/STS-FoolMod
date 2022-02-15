@@ -17,7 +17,7 @@ public class NononJakuzure extends FoolCard implements OnSynergySubscriber
 {
     public static final PCLCardData DATA = Register(NononJakuzure.class)
             .SetSkill(2, CardRarity.UNCOMMON, PCLCardTarget.None)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless()
             .SetSeries(CardSeries.KillLaKill);
 
     public NononJakuzure()

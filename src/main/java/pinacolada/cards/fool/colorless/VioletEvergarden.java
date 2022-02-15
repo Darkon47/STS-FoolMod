@@ -18,7 +18,7 @@ public class VioletEvergarden extends FoolCard
 {
     public static final PCLCardData DATA = Register(VioletEvergarden.class)
             .SetSkill(1, CardRarity.RARE, PCLCardTarget.None)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless()
             .SetSeries(CardSeries.VioletEvergarden);
 
     public VioletEvergarden()

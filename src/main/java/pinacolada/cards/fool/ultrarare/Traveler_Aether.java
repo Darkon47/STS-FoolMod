@@ -20,7 +20,7 @@ public class Traveler_Aether extends FoolCard_UltraRare
 {
     public static final PCLCardData DATA = Register(Traveler_Aether.class)
             .SetSkill(1, CardRarity.SPECIAL, PCLCardTarget.None)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless()
             .SetSeries(CardSeries.GenshinImpact)
             .PostInitialize(data -> data.AddPreview(new Traveler_Wish(), false));
     public static final int UNIQUE_ORB_THRESHOLD = 3;

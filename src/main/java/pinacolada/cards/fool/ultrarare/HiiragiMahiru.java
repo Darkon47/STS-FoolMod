@@ -16,7 +16,7 @@ public class HiiragiMahiru extends FoolCard_UltraRare
 {
     public static final PCLCardData DATA = Register(HiiragiMahiru.class)
             .SetSkill(4, CardRarity.SPECIAL)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless()
             .SetSeries(CardSeries.OwariNoSeraph);
 
     public HiiragiMahiru()

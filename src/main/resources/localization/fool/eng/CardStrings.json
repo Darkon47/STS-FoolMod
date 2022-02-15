@@ -334,7 +334,7 @@
 		},
 		"fool:Alibaba_Aladdin":
 		{
-			"DESCRIPTION": "At the start of each turn: Gain +!M! [Focus] and lose 1 [Strength] and [Dexterity]. || Give the first !S! card(s) drawn each turn +1 <BSC>.",
+			"DESCRIPTION": "Gain !M! [Magus Form]. || Give the first !S! card(s) drawn each turn +1 <BSC>.",
 			"EXTENDED_DESCRIPTION": ["The first #b{0} card(s) drawn each turn that can scale gain +1 [B] #yScaling."],
 			"NAME": "Aladdin"
 		},
@@ -389,8 +389,8 @@
 		},
 		"fool:ForceImpulseGundam":
 		{
-			"DESCRIPTION": "Reload: Increase this card's damage by !M! until played. Powers and Statuses Trigger Reload twice and Exhaust. || <CDN>: Obtain {<R> Token}{+} and Exhaust.",
-			"EXTENDED_DESCRIPTION": ["Reload: Increase this card's damage by !M! until played. Skills and Statuses Trigger Reload twice and Exhaust. || <CDN>: Obtain {<R> Token}{+} and Exhaust."],
+			"DESCRIPTION": "Reload: Give this +!M! damage until played. Statuses give +!M! more and Exhaust. || <CDN>: Gain 50% of this card's base damage as [Support Damage] and Exhaust.",
+			"EXTENDED_DESCRIPTION": ["Reload: Give this +!M! damage until played. Exhaust ALL discarded cards. || <CDN>: Gain 50% of this card's base damage as [Support Damage] and Exhaust."],
 			"NAME": "Force Impulse Gundam"
 		},
 		"fool:GarbageDoll":
@@ -406,7 +406,7 @@
 		},
 		"fool:Guts":
 		{
-			"DESCRIPTION": "Gain [R]. If the target dies, take !M! damage and repeat this attack with +!S! damage on another enemy.",
+			"DESCRIPTION": "If Fatal: take !M! damage and repeat this attack with +!M! damage on another enemy. || Gain !S! [Vigor] per hit.",
 			"NAME": "Guts"
 		},
 		"fool:HaruhiSuzumiya":
@@ -629,7 +629,7 @@
 		},
 		"fool:SpikeSpiegel":
 		{
-			"DESCRIPTION": "Play !M! random Strikes from your Draw Pile. || <LIM>. Pay !A! <W>: ** Shuffle {Swordfish II} ** into your Draw Pile.",
+			"DESCRIPTION": "Play !M! Strikes from your Draw Pile. || <LIM>. If you have !S!+ types of cards in hand: Add {Swordfish II} to your Discard Pile.",
 			"NAME": "Spike Spiegel"
 		},
 		"fool:SwordfishII":
@@ -740,8 +740,8 @@
 		},
 		"fool:MioTakamiya":
 		{
-			"DESCRIPTION": "At the start of each turn: Gain 2 [Focus] and lose 1 [Strength] and [Dexterity]. || Whenever you play a card: ALL {Same-Series} cards in play gain +!M! damage and [Block].",
-			"EXTENDED_DESCRIPTION": ["At the start of each turn: Gain #b2 [Focus] and lose #b1 [Strength] and #b1 [Dexterity]. || Whenever you play a card: ALL #ySame-Series cards in play gain +#b{0} #yDamage and [Block]."],
+			"DESCRIPTION": "Gain !M! [Magus Form]. || Whenever you play a card: ALL {Same-Series} cards in play gain +!M! damage and [Block].",
+			"EXTENDED_DESCRIPTION": ["Whenever you play a card: ALL #ySame-Series cards in play gain +#b{0} #yDamage and [Block]."],
 			"NAME": "Mio Takamiya"
 		},
 		"fool:Mayuri":
@@ -1033,7 +1033,7 @@
 		},
 		"fool:Yoimiya":
 		{
-			"DESCRIPTION": "<ST>. Obtain [T-Knife] for each unblocked hit, then double your {Common Debuffs}. || <LIM>. If you have !S!+ stacks of any debuff: Play {Blazing Heat}.",
+			"DESCRIPTION": "Obtain [T-Knife] for each unblocked hit. Double your {Common Debuffs}. || <LIM>. If you have !S!+ stacks of any debuff: Play {Blazing Heat}.",
 			"NAME": "Yoimiya Naganohara"
 		},
 		"fool:YunJin":
@@ -1253,7 +1253,7 @@
 		},
 		"fool:Clownpiece":
 		{
-			"DESCRIPTION": "<DRW>. If it is 0-1 Cost: Play it. Otherwise, this turn: ALL enemies will Attack and take 50% more damage. || <LIM>. Starter: This will not Exhaust.",
+			"DESCRIPTION": "<DRW>. If the drawn card is 1-2 Cost: Play it. Otherwise, ALL enemies will Attack and take 50% more damage this turn. || <LIM>. Starter: This will not Exhaust.",
 			"NAME": "Clownpiece"
 		},
 		"fool:EirinYagokoro":

@@ -155,6 +155,11 @@
 			"DESCRIPTION": "If the target has [DD]: ** Gain double [THP].",
 			"NAME": "Bite"
 		},
+		"pcl:DoubleVision":
+		{
+			"DESCRIPTION": "Cut the HP and Attack damage of ALL targets in half. Create an identical copy of ALL enemies.",
+			"NAME": "Double Vision"
+		},
 		"pcl:Enlightenment":
 		{
 			"DESCRIPTION": "ALL 2+ cost cards in hand cost 1 this turn. || If you had none: ** Gain !M! [Inspiration].",
@@ -180,6 +185,11 @@
 		{
 			"DESCRIPTION": "Take !S! [DD]. || Gain !M! [Vigor] and [Sorcery].",
 			"NAME": "J.A.X."
+		},
+		"pcl:MasterOfStrategy":
+		{
+			"DESCRIPTION": "Move any number of cards in hand to your draw pile. || <SLM>. <DRW-M> first.",
+			"NAME": "Master Of Strategy"
 		},
 		"pcl:Miracle":
 		{

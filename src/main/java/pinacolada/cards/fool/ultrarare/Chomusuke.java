@@ -14,7 +14,7 @@ public class Chomusuke extends FoolCard_UltraRare
 {
     public static final PCLCardData DATA = Register(Chomusuke.class)
             .SetSkill(0, CardRarity.SPECIAL, PCLCardTarget.None)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless()
             .SetSeries(CardSeries.Konosuba);
 
     public Chomusuke()

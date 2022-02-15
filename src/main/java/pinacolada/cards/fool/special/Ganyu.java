@@ -22,7 +22,7 @@ import pinacolada.utilities.PCLGameUtilities;
 
 public class Ganyu extends FoolCard
 {
-    public static final PCLCardData DATA = Register(Ganyu.class).SetAttack(1, CardRarity.SPECIAL, PCLAttackType.Ice).SetColor(CardColor.COLORLESS)
+    public static final PCLCardData DATA = Register(Ganyu.class).SetAttack(1, CardRarity.SPECIAL, PCLAttackType.Ice).SetColorless()
             .SetSeries(CardSeries.GenshinImpact)
             .PostInitialize(data ->
                     data.AddPreview(new SheerCold(), false)
@@ -35,7 +35,7 @@ public class Ganyu extends FoolCard
         Initialize(11, 0, 8, 3);
         SetUpgrade(4, 0, 1);
         SetAffinity_Blue(1, 0, 3);
-        SetAffinity_Silver(1, 0, 0);
+        SetAffinity_Orange(1, 0, 0);
 
         SetEthereal(true);
         SetExhaust(true);

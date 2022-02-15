@@ -83,7 +83,7 @@ public class UnlockTrackerPatches
 
         if (progress >= expectedCost)
         {
-            if (PGR.Fool.GetUnlockLevel() < PGR.PCL.Data.MaxUnlockLevel)
+            if (PGR.Fool.GetUnlockLevel() < PGR.Fool.Data.MaxUnlockLevel)
             {
                 UnlockTracker.addScore(PGR.Fool.PlayerClass, 1);
             }

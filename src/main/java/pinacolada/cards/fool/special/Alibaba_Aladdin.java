@@ -13,7 +13,7 @@ public class Alibaba_Aladdin extends FoolCard
 {
     public static final PCLCardData DATA = Register(Alibaba_Aladdin.class)
             .SetPower(2, CardRarity.SPECIAL)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless()
             .SetSeries(CardSeries.Magi);
 
     public Alibaba_Aladdin()

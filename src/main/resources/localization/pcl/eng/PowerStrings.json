@@ -195,7 +195,7 @@
 		"DESCRIPTIONS": ["If a [A-Star] card #yMatches: Gain #b{0} [S]. NL At #b{1} stacks: Gains #b1 Level. NL At Level #b{2}: Gains #b1 use. NL Good effects are #b{3}% more likely to happen.{4}", " NL #rThis #rpower #ris #rdisabled."],
 		"NAME": "Luck"
 	},
-	"pcl:MagusForm":
+	"pcl:MagusFormPower":
 	{
 		"DESCRIPTIONS": ["At the start of turn: Gain #b{0} [Focus] and lose #b{1} [Strength] and [Dexterity]."],
 		"NAME": "Magus Form"

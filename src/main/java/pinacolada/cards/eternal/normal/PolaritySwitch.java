@@ -19,7 +19,7 @@ public class PolaritySwitch extends EternalCard
     {
         super(DATA);
 
-        Initialize(0, 0, 0, 0);
+        Initialize(0, 0, 2, 0);
         SetUpgrade(0, 0, 0, 0);
 
         SetRetainOnce(true);
@@ -52,5 +52,8 @@ public class PolaritySwitch extends EternalCard
                         }
                     }
                 });
+        if (CheckPrimaryCondition(true)) {
+            PCLActions.Bottom.GainSupportDamage(magicNumber);
+        }
     }
 }

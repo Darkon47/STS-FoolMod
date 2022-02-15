@@ -7,13 +7,14 @@ import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.fool.FoolCard;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 
 public class LimeBell extends FoolCard
 {
     public static final PCLCardData DATA = Register(LimeBell.class)
             .SetSkill(2, CardRarity.UNCOMMON, PCLCardTarget.None)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless(PGR.Enums.Cards.THE_FOOL)
             .SetSeries(CardSeries.AccelWorld);
 
     public LimeBell()

@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import eatyourbeets.interfaces.subscribers.OnStartOfTurnPostDrawSubscriber;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
+import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.eternal.EternalCard;
 import pinacolada.powers.EternalPower;
 import pinacolada.powers.PCLCombatStats;
@@ -16,7 +17,7 @@ import pinacolada.utilities.PCLGameUtilities;
 
 public class PrayerOfTheMantis extends EternalCard implements OnStartOfTurnPostDrawSubscriber
 {
-    public static final PCLCardData DATA = Register(PrayerOfTheMantis.class).SetSkill(1, CardRarity.UNCOMMON);
+    public static final PCLCardData DATA = Register(PrayerOfTheMantis.class).SetSkill(1, CardRarity.UNCOMMON, PCLCardTarget.None);
 
     public PrayerOfTheMantis()
     {

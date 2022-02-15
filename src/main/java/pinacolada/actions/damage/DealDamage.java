@@ -64,7 +64,7 @@ public class DealDamage extends EYBActionWithCallback<AbstractCreature>
 
     public DealDamage(AbstractCard card, AbstractCreature target, AttackEffect effect)
     {
-        this(card, target, new DamageInfo(AbstractDungeon.player, card.baseDamage, card.damageTypeForTurn), effect);
+        this(card, target, new DamageInfo(AbstractDungeon.player, card.damage, card.damageTypeForTurn), effect);
     }
 
     public DealDamage(AbstractCreature target, DamageInfo info, AttackEffect effect)

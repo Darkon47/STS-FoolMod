@@ -21,7 +21,7 @@ import pinacolada.utilities.PCLJUtils;
 public class AsukaLangley extends FoolCard
 {
     public static final PCLCardData DATA = Register(AsukaLangley.class).SetAttack(2, CardRarity.UNCOMMON, PCLAttackType.Ranged)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless()
             .SetSeries(CardSeries.Evangelion)
             .SetMultiformData(2, false);
 

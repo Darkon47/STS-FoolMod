@@ -17,7 +17,7 @@ public class Giselle extends FoolCard_UltraRare
 {
     public static final PCLCardData DATA = Register(Giselle.class)
             .SetSkill(2, CardRarity.SPECIAL, PCLCardTarget.None)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless()
             .SetSeries(CardSeries.GATE);
 
     public Giselle()

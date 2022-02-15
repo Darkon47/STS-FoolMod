@@ -19,7 +19,7 @@ public class RitualDagger extends PCLCard
 {
     public static final PCLCardData DATA = Register(RitualDagger.class)
             .SetAttack(1, CardRarity.SPECIAL, PCLAttackType.Normal, PCLCardTarget.Normal)
-            .SetColor(CardColor.COLORLESS);
+            .SetColorless();
 
     public RitualDagger()
     {

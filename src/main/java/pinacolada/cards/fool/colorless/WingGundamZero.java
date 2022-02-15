@@ -13,7 +13,7 @@ import pinacolada.utilities.PCLJUtils;
 public class WingGundamZero extends FoolCard
 {
     public static final PCLCardData DATA = Register(WingGundamZero.class)
-            .SetSkill(2, CardRarity.RARE, PCLCardTarget.Self).SetColor(CardColor.COLORLESS)
+            .SetSkill(2, CardRarity.RARE, PCLCardTarget.Self).SetColorless()
             .SetMaxCopies(1)
             .SetSeries(CardSeries.Gundam)
             .PostInitialize(data -> {data.AddPreview(new IonizingStorm(), false);

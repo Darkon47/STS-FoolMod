@@ -7,7 +7,7 @@ public class OrbCore_Lightning extends OrbCore
 {
     public static final PCLCardData DATA = RegisterOrbCore(OrbCore_Lightning.class, PCLOrbHelper.Lightning)
             .SetPower(1, CardRarity.SPECIAL)
-            .SetColor(CardColor.COLORLESS);
+            .SetColorless();
 
     public OrbCore_Lightning()
     {

@@ -54,7 +54,7 @@ public class TakashiNatsume_Circle extends FoolCard
     private static final int DAMAGE_DECAY = 2;
     private static final int HEAL_NUTCRACKER = 5;
     private static final int NORMALITY_HITS = 3;
-    public static final PCLCardData DATA = Register(TakashiNatsume_Circle.class).SetSkill(0, CardRarity.SPECIAL, PCLCardTarget.None).SetColor(CardColor.COLORLESS).SetSeries(CardSeries.NatsumeYuujinchou);
+    public static final PCLCardData DATA = Register(TakashiNatsume_Circle.class).SetSkill(0, CardRarity.SPECIAL, PCLCardTarget.None).SetColorless().SetSeries(CardSeries.NatsumeYuujinchou);
     private TakashiNatsume_Circle.Form currentForm = Form.None;
 
     public TakashiNatsume_Circle() {

@@ -19,7 +19,7 @@ public class Steelbreaker extends EternalCard
     {
         super(DATA);
 
-        Initialize(14, 0, 1, 0);
+        Initialize(14, 0, 2, 1);
         SetUpgrade(4, 0);
 
         SetDark();
@@ -31,7 +31,7 @@ public class Steelbreaker extends EternalCard
         boolean hasBlock = m.currentBlock > 0;
         PCLActions.Bottom.Add(new RemoveBlock(m, p)).SetVFX(true, true);
         PCLActions.Bottom.DealCardDamage(this, m, AttackEffects.SLASH_HEAVY);
-        PCLActions.Bottom.ApplyVulnerable(TargetHelper.Normal(m), hasBlock ? magicNumber * 2 : magicNumber);
+        PCLActions.Bottom.ApplyVulnerable(TargetHelper.Normal(m), hasBlock ? magicNumber + secondaryValue : magicNumber);
         PCLActions.Last.Add(new RemoveBlock(m, p)).SetVFX(true, false);
     }
 }

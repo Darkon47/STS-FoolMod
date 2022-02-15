@@ -18,7 +18,10 @@ import pinacolada.utilities.PCLGameUtilities;
 
 public class KokomiSangonomiya extends FoolCard
 {
-    public static final PCLCardData DATA = Register(KokomiSangonomiya.class).SetPower(2, CardRarity.RARE).SetMaxCopies(1).SetColor(CardColor.COLORLESS).SetSeries(CardSeries.GenshinImpact).SetMultiformData(2, false);
+    public static final PCLCardData DATA = Register(KokomiSangonomiya.class).SetPower(2, CardRarity.RARE)
+            .SetMaxCopies(1)
+            .SetColorless()
+            .SetSeries(CardSeries.GenshinImpact).SetMultiformData(2, false);
     public static final PCLCardPreview CORE_PREVIEW = new PCLCardPreview(new OrbCore_Water(), false);
 
     public KokomiSangonomiya()

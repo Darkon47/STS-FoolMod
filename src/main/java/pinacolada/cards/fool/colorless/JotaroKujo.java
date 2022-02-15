@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.fool.special.JotaroKujo_StarPlatinum;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
@@ -14,7 +15,8 @@ public class JotaroKujo extends FoolCard
 {
     public static final PCLCardData DATA = Register(JotaroKujo.class)
             .SetSkill(3, CardRarity.RARE, PCLCardTarget.None)
-            .SetColor(CardColor.COLORLESS).SetSeries(CardSeries.Jojo)
+            .SetColorless(PGR.Enums.Cards.THE_FOOL)
+            .SetSeries(CardSeries.Jojo)
             .SetMultiformData(2, false)
             .PostInitialize(data -> data.AddPreview(new JotaroKujo_StarPlatinum(), false));
 

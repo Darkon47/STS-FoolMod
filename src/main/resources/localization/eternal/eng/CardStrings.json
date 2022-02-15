@@ -26,28 +26,48 @@
 		},
 		"eternal:BalefulOmen":
 		{
-			"DESCRIPTION": "Take !M! damage. ALL enemies gain !S! [Vulnerable] and [Weak]. || [MI]: Do not take damage.",
+			"DESCRIPTION": "Match: ALL enemies gain !M! [Vulnerable] and [Weak]. || Mismatch: Gain !S! [Weak].",
 			"NAME": "Baleful Omen"
 		},
 		"eternal:Centering":
 		{
-			"DESCRIPTION": "Set ALL of the Next <W> to <S>. Gain !M! [Block] for each Next <W> that was not <S>.",
+			"DESCRIPTION": "Set ALL of the Next <W> to <S>. Gain !M! [Block] per Next <W> that was not <S>.",
 			"NAME": "Centering"
+		},
+		"eternal:ChargeAccumulation":
+		{
+			"DESCRIPTION": "At the start of turn: [Electrified] gains +!M!% effect bonus.",
+			"NAME": "Charge Accumulation"
 		},
 		"eternal:DesperateSacrifice":
 		{
-			"DESCRIPTION": "Lose !S! HP. Gain !M! Resolve. || <LIM>. If you would die: Survive with 1 HP and <DRW-S>.",
+			"DESCRIPTION": "Lose !S! HP. Gain [E] and !M! Resolve. || <LIM>. If you would die: Survive with 1 HP and <DRW-S>.",
 			"NAME": "Desperate Sacrifice"
+		},
+		"eternal:DeteriorationOfPrinciples":
+		{
+			"DESCRIPTION": "Apply !M! [Vulnerable] to ALL enemies. || Lose ALL Resolve. [Vulnerable] gains +!S!% effect bonus per Resolve lost.",
+			"NAME": "Deterioration Of Principles"
 		},
 		"eternal:Dominate":
 		{
-			"DESCRIPTION": "Deal +!M! damage per Resolve. || [MI]: Deals +20% damage.",
+			"DESCRIPTION": "Deal +!M! damage per Resolve. || [MI]: Deals +25% damage.",
 			"NAME": "Dominate"
 		},
 		"eternal:Erosion":
 		{
 			"DESCRIPTION": "Whenever you make a Mismatch with this in hand: This gains +!M! damage.",
 			"NAME": "Erosion"
+		},
+		"eternal:EternalForm":
+		{
+			"DESCRIPTION": "If you would die while having maximum Resolve: Lose ALL Resolve and revert your HP to the value it was at the start of the previous turn.",
+			"NAME": "Eternal Form"
+		},
+		"eternal:EverlastingRetribution":
+		{
+			"DESCRIPTION": "Gain !M! [Support Damage]. Trigger it whenever you make a Mismatch.",
+			"NAME": "Everlasting Retribution"
 		},
 		"eternal:ForcedComposure":
 		{
@@ -62,13 +82,18 @@
 		},
 		"eternal:GreatExpectations":
 		{
-			"DESCRIPTION": "This combat: Resolve gains and losses are increased by !M!.",
+			"DESCRIPTION": "This combat: Resolve gains from Matches and Resolve losses from Mismatches are increased by !M!.",
 			"NAME": "Great Expectations"
 		},
-		"eternal:HardenedWill":
+		"eternal:HardenedCarapace":
 		{
 			"DESCRIPTION": "Lose !M! Resolve to gain !S! [Metallicize]. || [MI]: Gain +!S! [Metallicize].",
-			"NAME": "Hardened Will"
+			"NAME": "Hardened Carapace"
+		},
+		"eternal:HastyJudgment":
+		{
+			"DESCRIPTION": "ALL Next <W> are changed to <L> or <D>. || [MI]: Lose [E] to <DRW>.",
+			"NAME": "Hasty Judgment"
 		},
 		"eternal:ImperialOrder":
 		{
@@ -79,11 +104,6 @@
 		{
 			"DESCRIPTION": "Add !M! {Spite} to your draw pile. || Match: Add them to your hand instead.",
 			"NAME": "Indignation"
-		},
-		"eternal:HastyJudgment":
-		{
-			"DESCRIPTION": "ALL Next <W> are changed to <L> or <D>.",
-			"NAME": "Hasty Judgment"
 		},
 		"eternal:Leadership":
 		{
@@ -96,14 +116,35 @@
 			"EXTENDED_DESCRIPTION": ["Whenever you #yMismatch: Steal #b{0} [THP] from a random enemy. NL Whenever you #yMatch: Take #b{1} damage."],
 			"NAME": "Lord of the Files"
 		},
+		"eternal:MemoriesOfJoy":
+		{
+			"DESCRIPTION": "Gain !M! [Block] per <L> card Exhausted this combat.",
+			"NAME": "Memories of Joy"
+		},
+		"eternal:MindSplitter":
+		{
+			"DESCRIPTION": "Duplicate the enemy. It has half its HP and has half its attack power",
+			"NAME": "Seclusion"
+		},
+		"eternal:MoonlightChaser":
+		{
+			"DESCRIPTION": "Fetch a <D> card from your draw pile. || Mismatch: Set the Current <W> to <D>.",
+			"NAME": "Moonlight Chaser"
+		},
+		"eternal:MoralAmbiguity":
+		{
+			"DESCRIPTION": "<D> cards have +!M!% damage and [Block], reduced by !S!% per Resolve. || <L> cards have -!M!% damage and [Block], increased by !S!% per Resolve.",
+			"NAME": "Moral Ambiguity"
+		},
 		"eternal:NegativeStreak":
 		{
-			"DESCRIPTION": "Set the Next !M! <W> to <D>. ** Match: Refund [E] and put a copy of this on top of your draw pile.",
+			"DESCRIPTION": "Set the Next !M! <W> to <D>. ** <slm>. Match: Refund [E] and put a copy of this on top of your draw pile.",
 			"NAME": "Negative Streak"
 		},
 		"eternal:OminousInscription":
 		{
-			"DESCRIPTION": "Match: Apply !M! [Weak] to ALL enemies. || Mismatch: Gain !M! [Weak].",
+			"DESCRIPTION": "Take !M! damage. ** Whenever the target receives damage: Gain !S! Resolve. || [MI]: Do not take damage.",
+			"EXTENDED_DESCRIPTION": ["Whenever this creature receives damage: Gain #b{0} #yResolve."],
 			"NAME": "Ominous Inscription"
 		},
 		"eternal:Omniscience":
@@ -111,15 +152,35 @@
 			"DESCRIPTION": "Increase the number of Next <W> that you can see by !M! (Max. 8).",
 			"NAME": "Omniscience"
 		},
+		"eternal:OpportuneGift":
+		{
+			"DESCRIPTION": "<ST>: Gain !M! Resolve. || <SLM>. Match: Fetch a random card from your discard pile.",
+			"NAME": "Opportune Gift"
+		},
 		"eternal:Origin":
 		{
-			"DESCRIPTION": "Your next Mismatch this turn will not lower Resolve.",
+			"DESCRIPTION": "Your next Mismatch this turn will not lower Resolve. || Match: Gain !M! Resolve.",
 			"EXTENDED_DESCRIPTION": ["The next #b{0} #yMismatches will not lower #yResolve. Reduced by #b1 each turn."],
 			"NAME": "Origin"
 		},
+		"eternal:ParalysisWave":
+		{
+			"DESCRIPTION": "At the start of turn: Each enemy has a !M!% chance to get Stunned per stack of [Electrified]. When an enemy is Stunned: It loses [Electrified].",
+			"NAME": "Paralysis Wave"
+		},
+		"eternal:PerfectParry":
+		{
+			"DESCRIPTION": "Match: Gain +!S! [Block], !M! Resolve and !M! [Counter-Attack].",
+			"NAME": "Perfect Parry"
+		},
+		"eternal:PhantomSlash":
+		{
+			"DESCRIPTION": "[MI]: Deal +!M! damage. || <SLM>. On Discard or Exhaust: <DRW>.",
+			"NAME": "Phantom Slash"
+		},
 		"eternal:PlaneOfEuthymia":
 		{
-			"DESCRIPTION": "Channel 1 [Dark]. || Whenever you make a #yMatch: Trigger your first Orb. Whenever you shuffle your deck: Channel !M! [~Dark].",
+			"DESCRIPTION": "Channel 1 [~Dark]. || Whenever you make a Match: Trigger your first Orb. Whenever you shuffle your deck: Channel !M! [~Dark].",
 			"EXTENDED_DESCRIPTION": ["Whenever you make a #yMatch: Trigger your first Orb. NL Whenever you shuffle your deck: Channel #b{0} [~Dark]."],
 			"NAME": "Plane Of Euthymia"
 		},
@@ -130,12 +191,12 @@
 		},
 		"eternal:PolaritySwitch":
 		{
-			"DESCRIPTION": "ALL <L> cards become <D>. ALL <D> cards become <L>.",
+			"DESCRIPTION": "ALL <L> cards become <D>. ALL <D> cards become <L>. || [MI]: Gain !M! [Support Damage].",
 			"NAME": "Polarity Switch"
 		},
 		"eternal:PositiveStreak":
 		{
-			"DESCRIPTION": "Set the Next !M! <W> to <L>. ** Match: Refund [E] and put a copy of this on top of your draw pile.",
+			"DESCRIPTION": "Set the Next !M! <W> to <L>. ** <slm>. Match: Refund [E] and put a copy of this on top of your draw pile.",
 			"NAME": "Positive Streak"
 		},
 		"eternal:PrayerOfTheMantis":
@@ -144,35 +205,111 @@
 			"EXTENDED_DESCRIPTION": ["For #b{0} turn(s): [A-Dark] #yAttacks deal double damage."],
 			"NAME": "Prayer Of The Mantis"
 		},
+		"eternal:PrimordialEcho":
+		{
+			"DESCRIPTION": "Obtain a copy of the first card played this combat. It costs 0 this turn. || <LIM>. [MI]: It costs 0 this combat.",
+			"NAME": "Primordial Echo"
+		},
+		"eternal:PsychicVoltage":
+		{
+			"DESCRIPTION": "[Electrified] gains +!M!% effect bonus per unique debuff on any enemy (!X!).",
+			"NAME": "Psychic Voltage"
+		},
+		"eternal:PsychoStorm":
+		{
+			"DESCRIPTION": "Apply !M! [Electrified] to ALL enemies. || [Electrified]'s effect bonus increases the damage of this attack.",
+			"NAME": "Psycho Storm"
+		},
 		"eternal:PurpleHaze":
 		{
-			"DESCRIPTION": "Gain !M! [Blur]. || Match: Set the Current <W> to <D>.",
+			"DESCRIPTION": "Gain !M! [Blur]. Set the Current <W> to <D>.",
 			"NAME": "Purple Haze"
+		},
+		"eternal:RitesOfPassing":
+		{
+			"DESCRIPTION": "Gain !S! Resolve. Gain +!S! per card Exhausted this turn. || <LIM>. Match. [MI]: Play any Exhausted card.",
+			"NAME": "Rites Of Passing"
 		},
 		"eternal:RoarOfTime":
 		{
-			"DESCRIPTION": "Scry !M!. Next turn, the target loses !S! HP per Attack discarded.",
-			"NAME": "RoarOfTime"
+			"DESCRIPTION": "Scry !M!. Next turn, the target loses !S! HP per Attack discarded. || [MI]. Scry 1 more.",
+			"NAME": "Roar Of Time"
+		},
+		"eternal:RoyalDecree":
+		{
+			"DESCRIPTION": "Fetch a card from your discard pile. Set its <W> to <L> or <D>. || <ST>. Also Retain it.",
+			"NAME": "Royal Decree"
 		},
 		"eternal:Seclusion":
 		{
 			"DESCRIPTION": "Gives !M! less [Block] per Resolve. || [MI]: Gain !S! [Blur] and Exhaust.",
 			"NAME": "Seclusion"
 		},
+		"eternal:ShadowPuppet":
+		{
+			"DESCRIPTION": "Whenever you attack an enemy: Deal additional damage to it equal to the number of <D> cards in hand.",
+			"NAME": "Shadow Puppet"
+		},
+		"eternal:Soulpiercer":
+		{
+			"DESCRIPTION": "If Fatal: Gain !M! Resolve. || Mismatch: Lose !M! Resolve to give this +!S! damage.",
+			"NAME": "Soulpiercer"
+		},
 		"eternal:SpacialRend":
 		{
 			"DESCRIPTION": "Deal +!M! damage per card played this turn. || <slm>. Match. <DRW>.",
 			"NAME": "Spacial Rend"
 		},
+		"eternal:Static":
+		{
+			"DESCRIPTION": "For !M! turns: Your Attacks apply !S! [Electrified] to the target.",
+			"NAME": "Static"
+		},
 		"eternal:Steelbreaker":
 		{
-			"DESCRIPTION": "Apply !M! [Vulnerable]. || Match: Remove the target's [Block]. If it had none: Apply +!M! [Vulnerable].",
+			"DESCRIPTION": "Apply !M! [Vulnerable]. || Match: Remove the target's [Block]. If it had none: Apply +!S! [Vulnerable].",
 			"NAME": "Steelbreaker"
 		},
-		"eternal:Transcendence":
+		"eternal:StormHarvesting":
 		{
-			"DESCRIPTION": "If you would die while having maximum Resolve: Lose ALL Resolve and revert your HP to the value it was at the start of the previous turn.",
-			"NAME": "Transcendence"
+			"DESCRIPTION": "Remove !M! [Electrified] on the target to gain [Energized] and !S! Resolve.",
+			"NAME": "Storm Harvesting"
+		},
+		"eternal:SwiftDecision":
+		{
+			"DESCRIPTION": "Lose !M! Resolve to <DRW-S>. Otherwise: <DRW>.",
+			"NAME": "Swift Decision"
+		},
+		"eternal:TranscendenceForm":
+		{
+			"DESCRIPTION": "Choose 1: Gain !M! [Ritual], !S! [~Intangible], or !X! [Artifact]. || <LIM>. Not in [MI]: Choose 1 more.",
+			"NAME": "Transcendence Form"
+		},
+		"eternal:TransgressiveExorcism":
+		{
+			"DESCRIPTION": "Exhaust up to !M! cards in hand or discard pile. For each: <DRW> next turn and take !S! damage.",
+			"NAME": "Transgressive Exorcism"
+		},
+		"eternal:UmbralEmbrace":
+		{
+			"DESCRIPTION": "",
+			"NAME": "Umbral Embrace"
+		},
+		"eternal:UnchangingEternity":
+		{
+			"DESCRIPTION": "ALL enemies deal !M! less damage per <L> card in hand at the end of turn.",
+			"EXTENDED_DESCRIPTION": ["Enemies deal #b{0} less damage per [A-Light] card in hand at the end of turn."],
+			"NAME": "Unchanging Eternity"
+		},
+		"eternal:UndyingVortex":
+		{
+			"DESCRIPTION": "Purge ALL cards in your discard pile. Deal +!S! damage per card Purged. || [MI]: Gain [Energized] for every enemy killed.",
+			"NAME": "Undying Vortex"
+		},
+		"eternal:UnshakableMind":
+		{
+			"DESCRIPTION": "Whenever a debuff is applied to you: Lose !M! Resolve to reduce its stacks by !S!.",
+			"NAME": "Unshakable Mind"
 		},
 		"eternal:ViciousLunge":
 		{
@@ -191,12 +328,17 @@
 		},
 		"eternal:WishesUnnumbered":
 		{
-			"DESCRIPTION": "Whenever you make a Match with this card in hand: Increase this card's [THP] gain by !S!.",
+			"DESCRIPTION": "Whenever you make a Match with this card in hand: Increase this card's [THP] by !S!.",
 			"NAME": "Wishes Unnumbered"
 		}
 	},
 	"SPECIAL":
 	{
+		"eternal:Charm":
+		{
+			"DESCRIPTION": "The target's next Attack this turn gives you [THP] instead of damaging you.",
+			"NAME": "Charm"
+		},
 		"eternal:Curse_Spite":
 		{
 			"DESCRIPTION": "At the end of turn: ** Take !S! damage. || On Discard, Exhaust, or Purge: ALL enemies lose !M! [HP].",

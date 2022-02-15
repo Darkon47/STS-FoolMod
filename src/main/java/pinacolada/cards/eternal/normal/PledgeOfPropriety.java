@@ -18,7 +18,7 @@ public class PledgeOfPropriety extends EternalCard
     {
         super(DATA);
 
-        Initialize(0, 0, 3, 5);
+        Initialize(0, 9, 2, 5);
         SetUpgrade(0, 0, 1, 1);
 
         SetLight();
@@ -33,6 +33,7 @@ public class PledgeOfPropriety extends EternalCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
+        PCLActions.Bottom.GainBlock(block);
         PCLActions.Bottom.StackPower(new NextTurnBlockPower(p, GetXValue()));
         PCLActions.Bottom.ExhaustFromHand(name, 1, false)
                 .SetOptions(false, false, false)

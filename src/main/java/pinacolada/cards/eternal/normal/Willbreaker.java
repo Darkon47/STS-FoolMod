@@ -12,14 +12,16 @@ import pinacolada.utilities.PCLActions;
 
 public class Willbreaker extends EternalCard
 {
-    public static final PCLCardData DATA = Register(Willbreaker.class).SetAttack(2, CardRarity.RARE, PCLAttackType.Normal);
+    public static final PCLCardData DATA = Register(Willbreaker.class)
+            .SetMaxCopies(2)
+            .SetAttack(2, CardRarity.RARE, PCLAttackType.Normal);
 
     public Willbreaker()
     {
         super(DATA);
 
-        Initialize(15, 0, 13, 4);
-        SetUpgrade(4, 0);
+        Initialize(15, 0, 12, 4);
+        SetUpgrade(3, 0, 0, 1);
 
         SetDark();
         SetExhaust(true);

@@ -25,7 +25,7 @@ public class Rose extends FoolCard_UltraRare
 {
     public static final PCLCardData DATA = Register(Rose.class)
             .SetAttack(3, CardRarity.SPECIAL, PCLAttackType.Ranged)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless()
             .SetSeries(CardSeries.Elsword);
     public static final int COST = 4;
 

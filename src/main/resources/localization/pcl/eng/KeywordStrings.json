@@ -188,7 +188,7 @@
 	},
 	"Demon Form":
 	{
-		"DESCRIPTION": "Gain #yStrength at the start of each turn.",
+		"DESCRIPTION": "Gain [Strength] at the start of each turn.",
 		"NAMES": ["demon form", "demon_form"],
 		"PROPER_NAME": "Demon Form"
 	},
@@ -215,6 +215,12 @@
 		"DESCRIPTION": "Stance: The #yInteractable #yPower of [D] is #b50% more effective. NL When exited or re-entered: Gain #b2 [A-Dark].",
 		"NAMES": ["[d] stance", "desecration stance"],
 		"PROPER_NAME": "Desecration Stance"
+	},
+	"Deva Form":
+	{
+		"DESCRIPTION": "Gain additional [E] each turn. Increases by #b1 each turn.",
+		"NAMES": ["deva form"],
+		"PROPER_NAME": "Deva Form"
 	},
 	"Earth":
 	{
@@ -449,6 +455,12 @@
 		"DESCRIPTION": "If this would enter your discard pile, move it to your draw pile instead.",
 		"NAMES": ["loyal"],
 		"PROPER_NAME": "Loyal"
+	},
+	"Magus Form":
+	{
+		"DESCRIPTION": "Gain [Focus] and lose [Strength] and [Dexterity] at the start of each turn.",
+		"NAMES": ["magus form"],
+		"PROPER_NAME": "Magus Form"
 	},
 	"Maintain":
 	{

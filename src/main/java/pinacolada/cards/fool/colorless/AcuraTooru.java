@@ -10,13 +10,14 @@ import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.fool.special.ThrowingKnife;
 import pinacolada.effects.AttackEffects;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 
 public class AcuraTooru extends FoolCard
 {
     public static final PCLCardData DATA = Register(AcuraTooru.class)
             .SetAttack(2, CardRarity.UNCOMMON)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless(PGR.Enums.Cards.THE_FOOL)
             .SetSeries(CardSeries.HitsugiNoChaika)
             .PostInitialize(data ->
             {

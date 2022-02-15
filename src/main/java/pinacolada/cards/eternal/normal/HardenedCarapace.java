@@ -9,11 +9,11 @@ import pinacolada.cards.eternal.EternalCard;
 import pinacolada.powers.PCLCombatStats;
 import pinacolada.utilities.PCLActions;
 
-public class HardenedWill extends EternalCard
+public class HardenedCarapace extends EternalCard
 {
-    public static final PCLCardData DATA = Register(HardenedWill.class).SetSkill(2, CardRarity.UNCOMMON, PCLCardTarget.Self);
+    public static final PCLCardData DATA = Register(HardenedCarapace.class).SetSkill(2, CardRarity.UNCOMMON, PCLCardTarget.Self);
 
-    public HardenedWill()
+    public HardenedCarapace()
     {
         super(DATA);
 

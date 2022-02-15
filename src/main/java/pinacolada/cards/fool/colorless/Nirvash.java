@@ -23,7 +23,7 @@ public class Nirvash extends FoolCard
     public static final PCLCardData DATA = Register(Nirvash.class)
             .SetSkill(0, CardRarity.RARE, PCLCardTarget.None)
             .SetMaxCopies(1)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless(PGR.Enums.Cards.THE_FOOL)
             .SetSeries(CardSeries.EurekaSeven)
             .PostInitialize(data ->
             {

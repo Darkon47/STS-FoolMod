@@ -20,7 +20,7 @@ public class Truth extends FoolCard_UltraRare
 
     public static final PCLCardData DATA = Register(Truth.class)
             .SetSkill(0, CardRarity.SPECIAL, PCLCardTarget.Normal)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless()
             .SetSeries(CardSeries.FullmetalAlchemist)
             .PostInitialize(data -> data.AddPreview(status, false));
 

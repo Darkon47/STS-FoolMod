@@ -16,7 +16,7 @@ public class Canti extends FoolCard
 {
     public static final PCLCardData DATA = Register(Canti.class)
             .SetAttack(1, CardRarity.UNCOMMON)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless()
             .SetSeries(CardSeries.FLCL);
 
     public Canti()

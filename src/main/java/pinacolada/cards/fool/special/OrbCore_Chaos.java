@@ -10,7 +10,7 @@ public class OrbCore_Chaos extends OrbCore
 {
     public static final PCLCardData DATA = RegisterOrbCore(OrbCore_Chaos.class, PCLOrbHelper.Chaos)
             .SetPower(3, CardRarity.SPECIAL)
-            .SetColor(CardColor.COLORLESS);
+            .SetColorless();
 
     public OrbCore_Chaos()
     {

@@ -16,7 +16,7 @@ public class HinaKagiyama extends FoolCard
 {
     public static final PCLCardData DATA = Register(HinaKagiyama.class)
             .SetPower(1, CardRarity.SPECIAL)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless()
             .SetSeries(CardSeries.TouhouProject)
             .SetMultiformData(2)
             .PostInitialize(data -> data.AddPreview(new Miracle(), false));

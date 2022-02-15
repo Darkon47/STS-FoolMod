@@ -5,6 +5,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
@@ -13,7 +14,9 @@ import java.util.ArrayList;
 
 public class TomoyaOkazaki extends FoolCard
 {
-    public static final PCLCardData DATA = Register(TomoyaOkazaki.class).SetSkill(1, CardRarity.UNCOMMON, PCLCardTarget.None).SetColor(CardColor.COLORLESS).SetSeries(CardSeries.Clannad);
+    public static final PCLCardData DATA = Register(TomoyaOkazaki.class).SetSkill(1, CardRarity.UNCOMMON, PCLCardTarget.None)
+            .SetColorless(PGR.Enums.Cards.THE_FOOL)
+            .SetSeries(CardSeries.Clannad);
 
     private int turns;
 

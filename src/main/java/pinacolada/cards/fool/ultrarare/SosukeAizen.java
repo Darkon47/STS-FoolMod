@@ -14,7 +14,7 @@ import pinacolada.utilities.PCLGameUtilities;
 
 public class SosukeAizen extends FoolCard_UltraRare
 {
-    public static final PCLCardData DATA = Register(SosukeAizen.class).SetSkill(-1, CardRarity.SPECIAL, PCLCardTarget.None).SetColor(CardColor.COLORLESS).SetSeries(CardSeries.Bleach);
+    public static final PCLCardData DATA = Register(SosukeAizen.class).SetSkill(-1, CardRarity.SPECIAL, PCLCardTarget.None).SetColorless().SetSeries(CardSeries.Bleach);
     public SosukeAizen()
     {
         super(DATA);

@@ -16,7 +16,7 @@ import pinacolada.utilities.PCLActions;
 
 public class TakashiNatsume extends FoolCard
 {
-    public static final PCLCardData DATA = Register(TakashiNatsume.class).SetSkill(0, CardRarity.UNCOMMON, PCLCardTarget.None).SetColor(CardColor.COLORLESS).SetSeries(CardSeries.NatsumeYuujinchou)
+    public static final PCLCardData DATA = Register(TakashiNatsume.class).SetSkill(0, CardRarity.UNCOMMON, PCLCardTarget.None).SetColorless().SetSeries(CardSeries.NatsumeYuujinchou)
             .PostInitialize(data -> data.AddPreview(new TakashiNatsume_Circle(), false));
 
     public TakashiNatsume()

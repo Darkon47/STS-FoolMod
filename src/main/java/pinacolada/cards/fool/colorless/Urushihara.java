@@ -16,7 +16,7 @@ public class Urushihara extends FoolCard implements OnStartOfTurnPostDrawSubscri
 {
     public static final PCLCardData DATA = Register(Urushihara.class)
             .SetAttack(1, CardRarity.UNCOMMON, PCLAttackType.Dark, PCLCardTarget.AoE)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless()
             .SetSeries(CardSeries.HatarakuMaouSama);
 
     private int turns = 0;

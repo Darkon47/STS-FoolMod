@@ -31,7 +31,7 @@ public abstract class PCLReward extends CustomReward
     public static float GetUltraRareChance(PCLLoadout loadout)
     {
         float bonus = 1;
-        int level = PGR.PCL.Data.SpecialTrophies.Trophy1;
+        int level = PGR.Fool.Data.SpecialTrophies.Trophy1;
         if (level > 0)
         {
             bonus += level / (level + 100f);
@@ -140,7 +140,7 @@ public abstract class PCLReward extends CustomReward
             return;
         }
 
-        final PCLLoadout loadout = PGR.PCL.Data.GetLoadout(series);
+        final PCLLoadout loadout = PGR.Fool.Data.GetLoadout(series);
         float chances = GetUltraRareChance(loadout);
         for (AbstractCard c : AbstractDungeon.player.masterDeck.group)
         {

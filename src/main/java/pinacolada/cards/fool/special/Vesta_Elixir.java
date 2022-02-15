@@ -20,7 +20,7 @@ public class Vesta_Elixir extends FoolCard
 {
     public static final PCLCardData DATA = Register(Vesta_Elixir.class)
             .SetSkill(0, CardRarity.SPECIAL, PCLCardTarget.None)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless()
             .SetSeries(CardSeries.TenseiSlime);
     public static final int MAX_GROUP_SIZE = 3;
     public final ArrayList<GenericEffect> effects = new ArrayList<>();

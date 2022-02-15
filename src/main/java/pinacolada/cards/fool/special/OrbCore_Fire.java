@@ -7,7 +7,7 @@ public class OrbCore_Fire extends OrbCore
 {
     public static final PCLCardData DATA = RegisterOrbCore(OrbCore_Fire.class, PCLOrbHelper.Fire)
             .SetPower(1, CardRarity.SPECIAL)
-            .SetColor(CardColor.COLORLESS);
+            .SetColorless();
 
     public OrbCore_Fire()
     {

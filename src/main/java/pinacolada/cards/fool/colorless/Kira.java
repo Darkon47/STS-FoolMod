@@ -26,7 +26,7 @@ public class Kira extends FoolCard
 {
     public static final PCLCardData DATA = Register(Kira.class)
             .SetSkill(1, CardRarity.RARE)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless()
             .SetSeries(CardSeries.DeathNote);
 
     private AbstractMonster lastTargetEnemy = null;

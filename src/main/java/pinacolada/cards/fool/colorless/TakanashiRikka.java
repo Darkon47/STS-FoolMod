@@ -17,7 +17,7 @@ public class TakanashiRikka extends FoolCard
 {
     public static final PCLCardData DATA = Register(TakanashiRikka.class)
             .SetSkill(2, CardRarity.RARE, PCLCardTarget.None)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless()
             .SetSeries(CardSeries.Chuunibyou);
 
     public TakanashiRikka()

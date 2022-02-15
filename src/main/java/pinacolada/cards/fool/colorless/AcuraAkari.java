@@ -9,6 +9,7 @@ import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.fool.special.ThrowingKnife;
 import pinacolada.powers.temporary.TemporaryEnvenomPower;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 
 public class AcuraAkari extends FoolCard
@@ -16,7 +17,7 @@ public class AcuraAkari extends FoolCard
     public static final PCLCardData DATA = Register(AcuraAkari.class)
             .SetSkill(0, CardRarity.UNCOMMON, PCLCardTarget.None)
             .SetMaxCopies(3)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless(PGR.Enums.Cards.THE_FOOL)
             .SetSeries(CardSeries.HitsugiNoChaika)
             .PostInitialize(data ->
             {

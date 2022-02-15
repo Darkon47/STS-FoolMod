@@ -15,7 +15,7 @@ public class MotokoKusanagi extends FoolCard
     public static final int GOLD_THRESHOLD = 150;
     public static final int BASE_RICOCHET = 4;
 
-    public static final PCLCardData DATA = Register(MotokoKusanagi.class).SetAttack(1, CardRarity.UNCOMMON, PCLAttackType.Ranged).SetColor(CardColor.COLORLESS).SetSeries(CardSeries.GhostInTheShell);
+    public static final PCLCardData DATA = Register(MotokoKusanagi.class).SetAttack(1, CardRarity.UNCOMMON, PCLAttackType.Ranged).SetColorless().SetSeries(CardSeries.GhostInTheShell);
 
     public MotokoKusanagi()
     {

@@ -37,7 +37,7 @@ public class Kirby extends FoolCard implements
     public static PCLCardTooltip KirbyTooltip;
     public static final PCLCardData DATA = Register(Kirby.class)
             .SetSkill(-2, CardRarity.RARE, PCLCardTarget.Normal, true)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless()
             .SetMaxCopies(1)
             .SetSeries(CardSeries.Kirby)
             .PostInitialize(data ->

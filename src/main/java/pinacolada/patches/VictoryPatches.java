@@ -60,7 +60,7 @@ public class VictoryPatches
             if (Settings.isStandardRun() && __instance.eType == VictoryRoom.EventType.HEART // this is the room you enter after defeating act 3 Boss
                 && AbstractDungeon.player.chosenClass == PGR.Fool.PlayerClass)
             {
-                PGR.PCL.Data.RecordVictory(PCLGameUtilities.GetActualAscensionLevel());
+                PGR.Fool.Data.RecordVictory(PCLGameUtilities.GetActualAscensionLevel());
             }
         }
     }
@@ -85,7 +85,7 @@ public class VictoryPatches
 
             if (Settings.isStandardRun() && PCLGameUtilities.IsPCLPlayerClass())
             {
-                PGR.PCL.Data.RecordTrueVictory(PCLGameUtilities.GetActualAscensionLevel(), (PGR.PCL.Dungeon.IsUnnamedReign() ? 3 : CardCrawlGame.dungeon instanceof TheEnding ? 2 : 1));
+                PGR.Fool.Data.RecordTrueVictory(PCLGameUtilities.GetActualAscensionLevel(), (PGR.PCL.Dungeon.IsUnnamedReign() ? 3 : CardCrawlGame.dungeon instanceof TheEnding ? 2 : 1));
             }
         }
     }

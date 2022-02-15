@@ -16,7 +16,8 @@ public class AnarchyStocking extends FoolCard
 {
     public static final PCLCardData DATA = Register(AnarchyStocking.class).SetSkill(1, CardRarity.UNCOMMON)
             .SetMaxCopies(2)
-            .SetColor(CardColor.COLORLESS).SetSeries(CardSeries.PantyStocking);
+            .SetColorless()
+            .SetSeries(CardSeries.PantyStocking);
 
     public AnarchyStocking()
     {

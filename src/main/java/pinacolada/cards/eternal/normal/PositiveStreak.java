@@ -31,7 +31,7 @@ public class PositiveStreak extends EternalCard
         for (int i = 0; i < (magicNumber); i++) {
             PCLActions.Bottom.RerollAffinity(i, PCLAffinity.Light);
         }
-        if (info.IsSynergizing) {
+        if (info.IsSynergizing && info.TryActivateSemiLimited()) {
             if (costForTurn > 0) {
                 PCLActions.Bottom.GainEnergy(costForTurn);
             }

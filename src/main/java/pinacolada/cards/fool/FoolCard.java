@@ -16,6 +16,7 @@ public class FoolCard extends PCLCard {
 
     protected static PCLCardData Register(Class<? extends PCLCard> type)
     {
-        return RegisterCardData(type, PGR.Fool.CreateID(type.getSimpleName())).SetColor(PGR.Fool.CardColor);
+        return RegisterCardData(type, PGR.Fool.CreateID(type.getSimpleName()))
+                .SetResource(PGR.Fool);
     }
 }

@@ -14,6 +14,7 @@ import pinacolada.interfaces.subscribers.OnGainAffinitySubscriber;
 import pinacolada.powers.FoolPower;
 import pinacolada.powers.PCLCombatStats;
 import pinacolada.powers.PCLPowerHelper;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
@@ -21,7 +22,7 @@ public class YorhaNo2TypeB extends FoolCard
 {
     public static final PCLCardData DATA = Register(YorhaNo2TypeB.class)
             .SetPower(2, CardRarity.RARE)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless(PGR.Enums.Cards.THE_FOOL)
             .SetSeries(CardSeries.Nier);
 
     public YorhaNo2TypeB()

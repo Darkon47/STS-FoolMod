@@ -17,7 +17,7 @@ import pinacolada.utilities.PCLGameUtilities;
 
 public class NaoTomori extends FoolCard
 {
-    public static final PCLCardData DATA = Register(NaoTomori.class).SetSkill(1, CardRarity.RARE, PCLCardTarget.None).SetMaxCopies(1).SetColor(CardColor.COLORLESS)
+    public static final PCLCardData DATA = Register(NaoTomori.class).SetSkill(1, CardRarity.RARE, PCLCardTarget.None).SetMaxCopies(1).SetColorless()
             .SetSeries(CardSeries.Charlotte)
             .PostInitialize(data -> data.AddPreview(new Curse_Normality(), false));
 

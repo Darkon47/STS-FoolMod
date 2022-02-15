@@ -12,6 +12,7 @@ import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.fool.special.Magilou_Bienfu;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
@@ -19,8 +20,8 @@ public class Magilou extends FoolCard
 {
     public static final PCLCardData DATA = Register(Magilou.class)
             .SetSkill(1, CardRarity.UNCOMMON, PCLCardTarget.None)
-            .SetMaxCopies(1)
-            .SetColor(CardColor.COLORLESS)
+            .SetMaxCopies(2)
+            .SetColorless(PGR.Enums.Cards.THE_FOOL)
             .SetSeries(CardSeries.TalesOfBerseria)
             .PostInitialize(data -> data.AddPreview(new Magilou_Bienfu(), false));
 

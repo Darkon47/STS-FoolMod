@@ -50,10 +50,12 @@ public class PCLSingleCardPopup extends GUIElement
     private final GUI_Label maxCopiesLabel;
     private final GUI_Label maxCopiesCount;
     private final GUI_Label maxCopiesDescription;
+    private final GUI_Label artAuthorLabel;
 
     private final Hitbox nextHb;
     private final Hitbox prevHb;
     private final Hitbox cardHb;
+    private final Hitbox authorHb;
     private final Hitbox upgradeHb;
     private final Hitbox betaArtHb;
     private final Hitbox changeVariantHb;
@@ -84,6 +86,7 @@ public class PCLSingleCardPopup extends GUIElement
         this.prevHb = new Hitbox(160f * Settings.scale, 160f * Settings.scale);
         this.nextHb = new Hitbox(160f * Settings.scale, 160f * Settings.scale);
         this.cardHb = new Hitbox(550f * Settings.scale, 770f * Settings.scale);
+        this.authorHb = new Hitbox(160f * Settings.scale, 110f * Settings.scale);
         this.changeVariantHb = new Hitbox(200f * Settings.scale, 150f * Settings.scale);
         this.changeVariantNextHb = new RelativeHitbox(changeVariantHb, ICON_SIZE, ICON_SIZE, changeVariantHb.width / 2 + ICON_SIZE * 3.5f, changeVariantHb.height * 0.8f, false);
         this.changeVariantPrevHb = new RelativeHitbox(changeVariantHb, ICON_SIZE, ICON_SIZE, changeVariantHb.width / 2 + ICON_SIZE * 1.5f, changeVariantHb.height * 0.8f, false);
@@ -153,6 +156,11 @@ public class PCLSingleCardPopup extends GUIElement
                 new RelativeHitbox(changeVariantHb, ScreenW(0.21f), ScreenH(0.07f), changeVariantHb.width / 2, changeVariantHb.height * 3.4f, false))
                 .SetAlignment(0.9f, 0.1f, true)
                 .SetText(buttonStrings.MaxCopiesTooltip);
+
+        this.artAuthorLabel = new GUI_Label(EYBFontHelper.CardTooltipFont,
+                new RelativeHitbox(changeVariantHb, ScreenW(0.21f), ScreenH(0.07f), changeVariantHb.width / 2, -changeVariantHb.height * 8f, false))
+                .SetAlignment(0.9f, 0.1f, true)
+                .SetText(buttonStrings.ArtAuthor);
     }
 
     public void Open(PCLCard card, CardGroup group)
@@ -222,6 +230,7 @@ public class PCLSingleCardPopup extends GUIElement
 
         viewChangeVariants = baseCard != null && baseCard.cardData != null && baseCard.cardData.CanToggleFromPopup && (baseCard.upgraded || baseCard.cardData.UnUpgradedCanToggleForms) && (baseCard.auxiliaryData.form == 0 || baseCard.cardData.CanToggleFromAlternateForm) && PCLGameUtilities.InGame();
         changeVariantDescription.SetText((baseCard != null && baseCard.cardData != null && !baseCard.cardData.CanToggleFromAlternateForm) ? buttonStrings.ChangeVariantTooltipPermanent : buttonStrings.ChangeVariantTooltipAlways);
+        artAuthorLabel.SetText(baseCard != null && baseCard.cardData != null && baseCard.cardData.MetaData != null ? buttonStrings.ArtAuthor + PCLJUtils.ModifyString(baseCard.cardData.MetaData.author, w -> "#y" + w) : "");
     }
 
     public PCLCard GetCard()
@@ -267,6 +276,7 @@ public class PCLSingleCardPopup extends GUIElement
         this.changeVariantNextHb.update();
         this.changeVariantPrevHb.update();
         this.changeVariantValueHb.update();
+        this.authorHb.update();
         this.UpdateArrows();
         this.UpdateInput();
 
@@ -288,6 +298,7 @@ public class PCLSingleCardPopup extends GUIElement
         this.maxCopiesCount.SetText(GetCardCopiesText());
         this.maxCopiesCount.TryUpdate();
         this.maxCopiesDescription.TryUpdate();
+        this.artAuthorLabel.TryUpdate();
 
         this.viewVariants = viewChangeVariants || baseCard != null && baseCard.cardData != null && (SingleCardViewPopup.isViewingUpgrade || baseCard.cardData.UnUpgradedCanToggleForms) && baseCard.cardData.MaxForms > 1;
     }
@@ -361,6 +372,9 @@ public class PCLSingleCardPopup extends GUIElement
             maxCopiesCount.Render(sb);
             maxCopiesDescription.Render(sb);
         }
+
+        authorHb.render(sb);
+        artAuthorLabel.Render(sb);
     }
 
     private void ToggleBetaArt(boolean value)

@@ -21,7 +21,7 @@ import static pinacolada.resources.PGR.Enums.CardTags.AFTERLIFE;
 
 public class TK extends FoolCard_UltraRare implements OnLosingHPSubscriber
 {
-    public static final PCLCardData DATA = Register(TK.class).SetAttack(0, CardRarity.SPECIAL).SetColor(CardColor.COLORLESS).SetSeries(CardSeries.AngelBeats);
+    public static final PCLCardData DATA = Register(TK.class).SetAttack(0, CardRarity.SPECIAL).SetColorless().SetSeries(CardSeries.AngelBeats);
 
     public TK()
     {

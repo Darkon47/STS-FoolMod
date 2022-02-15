@@ -21,7 +21,7 @@ public class Lelouch extends FoolCard
     public static final PCLCardData DATA = Register(Lelouch.class)
             .SetSkill(3, CardRarity.RARE, PCLCardTarget.AoE)
             .SetMaxCopies(1)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless()
             .SetSeries(CardSeries.CodeGeass);
 
     public Lelouch()

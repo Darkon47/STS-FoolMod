@@ -11,6 +11,7 @@ import pinacolada.cards.fool.FoolCard;
 import pinacolada.orbs.PCLOrbHelper;
 import pinacolada.orbs.pcl.Air;
 import pinacolada.powers.PCLCombatStats;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameEffects;
 import pinacolada.utilities.PCLGameUtilities;
@@ -19,7 +20,7 @@ public class MisuzuKamio extends FoolCard implements OnStartOfTurnPostDrawSubscr
 {
     public static final PCLCardData DATA = Register(MisuzuKamio.class)
             .SetSkill(1, CardRarity.RARE, PCLCardTarget.None)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless(PGR.Enums.Cards.THE_FOOL)
             .SetSeries(CardSeries.Air);
 
     public MisuzuKamio()

@@ -2,8 +2,6 @@ package pinacolada.resources.eternal;
 
 import basemod.BaseMod;
 import com.badlogic.gdx.graphics.Color;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.localization.RelicStrings;
@@ -19,12 +17,11 @@ import pinacolada.utilities.PCLJUtils;
 public class EternalResources extends PCLAbstractResources {
     public static final String ID = "eternal";
 
-    public final AbstractCard.CardColor CardColor = Enums.Cards.THE_ETERNAL;
-    public final AbstractPlayer.PlayerClass PlayerClass = Enums.Characters.THE_ETERNAL;
+    public final EternalPlayerData Data = new EternalPlayerData();
     public final EternalImages Images = new EternalImages();
 
     public EternalResources() {
-        super(ID);
+        super(ID, Enums.Cards.THE_ETERNAL, Enums.Characters.THE_ETERNAL);
     }
 
     public int GetUnlockLevel()
@@ -72,6 +69,7 @@ public class EternalResources extends PCLAbstractResources {
 
         LoadCustomStrings(CharacterStrings.class);
         LoadCustomCardStrings();
+        LoadMetadata();
         LoadCustomStrings(RelicStrings.class);
     }
 

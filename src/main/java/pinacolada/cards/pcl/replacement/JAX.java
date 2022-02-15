@@ -12,7 +12,7 @@ public class JAX extends PCLCard
 {
     public static final PCLCardData DATA = Register(JAX.class)
             .SetSkill(0, CardRarity.SPECIAL, PCLCardTarget.None)
-            .SetColor(CardColor.COLORLESS);
+            .SetColorless();
 
     public JAX()
     {

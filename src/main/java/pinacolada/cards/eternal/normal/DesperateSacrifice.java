@@ -13,14 +13,14 @@ import pinacolada.utilities.PCLGameUtilities;
 
 public class DesperateSacrifice extends EternalCard
 {
-    public static final PCLCardData DATA = Register(DesperateSacrifice.class).SetAttack(1, CardRarity.RARE);
+    public static final PCLCardData DATA = Register(DesperateSacrifice.class).SetSkill(0, CardRarity.RARE);
 
     public DesperateSacrifice()
     {
         super(DATA);
 
-        Initialize(0, 0, 5, 3);
-        SetUpgrade(0, 0);
+        Initialize(0, 0, 8, 5);
+        SetUpgrade(0, 0, 3);
 
         SetLight();
         SetExhaust(true);
@@ -31,8 +31,9 @@ public class DesperateSacrifice extends EternalCard
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
         boolean survive = CheckSpecialCondition(true);
+        PCLActions.Bottom.GainEnergy(1);
         PCLCombatStats.MatchingSystem.ResolveMeter.AddResolve(magicNumber);
-        PCLActions.Bottom.LoseHP(secondaryValue, AbstractGameAction.AttackEffect.NONE).CanKill(survive);
+        PCLActions.Bottom.LoseHP(secondaryValue, AbstractGameAction.AttackEffect.NONE).CanKill(!survive);
         if (survive) {
             PCLActions.Bottom.Draw(secondaryValue);
         }

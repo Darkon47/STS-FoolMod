@@ -131,6 +131,7 @@ public class CardTooltips
     public PCLCardTooltip Limited = FindByID("Limited");
     public PCLCardTooltip LockOn = FindByID("~Lock-On");
     public PCLCardTooltip Loyal = FindByID("Loyal");
+    public PCLCardTooltip MagusForm = FindByID("Magus Form");
     public PCLCardTooltip Malleable = FindByID("Malleable");
     public PCLCardTooltip Match = FindByID("Match");
     public PCLCardTooltip Metal = FindByID("Metal");
@@ -191,9 +192,9 @@ public class CardTooltips
     public PCLCardTooltip Affinity_Power = FindByID("Affinity Power");
     public PCLCardTooltip Affinity_Token = FindByID("Affinity Token");
     public PCLCardTooltip RandomOrb = new PCLCardTooltip("Random Orb", null);
-    public PCLCardTooltip ThrowingKnife = new PCLCardTooltip(pinacolada.cards.fool.special.ThrowingKnife.DATA.Strings.NAME, null);
-    public PCLCardTooltip GriefSeed = new PCLCardTooltip(Curse_GriefSeed.DATA.Strings.NAME, null);
     public PCLCardTooltip Gold = new PCLCardTooltip(RewardItem.TEXT[1].trim(), null);
+    public PCLCardTooltip ThrowingKnife;
+    public PCLCardTooltip GriefSeed;
 
     public static void RegisterID(String id, PCLCardTooltip tooltip)
     {
@@ -235,6 +236,8 @@ public class CardTooltips
 
     public CardTooltips()
     {
+        ThrowingKnife = new PCLCardTooltip(pinacolada.cards.fool.special.ThrowingKnife.DATA.Strings.NAME, null);
+        GriefSeed = new PCLCardTooltip(Curse_GriefSeed.DATA.Strings.NAME, null);
         RegisterID(PCLAffinity.Red.GetAffinitySymbol(), Affinity_Red);
         RegisterID(PCLAffinity.Green.GetAffinitySymbol(), Affinity_Green);
         RegisterID(PCLAffinity.Blue.GetAffinitySymbol(), Affinity_Blue);
@@ -364,6 +367,7 @@ public class CardTooltips
         LoadFromPower(Inspiration, new InspirationPower(FakeCharacter.Instance, 0));
         LoadFromPower(Intangible, new IntangiblePlayerPower(FakeCharacter.Instance, 0));
         LoadFromPower(LockOn, new LockOnPower(FakeCharacter.Instance, 0));
+        LoadFromPower(MagusForm, new MagusFormPower(FakeCharacter.Instance, 0));
         LoadFromPower(Malleable, new MalleablePower(FakeCharacter.Instance, 0));
         LoadFromPower(Metallicize, new MetallicizePower(FakeCharacter.Instance, 0));
         LoadFromPower(NextTurnBlock, new NextTurnBlockPower(FakeCharacter.Instance, 0));

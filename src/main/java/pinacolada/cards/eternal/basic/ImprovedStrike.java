@@ -16,7 +16,7 @@ public class ImprovedStrike extends EternalCard
     {
         super(DATA);
 
-        Initialize(6, 0, 3);
+        Initialize(7, 0, 3);
         SetUpgrade(3, 0, 0);
 
         this.cropPortrait = false;

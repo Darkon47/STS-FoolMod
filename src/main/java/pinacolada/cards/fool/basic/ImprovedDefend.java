@@ -31,7 +31,7 @@ public abstract class ImprovedDefend extends ImprovedBasicCard
 
     protected static PCLCardData Register(Class<? extends PCLCard> type)
     {
-        return FoolCard.Register(type).SetColor(CardColor.COLORLESS).SetSkill(1, CardRarity.BASIC, PCLCardTarget.None)
+        return FoolCard.Register(type).SetColorless().SetSkill(1, CardRarity.BASIC, PCLCardTarget.None)
                 .SetImagePath(PGR.GetCardImage(Defend.DATA.ID + "Alt1"));
     }
 

@@ -6,10 +6,8 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import pinacolada.cards.base.CardSeries;
 import pinacolada.cards.base.CardUseInfo;
-import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
-import pinacolada.cards.fool.tokens.AffinityToken;
 import pinacolada.effects.AttackEffects;
 import pinacolada.effects.VFX;
 import pinacolada.utilities.PCLActions;
@@ -17,8 +15,8 @@ import pinacolada.utilities.PCLGameEffects;
 
 public class ForceImpulseGundam extends FoolCard
 {
-    public static final PCLCardData DATA = Register(ForceImpulseGundam.class).SetAttack(3, CardRarity.RARE).SetMultiformData(2, false).
-            SetColor(CardColor.COLORLESS)
+    public static final PCLCardData DATA = Register(ForceImpulseGundam.class).SetAttack(3, CardRarity.RARE).SetMultiformData(2, false)
+            .SetColorless()
             .SetSeries(CardSeries.Gundam);
     private int bonusDamage = 0;
 
@@ -61,7 +59,7 @@ public class ForceImpulseGundam extends FoolCard
             {
                 for (AbstractCard card : cards) {
                     PCLActions.Bottom.ModifyAllInstances(uuid, c -> ((ForceImpulseGundam)c).AddDamageBonus(magicNumber));
-                    if (card.type == CardType.STATUS || card.type == (auxiliaryData.form == 1 ? CardType.SKILL :CardType.POWER)) {
+                    if (card.type == CardType.STATUS || auxiliaryData.form == 1) {
                         PCLActions.Bottom.ModifyAllInstances(uuid, c -> ((ForceImpulseGundam)c).AddDamageBonus(magicNumber));
                         PCLActions.Bottom.Exhaust(card);
                     }
@@ -74,7 +72,7 @@ public class ForceImpulseGundam extends FoolCard
 
     protected void OnCooldownCompleted(AbstractMonster m)
     {
-        PCLActions.Bottom.MakeCardInHand(AffinityToken.GetCopy(PCLAffinity.Red, upgraded));
+        PCLActions.Bottom.GainSupportDamage(baseDamage / 2);
         PCLActions.Bottom.Exhaust(this);
     }
 

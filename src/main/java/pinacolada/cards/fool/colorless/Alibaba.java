@@ -11,13 +11,14 @@ import pinacolada.cards.fool.special.Alibaba_Aladdin;
 import pinacolada.effects.AttackEffects;
 import pinacolada.orbs.PCLOrbHelper;
 import pinacolada.powers.PCLPowerHelper;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
 public class Alibaba extends FoolCard
 {
     public static final PCLCardData DATA = Register(Alibaba.class).SetAttack(1, CardRarity.UNCOMMON, PCLAttackType.Normal, PCLCardTarget.Normal)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless(PGR.Enums.Cards.THE_FOOL)
             .SetSeries(CardSeries.Magi)
             .PostInitialize(data -> data.AddPreview(new Alibaba_Aladdin(), false));
 

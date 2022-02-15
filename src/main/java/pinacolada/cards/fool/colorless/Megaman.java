@@ -50,7 +50,7 @@ public class Megaman extends FoolCard
     private static final PCLStrings.Actions ACTIONS = PGR.PCL.Strings.Actions;
     public static final HashMap<String, MegamanMove> EFFECT_MAP = new HashMap<>();
     public static final PCLCardData DATA = Register(Megaman.class).SetAttack(1, CardRarity.RARE, PCLAttackType.Ranged, PCLCardTarget.None)
-            .SetMultiformData(3, false).SetColor(CardColor.COLORLESS)
+            .SetMultiformData(3, false).SetColorless()
             .SetSeries(CardSeries.Megaman);
     private static final CardEffectChoice choices = new CardEffectChoice();
     private String previewForm;

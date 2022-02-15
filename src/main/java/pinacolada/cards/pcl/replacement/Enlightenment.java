@@ -11,8 +11,8 @@ import pinacolada.utilities.PCLActions;
 public class Enlightenment extends PCLCard
 {
     public static final PCLCardData DATA = Register(Enlightenment.class)
-            .SetSkill(0, CardRarity.SPECIAL, PCLCardTarget.None)
-            .SetColor(CardColor.COLORLESS);
+            .SetSkill(0, CardRarity.UNCOMMON, PCLCardTarget.None)
+            .SetColorless();
 
     public Enlightenment()
     {

@@ -16,7 +16,7 @@ public class JeanneDArc extends FoolCard_UltraRare
 {
     public static final PCLCardData DATA = Register(JeanneDArc.class)
             .SetPower(1, CardRarity.SPECIAL)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless()
             .SetSeries(CardSeries.Fate);
 
     public JeanneDArc()

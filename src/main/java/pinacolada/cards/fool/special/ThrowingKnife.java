@@ -24,7 +24,7 @@ public class ThrowingKnife extends FoolCard
 {
     public static final PCLCardData DATA = Register(ThrowingKnife.class)
             .SetAttack(0, CardRarity.SPECIAL, PCLAttackType.Ranged)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless()
             .SetMultiformData(3, false, false, false, true);
     public static final int INDEX_WEAK = 0;
     public static final int INDEX_VULNERABLE = 1;

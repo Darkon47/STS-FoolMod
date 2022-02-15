@@ -18,8 +18,9 @@ public class ViciousLunge extends EternalCard
     {
         super(DATA);
 
-        Initialize(15, 0, 6, 40);
-        SetUpgrade(4, 0);
+        Initialize(7, 0, 6, 40);
+        SetUpgrade(2, 0);
+        SetHitCount(2);
 
         SetDark();
         SetEthereal(true);

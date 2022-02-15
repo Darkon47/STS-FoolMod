@@ -20,7 +20,7 @@ public class MakiseKurisu extends FoolCard
     public static final PCLCardData DATA = Register(MakiseKurisu.class)
             .SetSkill(3, CardRarity.RARE, PCLCardTarget.None)
             .SetMaxCopies(1)
-            .SetColor(CardColor.COLORLESS).SetSeries(CardSeries.SteinsGate)
+            .SetColorless().SetSeries(CardSeries.SteinsGate)
             .PostInitialize(data ->
                 data.AddPreview(new TimeParadox(), false)
             );

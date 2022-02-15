@@ -15,7 +15,7 @@ public class TanyaDegurechaff_Type95 extends FoolCard
 {
     public static final PCLCardData DATA = Register(TanyaDegurechaff_Type95.class)
             .SetSkill(2, CardRarity.SPECIAL, PCLCardTarget.None)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless()
             .SetSeries(TanyaDegurechaff.DATA.Series)
             .PostInitialize(data -> data.AddPreview(new OrbCore_Plasma(), false));
 

@@ -2,8 +2,14 @@
 {
 	"eternal:MusouNoHitotachi":
 	{
-		"DESCRIPTIONS": ["On your first #yMatch each turn, draw #b1 card. NL #yResolve cannot decrease when you are at maximum #yResolve and #yMusou #yIsshin is not active."],
+		"DESCRIPTIONS": ["#yMismatches do not reduce #yResolve when you are at maximum #yResolve and #yMusou #yIsshin is not active. NL When you activate #yMusou #yIsshin: Deal #b10 #yAttack damage to ALL enemies."],
 		"FLAVOR": "Where there is progress, there must be loss.",
 		"NAME": "Musou no Hitotachi"
+	},
+	"eternal:TaikoDrum":
+	{
+		"DESCRIPTIONS": ["The #yCurrent #yAffinity advances once per second."],
+		"FLAVOR": "This isn't a rhythm game...",
+		"NAME": "Taiko Drum"
 	}
 }

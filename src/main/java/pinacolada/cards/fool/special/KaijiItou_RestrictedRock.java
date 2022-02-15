@@ -18,7 +18,7 @@ import pinacolada.utilities.PCLGameUtilities;
 
 public class KaijiItou_RestrictedRock extends FoolCard
 {
-    public static final PCLCardData DATA = Register(KaijiItou_RestrictedRock.class).SetSkill(0, CardRarity.SPECIAL, PCLCardTarget.AoE).SetColor(CardColor.COLORLESS).SetSeries(CardSeries.Kaiji);
+    public static final PCLCardData DATA = Register(KaijiItou_RestrictedRock.class).SetSkill(0, CardRarity.SPECIAL, PCLCardTarget.AoE).SetColorless().SetSeries(CardSeries.Kaiji);
 
 
     public KaijiItou_RestrictedRock()

@@ -7,6 +7,7 @@ import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.fool.special.TanyaDegurechaff_Type95;
 import pinacolada.effects.AttackEffects;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
@@ -14,7 +15,7 @@ public class TanyaDegurechaff extends FoolCard
 {
     public static final PCLCardData DATA = Register(TanyaDegurechaff.class)
             .SetAttack(1, CardRarity.RARE, PCLAttackType.Ranged)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless(PGR.Enums.Cards.THE_FOOL)
             .SetSeries(CardSeries.YoujoSenki)
             .PostInitialize(data -> data.AddPreview(new TanyaDegurechaff_Type95(), false));
 

@@ -600,7 +600,7 @@ public final class PCLActions
 
     public ApplyPower GainBlur(int amount)
     {
-        return StackPower(new PCLBlurPower(player, amount));
+        return StackPower(new BlurPower(player, amount));
     }
 
     public ApplyPower GainCounterAttack(int amount)
@@ -690,7 +690,7 @@ public final class PCLActions
 
     public ApplyPower GainMetallicize(int amount)
     {
-        return StackPower(new PCLMetallicizePower(player, amount));
+        return StackPower(new MetallicizePower(player, amount));
     }
 
     public IncreaseMaxOrbAction GainOrbSlots(int slots)
@@ -700,7 +700,7 @@ public final class PCLActions
 
     public ApplyPower GainPlatedArmor(int amount)
     {
-        return StackPower(new PCLPlatedArmorPower(player, amount));
+        return StackPower(new PlatedArmorPower(player, amount));
     }
 
     public ApplyAffinityPower GainRandomAffinityPower(int amount, boolean retain)

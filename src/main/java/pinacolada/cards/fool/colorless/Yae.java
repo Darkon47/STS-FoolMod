@@ -19,7 +19,7 @@ import pinacolada.utilities.PCLGameUtilities;
 
 public class Yae extends FoolCard
 {
-    public static final PCLCardData DATA = Register(Yae.class).SetSkill(1, CardRarity.RARE, PCLCardTarget.None).SetColor(CardColor.COLORLESS).SetMaxCopies(2).SetSeries(CardSeries.HoukaiGakuen);
+    public static final PCLCardData DATA = Register(Yae.class).SetSkill(1, CardRarity.RARE, PCLCardTarget.None).SetColorless().SetMaxCopies(2).SetSeries(CardSeries.HoukaiGakuen);
 
     public Yae()
     {

@@ -13,7 +13,7 @@ import pinacolada.utilities.PCLActions;
 
 public class BlazingHeat extends FoolCard
 {
-    public static final PCLCardData DATA = Register(BlazingHeat.class).SetPower(3, CardRarity.SPECIAL).SetColor(CardColor.COLORLESS).SetMaxCopies(1);
+    public static final PCLCardData DATA = Register(BlazingHeat.class).SetPower(3, CardRarity.SPECIAL).SetColorless().SetMaxCopies(1);
     public static final int BURNING_DAMAGE_BONUS = 100;
     public static final int FIRE_TRIGGER_BONUS = 100;
     public static final int FIRE_EVOKE_BONUS = 200;

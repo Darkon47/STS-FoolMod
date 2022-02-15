@@ -23,7 +23,7 @@ public class SakuraKinomoto extends FoolCard
 {
     public static final PCLCardData DATA = Register(SakuraKinomoto.class)
             .SetAttack(3, CardRarity.RARE, PCLAttackType.Electric)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless()
             .SetSeries(CardSeries.CardcaptorSakura);
 
     public SakuraKinomoto()

@@ -8,7 +8,7 @@ public class MysteryCard extends AbstractMysteryCard
     public static final PCLCardData DATA = Register(MysteryCard.class)
             .SetImagePath(QuestionMark.DATA.ImagePath)
             .SetSkill(0, CardRarity.SPECIAL, PCLCardTarget.AoE)
-            .SetColor(CardColor.COLORLESS);
+            .SetColorless();
 
     public MysteryCard() {
         this(false);

@@ -16,7 +16,7 @@ public class Emilia extends FoolCard implements OnStartOfTurnPostDrawSubscriber
 {
     public static final PCLCardData DATA = Register(Emilia.class)
             .SetSkill(2, CardRarity.RARE, PCLCardTarget.None)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless()
             .SetMultiformData(2, false)
             .SetSeries(CardSeries.ReZero);
 

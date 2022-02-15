@@ -12,7 +12,7 @@ import pinacolada.utilities.PCLActions;
 public class JotaroKujo_StarPlatinum extends FoolCard
 {
     public static final PCLCardData DATA = Register(JotaroKujo_StarPlatinum.class).SetPower(2, CardRarity.SPECIAL)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless()
             .SetSeries(CardSeries.Jojo);
 
     public JotaroKujo_StarPlatinum()

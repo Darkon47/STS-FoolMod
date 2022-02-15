@@ -17,7 +17,7 @@ public class AffinityToken_Star extends AffinityToken
 {
     public static final PCLCardData DATA = Register(AffinityToken_Star.class)
             .SetSkill(0, CardRarity.UNCOMMON, PCLCardTarget.None)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless()
             .PostInitialize(data ->
             {
                 for (PCLCardData d : AffinityToken.GetCards())

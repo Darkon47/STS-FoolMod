@@ -16,8 +16,8 @@ import pinacolada.utilities.PCLActions;
 public class QuestionMark extends PCLCard implements OnStartOfTurnSubscriber
 {
     public static final PCLCardData DATA = Register(QuestionMark.class)
-            .SetSkill(-2, CardRarity.SPECIAL, PCLCardTarget.AoE)
-            .SetColor(CardColor.COLORLESS);
+            .SetSkill(-2, CardRarity.UNCOMMON, PCLCardTarget.AoE)
+            .SetColorless();
 
     public AbstractCard copy = null;
 

@@ -16,7 +16,8 @@ import pinacolada.utilities.PCLGameUtilities;
 
 public class MegurineLuka extends FoolCard
 {
-    public static final PCLCardData DATA = Register(MegurineLuka.class).SetSkill(1, CardRarity.UNCOMMON, PCLCardTarget.None).SetMaxCopies(2).SetColor(CardColor.COLORLESS).SetSeries(CardSeries.Vocaloid);
+    public static final PCLCardData DATA = Register(MegurineLuka.class).SetSkill(1, CardRarity.UNCOMMON, PCLCardTarget.None).SetMaxCopies(2)
+            .SetColorless().SetSeries(CardSeries.Vocaloid);
 
     public MegurineLuka()
     {

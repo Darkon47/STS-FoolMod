@@ -164,7 +164,7 @@ public class PCLCardLibraryPatches
         {
             if (key.startsWith(idPrefix))
             {
-                PCLLoadout loadout = PGR.PCL.Data.GetByName(key.replace(idPrefix, ""));
+                PCLLoadout loadout = PGR.Fool.Data.GetByName(key.replace(idPrefix, ""));
                 if (loadout != null && loadout.GetUltraRare() != null)
                 {
                     key = loadout.GetUltraRare().ID;

@@ -13,7 +13,7 @@ public class Magilou_Bienfu extends FoolCard
 {
     public static final PCLCardData DATA = Register(Magilou_Bienfu.class)
             .SetSkill(-2, CardRarity.SPECIAL, PCLCardTarget.None)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless()
             .SetSeries(Magilou.DATA.Series);
 
     public Magilou_Bienfu()

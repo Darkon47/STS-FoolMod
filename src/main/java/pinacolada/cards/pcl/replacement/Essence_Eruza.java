@@ -14,7 +14,7 @@ public class Essence_Eruza extends PCLCard
 {
     public static final PCLCardData DATA = Register(Essence_Eruza.class)
             .SetSkill(0, CardRarity.SPECIAL, PCLCardTarget.None)
-            .SetColor(CardColor.COLORLESS);
+            .SetColorless();
 
     public Essence_Eruza()
     {

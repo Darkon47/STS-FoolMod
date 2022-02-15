@@ -18,7 +18,8 @@ public class Vash extends FoolCard
 {
     public static final PCLCardData DATA = Register(Vash.class)
             .SetAttack(2, CardRarity.RARE, PCLAttackType.Ranged, PCLCardTarget.Random)
-            .SetColor(CardColor.COLORLESS).SetSeries(CardSeries.Trigun);
+            .SetColorless()
+            .SetSeries(CardSeries.Trigun);
     private static final CardEffectChoice choices = new CardEffectChoice();
 
     public Vash()

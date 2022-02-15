@@ -19,7 +19,7 @@ public class RerollAffinityEternalPower extends PCLClickablePower
     {
         super(null, POWER_ID, PowerTriggerConditionType.None, 0);
 
-        this.triggerCondition.SetOneUsePerPower(true);
+        this.triggerCondition.SetUses(amount, true, true);
         this.hideAmount = true;
         this.img = PGR.PCL.Images.Affinities.General.Texture();
 
@@ -60,6 +60,7 @@ public class RerollAffinityEternalPower extends PCLClickablePower
             PCLCombatStats.MatchingSystem.ResolveMeter.AdvanceAffinities(1);
             this.triggerCondition.uses -= 1;
             this.triggerCondition.Refresh(false);
+            PCLCombatStats.MatchingSystem.ResolveMeter.Flash();
             updateDescription();
         }
     }

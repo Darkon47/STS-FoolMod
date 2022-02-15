@@ -19,7 +19,7 @@ public class ChaikaBohdan extends FoolCard implements OnAttackSubscriber
 {
     public static final PCLCardData DATA = Register(ChaikaBohdan.class)
             .SetAttack(1, CardRarity.SPECIAL)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless()
             .SetSeries(CardSeries.HitsugiNoChaika);
 
     public ChaikaBohdan()

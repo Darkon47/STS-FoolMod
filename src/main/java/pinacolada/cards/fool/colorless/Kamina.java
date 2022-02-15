@@ -21,7 +21,10 @@ import pinacolada.utilities.PCLGameUtilities;
 
 public class Kamina extends FoolCard implements OnLosingHPSubscriber, OnStartOfTurnPostDrawSubscriber
 {
-    public static final PCLCardData DATA = Register(Kamina.class).SetAttack(1, CardRarity.UNCOMMON).SetColor(CardColor.COLORLESS).SetSeries(CardSeries.GurrenLagann);
+    public static final PCLCardData DATA = Register(Kamina.class)
+            .SetAttack(1, CardRarity.UNCOMMON)
+            .SetColorless()
+            .SetSeries(CardSeries.GurrenLagann);
     public static int ATTACK_DELAY = 1;
     private int counter;
     private AbstractMonster enemy;

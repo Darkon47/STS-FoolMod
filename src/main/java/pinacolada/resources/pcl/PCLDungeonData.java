@@ -25,8 +25,6 @@ import eatyourbeets.interfaces.listeners.OnAddToDeckListener;
 import eatyourbeets.interfaces.listeners.OnAddingToCardRewardListener;
 import eatyourbeets.interfaces.listeners.OnCardPoolChangedListener;
 import eatyourbeets.utilities.JUtils;
-import eatyourbeets.utilities.Mathf;
-import eatyourbeets.utilities.RandomizedList;
 import pinacolada.blights.common.AbstractGlyphBlight;
 import pinacolada.cards.base.CardSeries;
 import pinacolada.cards.base.PCLCard;
@@ -34,6 +32,7 @@ import pinacolada.cards.base.PCLCardBase;
 import pinacolada.effects.card.PermanentUpgradeEffect;
 import pinacolada.powers.PCLCombatStats;
 import pinacolada.relics.PCLRelic;
+import pinacolada.resources.PCLAbstractPlayerData;
 import pinacolada.resources.PGR;
 import pinacolada.resources.fool.loadouts._FakeLoadout;
 import pinacolada.resources.pcl.misc.PCLLoadout;
@@ -48,25 +47,24 @@ import java.util.HashSet;
 import java.util.Map;
 
 import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.player;
-import static pinacolada.ui.seriesSelection.PCLLoadoutsContainer.MINIMUM_SERIES;
 
 public class PCLDungeonData implements CustomSavable<PCLDungeonData>, StartGameSubscriber, StartActSubscriber
 {
     transient Random rng;
 
-    protected Map<String, String> EventLog = new HashMap<>();
-    protected Integer RNGCounter = 0;
     protected Boolean EnteredUnnamedReign = false;
     protected Boolean IsCheating = false;
     protected Integer LongestMatchCombo = 0;
-    public final ArrayList<Integer> AscensionGlyphCounters = new ArrayList<>();
-    public transient final ArrayList<PCLRuntimeLoadout> Loadouts = new ArrayList<>();
-    public transient PCLLoadout StartingSeries = new _FakeLoadout();
-    public HashSet<String> BannedCards = new HashSet<>();
-    protected transient boolean CanJumpNextFloor;
+    protected Integer RNGCounter = 0;
+    protected Map<String, String> EventLog = new HashMap<>();
     protected transient boolean CanJumpAnywhere;
+    protected transient boolean CanJumpNextFloor;
+    public HashSet<String> BannedCards = new HashSet<>();
+    public final ArrayList<Integer> AscensionGlyphCounters = new ArrayList<>();
+    public transient PCLLoadout StartingSeries = new _FakeLoadout();
+    public transient final ArrayList<PCLRuntimeLoadout> Loadouts = new ArrayList<>();
 
-    protected ArrayList<AnimatorLoadoutProxy> loadouts = new ArrayList<>();
+    protected ArrayList<PCLLoadoutProxy> loadouts = new ArrayList<>();
     protected int startingLoadout = -1;
 
     public static PCLDungeonData Register(String id)
@@ -180,7 +178,7 @@ public class PCLDungeonData implements CustomSavable<PCLDungeonData>, StartGameS
     {
         Loadouts.clear();
 
-        for (PCLLoadout loadout : PGR.PCL.Data.BaseLoadouts)
+        for (PCLLoadout loadout : PGR.Fool.Data.BaseLoadouts)
         {
             PCLRuntimeLoadout r = PCLRuntimeLoadout.TryCreate(loadout);
             if (r != null)
@@ -212,7 +210,7 @@ public class PCLDungeonData implements CustomSavable<PCLDungeonData>, StartGameS
 
         for (PCLRuntimeLoadout loadout : Loadouts)
         {
-            final AnimatorLoadoutProxy proxy = new AnimatorLoadoutProxy();
+            final PCLLoadoutProxy proxy = new PCLLoadoutProxy();
             proxy.id = loadout.ID;
             proxy.isBeta = loadout.IsBeta;
             proxy.bonus = loadout.bonus;
@@ -225,7 +223,7 @@ public class PCLDungeonData implements CustomSavable<PCLDungeonData>, StartGameS
         }
         else
         {
-            startingLoadout = PGR.PCL.Data.SelectedLoadout.ID;
+            startingLoadout = PGR.Fool.Data.SelectedLoadout.ID;
         }
 
         Validate();
@@ -246,16 +244,16 @@ public class PCLDungeonData implements CustomSavable<PCLDungeonData>, StartGameS
         if (data != null)
         {
             BannedCards.addAll(data.BannedCards);
-            StartingSeries = PGR.PCL.Data.GetBaseLoadout(data.startingLoadout);
+            StartingSeries = PGR.Fool.Data.GetBaseLoadout(data.startingLoadout);
 
             if (StartingSeries == null && PGR.PCL.Config.DisplayBetaSeries.Get())
             {
-                StartingSeries = PGR.PCL.Data.GetBetaLoadout(data.startingLoadout);
+                StartingSeries = PGR.Fool.Data.GetBetaLoadout(data.startingLoadout);
             }
 
-            for (AnimatorLoadoutProxy proxy : data.loadouts)
+            for (PCLLoadoutProxy proxy : data.loadouts)
             {
-                final PCLRuntimeLoadout loadout = PCLRuntimeLoadout.TryCreate(PGR.PCL.Data.GetLoadout(proxy.id, proxy.isBeta));
+                final PCLRuntimeLoadout loadout = PCLRuntimeLoadout.TryCreate(PGR.Fool.Data.GetLoadout(proxy.id, proxy.isBeta));
                 if (loadout != null)
                 {
                     loadout.bonus = proxy.bonus;
@@ -267,7 +265,7 @@ public class PCLDungeonData implements CustomSavable<PCLDungeonData>, StartGameS
 
         if (StartingSeries == null)
         {
-            StartingSeries = PGR.PCL.Data.SelectedLoadout;
+            StartingSeries = PGR.Fool.Data.SelectedLoadout;
         }
         Validate();
 
@@ -291,55 +289,15 @@ public class PCLDungeonData implements CustomSavable<PCLDungeonData>, StartGameS
     public void InitializeCardPool(boolean startGame)
     {
         Loadouts.clear();
-
-        // The series may not be immediately initialized if the user starts a fresh save
-        if (PGR.PCL.Config.SelectedSeries.Get() == null || PGR.PCL.Config.SelectedSeries.Get().size() < MINIMUM_SERIES) {
-            PGR.PCL.Config.SelectedSeries.Set(PCLJUtils.Map(PGR.PCL.Data.GetEveryLoadout(), loadout -> loadout.Series), true);
-        }
-
-        // Always include the selected loadout. If for some reason none exists, assign one at random
-        if (PGR.PCL.Data.SelectedLoadout == null) {
-            PGR.PCL.Data.SelectedLoadout = PCLJUtils.Random(PCLJUtils.Filter(PGR.PCL.Data.GetEveryLoadout(), loadout -> PGR.Fool.GetUnlockLevel() >= loadout.UnlockLevel));
-        }
-        if (PGR.PCL.Data.SelectedLoadout != null) {
-            final PCLRuntimeLoadout rloadout = PCLRuntimeLoadout.TryCreate(PGR.PCL.Data.SelectedLoadout);
-            PGR.PCL.Dungeon.AddLoadout(rloadout);
-            if (PGR.PCL.Data.SelectedLoadout.IsBeta)
-            {
-                Settings.seedSet = true;
-            }
-        }
-
-        RandomizedList<PCLLoadout> rList = new RandomizedList<>(PGR.PCL.Data.GetEveryLoadout());
-        int numberOfSeries = Mathf.Max(MINIMUM_SERIES, PGR.PCL.Config.SeriesSize.Get());
-        while (Loadouts.size() < numberOfSeries && rList.Size() > 0) {
-            PCLLoadout loadout = rList.Retrieve(GetRNG(), true);
-            if ((PGR.PCL.Data.SelectedLoadout == null || !PGR.PCL.Data.SelectedLoadout.Series.equals(loadout.Series)) && PGR.PCL.Config.SelectedSeries.Get().contains(loadout.Series)) {
-                if (loadout.IsBeta)
-                {
-                    // Do not unlock trophies or ascension
-                    Settings.seedSet = true;
-                }
-
-                final PCLRuntimeLoadout rloadout = PCLRuntimeLoadout.TryCreate(loadout);
-                // Series must be unlocked to be present in-game
-                if (rloadout != null && !rloadout.isLocked) {
-                    PGR.PCL.Dungeon.AddLoadout(rloadout);
-                }
-            }
-        }
-
-        PCLJUtils.LogInfo(this, "Starting Loadout: " + PGR.PCL.Data.SelectedLoadout.Series);
-        PCLJUtils.LogInfo(this, "Starting Series: " + PCLJUtils.JoinStrings(",", PCLJUtils.Map(Loadouts, l -> l.Loadout.Series)));
+        final AbstractPlayer player = PCLCombatStats.RefreshPlayer();
+        GetPlayerData(player.chosenClass).InitializeCardPool(startGame);
 
         if (PCLGameUtilities.IsPCLPlayerClass() && PCLGameUtilities.IsNormalRun(false) && Settings.seed != null)
         {
             PGR.PCL.Config.LastSeed.Set(Settings.seed.toString(), true);
         }
 
-
-        final AbstractPlayer player = PCLCombatStats.RefreshPlayer();
-        if (player.chosenClass != PGR.Fool.PlayerClass)
+        else if (PCLGameUtilities.IsPCLPlayerClass())
         {
             AbstractDungeon.srcCurseCardPool.group.removeIf(PCLCardBase.class::isInstance);
             AbstractDungeon.curseCardPool.group.removeIf(PCLCardBase.class::isInstance);
@@ -355,15 +313,11 @@ public class PCLDungeonData implements CustomSavable<PCLDungeonData>, StartGameS
 
         if (startGame && Settings.isStandardRun())
         {
-            PGR.PCL.Data.SaveTrophies(true);
-        }
-
-        if (Loadouts.isEmpty())
-        {
-            return;
+            PGR.Fool.Data.SaveTrophies(true);
         }
 
         final ArrayList<CardGroup> groups = new ArrayList<>();
+        final AbstractCard.CardColor cColor = player.getCardColor();
         groups.addAll(PCLGameUtilities.GetCardPools());
         groups.addAll(PCLGameUtilities.GetSourceCardPools());
         for (CardGroup group : groups)
@@ -372,9 +326,9 @@ public class PCLDungeonData implements CustomSavable<PCLDungeonData>, StartGameS
             {
                 if (card.color == AbstractCard.CardColor.COLORLESS || card.color == AbstractCard.CardColor.CURSE)
                 {
-                    return !(card instanceof PCLCardBase);
+                    return !(card instanceof PCLCard) || (((PCLCard) card).cardData.ColorlessCardColor != null && ((PCLCard) card).cardData.ColorlessCardColor != cColor);
                 }
-                else if (card.color != PGR.Fool.CardColor)
+                else if (card.color != cColor || Loadouts.isEmpty())
                 {
                     return false;
                 }
@@ -388,7 +342,6 @@ public class PCLDungeonData implements CustomSavable<PCLDungeonData>, StartGameS
                         }
                     }
                 }
-
                 return true;
             });
         }
@@ -405,30 +358,33 @@ public class PCLDungeonData implements CustomSavable<PCLDungeonData>, StartGameS
 
 
         if (startGame) {
-            for (int i = 0; i < (PGR.PCL.Data.SelectedLoadout != null ? PGR.PCL.Data.SelectedLoadout.GetCommonUpgrades() : 0); i++) {
-                PCLGameEffects.TopLevelQueue.Add(new PermanentUpgradeEffect()).SetFilter(c -> AbstractCard.CardRarity.COMMON.equals(c.rarity));
+            if (PGR.Fool.Data.SelectedLoadout != null) {
+                for (int i = 0; i < PGR.Fool.Data.SelectedLoadout.GetCommonUpgrades(); i++) {
+                    PCLGameEffects.TopLevelQueue.Add(new PermanentUpgradeEffect()).SetFilter(c -> AbstractCard.CardRarity.COMMON.equals(c.rarity));
+                }
+
+                player.potionSlots += PGR.Fool.Data.SelectedLoadout.GetPotionSlots();
+                while (player.potions.size() > player.potionSlots && player.potions.get(player.potions.size() - 1) instanceof PotionSlot) {
+                    player.potions.remove(player.potions.size() - 1);
+                }
+                while (player.potionSlots > player.potions.size()) {
+                    player.potions.add(new PotionSlot(player.potions.size() - 1));
+                }
+                player.adjustPotionPositions();
             }
 
-            player.potionSlots += (PGR.PCL.Data.SelectedLoadout != null ? PGR.PCL.Data.SelectedLoadout.GetPotionSlots() : 0);
-            while (player.potions.size() > player.potionSlots && player.potions.get(player.potions.size() - 1) instanceof PotionSlot) {
-                player.potions.remove(player.potions.size() - 1);
-            }
-            while (player.potionSlots > player.potions.size()) {
-                player.potions.add(new PotionSlot(player.potions.size() - 1));
-            }
-            player.adjustPotionPositions();
 
-            for (int i = 0; i < PGR.PCL.Data.Glyphs.size(); i++) {
+            for (int i = 0; i < PGR.Fool.Data.Glyphs.size(); i++) {
                 boolean shouldAdd = true;
                 for (AbstractBlight blight: player.blights) {
-                    if (PGR.PCL.Data.Glyphs.get(i).getClass().equals(blight.getClass())) {
+                    if (PGR.Fool.Data.Glyphs.get(i).getClass().equals(blight.getClass())) {
                         shouldAdd = false;
                         break;
                     }
                 }
                 int counter = PGR.PCL.Dungeon.AscensionGlyphCounters.size() > i ? PGR.PCL.Dungeon.AscensionGlyphCounters.get(i) : 0;
                 if (shouldAdd && counter > 0) {
-                    AbstractBlight blight = PGR.PCL.Data.Glyphs.get(i).makeCopy();
+                    AbstractBlight blight = PGR.Fool.Data.Glyphs.get(i).makeCopy();
                     blight.setCounter(counter);
                     PCLGameUtilities.ObtainBlightWithoutEffect(blight);
                 }
@@ -587,7 +543,7 @@ public class PCLDungeonData implements CustomSavable<PCLDungeonData>, StartGameS
             EnteredUnnamedReign = false;
             LongestMatchCombo = 0;
             RNGCounter = 0;
-            for (AbstractGlyphBlight glyph : PGR.PCL.Data.Glyphs) {
+            for (AbstractGlyphBlight glyph : PGR.Fool.Data.Glyphs) {
                 AscensionGlyphCounters.add(glyph.counter);
             }
             IsCheating = false;
@@ -709,7 +665,15 @@ public class PCLDungeonData implements CustomSavable<PCLDungeonData>, StartGameS
         PCLJUtils.LogInfo(this, "[Persistent Data] Starting Series: " + startingLoadout + ", Series Count: " + loadouts.size());
     }
 
-    protected static class AnimatorLoadoutProxy
+    protected static PCLAbstractPlayerData GetPlayerData(AbstractPlayer.PlayerClass playerClass) {
+        if (playerClass == PGR.Enums.Characters.THE_ETERNAL) {
+            return PGR.Eternal.Data;
+        }
+        return PGR.Fool.Data;
+    }
+
+
+    protected static class PCLLoadoutProxy
     {
         public int id;
         public int bonus;

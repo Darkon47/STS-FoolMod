@@ -58,21 +58,6 @@ public class ApplyPowerActionPatches
                 powerToApply[0] = new PCLLockOnPower(power.owner, power.amount);
                 _powerToApply.Set(__instance, powerToApply[0]);
             }
-            if (power instanceof BlurPower && !(power instanceof PCLBlurPower))
-            {
-                powerToApply[0] = new PCLBlurPower(power.owner, power.amount);
-                _powerToApply.Set(__instance, powerToApply[0]);
-            }
-            if (power instanceof PlatedArmorPower && !(power instanceof PCLPlatedArmorPower))
-            {
-                powerToApply[0] = new PCLPlatedArmorPower(power.owner, power.amount);
-                _powerToApply.Set(__instance, powerToApply[0]);
-            }
-            if (power instanceof MetallicizePower && !(power instanceof PCLMetallicizePower))
-            {
-                powerToApply[0] = new PCLMetallicizePower(power.owner, power.amount);
-                _powerToApply.Set(__instance, powerToApply[0]);
-            }
             // Animator power replacements
             if (power instanceof eatyourbeets.powers.common.BurningPower)
             {

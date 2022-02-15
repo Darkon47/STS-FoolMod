@@ -12,6 +12,7 @@ import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.fool.special.TimeParadox;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
@@ -19,7 +20,7 @@ public class HououinKyouma extends FoolCard
 {
     public static final PCLCardData DATA = Register(HououinKyouma.class)
             .SetSkill(1, CardRarity.RARE, PCLCardTarget.None)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless(PGR.Enums.Cards.THE_FOOL)
             .SetMaxCopies(1)
             .SetMultiformData(2)
             .SetSeries(CardSeries.SteinsGate)

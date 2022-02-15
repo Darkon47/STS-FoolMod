@@ -44,7 +44,7 @@
 		"DESCRIPTIONS": ["[Water] has #b+{0} [Focus] and reflects unblocked attack damage. You can no longer gain [Block] from cards. At the end of turn: Take #b{1} non-lethal damage and channel [Water] (this can't kill you)."],
 		"NAME": "Kurage's Oath"
 	},
-	"pcl:MagusForm":
+	"pcl:MagusFormPower":
 	{
 		"DESCRIPTIONS": ["At the start of turn: Gain #b{0} [Focus] and lose #b{1} [Strength] and [Dexterity]."],
 		"NAME": "Magus Form"

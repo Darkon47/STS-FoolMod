@@ -14,7 +14,7 @@ public class MamizouFutatsuiwa_Daruma extends FoolCard
 {
     public static final PCLCardData DATA = Register(MamizouFutatsuiwa_Daruma.class)
             .SetSkill(0, CardRarity.SPECIAL, PCLCardTarget.None)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless()
             .SetMultiformData(3, false, false, false, true)
             .SetSeries(MamizouFutatsuiwa.DATA.Series);
     public static final int INDEX_BLOCK = 0;

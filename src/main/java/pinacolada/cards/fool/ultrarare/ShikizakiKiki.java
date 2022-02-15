@@ -22,7 +22,7 @@ public class ShikizakiKiki extends FoolCard_UltraRare
 {
     public static final PCLCardData DATA = Register(ShikizakiKiki.class)
             .SetPower(2, CardRarity.SPECIAL)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless()
             .SetSeries(CardSeries.Katanagatari);
     public static final int COST = 25;
     public static final int GAIN = 20;

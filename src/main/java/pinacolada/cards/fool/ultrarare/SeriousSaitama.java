@@ -16,7 +16,7 @@ public class SeriousSaitama extends FoolCard_UltraRare
 {
     public static final PCLCardData DATA = Register(SeriousSaitama.class)
             .SetSkill(-1, CardRarity.SPECIAL, PCLCardTarget.AoE)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless()
             .SetSeries(CardSeries.OnePunchMan);
 
     public SeriousSaitama()

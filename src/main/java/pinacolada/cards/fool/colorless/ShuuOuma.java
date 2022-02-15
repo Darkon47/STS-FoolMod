@@ -10,13 +10,14 @@ import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
 import pinacolada.powers.FoolPower;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 
 public class ShuuOuma extends FoolCard
 {
     public static final PCLCardData DATA = Register(ShuuOuma.class)
             .SetSkill(0, CardRarity.RARE, PCLCardTarget.None)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless(PGR.Enums.Cards.THE_FOOL)
             .SetSeries(CardSeries.GuiltyCrown);
 
     public ShuuOuma()

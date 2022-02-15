@@ -35,7 +35,7 @@ public abstract class FoolCard_UltraRare extends FoolCard implements Hidden
     {
         if (cards.isEmpty())
         {
-            for (PCLLoadout loadout : PGR.PCL.Data.GetEveryLoadout())
+            for (PCLLoadout loadout : PGR.Fool.Data.GetEveryLoadout())
             {
                 PCLCardData data = loadout.GetUltraRare();
                 if (data != null)

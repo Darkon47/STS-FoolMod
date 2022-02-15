@@ -7,7 +7,7 @@ public class OrbCore_Air extends OrbCore
 {
     public static final PCLCardData DATA = RegisterOrbCore(OrbCore_Air.class, PCLOrbHelper.Air)
             .SetPower(2, CardRarity.SPECIAL)
-            .SetColor(CardColor.COLORLESS);
+            .SetColorless();
 
     public OrbCore_Air()
     {

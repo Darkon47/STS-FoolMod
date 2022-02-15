@@ -64,7 +64,7 @@ public class CardPoolPanelItem extends PCLTopPanelItem
         for (PCLRuntimeLoadout series : PGR.PCL.Dungeon.Loadouts)
         {
             String line;
-            if (PGR.PCL.Data.SelectedLoadout.Series.equals(series.Loadout.Series))
+            if (PGR.Fool.Data.SelectedLoadout.Series.equals(series.Loadout.Series))
             {
                 line = "- #y" + PCLJUtils.ModifyString(series.Loadout.Name, w -> "#y" + w);
             }

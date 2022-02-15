@@ -14,7 +14,7 @@ public class SaveSlotScreenPatches
         public static void Postfix(SaveSlotScreen __instance, int slot)
         {
             PGR.PCL.Config.Load(slot);
-            PGR.PCL.Data.Reload();
+            PGR.Fool.Data.Reload();
         }
     }
 }

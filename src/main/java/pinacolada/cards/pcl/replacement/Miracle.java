@@ -12,7 +12,7 @@ public class Miracle extends PCLCard
 {
     public static final PCLCardData DATA = Register(Miracle.class)
             .SetSkill(0, CardRarity.SPECIAL, PCLCardTarget.None)
-            .SetColor(CardColor.COLORLESS);
+            .SetColorless();
 
     public Miracle()
     {

@@ -16,7 +16,7 @@ import pinacolada.utilities.PCLGameEffects;
 
 public class UndulatingLacuna extends FoolCard
 {
-    public static final PCLCardData DATA = Register(UndulatingLacuna.class).SetPower(3, CardRarity.SPECIAL).SetColor(CardColor.COLORLESS).SetMaxCopies(1);
+    public static final PCLCardData DATA = Register(UndulatingLacuna.class).SetPower(3, CardRarity.SPECIAL).SetColorless().SetMaxCopies(1);
     public static final int DARK_BONUS = 25;
 
     public UndulatingLacuna()

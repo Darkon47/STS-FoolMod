@@ -20,7 +20,7 @@ public class Yoimiya extends FoolCard
 {
     public static final PCLCardData DATA = Register(Yoimiya.class)
             .SetAttack(1, CardRarity.SPECIAL, PCLAttackType.Ranged, PCLCardTarget.Normal)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless()
             .SetSeries(CardSeries.GenshinImpact)
             .PostInitialize(data -> {data.AddPreview(new BlazingHeat(), false);
                 for (ThrowingKnife knife : ThrowingKnife.GetAllCards())
@@ -55,7 +55,7 @@ public class Yoimiya extends FoolCard
         PCLActions.Bottom.DealCardDamage(this, m, AttackEffects.DAGGER).forEach(d ->
                 d.SetVFXColor(Color.FIREBRICK, Color.SCARLET)
                         .AddCallback(e -> {
-                    if (IsStarter() && e.lastDamageTaken > 0) {
+                    if (e.lastDamageTaken > 0) {
                         PCLActions.Bottom.CreateThrowingKnives(1).SetUpgrade(upgraded);
                     }
         }));
@@ -65,12 +65,8 @@ public class Yoimiya extends FoolCard
             for (PCLPowerHelper commonDebuffHelper : PCLGameUtilities.GetPCLCommonDebuffs()) {
                 if (commonDebuffHelper.ID.equals(debuff.ID)) {
                     int amount = PCLGameUtilities.GetPowerAmount(player, debuff.ID);
-                    if (IsStarter()) {
-                        PCLActions.Bottom.ApplyPower(TargetHelper.Player(), commonDebuffHelper, amount);
-                        total += amount;
-                    }
-
-                    total += amount;
+                    PCLActions.Bottom.ApplyPower(TargetHelper.Player(), commonDebuffHelper, amount);
+                    total += amount * 2;
                 }
             }
         }

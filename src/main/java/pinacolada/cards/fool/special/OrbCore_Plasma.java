@@ -7,7 +7,7 @@ public class OrbCore_Plasma extends OrbCore
 {
     public static final PCLCardData DATA = RegisterOrbCore(OrbCore_Plasma.class, PCLOrbHelper.Plasma)
             .SetPower(3, CardRarity.SPECIAL)
-            .SetColor(CardColor.COLORLESS);
+            .SetColorless();
 
     public OrbCore_Plasma()
     {

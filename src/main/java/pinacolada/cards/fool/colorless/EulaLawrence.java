@@ -10,12 +10,15 @@ import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
 import pinacolada.effects.VFX;
 import pinacolada.powers.FoolPower;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
 public class EulaLawrence extends FoolCard
 {
-    public static final PCLCardData DATA = Register(EulaLawrence.class).SetAttack(3, CardRarity.UNCOMMON).SetColor(CardColor.COLORLESS).SetSeries(CardSeries.GenshinImpact);
+    public static final PCLCardData DATA = Register(EulaLawrence.class).SetAttack(3, CardRarity.UNCOMMON)
+            .SetColorless(PGR.Enums.Cards.THE_FOOL)
+            .SetSeries(CardSeries.GenshinImpact);
     public static final int MODIFIER = 50;
 
     public EulaLawrence()

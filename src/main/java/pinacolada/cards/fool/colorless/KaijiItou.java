@@ -9,11 +9,16 @@ import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.fool.special.KaijiItou_RestrictedPaper;
 import pinacolada.cards.fool.special.KaijiItou_RestrictedRock;
 import pinacolada.cards.fool.special.KaijiItou_RestrictedScissors;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 
 public class KaijiItou extends FoolCard
 {
-    public static final PCLCardData DATA = Register(KaijiItou.class).SetSkill(1, CardRarity.UNCOMMON, PCLCardTarget.None).SetMaxCopies(2).SetColor(CardColor.COLORLESS).SetSeries(CardSeries.Kaiji)
+    public static final PCLCardData DATA = Register(KaijiItou.class)
+            .SetSkill(1, CardRarity.UNCOMMON, PCLCardTarget.None)
+            .SetMaxCopies(2)
+            .SetColorless(PGR.Enums.Cards.THE_FOOL)
+            .SetSeries(CardSeries.Kaiji)
             .PostInitialize(data -> {
                 data.AddPreview(new KaijiItou_RestrictedPaper(), false);
                 data.AddPreview(new KaijiItou_RestrictedRock(), false);

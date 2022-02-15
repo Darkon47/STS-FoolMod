@@ -3,6 +3,7 @@ package pinacolada.resources.pcl;
 import basemod.BaseMod;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.GameDictionary;
 import com.megacrit.cardcrawl.helpers.TipHelper;
@@ -30,11 +31,12 @@ import pinacolada.utilities.PCLJUtils;
 
 import java.lang.reflect.Field;
 
+import static pinacolada.resources.PGR.Enums.Characters.THE_FOOL;
+
 public class PCLResources extends PCLAbstractResources {
     public static final String ID = PGR.BASE_PREFIX;
 
     public final PCLDungeonData Dungeon = PCLDungeonData.Register(CreateID("Data"));
-    public final PCLPlayerData Data = new PCLPlayerData();
     public final PCLStrings Strings = new PCLStrings();
     public final PCLImages Images = new PCLImages();
     public final PCLConfig Config = new PCLConfig();
@@ -42,7 +44,7 @@ public class PCLResources extends PCLAbstractResources {
 
     public PCLResources()
     {
-        super(ID);
+        super(ID, AbstractCard.CardColor.COLORLESS, THE_FOOL);
     }
 
     protected void InitializeEvents()
@@ -162,7 +164,6 @@ public class PCLResources extends PCLAbstractResources {
         PGR.Tooltips.InitializeIcons();
         PGR.UI.Initialize();
         Config.Load(CardCrawlGame.saveSlot);
-        Data.Initialize();
         Config.InitializeOptions();
         //PCLImages.PreloadResources();
         BaseMod.addTopPanelItem(new CardPoolPanelItem());

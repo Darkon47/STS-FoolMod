@@ -16,7 +16,7 @@ public class Apparition extends PCLCard
 {
     public static final PCLCardData DATA = Register(Apparition.class)
             .SetSkill(1, CardRarity.SPECIAL, PCLCardTarget.None)
-            .SetColor(CardColor.COLORLESS);
+            .SetColorless();
 
     public Apparition()
     {

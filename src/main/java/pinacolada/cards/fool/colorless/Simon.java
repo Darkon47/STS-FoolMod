@@ -12,11 +12,14 @@ import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
 import pinacolada.powers.PCLCombatStats;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 
 public class Simon extends FoolCard
 {
-    public static final PCLCardData DATA = Register(Simon.class).SetAttack(1, CardRarity.UNCOMMON).SetColor(CardColor.COLORLESS).SetSeries(CardSeries.GurrenLagann);
+    public static final PCLCardData DATA = Register(Simon.class).SetAttack(1, CardRarity.UNCOMMON)
+            .SetColorless(PGR.Enums.Cards.THE_FOOL)
+            .SetSeries(CardSeries.GurrenLagann);
 
     public Simon()
     {

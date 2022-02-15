@@ -12,7 +12,7 @@ import pinacolada.utilities.PCLActions;
 
 public class Ginko extends FoolCard
 {
-    public static final PCLCardData DATA = Register(Ginko.class).SetSkill(1, CardRarity.UNCOMMON, PCLCardTarget.None).SetColor(CardColor.COLORLESS).SetSeries(CardSeries.Mushishi);
+    public static final PCLCardData DATA = Register(Ginko.class).SetSkill(1, CardRarity.UNCOMMON, PCLCardTarget.None).SetColorless().SetSeries(CardSeries.Mushishi);
 
     public Ginko()
     {

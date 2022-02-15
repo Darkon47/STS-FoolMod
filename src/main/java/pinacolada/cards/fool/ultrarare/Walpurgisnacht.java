@@ -16,7 +16,7 @@ public class Walpurgisnacht extends FoolCard_UltraRare
 {
     public static final PCLCardData DATA = Register(Walpurgisnacht.class)
             .SetPower(3, CardRarity.SPECIAL)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless()
             .SetSeries(CardSeries.MadokaMagica);
     private static final int POWER_ENERGY_COST = 7;
 

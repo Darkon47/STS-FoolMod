@@ -35,7 +35,7 @@ public abstract class ImprovedStrike extends ImprovedBasicCard
 
     protected static PCLCardData Register(Class<? extends PCLCard> type)
     {
-        return FoolCard.Register(type).SetColor(CardColor.COLORLESS).SetAttack(1, CardRarity.BASIC)
+        return FoolCard.Register(type).SetColorless().SetAttack(1, CardRarity.BASIC)
                 .SetImagePath(PGR.GetCardImage(Strike.DATA.ID + "Alt1"));
     }
 

@@ -18,7 +18,7 @@ public class DemonLord extends FoolCard_UltraRare
 {
     public static final PCLCardData DATA = Register(DemonLord.class)
             .SetPower(4, CardRarity.SPECIAL)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless()
             .SetSeries(CardSeries.GoblinSlayer);
     public static final int HP_LOSS = 3;
     public static final int HP_LOSS_USE = 10;

@@ -33,7 +33,7 @@ public abstract class AffinityToken extends FoolCard implements OnTrySpendAffini
 
     protected static PCLCardData RegisterAffinityToken(Class<? extends FoolCard> type)
     {
-        final PCLCardData data = Register(type).SetSkill(0, CardRarity.SPECIAL, PCLCardTarget.None).SetColor(CardColor.COLORLESS);
+        final PCLCardData data = Register(type).SetSkill(0, CardRarity.SPECIAL, PCLCardTarget.None).SetColorless();
         final CardStrings strings = PGR.GetCardStrings(ID);
         data.Strings.DESCRIPTION = PCLJUtils.Format(strings.DESCRIPTION, data.Strings.EXTENDED_DESCRIPTION[0], data.Strings.EXTENDED_DESCRIPTION[1]);
         return data;

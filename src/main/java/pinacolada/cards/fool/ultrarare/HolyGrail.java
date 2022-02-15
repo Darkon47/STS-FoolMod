@@ -19,7 +19,7 @@ public class HolyGrail extends FoolCard_UltraRare implements OnBattleEndSubscrib
 {
     public static final PCLCardData DATA = Register(HolyGrail.class)
             .SetSkill(1, CardRarity.SPECIAL, PCLCardTarget.None)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless()
             .SetSeries(CardSeries.Fate);
 
     public HolyGrail()

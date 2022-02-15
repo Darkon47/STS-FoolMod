@@ -4,21 +4,23 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
+import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.eternal.EternalCard;
 import pinacolada.powers.PCLCombatStats;
 import pinacolada.utilities.PCLActions;
 
 public class Seclusion extends EternalCard
 {
-    public static final PCLCardData DATA = Register(Seclusion.class).SetSkill(1, CardRarity.COMMON);
+    public static final PCLCardData DATA = Register(Seclusion.class).SetSkill(1, CardRarity.COMMON, PCLCardTarget.Self);
 
     public Seclusion()
     {
         super(DATA);
 
-        Initialize(0, 16, 2, 1);
+        Initialize(0, 15, 1, 1);
         SetUpgrade(0, 4, 0, 0);
 
+        SetDark();
         SetEthereal(true);
     }
 

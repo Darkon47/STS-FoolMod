@@ -18,7 +18,7 @@ public class KanamiAlt extends FoolCard_UltraRare implements Hidden
 {
     public static final PCLCardData DATA = Register(KanamiAlt.class)
             .SetAttack(2, CardRarity.SPECIAL, PCLAttackType.Normal)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless()
             .SetSeries(CardSeries.LogHorizon);
 
     public KanamiAlt()

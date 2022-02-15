@@ -3,7 +3,7 @@ package pinacolada.blights.common;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.RitualPower;
 import pinacolada.resources.PGR;
-import pinacolada.resources.pcl.PCLPlayerData;
+import pinacolada.resources.fool.FoolPlayerData;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
@@ -13,7 +13,7 @@ public class GlyphBlight1 extends AbstractGlyphBlight
 
     public GlyphBlight1()
     {
-        super(ID, PGR.PCL.Config.AscensionGlyph1, PCLPlayerData.ASCENSION_GLYPH1_UNLOCK, PCLPlayerData.ASCENSION_GLYPH1_LEVEL_STEP, 0, 1);
+        super(ID, PGR.PCL.Config.AscensionGlyph1, FoolPlayerData.ASCENSION_GLYPH1_UNLOCK, FoolPlayerData.ASCENSION_GLYPH1_LEVEL_STEP, 0, 1);
     }
 
     @Override

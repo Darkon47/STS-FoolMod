@@ -21,7 +21,7 @@ import pinacolada.utilities.PCLGameUtilities;
 
 public class Megunee_Zombie extends FoolCard implements OnStartOfTurnPostDrawSubscriber
 {
-    public static final PCLCardData DATA = Register(Megunee_Zombie.class).SetAttack(-1, CardRarity.SPECIAL, PCLAttackType.Brutal, PCLCardTarget.Random).SetColor(CardColor.COLORLESS);
+    public static final PCLCardData DATA = Register(Megunee_Zombie.class).SetAttack(-1, CardRarity.SPECIAL, PCLAttackType.Brutal, PCLCardTarget.Random).SetColorless();
 
     private int turns;
 

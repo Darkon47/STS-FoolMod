@@ -2,8 +2,6 @@ package pinacolada.resources.fool;
 
 import basemod.BaseMod;
 import com.badlogic.gdx.graphics.Color;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.localization.RelicStrings;
@@ -19,12 +17,11 @@ import pinacolada.utilities.PCLJUtils;
 public class FoolResources extends PCLAbstractResources {
     public static final String ID = "fool";
 
-    public final AbstractCard.CardColor CardColor = Enums.Cards.THE_FOOL;
-    public final AbstractPlayer.PlayerClass PlayerClass = Enums.Characters.THE_FOOL;
+    public final FoolPlayerData Data = new FoolPlayerData();
     public final FoolImages Images = new FoolImages();
 
     public FoolResources() {
-        super(ID);
+        super(ID, Enums.Cards.THE_FOOL, Enums.Characters.THE_FOOL);
     }
 
     public int GetUnlockLevel()
@@ -72,6 +69,7 @@ public class FoolResources extends PCLAbstractResources {
 
         LoadCustomStrings(CharacterStrings.class);
         LoadCustomCardStrings();
+        LoadMetadata();
         LoadCustomStrings(RelicStrings.class);
     }
 
@@ -87,6 +85,7 @@ public class FoolResources extends PCLAbstractResources {
     protected void PostInitialize()
     {
         PCLLoadoutsContainer.PreloadResources();
+        Data.Initialize();
     }
 
 }

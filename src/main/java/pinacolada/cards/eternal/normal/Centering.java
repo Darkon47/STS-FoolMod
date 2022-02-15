@@ -20,10 +20,8 @@ public class Centering extends EternalCard
     {
         super(DATA);
 
-        Initialize(0, 0, 2, 0);
-        SetUpgrade(0, 0, 0, 0);
-
-        SetExhaust(true);
+        Initialize(0, 0, 3, 0);
+        SetUpgrade(0, 0, 1, 0);
     }
 
     @Override

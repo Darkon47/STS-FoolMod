@@ -15,7 +15,7 @@ public class Cthulhu_Madness extends FoolCard implements Hidden
 {
     public static final PCLCardData DATA = Register(Cthulhu_Madness.class)
             .SetSkill(1, CardRarity.SPECIAL, PCLCardTarget.None)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless()
             .SetSeries(Cthulhu.DATA.Series);
 
     public Cthulhu_Madness()

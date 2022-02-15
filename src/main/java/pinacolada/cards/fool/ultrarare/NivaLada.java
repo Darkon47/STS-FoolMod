@@ -23,7 +23,7 @@ public class NivaLada extends FoolCard_UltraRare implements OnAfterCardExhausted
 {
     public static final PCLCardData DATA = Register(NivaLada.class)
             .SetSkill(0, CardRarity.SPECIAL)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless()
             .SetSeries(CardSeries.HitsugiNoChaika);
 
     public NivaLada()

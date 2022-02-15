@@ -12,7 +12,7 @@ import pinacolada.utilities.PCLActions;
 
 public class IonizingStorm extends FoolCard
 {
-    public static final PCLCardData DATA = Register(IonizingStorm.class).SetPower(3, CardRarity.SPECIAL).SetColor(CardColor.COLORLESS).SetMaxCopies(1);
+    public static final PCLCardData DATA = Register(IonizingStorm.class).SetPower(3, CardRarity.SPECIAL).SetColorless().SetMaxCopies(1);
     public static final int LIGHTNING_BONUS = 50;
 
     public IonizingStorm()

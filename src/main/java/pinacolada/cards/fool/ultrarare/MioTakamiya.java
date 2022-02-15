@@ -17,7 +17,7 @@ import pinacolada.utilities.PCLJUtils;
 
 public class MioTakamiya extends FoolCard_UltraRare
 {
-    public static final PCLCardData DATA = Register(MioTakamiya.class).SetPower(3, CardRarity.SPECIAL).SetColor(CardColor.COLORLESS).SetSeries(CardSeries.DateALive)
+    public static final PCLCardData DATA = Register(MioTakamiya.class).SetPower(3, CardRarity.SPECIAL).SetColorless().SetSeries(CardSeries.DateALive)
             .PostInitialize(data -> data.AddPreview(new ShidoItsuka(), false));
 
     public MioTakamiya()

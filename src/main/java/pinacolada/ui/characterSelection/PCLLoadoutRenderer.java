@@ -101,7 +101,7 @@ public class PCLLoadoutRenderer extends GUIElement
                 .SetText(PGR.PCL.Strings.CharSelect.AscensionGlyph);
 
         float xOffset = AscensionGlyphsLabel.hb.x + ROW_OFFSET * 4f;
-        for (AbstractGlyphBlight glyph : PGR.PCL.Data.Glyphs) {
+        for (AbstractGlyphBlight glyph : PGR.Fool.Data.Glyphs) {
             glyphEditors.add(new PCLGlyphEditor(glyph, new AdvancedHitbox(xOffset, POS_Y, glyph.hb.width, glyph.hb.height)));
             xOffset += ROW_OFFSET * 1.7f;
         }
@@ -129,13 +129,13 @@ public class PCLLoadoutRenderer extends GUIElement
         if (actualIndex < 0) {
             actualIndex = loadouts.size() - 1;
         }
-        PGR.PCL.Data.SelectedLoadout = loadouts.get(actualIndex);
+        PGR.Fool.Data.SelectedLoadout = loadouts.get(actualIndex);
         Refresh(selectScreen, characterOption);
     }
 
     private void ChangeLoadout(PCLLoadout loadout)
     {
-        PGR.PCL.Data.SelectedLoadout = loadout;
+        PGR.Fool.Data.SelectedLoadout = loadout;
         Refresh(selectScreen, characterOption);
     }
 
@@ -153,9 +153,9 @@ public class PCLLoadoutRenderer extends GUIElement
     {
         if (availableLoadouts.size() > 1)
         {
-            while (loadout == PGR.PCL.Data.SelectedLoadout)
+            while (loadout == PGR.Fool.Data.SelectedLoadout)
             {
-                PGR.PCL.Data.SelectedLoadout = PCLGameUtilities.GetRandomElement(availableLoadouts, RNG);
+                PGR.Fool.Data.SelectedLoadout = PCLGameUtilities.GetRandomElement(availableLoadouts, RNG);
             }
 
             Refresh(selectScreen, characterOption);
@@ -171,7 +171,7 @@ public class PCLLoadoutRenderer extends GUIElement
         this.availableLoadouts.clear();
 
         final int unlockLevel = PGR.Fool.GetUnlockLevel();
-        for (PCLLoadout loadout : PGR.PCL.Data.BaseLoadouts)
+        for (PCLLoadout loadout : PGR.Fool.Data.BaseLoadouts)
         {
             this.loadouts.add(loadout);
             if (unlockLevel >= loadout.UnlockLevel)
@@ -182,7 +182,7 @@ public class PCLLoadoutRenderer extends GUIElement
 
         if (PGR.PCL.Config.DisplayBetaSeries.Get())
         {
-            for (PCLLoadout loadout : PGR.PCL.Data.BetaLoadouts)
+            for (PCLLoadout loadout : PGR.Fool.Data.BetaLoadouts)
             {
                 if (loadout.GetPreset().CardsSize() > 0)
                 {
@@ -209,10 +209,10 @@ public class PCLLoadoutRenderer extends GUIElement
             return diff;
         });
 
-        this.loadout = PGR.PCL.Data.SelectedLoadout;
+        this.loadout = PGR.Fool.Data.SelectedLoadout;
         if (this.loadout.GetStartingDeck().isEmpty() || !loadouts.contains(this.loadout))
         {
-            this.loadout = PGR.PCL.Data.SelectedLoadout = loadouts.get(0);
+            this.loadout = PGR.Fool.Data.SelectedLoadout = loadouts.get(0);
         }
 
         for (PCLGlyphEditor geditor : glyphEditors) {

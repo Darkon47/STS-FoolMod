@@ -11,6 +11,7 @@ import pinacolada.cards.fool.special.ChaikaBohdan;
 import pinacolada.cards.fool.special.Layla;
 import pinacolada.powers.PCLCombatStats;
 import pinacolada.powers.fool.PoisonAffinityPower;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameEffects;
 import pinacolada.utilities.PCLGameUtilities;
@@ -21,7 +22,7 @@ public class ChaikaTrabant extends FoolCard implements OnStartOfTurnPostDrawSubs
     private static final CardGroup upgradedChoices = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
     public static final PCLCardData DATA = Register(ChaikaTrabant.class)
             .SetSkill(1, CardRarity.RARE, PCLCardTarget.None)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless(PGR.Enums.Cards.THE_FOOL)
             .SetSeries(CardSeries.HitsugiNoChaika)
             .PostInitialize(data ->
             {

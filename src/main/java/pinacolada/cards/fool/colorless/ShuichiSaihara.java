@@ -24,7 +24,7 @@ import pinacolada.utilities.PCLJUtils;
 
 public class ShuichiSaihara extends FoolCard
 {
-    public static final PCLCardData DATA = Register(ShuichiSaihara.class).SetSkill(0, CardRarity.UNCOMMON, PCLCardTarget.None).SetColor(CardColor.COLORLESS).SetSeries(CardSeries.Danganronpa)
+    public static final PCLCardData DATA = Register(ShuichiSaihara.class).SetSkill(0, CardRarity.UNCOMMON, PCLCardTarget.None).SetColorless().SetSeries(CardSeries.Danganronpa)
             .PostInitialize(data -> data.AddPreview(new KaedeAkamatsu(), false));
 
     public ShuichiSaihara()

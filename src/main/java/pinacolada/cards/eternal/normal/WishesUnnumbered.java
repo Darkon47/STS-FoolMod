@@ -2,7 +2,6 @@ package pinacolada.cards.eternal.normal;
 
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import eatyourbeets.interfaces.subscribers.OnSynergySubscriber;
 import pinacolada.cards.base.CardUseInfo;
@@ -23,9 +22,8 @@ public class WishesUnnumbered extends EternalCard implements OnSynergySubscriber
     {
         super(DATA);
 
-        Initialize(0, 1, 8, 3);
+        Initialize(0, 1, 7, 2);
         SetUpgrade(0, 1, 0, 1);
-        SetCostUpgrade(-1);
 
         SetLight();
         SetExhaust(true);
@@ -40,7 +38,7 @@ public class WishesUnnumbered extends EternalCard implements OnSynergySubscriber
     @Override
     public AbstractAttribute GetSpecialInfo()
     {
-        return TempHPAttribute.Instance.SetCard(this).SetText(GetXValue(), Settings.CREAM_COLOR);
+        return TempHPAttribute.Instance.SetCard(this, true);
     }
 
     @Override
@@ -59,8 +57,8 @@ public class WishesUnnumbered extends EternalCard implements OnSynergySubscriber
 
     @Override
     public void OnSynergy(AbstractCard card) {
-        if (player.hand.contains(this) && PCLGameUtilities.IsMismatch(card, PCLCombatStats.MatchingSystem.GetActiveMeter().GetCurrentAffinity())) {
-            PCLGameUtilities.ModifyMagicNumber(this, secondaryValue, false);
+        if (player.hand.contains(this)) {
+            PCLGameUtilities.IncreaseMagicNumber(this, secondaryValue, false);
         }
     }
 }

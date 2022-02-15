@@ -188,7 +188,7 @@ public class CustomModeScreenPatch {
         availableLoadouts.clear();
 
         final int unlockLevel = PGR.Fool.GetUnlockLevel();
-        for (PCLLoadout loadout : PGR.PCL.Data.BaseLoadouts)
+        for (PCLLoadout loadout : PGR.Fool.Data.BaseLoadouts)
         {
             loadouts.add(loadout);
             if (unlockLevel >= loadout.UnlockLevel)
@@ -199,7 +199,7 @@ public class CustomModeScreenPatch {
 
         if (PGR.PCL.Config.DisplayBetaSeries.Get())
         {
-            for (PCLLoadout loadout : PGR.PCL.Data.BetaLoadouts)
+            for (PCLLoadout loadout : PGR.Fool.Data.BetaLoadouts)
             {
                 if (loadout.GetPreset().CardsSize() > 0)
                 {
@@ -226,13 +226,13 @@ public class CustomModeScreenPatch {
             return diff;
         });
 
-        startingLoadout = PGR.PCL.Data.SelectedLoadout;
+        startingLoadout = PGR.Fool.Data.SelectedLoadout;
         if (startingLoadout.GetStartingDeck().isEmpty() || !loadouts.contains(startingLoadout))
         {
-            startingLoadout = PGR.PCL.Data.SelectedLoadout = loadouts.get(0);
+            startingLoadout = PGR.Fool.Data.SelectedLoadout = loadouts.get(0);
         }
         SeriesDropdown.SetItems(loadouts);
-        SeriesDropdown.SetSelection(PGR.PCL.Data.SelectedLoadout, false);
+        SeriesDropdown.SetSelection(PGR.Fool.Data.SelectedLoadout, false);
     }
 
     private static void InitializeAllAnimatorMods()
@@ -263,7 +263,7 @@ public class CustomModeScreenPatch {
         SeriesDropdown.TryUpdate();
         SeriesRightButton.TryUpdate();
 
-        startingLoadout = PGR.PCL.Data.SelectedLoadout;
+        startingLoadout = PGR.Fool.Data.SelectedLoadout;
     }
 
     private static void UpdateDisplaySeries(CustomModeScreen __instance)
@@ -311,8 +311,8 @@ public class CustomModeScreenPatch {
 
     private static void ChangeLoadout(PCLLoadout loadout)
     {
-        PGR.PCL.Data.SelectedLoadout = loadout;
-        SeriesDropdown.SetSelection(PGR.PCL.Data.SelectedLoadout, false);
+        PGR.Fool.Data.SelectedLoadout = loadout;
+        SeriesDropdown.SetSelection(PGR.Fool.Data.SelectedLoadout, false);
     }
 
     private static boolean ShouldHideSeries() {

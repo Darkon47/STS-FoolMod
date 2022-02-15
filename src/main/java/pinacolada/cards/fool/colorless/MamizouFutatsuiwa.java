@@ -19,7 +19,7 @@ public class MamizouFutatsuiwa extends FoolCard
 {
     public static final PCLCardData DATA = Register(MamizouFutatsuiwa.class)
             .SetSkill(1, CardRarity.UNCOMMON, PCLCardTarget.None)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless()
             .SetSeries(CardSeries.TouhouProject)
             .PostInitialize(data ->
             {

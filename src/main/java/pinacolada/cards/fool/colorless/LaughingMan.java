@@ -19,7 +19,7 @@ import pinacolada.utilities.PCLGameEffects;
 
 public class LaughingMan extends FoolCard implements OnEndOfTurnFirstSubscriber, OnStartOfTurnSubscriber
 {
-    public static final PCLCardData DATA = Register(LaughingMan.class).SetSkill(0, CardRarity.RARE, PCLCardTarget.None).SetMaxCopies(1).SetColor(CardColor.COLORLESS).SetSeries(CardSeries.GhostInTheShell);
+    public static final PCLCardData DATA = Register(LaughingMan.class).SetSkill(0, CardRarity.RARE, PCLCardTarget.None).SetMaxCopies(1).SetColorless().SetSeries(CardSeries.GhostInTheShell);
     private CardType cardType;
 
     public LaughingMan()

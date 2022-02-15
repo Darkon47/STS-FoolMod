@@ -474,7 +474,7 @@ public class PCLLoadoutEditor extends AbstractScreen
         }
 
         loadout.Preset = preset;
-        PGR.PCL.Data.SaveLoadouts(true);
+        PGR.Fool.Data.SaveLoadouts(true);
         AbstractDungeon.closeCurrentScreen();
     }
 

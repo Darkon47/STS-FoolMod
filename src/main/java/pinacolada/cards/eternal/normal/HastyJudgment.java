@@ -1,17 +1,20 @@
 package pinacolada.cards.eternal.normal;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCardData;
+import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.eternal.EternalCard;
 import pinacolada.powers.PCLCombatStats;
 import pinacolada.utilities.PCLActions;
 
 public class HastyJudgment extends EternalCard
 {
-    public static final PCLCardData DATA = Register(HastyJudgment.class).SetSkill(0, CardRarity.COMMON);
+    public static final PCLCardData DATA = Register(HastyJudgment.class).SetSkill(0, CardRarity.COMMON, PCLCardTarget.None);
 
     public HastyJudgment()
     {
@@ -20,6 +23,7 @@ public class HastyJudgment extends EternalCard
         Initialize(0, 2, 0, 0);
         SetUpgrade(0, 0, 0, 0);
 
+        SetLight();
         SetEthereal(true);
     }
 
@@ -33,7 +37,12 @@ public class HastyJudgment extends EternalCard
     {
         PCLActions.Bottom.GainBlock(block);
         for (int i = 0; i < PCLCombatStats.MatchingSystem.ResolveMeter.Next.size(); i++) {
-            PCLActions.Bottom.RerollAffinity(i, PCLAffinity.Light, PCLAffinity.Dark);
+            PCLActions.Last.RerollAffinity(i, PCLAffinity.Light, PCLAffinity.Dark);
+        }
+
+        if (CheckPrimaryCondition(true) && EnergyPanel.getCurrentEnergy() > 0) {
+            AbstractDungeon.player.energy.use(1);
+            PCLActions.Bottom.Draw(1);
         }
     }
 }

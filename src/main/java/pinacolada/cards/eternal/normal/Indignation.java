@@ -21,10 +21,11 @@ public class Indignation extends EternalCard
     {
         super(DATA);
 
-        Initialize(27, 0, 2);
-        SetUpgrade(5, 0);
+        Initialize(13, 0, 2);
+        SetUpgrade(3, 0);
+        SetHitCount(2);
 
-        SetDark();
+        SetLight();
         SetExhaust(true);
     }
 

@@ -15,7 +15,7 @@ public class Kuroyukihime_BlackLotus extends FoolCard
 {
     public static final PCLCardData DATA = Register(Kuroyukihime_BlackLotus.class)
             .SetAttack(1, CardRarity.SPECIAL, PCLAttackType.Ranged, PCLCardTarget.AoE)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless()
             .SetSeries(Kuroyukihime.DATA.Series);
 
     public Kuroyukihime_BlackLotus()

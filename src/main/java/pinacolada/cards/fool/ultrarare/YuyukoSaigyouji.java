@@ -21,7 +21,7 @@ import pinacolada.utilities.PCLGameUtilities;
 
 public class YuyukoSaigyouji extends FoolCard_UltraRare implements StartupCard
 {
-    public static final PCLCardData DATA = Register(YuyukoSaigyouji.class).SetPower(3, CardRarity.SPECIAL).SetColor(CardColor.COLORLESS).SetSeries(CardSeries.TouhouProject);
+    public static final PCLCardData DATA = Register(YuyukoSaigyouji.class).SetPower(3, CardRarity.SPECIAL).SetColorless().SetSeries(CardSeries.TouhouProject);
 
     public YuyukoSaigyouji()
     {

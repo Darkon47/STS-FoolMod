@@ -6,7 +6,10 @@ import com.megacrit.cardcrawl.potions.AbstractPotion;
 import com.megacrit.cardcrawl.potions.PotionSlot;
 import com.megacrit.cardcrawl.powers.PoisonPower;
 import eatyourbeets.powers.CombatStats;
-import pinacolada.cards.base.*;
+import pinacolada.cards.base.CardSeries;
+import pinacolada.cards.base.CardUseInfo;
+import pinacolada.cards.base.PCLCardData;
+import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.powers.common.BurningPower;
 import pinacolada.powers.common.DelayedDamagePower;
@@ -17,10 +20,9 @@ public class EirinYagokoro extends FoolCard
 {
     public static final PCLCardData DATA = Register(EirinYagokoro.class)
             .SetSkill(1, CardRarity.UNCOMMON, PCLCardTarget.Normal)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless()
             .SetMaxCopies(2)
             .SetSeries(CardSeries.TouhouProject);
-    private static final CardEffectChoice choices = new CardEffectChoice();
 
     public EirinYagokoro()
     {

@@ -11,7 +11,7 @@ import pinacolada.utilities.PCLActions;
 
 public class Traveler_Wish extends FoolCard
 {
-    public static final PCLCardData DATA = Register(Traveler_Wish.class).SetSkill(0, CardRarity.SPECIAL, PCLCardTarget.None).SetColor(CardColor.COLORLESS);
+    public static final PCLCardData DATA = Register(Traveler_Wish.class).SetSkill(0, CardRarity.SPECIAL, PCLCardTarget.None).SetColorless();
 
     public Traveler_Wish()
     {

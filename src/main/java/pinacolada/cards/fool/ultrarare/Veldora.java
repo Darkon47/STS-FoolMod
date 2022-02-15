@@ -20,7 +20,7 @@ public class Veldora extends FoolCard_UltraRare
 {
     public static final PCLCardData DATA = Register(Veldora.class)
             .SetPower(3, CardRarity.SPECIAL)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless()
             .SetSeries(CardSeries.TenseiSlime);
 
     public Veldora()

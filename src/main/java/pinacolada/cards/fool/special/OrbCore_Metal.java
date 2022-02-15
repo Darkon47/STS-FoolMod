@@ -10,7 +10,7 @@ public class OrbCore_Metal extends OrbCore
 {
     public static final PCLCardData DATA = RegisterOrbCore(OrbCore_Metal.class, PCLOrbHelper.Metal)
             .SetPower(3, CardRarity.SPECIAL)
-            .SetColor(CardColor.COLORLESS);
+            .SetColorless();
 
     public OrbCore_Metal()
     {

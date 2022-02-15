@@ -17,6 +17,7 @@ import pinacolada.powers.FoolPower;
 import pinacolada.powers.PCLClickablePower;
 import pinacolada.powers.PCLCombatStats;
 import pinacolada.powers.affinity.AbstractPCLAffinityPower;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
@@ -25,7 +26,9 @@ import java.util.ArrayList;
 
 public class Joker extends FoolCard
 {
-    public static final PCLCardData DATA = Register(Joker.class).SetAttack(1, CardRarity.RARE, PCLAttackType.Ranged).SetColor(CardColor.COLORLESS).SetSeries(CardSeries.Persona)
+    public static final PCLCardData DATA = Register(Joker.class).SetAttack(1, CardRarity.RARE, PCLAttackType.Ranged)
+            .SetColorless(PGR.Enums.Cards.THE_FOOL)
+            .SetSeries(CardSeries.Persona)
             .PostInitialize(data -> data.AddPreview(new Joker_Arsene(), false));
     protected static ArrayList<AbstractCard> chosen;
 

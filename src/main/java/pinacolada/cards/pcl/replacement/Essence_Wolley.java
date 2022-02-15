@@ -14,7 +14,7 @@ public class Essence_Wolley extends PCLCard
 {
     public static final PCLCardData DATA = Register(Essence_Wolley.class)
             .SetSkill(0, CardRarity.SPECIAL, PCLCardTarget.None)
-            .SetColor(CardColor.COLORLESS);
+            .SetColorless();
 
     public Essence_Wolley()
     {

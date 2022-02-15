@@ -28,8 +28,8 @@ public class RoarOfTime extends EternalCard implements OnStartOfTurnPostDrawSubs
     {
         super(DATA);
 
-        Initialize(0, 0, 3, 10);
-        SetUpgrade(0, 0, 0, 3);
+        Initialize(0, 0, 3, 13);
+        SetUpgrade(0, 0, 0, 4);
 
         SetLight();
     }
@@ -37,12 +37,12 @@ public class RoarOfTime extends EternalCard implements OnStartOfTurnPostDrawSubs
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.Scry(magicNumber).AddCallback(cards -> {
+        PCLActions.Bottom.Scry(CheckPrimaryCondition(true) ? magicNumber + 1 : magicNumber).AddCallback(cards -> {
             hpLoss = PCLJUtils.SumInt(cards, c -> c.type == CardType.ATTACK ? secondaryValue : 0);
            if (hpLoss > 0) {
                RoarOfTime other = (RoarOfTime) makeStatEquivalentCopy();
                other.hpLoss = hpLoss;
-               other.hpLossTarget = hpLossTarget;
+               other.hpLossTarget = m;
                PCLCombatStats.onStartOfTurnPostDraw.Subscribe(other);
            }
         });
@@ -53,11 +53,12 @@ public class RoarOfTime extends EternalCard implements OnStartOfTurnPostDrawSubs
     {
         super.OnStartOfTurnPostDraw();
         PCLGameEffects.Queue.ShowCardBriefly(this);
-        PCLActions.Bottom.SFX(SFX.MONSTER_SNECKO_GLARE);
-        PCLActions.Bottom.VFX(VFX.Intimidate(player.hb), 0.1f);
-        PCLActions.Bottom.VFX(VFX.ShockWave(player.hb, Color.PURPLE), 0.1f);
+
 
         if (hpLossTarget != null && !PCLGameUtilities.IsDeadOrEscaped(hpLossTarget)) {
+            PCLActions.Bottom.SFX(SFX.MONSTER_SNECKO_GLARE);
+            PCLActions.Bottom.VFX(VFX.Intimidate(player.hb), 0.1f);
+            PCLActions.Bottom.VFX(VFX.ShockWave(player.hb, Color.PURPLE), 0.1f);
             PCLActions.Bottom.DealDamage(player, hpLossTarget, hpLoss, DamageInfo.DamageType.HP_LOSS, AbstractGameAction.AttackEffect.NONE);
         }
 

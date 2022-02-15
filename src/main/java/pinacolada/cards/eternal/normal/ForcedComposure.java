@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
+import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.eternal.EternalCard;
 import pinacolada.interfaces.subscribers.OnTryGainResolveSubscriber;
 import pinacolada.powers.EternalPower;
@@ -14,14 +15,14 @@ import pinacolada.utilities.PCLActions;
 
 public class ForcedComposure extends EternalCard
 {
-    public static final PCLCardData DATA = Register(ForcedComposure.class).SetAttack(1, CardRarity.COMMON);
+    public static final PCLCardData DATA = Register(ForcedComposure.class).SetSkill(1, CardRarity.COMMON, PCLCardTarget.Self);
 
     public ForcedComposure()
     {
         super(DATA);
 
-        Initialize(0, 0, 5, 2);
-        SetUpgrade(0, 0);
+        Initialize(0, 0, 7, 2);
+        SetUpgrade(0, 0, 3);
 
         SetLight();
     }
@@ -31,7 +32,7 @@ public class ForcedComposure extends EternalCard
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
         PCLCombatStats.MatchingSystem.ResolveMeter.AddResolve(magicNumber);
-        PCLActions.Bottom.StackPower(new ForcedComposurePower(player, 2));
+        PCLActions.Bottom.StackPower(new ForcedComposurePower(player, secondaryValue));
     }
 
     public static class ForcedComposurePower extends EternalPower implements OnTryGainResolveSubscriber
@@ -73,7 +74,7 @@ public class ForcedComposure extends EternalCard
         }
 
         @Override
-        public int OnTryGainResolve(AbstractCard card, AbstractPlayer p, int originalCost, boolean isActuallyGaining) {
+        public int OnTryGainResolve(AbstractCard card, AbstractPlayer p, int originalCost, boolean isActuallyGaining, boolean isFromMatch) {
             return Math.min(originalCost, 0);
         }
     }

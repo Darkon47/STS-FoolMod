@@ -5,5 +5,5 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 
 public interface OnTryGainResolveSubscriber
 {
-    int OnTryGainResolve(AbstractCard card, AbstractPlayer p, int originalCost, boolean isActuallyGaining);
+    int OnTryGainResolve(AbstractCard card, AbstractPlayer p, int originalCost, boolean isActuallyGaining, boolean isFromMatch);
 }

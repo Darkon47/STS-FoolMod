@@ -20,7 +20,7 @@ import pinacolada.utilities.PCLGameUtilities;
 
 public class UruhaRushia extends FoolCard implements OnOrbApplyFocusSubscriber
 {
-    public static final PCLCardData DATA = Register(UruhaRushia.class).SetSkill(0, CardRarity.RARE, PCLCardTarget.None).SetMaxCopies(2).SetColor(CardColor.COLORLESS).SetSeries(CardSeries.Hololive);
+    public static final PCLCardData DATA = Register(UruhaRushia.class).SetSkill(0, CardRarity.RARE, PCLCardTarget.None).SetMaxCopies(2).SetColorless().SetSeries(CardSeries.Hololive);
 
     public UruhaRushia()
     {

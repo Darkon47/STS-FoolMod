@@ -17,7 +17,7 @@ public class Azriel extends FoolCard_UltraRare
 {
     public static final PCLCardData DATA = Register(Azriel.class)
             .SetPower(2, CardRarity.SPECIAL)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless()
             .SetSeries(CardSeries.NoGameNoLife)
             .SetMultiformData(2)
             .PostInitialize(data ->

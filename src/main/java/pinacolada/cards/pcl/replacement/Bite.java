@@ -13,7 +13,7 @@ public class Bite extends PCLCard
 {
     public static final PCLCardData DATA = Register(Bite.class)
             .SetAttack(1, CardRarity.SPECIAL, PCLAttackType.Normal, PCLCardTarget.Normal)
-            .SetColor(CardColor.COLORLESS);
+            .SetColorless();
 
     public Bite()
     {

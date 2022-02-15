@@ -32,6 +32,7 @@ import pinacolada.powers.common.VitalityPower;
 import pinacolada.relics.PCLRelic;
 import pinacolada.resources.PGR;
 import pinacolada.ui.GridCardSelectScreenHelper;
+import pinacolada.ui.combat.PCLAffinityMeter;
 import pinacolada.ui.combat.PCLAffinitySystem;
 import pinacolada.ui.common.ControllableCardPile;
 import pinacolada.utilities.PCLActions;
@@ -84,6 +85,7 @@ public class PCLCombatStats extends EYBPower implements InvisiblePower
     public static final GameEvent<OnReloadPreDiscardSubscriber> onReloadPreDiscard = RegisterEvent(new GameEvent<>());
     public static final GameEvent<OnSpendEnergySubscriber> onSpendEnergy = RegisterEvent(new GameEvent<>());
     public static final GameEvent<OnTagChangedSubscriber> onTagChanged = RegisterEvent(new GameEvent<>());
+    public static final GameEvent<OnTryChangeUltimateStateSubscriber> onTryChangeUltimateState = RegisterEvent(new GameEvent<>());
     public static final GameEvent<OnTryGainResolveSubscriber> onTryGainResolve = RegisterEvent(new GameEvent<>());
     public static final GameEvent<OnTrySpendAffinitySubscriber> onTrySpendAffinity = RegisterEvent(new GameEvent<>());
     public static final GameEvent<OnTrySpendEnergySubscriber> onTrySpendEnergy = RegisterEvent(new GameEvent<>());
@@ -455,11 +457,11 @@ public class PCLCombatStats extends EYBPower implements InvisiblePower
         return amount;
     }
 
-    public static int OnTryGainResolve(AbstractCard card, AbstractPlayer p, int cost, boolean isActuallyGaining)
+    public static int OnTryGainResolve(AbstractCard card, AbstractPlayer p, int cost, boolean isActuallyGaining, boolean isFromMatch)
     {
         for (OnTryGainResolveSubscriber s : onTryGainResolve.GetSubscribers())
         {
-            cost = s.OnTryGainResolve(card, p, cost, isActuallyGaining);
+            cost = s.OnTryGainResolve(card, p, cost, isActuallyGaining, isFromMatch);
         }
 
         return cost;
@@ -473,6 +475,17 @@ public class PCLCombatStats extends EYBPower implements InvisiblePower
         }
 
         return cost;
+    }
+
+    public static boolean OnTryChangeUltimateState(AbstractPlayer p, PCLAffinityMeter meter, boolean isEntering)
+    {
+        boolean canChange = true;
+        for (OnTryChangeUltimateStateSubscriber s : onTryChangeUltimateState.GetSubscribers())
+        {
+            canChange &= s.OnTryChangeUltimateState(p, meter, isEntering);
+        }
+
+        return canChange;
     }
 
     public static boolean OnTryUsingCard(AbstractCard card, AbstractPlayer p, AbstractMonster m, boolean canPlay)

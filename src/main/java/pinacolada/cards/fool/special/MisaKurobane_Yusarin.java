@@ -14,7 +14,7 @@ public class MisaKurobane_Yusarin extends FoolCard
 {
     public static final PCLCardData DATA = Register(MisaKurobane_Yusarin.class)
             .SetSkill(0, CardRarity.SPECIAL, PCLCardTarget.None)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless()
             .SetSeries(MisaKurobane.DATA.Series);
 
     public MisaKurobane_Yusarin()

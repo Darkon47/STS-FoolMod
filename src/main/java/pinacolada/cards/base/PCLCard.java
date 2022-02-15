@@ -113,7 +113,7 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
 
     protected static PCLCardData Register(Class<? extends PCLCard> type)
     {
-        return RegisterCardData(type, PGR.PCL.CreateID(type.getSimpleName())).SetColor(CardColor.COLORLESS);
+        return RegisterCardData(type, PGR.PCL.CreateID(type.getSimpleName())).SetColorless();
     }
 
     protected static PCLCardData RegisterCardData(Class<? extends PCLCard> type, String cardID)

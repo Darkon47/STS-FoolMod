@@ -14,7 +14,7 @@ import pinacolada.utilities.PCLGameUtilities;
 public class Clownpiece extends FoolCard
 {
     public static final PCLCardData DATA = Register(Clownpiece.class).SetSkill(0, CardRarity.UNCOMMON, PCLCardTarget.AoE)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless()
             .SetSeries(CardSeries.TouhouProject);
 
     public Clownpiece()
@@ -64,7 +64,7 @@ public class Clownpiece extends FoolCard
             {
                 AbstractCard card = player.drawPile.getTopCard();
 
-                if (card.costForTurn == 0 || card.costForTurn == 1)
+                if (card.costForTurn == 1 || card.costForTurn == 2)
                 {
                     PCLActions.Top.PlayCard(card, player.drawPile, null)
                             .SpendEnergy(false);

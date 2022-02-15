@@ -22,7 +22,7 @@ public class Vladilena extends FoolCard implements OnStartOfTurnPostDrawSubscrib
 {
     public static final PCLCardData DATA = Register(Vladilena.class)
             .SetSkill(1, CardRarity.RARE)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless()
             .SetSeries(CardSeries.EightySix)
             .PostInitialize(data ->
             {

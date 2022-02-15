@@ -15,7 +15,7 @@ public class Overheat extends PCLCard
 {
     public static final PCLCardData DATA = Register(Overheat.class)
             .SetStatus(0, CardRarity.COMMON, PCLCardTarget.None)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless()
             .PostInitialize(data -> data.AddPreview(new Status_Burn(), false));
 
     public Overheat()

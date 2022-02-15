@@ -25,7 +25,7 @@ public class Zero extends FoolCard
 {
     public static final PCLCardData DATA = Register(Zero.class)
             .SetSkill(0, CardRarity.UNCOMMON)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless(PGR.Enums.Cards.THE_FOOL)
             .SetSeries(CardSeries.GrimoireOfZero);
     protected final static WeightedList<AbstractCard> blueCards = new WeightedList<>();
 

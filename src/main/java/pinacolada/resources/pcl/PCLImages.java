@@ -174,7 +174,7 @@ public class PCLImages
         public final TextureCache Star_FG               = new TextureCache("images/pcl/cardui/affinities/Star_FG.png", true);
         public final TextureCache Border_Highlight      = new TextureCache("images/pcl/cardui/affinities/Border_Highlight.png", false);
         public final TextureCache BorderFG              = new TextureCache("images/pcl/cardui/affinities/FG.png", false);
-        public final TextureCache BorderBG              = new TextureCache("images/pcl/cardui/affinities/BG.png", true);
+        public final TextureCache BorderBG              = new TextureCache("images/pcl/cardui/affinities/BG1.png", true);
         public final TextureCache BorderBG2             = new TextureCache("images/pcl/cardui/affinities/BG2.png", true);
         public final TextureCache BorderBG3             = new TextureCache("images/pcl/cardui/affinities/BG3.png", true);
         public final TextureCache BorderBG4             = new TextureCache("images/pcl/cardui/affinities/BG4.png", true);

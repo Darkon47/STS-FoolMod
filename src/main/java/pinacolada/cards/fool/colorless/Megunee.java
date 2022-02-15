@@ -16,7 +16,9 @@ import pinacolada.utilities.PCLActions;
 
 public class Megunee extends FoolCard implements OnStartOfTurnPostDrawSubscriber
 {
-    public static final PCLCardData DATA = Register(Megunee.class).SetSkill(1, CardRarity.RARE, PCLCardTarget.None).SetColor(CardColor.COLORLESS).SetSeries(CardSeries.GakkouGurashi)
+    public static final PCLCardData DATA = Register(Megunee.class).SetSkill(1, CardRarity.RARE, PCLCardTarget.None)
+            .SetColorless()
+            .SetSeries(CardSeries.GakkouGurashi)
             .PostInitialize(data -> data.AddPreview(new Megunee_Zombie(), false));
 
     private int turns;

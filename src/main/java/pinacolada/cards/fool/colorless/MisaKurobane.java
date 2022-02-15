@@ -6,13 +6,14 @@ import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.fool.special.MisaKurobane_Yusarin;
 import pinacolada.orbs.pcl.Fire;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 
 public class MisaKurobane extends FoolCard
 {
     public static final PCLCardData DATA = Register(MisaKurobane.class)
             .SetSkill(0, CardRarity.UNCOMMON, PCLCardTarget.None)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless(PGR.Enums.Cards.THE_FOOL)
             .SetSeries(CardSeries.Charlotte)
             .PostInitialize(data -> data.AddPreview(new MisaKurobane_Yusarin(), false));
 

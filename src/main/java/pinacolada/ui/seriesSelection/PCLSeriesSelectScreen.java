@@ -248,7 +248,7 @@ public class PCLSeriesSelectScreen extends AbstractScreen
                 },
                 true);
 
-        seriesCountDropdown.SetItems(PCLJUtils.RangeArray(PCLLoadoutsContainer.MINIMUM_SERIES, PGR.PCL.Data.GetEveryLoadout().size()));
+        seriesCountDropdown.SetItems(PCLJUtils.RangeArray(PCLLoadoutsContainer.MINIMUM_SERIES, PGR.Fool.Data.GetEveryLoadout().size()));
         seriesCountDropdown.SetSelection(PGR.PCL.Config.SeriesSize.Get(), false);
 
         massExpansionButton.SetActive(container.shouldShowExpansionButton);
@@ -626,7 +626,7 @@ public class PCLSeriesSelectScreen extends AbstractScreen
     protected void UpdateStartingDeckText()
     {
         String text = PGR.PCL.Strings.CharSelect.LeftText + " NL #y" + ((container.currentSeriesCard != null) ? PCLJUtils.ModifyString(container.currentSeriesCard.name, w -> "#y" + w).replace("+","") : "");
-        if (PGR.PCL.Config.DisplayBetaSeries.Get() && PGR.PCL.Data.BetaLoadouts.size() > 0)
+        if (PGR.PCL.Config.DisplayBetaSeries.Get() && PGR.Fool.Data.BetaLoadouts.size() > 0)
         {
             text += " NL Beta: Ascension and NL Trophies disabled.";
         }

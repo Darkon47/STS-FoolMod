@@ -206,7 +206,7 @@ public class EternalCharacter extends CustomPlayer
         cards.add(pinacolada.cards.eternal.basic.ImprovedStrike.DATA.ID);
         cards.add(pinacolada.cards.eternal.basic.ImprovedStrike.DATA.ID);
         cards.add(pinacolada.cards.eternal.normal.Dominate.DATA.ID);
-        cards.add(pinacolada.cards.eternal.normal.WideLeap.DATA.ID);
+        cards.add(pinacolada.cards.eternal.normal.OpportuneGift.DATA.ID);
         return cards;
     }
 
@@ -227,7 +227,7 @@ public class EternalCharacter extends CustomPlayer
     @Override
     public CharSelectInfo getLoadout()
     {
-        return new CharSelectInfo(NAMES[0], TEXT[0], 50, 50, 1, 99, 5, this, this.getStartingRelics(), this.getStartingDeck(), false);
+        return new CharSelectInfo(NAMES[0], TEXT[0], 70, 70, 1, 70, 5, this, this.getStartingRelics(), this.getStartingDeck(), false);
     }
 
     @Override

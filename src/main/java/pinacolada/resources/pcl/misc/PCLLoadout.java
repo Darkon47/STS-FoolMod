@@ -383,11 +383,11 @@ public abstract class PCLLoadout
             return null;
         }
 
-        PCLTrophies trophies = PGR.PCL.Data.GetTrophies(ID);
+        PCLTrophies trophies = PGR.Fool.Data.GetTrophies(ID);
         if (trophies == null)
         {
             trophies = new PCLTrophies(ID);
-            PGR.PCL.Data.Trophies.add(trophies);
+            PGR.Fool.Data.Trophies.add(trophies);
         }
 
         return trophies;
@@ -434,7 +434,7 @@ public abstract class PCLLoadout
     public void OnVictory(int ascensionLevel, int trophyLevel)
     {
         PCLTrophies trophies = GetTrophies();
-        if (PGR.PCL.Data.SelectedLoadout.ID == ID)
+        if (PGR.Fool.Data.SelectedLoadout.ID == ID)
         {
             switch (trophyLevel) {
                 case 2:

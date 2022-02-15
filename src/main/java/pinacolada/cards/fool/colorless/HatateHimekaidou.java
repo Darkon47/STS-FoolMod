@@ -6,13 +6,14 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import eatyourbeets.powers.CombatStats;
 import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 
 public class HatateHimekaidou extends FoolCard
 {
     public static final PCLCardData DATA = Register(HatateHimekaidou.class)
             .SetSkill(1, CardRarity.RARE, PCLCardTarget.None)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless(PGR.Enums.Cards.THE_FOOL)
             .SetSeries(CardSeries.TouhouProject);
 
     public HatateHimekaidou()

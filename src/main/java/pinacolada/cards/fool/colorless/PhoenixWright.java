@@ -17,7 +17,7 @@ public class PhoenixWright extends FoolCard
 {
     public static final PCLCardData DATA = Register(PhoenixWright.class)
             .SetSkill(-1, CardRarity.UNCOMMON)
-            .SetColor(CardColor.COLORLESS).SetSeries(CardSeries.PhoenixWright);
+            .SetColorless().SetSeries(CardSeries.PhoenixWright);
 
     private TargetEffectPreview effectPreview = new TargetEffectPreview(this::ChangeEffect);
     private CounterIntentEffect currentEffect = null;

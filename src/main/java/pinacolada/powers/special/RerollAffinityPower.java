@@ -21,7 +21,7 @@ public class RerollAffinityPower extends PCLClickablePower
     {
         super(null, POWER_ID, PowerTriggerConditionType.None, 0);
 
-        this.triggerCondition.SetOneUsePerPower(true);
+        this.triggerCondition.SetUses(amount, true, true);
         this.hideAmount = true;
         this.img = PGR.PCL.Images.Affinities.General.Texture();
 

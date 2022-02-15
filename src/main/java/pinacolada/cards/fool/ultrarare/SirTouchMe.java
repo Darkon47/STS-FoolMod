@@ -16,7 +16,7 @@ public class SirTouchMe extends FoolCard_UltraRare
 {
     public static final PCLCardData DATA = Register(SirTouchMe.class)
             .SetAttack(2, CardRarity.SPECIAL, PCLAttackType.Brutal)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless()
             .SetSeries(CardSeries.Overlord);
 
     public SirTouchMe()

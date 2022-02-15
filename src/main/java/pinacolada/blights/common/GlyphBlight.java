@@ -9,7 +9,7 @@ import eatyourbeets.utilities.RandomizedList;
 import pinacolada.cards.base.PCLCardTooltip;
 import pinacolada.cards.pcl.glyphs.Glyph;
 import pinacolada.resources.PGR;
-import pinacolada.resources.pcl.PCLPlayerData;
+import pinacolada.resources.fool.FoolPlayerData;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
@@ -22,7 +22,7 @@ public class GlyphBlight extends AbstractGlyphBlight
 
     public GlyphBlight()
     {
-        super(ID, PGR.PCL.Config.AscensionGlyph0, PCLPlayerData.ASCENSION_GLYPH1_UNLOCK, PCLPlayerData.ASCENSION_GLYPH1_LEVEL_STEP, 0, 1);
+        super(ID, PGR.PCL.Config.AscensionGlyph0, FoolPlayerData.ASCENSION_GLYPH1_UNLOCK, FoolPlayerData.ASCENSION_GLYPH1_LEVEL_STEP, 0, 1);
     }
 
     @Override

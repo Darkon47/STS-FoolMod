@@ -142,7 +142,7 @@ public class PCLConfig
         ReplaceCardsFool.AddToPanel(panel, misc.ReplaceCardsFool, 400, 400);
         ReplaceCardsAnimator.AddToPanel(panel, misc.ReplaceCardsAnimator, 400, 350);
 
-        if (PGR.PCL.Data.BetaLoadouts.size() > 0)
+        if (PGR.Fool.Data.BetaLoadouts.size() > 0)
         {
             DisplayBetaSeries.AddToPanel(panel, misc.DisplayBetaSeries, 400, 300);
         }

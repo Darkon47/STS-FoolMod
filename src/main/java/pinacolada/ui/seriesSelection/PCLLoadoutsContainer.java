@@ -30,7 +30,7 @@ public class PCLLoadoutsContainer
     public static void PreloadResources()
     {
         CardCrawlGame.sound.preload("CARD_SELECT");
-        for (PCLLoadout loadout : PGR.PCL.Data.BaseLoadouts)
+        for (PCLLoadout loadout : PGR.Fool.Data.BaseLoadouts)
         {
             PCLRuntimeLoadout temp = PCLRuntimeLoadout.TryCreate(loadout);
             if (temp != null)
@@ -51,7 +51,7 @@ public class PCLLoadoutsContainer
         allCards.clear();
 
         final ArrayList<PCLRuntimeLoadout> seriesSelectionItems = new ArrayList<>();
-        for (PCLLoadout loadout : PGR.PCL.Data.BaseLoadouts)
+        for (PCLLoadout loadout : PGR.Fool.Data.BaseLoadouts)
         {
             final PCLRuntimeLoadout card = PCLRuntimeLoadout.TryCreate(loadout);
             if (card != null)
@@ -60,7 +60,7 @@ public class PCLLoadoutsContainer
             }
         }
 
-        for (PCLLoadout loadout : PGR.PCL.Data.BetaLoadouts)
+        for (PCLLoadout loadout : PGR.Fool.Data.BetaLoadouts)
         {
             final PCLRuntimeLoadout card = PCLRuntimeLoadout.TryCreate(loadout);
             if (card != null)
@@ -96,7 +96,7 @@ public class PCLLoadoutsContainer
                     c.ToggleExpansion(true);
                 }
 
-                if (c.Loadout.Series.equals(PGR.PCL.Data.SelectedLoadout.Series)) {
+                if (c.Loadout.Series.equals(PGR.Fool.Data.SelectedLoadout.Series)) {
                     currentSeriesCard = card;
                     card.rarity = AbstractCard.CardRarity.RARE;
                     card.beginGlowing();
@@ -195,12 +195,12 @@ public class PCLLoadoutsContainer
 
     public void CommitChanges()
     {
-        PGR.PCL.Data.SelectedLoadout = Find(currentSeriesCard).Loadout;
+        PGR.Fool.Data.SelectedLoadout = Find(currentSeriesCard).Loadout;
         PGR.PCL.Config.SelectedSeries.Set(PCLJUtils.Map(currentCards, card -> Find(card).Loadout.Series), true);
         PGR.PCL.Config.ExpandedSeries.Set(PCLJUtils.Map(expandedCards, card -> Find(card).Loadout.Series), true);
         PGR.PCL.Config.SeriesSize.Set(Mathf.Max(MINIMUM_SERIES, CurrentSeriesLimit), true);
 
-        PCLJUtils.LogInfo(this, "Selected Loadout: " + PGR.PCL.Data.SelectedLoadout.Series);
+        PCLJUtils.LogInfo(this, "Selected Loadout: " + PGR.Fool.Data.SelectedLoadout.Series);
         PCLJUtils.LogInfo(this, "Selected Series: " + PCLJUtils.JoinStrings(",", PGR.PCL.Config.SelectedSeries.Get()));
         PCLJUtils.LogInfo(this, "Series Size: " + PGR.PCL.Config.SeriesSize.Get());
     }

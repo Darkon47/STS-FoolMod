@@ -31,7 +31,7 @@ public class Merlin extends FoolCard
     protected static final GenericEffect FALLBACK = GenericEffect.Apply(1, PCLPowerHelper.Swirled);
     public static final PCLCardData DATA = Register(Merlin.class)
             .SetSkill(1, CardRarity.RARE, PCLCardTarget.None)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless()
             .SetSeries(CardSeries.Fate)
             .PostInitialize(data -> {
                 EFFECTS.put(Air.ORB_ID, GenericEffect.Apply(2, PCLPowerHelper.Swirled));

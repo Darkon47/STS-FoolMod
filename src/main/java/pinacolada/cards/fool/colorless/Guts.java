@@ -13,19 +13,23 @@ import org.apache.commons.lang3.mutable.MutableInt;
 import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.VFX;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
 public class Guts extends FoolCard
 {
-    public static final PCLCardData DATA = Register(Guts.class).SetAttack(3, CardRarity.RARE, PCLAttackType.Brutal, PCLCardTarget.Random).SetColor(CardColor.COLORLESS).SetSeries(CardSeries.Berserk);
+    public static final PCLCardData DATA = Register(Guts.class)
+            .SetAttack(3, CardRarity.RARE, PCLAttackType.Brutal, PCLCardTarget.Random)
+            .SetColorless(PGR.Enums.Cards.THE_FOOL)
+            .SetSeries(CardSeries.Berserk);
 
     public Guts()
     {
         super(DATA);
 
-        Initialize(34, 0, 7, 7);
-        SetUpgrade(6, 0, -1, 1);
+        Initialize(34, 0, 7, 5);
+        SetUpgrade(6, 0, 0, 1);
         SetExhaust(true);
 
         SetAffinity_Red(1, 0, 6);
@@ -37,7 +41,7 @@ public class Guts extends FoolCard
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
         int forceGain = ExecuteAttack(m, damage);
-        PCLActions.Bottom.GainMight(forceGain);
+        PCLActions.Bottom.GainVigor(forceGain);
         PCLActions.Top.Add(new ShakeScreenAction(0.3f, ScreenShake.ShakeDur.MED, ScreenShake.ShakeIntensity.MED));
     }
 
@@ -52,7 +56,7 @@ public class Guts extends FoolCard
                     .AddCallback(target -> {
                 if (PCLGameUtilities.IsDeadOrEscaped(target)) {
                     PCLActions.Bottom.TakeDamage(magicNumber, AbstractGameAction.AttackEffect.BLUNT_HEAVY);
-                    forceStacks.addAndGet(ExecuteAttack(m, inflictDamage + secondaryValue));
+                    forceStacks.addAndGet(ExecuteAttack(m, inflictDamage + magicNumber));
                 }
             });
         }

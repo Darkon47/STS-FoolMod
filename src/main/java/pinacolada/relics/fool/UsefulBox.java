@@ -5,10 +5,10 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import eatyourbeets.interfaces.subscribers.OnSynergySubscriber;
 import pinacolada.cards.fool.enchantments.Enchantment;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.relics.PCLEnchantableRelic;
+import pinacolada.relics.FoolEnchantableRelic;
 import pinacolada.utilities.PCLActions;
 
-public class UsefulBox extends PCLEnchantableRelic implements OnSynergySubscriber, CustomSavable<Integer>
+public class UsefulBox extends FoolEnchantableRelic implements OnSynergySubscriber, CustomSavable<Integer>
 {
     public static final String ID = CreateFullID(UsefulBox.class);
 

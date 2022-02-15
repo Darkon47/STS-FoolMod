@@ -33,7 +33,7 @@ public class ConfigOption_SeriesList extends ConfigOption<ArrayList<CardSeries>>
         {
             if (defaultValue == null)
             {
-                defaultValue = PCLJUtils.Map(PGR.PCL.Data.GetEveryLoadout(), loadout -> loadout.Series);
+                defaultValue = PCLJUtils.Map(PGR.Fool.Data.GetEveryLoadout(), loadout -> loadout.Series);
             }
 
             Value = defaultValue;

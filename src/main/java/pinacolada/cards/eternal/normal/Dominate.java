@@ -17,18 +17,23 @@ public class Dominate extends EternalCard
     {
         super(DATA);
 
-        Initialize(5, 0, 2);
+        Initialize(13, 0, 1);
         SetUpgrade(3, 0);
 
         SetDark();
     }
 
     @Override
+    protected float GetInitialDamage()
+    {
+        return super.GetInitialDamage() + PCLCombatStats.MatchingSystem.ResolveMeter.Resolve() * magicNumber;
+    }
+
+    @Override
     protected float ModifyDamage(AbstractMonster enemy, float amount)
     {
-        amount = amount + PCLCombatStats.MatchingSystem.ResolveMeter.Resolve() * magicNumber;
         if (CheckPrimaryCondition(true)) {
-            amount *= 1.2f;
+            amount *= 1.25f;
         }
         return super.ModifyDamage(enemy, amount);
     }

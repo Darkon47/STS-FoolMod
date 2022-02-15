@@ -9,13 +9,15 @@ import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLJUtils;
 
 public class Shimakaze extends FoolCard
 {
     public static final PCLCardData DATA = Register(Shimakaze.class)
-            .SetAttack(1, CardRarity.UNCOMMON).SetColor(CardColor.COLORLESS)
+            .SetAttack(1, CardRarity.UNCOMMON)
+            .SetColorless(PGR.Enums.Cards.THE_FOOL)
             .SetSeries(CardSeries.Kancolle);
 
     public Shimakaze()

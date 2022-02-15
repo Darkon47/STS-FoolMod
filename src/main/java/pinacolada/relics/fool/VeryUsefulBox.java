@@ -6,13 +6,13 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 import eatyourbeets.interfaces.subscribers.OnSynergySubscriber;
 import pinacolada.cards.fool.enchantments.Enchantment;
 import pinacolada.powers.PCLCombatStats;
-import pinacolada.relics.PCLEnchantableRelic;
+import pinacolada.relics.FoolEnchantableRelic;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLJUtils;
 
 import java.util.ArrayList;
 
-public class VeryUsefulBox extends PCLEnchantableRelic implements OnSynergySubscriber, CustomSavable<Integer>
+public class VeryUsefulBox extends FoolEnchantableRelic implements OnSynergySubscriber, CustomSavable<Integer>
 {
     public static final String ID = CreateFullID(VeryUsefulBox.class);
 

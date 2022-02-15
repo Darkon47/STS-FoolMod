@@ -12,6 +12,7 @@ import pinacolada.cards.base.attributes.TempHPAttribute;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.orbs.pcl.Water;
 import pinacolada.powers.PCLCombatStats;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
@@ -21,7 +22,7 @@ public class AkariMizunashi extends FoolCard
             .SetSkill(1, CardRarity.RARE, PCLCardTarget.Self)
             .SetMaxCopies(1)
             .SetMultiformData(2, false)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless(PGR.Enums.Cards.THE_FOOL)
             .SetSeries(CardSeries.Aria);
 
     public AkariMizunashi()

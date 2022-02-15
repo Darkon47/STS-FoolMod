@@ -24,7 +24,7 @@ import java.util.ArrayList;
 
 public class SwordfishII extends FoolCard
 {
-    public static final PCLCardData DATA = Register(SwordfishII.class).SetSkill(0, CardRarity.SPECIAL, PCLCardTarget.None).SetColor(CardColor.COLORLESS).SetSeries(CardSeries.CowboyBebop);
+    public static final PCLCardData DATA = Register(SwordfishII.class).SetSkill(0, CardRarity.SPECIAL, PCLCardTarget.None).SetColorless().SetSeries(CardSeries.CowboyBebop);
 
     public SwordfishII()
     {

@@ -24,7 +24,7 @@ public class Kirakishou extends FoolCard_UltraRare
     public static final PCLCardData DATA
     	= Register(Kirakishou.class)
     	.SetSkill(0, CardRarity.SPECIAL, PCLCardTarget.None)
-    	.SetColor(CardColor.COLORLESS).SetSeries(CardSeries.RozenMaiden)
+    	.SetColorless().SetSeries(CardSeries.RozenMaiden)
         .PostInitialize(data ->
             {
                 PowerStrings mcp = PGR.GetPowerStrings(MindControlPower.POWER_ID);

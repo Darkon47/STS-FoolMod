@@ -25,7 +25,7 @@ public class Rorona extends FoolCard
     public static final PCLCardData DATA = Register(Rorona.class)
             .SetPower(2, CardRarity.UNCOMMON)
             .SetMaxCopies(1)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless()
             .SetSeries(CardSeries.Atelier);
     public static final int MAX_POTIONS_PER_COMBAT = 2;
     public static final int UPGRADE_CARD_REQUIREMENT = 25;

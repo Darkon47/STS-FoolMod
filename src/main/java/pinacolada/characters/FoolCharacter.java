@@ -241,10 +241,10 @@ public class FoolCharacter extends CustomPlayer
     protected PCLLoadout PrepareLoadout()
     {
         int unlockLevel = PGR.Fool.GetUnlockLevel();
-        if (unlockLevel < PGR.PCL.Data.SelectedLoadout.UnlockLevel)
+        if (unlockLevel < PGR.Fool.Data.SelectedLoadout.UnlockLevel)
         {
             RandomizedList<PCLLoadout> list = new RandomizedList<>();
-            for (PCLLoadout loadout : PGR.PCL.Data.BaseLoadouts)
+            for (PCLLoadout loadout : PGR.Fool.Data.BaseLoadouts)
             {
                 if (unlockLevel >= loadout.UnlockLevel)
                 {
@@ -252,9 +252,9 @@ public class FoolCharacter extends CustomPlayer
                 }
             }
 
-            PGR.PCL.Data.SelectedLoadout = list.Retrieve(new com.megacrit.cardcrawl.random.Random());
+            PGR.Fool.Data.SelectedLoadout = list.Retrieve(new com.megacrit.cardcrawl.random.Random());
         }
 
-        return PGR.PCL.Data.SelectedLoadout;
+        return PGR.Fool.Data.SelectedLoadout;
     }
 }

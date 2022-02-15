@@ -20,7 +20,7 @@ public class GiftBox extends FoolCard
 {
     public static final PCLCardData DATA = Register(GiftBox.class)
             .SetSkill(0, CardRarity.SPECIAL, PCLCardTarget.None)
-            .SetColor(CardColor.COLORLESS);
+            .SetColorless();
     private static final FieldInfo<Prefs> _prefs = PCLJUtils.GetField("pref", CharStat.class);
 
     public GiftBox()

@@ -7,12 +7,14 @@ import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
 import pinacolada.powers.PCLCombatStats;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
 public class KenzoTenma extends FoolCard
 {
-    public static final PCLCardData DATA = Register(KenzoTenma.class).SetAttack(1, CardRarity.UNCOMMON, PCLAttackType.Ranged).SetColor(CardColor.COLORLESS).SetSeries(CardSeries.Monster);
+    public static final PCLCardData DATA = Register(KenzoTenma.class).SetAttack(1, CardRarity.UNCOMMON, PCLAttackType.Ranged)
+            .SetColorless(PGR.Enums.Cards.THE_FOOL).SetSeries(CardSeries.Monster);
 
     public KenzoTenma()
     {

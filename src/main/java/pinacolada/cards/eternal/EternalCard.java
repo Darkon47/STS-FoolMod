@@ -21,7 +21,8 @@ public class EternalCard extends PCLCard {
 
     protected static PCLCardData Register(Class<? extends PCLCard> type)
     {
-        return RegisterCardData(type, PGR.Eternal.CreateID(type.getSimpleName())).SetColor(PGR.Eternal.CardColor);
+        return RegisterCardData(type, PGR.Eternal.CreateID(type.getSimpleName()))
+                .SetResource(PGR.Eternal);
     }
 
     public boolean CheckPrimaryCondition(boolean tryUse) {

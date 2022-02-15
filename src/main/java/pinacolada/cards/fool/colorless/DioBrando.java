@@ -15,7 +15,9 @@ import pinacolada.utilities.PCLActions;
 
 public class DioBrando extends FoolCard
 {
-    public static final PCLCardData DATA = Register(DioBrando.class).SetAttack(3, CardRarity.RARE).SetColor(CardColor.COLORLESS).SetSeries(CardSeries.Jojo)
+    public static final PCLCardData DATA = Register(DioBrando.class).SetAttack(3, CardRarity.RARE)
+            .SetColorless()
+            .SetSeries(CardSeries.Jojo)
             .PostInitialize(data -> data.AddPreview(new DioBrando_TheWorld(), false));
 
     private int turns;

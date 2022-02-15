@@ -9,6 +9,7 @@ import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
 import pinacolada.powers.FoolPower;
+import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
@@ -16,7 +17,8 @@ import static com.megacrit.cardcrawl.cards.AbstractCard.CardTags.STARTER_DEFEND;
 
 public class JetBlack extends FoolCard
 {
-    public static final PCLCardData DATA = Register(JetBlack.class).SetAttack(2, CardRarity.UNCOMMON, PCLAttackType.Normal, PCLCardTarget.AoE).SetColor(CardColor.COLORLESS).SetSeries(CardSeries.CowboyBebop);
+    public static final PCLCardData DATA = Register(JetBlack.class).SetAttack(2, CardRarity.UNCOMMON, PCLAttackType.Normal, PCLCardTarget.AoE)
+            .SetColorless(PGR.Enums.Cards.THE_FOOL).SetSeries(CardSeries.CowboyBebop);
 
     public JetBlack()
     {

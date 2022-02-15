@@ -135,7 +135,7 @@ public class AbstractPlayerPatches
 
                 ArrayList<PCLCard> cards = new ArrayList<>();
 
-                CardSeries series = PGR.PCL.Data.SelectedLoadout.Series;
+                CardSeries series = PGR.Fool.Data.SelectedLoadout.Series;
                 CardSeries.AddCards(series, CardLibrary.getAllCards(), cards);
 
                 for (PCLCard card : cards)

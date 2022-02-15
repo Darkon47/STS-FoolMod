@@ -1,6 +1,5 @@
 package pinacolada.patches.animator;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.helpers.TipHelper;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
@@ -17,14 +16,14 @@ public class DialogRelicButtonPatches
 
     @SpirePatch(
             clz= DialogRelicButton.class,
-            method="render"
+            method="update"
     )
     public static class DialogRelicButton_Render
     {
         @SpireInsertPatch(
                 locator= Locator.class
         )
-        public static SpireReturn<Void> Insert(DialogRelicButton __instance, SpriteBatch sb)
+        public static SpireReturn<Void> Insert(DialogRelicButton __instance, int size)
         {
             AbstractRelic relic = _relicPreview.Get(__instance);
             if (relic instanceof PCLRelic) {

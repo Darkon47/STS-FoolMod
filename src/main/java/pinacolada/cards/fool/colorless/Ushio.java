@@ -17,7 +17,7 @@ import pinacolada.utilities.PCLGameEffects;
 
 public class Ushio extends FoolCard implements OnStartOfTurnPostDrawSubscriber
 {
-    public static final PCLCardData DATA = Register(Ushio.class).SetSkill(0, CardRarity.RARE, PCLCardTarget.None).SetColor(CardColor.COLORLESS).SetMaxCopies(2).SetSeries(CardSeries.Clannad)
+    public static final PCLCardData DATA = Register(Ushio.class).SetSkill(0, CardRarity.RARE, PCLCardTarget.None).SetColorless().SetMaxCopies(2).SetSeries(CardSeries.Clannad)
             .PostInitialize(data -> data.AddPreview(new GarbageDoll(), false));
 
     private int turns;

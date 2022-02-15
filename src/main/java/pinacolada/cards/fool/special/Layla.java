@@ -17,7 +17,7 @@ public class Layla extends FoolCard
 {
     public static final PCLCardData DATA = Register(Layla.class)
             .SetAttack(2, CardRarity.SPECIAL, PCLAttackType.Piercing)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless()
             .SetSeries(CardSeries.HitsugiNoChaika);
 
     public Layla()

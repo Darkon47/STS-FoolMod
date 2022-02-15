@@ -19,7 +19,7 @@ public class MisakiNakahara extends FoolCard
 {
     public static final PCLCardData DATA = Register(MisakiNakahara.class)
             .SetSkill(1, CardRarity.UNCOMMON, PCLCardTarget.None)
-            .SetColor(CardColor.COLORLESS)
+            .SetColorless()
             .SetSeries(CardSeries.WelcomeToNHK);
 
     public MisakiNakahara()

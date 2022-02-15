@@ -40,7 +40,7 @@ public class PCLSpecialTrophiesRenderer extends GUIElement
 
     public void Refresh()
     {
-        this.specialTrophies = PGR.PCL.Data.SpecialTrophies;
+        this.specialTrophies = PGR.Fool.Data.SpecialTrophies;
     }
 
     public void Update()
@@ -50,7 +50,7 @@ public class PCLSpecialTrophiesRenderer extends GUIElement
             return;
         }
 
-        trophyString = (specialTrophies.Trophy1 > 0) ? (" " + String.format("%.2f", PCLReward.GetUltraRareChance(PGR.PCL.Data.SelectedLoadout)) + "%") : null;
+        trophyString = (specialTrophies.Trophy1 > 0) ? (" " + String.format("%.2f", PCLReward.GetUltraRareChance(PGR.Fool.Data.SelectedLoadout)) + "%") : null;
         trophy_image.SetTexture(trophyString != null ? images.PLATINUM_TROPHY.Texture() : images.LOCKED_TROPHY.Texture()).Update();
 
         if (trophy_image.hb.hovered)
