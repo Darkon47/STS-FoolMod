@@ -83,7 +83,6 @@ public class PCLCombatStats extends EYBPower implements InvisiblePower
     public static final GameEvent<OnPurgeSubscriber> onPurge = RegisterEvent(new GameEvent<>());
     public static final GameEvent<OnReloadPostDiscardSubscriber> onReloadPostDiscard = RegisterEvent(new GameEvent<>());
     public static final GameEvent<OnReloadPreDiscardSubscriber> onReloadPreDiscard = RegisterEvent(new GameEvent<>());
-    public static final GameEvent<OnSpendEnergySubscriber> onSpendEnergy = RegisterEvent(new GameEvent<>());
     public static final GameEvent<OnTagChangedSubscriber> onTagChanged = RegisterEvent(new GameEvent<>());
     public static final GameEvent<OnTryChangeUltimateStateSubscriber> onTryChangeUltimateState = RegisterEvent(new GameEvent<>());
     public static final GameEvent<OnTryGainResolveSubscriber> onTryGainResolve = RegisterEvent(new GameEvent<>());
@@ -264,17 +263,6 @@ public class PCLCombatStats extends EYBPower implements InvisiblePower
         {
             s.OnPurge(card, source);
         }
-    }
-
-    public static int OnSpendEnergy(int amount)
-    {
-        int energySpent = amount;
-        for (OnSpendEnergySubscriber s : onSpendEnergy.GetSubscribers())
-        {
-            energySpent = s.OnSpendEnergy(amount);
-        }
-
-        return energySpent;
     }
 
     public static void OnAfterlife(AbstractCard playedCard, ArrayList<AbstractCard> fuelCards)

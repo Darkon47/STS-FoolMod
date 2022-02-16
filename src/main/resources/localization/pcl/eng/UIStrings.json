@@ -423,7 +423,8 @@
    			"Scry (You draw from left to right).",
    			"Fetch {0} card(s).",
    			"Choose {0} affinity color(s) to spend.",
-   			"Give {0} card(s) {1}."
+   			"Give {0} card(s) {1}.",
+			"{{0}} NL ({1} cards in Draw Pile)"
    		]
    	},
    	"pcl:TheUnnamedReign":

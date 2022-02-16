@@ -5,6 +5,7 @@ import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.orbs.Lightning;
 import eatyourbeets.interfaces.subscribers.OnOrbPassiveEffectSubscriber;
 import eatyourbeets.utilities.TargetHelper;
+import pinacolada.interfaces.subscribers.OnGainPowerBonusSubscriber;
 import pinacolada.powers.PCLCombatStats;
 import pinacolada.powers.PCLPower;
 import pinacolada.powers.common.ElectrifiedPower;
@@ -14,7 +15,7 @@ import pinacolada.utilities.PCLJUtils;
 
 import static pinacolada.cards.fool.special.IonizingStorm.LIGHTNING_BONUS;
 
-public class IonizingStormPower extends PCLPower implements OnOrbPassiveEffectSubscriber
+public class IonizingStormPower extends PCLPower implements OnOrbPassiveEffectSubscriber, OnGainPowerBonusSubscriber
 {
     public static final int PER_CHARGE = 1;
     public static final String POWER_ID = CreateFullID(IonizingStormPower.class);
@@ -32,6 +33,8 @@ public class IonizingStormPower extends PCLPower implements OnOrbPassiveEffectSu
         super.onInitialApplication();
 
         PCLCombatStats.onOrbPassiveEffect.Subscribe(this);
+        PCLCombatStats.onGainTriggerablePowerBonus.Subscribe(this);
+        PCLActions.Bottom.AddPowerEffectEnemyBonus(ElectrifiedPower.POWER_ID, PCLCombatStats.GetEffectBonus(ElectrifiedPower.POWER_ID));
     }
 
     @Override
@@ -40,6 +43,8 @@ public class IonizingStormPower extends PCLPower implements OnOrbPassiveEffectSu
         super.onRemove();
 
         PCLCombatStats.onOrbPassiveEffect.Unsubscribe(this);
+        PCLCombatStats.onGainTriggerablePowerBonus.Subscribe(this);
+        PCLActions.Bottom.AddPowerEffectEnemyBonus(ElectrifiedPower.POWER_ID, -PCLCombatStats.GetEffectBonus(ElectrifiedPower.POWER_ID) / 2);
     }
 
     @Override
@@ -76,5 +81,13 @@ public class IonizingStormPower extends PCLPower implements OnOrbPassiveEffectSu
         if (count > 0) {
             PCLActions.Bottom.GainInvocation(PER_CHARGE * count);
         }
+    }
+
+    @Override
+    public int OnGainPowerBonus(String powerID, PCLCombatStats.Type gainType, int amount) {
+        if (ElectrifiedPower.POWER_ID.equals(powerID) && gainType == PCLCombatStats.Type.Effect) {
+            return amount * 2;
+        }
+        return amount;
     }
 }

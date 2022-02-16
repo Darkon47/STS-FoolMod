@@ -711,6 +711,7 @@ public class PCLStrings
         public final String Fetch_F1 = Strings.TEXT[6];
         public final String Pay_F1 = Strings.TEXT[7];
         public final String Give_F1 = Strings.TEXT[8];
+        public final String CardsInPile_F1 = Strings.TEXT[9];
         public final String Discard = DiscardAction.TEXT[0];
         public final String Exhaust = ExhaustAction.TEXT[0];
         public final String Cycle = GamblingChipAction.TEXT[1];
@@ -754,6 +755,11 @@ public class PCLStrings
         public final String Give(int amount, Object item)
         {
             return PCLJUtils.Format(Give_F1, amount, item);
+        }
+
+        public final String CardsInPile(Object item, int amount)
+        {
+            return PCLJUtils.Format(CardsInPile_F1, item, amount);
         }
     }
 

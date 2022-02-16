@@ -1,5 +1,6 @@
 package pinacolada.actions.player;
 
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import eatyourbeets.actions.EYBActionWithCallbackT2;
 import pinacolada.powers.PCLCombatStats;
@@ -26,7 +27,7 @@ public class SpendEnergy extends EYBActionWithCallbackT2<Integer, Integer>
             energy = Math.min(energy, amount);
             if (CheckConditions(energy))
             {
-                int finalEnergy = PCLCombatStats.OnSpendEnergy(energy);
+                int finalEnergy = PCLCombatStats.OnTrySpendEnergy(null, AbstractDungeon.player, energy);
                 player.loseEnergy(finalEnergy);
                 Complete(finalEnergy);
                 return;

@@ -3,7 +3,6 @@ package pinacolada.cards.fool.colorless;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import pinacolada.cards.base.CardSeries;
 import pinacolada.cards.base.CardUseInfo;
@@ -47,9 +46,15 @@ public class NaoTomori extends FoolCard
         CardGroup group = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
         while (group.size() < magicNumber)
         {
-            AbstractCard card = AbstractDungeon.returnTrulyRandomCardInCombat();
+            AbstractCard card = PCLGameUtilities.GetRandomCard();
             if (group.findCardById(card.cardID) == null)
             {
+                if (upgraded) {
+                    PCLGameUtilities.ModifyCostForCombat(card, -1, true);
+                }
+                else {
+                    PCLGameUtilities.ModifyCostForTurn(card, -1, true);
+                }
                 group.addToBottom(card.makeCopy());
             }
         }
@@ -70,7 +75,7 @@ public class NaoTomori extends FoolCard
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
         PCLActions.Bottom.SelectFromHand(name, 1, false)
-        .SetFilter(c -> c.type.equals(CardType.POWER) || c.type.equals(CardType.STATUS))
+        .SetFilter(c -> c.type.equals(CardType.POWER) || c.type.equals(CardType.STATUS) || (upgraded && c.type.equals(CardType.CURSE)))
         .SetOptions(false, false, false)
         .SetMessage(DATA.Strings.EXTENDED_DESCRIPTION[0])
         .AddCallback(cards ->

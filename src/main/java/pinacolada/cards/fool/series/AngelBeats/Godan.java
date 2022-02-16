@@ -44,6 +44,11 @@ public class Godan extends FoolCard
         return super.SetForm(form, timesUpgraded);
     }
 
+    @Override
+    protected String GetRawDescription(Object... args)
+    {
+        return super.GetRawDescription(POWER_ENERGY_COST);
+    }
 
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
@@ -76,7 +81,7 @@ public class Godan extends FoolCard
         @Override
         public String GetUpdatedDescription()
         {
-            return FormatDescription(0, amount, secondaryValue);
+            return FormatDescription(0, amount, POWER_ENERGY_COST, secondaryValue);
         }
 
 
@@ -111,14 +116,24 @@ public class Godan extends FoolCard
                         if (cards.size() > 0)
                         {
                             AbstractCard card = cards.get(0);
-                            PCLActions.Bottom.MakeCardInDrawPile(card).AddCallback(c -> PCLActions.Bottom.Motivate(c, 1));
+                            PCLActions.Bottom.MakeCardInHand(card).AddCallback(c -> PCLActions.Bottom.Motivate(c, 1));
                         }
                     });
         }
 
         @Override
+        public void onExhaust(AbstractCard card)
+        {
+            super.onExhaust(card);
+
+            PCLActions.Bottom.GainBlock(amount);
+            flashWithoutSound();
+        }
+
+        @Override
         public void OnPurge(AbstractCard card, CardGroup source) {
             PCLActions.Bottom.GainBlock(amount);
+            flashWithoutSound();
         }
     }
 }

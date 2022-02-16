@@ -9,16 +9,18 @@ import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
 import pinacolada.powers.FoolPower;
-import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
+
+import java.util.HashSet;
+import java.util.Set;
 
 import static com.megacrit.cardcrawl.cards.AbstractCard.CardTags.STARTER_DEFEND;
 
 public class JetBlack extends FoolCard
 {
     public static final PCLCardData DATA = Register(JetBlack.class).SetAttack(2, CardRarity.UNCOMMON, PCLAttackType.Normal, PCLCardTarget.AoE)
-            .SetColorless(PGR.Enums.Cards.THE_FOOL).SetSeries(CardSeries.CowboyBebop);
+            .SetColorless().SetSeries(CardSeries.CowboyBebop);
 
     public JetBlack()
     {
@@ -36,7 +38,7 @@ public class JetBlack extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        boolean shouldRetain = CheckAffinity(PCLAffinity.General) && CombatStats.TryActivateLimited(cardID);
+        boolean shouldRetain = CheckSpecialCondition(true) && CombatStats.TryActivateLimited(cardID);
         PCLActions.Bottom.DealCardDamageToAll(this, AttackEffects.BLUNT_HEAVY);
         PCLActions.Bottom.GainBlock(block);
         PCLActions.Bottom.StackPower(new JetBlackPower(p, magicNumber, shouldRetain));
@@ -44,7 +46,11 @@ public class JetBlack extends FoolCard
 
     @Override
     public boolean CheckSpecialCondition(boolean tryUse){
-        return CheckAffinity(PCLAffinity.General) && CombatStats.CanActivateLimited(cardID);
+        Set<CardType> cardTypes = new HashSet<>();
+        for (AbstractCard c : player.hand.group) {
+            cardTypes.add(c.type);
+        }
+        return cardTypes.size() >= secondaryValue;
     }
 
     public static class JetBlackPower extends FoolPower

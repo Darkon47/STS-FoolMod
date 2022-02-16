@@ -30,8 +30,8 @@ public class SpikeSpiegel extends FoolCard
     {
         super(DATA);
 
-        Initialize(6, 0, 3, 3);
-        SetUpgrade(0, 0, 1);
+        Initialize(8, 0, 3, 3);
+        SetUpgrade(2, 0, 1);
 
         SetAffinity_Red(1, 0, 0);
         SetAffinity_Green(1, 0, 1);
@@ -46,7 +46,12 @@ public class SpikeSpiegel extends FoolCard
 
         PCLActions.Bottom.DealCardDamage(this, m, AttackEffects.GUNSHOT);
         PCLActions.Bottom.PlayFromPile(name, magicNumber, m, player.drawPile)
-                .SetFilter(c -> c.hasTag(STRIKE) || c.hasTag(STARTER_STRIKE));
+                .SetFilter(c -> c.hasTag(STRIKE) || c.hasTag(STARTER_STRIKE))
+                .AddCallback(cards -> {
+                    for (AbstractCard c : cards) {
+                        PCLActions.Bottom.ModifyCost(c, -1, true, true);
+                    }
+                });
 
         if (CheckSpecialCondition(true) && CombatStats.TryActivateLimited(cardID))
         {

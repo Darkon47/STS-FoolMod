@@ -124,8 +124,8 @@
 		},
 		"fool:Godan":
 		{
-			"DESCRIPTION": "Whenever you Purge a card: Gain !M! [Block]. || Once per turn, pay 7 <W>: Add 1 of !S! Motivated Common {Afterlife} cards to your draw pile.",
-			"EXTENDED_DESCRIPTION": ["Whenever a card is Purged: Gain #b{0} [Block]. || Once per turn, pay 7 [A-Gen]: Add 1 of #b{1} Motivated Common #yAfterlife cards to your draw pile."],
+			"DESCRIPTION": "Whenever you Exhaust or Purge a card: Gain !M! [Block]. || Once per turn, pay {0} <W>: Obtain 1 of !S! Motivated Common {Afterlife} cards.",
+			"EXTENDED_DESCRIPTION": ["Whenever a card is #yExhausted or #yPurged: Gain #b{0} [Block]. || Once per turn, pay #b{1} [A-Gen]: Obtain 1 of #b{2} Motivated Common #yAfterlife cards."],
 			"NAME": "Matsushita Godan"
 		},
 		"fool:HidekiHinata":
@@ -422,12 +422,12 @@
 		},
 		"fool:IonizingStorm":
 		{
-			"DESCRIPTION": "Channel !M! [~Lightning]. [~Lightning] applies {0}% of [Focus] as [Electrified] to a random enemy on Trigger and to ALL enemies on Evoke. || At the start of turn: Gain [L] for each enemy with [Electrified].",
+			"DESCRIPTION": "Channel !M! [~Lightning]. [~Lightning] applies {0}% of [Focus] as [Electrified] to a random enemy on Trigger and to ALL enemies on Evoke. || ALL [Electrified] effect bonuses are doubled.",
 			"NAME": "Ionizing Storm"
 		},
 		"fool:JetBlack":
 		{
-			"DESCRIPTION": "The next !M! Defends played this turn activate twice. || <LIM>. !A! <W>: Carry this effect over to the next turn.",
+			"DESCRIPTION": "The next !M! Defends played this turn activate twice. || <LIM>. If you have !S!+ types of cards in hand: Carry this effect over to the next turn.",
 			"EXTENDED_DESCRIPTION": ["The next #b{0} Defend(s) played this turn activate twice."],
 			"NAME": "Jet Black"
 		},
@@ -504,7 +504,7 @@
 		},
 		"fool:LaughingMan":
 		{
-			"DESCRIPTION": "At the end of turn, select a card in hand. Next turn, Cycle and Exhaust ALL cards not of the chosen card's type.",
+			"DESCRIPTION": "At the end of turn, select a card type. Next turn, Cycle and Exhaust ALL cards not of the chosen card's type.",
 			"EXTENDED_DESCRIPTION": ["For the next #b{0} turns, whenever you draw a card: Exhaust it if it is not a #y{1}, then draw a card."],
 			"NAME": "The Laughing Man"
 		},
@@ -570,9 +570,10 @@
 		},
 		"fool:NaoTomori":
 		{
-			"DESCRIPTION": "Transform a {Power} or {Status} in your hand into a {Normality} to gain [Phasing]. || On Exhaust: Choose 1 of !M! cards to obtain.",
+			"DESCRIPTION": "Transform a {Power} or {Status} in hand into {Normality} to gain [Phasing]. || On Exhaust: Obtain 1 of !M! cards that cost 1 less this turn.",
 			"EXTENDED_DESCRIPTION": ["transform into a Normality."],
-			"NAME": "Nao Tomori"
+			"NAME": "Nao Tomori",
+			"UPGRADE_DESCRIPTION": "Transform a {Power} or {Hindrance} in hand into {Normality} to gain [Phasing]. || On Exhaust: Obtain 1 of !M! cards that cost 1 less this combat."
 		},
 		"fool:Nirvash":
 		{
@@ -585,7 +586,7 @@
 				"Give it [~Innate], replace its affinities with <S> and replace its Scalings with +6 <SSC>."
 			],
 			"NAME": "Nirvash Type theEND",
-			"UPGRADE_DESCRIPTION": "Apply 1 of 3 upgrades to any Animator card in play. || <LIM>. Pay !A! <S>: Make this upgrade permanent. Remove this card from your deck."
+			"UPGRADE_DESCRIPTION": "Apply 1 of 3 upgrades to any Fool card in play. || <LIM>. Pay !A! <S>: Make this upgrade permanent. Remove this card from your deck."
 		},
 		"fool:Nirvash2":
 		{
@@ -629,12 +630,12 @@
 		},
 		"fool:SpikeSpiegel":
 		{
-			"DESCRIPTION": "Play !M! Strikes from your Draw Pile. || <LIM>. If you have !S!+ types of cards in hand: Add {Swordfish II} to your Discard Pile.",
+			"DESCRIPTION": "Play !M! Strikes in your Draw Pile. Lower their cost by 1. || <LIM>. !S!+ types of cards in hand: Add {Swordfish II} to your Discard Pile.",
 			"NAME": "Spike Spiegel"
 		},
 		"fool:SwordfishII":
 		{
-			"DESCRIPTION": "At the end of your turn, deal !M! damage to ALL enemies for each Strike played this turn. || On Discard: Motivate 1.",
+			"DESCRIPTION": "At the end of your turn, deal !M! damage to ALL enemies per Strike played this turn. || On Discard: Motivate 1.",
 			"NAME": "Swordfish II"
 		},
 		"fool:TakashiNatsume":
@@ -1492,7 +1493,7 @@
 	{
 		"fool:Canti":
 		{
-			"DESCRIPTION": "Deal additional damage equal to the enemy's current attack damage. || <slm>. If the enemy is not attacking: Gain !M! [S].",
+			"DESCRIPTION": "Deal additional damage equal to the enemy's current attack damage. || <slm>. If the enemy is not attacking: Gain !M! [Plated Armor].",
 			"NAME": "Canti"
 		},
 		"fool:Kuroyukihime":
@@ -2185,8 +2186,8 @@
 		},
 		"fool:Biyorigo":
 		{
-			"DESCRIPTION": "Gain !M! [Malleable]. Whenever you are attacked: Apply !M! [Poison] to the attacker. || Once per turn, pay {0} <G>: ** Gain 2 [Thorns].",
-			"EXTENDED_DESCRIPTION": ["Pay #b{0} [A-Green] to gain #b2 [Thorns]. || Whenever you are attacked: Apply #b{1} [Poison] to the attacker."],
+			"DESCRIPTION": "Gain !M! [Malleable]. Whenever you are attacked: Apply !M! [Poison] to the attacker. || Once per turn, pay {0} <G>: ** Gain !S! [Thorns].",
+			"EXTENDED_DESCRIPTION": ["Pay #b{0} [A-Green] to gain #b{1} [Thorns]. || Whenever you are attacked: Apply #b{2} [Poison] to the attacker."],
 			"NAME": "Biyorigo"
 		},
 		"fool:Emonzaemon":

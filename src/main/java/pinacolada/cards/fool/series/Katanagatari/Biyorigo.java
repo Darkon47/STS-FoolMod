@@ -25,7 +25,7 @@ public class Biyorigo extends FoolCard
     {
         super(DATA);
 
-        Initialize(0, 0, 3, COST);
+        Initialize(0, 0, 4, 3);
 
         SetAffinity_Red(1);
         SetAffinity_Green(1);
@@ -51,17 +51,19 @@ public class Biyorigo extends FoolCard
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
         PCLActions.Bottom.GainMalleable(magicNumber);
-        PCLActions.Bottom.StackPower(new BiyorigoPower(p, magicNumber));
+        PCLActions.Bottom.StackPower(new BiyorigoPower(p, magicNumber, secondaryValue));
     }
 
     public static class BiyorigoPower extends FoolClickablePower
     {
+        protected int secondaryAmount;
 
-        public BiyorigoPower(AbstractCreature owner, int amount)
+        public BiyorigoPower(AbstractCreature owner, int amount, int secondaryAmount)
         {
             super(owner, Biyorigo.DATA, PowerTriggerConditionType.Affinity, COST, null, null, PCLAffinity.Green);
 
             this.triggerCondition.SetOneUsePerPower(true);
+            this.secondaryAmount = secondaryAmount;
 
             Initialize(amount);
         }
@@ -69,7 +71,7 @@ public class Biyorigo extends FoolCard
         @Override
         public String GetUpdatedDescription()
         {
-            return FormatDescription(0, COST, amount);
+            return FormatDescription(0, COST, secondaryAmount, amount);
         }
 
         @Override
@@ -88,7 +90,7 @@ public class Biyorigo extends FoolCard
         {
             super.OnUse(m, cost);
 
-            PCLActions.Bottom.GainThorns(2);
+            PCLActions.Bottom.GainThorns(secondaryAmount);
         }
     }
 }

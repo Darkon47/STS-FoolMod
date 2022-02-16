@@ -23,7 +23,7 @@ public class Canti extends FoolCard
     {
         super(DATA);
 
-        Initialize(2, 3, 2);
+        Initialize(2, 3, 1);
 
         SetAffinity_Orange(1);
         SetAffinity_Light(1);
@@ -54,7 +54,7 @@ public class Canti extends FoolCard
         PCLActions.Bottom.GainBlock(block);
 
         if (m != null && !PCLGameUtilities.IsAttacking(m.intent) && info.TryActivateSemiLimited()) {
-            PCLActions.Delayed.GainTechnic(magicNumber, true);
+            PCLActions.Delayed.GainPlatedArmor(magicNumber);
         }
 
         if (damage >= 20)
