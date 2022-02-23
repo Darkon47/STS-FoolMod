@@ -25,6 +25,8 @@ import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
 
+import static pinacolada.resources.PGR.Enums.CardTags.AUTOPLAY;
+
 public class TakashiNatsume_Circle extends FoolCard
 {
     public enum Form

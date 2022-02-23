@@ -16,6 +16,7 @@ public class Benimaru extends FoolCard
 {
     public static final PCLCardData DATA = Register(Benimaru.class)
             .SetAttack(1, CardRarity.COMMON, PCLAttackType.Fire, PCLCardTarget.Normal)
+            .SetTraits(PCLCardTrait.Beast)
             .SetSeriesFromClassPackage();
 
     public Benimaru()

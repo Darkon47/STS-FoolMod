@@ -6,9 +6,11 @@ public enum PCLCardTrait
     Knight,
     Spellcaster,
     MartialArtist,
+    Machine,
     Scientist,
-    Angel,
+    Fairy,
     Demon,
-    Dragon,
-    Beast
+    Reptile,
+    Beast,
+    Undead
 }

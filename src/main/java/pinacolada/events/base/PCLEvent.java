@@ -5,8 +5,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.events.AbstractEvent;
 import com.megacrit.cardcrawl.events.AbstractImageEvent;
 import com.megacrit.cardcrawl.events.RoomEventDialog;
-import com.megacrit.cardcrawl.events.city.Ghosts;
-import com.megacrit.cardcrawl.events.city.Vampires;
 import com.megacrit.cardcrawl.map.MapEdge;
 import com.megacrit.cardcrawl.map.MapRoomNode;
 import com.megacrit.cardcrawl.random.Random;
@@ -88,15 +86,6 @@ public abstract class PCLEvent extends EYBEvent
         AbstractDungeon.getCurrRoom().onPlayerEntry();
         AbstractDungeon.scene.nextRoom(node.room);
         AbstractDungeon.rs = node.room.event instanceof AbstractImageEvent ? AbstractDungeon.RenderScene.EVENT : AbstractDungeon.RenderScene.NORMAL;
-    }
-
-    public static void UpdateEvents(boolean isPCL)
-    {
-        if (isPCL)
-        {
-            AbstractDungeon.eventList.remove(Vampires.ID);
-            AbstractDungeon.eventList.remove(Ghosts.ID);
-        }
     }
 
     public static void RegisterEvents()

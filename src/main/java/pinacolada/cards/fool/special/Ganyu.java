@@ -8,10 +8,7 @@ import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.LockOnPower;
 import eatyourbeets.utilities.TargetHelper;
-import pinacolada.cards.base.CardSeries;
-import pinacolada.cards.base.CardUseInfo;
-import pinacolada.cards.base.PCLAttackType;
-import pinacolada.cards.base.PCLCardData;
+import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.pcl.status.Status_Frostbite;
 import pinacolada.effects.VFX;
@@ -24,6 +21,7 @@ public class Ganyu extends FoolCard
 {
     public static final PCLCardData DATA = Register(Ganyu.class).SetAttack(1, CardRarity.SPECIAL, PCLAttackType.Ice).SetColorless()
             .SetSeries(CardSeries.GenshinImpact)
+            .SetTraits(PCLCardTrait.Beast)
             .PostInitialize(data ->
                     data.AddPreview(new SheerCold(), false)
                         .AddPreview(new Status_Frostbite(), false));

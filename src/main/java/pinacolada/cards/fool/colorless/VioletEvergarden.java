@@ -14,6 +14,9 @@ import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameEffects;
 import pinacolada.utilities.PCLJUtils;
 
+import static eatyourbeets.resources.GR.Enums.CardTags.LOYAL;
+import static pinacolada.resources.PGR.Enums.CardTags.AUTOPLAY;
+
 public class VioletEvergarden extends FoolCard
 {
     public static final PCLCardData DATA = Register(VioletEvergarden.class)

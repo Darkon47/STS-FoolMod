@@ -9,6 +9,8 @@ import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.fool.special.UndulatingLacuna;
 import pinacolada.utilities.PCLActions;
 
+import static pinacolada.resources.PGR.Enums.CardTags.AUTOPLAY;
+
 public class Curse_Delusion extends FoolCard
 {
     public static final PCLCardData DATA = Register(Curse_Delusion.class)

@@ -7,10 +7,7 @@ import com.megacrit.cardcrawl.stances.NeutralStance;
 import eatyourbeets.interfaces.subscribers.OnStanceChangedSubscriber;
 import eatyourbeets.interfaces.subscribers.OnStartOfTurnPostDrawSubscriber;
 import eatyourbeets.powers.CombatStats;
-import pinacolada.cards.base.CardEffectChoice;
-import pinacolada.cards.base.CardUseInfo;
-import pinacolada.cards.base.PCLAttackType;
-import pinacolada.cards.base.PCLCardData;
+import pinacolada.cards.base.*;
 import pinacolada.cards.base.cardeffects.GenericEffect;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
@@ -22,7 +19,9 @@ import pinacolada.utilities.PCLGameEffects;
 
 public class KotarouTennouji extends FoolCard implements OnStanceChangedSubscriber, OnStartOfTurnPostDrawSubscriber
 {
-    public static final PCLCardData DATA = Register(KotarouTennouji.class).SetAttack(2, CardRarity.RARE, PCLAttackType.Normal).SetSeriesFromClassPackage();
+    public static final PCLCardData DATA = Register(KotarouTennouji.class).SetAttack(2, CardRarity.RARE, PCLAttackType.Normal)
+            .SetSeriesFromClassPackage()
+            .SetTraits(PCLCardTrait.Protagonist);
 
     private static final CardEffectChoice choices = new CardEffectChoice();
 
@@ -35,7 +34,6 @@ public class KotarouTennouji extends FoolCard implements OnStanceChangedSubscrib
         SetAffinity_Star(1, 0, 1);
 
         SetUnique(true, -1);
-        SetProtagonist(true);
     }
 
     @Override

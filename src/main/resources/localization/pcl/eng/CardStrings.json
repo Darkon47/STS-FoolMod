@@ -255,6 +255,11 @@
 		{
 			"DESCRIPTION": "Remove [Artifact] and [~Intangible]. Deal double damage if the enemy has [Blinded]. || <LIM>. If {Fatal}: Permanently upgrade this.",
 			"NAME": "Ritual Dagger"
+		},
+		"pcl:TestCard":
+		{
+			"DESCRIPTION": "WARNING: This will probably cause your game to explode.",
+			"NAME": "Test Card"
 		}
 	},
 	"STATUS":

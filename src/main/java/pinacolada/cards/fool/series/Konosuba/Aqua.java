@@ -17,6 +17,7 @@ public class Aqua extends FoolCard
     public static final PCLCardData DATA = Register(Aqua.class)
             .SetSkill(0, CardRarity.UNCOMMON, PCLCardTarget.None)
             .SetSeriesFromClassPackage()
+            .SetTraits(PCLCardTrait.Spellcaster, PCLCardTrait.Fairy)
             .PostInitialize(data -> data.AddPreview(new Aqua(true), true));
 
     private boolean transformed = false;

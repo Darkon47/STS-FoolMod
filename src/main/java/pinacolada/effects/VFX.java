@@ -145,6 +145,16 @@ public class VFX
         return new ElectricityEffect(cX, cY);
     }
 
+    public static EffekseerEffect EFX(String key, Hitbox hb)
+    {
+        return EFX(key, hb.cX, hb.cY);
+    }
+
+    public static EffekseerEffect EFX(String key, float cX, float cY)
+    {
+        return new EffekseerEffect(key, cX, cY);
+    }
+
     public static FallingIceEffect FallingIce(int frostCount)
     {
         return new FallingIceEffect(frostCount, FlipHorizontally());

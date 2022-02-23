@@ -42,6 +42,7 @@ import java.util.ArrayList;
 
 public class PCLCardTooltip extends EYBCardTooltip
 {
+    //TODO delegate more stuff to parent class
     public static final Color BASE_COLOR = new Color(1f, 0.9725f, 0.8745f, 1f);
     public static final float CARD_TIP_PAD = 12f * Settings.scale;
     public static final float BOX_EDGE_H = 32f * Settings.scale;

@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLAttackType;
 import pinacolada.cards.base.PCLCardData;
+import pinacolada.cards.base.PCLCardTrait;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
 import pinacolada.effects.SFX;
@@ -18,6 +19,7 @@ public class Vanir extends FoolCard
 {
     public static final PCLCardData DATA = Register(Vanir.class)
             .SetAttack(1, CardRarity.COMMON, PCLAttackType.Dark)
+            .SetTraits(PCLCardTrait.Demon)
             .SetSeriesFromClassPackage();
 
     public Vanir()

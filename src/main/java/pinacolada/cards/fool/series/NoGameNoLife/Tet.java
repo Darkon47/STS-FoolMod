@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.PCLCardTarget;
+import pinacolada.cards.base.PCLCardTrait;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
@@ -14,6 +15,7 @@ public class Tet extends FoolCard
 {
     public static final PCLCardData DATA = Register(Tet.class)
             .SetSkill(0, CardRarity.UNCOMMON, PCLCardTarget.None)
+            .SetTraits(PCLCardTrait.Fairy)
             .SetSeriesFromClassPackage();
 
     public Tet()

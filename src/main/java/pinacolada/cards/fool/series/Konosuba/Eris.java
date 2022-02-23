@@ -6,10 +6,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
 import eatyourbeets.interfaces.subscribers.OnLosingHPSubscriber;
 import eatyourbeets.powers.CombatStats;
-import pinacolada.cards.base.CardUseInfo;
-import pinacolada.cards.base.PCLAffinity;
-import pinacolada.cards.base.PCLCardData;
-import pinacolada.cards.base.PCLCardTarget;
+import pinacolada.cards.base.*;
 import pinacolada.cards.base.attributes.AbstractAttribute;
 import pinacolada.cards.base.attributes.HPAttribute;
 import pinacolada.cards.fool.FoolCard;
@@ -25,6 +22,7 @@ public class Eris extends FoolCard implements OnLosingHPSubscriber
             .SetSkill(0, CardRarity.RARE, PCLCardTarget.None)
             .SetSeriesFromClassPackage()
             .SetMaxCopies(2)
+            .SetTraits(PCLCardTrait.Spellcaster)
             .PostInitialize(data -> data.AddPreview(new Eris_Chris(), true));
 
     public Eris()

@@ -1,6 +1,5 @@
 package pinacolada.cards.fool.series.RozenMaiden;
 
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import eatyourbeets.utilities.TargetHelper;
@@ -27,7 +26,7 @@ public class Barasuishou extends FoolCard
         SetAffinity_Blue(1, 0, 2);
         SetAffinity_Dark(1, 0, 2);
 
-        SetEthereal(true);
+        SetFragile(true);
     }
 
     @Override
@@ -48,14 +47,11 @@ public class Barasuishou extends FoolCard
 
 
     @Override
-    public void triggerOnOtherCardPlayed(AbstractCard c)
+    public void triggerOnExhaust()
     {
-        super.triggerOnOtherCardPlayed(c);
+        super.triggerOnExhaust();
 
-        if (player.hand.contains(this)) {
-            PCLActions.Bottom.ApplyBlinded(TargetHelper.Enemies(), secondaryValue);
-            PCLActions.Last.Exhaust(this);
-        }
+        PCLActions.Bottom.ApplyBlinded(TargetHelper.Enemies(), secondaryValue);
     }
 }
 

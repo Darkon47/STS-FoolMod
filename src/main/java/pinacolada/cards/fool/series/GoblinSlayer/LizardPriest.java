@@ -5,10 +5,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.NextTurnBlockPower;
-import pinacolada.cards.base.CardUseInfo;
-import pinacolada.cards.base.PCLCard;
-import pinacolada.cards.base.PCLCardData;
-import pinacolada.cards.base.PCLCardTarget;
+import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
@@ -18,7 +15,8 @@ public class LizardPriest extends FoolCard
 {
     public static final PCLCardData DATA = Register(LizardPriest.class)
             .SetSkill(1, CardRarity.COMMON, PCLCardTarget.None)
-            .SetSeriesFromClassPackage();
+            .SetSeriesFromClassPackage()
+            .SetTraits(PCLCardTrait.Reptile);
     public static final int TEMPORARY_THORNS = 2;
     public static final int BLOCK_NEXT_TURN = 3;
 

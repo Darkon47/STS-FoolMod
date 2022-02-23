@@ -10,7 +10,9 @@ import pinacolada.utilities.PCLGameUtilities;
 
 public class YuzuruOtonashi extends FoolCard
 {
-    public static final PCLCardData DATA = Register(YuzuruOtonashi.class).SetSkill(1, CardRarity.COMMON, PCLCardTarget.Self).SetSeriesFromClassPackage();
+    public static final PCLCardData DATA = Register(YuzuruOtonashi.class).SetSkill(1, CardRarity.COMMON, PCLCardTarget.Self)
+            .SetSeriesFromClassPackage()
+            .SetTraits(PCLCardTrait.Protagonist);
 
     public YuzuruOtonashi()
     {
@@ -21,8 +23,6 @@ public class YuzuruOtonashi extends FoolCard
 
         SetAffinity_Orange(1, 0, 1);
         SetAffinity_Light(1, 0, 0);
-
-        SetProtagonist(true);
     }
 
     @Override

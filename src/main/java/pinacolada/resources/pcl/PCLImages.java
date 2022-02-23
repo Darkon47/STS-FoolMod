@@ -14,13 +14,6 @@ public class PCLImages
     public final String ORB_B_PNG = "images/pcl/cardui/512/energy_orb_default_b.png";
     public final String ORB_C_PNG = "images/pcl/cardui/512/energy_orb_default_c.png";
     public final String ORB_VFX_PNG = "images/pcl/ui/topPanel/canvas/orbVfx.png";
-    public final String[] ORB_TEXTURES =
-    {
-        "images/pcl/ui/topPanel/canvas/layer1.png", "images/pcl/ui/topPanel/canvas/layer2.png", "images/pcl/ui/topPanel/canvas/layer3.png",
-        "images/pcl/ui/topPanel/canvas/layer4.png", "images/pcl/ui/topPanel/canvas/layer5.png", "images/pcl/ui/topPanel/canvas/layer6.png",
-        "images/pcl/ui/topPanel/canvas/layer1d.png", "images/pcl/ui/topPanel/canvas/layer2d.png", "images/pcl/ui/topPanel/canvas/layer3d.png",
-        "images/pcl/ui/topPanel/canvas/layer4d.png", "images/pcl/ui/topPanel/canvas/layer5d.png"
-    };
 
     public final TextureCache CARD_ENERGY_ORB_ANIMATOR    = new TextureCache(ORB_A_PNG);
     public final TextureCache CARD_ENERGY_ORB_ANIMATOR_L  = new TextureCache(ORB_B_PNG);
@@ -59,6 +52,13 @@ public class PCLImages
     public final TextureCache CARD_FRAME_POWER_REPL_L       = new TextureCache("images/pcl/cardui/1024/frame_power_repl.png");
     public final TextureCache CARD_FRAME_SKILL_L            = new TextureCache("images/pcl/cardui/1024/frame_skill.png");
     public final TextureCache CARD_FRAME_SKILL_REPL_L       = new TextureCache("images/pcl/cardui/1024/frame_skill_repl.png");
+    public final TextureCache ORB_BASE_BORDER               = new TextureCache("images/pcl/ui/energy/BaseBorder.png");
+    public final TextureCache ORB_BASE_LAYER                = new TextureCache("images/pcl/ui/energy/BaseLayer.png");
+    public final TextureCache ORB_FLASH                     = new TextureCache("images/pcl/ui/energy/OrbFlash.png");
+    public final TextureCache ORB_TOP_LAYER1                = new TextureCache("images/pcl/ui/energy/TopLayer1.png");
+    public final TextureCache ORB_TOP_LAYER2                = new TextureCache("images/pcl/ui/energy/TopLayer2.png");
+    public final TextureCache ORB_TOP_LAYER3                = new TextureCache("images/pcl/ui/energy/TopLayer3.png");
+    public final TextureCache ORB_TOP_LAYER4                = new TextureCache("images/pcl/ui/energy/TopLayer4.png");
 
     public final TextureCache BRONZE_TROPHY               = new TextureCache("images/pcl/ui/rewards/Bronze.png");
     public final TextureCache SILVER_TROPHY               = new TextureCache("images/pcl/ui/rewards/Silver.png");
@@ -192,8 +192,11 @@ public class PCLImages
         public final TextureCache Base_Border             = new TextureCache("images/pcl/cardui/badges/Base_Border.png");
         public final TextureCache Base_Infinite           = new TextureCache("images/pcl/cardui/badges/Base_Infinite.png");
         public final TextureCache Delayed                 = new TextureCache("images/pcl/cardui/badges/Delayed.png");
+        public final TextureCache Ephemeral                   = new TextureCache("images/pcl/cardui/badges/Ephemeral.png");
         public final TextureCache Ethereal                = new TextureCache("images/pcl/cardui/badges/Ethereal.png");
         public final TextureCache Exhaust                 = new TextureCache("images/pcl/cardui/badges/Exhaust.png");
+        public final TextureCache Fragile                   = new TextureCache("images/pcl/cardui/badges/Fragile.png");
+        public final TextureCache Grave                   = new TextureCache("images/pcl/cardui/badges/Grave.png");
         public final TextureCache Harmonic                = new TextureCache("images/pcl/cardui/badges/Harmonic.png");
         public final TextureCache Haste                   = new TextureCache("images/pcl/cardui/badges/Haste.png");
         public final TextureCache Innate                  = new TextureCache("images/pcl/cardui/badges/Innate.png");

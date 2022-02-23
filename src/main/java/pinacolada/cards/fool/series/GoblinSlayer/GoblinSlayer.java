@@ -6,6 +6,7 @@ import eatyourbeets.powers.CombatStats;
 import pinacolada.actions.special.CreateRandomGoblins;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
+import pinacolada.cards.base.PCLCardTrait;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
 import pinacolada.utilities.PCLActions;
@@ -16,7 +17,8 @@ public class GoblinSlayer extends FoolCard
     public static final PCLCardData DATA = Register(GoblinSlayer.class)
             .SetAttack(1, CardRarity.RARE)
             .SetMaxCopies(1)
-            .SetSeriesFromClassPackage();
+            .SetSeriesFromClassPackage()
+            .SetTraits(PCLCardTrait.Protagonist);
 
     public GoblinSlayer()
     {
@@ -29,7 +31,6 @@ public class GoblinSlayer extends FoolCard
         SetAffinity_Orange(0,0,1);
 
         SetRetain(true);
-        SetProtagonist(true);
     }
 
     @Override

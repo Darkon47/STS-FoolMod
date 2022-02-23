@@ -14,6 +14,8 @@ import pinacolada.powers.PCLCombatStats;
 import pinacolada.powers.PowerTriggerConditionType;
 import pinacolada.utilities.PCLActions;
 
+import static eatyourbeets.resources.GR.Enums.CardTags.HASTE;
+
 public class AkaneSenri extends FoolCard
 {
     public static final PCLCardData DATA = Register(AkaneSenri.class)

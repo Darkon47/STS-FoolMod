@@ -5,6 +5,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
+import pinacolada.cards.base.PCLCardTrait;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.powers.common.ImpairedPower;
 import pinacolada.utilities.PCLActions;
@@ -13,6 +14,7 @@ public class EmirEins extends FoolCard
 {
     public static final PCLCardData DATA = Register(EmirEins.class)
             .SetSkill(1, CardRarity.UNCOMMON)
+            .SetTraits(PCLCardTrait.Machine)
             .SetSeriesFromClassPackage();
 
     public EmirEins()

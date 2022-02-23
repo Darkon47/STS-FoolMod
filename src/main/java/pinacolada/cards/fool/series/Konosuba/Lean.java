@@ -2,10 +2,7 @@ package pinacolada.cards.fool.series.Konosuba;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import pinacolada.cards.base.CardUseInfo;
-import pinacolada.cards.base.PCLAffinity;
-import pinacolada.cards.base.PCLCardData;
-import pinacolada.cards.base.PCLCardTarget;
+import pinacolada.cards.base.*;
 import pinacolada.cards.base.attributes.AbstractAttribute;
 import pinacolada.cards.base.attributes.TempHPAttribute;
 import pinacolada.cards.fool.FoolCard;
@@ -19,6 +16,7 @@ public class Lean extends FoolCard
     public static final PCLCardData DATA = Register(Lean.class)
             .SetSkill(1, CardRarity.UNCOMMON, PCLCardTarget.None, true)
             .SetMultiformData(2, false)
+            .SetTraits(PCLCardTrait.Spellcaster)
             .SetSeriesFromClassPackage();
 
     public Lean()

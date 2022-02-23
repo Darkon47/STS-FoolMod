@@ -4,15 +4,14 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.Lightning;
-import pinacolada.cards.base.CardUseInfo;
-import pinacolada.cards.base.PCLAffinity;
-import pinacolada.cards.base.PCLCardData;
-import pinacolada.cards.base.PCLCardTarget;
+import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.utilities.PCLActions;
 
 public class LisaMinci extends FoolCard {
-    public static final PCLCardData DATA = Register(LisaMinci.class).SetSkill(2, CardRarity.COMMON, PCLCardTarget.Self).SetSeriesFromClassPackage();
+    public static final PCLCardData DATA = Register(LisaMinci.class).SetSkill(2, CardRarity.COMMON, PCLCardTarget.Self)
+            .SetTraits(PCLCardTrait.Spellcaster)
+            .SetSeriesFromClassPackage();
 
     public LisaMinci() {
         super(DATA);

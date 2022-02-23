@@ -6,6 +6,7 @@ import eatyourbeets.powers.CombatStats;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.PCLCardTarget;
+import pinacolada.cards.base.PCLCardTrait;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameEffects;
@@ -14,7 +15,8 @@ public class PandorasActor extends FoolCard
 {
     public static final PCLCardData DATA = Register(PandorasActor.class)
             .SetSkill(1, CardRarity.COMMON, PCLCardTarget.None)
-            .SetSeriesFromClassPackage();
+            .SetSeriesFromClassPackage()
+            .SetTraits(PCLCardTrait.Demon);
 
     public PandorasActor()
     {

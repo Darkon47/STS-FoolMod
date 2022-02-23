@@ -19,6 +19,7 @@ public class Shizu_Ifrit extends FoolCard
     public static final PCLCardData DATA = Register(Shizu_Ifrit.class)
             .SetSkill(3, CardRarity.SPECIAL, PCLCardTarget.None)
             .SetSeries(Shizu.DATA.Series)
+            .SetTraits(PCLCardTrait.Demon)
             .PostInitialize(data -> data.AddPreview(new BlazingHeat(), false));
     public static final int AMOUNT = 2;
     private static final CardEffectChoice choices = new CardEffectChoice();

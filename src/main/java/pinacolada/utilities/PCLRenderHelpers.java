@@ -33,7 +33,8 @@ public class PCLRenderHelpers
     public enum BlendingMode {
         Normal(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA),
         Glowing(GL20.GL_SRC_ALPHA, GL20.GL_ONE),
-        Overlay(GL20.GL_DST_COLOR, GL20.GL_ONE);
+        Overlay(GL20.GL_DST_COLOR, GL20.GL_ONE),
+        Screen(GL20.GL_DST_COLOR, GL20.GL_ONE_MINUS_SRC_COLOR);
 
         public final int srcFunc;
         public final int dstFunc;
@@ -799,6 +800,7 @@ public class PCLRenderHelpers
         return curHeight;
     }
 
+    // TODO Use the Affinity values for fetching icons instead of hardcoded values
     public static TextureRegion GetSmallIcon(String id)
     {
         switch (id)

@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.PCLCardTarget;
+import pinacolada.cards.base.PCLCardTrait;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.fool.curse.Curse_JunTormented;
 import pinacolada.powers.FoolPower;
@@ -16,7 +17,9 @@ import pinacolada.utilities.PCLGameUtilities;
 public class JunSakurada extends FoolCard
 {
     public static final PCLCardData DATA = Register(JunSakurada.class)
-    		.SetSkill(1, CardRarity.UNCOMMON, PCLCardTarget.None).SetSeriesFromClassPackage()
+    		.SetSkill(1, CardRarity.UNCOMMON, PCLCardTarget.None)
+            .SetSeriesFromClassPackage()
+            .SetTraits(PCLCardTrait.Protagonist)
             .PostInitialize(data -> data.AddPreview(new Curse_JunTormented(), false));
 
     public JunSakurada()
@@ -30,8 +33,6 @@ public class JunSakurada extends FoolCard
         
         SetUnique(true, -1);
         SetEthereal(true);
-
-        SetProtagonist(true);
 
         SetCooldown(2, 0, this::OnCooldownCompleted);
     }

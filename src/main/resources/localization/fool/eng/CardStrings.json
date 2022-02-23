@@ -140,7 +140,7 @@
 		},
 		"fool:IrieMiyuki":
 		{
-			"DESCRIPTION": "Gain [B]. Gain +!M! [THP] per card Exhausted this turn. || <LIM>. !S! Match Combo: ** Heal !S! [HP].",
+			"DESCRIPTION": "Gain [B]. Gain +!M! [THP] per card Exhausted this turn. || <LIM>. {0} Match Combo: ** Heal !S! [HP].",
 			"NAME": "Irie Miyuki"
 		},
 		"fool:KanadeTachibana":
@@ -246,8 +246,8 @@
 		},
 		"fool:KanameTousen":
 		{
-			"DESCRIPTION": "For each enemy: Gain !S! Temp. [Artifact] if it has [Blinded]. Otherwise, apply !M! [Blinded]. || Pay !A! <B> or <D>: For !S! turns, negate your negative buffs.",
-			"EXTENDED_DESCRIPTION": ["For the next #b{0} turns, ignore buffs with negative stacks."],
+			"DESCRIPTION": "Apply !M! [Blinded] to ALL enemies. Gain !S! Temp. [Artifact] if any already had [Blinded]. || Pay !A! <B> or <D>: This turn, invert your powers with negative stacks.",
+			"EXTENDED_DESCRIPTION": ["For the next #b{0} turns, invert your powers with negative stacks."],
 			"NAME": "Kaname Tousen"
 		},
 		"fool:KisukeUrahara":
@@ -412,8 +412,9 @@
 		"fool:HaruhiSuzumiya":
         {
             "DESCRIPTION": "Replace ALL cards in play with cards from 1 of !M! Series. Reshuffle them, then draw and Motivate !S!. || You may pay !A! <W>: All enemies will act unpredictably this combat.",
-            "NAME": "Haruhi Suzumiya"
-        },
+            "NAME": "Haruhi Suzumiya",
+			"UPGRADE_DESCRIPTION": "Replace ALL cards in play with upgraded cards from 1 of !M! Series. Reshuffle them, then draw and Motivate !S!. || You may pay !A! <W>: All enemies will act unpredictably this combat."
+		},
 		"fool:HatsuneMiku":
 		{
 			"DESCRIPTION": "Unplayable unless there are at least !S! cards in your Discard and {Exhaust} piles combined. || At the start of turn: Draw !M! card(s). They cost 0 this turn.",
@@ -544,7 +545,7 @@
 		},
 		"fool:MisuzuKamio":
 		{
-			"DESCRIPTION": "If [L] is active: Channel [Air] equal to your [Orb Slot] count. Evoke ALL [Air] at the start of your next turn. Otherwise, Gain !M! [L]. || <LIM>. Cut ALL negative buffs in half.",
+			"DESCRIPTION": "If [L] is active: Channel [Air] equal to your [Orb Slot] count. Evoke ALL [Air] at the start of your next turn. Otherwise, Gain !M! [L]. || <LIM>. Remove ALL negative buffs.",
 			"NAME": "Misuzu Kamio"
 		},
 		"fool:MotokoKusanagi":
@@ -1142,7 +1143,7 @@
 	{
 		"fool:Barasuishou":
 		{
-			"DESCRIPTION": "Has +!M! damage for every {Curse} in play. || If you play another card with this in your hand: Exhaust and Apply !S! [Blinded] to ALL enemies.",
+			"DESCRIPTION": "Has +!M! damage per {Curse} in play. || On Exhaust: Apply !S! [Blinded] to ALL enemies.",
 			"NAME": "Barasuishou"
 		},
 		"fool:Hinaichigo":
@@ -1416,7 +1417,7 @@
 		},
 		"fool:YuyukoSaigyouji":
 		{
-			"DESCRIPTION": "Startup: Discard this and gain +!S! of ALL <W>. || Each <W> grants +!M! damage and [Block] to cards with that <W>.",
+			"DESCRIPTION": "Startup: Gain +!S! of ALL <W>. || Each <W> grants +!M! damage and [Block] to cards with that <W>.",
 			"EXTENDED_DESCRIPTION": ["Each #y[A-General] grants #b+{0} damage and [Block] to cards with that [A-General]."],
 			"NAME": "Yuyuko Saigyouji"
 		}
@@ -1867,7 +1868,7 @@
 		"fool:ElricEdward":
 		{
 			"DESCRIPTION": "<CYC>. If it is a: || {Skill} -> Channel 1 [Frost]. ** {Attack} -> Channel 1 [~Lightning]. ** {Power} -> Channel 1 [Earth].{0}",
-			"UPGRADE_DESCRIPTION": " ** {Hindrance} -> Channel 1 [Fire].",
+			"EXTENDED_DESCRIPTION": [" ** {Hindrance} -> Channel 1 [Fire]."],
 			"NAME": "Edward Elric"
 		},
 		"fool:Envy":
@@ -2522,7 +2523,7 @@
 		},
 		"fool:Kyubey":
 		{
-			"DESCRIPTION": "{Startup}: Discard this and Obtain !S! [Grief Seed]. || Gain !S! [E]. <DRW-M>. Reset the Cooldown of ALL cards in play.",
+			"DESCRIPTION": "{Startup}: Obtain !S! [Grief Seed]. || Gain !S! [E]. <DRW-M>. Reset the Cooldown of ALL cards in play.",
 			"NAME": "Kyubey"
 		},
 		"fool:MadokaKaname":
@@ -3366,7 +3367,7 @@
 		},
 		"fool:DemonLord":
 		{
-			"DESCRIPTION": "Startup: Discard this. || [~Brutal] Attacks deal 3X damage and Exhaust. || Once per turn, Lose !S! [HP]: Change the damage type of an Attack in hand to [~Brutal].",
+			"DESCRIPTION": "[~Brutal] Attacks deal 3X damage and Exhaust. || Once per turn, Lose !S! [HP]: Change the damage type of an Attack in hand to [~Brutal].",
 			"EXTENDED_DESCRIPTION": ["When you play a [~Brutal] Attacks deal 3X damage and Exhaust. NL Once per turn, lose #b{0} [HP]: Change the damage type of an #yAttack in hand to [~Brutal]."],
 			"NAME": "Demon Lord"
 		},

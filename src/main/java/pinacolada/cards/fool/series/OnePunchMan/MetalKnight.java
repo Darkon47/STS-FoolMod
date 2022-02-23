@@ -3,10 +3,7 @@ package pinacolada.cards.fool.series.OnePunchMan;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.WeightyImpactEffect;
-import pinacolada.cards.base.CardUseInfo;
-import pinacolada.cards.base.PCLAffinity;
-import pinacolada.cards.base.PCLAttackType;
-import pinacolada.cards.base.PCLCardData;
+import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
 import pinacolada.orbs.PCLOrbHelper;
@@ -17,6 +14,7 @@ public class MetalKnight extends FoolCard
 {
     public static final PCLCardData DATA = Register(MetalKnight.class)
             .SetAttack(3, CardRarity.UNCOMMON, PCLAttackType.Ranged)
+            .SetTraits(PCLCardTrait.Machine, PCLCardTrait.Scientist)
             .SetSeriesFromClassPackage();
 
     public MetalKnight()

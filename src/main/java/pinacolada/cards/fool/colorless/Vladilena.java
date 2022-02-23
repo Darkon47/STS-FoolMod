@@ -18,6 +18,8 @@ import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
+import static eatyourbeets.resources.GR.Enums.CardTags.LOYAL;
+
 public class Vladilena extends FoolCard implements OnStartOfTurnPostDrawSubscriber
 {
     public static final PCLCardData DATA = Register(Vladilena.class)

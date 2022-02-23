@@ -2,10 +2,7 @@ package pinacolada.cards.fool.special;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import pinacolada.cards.base.CardUseInfo;
-import pinacolada.cards.base.PCLAffinity;
-import pinacolada.cards.base.PCLCardData;
-import pinacolada.cards.base.PCLCardTarget;
+import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.fool.series.FullmetalAlchemist.ElricAlphonse;
 import pinacolada.orbs.PCLOrbHelper;
@@ -15,6 +12,7 @@ public class ElricAlphonse_Alt extends FoolCard
 {
     public static final PCLCardData DATA = Register(ElricAlphonse_Alt.class)
             .SetSkill(2, CardRarity.SPECIAL, PCLCardTarget.Self)
+            .SetTraits(PCLCardTrait.Machine)
             .SetSeries(ElricAlphonse.DATA.Series);
 
     public ElricAlphonse_Alt()

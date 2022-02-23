@@ -42,12 +42,10 @@ public class Shizu extends FoolCard
     public int SetForm(Integer form, int timesUpgraded) {
         if (timesUpgraded > 0) {
             if (form == 1) {
-                Initialize(14, 0, 2, 2);
                 SetUpgrade(4, 0);
                 AddScaling(PCLAffinity.Red, 1);
             }
             else {
-                Initialize(14, 0, 2, 2);
                 SetUpgrade(0, 0, 2, 0);
             }
         }

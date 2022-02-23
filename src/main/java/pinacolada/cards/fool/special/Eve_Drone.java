@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLAttackType;
 import pinacolada.cards.base.PCLCardData;
+import pinacolada.cards.base.PCLCardTrait;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.fool.series.Elsword.Eve;
 import pinacolada.effects.AttackEffects;
@@ -16,6 +17,7 @@ public class Eve_Drone extends FoolCard
 {
     public static final PCLCardData DATA = Register(Eve_Drone.class)
             .SetAttack(0, CardRarity.SPECIAL, PCLAttackType.Ranged)
+            .SetTraits(PCLCardTrait.Machine)
             .SetSeries(Eve.DATA.Series);
 
     public Eve_Drone() {

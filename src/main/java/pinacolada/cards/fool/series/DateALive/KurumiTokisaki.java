@@ -16,6 +16,9 @@ import pinacolada.effects.AttackEffects;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
+import static eatyourbeets.resources.GR.Enums.CardTags.DELAYED;
+import static pinacolada.resources.PGR.Enums.CardTags.AUTOPLAY;
+
 public class KurumiTokisaki extends FoolCard
 {
     public static final PCLCardData DATA = Register(KurumiTokisaki.class)

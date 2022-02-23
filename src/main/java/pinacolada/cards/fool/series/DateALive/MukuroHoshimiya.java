@@ -15,6 +15,8 @@ import pinacolada.utilities.PCLActions;
 
 import java.util.ArrayList;
 
+import static eatyourbeets.resources.GR.Enums.CardTags.DELAYED;
+
 public class MukuroHoshimiya extends FoolCard implements StartupCard, OnShuffleSubscriber
 {
     public static final PCLCardData DATA = Register(MukuroHoshimiya.class).SetAttack(2, CardRarity.RARE, PCLAttackType.Electric).SetSeriesFromClassPackage();

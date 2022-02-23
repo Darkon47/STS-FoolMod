@@ -5,10 +5,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import eatyourbeets.powers.CombatStats;
 import eatyourbeets.utilities.RandomizedList;
-import pinacolada.cards.base.CardSeries;
-import pinacolada.cards.base.CardUseInfo;
-import pinacolada.cards.base.PCLCardData;
-import pinacolada.cards.base.PCLCardTarget;
+import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard_UltraRare;
 import pinacolada.cards.fool.special.Traveler_Wish;
 import pinacolada.orbs.PCLOrbHelper;
@@ -22,6 +19,7 @@ public class Traveler_Aether extends FoolCard_UltraRare
             .SetSkill(1, CardRarity.SPECIAL, PCLCardTarget.None)
             .SetColorless()
             .SetSeries(CardSeries.GenshinImpact)
+            .SetTraits(PCLCardTrait.Protagonist)
             .PostInitialize(data -> data.AddPreview(new Traveler_Wish(), false));
     public static final int UNIQUE_ORB_THRESHOLD = 3;
 
@@ -32,13 +30,10 @@ public class Traveler_Aether extends FoolCard_UltraRare
 
         Initialize(0, 0, 3, 1);
         SetUpgrade(0, 0, 1, 1);
-        SetAffinity_Light(1);
-        SetAffinity_Dark(1);
-        SetAffinity_Green(1);
+        SetAffinity_Star(1);
 
         SetEthereal(true);
-        SetPurge(true);
-        SetProtagonist(true);
+        SetExhaust(true);
     }
 
     @Override

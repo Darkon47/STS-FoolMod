@@ -359,7 +359,11 @@ public class PGR extends eatyourbeets.resources.GR
         {
             @SpireEnum public static AbstractCard.CardTags AFTERLIFE;
             @SpireEnum public static AbstractCard.CardTags AUTOPLAY;
+            @SpireEnum public static AbstractCard.CardTags EPHEMERAL;
+            @SpireEnum public static AbstractCard.CardTags ETERNAL;
             @SpireEnum public static AbstractCard.CardTags EXPANDED;
+            @SpireEnum public static AbstractCard.CardTags GRAVE;
+            @SpireEnum public static AbstractCard.CardTags FRAGILE;
             @SpireEnum public static AbstractCard.CardTags HARMONIC;
             @SpireEnum public static AbstractCard.CardTags HASTE_INFINITE;
             @SpireEnum public static AbstractCard.CardTags PCL_ETHEREAL;

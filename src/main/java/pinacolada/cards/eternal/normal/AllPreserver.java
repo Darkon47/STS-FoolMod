@@ -9,6 +9,8 @@ import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.eternal.EternalCard;
 import pinacolada.utilities.PCLActions;
 
+import static pinacolada.resources.PGR.Enums.CardTags.PCL_RETAIN;
+
 public class AllPreserver extends EternalCard
 {
     public static final PCLCardData DATA = Register(AllPreserver.class).SetSkill(1, CardRarity.COMMON, PCLCardTarget.None);
@@ -31,7 +33,7 @@ public class AllPreserver extends EternalCard
                 .AddCallback(cards -> {
                    if (CheckPrimaryCondition(true)) {
                        for (AbstractCard c : cards) {
-                           PCLActions.Bottom.ModifyTag(c, PCL_RETAIN_INFINITE, true);
+                           PCLActions.Bottom.ModifyTag(c, PCL_RETAIN, true);
                        }
                        PCLActions.Last.Exhaust(this);
                    }

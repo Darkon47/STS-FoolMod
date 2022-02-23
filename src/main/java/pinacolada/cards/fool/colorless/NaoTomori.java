@@ -29,6 +29,7 @@ public class NaoTomori extends FoolCard
 
         SetAffinity_Green(1);
         SetAffinity_Orange(1);
+        SetAffinity_Light(1);
     }
 
     @Override

@@ -26,6 +26,7 @@ public class Megumin extends FoolCard
 {
     public static final PCLCardData DATA = Register(Megumin.class)
             .SetAttack(2, CardRarity.RARE, PCLAttackType.Fire, PCLCardTarget.AoE)
+            .SetTraits(PCLCardTrait.Spellcaster)
             .SetSeriesFromClassPackage();
     public static final int ATTACK_TURNS = 2;
     public static final int SYNERGY_REQUIREMENT = 4;

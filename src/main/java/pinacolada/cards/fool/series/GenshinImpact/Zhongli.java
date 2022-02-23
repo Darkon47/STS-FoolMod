@@ -6,10 +6,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import eatyourbeets.interfaces.subscribers.OnStartOfTurnPostDrawSubscriber;
 import eatyourbeets.utilities.ColoredString;
-import pinacolada.cards.base.CardEffectChoice;
-import pinacolada.cards.base.CardUseInfo;
-import pinacolada.cards.base.PCLAffinity;
-import pinacolada.cards.base.PCLCardData;
+import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.orbs.pcl.Earth;
 import pinacolada.powers.FoolClickablePower;
@@ -20,7 +17,10 @@ import pinacolada.utilities.PCLJUtils;
 
 public class Zhongli extends FoolCard
 {
-    public static final PCLCardData DATA = Register(Zhongli.class).SetPower(3, CardRarity.RARE).SetMaxCopies(1).SetSeriesFromClassPackage().SetMultiformData(2);
+    public static final PCLCardData DATA = Register(Zhongli.class).SetPower(3, CardRarity.RARE).SetMaxCopies(1)
+            .SetSeriesFromClassPackage()
+            .SetTraits(PCLCardTrait.Reptile)
+            .SetMultiformData(2);
     private static final int POWER_ENERGY_COST = 8;
 
     public Zhongli()

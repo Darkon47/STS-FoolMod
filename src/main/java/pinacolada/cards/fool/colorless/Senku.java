@@ -32,7 +32,11 @@ import java.util.Map;
 
 public class Senku extends FoolCard
 {
-    public static final PCLCardData DATA = Register(Senku.class).SetAttack(1, CardRarity.UNCOMMON).SetColorless().SetMaxCopies(2).SetSeries(CardSeries.DrStone);
+    public static final PCLCardData DATA = Register(Senku.class).SetAttack(1, CardRarity.UNCOMMON)
+            .SetColorless()
+            .SetMaxCopies(2)
+            .SetTraits(PCLCardTrait.Protagonist, PCLCardTrait.Scientist)
+            .SetSeries(CardSeries.DrStone);
     public static final int CHOICES = 3;
     protected static final PCLStrings.Actions ACTIONS = PGR.PCL.Strings.Actions;
     protected final HashMap<String, Integer> debuffs = new HashMap<>();
@@ -48,8 +52,6 @@ public class Senku extends FoolCard
         SetAffinity_Blue(1, 0, 1);
         SetAffinity_Orange(1, 0, 1);
         SetAffinity_Silver(1, 0, 1);
-
-        SetProtagonist(true);
     }
 
     @Override

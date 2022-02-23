@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
+import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.GraveField;
 import com.evacipated.cardcrawl.modthespire.lib.SpireOverride;
 import com.google.gson.reflect.TypeToken;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -55,9 +56,7 @@ import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
 
 import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 import static pinacolada.powers.fool.ElementalExposurePower.ELEMENTAL_MODIFIER;
 import static pinacolada.powers.replacement.PCLLockOnPower.GetAttackMultiplier;
@@ -66,15 +65,6 @@ import static pinacolada.resources.PGR.Enums.CardTags.*;
 public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscriber, OnStartOfTurnPostDrawSubscriber, CustomSavable<PCLCardSaveData>
 {
     public static final Color MUTED_TEXT_COLOR = Colors.Lerp(Color.DARK_GRAY, Settings.CREAM_COLOR, 0.5f);
-    public static final CardTags HASTE = PGR.Enums.CardTags.HASTE;
-    public static final CardTags HASTE_INFINITE = PGR.Enums.CardTags.HASTE_INFINITE;
-    public static final CardTags PURGE = PGR.Enums.CardTags.PURGE;
-    public static final CardTags DELAYED = PGR.Enums.CardTags.DELAYED;
-    public static final CardTags AUTOPLAY = PGR.Enums.CardTags.AUTOPLAY;
-    public static final CardTags LOYAL = PGR.Enums.CardTags.LOYAL;
-    public static final CardTags HARMONIC = PGR.Enums.CardTags.HARMONIC;
-    public static final CardTags PCL_INNATE = PGR.Enums.CardTags.PCL_INNATE;
-    public static final CardTags PCL_RETAIN_INFINITE = PGR.Enums.CardTags.PCL_RETAIN;
     public static final PCLImages IMAGES = PGR.PCL.Images;
     protected static final Color defaultGlowColor = AbstractCard.BLUE_BORDER_GLOW_COLOR;
     protected static final Color synergyGlowColor = new Color(1, 0.843f, 0, 0.25f);
@@ -84,6 +74,7 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
     public final PCLCardData cardData;
     public final PCLCardAffinities affinities;
     public final ArrayList<PCLCardTooltip> tooltips;
+    public final HashSet<PCLCardTrait> traits;
     public PCLCardTarget attackTarget = PCLCardTarget.Normal;
     public PCLAttackType attackType = PCLAttackType.Normal;
 
@@ -148,6 +139,7 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
         this.cropPortrait = cardData.cropPortrait;
         this.cardData = cardData;
         this.tooltips = new ArrayList<>();
+        this.traits = new HashSet<>();
         this.cardText = new PCLCardText(this);
         this.affinities = new PCLCardAffinities(this);
         this.playAtEndOfTurn = cardData.PlayAtEndOfTurn;
@@ -161,11 +153,12 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
             SetAttackType(cardData.AttackType);
         }
 
-
         if (cardData.Series != null)
         {
             SetSeries(cardData.Series);
         }
+
+        SetTraits(cardData.Traits);
 
         initializeDescription();
 
@@ -180,6 +173,11 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
             card.SetForm(auxiliaryData.form, timesUpgraded);
         }
         return card;
+    }
+
+    public boolean HasTrait(PCLCardTrait trait)
+    {
+        return traits.contains(trait);
     }
 
     public boolean HasSynergy()
@@ -210,6 +208,16 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
     public void SetSeries(CardSeries series)
     {
         this.series = series;
+    }
+
+    public void SetTraits(Collection<PCLCardTrait> traits)
+    {
+        this.traits.addAll(traits);
+    }
+
+    public void SetTraits(PCLCardTrait... traits)
+    {
+        this.traits.addAll(Arrays.asList(traits));
     }
 
     public DrawPileCardPreview SetDrawPileCardPreview(ActionT2<RotatingList<AbstractCard>, AbstractMonster> findCards)
@@ -679,6 +687,10 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
         {
             dynamicTooltips.add(PGR.Tooltips.Delayed);
         }
+        if (GraveField.grave.get(this))
+        {
+            dynamicTooltips.add(PGR.Tooltips.Grave);
+        }
         if (isEthereal)
         {
             dynamicTooltips.add(PGR.Tooltips.Ethereal);
@@ -714,6 +726,10 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
         if (hasTag(LOYAL))
         {
             dynamicTooltips.add(PGR.Tooltips.Loyal);
+        }
+        if (hasTag(FRAGILE))
+        {
+            dynamicTooltips.add(PGR.Tooltips.Fragile);
         }
         if (hasTag(HARMONIC))
         {
@@ -898,6 +914,11 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
         this.upgrade_hitCount = upgrade;
     }
 
+    public void SetFragile(boolean value)
+    {
+        SetTag(FRAGILE, value);
+    }
+
     public void SetLoyal(boolean value)
     {
         SetTag(PGR.Enums.CardTags.LOYAL, value);
@@ -939,11 +960,6 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
         else {
             PCLCombatStats.onStartOfTurn.Unsubscribe(this);
         }
-    }
-
-    public void SetProtagonist(boolean value)
-    {
-        SetTag(PROTAGONIST, value);
     }
 
     public void SetObtainableInCombat(boolean value)
@@ -1093,7 +1109,7 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
     @Override
     public boolean canUpgrade()
     {
-        return !upgraded || maxUpgradeLevel < 0 || timesUpgraded < maxUpgradeLevel;
+        return timesUpgraded < maxUpgradeLevel || maxUpgradeLevel < 0;
     }
 
     @Override
@@ -1101,6 +1117,7 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
     {
         if (TryUpgrade())
         {
+            OnUpgrade();
             if (upgrade_damage != 0)
             {
                 if (baseDamage < 0)
@@ -1185,8 +1202,6 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
             }
 
             affinities.ApplyUpgrades();
-
-            OnUpgrade();
         }
     }
 
@@ -1316,6 +1331,16 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
     public boolean canUse(AbstractPlayer p, AbstractMonster m)
     {
         return cardPlayable(m) && this.hasEnoughEnergy();
+    }
+
+    @Override
+    public void triggerOnOtherCardPlayed(AbstractCard c)
+    {
+        super.triggerOnOtherCardPlayed(c);
+
+        if (player.hand.contains(this) && hasTag(FRAGILE)) {
+            PCLActions.Last.Exhaust(this);
+        }
     }
 
     @Override

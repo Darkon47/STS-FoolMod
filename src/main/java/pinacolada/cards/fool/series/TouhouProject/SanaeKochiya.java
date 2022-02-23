@@ -15,6 +15,8 @@ import pinacolada.cards.pcl.replacement.Miracle;
 import pinacolada.powers.FoolPower;
 import pinacolada.utilities.PCLActions;
 
+import static eatyourbeets.resources.GR.Enums.CardTags.PURGE;
+
 public class SanaeKochiya extends FoolCard {
     public static final PCLCardData DATA = Register(SanaeKochiya.class).SetSkill(1, CardRarity.COMMON, PCLCardTarget.None, true).SetSeriesFromClassPackage()
             .PostInitialize(data -> data.AddPreview(new Miracle(), false));

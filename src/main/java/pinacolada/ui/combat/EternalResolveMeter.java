@@ -217,6 +217,8 @@ public class EternalResolveMeter extends PCLAffinityMeter implements OnTrySpendE
         }
         progressBar.TryUpdate();
 
+        UltimateButtonBG.rotation = PGR.UI.Time_Multi(8);
+        UltimateButton.background.rotation = PGR.UI.Time_Multi(8);
         UltimateButtonBG.SetColor(Resolve < MAX_RESOLVE && !InUltimateMode() ? Color.DARK_GRAY : Color.WHITE).TryUpdate();
         UltimateButton.SetInteractable(Resolve == MAX_RESOLVE).SetColor(Resolve < MAX_RESOLVE && !InUltimateMode() ? Color.DARK_GRAY : Color.WHITE).TryUpdate();
 

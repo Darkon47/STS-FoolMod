@@ -26,6 +26,7 @@ import pinacolada.utilities.PCLJUtils;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
+// TODO Extend EYBRelic if possible
 public abstract class PCLRelic extends CustomRelic
 {
     protected static final FieldInfo<Float> _offsetX = PCLJUtils.GetField("offsetX", AbstractRelic.class);

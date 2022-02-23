@@ -15,6 +15,8 @@ import pinacolada.powers.PCLCombatStats;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLJUtils;
 
+import static pinacolada.resources.PGR.Enums.CardTags.HASTE_INFINITE;
+
 public class MorganLeFay extends FoolCard
 {
     public static final PCLCardData DATA = Register(MorganLeFay.class)

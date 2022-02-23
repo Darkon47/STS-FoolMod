@@ -19,6 +19,7 @@ public class RundelhausCode extends FoolCard
 {
     public static final PCLCardData DATA = Register(RundelhausCode.class)
             .SetAttack(2, CardRarity.COMMON, PCLAttackType.Electric, PCLCardTarget.Normal)
+            .SetTraits(PCLCardTrait.Spellcaster)
             .SetSeries(CardSeries.LogHorizon);
 
     private static HashSet<AbstractCard> buffs;

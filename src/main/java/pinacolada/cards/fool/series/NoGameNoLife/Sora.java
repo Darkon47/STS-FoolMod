@@ -5,10 +5,7 @@ import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import eatyourbeets.interfaces.subscribers.OnStartOfTurnPostDrawSubscriber;
-import pinacolada.cards.base.CardSeries;
-import pinacolada.cards.base.CardUseInfo;
-import pinacolada.cards.base.PCLCardData;
-import pinacolada.cards.base.PCLCardTarget;
+import pinacolada.cards.base.*;
 import pinacolada.cards.base.attributes.AbstractAttribute;
 import pinacolada.cards.base.attributes.TempHPAttribute;
 import pinacolada.cards.fool.FoolCard;
@@ -24,6 +21,7 @@ public class Sora extends FoolCard implements OnStartOfTurnPostDrawSubscriber
     public static final PCLCardData DATA = Register(Sora.class)
             .SetSkill(1, CardRarity.RARE, PCLCardTarget.None)
             .SetSeries(CardSeries.NoGameNoLife)
+            .SetTraits(PCLCardTrait.Protagonist)
             .PostInitialize(data -> data
                     .AddPreview(new Sora_Strategy1(), true)
                     .AddPreview(new Sora_Strategy2(), true)
@@ -39,8 +37,6 @@ public class Sora extends FoolCard implements OnStartOfTurnPostDrawSubscriber
 
         SetAffinity_Blue(1, 0, 1);
         SetAffinity_Orange(1);
-
-        SetProtagonist(true);
     }
 
     @Override

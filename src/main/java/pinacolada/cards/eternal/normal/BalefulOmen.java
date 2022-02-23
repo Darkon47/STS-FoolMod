@@ -31,7 +31,7 @@ public class BalefulOmen extends EternalCard
             PCLActions.Bottom.ApplyVulnerable(TargetHelper.Enemies(), magicNumber);
             PCLActions.Bottom.ApplyWeak(TargetHelper.Enemies(), magicNumber);
         }
-        else if (IsMismatching(info)) {
+        else {
             PCLActions.Bottom.ApplyWeak(TargetHelper.Player(), secondaryValue);
         }
     }

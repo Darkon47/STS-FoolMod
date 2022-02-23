@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
+import pinacolada.cards.base.PCLCardTrait;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
 import pinacolada.effects.vfx.megacritCopy.HemokinesisEffect2;
@@ -21,6 +22,7 @@ public class FeridBathory extends FoolCard
             .SetPower(2, CardRarity.RARE)
             .SetMaxCopies(2)
             .SetSeriesFromClassPackage()
+            .SetTraits(PCLCardTrait.Demon)
             .SetMultiformData(2);
 
     public FeridBathory()

@@ -3,10 +3,7 @@ package pinacolada.cards.fool.colorless;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import eatyourbeets.utilities.TargetHelper;
-import pinacolada.cards.base.CardSeries;
-import pinacolada.cards.base.CardUseInfo;
-import pinacolada.cards.base.PCLAffinity;
-import pinacolada.cards.base.PCLCardData;
+import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.fool.special.ThrowingKnife;
 import pinacolada.effects.AttackEffects;
@@ -19,6 +16,7 @@ public class AcuraTooru extends FoolCard
             .SetAttack(2, CardRarity.UNCOMMON)
             .SetColorless(PGR.Enums.Cards.THE_FOOL)
             .SetSeries(CardSeries.HitsugiNoChaika)
+            .SetTraits(PCLCardTrait.Protagonist)
             .PostInitialize(data ->
             {
                 data.AddPreview(new AcuraAkari(), false);
@@ -37,8 +35,6 @@ public class AcuraTooru extends FoolCard
 
         SetAffinity_Green(1, 0, 1);
         SetAffinity_Red(1);
-
-        SetProtagonist(true);
 
         SetAffinityRequirement(PCLAffinity.Green, 8);
         SetHitCount(2);

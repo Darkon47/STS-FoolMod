@@ -11,6 +11,7 @@ import eatyourbeets.utilities.TargetHelper;
 import pinacolada.actions.powers.ApplyPower;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
+import pinacolada.cards.base.PCLCardTrait;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
 import pinacolada.powers.FoolPower;
@@ -22,6 +23,7 @@ public class Gobta extends FoolCard
 {
     public static final PCLCardData DATA = Register(Gobta.class)
             .SetAttack(1, CardRarity.COMMON)
+            .SetTraits(PCLCardTrait.Beast)
             .SetSeriesFromClassPackage();
 
     public Gobta()

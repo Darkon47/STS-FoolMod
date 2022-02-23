@@ -7,6 +7,8 @@ public class PCLColors extends eatyourbeets.utilities.Colors
     public static final Color COLOR_AFTERLIFE = new Color(0.7f,0.9f,1.0f,1);
     public static final Color COLOR_AUTOPLAY = new Color(0.33f,0.33f,0.45f,1);
     public static final Color COLOR_DELAYED = new Color(0.26f,0.26f,0.26f,1);
+    public static final Color COLOR_FRAGILE = new Color(0.80f,0.46f,0.7f,1);
+    public static final Color COLOR_GRAVE = new Color(0.5f,0.5f,0.5f,1);
     public static final Color COLOR_HARMONIC = new Color(1.0f,0.55f,0.8f,1);
     public static final Color COLOR_HASTE = new Color(0.35f,0.5f,0.79f,1);
     public static final Color COLOR_LOYAL = new Color(0.81f,0.51f,0.3f,1);

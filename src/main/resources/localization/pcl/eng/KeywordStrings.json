@@ -300,6 +300,12 @@
 		"NAMES": ["envenom"],
 		"PROPER_NAME": "Envenom"
 	},
+	"Ephemeral":
+	{
+		"DESCRIPTION": "Purges at the end of turn.",
+		"NAMES": ["ephemeral"],
+		"PROPER_NAME": "Ephemeral"
+	},
 	"Eternal":
 	{
 		"DESCRIPTION": "Cannot be removed from your deck. When exhausted, returns to your draw pile and changes form if it has multiple forms.",
@@ -336,6 +342,12 @@
 		"NAMES": ["force"],
 		"PROPER_NAME": "Force"
 	},
+	"Fragile":
+	{
+		"DESCRIPTION": "Exhausts if you play another card while this is in hand.",
+		"NAMES": ["fragile"],
+		"PROPER_NAME": "Fragile"
+	},
 	"Freezing":
 	{
 		"DESCRIPTION": "Reduces outgoing #yAttack damage by #b10% (can go up to #b50%, min. #b1 less damage). NL At the start of turn, lose HP equal to #b50% of [Freezing] and reduce [Freezing] by #b1.",
@@ -353,6 +365,12 @@
 		"DESCRIPTION": "Gain additional [E] at the start of each turn.",
 		"NAMES": ["genesis"],
 		"PROPER_NAME": "Genesis"
+	},
+	"Grave":
+	{
+		"DESCRIPTION": "Start each combat with this card in your discard pile.",
+		"NAMES": ["grave"],
+		"PROPER_NAME": "Grave"
 	},
 	"Harmonic":
 	{

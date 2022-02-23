@@ -12,6 +12,8 @@ import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
 import pinacolada.utilities.PCLActions;
 
+import static eatyourbeets.resources.GR.Enums.CardTags.HASTE;
+
 public class Keqing extends FoolCard
 {
     public static final PCLCardData DATA = Register(Keqing.class).SetAttack(2, CardRarity.UNCOMMON, PCLAttackType.Piercing).SetSeriesFromClassPackage();

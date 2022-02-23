@@ -8,6 +8,7 @@ import eatyourbeets.utilities.TargetHelper;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLAttackType;
 import pinacolada.cards.base.PCLCardData;
+import pinacolada.cards.base.PCLCardTrait;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
 import pinacolada.utilities.PCLActions;
@@ -17,6 +18,7 @@ public class Souei extends FoolCard
 {
     public static final PCLCardData DATA = Register(Souei.class)
             .SetAttack(1, CardRarity.UNCOMMON, PCLAttackType.Piercing)
+            .SetTraits(PCLCardTrait.Beast)
             .SetSeriesFromClassPackage();
 
     public Souei()

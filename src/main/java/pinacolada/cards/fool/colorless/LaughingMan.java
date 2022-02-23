@@ -22,6 +22,7 @@ public class LaughingMan extends FoolCard implements OnEndOfTurnFirstSubscriber,
     public static final PCLCardData DATA = Register(LaughingMan.class).SetSkill(0, CardRarity.RARE, PCLCardTarget.None)
             .SetMaxCopies(1)
             .SetColorless()
+            .SetTraits(PCLCardTrait.Machine)
             .SetSeries(CardSeries.GhostInTheShell);
     private static final CardEffectChoice choices = new CardEffectChoice();
     private CardType cardType;

@@ -5,10 +5,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.*;
 import pinacolada.actions.orbs.RemoveOrb;
-import pinacolada.cards.base.CardSeries;
-import pinacolada.cards.base.CardUseInfo;
-import pinacolada.cards.base.PCLCardData;
-import pinacolada.cards.base.PCLCardTarget;
+import pinacolada.cards.base.*;
 import pinacolada.cards.base.cardeffects.GenericEffect;
 import pinacolada.cards.base.cardeffects.GenericEffects.GenericEffect_ChannelOrb;
 import pinacolada.cards.base.cardeffects.GenericEffects.GenericEffect_GainTempHP;
@@ -32,6 +29,7 @@ public class Merlin extends FoolCard
     public static final PCLCardData DATA = Register(Merlin.class)
             .SetSkill(1, CardRarity.RARE, PCLCardTarget.None)
             .SetColorless()
+            .SetTraits(PCLCardTrait.Spellcaster)
             .SetSeries(CardSeries.Fate)
             .PostInitialize(data -> {
                 EFFECTS.put(Air.ORB_ID, GenericEffect.Apply(2, PCLPowerHelper.Swirled));

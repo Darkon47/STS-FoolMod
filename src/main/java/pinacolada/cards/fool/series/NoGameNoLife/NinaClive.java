@@ -10,6 +10,9 @@ import pinacolada.cards.fool.FoolCard;
 import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 
+import static eatyourbeets.resources.GR.Enums.CardTags.DELAYED;
+import static pinacolada.resources.PGR.Enums.CardTags.PCL_INNATE;
+
 public class NinaClive extends FoolCard
 {
     public static final PCLCardData DATA = Register(NinaClive.class)

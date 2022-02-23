@@ -23,6 +23,7 @@ public class Saitama extends FoolCard //TODO
     public static final PCLCardData DATA = Register(Saitama.class)
             .SetSkill(0, CardRarity.RARE, PCLCardTarget.None)
             .SetSeriesFromClassPackage()
+            .SetTraits(PCLCardTrait.Protagonist)
             .PostInitialize(data ->
             {
                 data.AddPreview(new Saitama(1), false);
@@ -53,8 +54,6 @@ public class Saitama extends FoolCard //TODO
         PCLGameUtilities.ModifyCostForCombat(this, stage, false);
         this.stage = this.misc = stage;
         SetEffect(stage);
-
-        SetProtagonist(true);
     }
 
     @Override

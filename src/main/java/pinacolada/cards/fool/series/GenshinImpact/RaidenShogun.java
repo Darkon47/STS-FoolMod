@@ -10,6 +10,7 @@ import eatyourbeets.utilities.TargetHelper;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCardData;
+import pinacolada.cards.base.PCLCardTrait;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.powers.FoolPower;
 import pinacolada.powers.fool.Amplification_DarkPower;
@@ -21,6 +22,7 @@ public class RaidenShogun extends FoolCard
     public static final PCLCardData DATA = Register(RaidenShogun.class).SetPower(3, CardRarity.RARE)
             .SetMaxCopies(1)
             .SetSeriesFromClassPackage(true)
+            .SetTraits(PCLCardTrait.Demon)
             .SetMultiformData(2);
 
     public RaidenShogun()

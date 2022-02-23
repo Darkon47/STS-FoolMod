@@ -7,10 +7,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.AnimatedSlashEffect;
 import eatyourbeets.utilities.TargetHelper;
-import pinacolada.cards.base.CardUseInfo;
-import pinacolada.cards.base.PCLAttackType;
-import pinacolada.cards.base.PCLCardData;
-import pinacolada.cards.base.PCLCardTarget;
+import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
 import pinacolada.effects.SFX;
@@ -23,7 +20,9 @@ import pinacolada.utilities.PCLGameUtilities;
 
 public class Xiao extends FoolCard
 {
-    public static final PCLCardData DATA = Register(Xiao.class).SetAttack(3, CardRarity.RARE, PCLAttackType.Piercing, PCLCardTarget.AoE).SetSeriesFromClassPackage(true);
+    public static final PCLCardData DATA = Register(Xiao.class).SetAttack(3, CardRarity.RARE, PCLAttackType.Piercing, PCLCardTarget.AoE)
+            .SetTraits(PCLCardTrait.Demon)
+            .SetSeriesFromClassPackage(true);
 
     public Xiao()
     {

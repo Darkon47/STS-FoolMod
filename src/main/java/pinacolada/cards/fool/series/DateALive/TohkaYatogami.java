@@ -41,13 +41,11 @@ public class TohkaYatogami extends FoolCard
         if (timesUpgraded > 0) {
             if (form == 1) {
                 SetHaste(false);
-                Initialize(14, 0, 7, 1);
-                SetUpgrade(0,0,0, 0);
+                SetUpgrade(3,0,0, 0);
             }
             else {
                 SetHaste(true);
-                Initialize(12, 0, 6, 1);
-                SetUpgrade(0,0,0);
+                SetUpgrade(0,0,-1, 0);
             }
         }
         return super.SetForm(form, timesUpgraded);

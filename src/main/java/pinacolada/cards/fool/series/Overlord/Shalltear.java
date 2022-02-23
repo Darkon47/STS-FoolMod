@@ -17,7 +17,8 @@ public class Shalltear extends FoolCard
 {
     public static final PCLCardData DATA = Register(Shalltear.class)
             .SetAttack(2, CardRarity.RARE, PCLAttackType.Dark, PCLCardTarget.AoE)
-            .SetSeries(CardSeries.Overlord);
+            .SetSeries(CardSeries.Overlord)
+            .SetTraits(PCLCardTrait.Demon, PCLCardTrait.Undead);
 
     public Shalltear()
     {

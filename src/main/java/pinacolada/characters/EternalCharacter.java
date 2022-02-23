@@ -1,6 +1,5 @@
 package pinacolada.characters;
 
-import basemod.abstracts.CustomPlayer;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.MathUtils;
@@ -25,11 +24,12 @@ import pinacolada.patches.relicLibrary.RelicLibraryPatches;
 import pinacolada.relics.eternal.MusouNoHitotachi;
 import pinacolada.resources.PGR;
 import pinacolada.resources.pcl.PCLResources;
+import pinacolada.ui.PCLEnergyOrb;
 import pinacolada.ui.characterSelection.PCLBaseStatEditor;
 
 import java.util.ArrayList;
 
-public class EternalCharacter extends CustomPlayer
+public class EternalCharacter extends PCLCharacter
 {
     public static final CharacterStrings characterStrings = PCLResources.GetCharacterStrings("Eternal");
     public static final Color MAIN_COLOR = CardHelper.getColor(157, 76, 210);
@@ -40,7 +40,7 @@ public class EternalCharacter extends CustomPlayer
 
     public EternalCharacter()
     {
-        super(ORIGINAL_NAME, PGR.Eternal.PlayerClass, PGR.PCL.Images.ORB_TEXTURES, PGR.PCL.Images.ORB_VFX_PNG, (String) null, null);
+        super(ORIGINAL_NAME, PGR.Eternal.PlayerClass, new PCLEnergyOrb());
 
         initializeClass(null, PGR.Eternal.Images.SHOULDER2_PNG, PGR.Eternal.Images.SHOULDER1_PNG, PGR.Eternal.Images.CORPSE_PNG,
         getLoadout(), 0f, -5f, 240f, 244f, new EnergyManager(3));

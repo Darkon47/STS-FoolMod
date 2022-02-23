@@ -25,7 +25,7 @@ import java.util.ArrayList;
 
 public class UIManager extends eatyourbeets.resources.UIManager
 {
-    // TODO merge with EYB UIManager
+    // TODO delegate to EYB UIManager
     protected final ArrayList<ActionT1<SpriteBatch>> preRenderList = new ArrayList<>();
     protected final ArrayList<ActionT1<SpriteBatch>> postRenderList = new ArrayList<>();
     protected float delta = 0;

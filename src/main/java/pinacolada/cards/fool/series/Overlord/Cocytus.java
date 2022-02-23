@@ -8,6 +8,7 @@ import pinacolada.actions.orbs.EvokeOrb;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCardData;
+import pinacolada.cards.base.PCLCardTrait;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
 import pinacolada.utilities.PCLActions;
@@ -17,7 +18,8 @@ public class Cocytus extends FoolCard
 {
     public static final PCLCardData DATA = Register(Cocytus.class)
             .SetAttack(2, CardRarity.COMMON)
-            .SetSeriesFromClassPackage();
+            .SetSeriesFromClassPackage()
+            .SetTraits(PCLCardTrait.Demon);
 
     public Cocytus()
     {

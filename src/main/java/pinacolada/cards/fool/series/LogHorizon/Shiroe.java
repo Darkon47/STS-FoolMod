@@ -4,10 +4,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import eatyourbeets.utilities.TargetHelper;
-import pinacolada.cards.base.CardUseInfo;
-import pinacolada.cards.base.PCLCard;
-import pinacolada.cards.base.PCLCardData;
-import pinacolada.cards.base.PCLCardTarget;
+import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.powers.FoolPower;
 import pinacolada.utilities.PCLActions;
@@ -18,6 +15,7 @@ public class Shiroe extends FoolCard
     public static final PCLCardData DATA = Register(Shiroe.class)
             .SetSkill(0, CardRarity.RARE, PCLCardTarget.None)
             .SetMaxCopies(2)
+            .SetTraits(PCLCardTrait.Protagonist)
             .SetSeriesFromClassPackage();
 
     public Shiroe()
@@ -31,7 +29,6 @@ public class Shiroe extends FoolCard
         SetAffinity_Orange(1,0,1);
 
         SetExhaust(true);
-        SetProtagonist(true);
     }
 
     @Override

@@ -30,7 +30,6 @@ public class AkariMizunashi extends FoolCard
         super(DATA);
 
         Initialize(0, 0, 3, 3);
-        SetUpgrade(0,0,0,0);
 
         SetAffinity_Blue(1);
         SetAffinity_Light(1);
@@ -49,7 +48,7 @@ public class AkariMizunashi extends FoolCard
     public int SetForm(Integer form, int timesUpgraded) {
         if (timesUpgraded > 0 && form == 0) {
             SetRetainOnce(true);
-            Initialize(0, 0, 6, 3);
+            SetUpgrade(0,0,3,0);
         }
         return super.SetForm(form, timesUpgraded);
     }

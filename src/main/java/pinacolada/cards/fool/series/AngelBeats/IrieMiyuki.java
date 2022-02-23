@@ -16,7 +16,7 @@ import pinacolada.utilities.PCLGameUtilities;
 public class IrieMiyuki extends FoolCard
 {
     public static final PCLCardData DATA = Register(IrieMiyuki.class).SetSkill(1, CardRarity.UNCOMMON, PCLCardTarget.Self).SetSeriesFromClassPackage();
-    public static final int MATCH_COMBO = 3;
+    public static final int MATCH_COMBO = 2;
 
     public IrieMiyuki()
     {

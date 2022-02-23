@@ -6,10 +6,7 @@ import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import eatyourbeets.interfaces.subscribers.OnEvokeOrbSubscriber;
 import eatyourbeets.powers.CombatStats;
 import eatyourbeets.utilities.TargetHelper;
-import pinacolada.cards.base.CardUseInfo;
-import pinacolada.cards.base.PCLAffinity;
-import pinacolada.cards.base.PCLCardData;
-import pinacolada.cards.base.PCLCardTarget;
+import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.powers.PCLCombatStats;
 import pinacolada.utilities.PCLActions;
@@ -18,6 +15,7 @@ import pinacolada.utilities.PCLJUtils;
 public class MonaMegistus extends FoolCard implements OnEvokeOrbSubscriber {
     public static final PCLCardData DATA = Register(MonaMegistus.class)
             .SetSkill(2, CardRarity.UNCOMMON, PCLCardTarget.Normal)
+            .SetTraits(PCLCardTrait.Spellcaster)
             .SetSeriesFromClassPackage(true);
 
     public MonaMegistus() {

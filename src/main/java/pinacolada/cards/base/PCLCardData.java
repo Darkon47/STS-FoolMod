@@ -17,6 +17,8 @@ import pinacolada.resources.pcl.PCLHotkeys;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 public class PCLCardData
@@ -28,6 +30,7 @@ public class PCLCardData
     public final Class<? extends PCLCard> type;
     public final CardStrings Strings;
     public final RotatingList<PCLCardPreview> previews = new RotatingList<>();
+    public final HashSet<PCLCardTrait> Traits = new HashSet<>();
 
     public Object Shared;
     public String ImagePath;
@@ -213,6 +216,12 @@ public class PCLCardData
     {
         Series = series;
 
+        return this;
+    }
+
+    public PCLCardData SetTraits(PCLCardTrait... traits) {
+        Traits.clear();
+        Traits.addAll(Arrays.asList(traits));
         return this;
     }
 

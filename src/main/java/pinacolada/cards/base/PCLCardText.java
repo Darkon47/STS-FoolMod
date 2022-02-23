@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
+import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.GraveField;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
@@ -162,6 +163,10 @@ public class PCLCardText
         {
             offset_y -= RenderBadge(sb, BADGES.Unplayable.Texture(), PCLColors.COLOR_UNPLAYABLE, offset_y, alpha, null);
         }
+        if (GraveField.grave.get(card))
+        {
+            offset_y -= RenderBadge(sb, BADGES.Grave.Texture(), PCLColors.COLOR_GRAVE, offset_y, alpha, null);
+        }
         if (card.hasTag(PGR.Enums.CardTags.DELAYED))
         {
             offset_y -= RenderBadge(sb, BADGES.Delayed.Texture(), PCLColors.COLOR_DELAYED, offset_y, alpha, null);
@@ -177,6 +182,10 @@ public class PCLCardText
         if (card.hasTag(PGR.Enums.CardTags.LOYAL))
         {
             offset_y -= RenderBadge(sb, BADGES.Loyal.Texture(), PCLColors.COLOR_LOYAL, offset_y, alpha, null);
+        }
+        if (card.hasTag(PGR.Enums.CardTags.FRAGILE))
+        {
+            offset_y -= RenderBadge(sb, BADGES.Fragile.Texture(), PCLColors.COLOR_FRAGILE, offset_y, alpha, null);
         }
         if (card.isEthereal)
         {

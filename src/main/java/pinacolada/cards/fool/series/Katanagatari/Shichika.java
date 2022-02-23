@@ -18,6 +18,7 @@ public class Shichika extends FoolCard
     public static final PCLCardData DATA = Register(Shichika.class)
             .SetSkill(1, CardRarity.UNCOMMON, PCLCardTarget.None)
             .SetSeriesFromClassPackage()
+            .SetTraits(PCLCardTrait.Protagonist)
             .PostInitialize(data -> data.AddPreview(new Shichika_Kyotouryuu(), true));
 
     private static final CardEffectChoice choices = new CardEffectChoice();
@@ -34,8 +35,6 @@ public class Shichika extends FoolCard
 
         SetAffinityRequirement(PCLAffinity.Red, 3);
         SetAffinityRequirement(PCLAffinity.Green, 3);
-
-        SetProtagonist(true);
     }
 
     @Override

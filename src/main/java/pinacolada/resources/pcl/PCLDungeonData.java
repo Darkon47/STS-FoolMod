@@ -303,12 +303,10 @@ public class PCLDungeonData implements CustomSavable<PCLDungeonData>, StartGameS
             AbstractDungeon.curseCardPool.group.removeIf(PCLCardBase.class::isInstance);
             AbstractDungeon.srcColorlessCardPool.group.removeIf(PCLCardBase.class::isInstance);
             AbstractDungeon.colorlessCardPool.group.removeIf(PCLCardBase.class::isInstance);
-            //PCLEvent.UpdateEvents(false);
             PCLRelic.UpdateRelics(false);
             return;
         }
 
-        //PCLEvent.UpdateEvents(true);
         PCLRelic.UpdateRelics(true);
 
         if (startGame && Settings.isStandardRun())

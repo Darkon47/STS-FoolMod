@@ -12,6 +12,7 @@ import eatyourbeets.relics.animator.unnamedReign.UnnamedReignRelic;
 import eatyourbeets.utilities.Colors;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
+import pinacolada.cards.base.PCLCardTrait;
 import pinacolada.cards.base.attributes.AbstractAttribute;
 import pinacolada.cards.base.attributes.TempHPAttribute;
 import pinacolada.cards.fool.FoolCard;
@@ -27,6 +28,7 @@ public class KrulTepes extends FoolCard
 {
     public static final PCLCardData DATA = Register(KrulTepes.class)
             .SetAttack(2, CardRarity.RARE)
+            .SetTraits(PCLCardTrait.Demon)
             .SetSeriesFromClassPackage();
 
     private static final AbstractRelic relicReward = new BloodVial();

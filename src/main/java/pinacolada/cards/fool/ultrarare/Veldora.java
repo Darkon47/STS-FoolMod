@@ -10,6 +10,7 @@ import eatyourbeets.utilities.TargetHelper;
 import pinacolada.cards.base.CardSeries;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
+import pinacolada.cards.base.PCLCardTrait;
 import pinacolada.cards.fool.FoolCard_UltraRare;
 import pinacolada.powers.FoolPower;
 import pinacolada.powers.replacement.PlayerFlightPower;
@@ -21,7 +22,8 @@ public class Veldora extends FoolCard_UltraRare
     public static final PCLCardData DATA = Register(Veldora.class)
             .SetPower(3, CardRarity.SPECIAL)
             .SetColorless()
-            .SetSeries(CardSeries.TenseiSlime);
+            .SetSeries(CardSeries.TenseiSlime)
+            .SetTraits(PCLCardTrait.Reptile);
 
     public Veldora()
     {

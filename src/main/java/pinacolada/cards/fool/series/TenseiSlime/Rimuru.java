@@ -8,6 +8,7 @@ import pinacolada.actions.special.RimuruAction;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.PCLCardTarget;
+import pinacolada.cards.base.PCLCardTrait;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.powers.PCLCombatStats;
 import pinacolada.utilities.PCLActions;
@@ -17,6 +18,7 @@ public class Rimuru extends FoolCard implements OnAfterCardPlayedSubscriber
     public static final PCLCardData DATA = Register(Rimuru.class)
             .SetSkill(-2, CardRarity.RARE, PCLCardTarget.AoE)
             .SetMaxCopies(2)
+            .SetTraits(PCLCardTrait.Protagonist, PCLCardTrait.Demon)
             .SetSeriesFromClassPackage();
 
     public AbstractCard copy;
@@ -29,7 +31,6 @@ public class Rimuru extends FoolCard implements OnAfterCardPlayedSubscriber
 
         SetAffinity_Star(1, 0, 0);
         SetVolatile(true);
-        SetProtagonist(true);
 
         this.copy = this;
     }

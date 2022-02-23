@@ -3,10 +3,7 @@ package pinacolada.cards.fool.series.Konosuba;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import eatyourbeets.powers.CombatStats;
-import pinacolada.cards.base.CardUseInfo;
-import pinacolada.cards.base.PCLCard;
-import pinacolada.cards.base.PCLCardData;
-import pinacolada.cards.base.PCLCardTarget;
+import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.powers.PCLCombatStats;
 import pinacolada.utilities.PCLActions;
@@ -17,6 +14,7 @@ public class Wiz extends FoolCard
     public static final PCLCardData DATA = Register(Wiz.class)
             .SetSkill(1, CardRarity.RARE, PCLCardTarget.None)
             .SetMaxCopies(2)
+            .SetTraits(PCLCardTrait.Demon, PCLCardTrait.Undead, PCLCardTrait.Spellcaster)
             .SetSeriesFromClassPackage();
 
     public Wiz()

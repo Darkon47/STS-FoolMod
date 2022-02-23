@@ -6,6 +6,7 @@ import eatyourbeets.powers.CombatStats;
 import eatyourbeets.utilities.TargetHelper;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
+import pinacolada.cards.base.PCLCardTrait;
 import pinacolada.cards.base.attributes.AbstractAttribute;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
@@ -16,6 +17,7 @@ public class IzunaHatsuse extends FoolCard
 {
     public static final PCLCardData DATA = Register(IzunaHatsuse.class)
             .SetAttack(0, CardRarity.COMMON)
+            .SetTraits(PCLCardTrait.Beast)
             .SetSeriesFromClassPackage();
 
     private boolean transformed;

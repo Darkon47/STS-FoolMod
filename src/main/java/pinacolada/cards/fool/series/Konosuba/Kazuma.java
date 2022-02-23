@@ -5,6 +5,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
+import pinacolada.cards.base.PCLCardTrait;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
@@ -13,7 +14,8 @@ public class Kazuma extends FoolCard
 {
     public static final PCLCardData DATA = Register(Kazuma.class)
             .SetAttack(1, CardRarity.COMMON)
-            .SetSeriesFromClassPackage();
+            .SetSeriesFromClassPackage()
+            .SetTraits(PCLCardTrait.Protagonist);
 
     public Kazuma()
     {
@@ -24,8 +26,6 @@ public class Kazuma extends FoolCard
 
         SetAffinity_Red(1, 0, 1);
         SetAffinity_Green(1);
-
-        SetProtagonist(true);
     }
 
     @Override

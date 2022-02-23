@@ -16,7 +16,8 @@ public class TomoyaOkazaki extends FoolCard
 {
     public static final PCLCardData DATA = Register(TomoyaOkazaki.class).SetSkill(1, CardRarity.UNCOMMON, PCLCardTarget.None)
             .SetColorless(PGR.Enums.Cards.THE_FOOL)
-            .SetSeries(CardSeries.Clannad);
+            .SetSeries(CardSeries.Clannad)
+            .SetTraits(PCLCardTrait.Protagonist);
 
     private int turns;
 
@@ -28,7 +29,6 @@ public class TomoyaOkazaki extends FoolCard
         SetUpgrade(0, 0, 1);
 
         SetAffinity_Orange(1, 0, 0);
-        SetProtagonist(true);
     }
 
 

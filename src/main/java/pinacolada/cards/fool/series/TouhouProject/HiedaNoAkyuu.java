@@ -13,6 +13,7 @@ import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 
 import static pinacolada.resources.PGR.Enums.CardTags.PCL_ETHEREAL;
+import static pinacolada.resources.PGR.Enums.CardTags.PCL_INNATE;
 
 public class HiedaNoAkyuu extends FoolCard
 {

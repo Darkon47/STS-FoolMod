@@ -5,10 +5,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import eatyourbeets.interfaces.subscribers.OnShuffleSubscriber;
 import eatyourbeets.utilities.TargetHelper;
-import pinacolada.cards.base.CardSeries;
-import pinacolada.cards.base.CardUseInfo;
-import pinacolada.cards.base.PCLAffinity;
-import pinacolada.cards.base.PCLCardData;
+import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.interfaces.subscribers.OnGainAffinitySubscriber;
 import pinacolada.powers.FoolPower;
@@ -23,7 +20,8 @@ public class YorhaNo2TypeB extends FoolCard
     public static final PCLCardData DATA = Register(YorhaNo2TypeB.class)
             .SetPower(2, CardRarity.RARE)
             .SetColorless(PGR.Enums.Cards.THE_FOOL)
-            .SetSeries(CardSeries.Nier);
+            .SetSeries(CardSeries.Nier)
+            .SetTraits(PCLCardTrait.Machine);
 
     public YorhaNo2TypeB()
     {

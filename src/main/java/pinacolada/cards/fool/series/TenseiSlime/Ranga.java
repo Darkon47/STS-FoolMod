@@ -6,10 +6,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import eatyourbeets.interfaces.subscribers.OnAttackSubscriber;
-import pinacolada.cards.base.CardUseInfo;
-import pinacolada.cards.base.PCLAttackType;
-import pinacolada.cards.base.PCLCardData;
-import pinacolada.cards.base.PCLCardTarget;
+import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
 import pinacolada.powers.PCLCombatStats;
@@ -21,6 +18,7 @@ public class Ranga extends FoolCard implements OnAttackSubscriber
     public static final PCLCardData DATA = Register(Ranga.class)
             .SetAttack(0, CardRarity.UNCOMMON, PCLAttackType.Electric)
             .SetMaxCopies(3)
+            .SetTraits(PCLCardTrait.Beast)
             .SetSeriesFromClassPackage();
 
     public Ranga()

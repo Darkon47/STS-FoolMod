@@ -1,6 +1,5 @@
 package pinacolada.characters;
 
-import basemod.abstracts.CustomPlayer;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.MathUtils;
@@ -20,6 +19,7 @@ import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import com.megacrit.cardcrawl.screens.stats.CharStat;
+import eatyourbeets.ui.TextureCache;
 import eatyourbeets.utilities.RandomizedList;
 import pinacolada.cards.fool.basic.Strike;
 import pinacolada.effects.SFX;
@@ -27,12 +27,21 @@ import pinacolada.patches.relicLibrary.RelicLibraryPatches;
 import pinacolada.resources.PGR;
 import pinacolada.resources.pcl.PCLResources;
 import pinacolada.resources.pcl.misc.PCLLoadout;
+import pinacolada.ui.PCLEnergyOrb;
 import pinacolada.ui.characterSelection.PCLBaseStatEditor;
 
 import java.util.ArrayList;
 
-public class FoolCharacter extends CustomPlayer
+public class FoolCharacter extends PCLCharacter
 {
+    public static final TextureCache[] ORB_TEXTURES =
+            {
+                    PGR.Fool.Images.ORB_BASE_LAYER,
+                    PGR.Fool.Images.ORB_TOP_LAYER1,
+                    PGR.Fool.Images.ORB_TOP_LAYER2,
+                    PGR.Fool.Images.ORB_TOP_LAYER3,
+                    PGR.Fool.Images.ORB_TOP_LAYER4,
+            };
     public static final CharacterStrings characterStrings = PCLResources.GetCharacterStrings("Fool");
     public static final Color MAIN_COLOR = CardHelper.getColor(210, 147, 106);
     public static final String[] NAMES = characterStrings.NAMES;
@@ -42,7 +51,7 @@ public class FoolCharacter extends CustomPlayer
 
     public FoolCharacter()
     {
-        super(ORIGINAL_NAME, PGR.Fool.PlayerClass, PGR.PCL.Images.ORB_TEXTURES, PGR.PCL.Images.ORB_VFX_PNG, (String) null, null);
+        super(ORIGINAL_NAME, PGR.Fool.PlayerClass, new PCLEnergyOrb(ORB_TEXTURES, PGR.Fool.Images.ORB_FLASH));
 
         initializeClass(null, PGR.Fool.Images.SHOULDER2_PNG, PGR.Fool.Images.SHOULDER1_PNG, PGR.Fool.Images.CORPSE_PNG,
         getLoadout(), 0f, -5f, 240f, 244f, new EnergyManager(3));

@@ -9,10 +9,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import eatyourbeets.actions.special.RefreshHandLayout;
 import eatyourbeets.utilities.GameActions;
 import eatyourbeets.utilities.RandomizedList;
-import pinacolada.cards.base.CardSeries;
-import pinacolada.cards.base.CardUseInfo;
-import pinacolada.cards.base.PCLCardData;
-import pinacolada.cards.base.PCLCardTarget;
+import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.fool.special.KaedeAkamatsu;
 import pinacolada.powers.FoolPower;
@@ -24,7 +21,10 @@ import pinacolada.utilities.PCLJUtils;
 
 public class ShuichiSaihara extends FoolCard
 {
-    public static final PCLCardData DATA = Register(ShuichiSaihara.class).SetSkill(0, CardRarity.UNCOMMON, PCLCardTarget.None).SetColorless().SetSeries(CardSeries.Danganronpa)
+    public static final PCLCardData DATA = Register(ShuichiSaihara.class).SetSkill(0, CardRarity.UNCOMMON, PCLCardTarget.None)
+            .SetColorless()
+            .SetSeries(CardSeries.Danganronpa)
+            .SetTraits(PCLCardTrait.Protagonist)
             .PostInitialize(data -> data.AddPreview(new KaedeAkamatsu(), false));
 
     public ShuichiSaihara()
@@ -35,7 +35,6 @@ public class ShuichiSaihara extends FoolCard
         SetExhaust(true);
 
         SetAffinity_Blue(1);
-        SetProtagonist(true);
     }
 
     @Override

@@ -9,6 +9,7 @@ import eatyourbeets.interfaces.subscribers.OnOrbPassiveEffectSubscriber;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCardData;
+import pinacolada.cards.base.PCLCardTrait;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.interfaces.subscribers.OnPCLClickablePowerUsed;
 import pinacolada.orbs.PCLOrbHelper;
@@ -24,6 +25,7 @@ public class Miko extends FoolCard
     public static final PCLCardData DATA = Register(Miko.class)
             .SetPower(3, CardRarity.RARE)
             .SetMaxCopies(2)
+            .SetTraits(PCLCardTrait.Beast, PCLCardTrait.Spellcaster)
             .SetSeriesFromClassPackage();
 
     public Miko()

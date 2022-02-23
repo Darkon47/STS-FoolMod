@@ -1,12 +1,11 @@
 package pinacolada.cards.fool.series.Bleach;
 
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.DexterityPower;
-import com.megacrit.cardcrawl.powers.FocusPower;
-import com.megacrit.cardcrawl.powers.StrengthPower;
+import eatyourbeets.interfaces.listeners.OnTryApplyPowerListener;
 import eatyourbeets.utilities.TargetHelper;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLAffinity;
@@ -14,13 +13,10 @@ import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.powers.FoolPower;
-import pinacolada.powers.PCLPowerHelper;
 import pinacolada.powers.common.BlindedPower;
-import pinacolada.powers.common.ResistancePower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -36,29 +32,30 @@ public class KanameTousen extends FoolCard {
         SetAffinity_Blue(1, 0, 1);
         SetAffinity_Green(1, 0, 0);
 
-        SetAffinityRequirement(PCLAffinity.Blue, 7);
-        SetAffinityRequirement(PCLAffinity.Dark, 7);
+        SetAffinityRequirement(PCLAffinity.Blue, 8);
+        SetAffinityRequirement(PCLAffinity.Dark, 8);
     }
 
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info) {
         PCLActions.Bottom.GainBlock(block);
+
         for (AbstractMonster mo : PCLGameUtilities.GetEnemies(true)) {
             if (mo.hasPower(BlindedPower.POWER_ID)) {
                 PCLActions.Bottom.GainTemporaryArtifact(secondaryValue);
-            }
-            else {
-                PCLActions.Bottom.ApplyBlinded(player, mo, magicNumber);
+                break;
             }
         }
+        PCLActions.Bottom.ApplyBlinded(TargetHelper.Enemies(), magicNumber);
 
-        PCLActions.Bottom.TryChooseSpendAffinity(this, PCLAffinity.Blue, PCLAffinity.Dark).AddConditionalCallback(() -> PCLActions.Bottom.StackPower(player, new KanameTousenPower(player, 2)));
+        PCLActions.Bottom.TryChooseSpendAffinity(this, PCLAffinity.Blue, PCLAffinity.Dark)
+                .CancellableFromPlayer(true)
+                .AddConditionalCallback(() -> PCLActions.Bottom.StackPower(player, new KanameTousenPower(player, 1)));
     }
 
 
-    public static class KanameTousenPower extends FoolPower
+    public static class KanameTousenPower extends FoolPower implements OnTryApplyPowerListener
     {
-        private static final String[] POWER_IDS = {StrengthPower.POWER_ID, DexterityPower.POWER_ID, FocusPower.POWER_ID, ResistancePower.POWER_ID};
         private final HashMap<String, Integer> counts = new HashMap<>();
 
         public KanameTousenPower(AbstractPlayer owner, int amount)
@@ -66,8 +63,6 @@ public class KanameTousen extends FoolCard {
             super(owner, KanameTousen.DATA);
 
             this.amount = amount;
-            RefreshCounts();
-            updateDescription();
         }
 
         @Override
@@ -76,35 +71,42 @@ public class KanameTousen extends FoolCard {
         }
 
         @Override
+        public void onInitialApplication()
+        {
+            super.onInitialApplication();
+
+            if (owner.powers != null) {
+                for (AbstractPower power : owner.powers) {
+                    if (power.amount < 0) {
+                        counts.merge(power.ID, power.amount * 2, Integer::sum);
+                        power.amount = power.amount * -1;
+                    }
+                }
+            }
+            updateDescription();
+
+        }
+
+        @Override
         public void onRemove()
         {
             super.onRemove();
 
             for (Map.Entry<String, Integer> entry : counts.entrySet()) {
-                PCLActions.Bottom.StackPower(TargetHelper.Source(), PCLPowerHelper.Get(entry.getKey()), entry.getValue());
+                AbstractPower power = PCLGameUtilities.GetPower(owner, entry.getKey());
+                if (power != null) {
+                    power.amount += entry.getValue();
+                }
             }
         }
 
         @Override
-        public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source)
-        {
-            super.onApplyPower(power, target, source);
-
-            if (target == owner && Arrays.stream(POWER_IDS).anyMatch(s -> s.equals(power.ID))) {
-                RefreshCounts();
+        public boolean TryApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source, AbstractGameAction abstractGameAction) {
+            if (target == owner && power.amount < 0) {
+                counts.merge(power.ID, power.amount * 2, Integer::sum);
+                power.amount = power.amount * -1;
             }
-        }
-
-        private void RefreshCounts() {
-            for (String powerID : POWER_IDS) {
-                int powerAmount = PCLGameUtilities.GetPowerAmount(owner, powerID);
-                if (powerAmount < 0) {
-                    counts.merge(powerID, powerAmount, Integer::sum);
-                    if (owner.hasPower(powerID)) {
-                        PCLActions.Bottom.RemovePower(owner,owner,powerID);
-                    }
-                }
-            }
+            return true;
         }
     }
 }

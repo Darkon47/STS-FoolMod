@@ -13,7 +13,9 @@ import pinacolada.utilities.PCLGameEffects;
 
 public class Chibimoth extends FoolCard
 {
-    public static final PCLCardData DATA = Register(Chibimoth.class).SetSkill(1, CardRarity.COMMON, PCLCardTarget.None).SetSeriesFromClassPackage()
+    public static final PCLCardData DATA = Register(Chibimoth.class).SetSkill(1, CardRarity.COMMON, PCLCardTarget.None)
+            .SetTraits(PCLCardTrait.Beast)
+            .SetSeriesFromClassPackage()
             .PostInitialize(data -> data.AddPreview(new KotoriKanbe(), false));
 
     public Chibimoth()

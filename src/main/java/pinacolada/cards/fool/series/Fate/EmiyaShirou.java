@@ -10,6 +10,7 @@ import pinacolada.actions.cardManipulation.RandomCardUpgrade;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLAttackType;
 import pinacolada.cards.base.PCLCardData;
+import pinacolada.cards.base.PCLCardTrait;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
 import pinacolada.orbs.pcl.Fire;
@@ -22,7 +23,8 @@ public class EmiyaShirou extends FoolCard implements OnAttackSubscriber
 {
     public static final PCLCardData DATA = Register(EmiyaShirou.class)
             .SetAttack(1, CardRarity.UNCOMMON, PCLAttackType.Fire)
-            .SetSeriesFromClassPackage();
+            .SetSeriesFromClassPackage()
+            .SetTraits(PCLCardTrait.Protagonist);
     private Fire fireOrb;
 
     public EmiyaShirou()
@@ -36,8 +38,6 @@ public class EmiyaShirou extends FoolCard implements OnAttackSubscriber
         SetAffinity_Orange(1);
         SetAffinity_Light(1, 0, 0);
         SetAffinity_Blue(0,0,1);
-
-        SetProtagonist(true);
     }
 
     @Override

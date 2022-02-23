@@ -42,11 +42,11 @@ public class MikuIzayoi extends FoolCard
         if (timesUpgraded > 0) {
             if (form == 1) {
                 SetEthereal(true);
-                Initialize(0, 0, 6, 2);
+                SetUpgrade(0, 0, 3, 0);
             }
             else {
                 SetEthereal(false);
-                Initialize(0, 0, 3, 2);
+                SetUpgrade(0, 0, 0, 0);
             }
         }
         return super.SetForm(form, timesUpgraded);

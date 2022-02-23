@@ -24,6 +24,7 @@ public class ChaikaTrabant extends FoolCard implements OnStartOfTurnPostDrawSubs
             .SetSkill(1, CardRarity.RARE, PCLCardTarget.None)
             .SetColorless(PGR.Enums.Cards.THE_FOOL)
             .SetSeries(CardSeries.HitsugiNoChaika)
+            .SetTraits(PCLCardTrait.Protagonist)
             .PostInitialize(data ->
             {
                 cardChoices.addToBottom(new ChaikaBohdan());
@@ -51,7 +52,6 @@ public class ChaikaTrabant extends FoolCard implements OnStartOfTurnPostDrawSubs
 
         SetAffinityRequirement(PCLAffinity.Green, 8);
 
-        SetProtagonist(true);
         SetExhaust(true);
     }
 

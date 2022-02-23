@@ -10,6 +10,7 @@ import eatyourbeets.utilities.TargetHelper;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLAttackType;
 import pinacolada.cards.base.PCLCardData;
+import pinacolada.cards.base.PCLCardTrait;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
 import pinacolada.effects.SFX;
@@ -23,6 +24,7 @@ public class DolaSchwi extends FoolCard implements OnStartOfTurnPostDrawSubscrib
 {
     public static final PCLCardData DATA = Register(DolaSchwi.class)
             .SetAttack(1, CardRarity.UNCOMMON, PCLAttackType.Electric)
+            .SetTraits(PCLCardTrait.Machine)
             .SetSeriesFromClassPackage();
 
     public DolaSchwi()

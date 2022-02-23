@@ -7,10 +7,7 @@ import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import eatyourbeets.powers.CombatStats;
-import pinacolada.cards.base.CardSeries;
-import pinacolada.cards.base.CardUseInfo;
-import pinacolada.cards.base.PCLAttackType;
-import pinacolada.cards.base.PCLCardData;
+import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.SFX;
 import pinacolada.effects.VFX;
@@ -24,6 +21,7 @@ public class SakuraKinomoto extends FoolCard
     public static final PCLCardData DATA = Register(SakuraKinomoto.class)
             .SetAttack(3, CardRarity.RARE, PCLAttackType.Electric)
             .SetColorless()
+            .SetTraits(PCLCardTrait.Spellcaster)
             .SetSeries(CardSeries.CardcaptorSakura);
 
     public SakuraKinomoto()

@@ -1,6 +1,5 @@
 package pinacolada.cards.fool.colorless;
 
-import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
@@ -58,7 +57,7 @@ public class MisuzuKamio extends FoolCard implements OnStartOfTurnPostDrawSubscr
             boolean trigger = false;
             for (AbstractPower po : player.powers) {
                 if (po.canGoNegative && po.amount < 0) {
-                    PCLActions.Bottom.StackPower(player, po, MathUtils.floor(po.amount / -2f));
+                    PCLActions.Bottom.RemovePower(player, po);
                     trigger = true;
                 }
             }

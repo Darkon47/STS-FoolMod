@@ -7,17 +7,16 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import eatyourbeets.utilities.WeightedList;
-import pinacolada.cards.base.CardUseInfo;
-import pinacolada.cards.base.PCLAffinity;
-import pinacolada.cards.base.PCLCardData;
-import pinacolada.cards.base.PCLCardTarget;
+import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
 public class ShidoItsuka extends FoolCard
 {
-    public static final PCLCardData DATA = Register(ShidoItsuka.class).SetSkill(1, CardRarity.COMMON, PCLCardTarget.None).SetSeriesFromClassPackage();
+    public static final PCLCardData DATA = Register(ShidoItsuka.class).SetSkill(1, CardRarity.COMMON, PCLCardTarget.None)
+            .SetSeriesFromClassPackage()
+            .SetTraits(PCLCardTrait.Protagonist);
 
     protected final static WeightedList<AbstractCard> dateALiveCards = new WeightedList<>();
 
@@ -30,7 +29,6 @@ public class ShidoItsuka extends FoolCard
         SetAffinity_Blue(1, 0, 1);
 
         SetExhaust(true);
-        SetProtagonist(true);
     }
 
     @Override

@@ -30,7 +30,6 @@ public class AsukaLangley extends FoolCard
         super(DATA);
 
         Initialize(13, 0, 1 );
-        SetUpgrade(0, 0, 0 );
 
         SetAffinity_Orange(1, 0, 1);
         SetAffinity_Green(1);
@@ -49,8 +48,7 @@ public class AsukaLangley extends FoolCard
                 upgradedDamage = true;
             }
             else {
-                Initialize(15, 0, 1 );
-                SetUpgrade(0, 0, 0 );
+                SetUpgrade(2, 0, 0 );
                 SetHaste(true);
             }
         }

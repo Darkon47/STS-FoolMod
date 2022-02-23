@@ -6,7 +6,8 @@ import pinacolada.cards.base.PCLCard;
 import pinacolada.relics.FoolRelic;
 import pinacolada.utilities.PCLActions;
 
-import static pinacolada.cards.base.PCLCard.HARMONIC;
+import static pinacolada.resources.PGR.Enums.CardTags.HARMONIC;
+
 
 public class Headphones extends FoolRelic implements Hidden
 {

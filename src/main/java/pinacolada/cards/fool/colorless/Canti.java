@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.vfx.combat.ViolentAttackEffect;
 import pinacolada.cards.base.CardSeries;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
+import pinacolada.cards.base.PCLCardTrait;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
 import pinacolada.utilities.PCLActions;
@@ -17,6 +18,7 @@ public class Canti extends FoolCard
     public static final PCLCardData DATA = Register(Canti.class)
             .SetAttack(1, CardRarity.UNCOMMON)
             .SetColorless()
+            .SetTraits(PCLCardTrait.Machine)
             .SetSeries(CardSeries.FLCL);
 
     public Canti()

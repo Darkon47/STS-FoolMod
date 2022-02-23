@@ -9,6 +9,8 @@ import pinacolada.cards.fool.FoolCard;
 import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 
+import static eatyourbeets.resources.GR.Enums.CardTags.HASTE;
+
 public class HatateHimekaidou extends FoolCard
 {
     public static final PCLCardData DATA = Register(HatateHimekaidou.class)

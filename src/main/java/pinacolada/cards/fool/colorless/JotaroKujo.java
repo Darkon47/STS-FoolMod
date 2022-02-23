@@ -44,10 +44,10 @@ public class JotaroKujo extends FoolCard
     public int SetForm(Integer form, int timesUpgraded) {
         if (timesUpgraded > 0) {
             if (form == 1) {
-                Initialize(0, 18, 2, 0);
+                SetUpgrade(0, 0, 1, 0);
             }
             else {
-                Initialize(0, 19, 1, 0);
+                SetUpgrade(0, 1, 0, 0);
                 SetInnate(true);
             }
         }

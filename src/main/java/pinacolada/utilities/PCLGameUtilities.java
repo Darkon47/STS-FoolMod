@@ -460,6 +460,11 @@ public class PCLGameUtilities extends GameUtilities
         return GetPCLAffinityLevel(card, PCLAffinity.Star, true) > 0;
     }
 
+    public static boolean HasTrait(AbstractCard card)
+    {
+        return GetPCLAffinityLevel(card, PCLAffinity.Red, true) > 0;
+    }
+
     public static int GetDebuffsCount(AbstractCreature creature)
     {
         return (creature == null || creature.powers == null) ? 0 : GetDebuffsCount(creature.powers);

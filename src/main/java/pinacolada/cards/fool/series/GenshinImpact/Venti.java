@@ -9,6 +9,7 @@ import eatyourbeets.interfaces.subscribers.OnOrbPassiveEffectSubscriber;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.PCLCardTarget;
+import pinacolada.cards.base.PCLCardTrait;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.orbs.pcl.Air;
 import pinacolada.powers.FoolPower;
@@ -24,6 +25,7 @@ public class Venti extends FoolCard
             .SetSkill(2, CardRarity.RARE, PCLCardTarget.None)
             .SetMaxCopies(2)
             .SetMultiformData(2, false)
+            .SetTraits(PCLCardTrait.Fairy)
             .SetSeriesFromClassPackage();
 
     public Venti()
@@ -31,7 +33,6 @@ public class Venti extends FoolCard
         super(DATA);
 
         Initialize(0, 1, 2, 2);
-        SetUpgrade(0, 0, 1, 0);
         SetAffinity_Star(1, 0, 0);
         SetAffinity_Green(0,0,2);
         SetAffinity_Light(0, 0, 1);
@@ -49,12 +50,10 @@ public class Venti extends FoolCard
     public int SetForm(Integer form, int timesUpgraded) {
         if (timesUpgraded > 0) {
             if (form == 1) {
-                Initialize(0, 1, 2, 2);
                 SetUpgrade(0, 0, 0, 0);
             }
             else {
-                Initialize(0, 1, 3, 2);
-                SetUpgrade(0, 0, 0, 0);
+                SetUpgrade(0, 0, 1, 0);
             }
         }
         return super.SetForm(form, timesUpgraded);

@@ -2,10 +2,7 @@ package pinacolada.cards.fool.series.GATE;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import pinacolada.cards.base.CardUseInfo;
-import pinacolada.cards.base.PCLAffinity;
-import pinacolada.cards.base.PCLAttackType;
-import pinacolada.cards.base.PCLCardData;
+import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
 import pinacolada.utilities.PCLActions;
@@ -15,7 +12,8 @@ public class ItamiYouji extends FoolCard
 {
     public static final PCLCardData DATA = Register(ItamiYouji.class)
             .SetAttack(2, CardRarity.RARE, PCLAttackType.Ranged)
-            .SetSeriesFromClassPackage();
+            .SetSeriesFromClassPackage()
+            .SetTraits(PCLCardTrait.Protagonist);
 
     public ItamiYouji()
     {
@@ -31,7 +29,6 @@ public class ItamiYouji extends FoolCard
         SetAffinityRequirement(PCLAffinity.Orange, 7);
 
         SetExhaust(true);
-        SetProtagonist(true);
     }
 
     @Override

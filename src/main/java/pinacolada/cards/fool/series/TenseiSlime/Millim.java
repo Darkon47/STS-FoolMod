@@ -15,6 +15,7 @@ public class Millim extends FoolCard
 {
     public static final PCLCardData DATA = Register(Millim.class)
             .SetAttack(2, CardRarity.UNCOMMON, PCLAttackType.Electric)
+            .SetTraits(PCLCardTrait.Demon, PCLCardTrait.Reptile)
             .SetSeriesFromClassPackage();
 
     public Millim()

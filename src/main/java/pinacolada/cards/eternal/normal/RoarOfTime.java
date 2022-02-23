@@ -31,7 +31,7 @@ public class RoarOfTime extends EternalCard implements OnStartOfTurnPostDrawSubs
         Initialize(0, 0, 3, 13);
         SetUpgrade(0, 0, 0, 4);
 
-        SetLight();
+        SetDark();
     }
 
     @Override

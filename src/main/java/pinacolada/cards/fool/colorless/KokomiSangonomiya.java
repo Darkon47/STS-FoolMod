@@ -4,10 +4,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.RegenPower;
-import pinacolada.cards.base.CardSeries;
-import pinacolada.cards.base.CardUseInfo;
-import pinacolada.cards.base.PCLCardData;
-import pinacolada.cards.base.PCLCardPreview;
+import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.fool.special.OrbCore_Water;
 import pinacolada.effects.SFX;
@@ -21,7 +18,9 @@ public class KokomiSangonomiya extends FoolCard
     public static final PCLCardData DATA = Register(KokomiSangonomiya.class).SetPower(2, CardRarity.RARE)
             .SetMaxCopies(1)
             .SetColorless()
-            .SetSeries(CardSeries.GenshinImpact).SetMultiformData(2, false);
+            .SetSeries(CardSeries.GenshinImpact)
+            .SetTraits(PCLCardTrait.Reptile)
+            .SetMultiformData(2, false);
     public static final PCLCardPreview CORE_PREVIEW = new PCLCardPreview(new OrbCore_Water(), false);
 
     public KokomiSangonomiya()

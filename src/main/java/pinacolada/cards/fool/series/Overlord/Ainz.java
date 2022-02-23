@@ -17,6 +17,7 @@ public class Ainz extends FoolCard
     public static final PCLCardData DATA = Register(Ainz.class)
             .SetPower(8, CardRarity.RARE)
             .SetMaxCopies(1)
+            .SetTraits(PCLCardTrait.Protagonist, PCLCardTrait.Demon, PCLCardTrait.Undead)
             .SetSeriesFromClassPackage();
     public static final PCLAffinity[] AFFINITIES = new PCLAffinity[] {PCLAffinity.Red, PCLAffinity.Blue, PCLAffinity.Orange, PCLAffinity.Dark};
     private static final CardEffectChoice choices = new CardEffectChoice();
@@ -32,8 +33,6 @@ public class Ainz extends FoolCard
         SetAffinity_Blue(1);
         SetAffinity_Dark(1);
         SetCostUpgrade(-1);
-
-        SetProtagonist(true);
     }
 
     @Override

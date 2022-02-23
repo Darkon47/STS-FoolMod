@@ -3,10 +3,7 @@ package pinacolada.cards.fool.series.Overlord;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.PlatedArmorPower;
-import pinacolada.cards.base.CardUseInfo;
-import pinacolada.cards.base.PCLAffinity;
-import pinacolada.cards.base.PCLAttackType;
-import pinacolada.cards.base.PCLCardData;
+import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
 import pinacolada.effects.VFX;
@@ -19,7 +16,8 @@ public class Gargantua extends FoolCard
 {
     public static final PCLCardData DATA = Register(Gargantua.class)
             .SetAttack(3, CardRarity.UNCOMMON, PCLAttackType.Brutal)
-            .SetSeriesFromClassPackage();
+            .SetSeriesFromClassPackage()
+            .SetTraits(PCLCardTrait.Demon);
     public static final int CHARGE_COST = 10;
 
     public Gargantua()

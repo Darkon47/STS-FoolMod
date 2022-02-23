@@ -26,7 +26,7 @@
 		},
 		"eternal:BalefulOmen":
 		{
-			"DESCRIPTION": "Match: ALL enemies gain !M! [Vulnerable] and [Weak]. || Mismatch: Gain !S! [Weak].",
+			"DESCRIPTION": "Match: ALL enemies gain !M! [Vulnerable] and [Weak]. Otherwise, gain !S! [Weak].",
 			"NAME": "Baleful Omen"
 		},
 		"eternal:Centering":
@@ -49,10 +49,20 @@
 			"DESCRIPTION": "Apply !M! [Vulnerable] to ALL enemies. || Lose ALL Resolve. [Vulnerable] gains +!S!% effect bonus per Resolve lost.",
 			"NAME": "Deterioration Of Principles"
 		},
+		"eternal:DisastrousDecision":
+		{
+			"DESCRIPTION": "Choose 1: ALL characters gain",
+			"NAME": "Disastrous Decision"
+		},
 		"eternal:Dominate":
 		{
 			"DESCRIPTION": "Deal +!M! damage per Resolve. || [MI]: Deals +25% damage.",
 			"NAME": "Dominate"
+		},
+		"eternal:DreamEater":
+		{
+			"DESCRIPTION": "Remove ALL the target's Common Debuffs. Steal !M! HP for each.",
+			"NAME": "Psycho Storm"
 		},
 		"eternal:Erosion":
 		{
@@ -225,6 +235,11 @@
 			"DESCRIPTION": "Gain !M! [Blur]. Set the Current <W> to <D>.",
 			"NAME": "Purple Haze"
 		},
+		"eternal:Reversal":
+		{
+			"DESCRIPTION": "Return ALL enemies to the lowest HP they had this battle before dealing damage.",
+			"NAME": "Reversal"
+		},
 		"eternal:RitesOfPassing":
 		{
 			"DESCRIPTION": "Gain !S! Resolve. Gain +!S! per card Exhausted this turn. || <LIM>. Match. [MI]: Play any Exhausted card.",
@@ -301,15 +316,15 @@
 			"EXTENDED_DESCRIPTION": ["Enemies deal #b{0} less damage per [A-Light] card in hand at the end of turn."],
 			"NAME": "Unchanging Eternity"
 		},
-		"eternal:UndyingVortex":
+		"eternal:UndyingAmbition":
 		{
 			"DESCRIPTION": "Purge ALL cards in your discard pile. Deal +!S! damage per card Purged. || [MI]: Gain [Energized] for every enemy killed.",
-			"NAME": "Undying Vortex"
+			"NAME": "Undying Ambition"
 		},
-		"eternal:UnshakableMind":
+		"eternal:UnshakableWill":
 		{
 			"DESCRIPTION": "Whenever a debuff is applied to you: Lose !M! Resolve to reduce its stacks by !S!.",
-			"NAME": "Unshakable Mind"
+			"NAME": "Unshakable Will"
 		},
 		"eternal:ViciousLunge":
 		{

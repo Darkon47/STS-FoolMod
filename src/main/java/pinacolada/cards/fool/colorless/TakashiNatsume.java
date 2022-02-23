@@ -4,10 +4,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.curses.*;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import pinacolada.cards.base.CardSeries;
-import pinacolada.cards.base.CardUseInfo;
-import pinacolada.cards.base.PCLCardData;
-import pinacolada.cards.base.PCLCardTarget;
+import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.fool.curse.*;
 import pinacolada.cards.fool.special.TakashiNatsume_Circle;
@@ -16,7 +13,9 @@ import pinacolada.utilities.PCLActions;
 
 public class TakashiNatsume extends FoolCard
 {
-    public static final PCLCardData DATA = Register(TakashiNatsume.class).SetSkill(0, CardRarity.UNCOMMON, PCLCardTarget.None).SetColorless().SetSeries(CardSeries.NatsumeYuujinchou)
+    public static final PCLCardData DATA = Register(TakashiNatsume.class).SetSkill(0, CardRarity.UNCOMMON, PCLCardTarget.None).SetColorless()
+            .SetTraits(PCLCardTrait.Spellcaster)
+            .SetSeries(CardSeries.NatsumeYuujinchou)
             .PostInitialize(data -> data.AddPreview(new TakashiNatsume_Circle(), false));
 
     public TakashiNatsume()

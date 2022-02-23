@@ -127,6 +127,8 @@ public class ReplacementCardBuilder extends PCLCardBuilder
         return new ReplacementCard(this);
     }
 
+    //TODO make a map that maps equivalent EYB tooltips to PCL tooltips automatically to avoid manual replacement
+    //TODO support base game keywords
     protected String GetModifiedText(String originalText) {
         return originalText
                 .replace("[F]", PGR.Tooltips.Might.toString())

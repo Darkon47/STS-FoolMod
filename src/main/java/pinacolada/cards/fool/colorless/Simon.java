@@ -5,10 +5,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 import eatyourbeets.powers.CombatStats;
-import pinacolada.cards.base.CardSeries;
-import pinacolada.cards.base.CardUseInfo;
-import pinacolada.cards.base.PCLAffinity;
-import pinacolada.cards.base.PCLCardData;
+import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
 import pinacolada.powers.PCLCombatStats;
@@ -19,7 +16,8 @@ public class Simon extends FoolCard
 {
     public static final PCLCardData DATA = Register(Simon.class).SetAttack(1, CardRarity.UNCOMMON)
             .SetColorless(PGR.Enums.Cards.THE_FOOL)
-            .SetSeries(CardSeries.GurrenLagann);
+            .SetSeries(CardSeries.GurrenLagann)
+            .SetTraits(PCLCardTrait.Protagonist);
 
     public Simon()
     {
@@ -32,7 +30,6 @@ public class Simon extends FoolCard
 
         SetExhaust(true);
         SetUnique(true, -1);
-        SetProtagonist(true);
     }
 
     @Override

@@ -24,6 +24,14 @@ public class DesperateSacrifice extends EternalCard
 
         SetLight();
         SetExhaust(true);
+        SetHaste(true);
+    }
+
+    @Override
+    protected void OnUpgrade()
+    {
+        super.OnUpgrade();
+        SetHaste(true);
     }
 
 

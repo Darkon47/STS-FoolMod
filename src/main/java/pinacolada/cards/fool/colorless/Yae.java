@@ -7,10 +7,7 @@ import com.megacrit.cardcrawl.orbs.Frost;
 import com.megacrit.cardcrawl.orbs.Lightning;
 import eatyourbeets.utilities.TargetHelper;
 import pinacolada.actions.orbs.EvokeOrb;
-import pinacolada.cards.base.CardSeries;
-import pinacolada.cards.base.CardUseInfo;
-import pinacolada.cards.base.PCLCardData;
-import pinacolada.cards.base.PCLCardTarget;
+import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.SFX;
 import pinacolada.powers.fool.SilencedPower;
@@ -19,7 +16,10 @@ import pinacolada.utilities.PCLGameUtilities;
 
 public class Yae extends FoolCard
 {
-    public static final PCLCardData DATA = Register(Yae.class).SetSkill(1, CardRarity.RARE, PCLCardTarget.None).SetColorless().SetMaxCopies(2).SetSeries(CardSeries.HoukaiGakuen);
+    public static final PCLCardData DATA = Register(Yae.class).SetSkill(1, CardRarity.RARE, PCLCardTarget.None).SetColorless()
+            .SetMaxCopies(2)
+            .SetSeries(CardSeries.HoukaiGakuen)
+            .SetTraits(PCLCardTrait.Spellcaster, PCLCardTrait.Demon);
 
     public Yae()
     {

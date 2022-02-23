@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import eatyourbeets.powers.CombatStats;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
+import pinacolada.cards.base.PCLCardTrait;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.fool.special.Yuuichirou_Asuramaru;
 import pinacolada.effects.AttackEffects;
@@ -17,6 +18,7 @@ public class Yuuichirou extends FoolCard
     public static final PCLCardData DATA = Register(Yuuichirou.class)
             .SetAttack(1, CardRarity.UNCOMMON)
             .SetSeriesFromClassPackage()
+            .SetTraits(PCLCardTrait.Protagonist)
             .PostInitialize(data -> data
                     .AddPreview(new Yuuichirou_Asuramaru(), true));
 
@@ -29,8 +31,6 @@ public class Yuuichirou extends FoolCard
 
         SetAffinity_Red(1, 0, 1);
         SetAffinity_Green(1, 0, 1);
-
-        SetProtagonist(true);
     }
 
     @Override

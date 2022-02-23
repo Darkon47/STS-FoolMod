@@ -19,6 +19,7 @@ public class MS06ZakuII extends FoolCard
 {
     public static final PCLCardData DATA = Register(MS06ZakuII.class).SetPower(3, CardRarity.RARE)
             .SetColorless(PGR.Enums.Cards.THE_FOOL)
+            .SetTraits(PCLCardTrait.Machine)
             .SetMaxCopies(1).SetMultiformData(2).SetSeries(CardSeries.Gundam);
     private static final UpgradedHand blight = new UpgradedHand();
     private static final PCLCardTooltip tooltip = new PCLCardTooltip(blight.name, PGR.PCL.Strings.CardMods.HandSize);

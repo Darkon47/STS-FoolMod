@@ -15,8 +15,7 @@ import pinacolada.utilities.PCLGameEffects;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
 
-import static pinacolada.resources.PGR.Enums.CardTags.PCL_ETHEREAL;
-import static pinacolada.resources.PGR.Enums.CardTags.PCL_EXHAUST;
+import static pinacolada.resources.PGR.Enums.CardTags.*;
 
 public class Nirvash extends FoolCard
 {

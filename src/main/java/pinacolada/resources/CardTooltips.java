@@ -108,6 +108,7 @@ public class CardTooltips
     public PCLCardTooltip Energized = FindByID("Energized");
     public PCLCardTooltip Enrage = FindByID("Enrage");
     public PCLCardTooltip Envenom = FindByID("Envenom");
+    public PCLCardTooltip Ephemeral = FindByID("Ephemeral");
     public PCLCardTooltip Ethereal = FindByID("~Ethereal");
     public PCLCardTooltip Fire = FindByID("Fire");
     public PCLCardTooltip FireDamage = FindByID("~Fire Damage");
@@ -115,9 +116,11 @@ public class CardTooltips
     public PCLCardTooltip Flight = FindByID("Flight");
     public PCLCardTooltip Focus = FindByID("Focus");
     public PCLCardTooltip Frail = FindByID("Frail");
+    public PCLCardTooltip Fragile = FindByID("Fragile");
     public PCLCardTooltip Freezing = FindByID("Freezing");
     public PCLCardTooltip Frost = FindByID("Frost");
     public PCLCardTooltip Genesis = FindByID("Genesis");
+    public PCLCardTooltip Grave = FindByID("Grave");
     public PCLCardTooltip Harmonic = FindByID("Harmonic");
     public PCLCardTooltip Haste = FindByID("~Haste");
     public PCLCardTooltip HasteInfinite = FindByID("~HasteInfinite");
@@ -276,6 +279,8 @@ public class CardTooltips
         Delayed.SetIcon(badges.Delayed.Texture(), 6).SetBadgeBackground(PCLColors.COLOR_DELAYED);
         Ethereal.SetIcon(badges.Ethereal.Texture(), 6).SetBadgeBackground(PCLColors.COLOR_ETHEREAL);
         Exhaust.SetIcon(badges.Exhaust.Texture(), 6).SetBadgeBackground(PCLColors.COLOR_EXHAUST);
+        Fragile.SetIcon(badges.Fragile.Texture(), 6).SetBadgeBackground(PCLColors.COLOR_FRAGILE);
+        Grave.SetIcon(badges.Grave.Texture(), 6).SetBadgeBackground(PCLColors.COLOR_GRAVE);
         Harmonic.SetIcon(badges.Harmonic.Texture(), 6).SetBadgeBackground(PCLColors.COLOR_HARMONIC);
         Haste.SetIcon(badges.Haste.Texture(), 6).SetBadgeBackground(PCLColors.COLOR_HASTE);
         HasteInfinite.SetIcon(badges.Haste.Texture(), 6).SetBadgeBackground(PCLColors.COLOR_HASTE);

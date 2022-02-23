@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import pinacolada.cards.base.CardSeries;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
+import pinacolada.cards.base.PCLCardTrait;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
 import pinacolada.effects.VFX;
@@ -17,6 +18,7 @@ public class ForceImpulseGundam extends FoolCard
 {
     public static final PCLCardData DATA = Register(ForceImpulseGundam.class).SetAttack(3, CardRarity.RARE).SetMultiformData(2, false)
             .SetColorless()
+            .SetTraits(PCLCardTrait.Machine)
             .SetSeries(CardSeries.Gundam);
     private int bonusDamage = 0;
 

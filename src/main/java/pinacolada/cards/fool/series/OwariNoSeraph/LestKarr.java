@@ -15,6 +15,8 @@ import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
+import static eatyourbeets.resources.GR.Enums.CardTags.HASTE;
+
 public class LestKarr extends FoolCard
 {
     public static final PCLCardData DATA = Register(LestKarr.class)

@@ -2,10 +2,7 @@ package pinacolada.cards.fool.series.Bleach;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import pinacolada.cards.base.CardUseInfo;
-import pinacolada.cards.base.PCLAffinity;
-import pinacolada.cards.base.PCLAttackType;
-import pinacolada.cards.base.PCLCardData;
+import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.fool.special.IchigoKurosaki_Bankai;
 import pinacolada.effects.AttackEffects;
@@ -17,6 +14,7 @@ public class IchigoKurosaki extends FoolCard
     public static final PCLCardData DATA = Register(IchigoKurosaki.class)
             .SetAttack(1, CardRarity.COMMON, PCLAttackType.Normal)
             .SetSeriesFromClassPackage()
+            .SetTraits(PCLCardTrait.Protagonist)
             .PostInitialize(data -> data.AddPreview(new IchigoKurosaki_Bankai(), false));
 
     public IchigoKurosaki()
@@ -28,8 +26,6 @@ public class IchigoKurosaki extends FoolCard
 
         SetAffinity_Red(1, 0, 1);
         SetAffinity_Green(1, 0, 1);
-
-        SetProtagonist(true);
     }
 
     @Override

@@ -25,7 +25,6 @@ public class Emilia extends FoolCard implements OnStartOfTurnPostDrawSubscriber
         super(DATA);
 
         Initialize(0, 1, 2, 0);
-        SetUpgrade(0, 0, 0, 2);
 
         SetAffinity_Blue(1, 0, 1);
         SetAffinity_Light(1);
@@ -44,12 +43,10 @@ public class Emilia extends FoolCard implements OnStartOfTurnPostDrawSubscriber
     public int SetForm(Integer form, int timesUpgraded) {
         if (timesUpgraded > 0) {
             if (form == 1) {
-                Initialize(0, 1, 2, 0);
                 SetUpgrade(0, 0, 0, 2);
             }
             else {
-                Initialize(0, 4, 2, 0);
-                SetUpgrade(0, 0, 0, 2);
+                SetUpgrade(0, 3, 0, 0);
                 AddScaling(PCLAffinity.Blue, 2);
             }
         }

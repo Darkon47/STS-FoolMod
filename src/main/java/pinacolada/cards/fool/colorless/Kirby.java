@@ -2,6 +2,7 @@ package pinacolada.cards.fool.colorless;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.StartupCard;
+import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.GraveField;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -26,8 +27,9 @@ import pinacolada.utilities.PCLJUtils;
 
 import java.util.ArrayList;
 
+import static eatyourbeets.resources.GR.Enums.CardTags.*;
 import static pinacolada.cards.base.PCLCardPreview.GeneratePreviewCard;
-import static pinacolada.resources.PGR.Enums.CardTags.AFTERLIFE;
+import static pinacolada.resources.PGR.Enums.CardTags.*;
 
 public class Kirby extends FoolCard implements
         OnAddToDeckListener,
@@ -427,6 +429,12 @@ public class Kirby extends FoolCard implements
         }
         if (card.hasTag(AUTOPLAY)) {
             SetAutoplay(true);
+        }
+        if (card.hasTag(FRAGILE)) {
+            SetFragile(true);
+        }
+        if (GraveField.grave.get(card)) {
+            GraveField.grave.set(this, true);
         }
     }
 

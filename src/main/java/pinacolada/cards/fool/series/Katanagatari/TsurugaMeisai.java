@@ -10,6 +10,8 @@ import pinacolada.cards.fool.FoolCard;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
+import static eatyourbeets.resources.GR.Enums.CardTags.HASTE;
+
 public class TsurugaMeisai extends FoolCard
 {
     public static final PCLCardData DATA = Register(TsurugaMeisai.class)

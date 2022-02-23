@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.ReactivePower;
 import com.megacrit.cardcrawl.vfx.BorderFlashEffect;
@@ -24,7 +25,7 @@ import java.util.HashMap;
 public class HaruhiSuzumiya extends FoolCard
 {
     public static final PCLCardData DATA = Register(HaruhiSuzumiya.class)
-            .SetSkill(2, CardRarity.RARE, PCLCardTarget.None)
+            .SetSkill(1, CardRarity.RARE, PCLCardTarget.None)
             .SetMaxCopies(1)
             .SetColorless(PGR.Enums.Cards.THE_FOOL)
             .SetSeries(CardSeries.HaruhiSuzumiya);
@@ -34,8 +35,7 @@ public class HaruhiSuzumiya extends FoolCard
     {
         super(DATA);
 
-        Initialize(0, 0, 3, 2);
-        SetCostUpgrade(-1);
+        Initialize(0, 0, 3, 4);
         SetEthereal(true);
         SetPurge(true);
 
@@ -68,10 +68,13 @@ public class HaruhiSuzumiya extends FoolCard
                 PCLRuntimeLoadout loadout = rMap.get(series.get(0));
                 if (loadout != null) {
                     PCLActions.Bottom.PurgeFromPile(name, 9999, p.hand, p.discardPile, p.drawPile)
+                            .ShowEffect(false, false)
                             .SetOptions(true, true)
                             .AddCallback(cards -> {
                                 for (AbstractCard c : CreateDeck(loadout, cards.size())) {
-                                    PCLActions.Bottom.MakeCardInDrawPile(c);
+                                    PCLActions.Bottom.MakeCardInDrawPile(c)
+                                            .SetUpgrade(upgraded, true)
+                                            .SetDuration(Settings.ACTION_DUR_XFAST, true);
                                 }
                                 PCLActions.Bottom.Draw(secondaryValue).AddCallback(cards2 -> {
                                     for (AbstractCard c : cards2) {

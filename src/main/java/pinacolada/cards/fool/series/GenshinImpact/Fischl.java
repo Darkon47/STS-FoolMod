@@ -8,6 +8,7 @@ import eatyourbeets.powers.CombatStats;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLAttackType;
 import pinacolada.cards.base.PCLCardData;
+import pinacolada.cards.base.PCLCardTrait;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.fool.special.Fischl_Oz;
 import pinacolada.effects.AttackEffects;
@@ -15,7 +16,9 @@ import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
 public class Fischl extends FoolCard {
-    public static final PCLCardData DATA = Register(Fischl.class).SetAttack(0, CardRarity.COMMON, PCLAttackType.Dark).SetSeriesFromClassPackage()
+    public static final PCLCardData DATA = Register(Fischl.class).SetAttack(0, CardRarity.COMMON, PCLAttackType.Dark)
+            .SetTraits(PCLCardTrait.Spellcaster)
+            .SetSeriesFromClassPackage()
             .PostInitialize(data -> data.AddPreview(new Fischl_Oz(), false));
 
     public Fischl() {

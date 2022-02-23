@@ -2,10 +2,7 @@ package pinacolada.cards.fool.colorless;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import pinacolada.cards.base.CardSeries;
-import pinacolada.cards.base.CardUseInfo;
-import pinacolada.cards.base.PCLCardData;
-import pinacolada.cards.base.PCLCardTarget;
+import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
@@ -15,6 +12,7 @@ public class LimeBell extends FoolCard
     public static final PCLCardData DATA = Register(LimeBell.class)
             .SetSkill(2, CardRarity.UNCOMMON, PCLCardTarget.None)
             .SetColorless(PGR.Enums.Cards.THE_FOOL)
+            .SetTraits(PCLCardTrait.Spellcaster)
             .SetSeries(CardSeries.AccelWorld);
 
     public LimeBell()

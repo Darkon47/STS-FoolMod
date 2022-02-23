@@ -24,6 +24,8 @@ import pinacolada.utilities.PCLJUtils;
 
 import java.util.ArrayList;
 
+import static eatyourbeets.resources.GR.Enums.CardTags.PURGE;
+
 public class Joker extends FoolCard
 {
     public static final PCLCardData DATA = Register(Joker.class).SetAttack(1, CardRarity.RARE, PCLAttackType.Ranged)

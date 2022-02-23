@@ -18,6 +18,8 @@ import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLJUtils;
 
+import static eatyourbeets.resources.GR.Enums.CardTags.HASTE;
+
 public class KawashiroNitori extends FoolCard
 {
     public static final PCLCardData DATA = Register(KawashiroNitori.class)

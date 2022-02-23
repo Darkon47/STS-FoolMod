@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.orbs.Lightning;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLAttackType;
 import pinacolada.cards.base.PCLCardData;
+import pinacolada.cards.base.PCLCardTrait;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
 import pinacolada.orbs.pcl.Earth;
@@ -19,27 +20,28 @@ public class ElricEdward extends FoolCard
     public static final PCLCardData DATA = Register(ElricEdward.class)
             .SetAttack(1, CardRarity.COMMON, PCLAttackType.Fire)
             .SetMultiformData(2, false)
-            .SetSeriesFromClassPackage();
+            .SetSeriesFromClassPackage()
+            .SetTraits(PCLCardTrait.Protagonist);
 
     public ElricEdward()
     {
         super(DATA);
 
         Initialize(5, 0, 1);
-        SetUpgrade(3, 0);
 
         SetAffinity_Blue(1, 0, 1);
         SetAffinity_Orange(1, 0, 1);
 
         SetEvokeOrbCount(1);
-        SetProtagonist(true);
     }
 
     @Override
     public int SetForm(Integer form, int timesUpgraded) {
         if (form == 1) {
-            Initialize(5, 0, 1);
             SetUpgrade(2, 0);
+        }
+        else {
+            SetUpgrade(3, 0);
         }
         return super.SetForm(form, timesUpgraded);
     }

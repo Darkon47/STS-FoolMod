@@ -20,6 +20,7 @@ public class LaplacesDemon extends FoolCard
     public static final PCLCardData DATA = Register(LaplacesDemon.class)
     		.SetSkill(2, CardRarity.RARE, PCLCardTarget.None).SetSeriesFromClassPackage()
             .SetMaxCopies(1)
+            .SetTraits(PCLCardTrait.Demon)
             .PostInitialize(data -> data.AddPreview(new LaplacesDemon(1), true));
 
     public LaplacesDemon() {

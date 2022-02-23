@@ -11,6 +11,7 @@ import eatyourbeets.interfaces.subscribers.OnOrbPassiveEffectSubscriber;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCardData;
+import pinacolada.cards.base.PCLCardTrait;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.powers.FoolClickablePower;
 import pinacolada.powers.PCLCombatStats;
@@ -24,7 +25,8 @@ public class Albedo extends FoolCard
 {
     public static final PCLCardData DATA = Register(Albedo.class)
             .SetPower(3, CardRarity.RARE)
-            .SetSeriesFromClassPackage();
+            .SetSeriesFromClassPackage()
+            .SetTraits(PCLCardTrait.Demon);
 
     public Albedo()
     {

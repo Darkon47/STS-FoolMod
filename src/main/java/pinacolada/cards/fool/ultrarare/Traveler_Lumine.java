@@ -32,6 +32,7 @@ public class Traveler_Lumine extends FoolCard_UltraRare implements OnStartOfTurn
     public static final PCLCardData DATA = Register(Traveler_Lumine.class)
             .SetSkill(1, CardRarity.SPECIAL, PCLCardTarget.None)
             .SetColorless().SetSeries(CardSeries.GenshinImpact)
+            .SetTraits(PCLCardTrait.Protagonist)
             .PostInitialize(data -> {
                 data.AddPreview(new Traveler_Wish(), false);
                 data.AddPreview(new Curse_AbyssalVoid(), false);
@@ -48,7 +49,6 @@ public class Traveler_Lumine extends FoolCard_UltraRare implements OnStartOfTurn
 
         SetEthereal(true);
         SetPurge(true);
-        SetProtagonist(true);
     }
 
     @Override

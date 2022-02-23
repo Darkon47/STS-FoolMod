@@ -2,10 +2,7 @@ package pinacolada.cards.fool.series.NoGameNoLife;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import pinacolada.cards.base.CardUseInfo;
-import pinacolada.cards.base.PCLAffinity;
-import pinacolada.cards.base.PCLCardData;
-import pinacolada.cards.base.PCLCardTarget;
+import pinacolada.cards.base.*;
 import pinacolada.cards.base.attributes.AbstractAttribute;
 import pinacolada.cards.base.attributes.TempHPAttribute;
 import pinacolada.cards.fool.FoolCard;
@@ -16,7 +13,8 @@ public class Shiro extends FoolCard
 {
     public static final PCLCardData DATA = Register(Shiro.class)
             .SetSkill(2, CardRarity.RARE, PCLCardTarget.None, true)
-            .SetSeriesFromClassPackage();
+            .SetSeriesFromClassPackage()
+            .SetTraits(PCLCardTrait.Protagonist);
     public static final int CHARGE_COST = 4;
 
     public Shiro()
@@ -29,8 +27,6 @@ public class Shiro extends FoolCard
         SetAffinity_Blue(1, 0, 1);
         SetAffinity_Orange(1, 0, 0);
         SetAffinity_Light(1);
-
-        SetProtagonist(true);
     }
 
     @Override

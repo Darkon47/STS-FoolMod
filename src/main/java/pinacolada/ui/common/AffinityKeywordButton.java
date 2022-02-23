@@ -120,6 +120,9 @@ public class AffinityKeywordButton extends GUIElement
         if (currentLevel > 2) {
             borderRotation = PGR.UI.Time_Multi(-20);
         }
+        else if (currentLevel > 1) {
+            borderRotation = PGR.UI.Time_Multi(8);
+        }
     }
 
     @Override
