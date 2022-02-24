@@ -144,8 +144,7 @@ public class CardKeywordButton extends GUIElement
             tooltip_text.Render(sb);
         }
         else {
-            PCLRenderHelpers.DrawGrayscale(sb, () ->
-                tooltip_text.Render(sb));
+            PCLRenderHelpers.DrawGrayscale(sb, tooltip_text::Render);
         }
 
         title_text.Render(sb);

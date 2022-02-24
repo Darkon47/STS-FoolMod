@@ -431,7 +431,7 @@ public abstract class PCLCardBase extends EYBCardBase
             SpireSuper.call(sb, x, y);
         }
         else if (this.color == CardColor.COLORLESS){
-            pinacolada.utilities.PCLRenderHelpers.DrawGrayscale(sb, () -> TryRenderCentered(sb, cardBg, popUpMultiplier));
+            pinacolada.utilities.PCLRenderHelpers.DrawGrayscale(sb, (s) -> TryRenderCentered(s, cardBg, popUpMultiplier));
         }
         else {
             TryRenderCentered(sb, GetCardBackground(), popUpMultiplier);

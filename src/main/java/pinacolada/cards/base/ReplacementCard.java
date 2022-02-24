@@ -108,8 +108,8 @@ public class ReplacementCard extends PCLCard_Dynamic
         renderColor.a = transparency;
 
         if (this.original.color == CardColor.COLORLESS || this.original.color == CardColor.CURSE) {
-            pinacolada.utilities.PCLRenderHelpers.DrawGrayscale(sb, () ->
-                pinacolada.utilities.PCLRenderHelpers.DrawOnCardAuto(sb, this, card, new Vector2(0,0), card.getWidth(), card.getHeight(), renderColor, transparency, popUpMultiplier));
+            pinacolada.utilities.PCLRenderHelpers.DrawGrayscale(sb, (s) ->
+                pinacolada.utilities.PCLRenderHelpers.DrawOnCardAuto(s, this, card, new Vector2(0,0), card.getWidth(), card.getHeight(), renderColor, transparency, popUpMultiplier));
         }
         else {
             pinacolada.utilities.PCLRenderHelpers.DrawOnCardAuto(sb, this, card, new Vector2(0,0), card.getWidth(), card.getHeight(), renderColor, transparency, popUpMultiplier);

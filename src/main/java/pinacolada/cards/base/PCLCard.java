@@ -1676,8 +1676,8 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
         Texture card = GetCardBackground();
         float popUpMultiplier = isPopup ? 0.5f : 1f;
         if (this.color == CardColor.COLORLESS || this.color == CardColor.CURSE) {
-            pinacolada.utilities.PCLRenderHelpers.DrawGrayscale(sb, () ->
-                pinacolada.utilities.PCLRenderHelpers.DrawOnCardAuto(sb, this, card,
+            pinacolada.utilities.PCLRenderHelpers.DrawGrayscale(sb, (s) ->
+                pinacolada.utilities.PCLRenderHelpers.DrawOnCardAuto(s, this, card,
                         new Vector2(0,0), card.getWidth(), card.getHeight(),
                         this.color == CardColor.CURSE ? PCLCard.CURSE_COLOR : PCLCard.COLORLESS_ORB_COLOR, transparency, popUpMultiplier));
         }
@@ -1696,8 +1696,8 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
             Vector2 offset = new Vector2(-baseCard.getWidth() / (isPopup ? 7.7f : 3.85f), baseCard.getHeight() / (isPopup ? 5.3f : 2.64f));
             Texture energyOrb = GetEnergyOrb();
             if ((this.color == CardColor.COLORLESS || this.color == CardColor.CURSE) && !(this instanceof FoolCard_UltraRare)) {
-                pinacolada.utilities.PCLRenderHelpers.DrawGrayscale(sb, () ->
-                    pinacolada.utilities.PCLRenderHelpers.DrawOnCardAuto(sb, this, energyOrb, offset, energyOrb.getWidth(), energyOrb.getHeight(), PCLCard.COLORLESS_ORB_COLOR, transparency, popUpMultiplier));
+                pinacolada.utilities.PCLRenderHelpers.DrawGrayscale(sb, (s) ->
+                    pinacolada.utilities.PCLRenderHelpers.DrawOnCardAuto(s, this, energyOrb, offset, energyOrb.getWidth(), energyOrb.getHeight(), PCLCard.COLORLESS_ORB_COLOR, transparency, popUpMultiplier));
             }
             else {
                 pinacolada.utilities.PCLRenderHelpers.DrawOnCardAuto(sb, this, energyOrb, offset, energyOrb.getWidth(), energyOrb.getHeight(), _renderColor.Get(this), transparency, popUpMultiplier);

@@ -66,8 +66,8 @@ public class PCLEnergyOrb implements EnergyOrbInterface {
             this.renderOrbLayer(sb, current_x, current_y);
         }
         else {
-            PCLRenderHelpers.DrawGrayscale(sb, () ->
-                    this.renderOrbLayer(sb, current_x, current_y));
+            PCLRenderHelpers.DrawGrayscale(sb, (s) ->
+                    this.renderOrbLayer(s, current_x, current_y));
         }
     }
 
@@ -75,17 +75,17 @@ public class PCLEnergyOrb implements EnergyOrbInterface {
     {
         sb.draw(this.images[0].Texture(), current_x - 64.0F, current_y - 64.0F, 64.0F, 64.0F, 128.0F, 128.0F, ORB_IMG_SCALE, ORB_IMG_SCALE, this.angle * this.angleMults[0], 0, 0, 128, 128, false, false);
         sb.setColor(Colors.White(0.26f));
-        PCLRenderHelpers.DrawBlended(sb, PCLRenderHelpers.BlendingMode.Normal, () -> {
+        PCLRenderHelpers.DrawBlended(sb, PCLRenderHelpers.BlendingMode.Normal, (s) -> {
             for (int i = 1; i < images.length; i++) {
-                sb.draw(this.images[i].Texture(), current_x - 64.0F, current_y - 64.0F, 64.0F, 64.0F, 128.0F, 128.0F, ORB_IMG_SCALE, ORB_IMG_SCALE, this.angle * this.angleMults[i], 0, 0, 128, 128, false, false);
+                s.draw(this.images[i].Texture(), current_x - 64.0F, current_y - 64.0F, 64.0F, 64.0F, 128.0F, 128.0F, ORB_IMG_SCALE, ORB_IMG_SCALE, this.angle * this.angleMults[i], 0, 0, 128, 128, false, false);
             }
         });
         sb.setColor(Colors.White(0.17f));
-        PCLRenderHelpers.DrawBlended(sb, PCLRenderHelpers.BlendingMode.Glowing, () -> {
+        PCLRenderHelpers.DrawBlended(sb, PCLRenderHelpers.BlendingMode.Glowing, (s) -> {
             for (int i = images.length - 2; i < images.length; i++) {
-                sb.draw(this.images[i].Texture(), current_x - 64.0F, current_y - 64.0F, 64.0F, 64.0F, 128.0F, 128.0F, ORB_IMG_SCALE, ORB_IMG_SCALE, -this.angle * this.angleMults[i], 0, 0, 128, 128, false, false);
-                sb.draw(this.images[i].Texture(), current_x - 64.0F, current_y - 64.0F, 64.0F, 64.0F, 64.0F, 64.0F, ORB_IMG_SCALE / 2, ORB_IMG_SCALE / 2, this.angle * this.angleMults[i], 0, 0, 128, 128, false, false);
-                sb.draw(this.images[i].Texture(), current_x - 64.0F, current_y - 64.0F, 64.0F, 64.0F, 32, 32, ORB_IMG_SCALE / 4, ORB_IMG_SCALE / 4, -this.angle * this.angleMults[i] + 90f, 0, 0, 128, 128, false, false);
+                s.draw(this.images[i].Texture(), current_x - 64.0F, current_y - 64.0F, 64.0F, 64.0F, 128.0F, 128.0F, ORB_IMG_SCALE, ORB_IMG_SCALE, -this.angle * this.angleMults[i], 0, 0, 128, 128, false, false);
+                s.draw(this.images[i].Texture(), current_x - 64.0F, current_y - 64.0F, 64.0F, 64.0F, 64.0F, 64.0F, ORB_IMG_SCALE / 2, ORB_IMG_SCALE / 2, this.angle * this.angleMults[i], 0, 0, 128, 128, false, false);
+                s.draw(this.images[i].Texture(), current_x - 64.0F, current_y - 64.0F, 64.0F, 64.0F, 32, 32, ORB_IMG_SCALE / 4, ORB_IMG_SCALE / 4, -this.angle * this.angleMults[i] + 90f, 0, 0, 128, 128, false, false);
             }
         });
     }

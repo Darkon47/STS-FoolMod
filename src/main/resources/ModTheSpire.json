@@ -7,6 +7,6 @@
   "version": "8.0.0",
   "sts_version": "12-22-2020",
   "mts_version": "3.22.0",
-  "dependencies": ["basemod", "stslib", "eatyourbeetsvg-theanimator"],
+  "dependencies": ["basemod", "stslib", "stseffekseer", "eatyourbeetsvg-theanimator"],
   "update_json": ""
 }

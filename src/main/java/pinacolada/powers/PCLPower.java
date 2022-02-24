@@ -278,8 +278,8 @@ public abstract class PCLPower extends AbstractPower implements CloneablePowerIn
 
         if (this.useTemporaryColoring) {
             Color finalC = c;
-            pinacolada.utilities.PCLRenderHelpers.DrawSepia(sb, () ->
-                this.renderIconsImpl(sb,x,y, finalC)
+            pinacolada.utilities.PCLRenderHelpers.DrawSepia(sb, (s) ->
+                this.renderIconsImpl(s,x,y, finalC)
             );
         }
         else {

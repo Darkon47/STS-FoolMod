@@ -1,5 +1,6 @@
 package pinacolada.effects.vfx;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
@@ -11,6 +12,8 @@ public class EffekseerEffect extends PCLEffect {
     protected Vector3 rotation;
     protected String key;
     protected Integer handle;
+    protected Color colorizeColor;
+    protected Float colorizePalette;
 
     public EffekseerEffect(String key, float x, float y) {
         super(0.5f, false);
@@ -20,6 +23,16 @@ public class EffekseerEffect extends PCLEffect {
 
     public EffekseerEffect SetRotation(Vector3 rotation) {
         this.rotation = rotation;
+        return this;
+    }
+
+    public EffekseerEffect SetColorizeColor(Color color) {
+        this.colorizeColor = color;
+        return this;
+    }
+
+    public EffekseerEffect SetColorizePalette(float palette) {
+        this.colorizePalette = palette;
         return this;
     }
 
@@ -42,6 +55,17 @@ public class EffekseerEffect extends PCLEffect {
     @Override
     public void render(SpriteBatch sb)
     {
-        STSEffekseerManager.Render(sb);
+        if (this.colorizePalette != null) {
+            STSEffekseerManager.RenderColorized(sb, colorizePalette);
+        }
+        else if (this.colorizeColor != null) {
+            STSEffekseerManager.RenderColorized(sb, colorizeColor);
+        }
+        else if (this.color != null ){
+            STSEffekseerManager.RenderBrighter(sb, color);
+        }
+        else {
+            STSEffekseerManager.Render(sb);
+        }
     }
 }

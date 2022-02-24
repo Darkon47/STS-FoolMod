@@ -147,12 +147,12 @@ public class VFX
 
     public static EffekseerEffect EFX(String key, Hitbox hb)
     {
-        return EFX(key, hb.cX, hb.cY);
+        return EFX(key, hb.x, hb.y);
     }
 
-    public static EffekseerEffect EFX(String key, float cX, float cY)
+    public static EffekseerEffect EFX(String key, float x, float y)
     {
-        return new EffekseerEffect(key, cX, cY);
+        return new EffekseerEffect(key, x, y);
     }
 
     public static FallingIceEffect FallingIce(int frostCount)

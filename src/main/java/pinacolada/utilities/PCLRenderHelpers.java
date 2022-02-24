@@ -1,11 +1,9 @@
 package pinacolada.utilities;
 
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.*;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
-import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.math.Vector2;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
@@ -13,7 +11,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.Hitbox;
 import com.megacrit.cardcrawl.localization.LocalizedStrings;
-import eatyourbeets.interfaces.delegates.ActionT0;
 import eatyourbeets.interfaces.delegates.FuncT1;
 import eatyourbeets.interfaces.delegates.FuncT3;
 import eatyourbeets.utilities.AdvancedTexture;
@@ -25,26 +22,12 @@ import pinacolada.cards.base.PCLCardTooltip;
 import pinacolada.resources.CardTooltips;
 import pinacolada.resources.PGR;
 import pinacolada.ui.controls.GUI_Image;
+import stseffekseer.STSRenderUtils;
 
 import java.util.ArrayList;
 
-public class PCLRenderHelpers
+public class PCLRenderHelpers extends STSRenderUtils
 {
-    public enum BlendingMode {
-        Normal(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA),
-        Glowing(GL20.GL_SRC_ALPHA, GL20.GL_ONE),
-        Overlay(GL20.GL_DST_COLOR, GL20.GL_ONE),
-        Screen(GL20.GL_DST_COLOR, GL20.GL_ONE_MINUS_SRC_COLOR);
-
-        public final int srcFunc;
-        public final int dstFunc;
-
-        BlendingMode(int srcFunc, int dstFunc) {
-            this.srcFunc = srcFunc;
-            this.dstFunc = dstFunc;
-        }
-    }
-
     public static final float CARD_ENERGY_IMG_WIDTH = 26.0F * Settings.scale;
     private static final StringBuilder builder = new StringBuilder();
     private static final GlyphLayout layout = new GlyphLayout();
@@ -411,31 +394,6 @@ public class PCLRenderHelpers
         sb.setColor(color);
         sb.draw(img, x, y, 0, 0, width, height, Settings.scale, Settings.scale, 0, 0, 0,
                 srcWidth, srcHeight, false, false);
-    }
-
-    public static void DrawGrayscale(SpriteBatch sb, ActionT0 drawFunc) {
-        DrawWithShader(sb, PGR.GetGrayscaleShader(), drawFunc);
-    }
-
-    public static void DrawSepia(SpriteBatch sb, ActionT0 drawFunc) {
-        DrawWithShader(sb, PGR.GetSepiaShader(), drawFunc);
-    }
-
-    public static void DrawWithShader(SpriteBatch sb, ShaderProgram shader, ActionT0 drawFunc) {
-        ShaderProgram defaultShader = sb.getShader();
-        sb.setShader(shader);
-        drawFunc.Invoke();
-        sb.setShader(defaultShader);
-    }
-
-    public static void DrawTranslucent(SpriteBatch sb, ActionT0 drawFunc) {
-        DrawBlended(sb, BlendingMode.Glowing, drawFunc);
-    }
-
-    public static void DrawBlended(SpriteBatch sb, BlendingMode mode, ActionT0 drawFunc) {
-        sb.setBlendFunction(mode.srcFunc,mode.dstFunc);
-        drawFunc.Invoke();
-        sb.setBlendFunction(770,771);
     }
 
     public static void WriteOnCard(SpriteBatch sb, AbstractCard card, BitmapFont font, String text, float x, float y, Color color)

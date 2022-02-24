@@ -259,8 +259,7 @@ public class EternalResolveMeter extends PCLAffinityMeter implements OnTrySpendE
         UltimateButtonBG.TryRender(sb);
         UltimateButton.TryRender(sb);
         if (InUltimateMode()) {
-            PCLRenderHelpers.DrawBlended(sb, PCLRenderHelpers.BlendingMode.Glowing,
-                    () -> UltimateButton.Render(sb));
+            PCLRenderHelpers.DrawBlended(sb, PCLRenderHelpers.BlendingMode.Glowing, UltimateButton::Render);
         }
     }
 

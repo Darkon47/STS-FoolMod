@@ -1,9 +1,7 @@
 package pinacolada.resources;
 
 import basemod.BaseMod;
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
-import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.google.gson.Gson;
@@ -42,9 +40,6 @@ public class PGR extends eatyourbeets.resources.GR
     public static final String PREFIX_POTIONS = "pinacolada.potions.";
     public static final String PREFIX_POWERS = "pinacolada.powers.";
     public static final String PREFIX_RELIC = "pinacolada.relics.";
-    public static final String SHADER_GRAYSCALE_FRAGMENT = "shaders/grayscaleFragment.glsl";
-    public static final String SHADER_SEPIA_FRAGMENT = "shaders/sepiaFragment.glsl";
-    public static final String SHADER_VERTEX = "shaders/coloringVertex.glsl";
 
     protected static final Logger logger = PCLJUtils.GetLogger(PGR.class);
     protected static final ArrayList<String> cardClassNames = PCLJUtils.GetClassNamesFromJarFile(PREFIX_CARDS);
@@ -57,8 +52,6 @@ public class PGR extends eatyourbeets.resources.GR
     public static PCLResources PCL;
     public static FoolResources Fool;
     public static EternalResources Eternal;
-    public static ShaderProgram GrayscaleShader;
-    public static ShaderProgram SepiaShader;
 
     public static boolean IsLoaded() {
         return PCL != null && PCL.isLoaded && Fool.isLoaded && Eternal.isLoaded;
@@ -86,28 +79,6 @@ public class PGR extends eatyourbeets.resources.GR
         resources.InitializeColor();
 
         BaseMod.subscribe(resources);
-    }
-
-    public static ShaderProgram GetGrayscaleShader() {
-        if (GrayscaleShader == null) {
-            GrayscaleShader = InitializeShader(SHADER_GRAYSCALE_FRAGMENT);
-        }
-        return GrayscaleShader;
-    }
-
-    public static ShaderProgram GetSepiaShader() {
-        if (SepiaShader == null) {
-            SepiaShader = InitializeShader(SHADER_SEPIA_FRAGMENT);
-        }
-        return SepiaShader;
-    }
-
-    public static ShaderProgram InitializeShader(String fShaderPath) {
-        FileHandle fShader = Gdx.files.internal(fShaderPath);
-        FileHandle vShader = Gdx.files.internal(SHADER_VERTEX);
-        String fShaderString = fShader.readString();
-        String vShaderString = vShader.readString();
-        return new ShaderProgram(vShaderString, fShaderString);
     }
 
     public static RunModStrings GetRunModStrings(String stringID)

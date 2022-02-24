@@ -228,7 +228,7 @@ public class GUI_Image extends GUIElement
     public void Render(SpriteBatch sb, float x, float y, float width, float height)
     {
         if (grayscale) {
-            PCLRenderHelpers.DrawGrayscale(sb, () -> RenderImpl(sb, x, y, width, height));
+            PCLRenderHelpers.DrawGrayscale(sb, (s) -> RenderImpl(s, x, y, width, height));
         }
         else {
             RenderImpl(sb, x, y, width, height);
@@ -276,7 +276,7 @@ public class GUI_Image extends GUIElement
 
     public void RenderCentered(SpriteBatch sb, float x, float y, float width, float height) {
         if (grayscale) {
-            PCLRenderHelpers.DrawGrayscale(sb, () -> RenderCenteredImpl(sb, x, y, width, height));
+            PCLRenderHelpers.DrawGrayscale(sb, (s) -> RenderCenteredImpl(s, x, y, width, height));
         }
         else {
             RenderCenteredImpl(sb, x, y, width, height);
