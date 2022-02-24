@@ -1,5 +1,5 @@
 # The Fool
-This is an addon with a new character for the official redesign Animator branch. It uses many of the same cards but pits them in a different set of game mechanics.
+This is an addon with a new character for the official redesign Animator mod for Slay the Spire. It uses many of the same cards but pits them in a different set of game mechanics.
 
 Installation Instructions:
 - Install StsLib, ModTheSpire, and BaseMod (these can be gotten from the Steam workshop. If you have the GOG version, follow these steps instead: https://reddit.com/r/slaythespire/comments/gj5kel/howto_add_mods_to_gog_version/)
