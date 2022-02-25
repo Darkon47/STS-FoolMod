@@ -7,7 +7,6 @@ Installation Instructions:
 - Download the latest version of STS-Effekseer mod from https://github.com/SevenDayCandle/STS-Effekseer/releases/tag/1.0.3 and place it into your mods folder (usually {folder containing STS}\SlayTheSpire\mods)
 - Download the mod from the link above and place in the same folder that you placed the official redesign mod
 - Run ModTheSpire. Ensure that StsLib, BaseMod, and The Animator are checked and appear above this mod in the mod load order
-- 
 ## Links
 - [Discord Server Link] https://discord.gg/SmHMmJR
 - [Official Mod Github] https://github.com/EatYourBeetS/STS-AnimatorMod/tree/redesign
