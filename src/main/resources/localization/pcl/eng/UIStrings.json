@@ -89,7 +89,9 @@
 			"AIR",
 			"Violet Evergarden",
 			"Monogatari",
-			"Persona"
+			"Persona",
+			"Hyperdimension Neptunia",
+			"My Dress-Up Darling"
 		],
 		"EXTRA_TEXT":
 		[
@@ -148,6 +150,8 @@
 			"Heal {0} HP",
 			"Trigger your first {0} {1} time(s)",
 			"Pay {0} {1}",
+			"Give card(s) {0}",
+			"Give card(s) {0} {1}",
 			"to a random enemy",
 			"to ALL enemies"
 		]
@@ -361,7 +365,7 @@
 	{
 		"TEXT":
 		[
-			"A #yMatch occurs whenever you play a card with an #yAffinity that matches the #yCurrent #yAffinity. A #yMismatch occurs whenever you play a card with #yAffinities that does not have the #yCurrent #yAffinity, unless either the card or the #yCurrent #yAffinity is [A-Silver].",
+			"A #yMatch occurs whenever you play a card with an #yAffinity that matches the #yCurrent #yAffinity. A #yMismatch occurs whenever you play a card with #yAffinities that does not have the #yCurrent #yAffinity, unless either the card or the #yCurrent #yAffinity is [A-Gen] or [A-Silver].",
 			"Your #yResolve is displayed in the bar below this tip. Whenever you make a #yMatch: Gain #b2 #yResolve. Whenever you make a #yMismatch: Lose #b2 #yResolve.",
 			"When you reach #b20 #yResolve: You may click on the purple button to the right of the bar to enter the #yMusou #yIsshin state. In this state, cards from this character will reduce your #yResolve by #b2 instead of using [E]. If this state is active at the end of your turn, leave it and lose ALL #yResolve."
 		]

@@ -25,8 +25,8 @@ public enum PCLAffinity implements TooltipObject, Comparable<PCLAffinity>
 
     protected static final TextureCache BorderBG = PGR.PCL.Images.Affinities.BorderBG;
     protected static final TextureCache BorderFG = PGR.PCL.Images.Affinities.BorderFG;
-    protected static final TextureCache BorderLV2 = PGR.PCL.Images.Affinities.Border_Strong;
-    protected static final TextureCache BorderLV1 = PGR.PCL.Images.Affinities.Border_Weak;
+    protected static final TextureCache BorderLV2 = PGR.PCL.Images.Affinities.Border_Weak;
+    protected static final TextureCache BorderLV1 = PGR.PCL.Images.Affinities.Border_Normal;
     protected static final PCLAffinity[] BASIC_TYPES = new PCLAffinity[6];
     protected static final PCLAffinity[] EXTENDED_TYPES = new PCLAffinity[TOTAL_AFFINITIES];
     protected static final PCLAffinity[] ALL_TYPES = new PCLAffinity[8];

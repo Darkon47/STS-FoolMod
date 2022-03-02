@@ -6,7 +6,10 @@ import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.orbs.Frost;
 import eatyourbeets.powers.CombatStats;
 import pinacolada.actions.orbs.EvokeOrb;
-import pinacolada.cards.base.*;
+import pinacolada.cards.base.CardSeries;
+import pinacolada.cards.base.CardUseInfo;
+import pinacolada.cards.base.PCLCardData;
+import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.base.attributes.AbstractAttribute;
 import pinacolada.cards.base.attributes.TempHPAttribute;
 import pinacolada.cards.fool.FoolCard;
@@ -97,7 +100,7 @@ public class AkariMizunashi extends FoolCard
                 {
                     if (orbs.size() > 0)
                     {
-                        PCLGameUtilities.AddAffinityPowerUse(PCLAffinity.Blue, PCLGameUtilities.GetPCLAffinityPowerLevel(PCLAffinity.Blue));
+                        PCLActions.Bottom.GainFocus(1);
                     }
                     else
                     {

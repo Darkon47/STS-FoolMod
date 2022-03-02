@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.powers.LockOnPower;
 import com.megacrit.cardcrawl.vfx.combat.OrbFlareEffect;
 import eatyourbeets.actions.EYBAction;
+import eatyourbeets.utilities.TargetHelper;
 import pinacolada.cards.base.PCLAttackType;
 import pinacolada.effects.AttackEffects;
 import pinacolada.effects.SFX;
@@ -17,6 +18,7 @@ import pinacolada.utilities.PCLGameUtilities;
 
 public class LightningOrbAction extends EYBAction
 {
+    public static final int ELECTRIFIED_AMOUNT = 1;
     private final AbstractOrb orb;
     private final boolean hitAll;
 
@@ -47,6 +49,7 @@ public class LightningOrbAction extends EYBAction
 
             if (enemy != null)
             {
+                PCLActions.Top.ApplyElectrified(source, enemy, ELECTRIFIED_AMOUNT);
                 int actualDamage = AbstractOrb.applyLockOn(enemy, amount);
                 if (actualDamage > 0)
                 {
@@ -57,6 +60,7 @@ public class LightningOrbAction extends EYBAction
                 }
             }
         } else {
+            PCLActions.Top.ApplyElectrified(TargetHelper.Enemies(), ELECTRIFIED_AMOUNT);
             int[] damage = DamageInfo.createDamageMatrix(amount, true, true);
             PCLActions.Top.DealDamageToAll(damage, DamageInfo.DamageType.THORNS, AttackEffects.LIGHTNING)
                     .SetPCLAttackType(PCLAttackType.Electric, true)
@@ -77,6 +81,7 @@ public class LightningOrbAction extends EYBAction
         Complete();
     }
 
+    // Allow Lightning to activate Rippled even though it is considered Thorns damage
     protected void ActivateRippled(AbstractMonster mo, int damageAmount) {
         RippledPower rp = PCLGameUtilities.GetPower(mo, RippledPower.POWER_ID);
         if (rp != null) {

@@ -11,7 +11,9 @@ import pinacolada.utilities.PCLActions;
 
 public class Klee extends FoolCard
 {
-    public static final PCLCardData DATA = Register(Klee.class).SetAttack(2, CardRarity.UNCOMMON, PCLAttackType.Fire, PCLCardTarget.AoE).SetSeriesFromClassPackage()
+    public static final PCLCardData DATA = Register(Klee.class).SetAttack(2, CardRarity.UNCOMMON, PCLAttackType.Fire, PCLCardTarget.AoE)
+            .SetTraits(PCLCardTrait.Spellcaster)
+            .SetSeriesFromClassPackage()
             .PostInitialize(data -> data.AddPreview(new JumpyDumpty(), true));
 
     public Klee()

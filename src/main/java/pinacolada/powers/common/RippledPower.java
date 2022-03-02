@@ -26,7 +26,7 @@ public class RippledPower extends PCLTriggerablePower
 
     public RippledPower(AbstractCreature owner, AbstractCreature source, int amount)
     {
-        super(owner, source, POWER_ID, SPLASH_MULTIPLIER);
+        super(owner, source, POWER_ID, DEFAULT_REACTION_INCREASE, SPLASH_MULTIPLIER);
 
         this.priority = 4;
 

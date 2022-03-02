@@ -10,6 +10,8 @@ import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.fool.special.DioBrando_TheWorld;
+import pinacolada.effects.PCLEffekseerEFX;
+import pinacolada.effects.VFX;
 import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 
@@ -46,6 +48,7 @@ public class DioBrando extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
+        PCLActions.Bottom.VFX(VFX.EFX(PCLEffekseerEFX.SWORD03, m.hb));
         PCLActions.Bottom.DealCardDamage(this, m, AbstractGameAction.AttackEffect.SLASH_HEAVY).forEach(d -> d.SetVFXColor(Color.GOLDENROD, Color.GOLDENROD).SetSoundPitch(0.5f, 1.5f));
 
         PCLActions.Bottom.Draw(magicNumber).AddCallback(() -> {

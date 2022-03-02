@@ -1,5 +1,6 @@
 package pinacolada.cards.fool.ultrarare;
 
+import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.GraveField;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -27,6 +28,7 @@ public class MioTakamiya extends FoolCard_UltraRare
         Initialize(0, 0, 2);
         SetAffinity_Light(1, 0, 0);
         SetEthereal(true);
+        GraveField.grave.set(this, true);
     }
 
     @Override

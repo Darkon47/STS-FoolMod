@@ -22,8 +22,8 @@ public class Curse_Greed extends PCLCard
         super(DATA);
 
         Initialize(0, 0, 1);
-
         SetAffinity_Dark(1);
+
         SetUnplayable(true);
     }
 

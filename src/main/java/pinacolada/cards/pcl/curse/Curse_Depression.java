@@ -18,6 +18,8 @@ public class Curse_Depression extends PCLCard
     {
         super(DATA);
         Initialize(0,0,1,0);
+        SetAffinity_Dark(1);
+
         SetEthereal(true);
         SetUnplayable(true);
     }

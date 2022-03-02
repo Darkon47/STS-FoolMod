@@ -15,6 +15,7 @@ import eatyourbeets.cards.base.EYBCard;
 import eatyourbeets.interfaces.listeners.OnReceiveRewardsListener;
 import eatyourbeets.utilities.RandomizedList;
 import eatyourbeets.utilities.WeightedList;
+import pinacolada.actions.pileSelection.SelectFromPile;
 import pinacolada.cards.base.CardSeries;
 import pinacolada.cards.base.PCLCard;
 import pinacolada.cards.base.PCLCardTooltip;
@@ -24,10 +25,7 @@ import pinacolada.powers.special.EnchantmentPower;
 import pinacolada.resources.PGR;
 import pinacolada.resources.pcl.misc.PCLRuntimeLoadout;
 import pinacolada.rewards.pcl.MissingPieceReward;
-import pinacolada.utilities.PCLActions;
-import pinacolada.utilities.PCLGameUtilities;
-import pinacolada.utilities.PCLInputManager;
-import pinacolada.utilities.PCLJUtils;
+import pinacolada.utilities.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -207,7 +205,7 @@ public abstract class PCLEnchantableRelic extends PCLRelic implements OnReceiveR
     {
         if (counter > 0 && GetEnchantmentLevel() < 2)
         {
-            PCLActions.Bottom.SelectFromPile(name, 1, CreateUpgradeGroup())
+            PCLGameEffects.Queue.Callback(new SelectFromPile(name, 1, CreateUpgradeGroup())
                     .CancellableFromPlayer(true)
                     .AddCallback(selection -> {
                         if (selection.size() > 0) {
@@ -219,7 +217,7 @@ public abstract class PCLEnchantableRelic extends PCLRelic implements OnReceiveR
                                 Use();
                             }
                         }
-                    });
+                    }));
         }
     }
 

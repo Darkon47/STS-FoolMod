@@ -22,6 +22,7 @@ import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.pcl.status.Crystallize;
 import pinacolada.effects.AttackEffects;
+import pinacolada.effects.PCLEffekseerEFX;
 import pinacolada.effects.SFX;
 import pinacolada.effects.VFX;
 import pinacolada.utilities.PCLActions;
@@ -103,6 +104,8 @@ public class Gilgamesh extends FoolCard implements OnRelicObtainedSubscriber
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
         PCLActions.Bottom.SFX(SFX.ATTACK_WHIRLWIND);
+        PCLActions.Bottom.VFX(VFX.EFX(PCLEffekseerEFX.SWORD02)
+                .SetSoundKey(SFX.ATTACK_HEAVY));
         PCLActions.Bottom.VFX(new WhirlwindEffect(), 0f);
 
         if (timesUpgraded >= 6)
@@ -110,15 +113,14 @@ public class Gilgamesh extends FoolCard implements OnRelicObtainedSubscriber
             PCLActions.Bottom.VFX(new BorderLongFlashEffect(Color.GOLD));
             PCLActions.Bottom.SFX(SFX.ORB_DARK_EVOKE, 0.9f, 1.1f);
 
-            PCLActions.Bottom.SFX(SFX.ATTACK_HEAVY);
-            PCLActions.Bottom.DealCardDamageToAll(this, AttackEffects.SPEAR)
+            PCLActions.Bottom.DealCardDamageToAll(this, AttackEffects.NONE)
                     .forEach(d -> d.SetSoundPitch(1.3f, 1.4f).SetVFXColor(Color.YELLOW)
                             .SetDamageEffect((c, __) -> PCLGameEffects.Queue.Add(VFX.IronWave(player.hb, c.hb))));
             PCLActions.Bottom.VFX(new CleaveEffect());
         }
         else
         {
-            PCLActions.Bottom.DealCardDamageToAll(this, AttackEffects.SPEAR).forEach(d -> d
+            PCLActions.Bottom.DealCardDamageToAll(this, AttackEffects.SLASH_DIAGONAL).forEach(d -> d
                     .SetSoundPitch(1.3f, 1.4f).SetVFXColor(Color.YELLOW));
         }
 

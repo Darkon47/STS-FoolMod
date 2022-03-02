@@ -22,13 +22,13 @@ public class IrieMiyuki extends FoolCard
     {
         super(DATA);
 
-        Initialize(0, 3, 1, 5);
+        Initialize(0, 3, 2, 5);
         SetUpgrade(0,0,0,0);
         SetAffinity_Blue(1);
         SetAffinity_Light(1, 0, 1);
 
         SetHealing(true);
-        SetEthereal(true);
+        SetFragile(true);
         SetExhaust(true);
     }
 
@@ -41,7 +41,7 @@ public class IrieMiyuki extends FoolCard
     @Override
     protected void OnUpgrade()
     {
-        SetEthereal(false);
+        SetFragile(false);
     }
 
     @Override

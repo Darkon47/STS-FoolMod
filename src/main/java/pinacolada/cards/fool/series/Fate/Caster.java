@@ -8,7 +8,7 @@ import pinacolada.cards.base.CardEffectChoice;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
-import pinacolada.powers.PCLPowerHelper;
+import pinacolada.powers.common.BlindedPower;
 import pinacolada.stances.pcl.DesecrationStance;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
@@ -17,7 +17,7 @@ public class Caster extends FoolCard
 {
     public static final PCLCardData DATA = Register(Caster.class)
             .SetSkill(1, CardRarity.UNCOMMON)
-            .SetMaxCopies(2)
+            .SetMaxCopies(3)
             .SetSeriesFromClassPackage();
 
     private static final CardEffectChoice choices = new CardEffectChoice();
@@ -26,8 +26,8 @@ public class Caster extends FoolCard
     {
         super(DATA);
 
-        Initialize(0, 0, 2, 3);
-        SetUpgrade(0, 0, 0, -1);
+        Initialize(0, 0, 3, 1);
+        SetUpgrade(0, 0, 0, 0);
 
         SetAffinity_Blue(1);
         SetAffinity_Dark(1);
@@ -49,7 +49,7 @@ public class Caster extends FoolCard
 
         if (m != null)
         {
-            PCLGameUtilities.GetPCLIntent(m).AddStrength(-magicNumber);
+            PCLGameUtilities.GetPCLIntent(m).AddBlinded();
         }
     }
 
@@ -64,16 +64,12 @@ public class Caster extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.ReduceStrength(m, magicNumber, false).SetStrengthGain(true);
-        PCLActions.Bottom.StackPower(TargetHelper.Player(), PCLPowerHelper.Resistance, -secondaryValue);
+        PCLActions.Bottom.ApplyBlinded(TargetHelper.Normal(m), magicNumber);
+        PCLActions.Bottom.AddPowerEffectEnemyBonus(BlindedPower.POWER_ID, secondaryValue);
 
         if (DesecrationStance.IsActive() || info.IsSynergizing)
         {
-            PCLActions.Bottom.ChannelOrb(new Dark()).AddCallback(o -> {
-                if (o.size() > 0) {
-                    PCLActions.Bottom.TriggerOrbPassive(o.get(0),1);
-                }
-            });
+            PCLActions.Bottom.ChannelOrb(new Dark());
         }
     }
 }

@@ -30,7 +30,7 @@ public class Ushio extends FoolCard implements OnStartOfTurnPostDrawSubscriber
         SetUpgrade(0, 0, 1,0);
 
         SetAffinity_Light(1);
-        SetEthereal(true);
+        SetFragile(true);
         SetExhaust(true);
     }
 
@@ -38,7 +38,7 @@ public class Ushio extends FoolCard implements OnStartOfTurnPostDrawSubscriber
     protected void OnUpgrade()
     {
         super.OnUpgrade();
-        SetEthereal(false);
+        SetFragile(false);
     }
 
     @Override

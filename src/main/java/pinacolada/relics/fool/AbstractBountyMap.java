@@ -41,7 +41,7 @@ public abstract class AbstractBountyMap extends FoolRelic
 
         Class<? extends AbstractRoom> roomType = this.GetCurrentRequiredRoom();
 
-        if (counter >= 0 && room != null && (room.getClass().equals(roomType) || "?".equals(room.getMapSymbol()))) {
+        if (counter >= 0 && room != null && (room.getClass().equals(roomType) || (roomType.equals(EventRoom.class) && "?".equals(room.getMapSymbol())))) {
             flash();
             if (roomType.equals(EventRoom.class)) {
                 SetCounter(-1);

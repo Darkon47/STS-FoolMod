@@ -135,7 +135,7 @@ public class ThrowingKnife extends FoolCard
                 break;
         }
 
-        PCLActions.Top.StackPower(TargetHelper.Normal(m), ph, magicNumber);
+        PCLActions.Top.StackPower(TargetHelper.Normal(m), ph, auxiliaryData.form == INDEX_POISON ? secondaryValue : magicNumber);
 
         return PCLGameEffects.List.Add(VFX.ThrowDagger(m.hb, 0.1f).SetColor(color)).duration * 0.33f;
     }

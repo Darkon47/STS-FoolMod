@@ -19,7 +19,7 @@ public class Crystallize extends PCLCard
     {
         super(DATA);
 
-        Initialize(0, 0, 4, 3);
+        Initialize(0, 0, 3, 2);
 
         SetAffinity_Silver(1);
         SetAffinity_Blue(1);

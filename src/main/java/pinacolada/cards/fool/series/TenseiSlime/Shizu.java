@@ -1,5 +1,6 @@
 package pinacolada.cards.fool.series.TenseiSlime;
 
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.Dark;
@@ -11,10 +12,11 @@ import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.fool.special.Shizu_Ifrit;
 import pinacolada.effects.AttackEffects;
+import pinacolada.effects.PCLEffekseerEFX;
+import pinacolada.effects.VFX;
 import pinacolada.orbs.pcl.Fire;
 import pinacolada.powers.common.BurningWeaponPower;
 import pinacolada.utilities.PCLActions;
-import pinacolada.utilities.PCLGameEffects;
 import pinacolada.utilities.PCLGameUtilities;
 
 public class Shizu extends FoolCard
@@ -46,7 +48,7 @@ public class Shizu extends FoolCard
                 AddScaling(PCLAffinity.Red, 1);
             }
             else {
-                SetUpgrade(0, 0, 2, 0);
+                SetUpgrade(0, 0, 1, 0);
             }
         }
         return super.SetForm(form, timesUpgraded);
@@ -55,8 +57,9 @@ public class Shizu extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.DealCardDamage(this, m, AttackEffects.FIRE).forEach(d -> d
-        .SetDamageEffect(c -> PCLGameEffects.List.Attack(player, c, AttackEffects.SLASH_DIAGONAL, 0.9f, 1.1f).duration));
+        PCLActions.Bottom.VFX(VFX.EFX(PCLEffekseerEFX.FIRE05, m.hb).SetScale(2f));
+        PCLActions.Bottom.DealCardDamage(this, m, AttackEffects.FIRE)
+                .forEach(d -> d.SetVFXColor(Color.FIREBRICK, Color.FIREBRICK));
         PCLActions.Bottom.ApplyWeak(TargetHelper.Normal(m), 1);
         PCLActions.Bottom.StackPower(new BurningWeaponPower(p, magicNumber));
 

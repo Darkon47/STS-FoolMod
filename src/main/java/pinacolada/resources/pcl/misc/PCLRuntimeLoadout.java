@@ -226,6 +226,7 @@ public class PCLRuntimeLoadout
             i += 1;
         }
         card.affinities.collapseDuplicates = true;
+        card.affinities.UpdateSortedList();
 
         return card;
     }

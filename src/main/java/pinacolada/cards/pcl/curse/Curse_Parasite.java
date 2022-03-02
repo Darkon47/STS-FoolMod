@@ -24,6 +24,7 @@ public class Curse_Parasite extends PCLCard implements StartupCard
         super(DATA);
 
         Initialize(0, 0, 2, 2);
+        SetAffinity_Dark(1);
 
         SetUnplayable(true);
     }

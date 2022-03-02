@@ -12,6 +12,7 @@ import pinacolada.utilities.PCLJUtils;
 
 import java.util.ArrayList;
 
+import static pinacolada.cards.base.PCLAffinity.General;
 import static pinacolada.cards.base.PCLAffinity.TOTAL_AFFINITIES;
 
 public class PCLCardAffinities
@@ -19,6 +20,7 @@ public class PCLCardAffinities
     private static final AdvancedTexture upgradeCircle = new AdvancedTexture(PGR.PCL.Images.Circle.Texture(), Settings.GREEN_RELIC_COLOR);
 
     protected PCLCardAffinity[] List = new PCLCardAffinity[TOTAL_AFFINITIES];
+    protected final ArrayList<PCLCardAffinity> Sorted = new ArrayList<>();
     public PCLCard Card;
     public PCLCardAffinity Star = null;
     public boolean displayUpgrades = false;
@@ -27,12 +29,14 @@ public class PCLCardAffinities
     public PCLCardAffinities(PCLCard card)
     {
         Card = card;
+        this.UpdateSortedList();
     }
 
     public PCLCardAffinities(PCLCard card, EYBCardAffinities affinities)
     {
         Card = card;
         Initialize(affinities);
+
     }
 
     public PCLCardAffinities(PCLCard card, PCLCardAffinities affinities)
@@ -50,6 +54,8 @@ public class PCLCardAffinities
             a.scaling = scaling;
             a.requirement = requirement;
         }
+
+        this.UpdateSortedList();
         return this;
     }
 
@@ -71,11 +77,16 @@ public class PCLCardAffinities
         for (EYBCardAffinity a : affinities.List)
         {
             PCLCardAffinity t = new PCLCardAffinity(PCLGameUtilities.ConvertEYBToPCLAffinity(a.type), a.level);
+            if (t.type.ID < 0) {
+                continue;
+            }
             t.scaling = a.scaling;
             t.upgrade = a.upgrade;
             t.requirement = a.requirement;
             List[t.type.ID] = t;
         }
+
+        this.UpdateSortedList();
         return this;
     }
 
@@ -102,6 +113,8 @@ public class PCLCardAffinities
             t.requirement = a.requirement;
             List[t.type.ID] = t;
         }
+
+        this.UpdateSortedList();
         return this;
     }
 
@@ -109,6 +122,33 @@ public class PCLCardAffinities
     {
         List = new PCLCardAffinity[TOTAL_AFFINITIES];
         Star = null;
+        this.UpdateSortedList();
+    }
+
+    public void UpdateSortedList() {
+        Sorted.clear();
+        for (PCLCardAffinity a : List)
+        {
+            if (a == null || a.level <= 0)
+            {
+                continue;
+            }
+
+            if (collapseDuplicates) {
+                Sorted.add(a);
+            }
+            else {
+                for (int i = 0; i < a.level; i++) {
+                    Sorted.add(a);
+                }
+            }
+        }
+
+        if (Sorted.isEmpty()) {
+            Sorted.add(new PCLCardAffinity(General, 1));
+        }
+
+        Sorted.sort(PCLCardAffinity::compareTo);
     }
 
     public void ApplyUpgrades()
@@ -124,6 +164,8 @@ public class PCLCardAffinities
                 a.level += a.upgrade;
             }
         }
+
+        this.UpdateSortedList();
     }
 
     public void Add(int red, int green, int blue, int orange, int light, int dark, int silver)
@@ -164,7 +206,24 @@ public class PCLCardAffinities
             Star = new PCLCardAffinity(PCLAffinity.Star, level);
         }
 
+        this.UpdateSortedList();
         return Star;
+    }
+
+    public boolean HasSameAffinities(PCLCardAffinities other)
+    {
+        if (other == null) {
+            return false;
+        }
+        if (this.GetLevel(PCLAffinity.Star) != other.GetLevel(PCLAffinity.Star)) {
+            return false;
+        }
+        for (PCLAffinity af : PCLAffinity.Extended()) {
+            if (this.GetLevel(af) != other.GetLevel(af)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public boolean HasStar()
@@ -194,6 +253,7 @@ public class PCLCardAffinities
             }
         }
 
+        this.UpdateSortedList();
         return this;
     }
 
@@ -209,6 +269,7 @@ public class PCLCardAffinities
             }
         }
 
+        this.UpdateSortedList();
         return this;
     }
 
@@ -227,6 +288,8 @@ public class PCLCardAffinities
 
         a = new PCLCardAffinity(affinity, level);
         List[affinity.ID] = a;
+
+        this.UpdateSortedList();
         return a;
     }
 
@@ -249,6 +312,8 @@ public class PCLCardAffinities
 
         result = new PCLCardAffinity(affinity, level);
         List[affinity.ID] = result;
+
+        this.UpdateSortedList();
         return result;
     }
 
@@ -357,7 +422,7 @@ public class PCLCardAffinities
         }
         else if (affinity == null || affinity == PCLAffinity.General) // Highest level among all affinities
         {
-            final PCLCardAffinity a = PCLJUtils.Max(List, af -> af);
+            final PCLCardAffinity a = PCLJUtils.FindMax(List, af -> af);
             return a == null ? star : a.upgrade;
         }
         else
@@ -381,7 +446,7 @@ public class PCLCardAffinities
         }
         else if (affinity == PCLAffinity.General)
         {
-            final PCLCardAffinity a = PCLJUtils.Max(List, af -> af);
+            final PCLCardAffinity a = PCLJUtils.FindMax(List, af -> af.level);
             return a == null ? (useStarLevel ? star : 0) : a.level; // Highest level among all affinities
         }
         else
@@ -452,26 +517,7 @@ public class PCLCardAffinities
             return;
         }
 
-        ArrayList<PCLCardAffinity> renderables = new ArrayList<>();
-        for (PCLCardAffinity a : List)
-        {
-            if (a == null || a.level <= 0)
-            {
-                continue;
-            }
-
-            if (collapseDuplicates) {
-                renderables.add(a);
-            }
-            else {
-                for (int i = 0; i < a.level; i++) {
-                    renderables.add(a);
-                }
-            }
-
-        }
-
-        int max = renderables.size();
+        int max = Sorted.size();
         final int half = max / 2;
         if (half >= 2)
         {
@@ -480,7 +526,7 @@ public class PCLCardAffinities
 
         for (int i = 0; i < max; i++)
         {
-            final PCLCardAffinity item = renderables.get(i);
+            final PCLCardAffinity item = Sorted.get(i);
 
             if (max % 2 == 1)
             {

@@ -7,6 +7,7 @@ import eatyourbeets.actions.EYBAction;
 import eatyourbeets.effects.Projectile;
 import eatyourbeets.effects.card.RenderProjectilesEffect;
 import eatyourbeets.utilities.Mathf;
+import pinacolada.cards.base.PCLAttackType;
 import pinacolada.effects.SFX;
 import pinacolada.effects.VFX;
 import pinacolada.orbs.pcl.Earth;
@@ -73,6 +74,7 @@ public class EarthOrbEvokeAction extends EYBAction
             for (int i = 0; i < projectiles.size(); i++)
             {
                 PCLActions.Top.DealDamageToRandomEnemy(amount, DamageInfo.DamageType.THORNS, AttackEffect.NONE)
+                        .SetPCLAttackType(PCLAttackType.Earth, true)
                 .SetOptions(true, true, true)
                 .SetDamageEffect(m ->
                 {

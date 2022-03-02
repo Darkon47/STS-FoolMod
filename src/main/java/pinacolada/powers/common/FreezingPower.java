@@ -14,6 +14,7 @@ public class FreezingPower extends PCLTriggerablePower
     public static final String POWER_ID = CreateFullID(FreezingPower.class);
     public static final int REDUCTION_MULTIPLIER = 10;
     public static final int MAX_REDUCTION_MULTIPLIER = 50;
+    public static final int REACTION_INCREASE = 2;
 
     public static float CalculateDamage(float damage, float multiplier)
     {
@@ -22,7 +23,7 @@ public class FreezingPower extends PCLTriggerablePower
 
     public FreezingPower(AbstractCreature owner, AbstractCreature source, int amount)
     {
-        super(owner, source, POWER_ID, REDUCTION_MULTIPLIER, MAX_REDUCTION_MULTIPLIER);
+        super(owner, source, POWER_ID, REACTION_INCREASE, REDUCTION_MULTIPLIER, MAX_REDUCTION_MULTIPLIER);
 
         this.priority = 4;
 

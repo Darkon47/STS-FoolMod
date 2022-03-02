@@ -1,6 +1,5 @@
 package pinacolada.cards.fool.series.DateALive;
 
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
@@ -23,22 +22,23 @@ public class Mayuri extends FoolCard
     public static final PCLCardData DATA = Register(Mayuri.class)
             .SetAttack(2, CardRarity.UNCOMMON, PCLAttackType.Electric, PCLCardTarget.Random)
             .SetSeriesFromClassPackage();
+    public static final int DAMAGE_THRESHOLD = 10;
 
     public Mayuri()
     {
         super(DATA);
 
-        Initialize(4, 21, 3, 20);
-        SetUpgrade(2, 2, 0);
+        Initialize(4, 21, 2, 25);
+        SetUpgrade(0, 3, 0, 5);
         SetAffinity_Light(1, 0, 2);
 
         SetExhaust(true);
     }
 
     @Override
-    public boolean HasDirectSynergy(AbstractCard other)
+    protected String GetRawDescription(Object... args)
     {
-        return other.rarity.equals(CardRarity.BASIC);
+        return super.GetRawDescription(DAMAGE_THRESHOLD);
     }
 
     @Override
@@ -60,10 +60,12 @@ public class Mayuri extends FoolCard
 
     @Override
     public boolean CheckSpecialCondition(boolean tryUse){
-        float estimatedDifference = player.hasPower(VulnerablePower.POWER_ID) ? 1f : 1f + (PCLVulnerablePower.ATTACK_MULTIPLIER + PCLCombatStats.GetEffectBonus(VulnerablePower.POWER_ID)) / 100f;
-        for (PCLEnemyIntent intent : PCLGameUtilities.GetPCLIntents()) {
-            if (intent.GetDamage(true) * estimatedDifference > player.maxHealth / 4f) {
-                return true;
+        if (PCLGameUtilities.InBattle()) {
+            float estimatedDifference = player.hasPower(VulnerablePower.POWER_ID) ? 1f : 1f + (PCLVulnerablePower.ATTACK_MULTIPLIER + PCLCombatStats.GetEffectBonus(VulnerablePower.POWER_ID)) / 100f;
+            for (PCLEnemyIntent intent : PCLGameUtilities.GetPCLIntents()) {
+                if (intent.GetDamage(true) * estimatedDifference >= DAMAGE_THRESHOLD) {
+                    return true;
+                }
             }
         }
         return false;

@@ -145,9 +145,14 @@ public class VFX
         return new ElectricityEffect(cX, cY);
     }
 
+    public static EffekseerEffect EFX(String key)
+    {
+        return EFX(key, Settings.WIDTH * 0.75f, AbstractDungeon.player.hb.cY);
+    }
+
     public static EffekseerEffect EFX(String key, Hitbox hb)
     {
-        return EFX(key, hb.x, hb.y);
+        return EFX(key, hb.cX, hb.cY);
     }
 
     public static EffekseerEffect EFX(String key, float x, float y)

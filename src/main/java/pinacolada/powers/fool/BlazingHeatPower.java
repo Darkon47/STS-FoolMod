@@ -89,8 +89,10 @@ public class BlazingHeatPower extends PCLPower implements OnOrbPassiveEffectSubs
         if (target != null) {
             int actualDamage = AbstractOrb.applyLockOn(target, applyAmount);
             // This damage action should not remove Freezing because the base Fire damage action already does this
-            if (target.hasPower(PCLAttackType.Fire.powerToRemove)) {
-                actualDamage *= PCLAttackType.Fire.GetDamageMultiplier();
+            for (String poID : PCLAttackType.Fire.reactionPowers) {
+                if (target.hasPower(poID)) {
+                    actualDamage *= PCLAttackType.Fire.GetDamageMultiplier(poID);
+                }
             }
             if (actualDamage > 0)
             {

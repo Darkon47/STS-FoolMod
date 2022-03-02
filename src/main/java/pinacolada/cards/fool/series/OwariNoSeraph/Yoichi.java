@@ -28,6 +28,12 @@ public class Yoichi extends FoolCard
     }
 
     @Override
+    protected void OnUpgrade()
+    {
+        SetHaste(true);
+    }
+
+    @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
         PCLActions.Bottom.GainBlock(block);

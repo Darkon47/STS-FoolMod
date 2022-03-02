@@ -27,7 +27,7 @@ public class PCLOrbHelper implements TooltipObject
     public static final PCLOrbHelper Frost = new PCLOrbHelper(com.megacrit.cardcrawl.orbs.Frost.ORB_ID, PGR.Tooltips.Frost, PCLAffinity.Blue, com.megacrit.cardcrawl.orbs.Frost::new, COMMON_THRESHOLD);
     public static final PCLOrbHelper Lightning = new PCLOrbHelper(com.megacrit.cardcrawl.orbs.Lightning.ORB_ID, PGR.Tooltips.Lightning, PCLAffinity.Light, com.megacrit.cardcrawl.orbs.Lightning::new, COMMON_THRESHOLD);
     public static final PCLOrbHelper Metal = new PCLOrbHelper(pinacolada.orbs.pcl.Air.ORB_ID, PGR.Tooltips.Metal, PCLAffinity.Silver, pinacolada.orbs.pcl.Metal::new, 2);
-    public static final PCLOrbHelper Plasma = new PCLOrbHelper(com.megacrit.cardcrawl.orbs.Plasma.ORB_ID, PGR.Tooltips.Plasma, PCLAffinity.Silver, com.megacrit.cardcrawl.orbs.Plasma::new, 2);
+    public static final PCLOrbHelper Plasma = new PCLOrbHelper(com.megacrit.cardcrawl.orbs.Plasma.ORB_ID, PGR.Tooltips.Plasma, PCLAffinity.Light, com.megacrit.cardcrawl.orbs.Plasma::new, 2);
     public static final PCLOrbHelper Water = new PCLOrbHelper(pinacolada.orbs.pcl.Air.ORB_ID, PGR.Tooltips.Water, PCLAffinity.Blue, pinacolada.orbs.pcl.Water::new, 2);
 
     public final PCLCardTooltip Tooltip;

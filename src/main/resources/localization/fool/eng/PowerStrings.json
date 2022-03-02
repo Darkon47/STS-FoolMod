@@ -36,7 +36,7 @@
 	},
 	"pcl:IonizingStormPower":
 	{
-		"DESCRIPTIONS": ["[~Lightning] applies #b{0}% of [Focus] as [Electrified] to a random enemy when #yTriggered and to ALL enemies when #yEvoked. NL At the start of turn: Gain #b{1} [L] for each enemy with [Electrified]."],
+		"DESCRIPTIONS": ["[~Lightning] applies #b{0}% of [Focus] as [Electrified] to a random enemy when #yTriggered and to ALL enemies when #yEvoked. NL [Electrified] effect bonuses are doubled."],
 		"NAME": "Ionizing Storm"
 	},
 	"pcl:KuragesOathPower":
@@ -86,7 +86,7 @@
 	},
 	"pcl:StonedPower":
 	{
-		"DESCRIPTIONS": ["If [Burning], [Freezing], [Electrified], [Rippled], or [Swirled] would be reduced: Remove #b1 stack of this power instead."],
+		"DESCRIPTIONS": ["For #b{0} turns: [Burning], [Freezing], [Electrified], [Rippled], or [Swirled] cannot be reduced. NL Receive #b60% more damage from [Air]."],
 		"NAME": "Stoned"
 	},
 	"pcl:SwirledPower":

@@ -188,7 +188,7 @@
 		},
 		"fool:YuzuruOtonashi":
 		{
-			"DESCRIPTION": "Exhaust up to !M! cards and give them <O>. Gain !S! [THP] for each. || On Purge: Gain !S! [THP].",
+			"DESCRIPTION": "Exhaust up to !M! cards and give them <O>. Gain !S! [THP] per Non-{Hindrance} among them. || On Purge: Gain !S! [THP].",
 			"NAME": "Yuzuru Otonashi"
 		}
 	},
@@ -328,7 +328,7 @@
 	{
 		"fool:AkariMizunashi":
 		{
-			"DESCRIPTION": "{0}Evoke your first [Water] to gain a [B] use. ** Otherwise, Channel [Water]. || When drawn: Heal !S! [HP] ** (!X!/!S! times left this combat).",
+			"DESCRIPTION": "{0}Evoke your first [Water] to gain [Focus]. ** Otherwise, Channel [Water]. || When drawn: Heal !S! [HP] ** (!X!/!S! times left this combat).",
 			"EXTENDED_DESCRIPTION": ["Convert ALL [Frost] to [Water]. "],
 			"NAME": "Akari Mizunashi"
 		},
@@ -362,7 +362,7 @@
 		},
 		"fool:BlazingHeat":
 		{
-			"DESCRIPTION": "Channel !M! [Fire]. [Fire] deals +!S!% damage on Trigger and +{0}% damage on Evoke to the highest health enemy. || [Burning] deals +100% damage.",
+			"DESCRIPTION": "Channel !M! [Fire]. [Fire] deals +!S!% damage on Trigger and +{0}% damage on Evoke to the highest health enemy. || [Burning] deals +!S!% damage when activated.",
 			"NAME": "Blazing Heat"
 		},
 		"fool:DioBrando":
@@ -401,7 +401,7 @@
 		},
 		"fool:Ginko":
 		{
-			"DESCRIPTION": "Transform !M! Status cards in your hand into more beneficial variants.",
+			"DESCRIPTION": "Transform !M! Status cards in hand into more beneficial variants.",
 			"NAME": "Ginko"
 		},
 		"fool:Guts":
@@ -423,7 +423,7 @@
 		},
 		"fool:IonizingStorm":
 		{
-			"DESCRIPTION": "Channel !M! [~Lightning]. [~Lightning] applies {0}% of [Focus] as [Electrified] to a random enemy on Trigger and to ALL enemies on Evoke. || ALL [Electrified] effect bonuses are doubled.",
+			"DESCRIPTION": "Channel !M! [~Lightning]. [~Lightning] applies [Electrified] equal to {0}% of potency to a random enemy and gives !S! [Supercharged] when Triggered or Evoked. || ALL [Electrified] effect bonuses are doubled.",
 			"NAME": "Ionizing Storm"
 		},
 		"fool:JetBlack":
@@ -434,8 +434,8 @@
 		},
 		"fool:Joker":
 		{
-			"DESCRIPTION": "<CDN>: Exhaust and Obtain {Arsene}. || Choose 1 of !M! cards. For !S! turns: Play it whenever you activate a {Cooldown} effect or {<W> Power}.",
-			"EXTENDED_DESCRIPTION": ["For #b{0} turns: Play {1} whenever you activate a #yCooldown effect or [A-Gen] #yPower."],
+			"DESCRIPTION": "<CDN>: Exhaust and Obtain {Arsene}. || Choose 1 of !M! cards. The next !S! times you activate a {Cooldown} effect or {<W> Power}: Play it.",
+			"EXTENDED_DESCRIPTION": ["The next #b{0} time(s) you activate a #yCooldown effect or [A-Gen] #yPower: Play {1}."],
 			"NAME": "Ren Amamiya"
 		},
 		"fool:Joker_Arsene":
@@ -601,6 +601,13 @@
 			"EXTENDED_DESCRIPTION": ["Play the {Attack} in your draw pile with the highest total damage.", "Play the card in your draw pile with the highest [Block].", "Play a random {Power}.", "Play the bottom card of your draw pile."],
 			"NAME": "Phoenix Wright"
 		},
+		"fool:PurpleHeart":
+		{
+			"DESCRIPTION": "Give !M! cards in hand 1 of !S! bonuses (does not stack). || <LIM>. If both cards had the exact same <W>: Play {Ionizing Storm}.",
+			"EXTENDED_DESCRIPTION": ["Give the card(s) {0}.", "+{0} {1}", " Transform any Hindrances among them into 0-cost Strikes."],
+			"NAME": "Purple Heart",
+			"UPGRADE_DESCRIPTION": "Give !M! cards in hand 1 of !S! upgraded bonuses (does not stack). || <LIM>. If the <W> of both cards is identical: Play {Ionizing Storm}."
+		},
 		"fool:Pyra":
 		{
 			"DESCRIPTION": "The first Attack you play each turn applies Burn equal to 20% of its damage and Exhausts.",
@@ -614,7 +621,7 @@
 		},
 		"fool:SheerCold":
 		{
-			"DESCRIPTION": "Channel !M! [Frost]. [Frost] deals damage ({0}% of [Focus] on Trigger and {1}% on Evoke) to the enemy with the highest damage and applies half that much [Freezing]. || [~FD] attacks deal +!S!% damage against targets with [Freezing].",
+			"DESCRIPTION": "Channel !M! [Frost]. [Frost] deals damage ({0}% of potency on Trigger and {1}% on Evoke) to the enemy with the highest damage and applies half that much [Freezing]. || [~FD] attacks deal +!S!% damage against targets with [Freezing].",
 			"NAME": "Sheer Cold"
 		},
 		"fool:ShuichiSaihara":
@@ -662,7 +669,7 @@
         },
 		"fool:TimeParadox":
 		{
-			"DESCRIPTION": "Purge X random cards in hand, then refund [E] and draw X cards. In !M! to !S! turns: Obtain copies of the Purged cards with altered stats.",
+			"DESCRIPTION": "Purge X + 1 random cards in hand, then refund [E] and draw X + 1 cards. In !M! to !S! turns: Obtain copies of the Purged cards with altered stats.",
 			"NAME": "Time Paradox"
 		},
 		"fool:TomoyaOkazaki":
@@ -672,7 +679,7 @@
 		},
 		"fool:UruhaRushia":
         {
-        	"DESCRIPTION": "Until the end of your turn, negate all direct damage received. || While in hand: Your first Orb has +!M! [Focus].",
+        	"DESCRIPTION": "Until the end of your turn, negate all direct damage received. || While in hand: Your first Orb has +!M! potency.",
         	"EXTENDED_DESCRIPTION": ["Until the end of your turn, negate all direct damage received."],
         	"NAME": "Uruha Rushia"
         },
@@ -708,7 +715,7 @@
 		{
 			"DESCRIPTION": "For !M! turn(s): Enemies cannot gain {Common Buffs}. || Evoke ALL [~Lightning]. If you had none: Apply !S! [Blinded] to ALL characters.",
 			"NAME": "Yae Sakura",
-			"UPGRADE_DESCRIPTION": "For !M! turn(s): Enemies cannot gain {Common Buffs}. || Evoke ALL [~Lightning] and [~Dark]. If you had none: Apply !S! [Blinded] to ALL characters."
+			"UPGRADE_DESCRIPTION": "For !M! turn(s): Enemies cannot gain {Common Buffs}. || Evoke ALL [~Lightning]. If you had none: Apply !S! [Blinded] to ALL characters."
 		}
 	},
 	"BETA:DATEALIVE":
@@ -748,7 +755,7 @@
 		},
 		"fool:Mayuri":
 		{
-		  "DESCRIPTION": "Apply !M! [Electrified] to ALL enemies. || Gain !M! [Vulnerable]. Then, if any enemy intends to deal damage exceeding 25% of your Max. [HP]: [Electrified] gains +!S!% effect bonus.",
+		  "DESCRIPTION": "Apply !M! [Electrified] to ALL enemies. || Gain !M! [Vulnerable]. Then, if any enemy intends to deal {0}+ damage: [Electrified] gains +!S!% effect bonus.",
 		  "NAME": "Mayuri"
 		},
 		"fool:MukuroHoshimiya":
@@ -758,7 +765,7 @@
 		},
 		"fool:Natsumi":
 		{
-			"DESCRIPTION": "Transform up to !M! cards into random Uncommons. Gain !S! [Sorcery] per non-Hindrance transformed. || Pay !A! <B>: Upgrade them.",
+			"DESCRIPTION": "Transform up to !M! cards into random Uncommons. Gain !S! [Sorcery] per non-{Hindrance} transformed. || Pay !A! <B>: Upgrade them.",
 			"EXTENDED_DESCRIPTION": ["Select cards to transform."],
 			"NAME": "Natsumi Kyouno"
 		},
@@ -846,8 +853,8 @@
 		},
 		"fool:Beidou":
 		{
-			"DESCRIPTION": "Gain !M! [Counter-Attack]. || The next time you block damage this turn: Apply !S! [Electrified] to the attacker and activate its [Electrified].",
-			"EXTENDED_DESCRIPTION": ["The next time you block damage this turn: Apply #b{0} [Electrified] to the attacker and activate its [Electrified]."],
+			"DESCRIPTION": "Gain !M! [Counter-Attack]. || The next time you block damage: Apply !S! [Electrified] to the attacker and activate its [Electrified].",
+			"EXTENDED_DESCRIPTION": ["The next time you block damage: Apply #b{0} [Electrified] to the attacker and activate its [Electrified]."],
 			"NAME": "Beidou"
 		},
 		"fool:Bennett":
@@ -938,7 +945,7 @@
 		},
 		"fool:KokomiSangonomiya":
 		{
-			"DESCRIPTION": "{0}ALL cards give 0 [Block]. [Water] has +!M! [Focus] and reflects damage as [Rippled]. At end of turn: Take !S! non-lethal damage and Channel [Water]. || <LIM>. Gain 2 [Regeneration].",
+			"DESCRIPTION": "{0}ALL cards give 0 [Block]. [Water] has +!M! potency and reflects damage as [Rippled]. At end of turn: Take !S! non-lethal damage and Channel [Water]. || <LIM>. Gain 2 [Regeneration].",
 			"EXTENDED_DESCRIPTION": ["Play {Water Core}. "],
 			"NAME": "Kokomi Sangonomiya"
 		},
@@ -954,7 +961,7 @@
 		},
 		"fool:LisaMinci":
 		{
-			"DESCRIPTION": "{Scry} !M!. If you discard a card of cost: ** 0 or None: Gain !S! Temp. [Focus] ** 1 or X: Gain !S! [NTD]. ** 2+: Channel [~Lightning]",
+			"DESCRIPTION": "{Scry} !M!. If any discarded card had a cost of: ** 0 or None: Gain !S! Temp. [Focus] ** 1 or X: Gain !S! [NTD]. ** 2+: Channel [~Lightning]",
 			"NAME": "Lisa Minci"
 		},
 		"fool:MonaMegistus":
@@ -978,9 +985,15 @@
 			"EXTENDED_DESCRIPTION": ["[~Lightning] and [~Dark] give #b{0} [D] when Evoked. NL At the start of turn: Channel [~Lightning] and apply #b{0} [Electrified] to ALL characters."],
 			"NAME": "Raiden Shogun"
 		},
+		"fool:Shenhe":
+		{
+			"DESCRIPTION": "Exhaust ALL [~FD] Attacks in play. [~ID] Attacks apply !M! [Freezing]. || Once per turn, pay {0} <B> and Exhaust a card: Fetch a [~FD] or [~ID] Attack from your Exhaust pile.",
+			"EXTENDED_DESCRIPTION": ["[~ID] Attacks apply #b{0} [Freezing]. NL Pay #b{1} [A-Blue] and #yExhaust a card: Fetch a [~FD] or [~ID] #yAttack from your #yExhaust pile."],
+			"NAME": "Shenhe"
+		},
 		"fool:Tartaglia":
 		{
-			"DESCRIPTION": "Has +!M! damage per character with [Burning]. ALL characters lose [Burning] and gain !S! [Rippled]. || <LIM>. If Fatal: Enter <RS> and add {Delusion} to your draw pile.",
+			"DESCRIPTION": "Has +!M! damage per character with [Burning]. ALL characters lose [Burning] and gain !S! [Rippled]. || <CDN>: Enter <RS> and add {Delusion} to your draw pile.",
 			"NAME": "Tartaglia"
 		},
 		"fool:Thoma":
@@ -1029,8 +1042,8 @@
 		},
 		"fool:Xingqiu":
 		{
-			"DESCRIPTION": "Remove ALL [Burning] on the target to deal +!M! damage for each. Otherwise, apply !M! [Rippled]. || This turn: Trigger your first Orb whenever you play a 1+ Cost Attack.",
-			"EXTENDED_DESCRIPTION": ["For #b{0} turns: Trigger your first orb whenever you play a #b1+ Cost Attack."],
+			"DESCRIPTION": "Deal double damage if the target has [Burning]. Apply !M! [Rippled]. || You may pay !A! <B>: This turn, Trigger your first Orb upon playing an Attack.",
+			"EXTENDED_DESCRIPTION": ["For #b{0} turns: Trigger your first orb whenever you play an Attack."],
 			"NAME": "Xingqiu"
 		},
 		"fool:Yoimiya":
@@ -1045,7 +1058,7 @@
 		},
 		"fool:Zhongli":
 		{
-			"DESCRIPTION": "Channel [Earth]. When you Evoke [Earth]: Gain !S! [Block]. || Once per turn, pay {0} <O>: {Channel} [Earth] and gain !M! Temp. [Resistance] this turn or next turn.",
+			"DESCRIPTION": "Channel [Earth]. When you Evoke [Earth]: Apply !S! [Stoned] to ALL enemies. || Once per turn, pay {0} <O>: {Channel} [Earth] and gain !M! Temp. [Resistance] this turn or next turn.",
 		  	"EXTENDED_DESCRIPTION": ["Pay #b{0} [A-Orange] to channel #b1 [Earth] ** and choose whether to gain #b{1} #yTemporary [Resistance] this turn or next turn. || When you #yEvoke [Earth]: Gain #b{2} [Block].", "Gain {0} {Temp.} [Resistance].", "Next turn: Gain {0} {Temp.} [Resistance]."],
 			"NAME": "Zhongli"
 		}
@@ -1208,7 +1221,7 @@
 		},
 		"fool:Suigintou":
 		{
-			"DESCRIPTION": "Channel !S! [~Dark]. ALL [~Dark] gain +!M! [Focus]. Then, Trigger your first [~Dark] once per {Hindrance} in hand. || On Discard or Purge: Obtain {Black Feather}.",
+			"DESCRIPTION": "Channel !S! [~Dark]. ALL [~Dark] gain +!M! potency. Then, Trigger your first [~Dark] once per {Hindrance} in hand. || On Discard or Purge: Obtain {Black Feather}.",
 			"NAME": "Suigintou"
 		},
 		"fool:Suigintou_BlackFeather":
@@ -1238,8 +1251,8 @@
 		},
 		"fool:AyaShameimaru":
 		{
-			"DESCRIPTION": "Channel [Air]. [Air] gives adjacent Orbs +!M! [Focus]. || When you Evoke [Air], gain +!M! <G> or <O> (whichever is lower).",
-			"EXTENDED_DESCRIPTION": ["[Air] gives adjacent #yOrbs +#b{0} [Focus]. When you #yEvoke [Air]: Gain +#b{0} [A-Green] or [A-Orange] (whichever is lower)."],
+			"DESCRIPTION": "Channel [Air]. [Air] gives adjacent Orbs +!M! potency. || When you Evoke [Air], gain +!M! <G> or <O> (whichever is lower).",
+			"EXTENDED_DESCRIPTION": ["[Air] gives adjacent #yOrbs +#b{0} potency. When you #yEvoke [Air]: Gain +#b{0} [A-Green] or [A-Orange] (whichever is lower)."],
 			"NAME": "Aya Shameimaru"
 		},
 		"fool:ByakurenHijiri":
@@ -1377,8 +1390,8 @@
 		},
 		"fool:SanaeKochiya":
 		{
-			"DESCRIPTION": "Scry !S!. If you discard a card with: ** [~Ethereal] -> Obtain {Miracle} next turn. ** [Purge] -> Apply [Blinded] to ALL enemies.",
-			"EXTENDED_DESCRIPTION": ["At the start of your next turn, add #b{0} #yMiracle(s) to your hand."],
+			"DESCRIPTION": "Scry !S!. If any discarded card had: ** [~Ethereal] or [Fragile] -> Obtain {Miracle} next turn. ** [Purge] -> Gain Temp. [Artifact].",
+			"EXTENDED_DESCRIPTION": ["At the start of your next turn: Obtain #b{0} #yMiracle(s)."],
 			"NAME": "Sanae Kochiya"
 		},
 		"fool:SatoriKomeiji":
@@ -1427,12 +1440,12 @@
 		"fool:Emilia":
 		{
 			"DESCRIPTION": "Evoke ALL Orbs{0}, then Channel !M! [Frost]. || Next turn: Gain 1 [Orb Slot] for each unique Orb.",
-			"EXTENDED_DESCRIPTION": [""," with +!S! [Focus]"],
+			"EXTENDED_DESCRIPTION": [""," with +!S! potency"],
 			"NAME": "Emilia"
 		},
 		"fool:HarukoHaruhara":
 		{
-			"DESCRIPTION": "Discard a random ** card, then play ** a random card.",
+			"DESCRIPTION": "Discard a random card to play a random card. || <SLM>. On Discard: Discard a random card to <DRW-M>.",
 			"NAME": "Haruko Haruhara"
 		},
 		"fool:Hibiki":
@@ -1468,10 +1481,10 @@
 		},
 		"fool:ShuuOuma":
 		{
-			"DESCRIPTION": "Fetch 1 {Power} from your ** draw pile and take [DD] ** equal to twice its cost. || This turn, whenever you play ** a {Power}: Gain !S! [R] [B] [D].",
+			"DESCRIPTION": "Fetch a {Power} from your ** draw pile and take [DD] ** equal to twice its cost. || This turn, whenever you play ** a {Power}: Gain !S! [R] [B] [D].",
 			"EXTENDED_DESCRIPTION": ["This turn, whenever you play a #yPower: #yGain [D] [B] [R] #b{0} time(s)."],
 			"NAME": "Shuu Ouma",
-			"UPGRADE_DESCRIPTION": "Fetch 1 {Power} from your ** draw or discard pile and take ** [DD] equal to twice its cost. || This turn, whenever you play ** a {Power}: Gain !S! [R] [B] [D]."
+			"UPGRADE_DESCRIPTION": "Fetch a {Power} from your ** draw or discard pile and take ** [DD] equal to twice its cost. || This turn, whenever you play ** a {Power}: Gain !S! [R] [B] [D]."
 		},
 		"fool:TakanashiRikka":
 		{
@@ -1574,7 +1587,8 @@
 		"fool:Zero":
 		{
 			"DESCRIPTION": "Play a random {Skill} in your draw pile. || <LIM>. If it was a {Basic} card or a <S> card: Obtain 1 of !M! <B> cards that cost 1 less.",
-			"NAME": "Zero"
+			"NAME": "Zero",
+			"UPGRADE_DESCRIPTION": "<DRW>. Play a random {Skill} in your draw pile. || <LIM>. If it was a {Basic} card or a <S> card: Obtain 1 of !M! <B> cards that cost 1 less."
 		}
 	},
 	"CURSE":
@@ -1744,7 +1758,7 @@
 		},
 		"fool:Caster":
 		{
-			"DESCRIPTION": "Steal !M! [Strength]. Lose !S! [Resistance]. || <DS> or Match: Channel 1 [~Dark] and Trigger it once.",
+			"DESCRIPTION": "Apply !M! [Blinded]. [Blinded] gains +!S! damage reduction. || <DS> or Match: Channel !S! [~Dark].",
 			"NAME": "Caster"
 		},
 		"fool:Diarmuid":
@@ -1760,7 +1774,7 @@
 		},
 		"fool:EmiyaShirou":
 		{
-			"DESCRIPTION": "Give your first [Fire] +!M! [Focus] and Evoke it with your next Attack. Otherwise, Channel 1 [Fire]. || Match or Exhaust: Upgrade a card in hand.",
+			"DESCRIPTION": "Give your first [Fire] +!M! potency and Evoke it with your next Attack. Otherwise, Channel 1 [Fire]. || Match or Exhaust: Upgrade a card in hand.",
 			"NAME": "Shirou Emiya"
 		},
 		"fool:Gilgamesh":
@@ -1813,7 +1827,7 @@
 		},
 		"fool:Saber_Alter":
 		{
-			"DESCRIPTION": "Apply !M! [Shackles] to ALL enemies. || For each enemy: Channel [~Dark]. Give it [Focus] equal to twice the number of debuffs on the enemy.",
+			"DESCRIPTION": "Apply !M! [Shackles] to ALL enemies. || For each enemy: Channel [~Dark]. Increase its potency by twice the number of debuffs on the enemy.",
 			"NAME": "Saber Alter"
 		},
 		"fool:Saber_Excalibur":
@@ -2290,8 +2304,8 @@
 		},
 		"fool:Darkness":
 		{
-			"DESCRIPTION": "<slm>. If you take unlocked damage this turn: ** Gain !M! [Plated Armor]. || Match: Lower this card's cost by 1 and [Block] by !S!.",
-			"EXTENDED_DESCRIPTION": ["If you take unlocked damage this turn: Gain #b{0} [Plated Armor]."],
+			"DESCRIPTION": "<slm>. If you lose HP this turn: ** Gain !M! [Plated Armor]. || Match: Lower this card's cost by 1 and [Block] by !S!.",
+			"EXTENDED_DESCRIPTION": ["If you lose HP this turn: Gain #b{0} [Plated Armor]."],
 			"NAME": "Darkness"
 		},
 		"fool:Darkness_Adrenaline":
@@ -2317,7 +2331,7 @@
 		},
 		"fool:Hans":
 		{
-			"DESCRIPTION": "Apply !M! [Poison]. Then, Steal !S! [THP] from each enemy with [Poison]. || <LIM>. If you spend 7+ <W> at once while this is in your Exhaust pile: Play this and Purge it.",
+			"DESCRIPTION": "Apply !M! [Poison]. Then, Steal !S! [THP] from each enemy with [Poison]. || <LIM>. If you spend 7+ <W> at once while this is in your Exhaust pile: Play and Purge this.",
 			"EXTENDED_DESCRIPTION": ["At the start of turn, apply #b{0} #y[Poison] to ALL enemies, then gain #b{1} #yTemporary #yHP for each enemy with #y[Poison]."],
 			"NAME": "Hans"
 		},
@@ -2534,7 +2548,7 @@
 		"fool:MadokaKaname_Krimheild":
 		{
 			"DESCRIPTION": "When created: Obtain [Grief Seed]. || Gain !M! [Sorcery]. || <LIM>. Gain !S! [B] and Lose 3 [Resistance].",
-			"EXTENDED_DESCRIPTION": ["This turn: Triple the [Focus] of ALL Orbs. At the start of your next turn, lose #b{0} [Focus] and [Resistance]."],
+			"EXTENDED_DESCRIPTION": ["This turn: Triple the potency of ALL Orbs. At the start of your next turn, lose #b{0} [Focus] and [Resistance]."],
 			"NAME": "Krimheild Gretchen"
 		},
 		"fool:MamiTomoe":
@@ -2645,8 +2659,8 @@
 		},
 		"fool:Holou":
 		{
-			"DESCRIPTION": "Whenever you shuffle your draw pile: Add {Doubt} to it. || You may now play any {Hindrance} to Exhaust it, lose 1 [HP], and apply !M! [Electrified] to ALL enemies.",
-			"EXTENDED_DESCRIPTION": ["Whenever you shuffle your draw pile: Add #yDoubt to it. NL #yYou may now play any #yHindrance. When you do so: Exhaust it, lose #b1 #yHP, and apply #b{0} [Electrified] to ALL enemies."],
+			"DESCRIPTION": "Whenever you shuffle your draw pile: Add {Doubt} to it. || You may now play any {Hindrance} to Exhaust it, lose 1 [HP], and apply !M! [Rippled] to ALL enemies.",
+			"EXTENDED_DESCRIPTION": ["Whenever you shuffle your draw pile: Add #yDoubt to it. NL #yYou may now play any #yHindrance. When you do so: Exhaust it, lose #b1 #yHP, and apply #b{0} [Rippled] to ALL enemies."],
 			"NAME": "Holou"
 		},
 		"fool:IzunaHatsuse":
@@ -2676,7 +2690,7 @@
 		},
 		"fool:Shiro":
 		{
-			"DESCRIPTION": "Scry !S!. For each discarded card: Trigger a random Orb. || Spend !M! [L]: ** Gain !S! [Sorcery].",
+			"DESCRIPTION": "Scry !S!. For each discarded card: Trigger a random Orb. || Spend {0} [L]: ** Gain a [B] Use.",
 			"NAME": "Shiro"
 		},
 		"fool:Sora":
@@ -3002,7 +3016,7 @@
 		},
 		"fool:Hakurou":
 		{
-			"DESCRIPTION": "Pay !A! <R> or <O> to Choose 1: ** Enter <GS>; ** Gain +!M! <G>. || When Drawn: Gain !S! [Block].",
+			"DESCRIPTION": "Pay !A! <R> or <O> to choose 1: ** Enter <GS>; ** Gain +!M! <G>. || <SLM>. When Drawn: Gain !S! [Block].",
 			"NAME": "Hakurou"
 		},
 		"fool:Kaijin":
@@ -3023,7 +3037,7 @@
 		},
 		"fool:Ranga":
 		{
-			"DESCRIPTION": "When you attack an enemy with [Vulnerable]: Fetch this card from your Exhaust pile. || <CDN>: Purge and gain !M! [Support Damage].",
+			"DESCRIPTION": "When you attack an enemy with [Vulnerable]: Fetch this from your Exhaust pile. || <CDN>: Purge and gain !M! [Support Damage].",
 			"NAME": "Ranga"
 		},
 		"fool:Rimuru":

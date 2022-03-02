@@ -17,6 +17,7 @@ import pinacolada.cards.fool.special.Soujiro_Kawara;
 import pinacolada.cards.fool.special.Soujiro_Nazuna;
 import pinacolada.effects.AttackEffects;
 import pinacolada.utilities.PCLActions;
+import pinacolada.utilities.PCLGameUtilities;
 
 import java.util.ArrayList;
 
@@ -94,7 +95,7 @@ public class Soujiro extends FoolCard
     @Override
     protected float GetInitialDamage()
     {
-        return super.GetInitialDamage() + (magicNumber * GetHandAffinity(PCLAffinity.General));
+        return super.GetInitialDamage() + (magicNumber * PCLGameUtilities.GetAffinityCount(PCLAffinity.General));
     }
 
     @Override

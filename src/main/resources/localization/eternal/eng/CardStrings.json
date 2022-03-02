@@ -26,7 +26,7 @@
 		},
 		"eternal:BalefulOmen":
 		{
-			"DESCRIPTION": "Match: ALL enemies gain !M! [Vulnerable] and [Weak]. Otherwise, gain !S! [Weak].",
+			"DESCRIPTION": "ALL enemies gain !M! [Vulnerable] and [Weak]. || Mismatch: Affects you as well.",
 			"NAME": "Baleful Omen"
 		},
 		"eternal:Centering":
@@ -43,11 +43,6 @@
 		{
 			"DESCRIPTION": "Lose !S! HP. Gain [E] and !M! Resolve. || <LIM>. If you would die: Survive with 1 HP and <DRW-S>.",
 			"NAME": "Desperate Sacrifice"
-		},
-		"eternal:DeteriorationOfPrinciples":
-		{
-			"DESCRIPTION": "Apply !M! [Vulnerable] to ALL enemies. || Lose ALL Resolve. [Vulnerable] gains +!S!% effect bonus per Resolve lost.",
-			"NAME": "Deterioration Of Principles"
 		},
 		"eternal:DisastrousDecision":
 		{
@@ -109,6 +104,11 @@
 		{
 			"DESCRIPTION": "If the top card of your pile is an Eternal card: Play it. || <SLM>. If it wasn't: <CYC>.",
 			"NAME": "Imperial Order"
+		},
+		"eternal:IncantationOfMadness":
+		{
+			"DESCRIPTION": "Whenever you play an Attack: Lose !M! Resolve to increase its damage by !S!%. If you had no Resolve: Take !M! damage.",
+			"NAME": "Incantation of Madness"
 		},
 		"eternal:Indignation":
 		{
@@ -320,6 +320,11 @@
 		{
 			"DESCRIPTION": "Purge ALL cards in your discard pile. Deal +!S! damage per card Purged. || [MI]: Gain [Energized] for every enemy killed.",
 			"NAME": "Undying Ambition"
+		},
+		"eternal:UnfulfilledDesires":
+		{
+			"DESCRIPTION": "Apply !M! [Vulnerable] to ALL enemies. || Lose ALL Resolve. [Vulnerable] gains +!S!% effect bonus per Resolve lost.",
+			"NAME": "Unfulfilled Desires"
 		},
 		"eternal:UnshakableWill":
 		{

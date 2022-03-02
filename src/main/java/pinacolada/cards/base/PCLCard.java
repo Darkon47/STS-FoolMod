@@ -744,9 +744,17 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
         {
             dynamicTooltips.add(PGR.Tooltips.Brutal);
         }
+        else if (attackType == PCLAttackType.Air)
+        {
+            dynamicTooltips.add(PGR.Tooltips.AirDamage);
+        }
         else if (attackType == PCLAttackType.Dark)
         {
             dynamicTooltips.add(PGR.Tooltips.DarkDamage);
+        }
+        else if (attackType == PCLAttackType.Earth)
+        {
+            dynamicTooltips.add(PGR.Tooltips.EarthDamage);
         }
         else if (attackType == PCLAttackType.Electric)
         {
@@ -1064,7 +1072,6 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
     protected void SetAffinity_Star(int base) { InitializeAffinity(PCLAffinity.Star, base, 0, 0); }
     protected void SetAffinity_Star(int base, int scaling) { InitializeAffinity(PCLAffinity.Star, base, 0, scaling); }
     protected void SetAffinity_Star(int base, int upgrade, int scaling) { InitializeAffinity(PCLAffinity.Star, base, upgrade, scaling); }
-    protected void SetAffinity_General(int base) { InitializeAffinity(PCLAffinity.General, base, 0, 0); }
     protected void InitializeAffinity(PCLAffinity affinity, int base, int upgrade, int scaling) { affinities.Initialize(affinity, base, upgrade, scaling, 0); }
     //@Formatter: On
 
@@ -1444,11 +1451,11 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
 
         if (applyEnemyPowers)
         {
-            if (attackType.powerToRemove != null)
+            if (attackType.reactionPowers != null)
             {
                 for (AbstractPower power : enemy.powers) {
-                    if (attackType.powerToRemove.equals(power.ID)) {
-                        tempDamage *= attackType.GetDamageMultiplier();
+                    if (attackType.reactionPowers.equals(power.ID)) {
+                        tempDamage *= attackType.GetDamageMultiplier(power.ID);
                     }
                     else if (ElementalExposurePower.POWER_ID.equals(power.ID))
                     {

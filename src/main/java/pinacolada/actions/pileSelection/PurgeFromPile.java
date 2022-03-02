@@ -3,6 +3,7 @@ package pinacolada.actions.pileSelection;
 import com.badlogic.gdx.math.Vector2;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
+import com.megacrit.cardcrawl.core.Settings;
 import pinacolada.actions.basic.MoveCard;
 import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
@@ -37,7 +38,7 @@ public class PurgeFromPile extends SelectFromPile
             MoveCard action = new MoveCard(card, MoveCard.PURGE);
             if (showEffect)
             {
-                PCLActions.Top.Add(action).ShowEffect(showEffect, realtime);
+                PCLActions.Top.Add(action).ShowEffect(showEffect, realtime).SetDuration(Settings.FAST_MODE ? 0.1F : 0.25F, false);
             }
             else
             {

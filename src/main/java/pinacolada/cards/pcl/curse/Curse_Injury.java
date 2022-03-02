@@ -17,6 +17,7 @@ public class Curse_Injury extends PCLCard
         super(DATA);
 
         Initialize(0, 0, 1);
+        SetAffinity_Dark(1);
 
         SetUnplayable(true);
     }

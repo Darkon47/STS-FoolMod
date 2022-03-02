@@ -14,19 +14,23 @@ import pinacolada.utilities.PCLGameUtilities;
 
 public abstract class PCLTriggerablePower extends PCLPower implements HealthBarRenderPower
 {
-    protected final int defaultMultiplier;
-    protected final int maxMultiplier;
+    public static final int DEFAULT_REACTION_INCREASE = 5;
 
-    public PCLTriggerablePower(AbstractCreature owner, AbstractCreature source, String id, int defaultMultiplier)
+    public final int defaultMultiplier;
+    public final int maxMultiplier;
+    public final int reactionIncrease;
+
+    public PCLTriggerablePower(AbstractCreature owner, AbstractCreature source, String id, int reactionIncrease, int defaultMultiplier)
     {
-        this(owner, source, id, defaultMultiplier, 9999);
+        this(owner, source, id, reactionIncrease, defaultMultiplier, 9999);
     }
 
-    public PCLTriggerablePower(AbstractCreature owner, AbstractCreature source, String id, int defaultMultiplier, int maxMultiplier)
+    public PCLTriggerablePower(AbstractCreature owner, AbstractCreature source, String id, int reactionIncrease, int defaultMultiplier, int maxMultiplier)
     {
         super(owner, id);
 
         this.source = source;
+        this.reactionIncrease = reactionIncrease;
         this.defaultMultiplier = defaultMultiplier;
         this.maxMultiplier = maxMultiplier;
         Initialize(amount, PowerType.DEBUFF, true);

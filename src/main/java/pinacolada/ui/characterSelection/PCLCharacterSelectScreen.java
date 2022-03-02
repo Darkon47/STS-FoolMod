@@ -5,12 +5,10 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.TipHelper;
 import com.megacrit.cardcrawl.screens.charSelect.CharacterOption;
 import com.megacrit.cardcrawl.screens.charSelect.CharacterSelectScreen;
-import eatyourbeets.utilities.EYBFontHelper;
 import pinacolada.patches.unlockTracker.UnlockTrackerPatches;
 import pinacolada.resources.PGR;
 import pinacolada.resources.pcl.PCLStrings;
 import pinacolada.ui.controls.GUI_Button;
-import pinacolada.ui.controls.GUI_Label;
 import pinacolada.ui.hitboxes.AdvancedHitbox;
 import pinacolada.utilities.PCLGameUtilities;
 
@@ -23,7 +21,6 @@ public class PCLCharacterSelectScreen
     protected static CharacterOption selectedOption;
     protected static GUI_Button DiscordButton;
     protected static GUI_Button SteamButton;
-    protected static GUI_Label UnofficialDisclaimer;
 
     public static void Initialize(CharacterSelectScreen selectScreen)
     {
@@ -41,12 +38,6 @@ public class PCLCharacterSelectScreen
         .SetOnClick(() -> Browse(SteamButton));
 
         DiscordButton.SetActive(SteamButton.SetActive(Desktop.isDesktopSupported()).isActive);
-
-        UnofficialDisclaimer = new GUI_Label(EYBFontHelper.CardDescriptionFont_Normal,
-                new AdvancedHitbox(0, 0, Settings.WIDTH * 0.55f, size * 2f))
-                .SetPosition(Settings.WIDTH * 0.29f, Settings.HEIGHT * 0.93f)
-                .SetAlignment(0.95f, 0.05f, true) // 0.1f
-                .SetText(PGR.PCL.Strings.Misc.UnofficialDisclaimer);
 
         UnlockTrackerPatches.Validate();
     }
@@ -82,11 +73,11 @@ public class PCLCharacterSelectScreen
         {
             if (o.selected)
             {
-                if (o.c.chosenClass == PGR.Enums.Characters.THE_FOOL)
+                if (PCLGameUtilities.IsPCLPlayerClass(o.c.chosenClass))
                 {
                     selectedOption = o;
 
-                    if (current != o)
+                    if (current != o && selectedOption.c.chosenClass == PGR.Enums.Characters.THE_FOOL)
                     {
                         LoadoutRenderer.Refresh(selectScreen, o);
                     }
@@ -99,18 +90,20 @@ public class PCLCharacterSelectScreen
 
     public static void RenderOption(CharacterOption instance, SpriteBatch sb)
     {
-        LoadoutRenderer.Render(sb);
+        if (selectedOption != null && selectedOption.c != null && selectedOption.c.chosenClass == PGR.Enums.Characters.THE_FOOL) {
+            LoadoutRenderer.Render(sb);
+        }
         DiscordButton.TryRender(sb);
         SteamButton.TryRender(sb);
-        UnofficialDisclaimer.TryRender(sb);
     }
 
     public static void UpdateOption(CharacterOption instance)
     {
-        LoadoutRenderer.Update();
+        if (selectedOption != null && selectedOption.c != null && selectedOption.c.chosenClass == PGR.Enums.Characters.THE_FOOL) {
+            LoadoutRenderer.Update();
+        }
         DiscordButton.TryUpdate();
         SteamButton.TryUpdate();
-        UnofficialDisclaimer.TryUpdate();
 
         final float offsetX = 60 * Settings.scale;
         final float offsetY = 0;

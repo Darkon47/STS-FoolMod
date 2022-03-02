@@ -292,13 +292,13 @@
 	},
 	"pcl:StonedPower":
 	{
-		"DESCRIPTIONS": ["If [Burning], [Freezing], [Electrified], [Rippled], or [Swirled] would be reduced: Remove #b1 stack of this power instead."],
+		"DESCRIPTIONS": ["For #b{0} turns: [Burning], [Freezing], [Electrified], [Rippled], or [Swirled] cannot be reduced. NL Receive #b25% more damage from [Air]."],
 		"NAME": "Stoned"
 	},
-	"pcl:SuperchargePower":
+	"pcl:SuperchargedPower":
 	{
-		"DESCRIPTIONS": ["If a [A-Light] card #yMatches: Gain #b{0} [L]. NL At #b{1} stacks: Gains #b1 Level. NL At Level #b{2}: Gains #b1 use. NL When clicked: Spend #b1 use to increase the amount of the next #yCommon #yBuff gained by #b{3}%.{4}", " NL #rThis #rpower #ris #rdisabled."],
-		"NAME": "Supercharge"
+		"DESCRIPTIONS": ["Spend #b{0} stacks to gain [E]. Then, if you have no playable cards in hand: Draw #b1."],
+		"NAME": "Supercharged"
 	},
 	"pcl:SupportDamagePower":
 	{

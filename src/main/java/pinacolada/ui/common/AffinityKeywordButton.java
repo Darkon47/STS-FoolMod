@@ -75,13 +75,13 @@ public class AffinityKeywordButton extends GUIElement
         background_button.SetColor(currentLevel == 0 ? PANEL_COLOR : Color.WHITE);
         switch (currentLevel) {
             case 1:
-                borderTexture = PGR.PCL.Images.Affinities.Border_Weak.Texture();
+                borderTexture = PGR.PCL.Images.Affinities.Border_Normal.Texture();
                 borderBGTexture = null;
                 borderFGTexture = null;
                 radiusBG = background_button.hb.width;
                 break;
             case 2:
-                borderTexture = PGR.PCL.Images.Affinities.Border_Strong.Texture();
+                borderTexture = PGR.PCL.Images.Affinities.Border_Weak.Texture();
                 borderBGTexture = PGR.PCL.Images.Affinities.BorderBG3.Texture();
                 borderFGTexture = null;
                 radiusBG = background_button.hb.width;

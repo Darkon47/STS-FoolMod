@@ -24,7 +24,7 @@ public class BlindedPower extends PCLPower implements OnChannelOrbSubscriber, On
 
     public static int GetDamageReduction()
     {
-        return PCLGameUtilities.HasOrb(Dark.ORB_ID) ? DAMAGE_REDUCTION_LV2 : DAMAGE_REDUCTION_LV1;
+        return (PCLGameUtilities.HasOrb(Dark.ORB_ID) ? DAMAGE_REDUCTION_LV2 : DAMAGE_REDUCTION_LV1) + PCLCombatStats.GetEffectBonus(POWER_ID);
     }
 
     public BlindedPower(AbstractCreature owner, AbstractCreature source, int amount)

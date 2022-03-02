@@ -188,7 +188,7 @@ public class AbstractOrbPatches
         public static void Postfix(Lightning __instance)
         {
             if (PCLGameUtilities.IsPCLPlayerClass()) {
-                __instance.description = PCLJUtils.Format(GetOrbStrings(__instance.ID).DESCRIPTION[0], __instance.passiveAmount, __instance.evokeAmount);
+                __instance.description = PCLJUtils.Format(GetOrbStrings(__instance.ID).DESCRIPTION[0], __instance.passiveAmount, __instance.evokeAmount, LightningOrbAction.ELECTRIFIED_AMOUNT);
             }
         }
     }

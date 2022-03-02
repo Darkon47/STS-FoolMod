@@ -8,6 +8,8 @@ import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
+import pinacolada.effects.PCLEffekseerEFX;
+import pinacolada.effects.VFX;
 import pinacolada.powers.fool.SwirledPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
@@ -32,6 +34,7 @@ public class JeanGunnhildr extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
+        PCLActions.Bottom.VFX(VFX.EFX(PCLEffekseerEFX.SWORD06, m.hb));
         PCLActions.Bottom.DealCardDamage(this, m, AttackEffects.SLASH_DIAGONAL);
         PCLActions.Bottom.GainBlock(block);
     }

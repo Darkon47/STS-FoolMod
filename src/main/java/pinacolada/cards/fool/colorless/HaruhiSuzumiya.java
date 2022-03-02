@@ -37,6 +37,7 @@ public class HaruhiSuzumiya extends FoolCard
 
         Initialize(0, 0, 3, 4);
         SetEthereal(true);
+        SetFragile(true);
         SetPurge(true);
 
         SetAffinity_Star(1, 0, 0);

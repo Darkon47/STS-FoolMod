@@ -99,6 +99,8 @@ public class CardSeries
     public final static CardSeries VioletEvergarden = Add(83, "VioletEvergarden");
     public final static CardSeries Monogatari = Add(84, "Monogatari");
     public final static CardSeries Persona = Add(85, "Persona");
+    public final static CardSeries HyperdimensionNeptunia = Add(86, "HyperdimensionNeptunia");
+    public final static CardSeries MyDressUpDarling = Add(87, "MyDressUpDarling");
 
 
     private static AbstractCard currentSynergy = null;

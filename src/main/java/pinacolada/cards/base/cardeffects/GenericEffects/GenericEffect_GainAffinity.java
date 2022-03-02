@@ -26,8 +26,10 @@ public class GenericEffect_GainAffinity extends GenericEffect
     }
 
     public GenericEffect_GainAffinity Add(PCLAffinity newAf) {
-        this.affinities.add(newAf);
-        this.entityID = JoinEntityIDs(affinities, af -> af.Name);
+        if (newAf != null) {
+            this.affinities.add(newAf);
+            this.entityID = JoinEntityIDs(affinities, af -> af.Name);
+        }
         return this;
     }
 

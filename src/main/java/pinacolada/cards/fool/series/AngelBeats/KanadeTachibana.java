@@ -23,7 +23,7 @@ public class KanadeTachibana extends FoolCard
         SetUpgrade(0, 0, 1, 1);
 
         SetAfterlife(true);
-        SetPurge(true);
+        SetExhaust(true);
         SetAffinity_Blue(1, 0, 1);
         SetAffinity_Light(1, 0, 2);
         SetAffinity_Green(0,0,1);

@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.ModHelper;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
+import com.megacrit.cardcrawl.orbs.Lightning;
 import eatyourbeets.orbs.animator.Aether;
 import eatyourbeets.utilities.FieldInfo;
 import javassist.CtBehavior;
@@ -48,6 +49,11 @@ public class AbstractPlayerPatches
                 }
                 else if (orb instanceof eatyourbeets.orbs.animator.Chaos) {
                     orbToSet[0] = new Chaos();
+                }
+                // Lightning has 1 less focus due to its new passive effect
+                // TODO just make a replacement orb instead
+                else if (orb instanceof Lightning && orb.passiveAmount == 3) {
+                    PCLGameUtilities.ModifyOrbBaseFocus(orbToSet[0], -1, true, false);
                 }
             }
             else if (PCLGameUtilities.IsEYBPlayerClass()) {

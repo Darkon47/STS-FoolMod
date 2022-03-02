@@ -52,6 +52,7 @@ public class PCLLoadoutRenderer extends GUIElement
     protected CharacterOption characterOption;
     protected PCLLoadout loadout;
 
+
     protected float textScale;
 
     public PCLLoadoutRenderer()

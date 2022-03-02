@@ -11,13 +11,17 @@ import pinacolada.actions.orbs.RemoveOrb;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.PCLCardTarget;
+import pinacolada.cards.base.PCLCardTrait;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
 public class Kreideprinz extends FoolCard
 {
-    public static final PCLCardData DATA = Register(Kreideprinz.class).SetSkill(2, CardRarity.UNCOMMON, PCLCardTarget.Normal).SetSeriesFromClassPackage(true);
+    public static final PCLCardData DATA = Register(Kreideprinz.class)
+            .SetSkill(2, CardRarity.UNCOMMON, PCLCardTarget.Normal)
+            .SetTraits(PCLCardTrait.Scientist)
+            .SetSeriesFromClassPackage(true);
 
     public Kreideprinz()
     {

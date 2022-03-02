@@ -32,8 +32,10 @@ public class GenericEffect_StackPower extends GenericEffect
     }
 
     public GenericEffect_StackPower Add(PCLPowerHelper newPo) {
-        this.powers.add(newPo);
-        this.entityID = JoinEntityIDs(powers, power -> power.ID);
+        if (newPo != null) {
+            this.powers.add(newPo);
+            this.entityID = JoinEntityIDs(powers, power -> power.ID);
+        }
         return this;
     }
 

@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.vfx.combat.AnimatedSlashEffect;
 import eatyourbeets.utilities.TargetHelper;
 import pinacolada.actions.orbs.TriggerOrbPassiveAbility;
 import pinacolada.cards.base.CardUseInfo;
+import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLAttackType;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
@@ -23,18 +24,21 @@ import pinacolada.utilities.PCLGameUtilities;
 
 public class Xingqiu extends FoolCard
 {
-    public static final PCLCardData DATA = Register(Xingqiu.class).SetAttack(1, CardRarity.UNCOMMON, PCLAttackType.Piercing).SetSeriesFromClassPackage(true);
+    public static final PCLCardData DATA = Register(Xingqiu.class).SetAttack(1, CardRarity.UNCOMMON, PCLAttackType.Ice).SetSeriesFromClassPackage(true);
 
     public Xingqiu()
     {
         super(DATA);
 
-        Initialize(2, 0, 4, 1);
-        SetAffinity_Blue(1, 0, 4);
+        Initialize(1, 0, 4, 1);
+        SetAffinity_Blue(1, 0, 3);
         SetAffinity_Green(1);
         SetAffinity_Orange(1, 0, 0);
 
+        SetHitCount(3);
         SetExhaust(true);
+
+        SetAffinityRequirement(PCLAffinity.Blue, 8);
     }
 
     @Override
@@ -47,7 +51,7 @@ public class Xingqiu extends FoolCard
     {
         if (enemy != null)
         {
-            return super.ModifyDamage(enemy, amount + PCLGameUtilities.GetPowerAmount(enemy, BurningPower.POWER_ID) * magicNumber);
+            return super.ModifyDamage(enemy, PCLGameUtilities.GetPowerAmount(enemy, BurningPower.POWER_ID) > 0 ? amount * 2 : amount);
         }
         return super.ModifyDamage(enemy, amount);
     }
@@ -63,16 +67,15 @@ public class Xingqiu extends FoolCard
                     wait += PCLGameEffects.Queue.Add(new AnimatedSlashEffect(enemy.hb.cX, enemy.hb.cY - 60f * Settings.scale,
                             500f, 200f, 290f, 5f, Color.TEAL.cpy(), Color.BLUE.cpy())).duration;
                     SFX.Play(SFX.ATTACK_REAPER);
-                    return wait * 0.55f;
+                    return wait * 0.35f;
                 }));
-        if (m.hasPower(BurningPower.POWER_ID)) {
-            PCLActions.Bottom.RemovePower(p, m, BurningPower.POWER_ID);
-        }
-        else {
-            PCLActions.Bottom.ApplyRippled(TargetHelper.Normal(m), magicNumber);
-        }
+        PCLActions.Bottom.ApplyRippled(TargetHelper.Normal(m), magicNumber);
 
-        PCLActions.Bottom.StackPower(new XingqiuPower(p, secondaryValue));
+        PCLActions.Bottom.TryChooseSpendAffinity(this)
+                        .CancellableFromPlayer(true)
+                        .AddConditionalCallback(() -> {
+                            PCLActions.Bottom.StackPower(new XingqiuPower(p, secondaryValue));
+                        });
     }
 
     public static class XingqiuPower extends FoolPower
@@ -89,7 +92,7 @@ public class Xingqiu extends FoolCard
         {
             super.onPlayCard(card, m);
 
-            if (card.type == CardType.ATTACK && card.costForTurn >= 1)
+            if (card.type == CardType.ATTACK)
             {
                 PCLActions.Bottom.Callback(new TriggerOrbPassiveAbility(amount));
                 this.flashWithoutSound();

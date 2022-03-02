@@ -29,6 +29,7 @@ public class RenjiAbarai extends FoolCard
     @Override
     public void Refresh(AbstractMonster enemy)
     {
+        super.Refresh(enemy);
         if (CheckAffinity(PCLAffinity.Red) && CheckAffinity(PCLAffinity.Green))
         {
             SetAttackType(PCLAttackType.Piercing);
@@ -37,8 +38,6 @@ public class RenjiAbarai extends FoolCard
         {
             SetAttackType(PCLAttackType.Normal);
         }
-
-        SetEvokeOrbCount(HasSynergy() ? 1 : 0);
     }
 
     @Override
@@ -46,7 +45,7 @@ public class RenjiAbarai extends FoolCard
     {
         PCLActions.Bottom.DealCardDamageToAll(this, AttackEffects.SLASH_HEAVY);
 
-        if (!VelocityStance.IsActive() || !MightStance.IsActive()){
+        if (!VelocityStance.IsActive() && !MightStance.IsActive()){
             PCLActions.Bottom.ModifyAllInstances(uuid, c -> c.baseDamage = Math.max(0, c.baseDamage - c.magicNumber));
         }
     }

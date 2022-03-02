@@ -12,21 +12,27 @@ import pinacolada.utilities.PCLGameUtilities;
 public class Shiro extends FoolCard
 {
     public static final PCLCardData DATA = Register(Shiro.class)
-            .SetSkill(2, CardRarity.RARE, PCLCardTarget.None, true)
+            .SetSkill(2, CardRarity.RARE, PCLCardTarget.None, false)
             .SetSeriesFromClassPackage()
             .SetTraits(PCLCardTrait.Protagonist);
-    public static final int CHARGE_COST = 4;
+    public static final int CHARGE_COST = 8;
 
     public Shiro()
     {
         super(DATA);
 
-        Initialize(0, 0, 5, 3);
+        Initialize(0, 1, 4, 3);
         SetCostUpgrade(-1);
 
         SetAffinity_Blue(1, 0, 1);
         SetAffinity_Orange(1, 0, 0);
         SetAffinity_Light(1);
+    }
+
+    @Override
+    protected String GetRawDescription(Object... args)
+    {
+        return super.GetRawDescription(CHARGE_COST);
     }
 
     @Override
@@ -38,6 +44,7 @@ public class Shiro extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
+        PCLActions.Bottom.GainBlock(block);
         PCLActions.Bottom.GainTemporaryHP(magicNumber);
         PCLActions.Bottom.Scry(secondaryValue).AddCallback(
                 cards -> {
@@ -45,8 +52,8 @@ public class Shiro extends FoolCard
                         PCLActions.Bottom.TriggerOrbPassive(cards.size(), true, false);
                     }
 
-                    if (PCLGameUtilities.GetPCLAffinityPowerLevel(PCLAffinity.Blue) > 0 && PCLGameUtilities.TrySpendAffinityPower(PCLAffinity.Light, secondaryValue)) {
-                        PCLActions.Bottom.GainSorcery(magicNumber);
+                    if (PCLGameUtilities.GetPCLAffinityPowerLevel(PCLAffinity.Blue) > 0 && PCLGameUtilities.TrySpendAffinityPower(PCLAffinity.Light, CHARGE_COST)) {
+                        PCLGameUtilities.AddAffinityPowerUse(PCLAffinity.Blue, PCLGameUtilities.GetPCLAffinityPowerLevel(PCLAffinity.Blue));
                     }
                 }
         );

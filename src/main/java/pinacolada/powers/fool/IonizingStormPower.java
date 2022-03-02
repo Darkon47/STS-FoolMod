@@ -8,16 +8,14 @@ import eatyourbeets.utilities.TargetHelper;
 import pinacolada.interfaces.subscribers.OnGainPowerBonusSubscriber;
 import pinacolada.powers.PCLCombatStats;
 import pinacolada.powers.PCLPower;
+import pinacolada.powers.PCLPowerHelper;
 import pinacolada.powers.common.ElectrifiedPower;
 import pinacolada.utilities.PCLActions;
-import pinacolada.utilities.PCLGameUtilities;
-import pinacolada.utilities.PCLJUtils;
 
 import static pinacolada.cards.fool.special.IonizingStorm.LIGHTNING_BONUS;
 
 public class IonizingStormPower extends PCLPower implements OnOrbPassiveEffectSubscriber, OnGainPowerBonusSubscriber
 {
-    public static final int PER_CHARGE = 1;
     public static final String POWER_ID = CreateFullID(IonizingStormPower.class);
 
     public IonizingStormPower(AbstractPlayer owner, int amount)
@@ -50,7 +48,7 @@ public class IonizingStormPower extends PCLPower implements OnOrbPassiveEffectSu
     @Override
     public void updateDescription()
     {
-        description = FormatDescription(0, LIGHTNING_BONUS * amount, PER_CHARGE);
+        description = FormatDescription(0, LIGHTNING_BONUS * amount);
     }
 
     @Override
@@ -72,15 +70,7 @@ public class IonizingStormPower extends PCLPower implements OnOrbPassiveEffectSu
 
     private void makeMove(AbstractOrb orb, int applyAmount) {
         PCLActions.Bottom.ApplyElectrified(TargetHelper.RandomEnemy(), applyAmount).CanStack(true);
-    }
-
-    public void atStartOfTurn()
-    {
-        super.atStartOfTurn();
-        int count = PCLJUtils.Count(PCLGameUtilities.GetEnemies(true), e -> e.hasPower(ElectrifiedPower.POWER_ID));
-        if (count > 0) {
-            PCLActions.Bottom.GainInvocation(PER_CHARGE * count);
-        }
+        PCLActions.Bottom.StackPower(TargetHelper.Player(), PCLPowerHelper.Supercharged, amount);
     }
 
     @Override

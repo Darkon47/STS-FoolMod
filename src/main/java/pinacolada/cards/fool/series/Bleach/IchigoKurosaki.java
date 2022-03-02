@@ -38,7 +38,7 @@ public class IchigoKurosaki extends FoolCard
 
         if (CheckSpecialCondition(true))
         {
-            PCLActions.Bottom.Exhaust(this);
+            PCLActions.Last.Exhaust(this);
             PCLActions.Bottom.MakeCardInDrawPile(new IchigoKurosaki_Bankai());
         }
     }

@@ -25,7 +25,7 @@ public class Hakurou extends FoolCard
     {
         super(DATA);
 
-        Initialize(1, 1, 4, 3);
+        Initialize(2, 1, 4, 3);
         SetUpgrade(1, 0, 1, 0);
 
         SetAffinity_Red(1, 0, 0);
@@ -70,7 +70,8 @@ public class Hakurou extends FoolCard
             PCLActions.Bottom.GainBlock(block);
         }
 
-        PCLActions.Bottom.TryChooseSpendAffinity(this, PCLAffinity.Red, PCLAffinity.Orange).AddConditionalCallback(() -> {
+        PCLActions.Bottom.TryChooseSpendAffinity(this, PCLAffinity.Red, PCLAffinity.Orange)
+                .AddConditionalCallback(() -> {
             if (choices.TryInitialize(this))
             {
                 choices.AddEffect(GenericEffect.EnterStance(PCLStanceHelper.VelocityStance));

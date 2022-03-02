@@ -30,6 +30,7 @@ public class TukaLunaMarceau extends FoolCard
         SetUpgrade(0, 3);
 
         SetAffinity_Green(1, 0, 1);
+        SetAffinity_Light(1);
 
         SetAffinityRequirement(PCLAffinity.Light, 2);
         SetAffinityRequirement(PCLAffinity.Green, 2);

@@ -1,6 +1,6 @@
 package pinacolada.cards.pcl.replacement;
 
-import com.github.tommyettinger.colorful.rgb.Palette;
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import pinacolada.cards.base.*;
@@ -26,8 +26,8 @@ public class TestCard extends PCLCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.VFX(VFX.EFX(PCLEffekseerEFX.SWORD1, m.hb.cX, m.hb.cY + 130f));
-        PCLActions.Bottom.VFX(VFX.EFX(PCLEffekseerEFX.SWORD1, m.hb).SetColorizePalette(Palette.VIOLET));
+        PCLActions.Bottom.VFX(VFX.EFX(PCLEffekseerEFX.SWORD01, m.hb.cX, m.hb.cY + 130f));
+        PCLActions.Bottom.VFX(VFX.EFX(PCLEffekseerEFX.SWORD01, m.hb).SetColor(Color.PURPLE));
         PCLActions.Bottom.DealCardDamage(this, m, AttackEffects.SLASH_DIAGONAL);
     }
 }

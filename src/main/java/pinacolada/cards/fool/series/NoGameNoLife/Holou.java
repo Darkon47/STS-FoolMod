@@ -89,7 +89,7 @@ public class Holou extends FoolCard
             super.onPlayCard(card,m);
             if (PCLGameUtilities.IsHindrance(card)) {
                 PCLActions.Bottom.LoseHP(1, AbstractGameAction.AttackEffect.NONE);
-                PCLActions.Bottom.ApplyElectrified(TargetHelper.Enemies(), amount);
+                PCLActions.Bottom.ApplyRippled(TargetHelper.Enemies(), amount);
                 PCLActions.Last.Exhaust(card);
                 flash();
             }

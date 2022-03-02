@@ -10,6 +10,8 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import eatyourbeets.actions.EYBActionWithCallback;
 import pinacolada.cards.base.PCLAttackType;
 import pinacolada.effects.AttackEffects;
+import pinacolada.effects.VFX;
+import pinacolada.powers.PCLTriggerablePower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameEffects;
 import pinacolada.utilities.PCLGameUtilities;
@@ -54,6 +56,12 @@ public class DealDamageToAll extends EYBActionWithCallback<ArrayList<AbstractCre
     public DealDamageToAll ApplyPowers(boolean applyPowers)
     {
         this.applyPowers = applyPowers;
+        return this;
+    }
+
+    public DealDamageToAll SetDamageEffect(String effekseerKey)
+    {
+        this.onDamageEffect = (m, __) -> VFX.EFX(effekseerKey, m.hb);
         return this;
     }
 
@@ -145,10 +153,17 @@ public class DealDamageToAll extends EYBActionWithCallback<ArrayList<AbstractCre
                     onDamageEffect.accept(enemy, !mute);
                 }
 
-                if (pclAttackType.powerToRemove != null && enemy.hasPower(pclAttackType.powerToRemove)) {
-                    PCLActions.Last.AddPowerEffectEnemyBonus(pclAttackType.powerToRemove, pclAttackType.reactionIncrease);
-                    PCLActions.Last.ReducePower(source, enemy, pclAttackType.powerToRemove, 1);
+                if (enemy.powers != null) {
+                    for (AbstractPower po : enemy.powers) {
+                        if (pclAttackType.reactionPowers.contains(po.ID)) {
+                            if (po instanceof PCLTriggerablePower) {
+                                PCLActions.Last.AddPowerEffectEnemyBonus(po.ID, ((PCLTriggerablePower) po).reactionIncrease);
+                                PCLActions.Last.ReducePower(po, 1);
+                            }
+                        }
+                    }
                 }
+
 
                 mute = true;
             }
@@ -178,8 +193,12 @@ public class DealDamageToAll extends EYBActionWithCallback<ArrayList<AbstractCre
                     if (applyPowers) {
                         info.applyPowers(source, enemy);
                     }
-                    if (applyPowerRemovalMultiplier && enemy.hasPower(pclAttackType.powerToRemove)) {
-                        info.output *= pclAttackType.GetDamageMultiplier();
+                    if (applyPowerRemovalMultiplier && enemy.powers != null) {
+                        for (AbstractPower po : enemy.powers) {
+                            if (pclAttackType.reactionPowers.contains(po.ID)) {
+                                info.output *= pclAttackType.GetDamageMultiplier(po.ID);
+                            }
+                        }
                     }
                     DamageHelper.ApplyTint(enemy, enemyTint, attackEffect);
                     DamageHelper.DealDamage(enemy, info, bypassBlock, bypassThorns);

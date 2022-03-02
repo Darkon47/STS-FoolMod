@@ -1,9 +1,11 @@
 package pinacolada.relics.fool;
 
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import eatyourbeets.interfaces.listeners.OnReceiveRewardsListener;
 import eatyourbeets.interfaces.subscribers.OnLosingHPSubscriber;
+import eatyourbeets.resources.GR;
 import pinacolada.cards.base.CardSeries;
 import pinacolada.powers.PCLCombatStats;
 import pinacolada.relics.FoolRelic;
@@ -37,6 +39,9 @@ public class ConcertsFinalHour extends FoolRelic implements OnLosingHPSubscriber
     {
         super.atBattleStart();
 
+        if (GR.Common.Dungeon.IsUnnamedReign() || AbstractDungeon.actNum > 1) {
+            SetCounter(-2);
+        }
         PCLCombatStats.onLosingHP.Subscribe(this);
     }
 

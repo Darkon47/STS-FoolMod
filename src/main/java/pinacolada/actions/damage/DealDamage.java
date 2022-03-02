@@ -8,10 +8,13 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import eatyourbeets.actions.EYBActionWithCallback;
 import eatyourbeets.interfaces.delegates.FuncT1;
 import pinacolada.cards.base.PCLAttackType;
 import pinacolada.effects.AttackEffects;
+import pinacolada.effects.VFX;
+import pinacolada.powers.PCLTriggerablePower;
 import pinacolada.powers.fool.StolenGoldPower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameEffects;
@@ -92,6 +95,12 @@ public class DealDamage extends EYBActionWithCallback<AbstractCreature>
     public DealDamage ApplyPowers(boolean applyPowers)
     {
         this.applyPowers = applyPowers;
+        return this;
+    }
+
+    public DealDamage SetDamageEffect(String effekseerKey)
+    {
+        this.onDamageEffect = (m) -> VFX.EFX(effekseerKey, m.hb).duration;
         return this;
     }
 
@@ -217,13 +226,20 @@ public class DealDamage extends EYBActionWithCallback<AbstractCreature>
             PCLActions.Instant.StackPower(source, new StolenGoldPower(target, goldAmount));
         }
 
-        if (pclAttackType.powerToRemove != null && target.hasPower(pclAttackType.powerToRemove)) {
-            if (applyPowerRemovalMultiplier) {
-                info.output *= pclAttackType.GetDamageMultiplier();
+        if (target.powers != null) {
+            for (AbstractPower po : target.powers) {
+                if (pclAttackType.reactionPowers.contains(po.ID)) {
+                    if (applyPowerRemovalMultiplier) {
+                        info.output *= pclAttackType.GetDamageMultiplier(po.ID);
+                    }
+                    if (po instanceof PCLTriggerablePower) {
+                        PCLActions.Last.AddPowerEffectEnemyBonus(po.ID, ((PCLTriggerablePower) po).reactionIncrease);
+                        PCLActions.Last.ReducePower(po, 1);
+                    }
+                }
             }
-            PCLActions.Last.AddPowerEffectEnemyBonus(pclAttackType.powerToRemove, pclAttackType.reactionIncrease);
-            PCLActions.Last.ReducePower(source, target, pclAttackType.powerToRemove, 1);
         }
+
     }
 
     @Override

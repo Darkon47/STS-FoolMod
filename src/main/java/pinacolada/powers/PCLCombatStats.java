@@ -601,7 +601,7 @@ public class PCLCombatStats extends EYBPower implements InvisiblePower
     }
 
     public static int GetAmplifierBonusForDisplay(String powerID) {
-        return PCLAttackType.DAMAGE_MULTIPLIER + GetAmplifierBonus(powerID);
+        return PCLAttackType.BASE_DAMAGE_MULTIPLIER + GetAmplifierBonus(powerID);
     }
 
     public static int GetEffectBonus(String powerID) {
@@ -630,6 +630,14 @@ public class PCLCombatStats extends EYBPower implements InvisiblePower
 
     public static Set<Map.Entry<String,Integer>> GetAllPlayerEffectBonuses() {
         return PLAYER_EFFECT_BONUSES.entrySet();
+    }
+
+    public static <T> T SetEffectCombatData(String key, T data) {
+        return CombatStats.SetCombatData(key + "buffs", data);
+    }
+
+    public static <T> T GetEffectCombatData(String key, T defaultData) {
+        return CombatStats.GetCombatData(key + "buffs", defaultData);
     }
 
     public static void AddBonus(String powerID, Type effectType, int multiplier) {

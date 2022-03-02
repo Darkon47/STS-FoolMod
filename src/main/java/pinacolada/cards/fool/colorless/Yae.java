@@ -2,7 +2,6 @@ package pinacolada.cards.fool.colorless;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.orbs.Dark;
 import com.megacrit.cardcrawl.orbs.Frost;
 import com.megacrit.cardcrawl.orbs.Lightning;
 import eatyourbeets.utilities.TargetHelper;
@@ -49,7 +48,7 @@ public class Yae extends FoolCard
             PCLActions.Bottom.StackPower(new SilencedPower(enemy, magicNumber));
         }
         PCLActions.Bottom.EvokeOrb(player.filledOrbCount(), EvokeOrb.Mode.Sequential)
-                .SetFilter(o -> Lightning.ORB_ID.equals(o.ID) || (upgraded && Dark.ORB_ID.equals(o.ID)))
+                .SetFilter(o -> Lightning.ORB_ID.equals(o.ID))
                 .AddCallback(orbs ->
                 {
                     if (orbs.size() == 0)

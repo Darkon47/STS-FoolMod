@@ -22,7 +22,7 @@ public class BurningPower extends PCLTriggerablePower
 
     public BurningPower(AbstractCreature owner, AbstractCreature source, int amount)
     {
-        super(owner, source, POWER_ID, ATTACK_MULTIPLIER);
+        super(owner, source, POWER_ID, DEFAULT_REACTION_INCREASE, ATTACK_MULTIPLIER);
 
         this.priority = 4;
 

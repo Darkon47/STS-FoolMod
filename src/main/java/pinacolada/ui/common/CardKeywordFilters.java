@@ -89,6 +89,7 @@ public class CardKeywordFilters extends GUIElement
     public static final HashSet<AbstractCard.CardRarity> CurrentRarities = new HashSet<>();
     public static final HashSet<AbstractCard.CardType> CurrentTypes = new HashSet<>();
     public static PCLCardAffinities CurrentAffinities = new PCLCardAffinities(null);
+    public static boolean NoAffinities = false;
     protected final HashMap<PCLCardTooltip,Integer> CurrentFilterCounts = new HashMap<>();
     protected final ArrayList<CardKeywordButton> FilterButtons = new ArrayList<>();
     protected final ArrayList<AffinityKeywordButton> AffinityButtons = new ArrayList<>();
@@ -204,6 +205,10 @@ public class CardKeywordFilters extends GUIElement
                     if (PCLGameUtilities.GetPCLAffinityLevel(c, PCLAffinity.Star, true) < CurrentAffinities.GetLevel(PCLAffinity.Star)) {
                         return false;
                     }
+                    //When the general affinity button is selected, only show cards with no affinity
+                    if (PCLGameUtilities.GetPCLAffinityLevel(c, PCLAffinity.General, true) > 0 && NoAffinities) {
+                        return false;
+                    }
 
                     //Cost check
                     if (!CurrentCosts.isEmpty()) {
@@ -222,7 +227,7 @@ public class CardKeywordFilters extends GUIElement
     }
 
     public static boolean AreFiltersEmpty() {
-        return CurrentColors.isEmpty() && CurrentOrigins.isEmpty() && CurrentFilters.isEmpty() && CurrentSeries.isEmpty() && CurrentCosts.isEmpty() && CurrentRarities.isEmpty() && CurrentTypes.isEmpty() && CurrentAffinities.IsEmpty();
+        return CurrentColors.isEmpty() && CurrentOrigins.isEmpty() && CurrentFilters.isEmpty() && CurrentSeries.isEmpty() && CurrentCosts.isEmpty() && CurrentRarities.isEmpty() && CurrentTypes.isEmpty() && CurrentAffinities.IsEmpty() && !NoAffinities;
     }
 
     public CardKeywordFilters()
@@ -418,6 +423,16 @@ public class CardKeywordFilters extends GUIElement
                                 }
             }));
         }
+        AffinityButtons.add(new AffinityKeywordButton(
+                new RelativeHitbox(affinitiesSectionLabel.hb, ICON_SIZE, ICON_SIZE, 0.5f + (PCLAffinity.All().length * 1.05f), -0.5f * (ICON_SIZE / affinitiesSectionLabel.hb.width), true).SetIsPopupCompatible(true), PCLAffinity.General)
+                .SetLevel(NoAffinities ? 1 : 0)
+                .SetOnClick((button) -> {
+                    button.SetLevel((button.currentLevel + 1) % 2);
+                    NoAffinities = !NoAffinities;
+                    if (onClick != null) {
+                        onClick.Invoke(null);
+                    }
+                }));
 
     }
 
@@ -527,6 +542,7 @@ public class CardKeywordFilters extends GUIElement
         CurrentRarities.clear();
         CurrentTypes.clear();
         CurrentAffinities.Clear();
+        NoAffinities = false;
         CostDropdown.SetSelectionIndices(null, false);
         OriginsDropdown.SetSelectionIndices(null, false);
         TypesDropdown.SetSelectionIndices(null, false);

@@ -34,7 +34,7 @@ public class Zero extends FoolCard
     {
         super(DATA);
 
-        Initialize(0, 0, 1, 1);
+        Initialize(0, 0, 3, 1);
         SetUpgrade(0,0,0);
 
         SetAffinity_Blue(1);

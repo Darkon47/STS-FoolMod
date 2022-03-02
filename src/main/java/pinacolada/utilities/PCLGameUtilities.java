@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.blights.AbstractBlight;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -28,6 +29,7 @@ import eatyourbeets.cards.base.EYBCard;
 import eatyourbeets.powers.CombatStats;
 import eatyourbeets.utilities.GameUtilities;
 import eatyourbeets.utilities.RandomizedList;
+import eatyourbeets.utilities.TupleT2;
 import pinacolada.blights.common.UpgradedHand;
 import pinacolada.cards.base.*;
 import pinacolada.interfaces.listeners.OnTryReducePowerListener;
@@ -293,6 +295,27 @@ public class PCLGameUtilities extends GameUtilities
         return Affinity.General;
     }
 
+    @SafeVarargs
+    public static int[] CreateDamageMatrix(int baseDamage, boolean isPureDamage, TupleT2<String, Float>... targetPowers) {
+        int[] retVal = new int[AbstractDungeon.getMonsters().monsters.size()];
+
+        for(int i = 0; i < retVal.length; ++i) {
+            DamageInfo info = new DamageInfo(AbstractDungeon.player, baseDamage);
+            if (isPureDamage) {
+                info.type = DamageInfo.DamageType.THORNS;
+            }
+            for (TupleT2<String, Float> s : targetPowers) {
+                if (AbstractDungeon.getMonsters().monsters.get(i).hasPower(s.V1)) {
+                    info.output = (int)(info.base * s.V2);
+                }
+            }
+
+            retVal[i] = info.output;
+        }
+
+        return retVal;
+    }
+
     public static void DecreaseBlock(AbstractCard card, int amount, boolean temporary)
     {
         ModifyBlock(card, Math.max(0, card.baseBlock - amount), temporary);
@@ -460,9 +483,9 @@ public class PCLGameUtilities extends GameUtilities
         return GetPCLAffinityLevel(card, PCLAffinity.Star, true) > 0;
     }
 
-    public static boolean HasTrait(AbstractCard card)
+    public static boolean HasTrait(AbstractCard card, PCLCardTrait trait)
     {
-        return GetPCLAffinityLevel(card, PCLAffinity.Red, true) > 0;
+        return card instanceof PCLCard && ((PCLCard) card).HasTrait(trait);
     }
 
     public static int GetDebuffsCount(AbstractCreature creature)
@@ -1001,6 +1024,10 @@ public class PCLGameUtilities extends GameUtilities
 
     public static boolean IsPCLPlayerClass() {
         return AbstractDungeon.player != null && (AbstractDungeon.player.chosenClass == PGR.Fool.PlayerClass || AbstractDungeon.player.chosenClass == PGR.Eternal.PlayerClass);
+    }
+
+    public static boolean IsPCLPlayerClass(AbstractPlayer.PlayerClass playerClass) {
+        return playerClass == PGR.Fool.PlayerClass || playerClass == PGR.Eternal.PlayerClass;
     }
 
     public static boolean IsSameSeries(AbstractCard card1, AbstractCard card2)

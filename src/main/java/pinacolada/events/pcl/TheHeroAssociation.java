@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.vfx.RainingGoldEffect;
 import eatyourbeets.events.base.EYBEventOption;
 import eatyourbeets.events.base.EYBEventPhase;
 import eatyourbeets.events.base.EYBEventStrings;
+import pinacolada.cards.base.PCLCardTrait;
 import pinacolada.effects.special.GenericChooseCardsToObtainEffect;
 import pinacolada.effects.special.GenericChooseCardsToRemoveEffect;
 import pinacolada.events.base.PCLEvent;
@@ -19,8 +20,6 @@ import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
 
 import java.util.ArrayList;
-
-import static pinacolada.resources.PGR.Enums.CardTags.PROTAGONIST;
 
 public class TheHeroAssociation extends PCLEvent
 {
@@ -66,7 +65,7 @@ public class TheHeroAssociation extends PCLEvent
 
             boolean hasEnoughGold = (player.gold >= price);
             AbstractCard hero = null;
-            ArrayList<AbstractCard> heroes = PCLJUtils.Filter(player.masterDeck.group, c -> c.hasTag(PROTAGONIST));
+            ArrayList<AbstractCard> heroes = PCLJUtils.Filter(player.masterDeck.group, c -> PCLGameUtilities.HasTrait(c, PCLCardTrait.Protagonist));
             if (heroes.size() > 0)
             {
                 AddOption(text.HeroOption()).AddCallback(this::Hero);
@@ -89,7 +88,7 @@ public class TheHeroAssociation extends PCLEvent
 
         private void Hero(EYBEventOption option)
         {
-            PCLGameEffects.Queue.Add(new GenericChooseCardsToRemoveEffect(1, c -> c.hasTag(PROTAGONIST))).AddCallback(result -> {
+            PCLGameEffects.Queue.Add(new GenericChooseCardsToRemoveEffect(1, c -> PCLGameUtilities.HasTrait(c, PCLCardTrait.Protagonist))).AddCallback(result -> {
                 if (result.cards.size() > 0) {
                     GranviaShieldCrest relic = new GranviaShieldCrest();
                     relic.instantObtain();
@@ -118,7 +117,7 @@ public class TheHeroAssociation extends PCLEvent
         private void Hire(EYBEventOption option)
         {
             player.loseGold(price);
-            PCLGameEffects.Queue.Add(new GenericChooseCardsToObtainEffect(1, 5, c -> c.hasTag(PROTAGONIST)));
+            PCLGameEffects.Queue.Add(new GenericChooseCardsToObtainEffect(1, 5, c -> PCLGameUtilities.HasTrait(c, PCLCardTrait.Protagonist)));
             ChangePhase(Hire.class);
         }
     }

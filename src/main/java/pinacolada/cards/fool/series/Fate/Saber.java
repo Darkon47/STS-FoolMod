@@ -10,6 +10,8 @@ import pinacolada.cards.fool.special.Saber_Alter;
 import pinacolada.cards.fool.special.Saber_Excalibur;
 import pinacolada.cards.fool.special.Saber_X;
 import pinacolada.effects.AttackEffects;
+import pinacolada.effects.PCLEffekseerEFX;
+import pinacolada.effects.VFX;
 import pinacolada.utilities.PCLActions;
 
 import java.util.ArrayList;
@@ -100,6 +102,7 @@ public class Saber extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
+        PCLActions.Bottom.VFX(VFX.EFX(PCLEffekseerEFX.FIRE02, m.hb));
         PCLActions.Bottom.DealCardDamage(this, m, AttackEffects.SLASH_DIAGONAL);
         PCLActions.Bottom.GainBlock(block);
         this.baseDamage += magicNumber;

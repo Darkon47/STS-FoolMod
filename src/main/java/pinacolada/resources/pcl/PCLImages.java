@@ -123,6 +123,8 @@ public class PCLImages
 
     public static class CardIcons
     {
+        public final TextureCache Air                  = new TextureCache("images/pcl/cardui/core/AirDamage.png");
+        public final TextureCache Air_L             = new TextureCache("images/pcl/cardui/core/1024/AirDamage.png");
         public final TextureCache Block                 = new TextureCache("images/pcl/cardui/core/Block.png");
         public final TextureCache BlockScaling          = new TextureCache("images/pcl/cardui/core/BlockScaling.png");
         public final TextureCache BlockScaling_L          = new TextureCache("images/pcl/cardui/core/1024/BlockScaling.png");
@@ -135,6 +137,8 @@ public class PCLImages
         public final TextureCache Damage_L                = new TextureCache("images/pcl/cardui/core/1024/NormalDamage.png");
         public final TextureCache Dark                  = new TextureCache("images/pcl/cardui/core/DarkDamage.png");
         public final TextureCache Dark_L             = new TextureCache("images/pcl/cardui/core/1024/DarkDamage.png");
+        public final TextureCache Earth                  = new TextureCache("images/pcl/cardui/core/EarthDamage.png");
+        public final TextureCache Earth_L             = new TextureCache("images/pcl/cardui/core/1024/EarthDamage.png");
         public final TextureCache Electric             = new TextureCache("images/pcl/cardui/core/ElectricDamage.png");
         public final TextureCache Electric_L             = new TextureCache("images/pcl/cardui/core/1024/ElectricDamage.png");
         public final TextureCache Fire             = new TextureCache("images/pcl/cardui/core/FireDamage.png");
@@ -172,15 +176,15 @@ public class PCLImages
         public final TextureCache Star                  = new TextureCache("images/pcl/cardui/affinities/Star.png", true);
         public final TextureCache Star_BG               = new TextureCache("images/pcl/cardui/affinities/Star_BG.png", true);
         public final TextureCache Star_FG               = new TextureCache("images/pcl/cardui/affinities/Star_FG.png", true);
-        public final TextureCache Border_Highlight      = new TextureCache("images/pcl/cardui/affinities/Border_Highlight.png", false);
         public final TextureCache BorderFG              = new TextureCache("images/pcl/cardui/affinities/FG.png", false);
         public final TextureCache BorderBG              = new TextureCache("images/pcl/cardui/affinities/BG1.png", true);
         public final TextureCache BorderBG2             = new TextureCache("images/pcl/cardui/affinities/BG2.png", true);
         public final TextureCache BorderBG3             = new TextureCache("images/pcl/cardui/affinities/BG3.png", true);
         public final TextureCache BorderBG4             = new TextureCache("images/pcl/cardui/affinities/BG4.png", true);
+        public final TextureCache Border_Highlight      = new TextureCache("images/pcl/cardui/affinities/Border_Highlight.png", false);
+        public final TextureCache Border_Normal         = new TextureCache("images/pcl/cardui/affinities/Border_Normal.png", true);
         public final TextureCache Border_Silhouette     = new TextureCache("images/pcl/cardui/affinities/Border_Silhouette.png", true);
-        public final TextureCache Border_Special         = new TextureCache("images/pcl/cardui/affinities/Border_Special.png", true);
-        public final TextureCache Border_Strong         = new TextureCache("images/pcl/cardui/affinities/Border_Strong.png", true);
+        public final TextureCache Border_Special        = new TextureCache("images/pcl/cardui/affinities/Border_Special.png", true);
         public final TextureCache Border_Weak           = new TextureCache("images/pcl/cardui/affinities/Border_Weak.png", true);
     }
 

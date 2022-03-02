@@ -10,6 +10,7 @@ import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.fool.tokens.AffinityToken;
 import pinacolada.effects.AttackEffects;
+import pinacolada.effects.PCLEffekseerEFX;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
@@ -77,6 +78,7 @@ public class EmiyaKiritsugu extends FoolCard
         PCLActions.Bottom.GainBlock(block);
         PCLActions.Bottom.DealCardDamage(this, m, AttackEffects.GUNSHOT).forEach(d -> d
         .SetSoundPitch(0.6f, 0.7f)
+                .SetDamageEffect(PCLEffekseerEFX.GUN05)
         .SetVFXColor(Color.GOLD));
 
         PCLActions.Bottom.ExhaustFromPile(name, 1, group)

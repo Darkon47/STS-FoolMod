@@ -16,7 +16,7 @@ import static eatyourbeets.resources.GR.Enums.CardTags.HASTE;
 
 public class Keqing extends FoolCard
 {
-    public static final PCLCardData DATA = Register(Keqing.class).SetAttack(2, CardRarity.UNCOMMON, PCLAttackType.Piercing).SetSeriesFromClassPackage();
+    public static final PCLCardData DATA = Register(Keqing.class).SetAttack(2, CardRarity.UNCOMMON, PCLAttackType.Electric).SetSeriesFromClassPackage();
 
     public Keqing()
     {

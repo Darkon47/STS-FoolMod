@@ -72,17 +72,38 @@ public class PCLJUtils extends JUtils
         return null;
     }
 
+    public static <T, N extends Comparable<N>> T FindMax(Iterable<T> list, FuncT1<N, T> getProperty)
+    {
+        N best = null;
+        T result = null;
+        for (T t : list)
+        {
+            if (t != null) {
+                N prop = getProperty.Invoke(t);
+                if (prop != null && (best == null || prop.compareTo(best) > 0))
+                {
+                    best = prop;
+                    result = t;
+                }
+            }
+        }
+
+        return result;
+    }
+
     public static <T, N extends Comparable<N>> T FindMax(T[] list, FuncT1<N, T> getProperty)
     {
         N best = null;
         T result = null;
         for (T t : list)
         {
-            N prop = getProperty.Invoke(t);
-            if (prop != null && (best == null || prop.compareTo(best) > 0))
-            {
-                best = prop;
-                result = t;
+            if (t != null) {
+                N prop = getProperty.Invoke(t);
+                if (prop != null && (best == null || prop.compareTo(best) > 0))
+                {
+                    best = prop;
+                    result = t;
+                }
             }
         }
 
@@ -94,10 +115,12 @@ public class PCLJUtils extends JUtils
         N best = null;
         for (T t : list)
         {
-            N prop = getProperty.Invoke(t);
-            if (prop != null && (best == null || prop.compareTo(best) > 0))
-            {
-                best = prop;
+            if (t != null) {
+                N prop = getProperty.Invoke(t);
+                if (prop != null && (best == null || prop.compareTo(best) > 0))
+                {
+                    best = prop;
+                }
             }
         }
 
@@ -110,14 +133,35 @@ public class PCLJUtils extends JUtils
         N best = null;
         for (T t : list)
         {
-            N prop = getProperty.Invoke(t);
-            if (prop != null && (best == null || prop.compareTo(best) > 0))
-            {
-                best = prop;
+            if (t != null) {
+                N prop = getProperty.Invoke(t);
+                if (prop != null && (best == null || prop.compareTo(best) > 0))
+                {
+                    best = prop;
+                }
             }
         }
 
         return best;
+    }
+
+    public static <T, N extends Comparable<N>> T FindMin(Iterable<T> list, FuncT1<N, T> getProperty)
+    {
+        N best = null;
+        T result = null;
+        for (T t : list)
+        {
+            if (t != null) {
+                N prop = getProperty.Invoke(t);
+                if (prop != null && (best == null || prop.compareTo(best) < 0))
+                {
+                    best = prop;
+                    result = t;
+                }
+            }
+        }
+
+        return result;
     }
 
     public static <T, N extends Comparable<N>> T FindMin(T[] list, FuncT1<N, T> getProperty)
@@ -126,11 +170,13 @@ public class PCLJUtils extends JUtils
         T result = null;
         for (T t : list)
         {
-            N prop = getProperty.Invoke(t);
-            if (prop != null && (best == null || prop.compareTo(best) < 0))
-            {
-                best = prop;
-                result = t;
+            if (t != null) {
+                N prop = getProperty.Invoke(t);
+                if (prop != null && (best == null || prop.compareTo(best) < 0))
+                {
+                    best = prop;
+                    result = t;
+                }
             }
         }
 
@@ -142,10 +188,12 @@ public class PCLJUtils extends JUtils
         N best = null;
         for (T t : list)
         {
-            N prop = getProperty.Invoke(t);
-            if (prop != null && (best == null || prop.compareTo(best) < 0))
-            {
-                best = prop;
+            if (t != null) {
+                N prop = getProperty.Invoke(t);
+                if (prop != null && (best == null || prop.compareTo(best) < 0))
+                {
+                    best = prop;
+                }
             }
         }
 
@@ -157,10 +205,12 @@ public class PCLJUtils extends JUtils
         N best = null;
         for (T t : list)
         {
-            N prop = getProperty.Invoke(t);
-            if (prop != null && (best == null || prop.compareTo(best) < 0))
-            {
-                best = prop;
+            if (t != null) {
+                N prop = getProperty.Invoke(t);
+                if (prop != null && (best == null || prop.compareTo(best) < 0))
+                {
+                    best = prop;
+                }
             }
         }
 

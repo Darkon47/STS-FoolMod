@@ -3,7 +3,6 @@ package pinacolada.cards.fool.series.GenshinImpact;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import eatyourbeets.powers.CombatStats;
 import eatyourbeets.utilities.TargetHelper;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLAttackType;
@@ -24,11 +23,13 @@ public class Tartaglia extends FoolCard {
     public Tartaglia() {
         super(DATA);
 
-        Initialize(12, 0, 5, 1);
+        Initialize(12, 0, 4, 1);
         SetUpgrade(3, 0, 1);
         SetAffinity_Red(1, 0, 1);
         SetAffinity_Green(1, 0, 1);
         SetAffinity_Dark(1, 0, 0);
+
+        SetCooldown(2, 0, this::OnCooldownCompleted);
     }
 
     @Override
@@ -46,23 +47,19 @@ public class Tartaglia extends FoolCard {
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info) {
 
-        PCLActions.Bottom.DealCardDamageToAll(this, AttackEffects.BLUNT_LIGHT).forEach(d -> d
-                .AddCallback((targets) ->
-                {
-                    for (AbstractCreature t : targets) {
-                        if (PCLGameUtilities.IsDeadOrEscaped(t) && CombatStats.TryActivateLimited(cardID))
-                        {
-                            PCLActions.Bottom.MakeCardInDrawPile(new Curse_Delusion());
-                            PCLActions.Bottom.ChangeStance(MightStance.STANCE_ID);
-                            break;
-                        }
-                    }
-                }));
+        PCLActions.Bottom.DealCardDamageToAll(this, AttackEffects.BLUNT_LIGHT);
 
         for (AbstractCreature c : PCLGameUtilities.GetAllCharacters(true)) {
             PCLActions.Bottom.RemovePower(p, c, BurningPower.POWER_ID);
         }
 
         PCLActions.Bottom.ApplyRippled(TargetHelper.Enemies(), secondaryValue);
+        cooldown.ProgressCooldownAndTrigger(m);
+    }
+
+    protected void OnCooldownCompleted(AbstractMonster m)
+    {
+        PCLActions.Bottom.MakeCardInDrawPile(new Curse_Delusion());
+        PCLActions.Bottom.ChangeStance(MightStance.STANCE_ID);
     }
 }

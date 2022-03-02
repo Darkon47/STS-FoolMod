@@ -18,21 +18,23 @@ public class BalefulOmen extends EternalCard
         super(DATA);
 
         Initialize(0, 0, 3, 3);
-        SetUpgrade(0, 0, 1, 1);
 
         SetDark();
         SetEthereal(true);
+        SetFragile(true);
+    }
+
+    @Override
+    public void OnUpgrade() {
+        super.OnUpgrade();
+        SetFragile(false);
     }
 
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        if (info.IsSynergizing) {
-            PCLActions.Bottom.ApplyVulnerable(TargetHelper.Enemies(), magicNumber);
-            PCLActions.Bottom.ApplyWeak(TargetHelper.Enemies(), magicNumber);
-        }
-        else {
-            PCLActions.Bottom.ApplyWeak(TargetHelper.Player(), secondaryValue);
-        }
+        TargetHelper t = IsMismatching(info) ? TargetHelper.AllCharacters() : TargetHelper.Enemies();
+        PCLActions.Bottom.ApplyVulnerable(TargetHelper.Enemies(), magicNumber);
+        PCLActions.Bottom.ApplyWeak(TargetHelper.Enemies(), magicNumber);
     }
 }

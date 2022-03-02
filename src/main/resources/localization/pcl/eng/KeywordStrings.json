@@ -536,7 +536,7 @@
 	},
 	"Mismatch":
 	{
-		"DESCRIPTION": "A card #yMismatches if it does not have the [A-Gen] of the #yCurrent #yAffinity, and if neither #yAffinity is [A-Silver].",
+		"DESCRIPTION": "A card #yMismatches if it does not have the [A-Gen] of the #yCurrent #yAffinity, and if neither #yAffinity is [A-Gen] or [A-Silver].",
 		"NAMES": ["mismatch", "mismatches", "mismatching", "mismatched"],
 		"PROPER_NAME": "Mismatch"
 	},
@@ -710,7 +710,7 @@
 	},
 	"Stoned":
 	{
-		"DESCRIPTION": "If [Burning], [Freezing], [Electrified], [Rippled], or [Swirled] would be reduced: Remove 1 stack of this power instead.",
+		"DESCRIPTION": "[Burning], [Freezing], [Electrified], [Rippled], or [Swirled] cannot be reduced while this power is active: Reduced by #b1 each turn.",
 		"NAMES": ["stoned"],
 		"PROPER_NAME": "Stoned"
 	},
@@ -719,6 +719,12 @@
 		"DESCRIPTION": "Cannot act for #b1 turn.",
 		"NAMES": ["stun", "stunned", "stslib:stunned"],
 		"PROPER_NAME": "Stun"
+	},
+	"Supercharged":
+	{
+		"DESCRIPTION": "Spend stacks to gain [E]. Then, if you have no playable cards in hand: Draw #b1.",
+		"NAMES": ["supercharged"],
+		"PROPER_NAME": "Supercharged"
 	},
 	"Support Damage":
 	{
@@ -840,6 +846,12 @@
 		"NAMES": ["[b] stance", "wisdom stance"],
 		"PROPER_NAME": "Wisdom Stance"
 	},
+	"~Air Damage":
+	{
+		"DESCRIPTION": "Ignores #yBlock and #yThorns. Deal +#b60% damage against targets with [Stoned].",
+		"NAMES": ["~air damage"],
+		"PROPER_NAME": "Air Damage"
+	},
 	"~Block Scaling":
 	{
 		"DESCRIPTION": "This #yAttack's scaling applies both to its damage and its #yBlock.",
@@ -887,6 +899,12 @@
 		"DESCRIPTION": "Whenever you shuffle your draw pile, place this card on the bottom.",
 		"NAMES": ["~delayed"],
 		"PROPER_NAME": "Delayed"
+	},
+	"~Earth Damage":
+	{
+		"DESCRIPTION": "Ignores #yFlight and #yThorns. Deal +#b60% damage against targets with [Swirled].",
+		"NAMES": ["~earth damage"],
+		"PROPER_NAME": "Earth Damage"
 	},
 	"~Electric Damage":
 	{
@@ -950,7 +968,7 @@
 	},
 	"~Lightning":
 	{
-		"DESCRIPTION": "Orb: Deals [~ED] damage to a random enemy, prioritizing enemies with [~Lock-On].",
+		"DESCRIPTION": "Orb: Deals [~ED] damage and applies [Electrified] to a random enemy, prioritizing enemies with [~Lock-On].",
 		"NAMES": ["~lightning"],
 		"PROPER_NAME": "Lightning"
 	},

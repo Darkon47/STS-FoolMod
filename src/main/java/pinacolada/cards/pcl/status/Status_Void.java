@@ -18,6 +18,7 @@ public class Status_Void extends PCLCard_Status
         super(DATA);
 
         Initialize(0, 0, 2);
+        SetAffinity_Dark(1);
 
         SetEthereal(true);
         SetUnplayable(true);

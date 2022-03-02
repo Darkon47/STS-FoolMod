@@ -21,6 +21,8 @@ public class Status_Burn extends PCLCard_Status
         Initialize(0, 0, 2, 3);
         SetUpgrade(0, 0, 2, 2);
 
+        SetAffinity_Red(1);
+
         SetUnplayable(true);
     }
 

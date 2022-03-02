@@ -52,7 +52,7 @@ public class Emonzaemon_EntouJyuu extends FoolCard
         @Override
         public float atDamageGive(float damage, DamageInfo.DamageType type, AbstractCard card)
         {
-            return damage + (type == DamageInfo.DamageType.NORMAL && (ThrowingKnife.DATA.ID.equals(card.cardID) || PCLGameUtilities.HasGreenAffinity(card)) ? amount : 0) / 100f;
+            return damage * (100 + (type == DamageInfo.DamageType.NORMAL && (ThrowingKnife.DATA.ID.equals(card.cardID) || PCLGameUtilities.HasGreenAffinity(card)) ? amount : 0)) / 100f;
         }
     }
 }

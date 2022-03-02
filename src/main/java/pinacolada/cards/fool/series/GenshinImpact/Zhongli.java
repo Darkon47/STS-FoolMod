@@ -12,7 +12,9 @@ import pinacolada.orbs.pcl.Earth;
 import pinacolada.powers.FoolClickablePower;
 import pinacolada.powers.PCLCombatStats;
 import pinacolada.powers.PowerTriggerConditionType;
+import pinacolada.powers.fool.StonedPower;
 import pinacolada.utilities.PCLActions;
+import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
 
 public class Zhongli extends FoolCard
@@ -27,7 +29,7 @@ public class Zhongli extends FoolCard
     {
         super(DATA);
 
-        Initialize(0, 0, 4, 6);
+        Initialize(0, 0, 4, 2);
         SetUpgrade(0, 0, 0);
         SetAffinity_Orange(1, 0, 0);
         SetDelayed(true);
@@ -45,7 +47,7 @@ public class Zhongli extends FoolCard
     @Override
     protected String GetRawDescription(Object... args)
     {
-        return super.GetRawDescription(POWER_ENERGY_COST, POWER_ENERGY_COST);
+        return super.GetRawDescription(POWER_ENERGY_COST);
     }
 
 
@@ -107,7 +109,9 @@ public class Zhongli extends FoolCard
             Earth earthOrb = PCLJUtils.SafeCast(orb, Earth.class);
 
             if (earthOrb != null) {
-                PCLActions.Bottom.GainBlock(secondaryValue);
+                for (AbstractMonster m : PCLGameUtilities.GetEnemies(true)) {
+                    PCLActions.Delayed.StackPower(player, new StonedPower(m, secondaryValue));
+                }
             }
         }
 

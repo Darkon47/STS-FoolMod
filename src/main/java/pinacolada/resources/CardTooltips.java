@@ -75,6 +75,7 @@ public class CardTooltips
 
     public PCLCardTooltip Afterlife = FindByID("Afterlife");
     public PCLCardTooltip Air = FindByID("Air");
+    public PCLCardTooltip AirDamage = FindByID("~Air Damage");
     public PCLCardTooltip Artifact = FindByID("Artifact");
     public PCLCardTooltip Aura = FindByID("Aura");
     public PCLCardTooltip Autoplay = FindByID("Autoplay");
@@ -99,6 +100,7 @@ public class CardTooltips
     public PCLCardTooltip Desecrated = FindByID("Desecrated");
     public PCLCardTooltip Dexterity = FindByID("Dexterity");
     public PCLCardTooltip Earth = FindByID("Earth");
+    public PCLCardTooltip EarthDamage = FindByID("~Earth Damage");
     public PCLCardTooltip ElectricDamage = FindByID("~Electric Damage");
     public PCLCardTooltip Electrified = FindByID("Electrified");
     public PCLCardTooltip Elemental = FindByID("~Elemental");
@@ -170,6 +172,7 @@ public class CardTooltips
     public PCLCardTooltip Starter = FindByID("Starter");
     public PCLCardTooltip Stoned = FindByID("Stoned");
     public PCLCardTooltip Strength = FindByID("Strength");
+    public PCLCardTooltip Supercharged = FindByID("Supercharged");
     public PCLCardTooltip SupportDamage = FindByID("Support Damage");
     public PCLCardTooltip Swirled = FindByID("Swirled");
     public PCLCardTooltip TempHP = FindByID("Temporary HP");
@@ -296,7 +299,9 @@ public class CardTooltips
         PCLImages.CardIcons icons = PGR.PCL.Images.Icons;
         Ranged.SetIcon(icons.Ranged.Texture(), 6);
         Piercing.SetIcon(icons.Piercing.Texture(), 6);
+        AirDamage.SetIcon(icons.Air.Texture(), 6).SetIconSizeMulti(0.75f, 0.75f);
         DarkDamage.SetIcon(icons.Dark.Texture(), 6).SetIconSizeMulti(0.75f, 0.75f);
+        EarthDamage.SetIcon(icons.Earth.Texture(), 6).SetIconSizeMulti(0.75f, 0.75f);
         ElectricDamage.SetIcon(icons.Electric.Texture(), 6).SetIconSizeMulti(0.75f, 0.75f);
         FireDamage.SetIcon(icons.Fire.Texture(), 6).SetIconSizeMulti(0.75f, 0.75f);
         IceDamage.SetIcon(icons.Ice.Texture(), 6).SetIconSizeMulti(0.75f, 0.75f);
@@ -387,6 +392,7 @@ public class CardTooltips
         LoadFromPower(Sorcery, new SorceryPower(FakeCharacter.Instance, 0));
         LoadFromPower(Stoned, new StonedPower(FakeCharacter.Instance, 0));
         LoadFromPower(Strength, new StrengthPower(FakeCharacter.Instance, 0));
+        LoadFromPower(Supercharged, new SuperchargedPower(FakeCharacter.Instance, 0));
         LoadFromPower(SupportDamage, new SupportDamagePower(FakeCharacter.Instance, 0));
         LoadFromPower(Swirled, new SwirledPower(FakeCharacter.Instance, 0));
         LoadFromPower(Desecrated, new DesecratedPower(FakeCharacter.Instance, 0));

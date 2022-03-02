@@ -67,11 +67,6 @@ public class Beidou extends FoolCard
 
             return super.onAttacked(info, damageAmount);
         }
-
-        public void atStartOfTurn()
-        {
-            RemovePower();
-        }
     }
 }
 

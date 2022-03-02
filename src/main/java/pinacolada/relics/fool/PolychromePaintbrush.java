@@ -12,7 +12,6 @@ import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.basic.ImprovedDefend;
 import pinacolada.cards.fool.basic.ImprovedStrike;
 import pinacolada.relics.FoolRelic;
-import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameEffects;
 import pinacolada.utilities.PCLInputManager;
 
@@ -67,7 +66,7 @@ public class PolychromePaintbrush extends FoolRelic
         if (counter > 0)
         {
             flash();
-            PCLActions.Bottom.SelectFromPile(name, 1, player.masterDeck)
+            PCLGameEffects.Queue.Callback(new SelectFromPile(name, 1, player.masterDeck)
                     .SetFilter(c -> c.rarity == AbstractCard.CardRarity.BASIC)
                     .HideTopPanel(true)
                     .AddCallback(selection -> {
@@ -84,7 +83,7 @@ public class PolychromePaintbrush extends FoolRelic
                                 }
                             }));
                         }
-                    });
+                    }));
             AddCounter(-1);
         }
     }

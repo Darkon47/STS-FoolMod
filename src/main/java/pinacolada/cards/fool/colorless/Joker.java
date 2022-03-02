@@ -11,6 +11,8 @@ import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.fool.special.Joker_Arsene;
 import pinacolada.effects.AttackEffects;
+import pinacolada.effects.PCLEffekseerEFX;
+import pinacolada.effects.VFX;
 import pinacolada.interfaces.subscribers.OnCooldownTriggeredSubscriber;
 import pinacolada.interfaces.subscribers.OnPCLClickablePowerUsed;
 import pinacolada.powers.FoolPower;
@@ -39,6 +41,7 @@ public class Joker extends FoolCard
         super(DATA);
 
         Initialize(3, 0, 3, 2);
+        SetUpgrade(0, 0, 0, 1);
         SetHitCount(2);
 
         SetAffinity_Star(1);
@@ -46,7 +49,7 @@ public class Joker extends FoolCard
         SetAffinity_Green(0,0,1);
         SetAffinity_Blue(0,0,1);
 
-        SetSoul(5, 0, Joker_Arsene::new);
+        SetSoul(3, 0, Joker_Arsene::new);
     }
 
     @Override
@@ -59,8 +62,10 @@ public class Joker extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
+        PCLActions.Bottom.VFX(VFX.EFX(PCLEffekseerEFX.GUN04, m.hb));
         PCLActions.Bottom.DealCardDamage(this, m, AttackEffects.GUNSHOT)
-                .forEach(d -> d.SetVFXColor(Color.RED, Color.RED)
+                .forEach(d -> d
+                        .SetVFXColor(Color.RED, Color.RED)
                         .SetSoundPitch(0.5f, 1.5f));
         ChooseCard();
 
@@ -83,11 +88,11 @@ public class Joker extends FoolCard
             if (temp.type == CardType.POWER || temp.purgeOnUse || temp.hasTag(PURGE)) {
                 continue;
             }
-            temp = temp.makeCopy();
+            AbstractCard temp2 = temp.makeCopy();
             if (upgraded) {
-                temp.upgrade();
+                temp2.upgrade();
             }
-            choice.addToTop(temp);
+            choice.addToBottom(temp2);
         }
 
         PCLActions.Bottom.SelectFromPile(name, 1, choice)
@@ -116,12 +121,6 @@ public class Joker extends FoolCard
         }
 
         @Override
-        public void atEndOfTurn(boolean isPlayer) {
-            super.atEndOfTurn(isPlayer);
-            ReducePower(1);
-        }
-
-        @Override
         public void onInitialApplication()
         {
             super.onInitialApplication();
@@ -147,14 +146,18 @@ public class Joker extends FoolCard
 
         @Override
         public boolean OnCooldownTriggered(AbstractCard card, PCLCardCooldown cooldown) {
-            PCLActions.Delayed.PlayCard(this.card, PCLGameUtilities.GetRandomEnemy(true));
+            if (cooldown.GetCurrent() == 0) {
+                PCLActions.Delayed.PlayCopy(this.card, PCLGameUtilities.GetRandomEnemy(true));
+                ReducePower(1);
+            }
             return true;
         }
 
         @Override
         public boolean OnClickablePowerUsed(PCLClickablePower power, AbstractMonster target) {
             if (power instanceof AbstractPCLAffinityPower) {
-                PCLActions.Delayed.PlayCard(this.card, PCLGameUtilities.GetRandomEnemy(true));
+                PCLActions.Delayed.PlayCopy(this.card, PCLGameUtilities.GetRandomEnemy(true));
+                ReducePower(1);
             }
             return true;
         }

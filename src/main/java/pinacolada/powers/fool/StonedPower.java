@@ -28,19 +28,21 @@ public class StonedPower extends PCLPower implements OnTryReducePowerListener
         SFX.Play(SFX.RELIC_DROP_ROCKY, 2.1f, 2.3f);
     }
 
+    @Override
+    public void atStartOfTurn()
+    {
+        this.flashWithoutSound();
+
+        ReducePower(1);
+    }
 
     @Override
     public boolean TryReducePower(AbstractPower power, AbstractCreature target, AbstractCreature source, AbstractGameAction action) {
-        if (target == owner &&
-                (BurningPower.POWER_ID.equals(power.ID)
-                        || FreezingPower.POWER_ID.equals(power.ID)
-                        || ElectrifiedPower.POWER_ID.equals(power.ID)
-                        || RippledPower.POWER_ID.equals(power.ID)
-                        || SwirledPower.POWER_ID.equals(power.ID)
-                )) {
-            ReducePower(1);
-            return false;
-        }
-        return true;
+        return target != owner ||
+                (!BurningPower.POWER_ID.equals(power.ID)
+                        && !FreezingPower.POWER_ID.equals(power.ID)
+                        && !ElectrifiedPower.POWER_ID.equals(power.ID)
+                        && !RippledPower.POWER_ID.equals(power.ID)
+                        && !SwirledPower.POWER_ID.equals(power.ID));
     }
 }

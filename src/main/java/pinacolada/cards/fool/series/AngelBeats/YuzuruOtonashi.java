@@ -18,7 +18,7 @@ public class YuzuruOtonashi extends FoolCard
     {
         super(DATA);
 
-        Initialize(0, 1, 2, 3);
+        Initialize(0, 3, 2, 3);
         SetUpgrade(0, 3, 0, 0);
 
         SetAffinity_Orange(1, 0, 1);
@@ -35,9 +35,11 @@ public class YuzuruOtonashi extends FoolCard
         {
             for (AbstractCard c : cards)
             {
-                PCLActions.Bottom.GainTemporaryHP(secondaryValue);
-                if (c instanceof PCLCard && PCLGameUtilities.IsHindrance(c)) {
+                if (c instanceof PCLCard) {
                     ((PCLCard) c).affinities.Add(PCLAffinity.Orange, 1);
+                }
+                if (!PCLGameUtilities.IsHindrance(c)) {
+                    PCLActions.Bottom.GainTemporaryHP(secondaryValue);
                 }
             }
         });

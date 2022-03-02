@@ -21,6 +21,9 @@ public class Curse_SearingBurn extends PCLCard
 
         Initialize(0, 0, 2, 1);
         SetUpgrade(0, 0, 2, 1);
+
+        SetAffinity_Red(1);
+
         SetUnplayable(true);
         SetEthereal(true);
     }

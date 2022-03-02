@@ -14,12 +14,13 @@ public class IonizingStorm extends FoolCard
 {
     public static final PCLCardData DATA = Register(IonizingStorm.class).SetPower(3, CardRarity.SPECIAL).SetColorless().SetMaxCopies(1);
     public static final int LIGHTNING_BONUS = 50;
+    public static final int PER_CHARGE = 1;
 
     public IonizingStorm()
     {
         super(DATA);
 
-        Initialize(0, 0, 2, IonizingStormPower.PER_CHARGE);
+        Initialize(0, 0, 2, PER_CHARGE);
         SetUpgrade(0, 0, 1, 0);
         SetAffinity_Light(1);
         SetAffinity_Silver(1);

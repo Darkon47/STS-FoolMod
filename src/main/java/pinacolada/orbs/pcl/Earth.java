@@ -19,6 +19,7 @@ import eatyourbeets.utilities.Colors;
 import eatyourbeets.utilities.RandomizedList;
 import pinacolada.actions.orbs.EarthOrbEvokeAction;
 import pinacolada.actions.orbs.EarthOrbPassiveAction;
+import pinacolada.cards.base.PCLAttackType;
 import pinacolada.effects.AttackEffects;
 import pinacolada.effects.PCLProjectile;
 import pinacolada.effects.SFX;
@@ -257,7 +258,8 @@ public class Earth extends PCLOrb implements OnStartOfTurnPostDrawSubscriber, On
         if (info.type == DamageInfo.DamageType.NORMAL && PCLGameUtilities.IsPlayer(target) && PCLGameUtilities.IsMonster(info.owner))
         {
             PCLActions.Top.Add(new EarthOrbPassiveAction(this, -1));
-            PCLActions.Top.DealDamage(null, info.owner, evokeAmount, DamageInfo.DamageType.THORNS, AttackEffects.SMASH).SetVFXColor(Color.TAN);
+            PCLActions.Top.DealDamage(null, info.owner, evokeAmount, DamageInfo.DamageType.THORNS, AttackEffects.SMASH).SetVFXColor(Color.TAN)
+                    .SetPCLAttackType(PCLAttackType.Earth, true);
             PCLActions.Top.GainBlock(passiveAmount);
         }
         return damage;

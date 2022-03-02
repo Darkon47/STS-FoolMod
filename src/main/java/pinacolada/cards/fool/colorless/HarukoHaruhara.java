@@ -3,6 +3,7 @@ package pinacolada.cards.fool.colorless;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import eatyourbeets.powers.CombatStats;
 import eatyourbeets.utilities.RandomizedList;
 import pinacolada.cards.base.CardSeries;
 import pinacolada.cards.base.CardUseInfo;
@@ -22,10 +23,23 @@ public class HarukoHaruhara extends FoolCard
     {
         super(DATA);
 
-        Initialize(0, 0);
+        Initialize(0, 0, 2);
         SetCostUpgrade(-1);
 
         SetAffinity_Star(1, 0, 0);
+    }
+
+    @Override
+    public void triggerOnManualDiscard() {
+        super.triggerOnManualDiscard();
+        if (CombatStats.TryActivateSemiLimited(cardID)) {
+            PCLActions.Bottom.DiscardFromHand(name, 1, true)
+                    .ShowEffect(true, true)
+                    .SetOptions(false, false, false)
+                    .AddCallback(() -> {
+                       PCLActions.Bottom.Draw(magicNumber);
+                    });
+        }
     }
 
     @Override

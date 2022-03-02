@@ -60,13 +60,13 @@ public class Curse_AscendersBane extends PCLCard implements OnRemovedFromDeckLis
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        if (!dontTriggerOnUseCard)
+        if (auxiliaryData.form == UNNAMED_FORM)
         {
-            PCLActions.Bottom.TakeDamage(magicNumber, AttackEffects.DARK)
-            .SetSoundPitch(1.3f, 1.4f);
-        }
-        else if (auxiliaryData.form == UNNAMED_FORM)
-        {
+            if (!dontTriggerOnUseCard)
+            {
+                PCLActions.Bottom.TakeDamage(magicNumber, AttackEffects.DARK)
+                        .SetSoundPitch(1.3f, 1.4f);
+            }
             PCLActions.Bottom.SelectFromPile(name, 1, player.drawPile)
             .SetOptions(CardSelection.Top, false)
             .AddCallback(cards ->

@@ -20,6 +20,7 @@ public class Curse_Decay extends PCLCard
         super(DATA);
 
         Initialize(0, 0, 2, 1);
+        SetAffinity_Dark(1);
 
         SetUnplayable(true);
     }

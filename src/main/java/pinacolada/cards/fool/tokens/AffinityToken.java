@@ -113,7 +113,7 @@ public abstract class AffinityToken extends FoolCard implements OnTrySpendAffini
 
         Initialize(0, 0, 1, 0);
         SetUpgrade(0, 0, 0, 0);
-        InitializeAffinity(affinity, 2, 0, 0);
+        InitializeAffinity(affinity, 1, 0, 0);
 
         this.affinity = affinity;
         this.cropPortrait = false;
@@ -129,7 +129,6 @@ public abstract class AffinityToken extends FoolCard implements OnTrySpendAffini
     }
 
     public void OnUpgrade() {
-        SetHarmonic(true);
         SetPermanentHaste(true);
     }
 

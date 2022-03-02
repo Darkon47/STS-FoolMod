@@ -3,7 +3,6 @@ package pinacolada.cards.fool.series.GenshinImpact;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import pinacolada.cards.base.CardUseInfo;
-import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLAttackType;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
@@ -21,8 +20,6 @@ public class Amber extends FoolCard {
         SetUpgrade(2, 1, 0);
         SetAffinity_Green(1, 0 ,1);
         SetAffinity_Light(1, 0, 0);
-
-        SetAffinityRequirement(PCLAffinity.Green, 3);
     }
 
     @Override

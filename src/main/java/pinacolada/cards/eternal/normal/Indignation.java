@@ -1,5 +1,6 @@
 package pinacolada.cards.eternal.normal;
 
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import eatyourbeets.utilities.CardSelection;
@@ -10,6 +11,9 @@ import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.eternal.EternalCard;
 import pinacolada.cards.eternal.curse.Curse_Spite;
 import pinacolada.effects.AttackEffects;
+import pinacolada.effects.PCLEffekseerEFX;
+import pinacolada.effects.SFX;
+import pinacolada.effects.VFX;
 import pinacolada.utilities.PCLActions;
 
 public class Indignation extends EternalCard
@@ -32,7 +36,9 @@ public class Indignation extends EternalCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.DealCardDamageToAll(this, AttackEffects.DARKNESS);
+        PCLActions.Bottom.VFX(VFX.EFX(PCLEffekseerEFX.LIGHT04).SetColor(Color.PURPLE));
+        PCLActions.Bottom.SFX(SFX.PCL_DARKNESS);
+        PCLActions.Bottom.DealCardDamageToAll(this, AttackEffects.NONE);
         if (info.IsSynergizing)
         {
             for (int i = 0; i < magicNumber; i++) {

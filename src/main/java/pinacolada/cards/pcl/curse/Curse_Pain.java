@@ -20,6 +20,7 @@ public class Curse_Pain extends PCLCard
         super(DATA);
 
         Initialize(0, 0, 1);
+        SetAffinity_Dark(1);
 
         SetUnplayable(true);
     }

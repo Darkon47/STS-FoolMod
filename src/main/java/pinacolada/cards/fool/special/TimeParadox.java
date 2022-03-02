@@ -44,7 +44,7 @@ public class TimeParadox extends FoolCard implements OnStartOfTurnPostDrawSubscr
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
         int stacks = PCLGameUtilities.UseXCostEnergy(this);
-        PCLActions.Bottom.PurgeFromPile(name,stacks,player.hand)
+        PCLActions.Bottom.PurgeFromPile(name,stacks + 1,player.hand)
                 .ShowEffect(true, false)
                 .SetOptions(true, true)
                 .AddCallback(
@@ -56,7 +56,7 @@ public class TimeParadox extends FoolCard implements OnStartOfTurnPostDrawSubscr
                         PCLCombatStats.onStartOfTurnPostDraw.Subscribe(other);
                     }
                 });
-        PCLActions.Bottom.Draw(stacks);
+        PCLActions.Bottom.Draw(stacks + 1);
         PCLActions.Bottom.GainEnergy(stacks);
     }
 

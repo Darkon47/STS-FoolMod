@@ -82,6 +82,7 @@ public class PCLPowerHelper extends eatyourbeets.powers.PowerHelper implements T
     public static final PCLPowerHelper NextTurnDraw = new PCLPowerHelper(DrawCardNextTurnPower.POWER_ID, PGR.Tooltips.NextTurnDraw, DrawCardNextTurnPower::new, Behavior.SingleTurn,false, false);
     public static final PCLPowerHelper Regen = new PCLPowerHelper(RegenPower.POWER_ID, PGR.Tooltips.Regeneration, RegenPower::new, Behavior.TurnBased,false, false);
     public static final PCLPowerHelper Ritual = new PCLPowerHelper(RitualPower.POWER_ID, PGR.Tooltips.Ritual, (o, s, a) -> new RitualPower(o, a, PCLGameUtilities.IsPlayer(o)), Behavior.Permanent,false, false);
+    public static final PCLPowerHelper Supercharged = new PCLPowerHelper(SuperchargedPower.POWER_ID, PGR.Tooltips.Supercharged, SuperchargedPower::new, Behavior.Permanent,false, false);
     public static final PCLPowerHelper TemporaryArtifact = new PCLPowerHelper(TemporaryArtifactPower.POWER_ID, PGR.Tooltips.Artifact, TemporaryArtifactPower::new, Behavior.Temporary,false, false);
     public static final PCLPowerHelper TemporaryDexterity = new PCLPowerHelper(TemporaryDexterityPower.POWER_ID, PGR.Tooltips.Dexterity, TemporaryDexterityPower::new, Behavior.Temporary,false, false);
     public static final PCLPowerHelper TemporaryFocus = new PCLPowerHelper(TemporaryFocusPower.POWER_ID, PGR.Tooltips.Focus, TemporaryFocusPower::new, Behavior.Temporary,false, false);

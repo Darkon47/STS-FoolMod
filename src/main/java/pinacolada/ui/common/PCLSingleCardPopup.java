@@ -158,7 +158,7 @@ public class PCLSingleCardPopup extends GUIElement
                 .SetText(buttonStrings.MaxCopiesTooltip);
 
         this.artAuthorLabel = new GUI_Label(EYBFontHelper.CardTooltipFont,
-                new RelativeHitbox(changeVariantHb, ScreenW(0.21f), ScreenH(0.07f), changeVariantHb.width / 2, -changeVariantHb.height * 8f, false))
+                new RelativeHitbox(changeVariantHb, ScreenW(0.21f), ScreenH(0.07f), changeVariantHb.width / 2 - ICON_SIZE * 0.75f, changeVariantHb.height * 4.52f, false))
                 .SetAlignment(0.9f, 0.1f, true)
                 .SetText(buttonStrings.ArtAuthor);
     }

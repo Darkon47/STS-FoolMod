@@ -33,7 +33,7 @@ public class Kyubey extends FoolCard
         SetAffinity_Dark(1);
         SetAffinity_Silver(1);
 
-        SetEthereal(true);
+        SetFragile(true);
         SetPurge(true);
         GraveField.grave.set(this, true);
     }

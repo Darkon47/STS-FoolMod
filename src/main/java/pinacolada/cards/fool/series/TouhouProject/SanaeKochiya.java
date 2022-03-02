@@ -4,7 +4,6 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import eatyourbeets.utilities.TargetHelper;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.PCLCardTarget;
@@ -18,14 +17,14 @@ import pinacolada.utilities.PCLActions;
 import static eatyourbeets.resources.GR.Enums.CardTags.PURGE;
 
 public class SanaeKochiya extends FoolCard {
-    public static final PCLCardData DATA = Register(SanaeKochiya.class).SetSkill(1, CardRarity.COMMON, PCLCardTarget.None, true).SetSeriesFromClassPackage()
+    public static final PCLCardData DATA = Register(SanaeKochiya.class).SetSkill(1, CardRarity.COMMON, PCLCardTarget.None).SetSeriesFromClassPackage()
             .PostInitialize(data -> data.AddPreview(new Miracle(), false));
 
     public SanaeKochiya() {
         super(DATA);
 
-        Initialize(0, 0, 2, 3);
-        SetUpgrade(0, 0, 1, 1);
+        Initialize(0, 2, 2, 3);
+        SetUpgrade(0, 2, 0, 1);
         SetAffinity_Blue(1, 0, 0);
         SetAffinity_Light(1, 0, 1);
     }
@@ -38,6 +37,7 @@ public class SanaeKochiya extends FoolCard {
 
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info) {
+        PCLActions.Bottom.GainBlock(block);
         PCLActions.Bottom.GainTemporaryHP(magicNumber);
         PCLActions.Top.Scry(secondaryValue)
                 .AddCallback(cards -> {
@@ -57,7 +57,7 @@ public class SanaeKochiya extends FoolCard {
                                 PCLActions.Top.StackPower(new NextTurnMiracle(player, 1));
                             }
                             if (hasPurge) {
-                                PCLActions.Top.ApplyBlinded(TargetHelper.Enemies(), 1);
+                                PCLActions.Top.GainTemporaryArtifact(1);
                             }
                         }
                 );

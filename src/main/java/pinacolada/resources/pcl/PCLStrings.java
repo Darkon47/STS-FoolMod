@@ -593,6 +593,16 @@ public class PCLStrings
             return Format(addPeriod, 44, amount, buff);
         }
 
+        public final String Give1(Object buff, boolean addPeriod)
+        {
+            return Format(addPeriod, 45, buff);
+        }
+
+        public final String Give2(Object amount, Object buff, boolean addPeriod)
+        {
+            return Format(addPeriod, 46, amount, buff);
+        }
+
         private String Format(boolean addPeriod, int index, Object amount)
         {
             return Format(addPeriod, index, amount, null);

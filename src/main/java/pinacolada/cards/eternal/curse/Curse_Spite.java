@@ -20,6 +20,7 @@ public class Curse_Spite extends EternalCard
         super(DATA);
 
         Initialize(0, 0, 5, 1);
+        SetAffinity_Dark(1);
 
         SetUnplayable(true);
     }

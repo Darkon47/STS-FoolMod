@@ -5,38 +5,45 @@ import pinacolada.powers.common.BurningPower;
 import pinacolada.powers.common.ElectrifiedPower;
 import pinacolada.powers.common.FreezingPower;
 import pinacolada.powers.common.RippledPower;
+import pinacolada.powers.fool.StonedPower;
+import pinacolada.powers.fool.SwirledPower;
+
+import java.util.Arrays;
+import java.util.HashSet;
 
 public enum PCLAttackType
 {
-    None(false, false, null, 0),
-    Normal(false, false, null, 0),
-    Brutal(false, false, null, 0),
-    Dark(false, true, ElectrifiedPower.POWER_ID, 5),
-    Electric(false, true, RippledPower.POWER_ID, 5),
-    Fire(false, true, FreezingPower.POWER_ID, 2),
-    Ice(false, true, BurningPower.POWER_ID, 5),
-    Piercing(true, true, null, 0),
-    Ranged(false, true, null, 0);
+    None(false, false, 0),
+    Normal(false, false, 0),
+    Air(false, true, 0, StonedPower.POWER_ID),
+    Brutal(false, false, 0),
+    Dark(false, true, 60,ElectrifiedPower.POWER_ID),
+    Earth(false, true, 60,SwirledPower.POWER_ID),
+    Electric(false, true, 60,RippledPower.POWER_ID),
+    Fire(false, true, 60,FreezingPower.POWER_ID),
+    Ice(false, true, 60,BurningPower.POWER_ID),
+    Piercing(true, true, 0),
+    Ranged(false, true, 0);
 
-    public static final int DAMAGE_MULTIPLIER = 60;
+    public static final int BASE_DAMAGE_MULTIPLIER = 60;
     public final boolean bypassThorns;
     public final boolean bypassBlock;
-    public final String powerToRemove;
-    public final int reactionIncrease;
+    public final HashSet<String> reactionPowers;
+    public final int damageMultiplier;
 
-    PCLAttackType(boolean bypassBlock, boolean bypassThorns, String powerToRemove, int reactionIncrease)
+    PCLAttackType(boolean bypassBlock, boolean bypassThorns, int damageMultiplier, String... reactionPowers)
     {
         this.bypassThorns = bypassThorns;
         this.bypassBlock = bypassBlock;
-        this.powerToRemove = powerToRemove;
-        this.reactionIncrease = reactionIncrease;
+        this.reactionPowers = new HashSet<String>(Arrays.asList(reactionPowers));
+        this.damageMultiplier = damageMultiplier;
     }
 
-    public float GetDamageMultiplier() {
-        return 1f + (GetDamageMultiplierForDisplay() / 100f);
+    public float GetDamageMultiplier(String powerID) {
+        return 1f + (GetDamageMultiplierForDisplay(powerID) / 100f);
     }
 
-    public int GetDamageMultiplierForDisplay() {
-        return DAMAGE_MULTIPLIER + PCLCombatStats.GetAmplifierBonus(powerToRemove);
+    public int GetDamageMultiplierForDisplay(String powerID) {
+        return damageMultiplier + PCLCombatStats.GetAmplifierBonus(powerID);
     }
 }

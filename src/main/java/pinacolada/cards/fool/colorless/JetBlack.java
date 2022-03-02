@@ -26,7 +26,7 @@ public class JetBlack extends FoolCard
     {
         super(DATA);
 
-        Initialize(8, 1, 2);
+        Initialize(8, 1, 2, 3);
         SetUpgrade(3, 1, 0);
 
         SetAffinity_Red(1, 0, 1);

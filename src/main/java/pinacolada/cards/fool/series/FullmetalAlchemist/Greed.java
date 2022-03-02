@@ -36,7 +36,7 @@ public class Greed extends FoolCard
     {
         super(DATA);
 
-        Initialize(0,0, 5, 3);
+        Initialize(0,0, 6, 4);
         SetUpgrade(0,0, 1, 1);
 
         SetAffinity_Red(1);

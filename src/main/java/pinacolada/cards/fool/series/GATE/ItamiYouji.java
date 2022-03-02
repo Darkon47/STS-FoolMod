@@ -32,15 +32,6 @@ public class ItamiYouji extends FoolCard
     }
 
     @Override
-    public void Refresh(AbstractMonster enemy)
-    {
-        super.Refresh(enemy);
-
-        final int cardsPlayed = PCLGameUtilities.GetTotalCardsPlayed(this, true);
-        PCLGameUtilities.ModifyHitCount(this, baseHitCount + Math.min(10, cardsPlayed), true);
-    }
-
-    @Override
     public int GetXValue() {
         return secondaryValue * PCLGameUtilities.GetTotalCardsPlayed(this, true);
     }
