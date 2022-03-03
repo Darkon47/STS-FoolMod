@@ -6,7 +6,7 @@ import pinacolada.cards.base.CardEffectChoice;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLAttackType;
 import pinacolada.cards.base.PCLCardData;
-import pinacolada.cards.base.cardeffects.GenericEffect;
+import pinacolada.cards.base.cardeffects.GenericCardEffect;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
 import pinacolada.stances.PCLStanceHelper;
@@ -51,8 +51,8 @@ public class YasutoraSado extends FoolCard
     {
         if (choices.TryInitialize(this))
         {
-            choices.AddEffect(GenericEffect.EnterStance(PCLStanceHelper.MightStance));
-            choices.AddEffect(GenericEffect.EnterStance(PCLStanceHelper.VelocityStance));
+            choices.AddEffect(GenericCardEffect.EnterStance(PCLStanceHelper.MightStance));
+            choices.AddEffect(GenericCardEffect.EnterStance(PCLStanceHelper.VelocityStance));
         }
 
         choices.Select(PCLActions.Top, 1, m)

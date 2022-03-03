@@ -26,7 +26,7 @@ public class PCLCardBuilder
     protected AbstractCard.CardType cardType = AbstractCard.CardType.SKILL;
     protected ActionT1<PCLCard> constructor;
     protected ActionT1<PCLCard> onUpgrade;
-    protected ActionT3<PCLCard, AbstractPlayer, AbstractMonster> onUse;
+    protected ActionT3<AbstractPlayer, AbstractMonster, CardUseInfo> onUse;
     protected AdvancedTexture portraitForeground;
     protected AdvancedTexture portraitImage;
     protected ArrayList<AbstractCard.CardTags> tags = new ArrayList<>();
@@ -315,7 +315,7 @@ public class PCLCardBuilder
         return this;
     }
 
-    public PCLCardBuilder SetOnUse(ActionT3<PCLCard, AbstractPlayer, AbstractMonster> onUseAction)
+    public PCLCardBuilder SetOnUse(ActionT3<AbstractPlayer, AbstractMonster, CardUseInfo> onUseAction)
     {
         this.onUse = onUseAction;
 

@@ -5,10 +5,13 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import pinacolada.cards.base.*;
+import pinacolada.cards.base.CardEffectChoice;
+import pinacolada.cards.base.CardUseInfo;
+import pinacolada.cards.base.PCLAffinity;
+import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.attributes.AbstractAttribute;
 import pinacolada.cards.base.attributes.TempHPAttribute;
-import pinacolada.cards.base.cardeffects.GenericEffect;
+import pinacolada.cards.base.cardeffects.GenericCardEffect;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.fool.special.FlandreScarlet_RemiliaScarlet;
 import pinacolada.effects.AttackEffects;
@@ -57,9 +60,9 @@ public class FlandreScarlet extends FoolCard
                 AbstractCard handCard = PCLJUtils.Random(player.hand.group);
 
                 choices.Initialize(this, true);
-                choices.AddEffect(new GenericEffect_FlandreScarlet(0, this));
+                choices.AddEffect(new GenericCardEffect_FlandreScarlet(0, this));
                 if (handCard != null) {
-                    choices.AddEffect(new GenericEffect_FlandreScarlet(1, handCard));
+                    choices.AddEffect(new GenericCardEffect_FlandreScarlet(1, handCard));
                 }
                 choices.Select(1, null);
             }
@@ -72,10 +75,10 @@ public class FlandreScarlet extends FoolCard
         });
     }
 
-    protected static class GenericEffect_FlandreScarlet extends GenericEffect
+    protected static class GenericCardEffect_FlandreScarlet extends GenericCardEffect
     {
         private final AbstractCard target;
-        public GenericEffect_FlandreScarlet(int amount, AbstractCard target)
+        public GenericCardEffect_FlandreScarlet(int amount, AbstractCard target)
         {
             this.amount = amount;
             this.target = target;
@@ -88,7 +91,7 @@ public class FlandreScarlet extends FoolCard
         }
 
         @Override
-        public void Use(PCLCard card, AbstractPlayer p, AbstractMonster m)
+        public void Use(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
         {
             PCLActions.Bottom.Exhaust(target);
         }

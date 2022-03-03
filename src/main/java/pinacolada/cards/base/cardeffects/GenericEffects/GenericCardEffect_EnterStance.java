@@ -2,20 +2,20 @@ package pinacolada.cards.base.cardeffects.GenericEffects;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import pinacolada.cards.base.PCLCard;
+import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardTarget;
-import pinacolada.cards.base.cardeffects.GenericEffect;
+import pinacolada.cards.base.cardeffects.GenericCardEffect;
 import pinacolada.resources.PGR;
 import pinacolada.stances.PCLStanceHelper;
 import pinacolada.utilities.PCLActions;
 
-public class GenericEffect_EnterStance extends GenericEffect
+public class GenericCardEffect_EnterStance extends GenericCardEffect
 {
-    public static final String ID = Register(GenericEffect_EnterStance.class);
+    public static final String ID = Register(GenericCardEffect_EnterStance.class);
 
     protected final PCLStanceHelper stance;
 
-    public GenericEffect_EnterStance(PCLStanceHelper stance)
+    public GenericCardEffect_EnterStance(PCLStanceHelper stance)
     {
         super(ID, stance.ID, PCLCardTarget.Self, 1);
         this.stance = stance;
@@ -29,7 +29,7 @@ public class GenericEffect_EnterStance extends GenericEffect
     }
 
     @Override
-    public void Use(PCLCard card, AbstractPlayer p, AbstractMonster m)
+    public void Use(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
         PCLActions.Bottom.ChangeStance(stance);
     }

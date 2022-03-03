@@ -10,6 +10,8 @@ import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.fool.special.ByakuyaBankai;
 import pinacolada.effects.AttackEffects;
+import pinacolada.effects.PCLEffekseerEFX;
+import pinacolada.effects.VFX;
 import pinacolada.resources.PGR;
 import pinacolada.stances.pcl.MightStance;
 import pinacolada.stances.pcl.VelocityStance;
@@ -40,6 +42,7 @@ public class ByakuyaKuchiki extends FoolCard {
         }
     }
 
+    // TODO refactor to use CardChoice
     private void ChooseAction(AbstractMonster m) {
         PCLCard damage = GenerateInternal(CardType.ATTACK, this::DamageEffect, PGR.PCL.Strings.Actions.GainAmount(magicNumber, PGR.Tooltips.Might, true)).Build();
         PCLCard block = GenerateInternal(CardType.SKILL, this::BlockEffect, PGR.PCL.Strings.Actions.GainAmount(magicNumber, PGR.Tooltips.Velocity, true)).Build();
@@ -51,7 +54,7 @@ public class ByakuyaKuchiki extends FoolCard {
         Execute(choices, m);
     }
 
-    private PCLCardBuilder GenerateInternal(AbstractCard.CardType type, ActionT3<PCLCard, AbstractPlayer, AbstractMonster> onUseAction, String description) {
+    private PCLCardBuilder GenerateInternal(AbstractCard.CardType type, ActionT3<AbstractPlayer, AbstractMonster, CardUseInfo> onUseAction, String description) {
         PCLCardBuilder builder = new PCLCardBuilder(ByakuyaKuchiki.DATA.ID);
         builder.SetText(name, description, "");
         builder.SetProperties(type, PGR.Enums.Cards.THE_FOOL, AbstractCard.CardRarity.RARE, CardTarget.ENEMY);
@@ -79,12 +82,13 @@ public class ByakuyaKuchiki extends FoolCard {
                 });
     }
 
-    private void DamageEffect(AbstractCard card, AbstractPlayer p, AbstractMonster m) {
+    private void DamageEffect(AbstractPlayer p, AbstractMonster m, CardUseInfo info) {
+        PCLActions.Bottom.VFX(VFX.EFX(PCLEffekseerEFX.SWORD09, m.hb).SetScale(1.5f));
         PCLActions.Bottom.DealCardDamage(this, m, AttackEffects.SMASH);
         PCLActions.Bottom.GainMight(magicNumber);
     }
 
-    private void BlockEffect(AbstractCard card, AbstractPlayer p, AbstractMonster m) {
+    private void BlockEffect(AbstractPlayer p, AbstractMonster m, CardUseInfo info) {
         PCLActions.Bottom.GainBlock(block);
         PCLActions.Bottom.GainVelocity(magicNumber);
     }

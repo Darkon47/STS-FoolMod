@@ -83,22 +83,33 @@
 			"[Try to Run] #r50% #rchance #rto #rlose #r{0} #rHP"
 		]
 	},
-	"pcl:TheBookStore":
+	"pcl:TheBookPile":
 	{
 		"DESCRIPTIONS":
 		[
-			"#yEverything #yin #ythis #yplace #yseems #yto #ybe #ymade #yof #ygold. #yIt #yseems #ythe #ywhole #ylandscape #yhas #ychanged... #yMountains #yof #yglimmering #yGold #yeverywhere. #yA #yriver #yof #ymolten #ygold #ycourses #ythrough #yit. #yWhy #ydid #yyou #ynot #ynotice #yit #yearlier? NL NL #yNo #ymatter, #yyou #yfeel #ycompelled #yto #ytake #ysome #yof #yit, NL #yyou #r@HAVE@ #yto #ytake #ysome #yof #yit. #yJust #ya #yfew #ygolden #yrocks. NL NL #y... #ywhat #yis #ythe #yworst #ythat #ycould #yhappen?",
+			"You find yourself in a library filled to the brim with books. Towers of books surround you from all sides, and one of them suddenly topples, smothering you with books. You figure that you might as well give one of them a read.",
 
-			"NL NL NL NL NL NL NL #ySomething #yis #ylaughing #yin #ythe #yfar #ydistance."
+			"You indulge yourself in a book about the lore and rituals surrounding various mythological demons from around the world. You walk away inspired to summon demons to terrorize innocent #yByrds.",
+
+			"You indulge yourself in a book about the lore surrounding various mythological reptiles from around the world. You slither away, inspired to act like a reptile wherever you go.",
+
+			"You indulge yourself in a book about the history and theories of various prominent scientists in history. You walk away armed with a vast vocabulary of scientific jargon to confuse passerbys.",
+
+			"You indulge yourself in a book about how to build your own robot. You follow the instructions to the letter and wind up with your very own functional robot! Cool!",
+
+			"You indulge yourself in a gory book on zombies and the apocalypse. You walk away with your hands stretched out in front of you, inspired to eat brains.",
+
+			"You indulge yourself in a book about how to be a wizard. You walk away armed with a vast vocabulary of mumbo jumbo that will make absolutely no sense to passerbys."
 		],
 		"NAME": "The Haunt",
 		"OPTIONS":
 		[
-			"[Read about Demons] #yGain #y{0} #yGold.",
-			"[Read about Dragons] #gHeal #g{0} #gHP",
-			"[Read about Ninjas] #gHeal #g{0} #gHP",
-			"[Read about Scientists] #gHeal #g{0} #gHP",
-			"[Read about Wizards] #gHeal #g{0} #gHP"
+			"[Read about Demons] #gObtain #g1 #gof #g3 #gDemons.",
+			"[Read about Machines] #gObtain #g1 #gof #g3 #gMachines.",
+			"[Read about Reptiles] #gObtain #g1 #gof #g3 #gReptiles.",
+			"[Read about Scientists] #gObtain #g1 #gof #g3 #gScientists.",
+			"[Read about the Undead] #gObtain #g1 #gof #g3 #gUndead.",
+			"[Read about Wizards] #gObtain #g1 #gof #g3 #gSpellcasters."
 		]
 	},
 	"pcl:TheFloatyThing":
@@ -167,7 +178,7 @@
 		"OPTIONS":
 		[
 			"[Be the Hero!] #gObtain #ga #gspecial #greward. #rLose #ra #rProtagonist.",
-			"[Hire a Hero] #gChoose #g1 #gof #g5 #gProtagonists #gto #gobtain. #rLose #r{0} #rGold.",
+			"[Hire a Hero] #gObtain #g1 #gof #g5 #gProtagonists. #rLose #r{0} #rGold.",
 			"[Locked] ???.",
 			"[Locked] Not enough Gold."
 		]

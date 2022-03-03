@@ -588,6 +588,12 @@
 		"NAMES": ["next turn draw"],
 		"PROPER_NAME": "Next Turn Draw"
 	},
+	"Next Turn Draw Less":
+	{
+		"DESCRIPTION": "Draw fewer cards at the start of next turn.",
+		"NAMES": ["next turn draw less"],
+		"PROPER_NAME": "Next Turn Draw Less"
+	},
 	"Orb Slot":
 	{
 		"DESCRIPTION": "#yOrb #ySlots allow you to channel additional Orbs.",

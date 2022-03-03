@@ -7,7 +7,6 @@ import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.fool.FoolCard;
-import pinacolada.powers.replacement.TemporaryDrawReductionPower;
 import pinacolada.utilities.PCLActions;
 
 public class Azekura extends FoolCard
@@ -40,7 +39,7 @@ public class Azekura extends FoolCard
             PCLActions.Bottom.GainThorns(secondaryValue);
         }
         else {
-            PCLActions.Bottom.StackPower(new TemporaryDrawReductionPower(p, 1));
+            PCLActions.Bottom.DrawLessNextTurn(1);
         }
     }
 }

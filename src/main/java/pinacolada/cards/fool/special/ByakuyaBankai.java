@@ -11,6 +11,8 @@ import eatyourbeets.interfaces.delegates.ActionT3;
 import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
+import pinacolada.effects.PCLEffekseerEFX;
+import pinacolada.effects.VFX;
 import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
@@ -64,7 +66,7 @@ public class ByakuyaBankai extends FoolCard {
         Execute(choices, m);
     }
 
-    private PCLCardBuilder GenerateInternal(AbstractCard.CardType type, ActionT3<PCLCard, AbstractPlayer, AbstractMonster> onUseAction, String description) {
+    private PCLCardBuilder GenerateInternal(AbstractCard.CardType type, ActionT3<AbstractPlayer, AbstractMonster, CardUseInfo> onUseAction, String description) {
         PCLCardBuilder builder = new PCLCardBuilder(ByakuyaBankai.DATA.ID);
         builder.SetText(name, description, "");
         builder.SetProperties(type, PGR.Enums.Cards.THE_FOOL, AbstractCard.CardRarity.RARE, CardTarget.ENEMY);
@@ -92,15 +94,16 @@ public class ByakuyaBankai extends FoolCard {
                 });
     }
 
-    private void DamageEffect(AbstractCard card, AbstractPlayer p, AbstractMonster m) {
+    private void DamageEffect(AbstractPlayer p, AbstractMonster m, CardUseInfo info) {
         PCLActions.Bottom.VFX(new BorderLongFlashEffect(Color.WHITE));
         PCLActions.Bottom.VFX(new ShockWaveEffect(p.hb.cX, p.hb.cY, Color.WHITE, ShockWaveEffect.ShockWaveType.ADDITIVE), 0.75f);
 
+        PCLActions.Bottom.VFX(VFX.EFX(PCLEffekseerEFX.SWORD09).SetScale(2f));
         PCLActions.Bottom.DealCardDamageToAll(this, AttackEffects.SLASH_HEAVY);
         PCLActions.Bottom.GainMight(magicNumber);
     }
 
-    private void BlockEffect(AbstractCard card, AbstractPlayer p, AbstractMonster m) {
+    private void BlockEffect(AbstractPlayer p, AbstractMonster m, CardUseInfo info) {
         PCLActions.Bottom.GainBlock(block);
         PCLActions.Bottom.GainVelocity(magicNumber);
     }

@@ -18,6 +18,7 @@ import pinacolada.cards.base.attributes.AbstractAttribute;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLRenderHelpers;
 
+// TODO merge with PCLCard
 public class PCLCard_Dynamic extends PCLCard
 {
     protected final PCLCardBuilder builder;
@@ -27,7 +28,7 @@ public class PCLCard_Dynamic extends PCLCard
     public int attributeMultiplier;
     public final ActionT1<PCLCard> constructor;
     public final ActionT1<PCLCard> onUpgrade;
-    public final ActionT3<PCLCard, AbstractPlayer, AbstractMonster> onUse;
+    public final ActionT3<AbstractPlayer, AbstractMonster, CardUseInfo> onUse;
     public final FuncT1<AbstractAttribute, PCLCard> getSpecialInfo;
     public final FuncT1<AbstractAttribute, PCLCard> getDamageInfo;
     public final FuncT1<AbstractAttribute, PCLCard> getBlockInfo;
@@ -142,7 +143,7 @@ public class PCLCard_Dynamic extends PCLCard
     {
         if (onUse != null)
         {
-            onUse.Invoke(this, p, m);
+            onUse.Invoke(p, m, info);
         }
     }
 

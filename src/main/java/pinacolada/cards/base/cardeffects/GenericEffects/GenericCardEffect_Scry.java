@@ -2,17 +2,17 @@ package pinacolada.cards.base.cardeffects.GenericEffects;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import pinacolada.cards.base.PCLCard;
+import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardTarget;
-import pinacolada.cards.base.cardeffects.GenericEffect;
+import pinacolada.cards.base.cardeffects.GenericCardEffect;
 import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 
-public class GenericEffect_Scry extends GenericEffect
+public class GenericCardEffect_Scry extends GenericCardEffect
 {
-    public static final String ID = Register(GenericEffect_Draw.class);
+    public static final String ID = Register(GenericCardEffect_Draw.class);
 
-    public GenericEffect_Scry(int amount)
+    public GenericCardEffect_Scry(int amount)
     {
         super(ID, null, PCLCardTarget.None, amount);
     }
@@ -24,7 +24,7 @@ public class GenericEffect_Scry extends GenericEffect
     }
 
     @Override
-    public void Use(PCLCard card, AbstractPlayer p, AbstractMonster m)
+    public void Use(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
         PCLActions.Bottom.Scry(amount);
     }

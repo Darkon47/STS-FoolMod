@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import eatyourbeets.actions.special.RefreshHandLayout;
 import eatyourbeets.utilities.RandomizedList;
 import pinacolada.cards.base.*;
-import pinacolada.cards.base.cardeffects.GenericEffect;
+import pinacolada.cards.base.cardeffects.GenericCardEffect;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.pcl.status.*;
 import pinacolada.powers.PCLPowerHelper;
@@ -74,8 +74,8 @@ public class LestKarr extends FoolCard
 
                     if (choices.TryInitialize(this))
                     {
-                        choices.AddEffect(GenericEffect.Gain(magicNumber, PCLPowerHelper.TemporaryDexterity));
-                        choices.AddEffect(GenericEffect.Gain(magicNumber, PCLPowerHelper.TemporaryFocus));
+                        choices.AddEffect(GenericCardEffect.Gain(magicNumber, PCLPowerHelper.TemporaryDexterity));
+                        choices.AddEffect(GenericCardEffect.Gain(magicNumber, PCLPowerHelper.TemporaryFocus));
                     }
                     choices.Select(1, m);
                 });

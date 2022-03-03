@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.vfx.combat.DieDieDieEffect;
 import eatyourbeets.powers.CombatStats;
 import pinacolada.cards.base.*;
 import pinacolada.cards.base.attributes.AbstractAttribute;
-import pinacolada.cards.base.cardeffects.GenericEffect;
+import pinacolada.cards.base.cardeffects.GenericCardEffect;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.fool.tokens.AffinityToken;
 import pinacolada.effects.AttackEffects;
@@ -74,8 +74,8 @@ public class Hakurou extends FoolCard
                 .AddConditionalCallback(() -> {
             if (choices.TryInitialize(this))
             {
-                choices.AddEffect(GenericEffect.EnterStance(PCLStanceHelper.VelocityStance));
-                choices.AddEffect(GenericEffect.GainAffinity(magicNumber, PCLAffinity.Green));
+                choices.AddEffect(GenericCardEffect.EnterStance(PCLStanceHelper.VelocityStance));
+                choices.AddEffect(GenericCardEffect.GainAffinity(magicNumber, PCLAffinity.Green));
             }
             choices.Select(1, m);
         });

@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import eatyourbeets.interfaces.subscribers.OnStartOfTurnPostDrawSubscriber;
 import org.apache.commons.lang3.StringUtils;
 import pinacolada.cards.base.*;
-import pinacolada.cards.base.cardeffects.GenericEffect;
+import pinacolada.cards.base.cardeffects.GenericCardEffect;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.fool.special.ChlammyZell_Scheme;
 import pinacolada.powers.PCLCombatStats;
@@ -57,11 +57,11 @@ public class ChlammyZell extends FoolCard
 
         if (choices.TryInitialize(this))
         {
-            choices.AddEffect(new GenericEffect_DrawNextTurn(CardType.ATTACK));
-            choices.AddEffect(new GenericEffect_DrawNextTurn(CardType.SKILL));
-            choices.AddEffect(new GenericEffect_DrawNextTurn(CardType.POWER));
-            choices.AddEffect(new GenericEffect_DrawNextTurn(CardType.CURSE));
-            choices.AddEffect(new GenericEffect_DrawNextTurn(CardType.STATUS));
+            choices.AddEffect(new GenericCardEffect_DrawNextTurn(CardType.ATTACK));
+            choices.AddEffect(new GenericCardEffect_DrawNextTurn(CardType.SKILL));
+            choices.AddEffect(new GenericCardEffect_DrawNextTurn(CardType.POWER));
+            choices.AddEffect(new GenericCardEffect_DrawNextTurn(CardType.CURSE));
+            choices.AddEffect(new GenericCardEffect_DrawNextTurn(CardType.STATUS));
         }
         choices.Select(1, m);
 
@@ -71,11 +71,11 @@ public class ChlammyZell extends FoolCard
         }
     }
 
-    protected static class GenericEffect_DrawNextTurn extends GenericEffect implements OnStartOfTurnPostDrawSubscriber
+    protected static class GenericCardEffect_DrawNextTurn extends GenericCardEffect implements OnStartOfTurnPostDrawSubscriber
     {
         private final CardType cardType;
 
-        public GenericEffect_DrawNextTurn(CardType cardType)
+        public GenericCardEffect_DrawNextTurn(CardType cardType)
         {
             this.cardType = cardType;
         }
@@ -87,7 +87,7 @@ public class ChlammyZell extends FoolCard
         }
 
         @Override
-        public void Use(PCLCard card, AbstractPlayer p, AbstractMonster m)
+        public void Use(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
         {
             PCLCombatStats.onStartOfTurnPostDraw.Subscribe(this);
         }

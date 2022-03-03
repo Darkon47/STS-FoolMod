@@ -4,7 +4,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import pinacolada.cards.base.*;
-import pinacolada.cards.base.cardeffects.GenericEffect;
+import pinacolada.cards.base.cardeffects.GenericCardEffect;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.fool.special.Shichika_Kyotouryuu;
 import pinacolada.powers.common.CounterAttackPower;
@@ -20,8 +20,6 @@ public class Shichika extends FoolCard
             .SetSeriesFromClassPackage()
             .SetTraits(PCLCardTrait.Protagonist)
             .PostInitialize(data -> data.AddPreview(new Shichika_Kyotouryuu(), true));
-
-    private static final CardEffectChoice choices = new CardEffectChoice();
 
     public Shichika()
     {
@@ -41,21 +39,19 @@ public class Shichika extends FoolCard
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
         PCLActions.Bottom.GainBlock(block);
-        choices.Initialize(this, true);
-        choices.AddEffect(new GenericEffect_Force(this));
-        choices.AddEffect(new GenericEffect_Agility(this));
-        choices.Select(1, m);
+        SetupChoices(true, new GenericCardEffect_Force(this), new GenericCardEffect_Agility(this))
+                .Select(1, m);
 
         if (costForTurn > 0 && info.CanActivateLimited && TrySpendAffinity(PCLAffinity.Red, PCLAffinity.Green) && info.TryActivateLimited()) {
             PCLActions.Bottom.GainEnergy(costForTurn);
         }
     }
 
-    protected static class GenericEffect_Force extends GenericEffect
+    protected static class GenericCardEffect_Force extends GenericCardEffect
     {
         private final AbstractCard kyotouryuu;
 
-        public GenericEffect_Force(Shichika shichika)
+        public GenericCardEffect_Force(Shichika shichika)
         {
             this.kyotouryuu = Shichika_Kyotouryuu.DATA.CreateNewInstance(shichika.upgraded);
         }
@@ -67,18 +63,18 @@ public class Shichika extends FoolCard
         }
 
         @Override
-        public void Use(PCLCard card, AbstractPlayer p, AbstractMonster m)
+        public void Use(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
         {
             PCLActions.Bottom.ChangeStance(MightStance.STANCE_ID);
             PCLActions.Bottom.MakeCardInHand(kyotouryuu);
         }
     }
 
-    protected static class GenericEffect_Agility extends GenericEffect
+    protected static class GenericCardEffect_Agility extends GenericCardEffect
     {
         private final AbstractCard shichika;
 
-        public GenericEffect_Agility(Shichika shichika)
+        public GenericCardEffect_Agility(Shichika shichika)
         {
             this.shichika = shichika;
         }
@@ -90,7 +86,7 @@ public class Shichika extends FoolCard
         }
 
         @Override
-        public void Use(PCLCard card, AbstractPlayer p, AbstractMonster m)
+        public void Use(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
         {
             PCLActions.Bottom.ChangeStance(VelocityStance.STANCE_ID);
             PCLActions.Bottom.StackPower(new CounterAttackPower(p, shichika.magicNumber));

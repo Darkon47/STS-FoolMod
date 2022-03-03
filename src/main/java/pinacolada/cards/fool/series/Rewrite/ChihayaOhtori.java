@@ -4,17 +4,18 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import pinacolada.cards.base.*;
+import pinacolada.cards.base.cardeffects.GenericCardEffect;
 import pinacolada.cards.base.modifiers.CostModifiers;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
+import pinacolada.powers.PCLPowerHelper;
 import pinacolada.stances.pcl.EnduranceStance;
 import pinacolada.utilities.PCLActions;
+import pinacolada.utilities.PCLJUtils;
 
 public class ChihayaOhtori extends FoolCard
 {
     public static final PCLCardData DATA = Register(ChihayaOhtori.class).SetAttack(2, CardRarity.UNCOMMON, PCLAttackType.Normal).SetSeriesFromClassPackage();
-
-    private static final CardEffectChoice choices = new CardEffectChoice();
 
     public ChihayaOhtori()
     {
@@ -46,34 +47,8 @@ public class ChihayaOhtori extends FoolCard
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
         PCLActions.Bottom.DealCardDamage(this, m, AttackEffects.SLASH_HEAVY);
-
-        String[] text = DATA.Strings.EXTENDED_DESCRIPTION;
-
-        if (choices.TryInitialize(this))
-        {
-            choices.AddEffect(text[0], this::Effect1);
-            choices.AddEffect(text[1], this::Effect2);
-        }
-
-        choices.Select(1, m);
-    }
-
-    private void Effect1(AbstractCard card, AbstractPlayer p, AbstractMonster m)
-    {
-        PCLActions.Top.FetchFromPile(name, 1, player.discardPile)
-        .SetOptions(false, false)
-        .SetFilter(c -> (c instanceof PCLCard && ((PCLCard) c).affinities.GetLevel(PCLAffinity.Orange) > 0 && !cardID.equals(c.cardID)))
-        .AddCallback(cards ->
-        {
-            for (AbstractCard card2 : cards) {
-                PCLActions.Bottom.Motivate(card2, 1);
-            }
-        });
-    }
-
-    private void Effect2(AbstractCard card, AbstractPlayer p, AbstractMonster m)
-    {
-        PCLActions.Top.GainTemporaryArtifact(secondaryValue);
+        TrySetupChoices(new GenericCardEffect_Chihaya(this), GenericCardEffect.Gain(secondaryValue, PCLPowerHelper.TemporaryArtifact))
+                .Select(1, m);
     }
 
     public void RefreshCost()
@@ -86,4 +61,35 @@ public class ChihayaOhtori extends FoolCard
             CostModifiers.For(this).Set(0);
         }
     }
+
+    protected static class GenericCardEffect_Chihaya extends GenericCardEffect
+    {
+        private final ChihayaOhtori chihaya;
+
+        public GenericCardEffect_Chihaya(ChihayaOhtori chihaya)
+        {
+            this.chihaya = chihaya;
+        }
+
+        @Override
+        public String GetText()
+        {
+            return PCLJUtils.Format(ChihayaOhtori.DATA.Strings.EXTENDED_DESCRIPTION[0]);
+        }
+
+        @Override
+        public void Use(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
+        {
+            PCLActions.Top.FetchFromPile(chihaya.name, 1, player.discardPile)
+                    .SetOptions(false, false)
+                    .SetFilter(c -> (c instanceof PCLCard && ((PCLCard) c).affinities.GetLevel(PCLAffinity.Orange) > 0 && !chihaya.cardID.equals(c.cardID)))
+                    .AddCallback(cards ->
+                    {
+                        for (AbstractCard card2 : cards) {
+                            PCLActions.Bottom.Motivate(card2, 1);
+                        }
+                    });
+        }
+    }
+
 }

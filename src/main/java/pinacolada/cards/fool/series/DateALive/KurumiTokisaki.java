@@ -5,7 +5,6 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.BorderFlashEffect;
-import com.megacrit.cardcrawl.vfx.combat.DieDieDieEffect;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLAttackType;
 import pinacolada.cards.base.PCLCardData;
@@ -13,6 +12,9 @@ import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.base.modifiers.CostModifiers;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
+import pinacolada.effects.PCLEffekseerEFX;
+import pinacolada.effects.SFX;
+import pinacolada.effects.VFX;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
@@ -52,8 +54,8 @@ public class KurumiTokisaki extends FoolCard
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
         PCLActions.Bottom.GainBlock(block);
-        PCLActions.Bottom.SFX("ATTACK_HEAVY");
-        PCLActions.Bottom.VFX(new DieDieDieEffect());
+        PCLActions.Bottom.VFX(VFX.EFX(PCLEffekseerEFX.GUN08)
+                .SetSoundKey(SFX.PCL_GUNSHOT, 1.5f));
         PCLActions.Bottom.DealCardDamageToAll(this, AttackEffects.GUNSHOT);
 
         PCLActions.Bottom.SelectFromHand(name, magicNumber, false)

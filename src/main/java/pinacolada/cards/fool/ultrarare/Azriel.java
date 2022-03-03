@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.EvolvePower;
 import org.apache.commons.lang3.StringUtils;
 import pinacolada.cards.base.*;
-import pinacolada.cards.base.cardeffects.GenericEffect;
+import pinacolada.cards.base.cardeffects.GenericCardEffect;
 import pinacolada.cards.fool.FoolCard_UltraRare;
 import pinacolada.powers.FoolPower;
 import pinacolada.utilities.PCLActions;
@@ -76,21 +76,21 @@ public class Azriel extends FoolCard_UltraRare
 
             if (choices.TryInitialize(source))
             {
-                choices.AddEffect(new GenericEffect_Azriel(CardType.ATTACK));
-                choices.AddEffect(new GenericEffect_Azriel(CardType.SKILL));
-                choices.AddEffect(new GenericEffect_Azriel(CardType.POWER));
-                choices.AddEffect(new GenericEffect_Azriel(CardType.CURSE));
-                choices.AddEffect(new GenericEffect_Azriel(CardType.STATUS));
+                choices.AddEffect(new GenericCardEffect_Azriel(CardType.ATTACK));
+                choices.AddEffect(new GenericCardEffect_Azriel(CardType.SKILL));
+                choices.AddEffect(new GenericCardEffect_Azriel(CardType.POWER));
+                choices.AddEffect(new GenericCardEffect_Azriel(CardType.CURSE));
+                choices.AddEffect(new GenericCardEffect_Azriel(CardType.STATUS));
             }
             choices.Select(1, null);
         }
     }
 
-    protected static class GenericEffect_Azriel extends GenericEffect
+    protected static class GenericCardEffect_Azriel extends GenericCardEffect
     {
         private final CardType cardType;
 
-        public GenericEffect_Azriel(CardType cardType)
+        public GenericCardEffect_Azriel(CardType cardType)
         {
             this.cardType = cardType;
         }
@@ -102,7 +102,7 @@ public class Azriel extends FoolCard_UltraRare
         }
 
         @Override
-        public void Use(PCLCard card, AbstractPlayer p, AbstractMonster m)
+        public void Use(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
         {
             PCLActions.Last.Callback(() -> {
                 int count = PCLJUtils.Count(player.hand.group, c -> c.type == cardType);

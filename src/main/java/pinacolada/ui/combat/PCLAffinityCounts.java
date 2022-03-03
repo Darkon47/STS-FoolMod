@@ -18,7 +18,7 @@ public class PCLAffinityCounts {
     }
 
     public PCLAffinityCounts(PCLCardAffinities affinities) {
-        if (affinities.Star != null) {
+        if (affinities.HasStar()) {
             for (PCLAffinity a : PCLAffinity.Extended()) {
                 Counts[a.ID] = affinities.Star.level;
             }
@@ -52,7 +52,7 @@ public class PCLAffinityCounts {
     }
 
     public PCLAffinityCounts Add(PCLCardAffinities affinities) {
-        if (affinities.Star != null) {
+        if (affinities.HasStar()) {
             int actualAmount = PCLCombatStats.OnGainAffinity(PCLAffinity.Star, affinities.Star.level, true);
             for (PCLAffinity a : PCLAffinity.Extended()) {
                 Counts[a.ID] += actualAmount;
@@ -68,7 +68,7 @@ public class PCLAffinityCounts {
     }
 
     public PCLAffinityCounts Add(PCLCardAffinities affinities, int amount) {
-        if (affinities.Star != null) {
+        if (affinities.HasStar()) {
             int actualAmount = PCLCombatStats.OnGainAffinity(PCLAffinity.Star, amount, true);
             for (PCLAffinity a : PCLAffinity.Extended()) {
                 Counts[a.ID] += actualAmount;

@@ -40,6 +40,7 @@ import eatyourbeets.utilities.RotatingList;
 import pinacolada.cards.base.attributes.AbstractAttribute;
 import pinacolada.cards.base.attributes.BlockAttribute;
 import pinacolada.cards.base.attributes.DamageAttribute;
+import pinacolada.cards.base.cardeffects.GenericCardEffect;
 import pinacolada.cards.base.modifiers.AfterLifeMod;
 import pinacolada.cards.fool.FoolCard_UltraRare;
 import pinacolada.patches.screens.GridCardSelectScreenPatches;
@@ -64,6 +65,9 @@ import static pinacolada.resources.PGR.Enums.CardTags.*;
 
 public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscriber, OnStartOfTurnPostDrawSubscriber, CustomSavable<PCLCardSaveData>
 {
+    protected static final String UNPLAYABLE_MESSAGE = CardCrawlGame.languagePack.getCardStrings(Tactician.ID).EXTENDED_DESCRIPTION[0];
+    private static final Map<String, PCLCardData> staticCardData = new HashMap<>();
+    protected static final Map<String, CardEffectChoice> cardChoices = new HashMap<>();
     public static final Color MUTED_TEXT_COLOR = Colors.Lerp(Color.DARK_GRAY, Settings.CREAM_COLOR, 0.5f);
     public static final PCLImages IMAGES = PGR.PCL.Images;
     protected static final Color defaultGlowColor = AbstractCard.BLUE_BORDER_GLOW_COLOR;
@@ -77,12 +81,9 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
     public final HashSet<PCLCardTrait> traits;
     public PCLCardTarget attackTarget = PCLCardTarget.Normal;
     public PCLAttackType attackType = PCLAttackType.Normal;
-
-    protected static final String UNPLAYABLE_MESSAGE = CardCrawlGame.languagePack.getCardStrings(Tactician.ID).EXTENDED_DESCRIPTION[0];
-    private static final Map<String, PCLCardData> staticCardData = new HashMap<>();
-
     public int maxUpgradeLevel;
     public CardSeries series;
+
     protected boolean unplayable;
     protected boolean playAtEndOfTurn;
     protected int upgrade_damage;
@@ -93,6 +94,7 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
     protected int upgrade_block;
     protected int upgrade_cost;
 
+    public final ArrayList<GenericCardEffect> onUseEffects = new ArrayList<>();
     public PCLCardSaveData auxiliaryData = new PCLCardSaveData();
     protected DrawPileCardPreview drawPileCardPreview;
     protected Color borderIndicatorColor;
@@ -100,6 +102,11 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
     public static PCLCardData GetStaticData(String cardID)
     {
         return staticCardData.get(cardID);
+    }
+
+    protected static CardEffectChoice GetCardChoice(String cardID)
+    {
+        return cardChoices.getOrDefault(cardID, new CardEffectChoice());
     }
 
     protected static PCLCardData Register(Class<? extends PCLCard> type)
@@ -1317,6 +1324,24 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
     {
         this.cooldown = new PCLCardCooldown(this, baseCooldown, cooldownUpgrade, cardConstructor, false, false, false, false);
         return this.cooldown;
+    }
+
+    public CardEffectChoice SetupChoices(boolean clearEffects, GenericCardEffect... effects) {
+        CardEffectChoice choice = GetCardChoice(cardID).Initialize(this, clearEffects);
+        for (GenericCardEffect gc : effects) {
+            choice.AddEffect(gc);
+        }
+        return choice;
+    }
+
+    public CardEffectChoice TrySetupChoices(GenericCardEffect... effects) {
+        CardEffectChoice choice = GetCardChoice(cardID);
+        if (choice.TryInitialize(this)) {
+            for (GenericCardEffect gc : effects) {
+                choice.AddEffect(gc);
+            }
+        }
+        return choice;
     }
 
     protected void OnUpgrade()

@@ -3,10 +3,10 @@ package pinacolada.cards.base.cardeffects.GenericEffects;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import pinacolada.cards.base.PCLCard;
+import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.PCLCardTarget;
-import pinacolada.cards.base.cardeffects.GenericEffect;
+import pinacolada.cards.base.cardeffects.GenericCardEffect;
 import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLJUtils;
@@ -14,19 +14,19 @@ import pinacolada.utilities.PCLJUtils;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class GenericEffect_Obtain extends GenericEffect
+public class GenericCardEffect_Obtain extends GenericCardEffect
 {
-    public static final String ID = Register(GenericEffect_Obtain.class);
+    public static final String ID = Register(GenericCardEffect_Obtain.class);
 
     protected ArrayList<PCLCardData> cardData;
 
-    public GenericEffect_Obtain(int copies, int upgradeTimes, PCLCardData... cards)
+    public GenericCardEffect_Obtain(int copies, int upgradeTimes, PCLCardData... cards)
     {
         super(ID, JoinEntityIDs(cards, card -> card.ID), PCLCardTarget.Self, copies, upgradeTimes);
         this.cardData = new ArrayList<>(Arrays.asList(cards));
     }
 
-    public GenericEffect_Obtain Add(PCLCardData newCard) {
+    public GenericCardEffect_Obtain Add(PCLCardData newCard) {
         this.cardData.add(newCard);
         this.entityID = JoinEntityIDs(cardData, card -> card.ID);
         return this;
@@ -40,7 +40,7 @@ public class GenericEffect_Obtain extends GenericEffect
     }
 
     @Override
-    public void Use(PCLCard card, AbstractPlayer p, AbstractMonster m)
+    public void Use(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
         for (PCLCardData cd : cardData) {
             for (int i = 0; i < amount; i++) {

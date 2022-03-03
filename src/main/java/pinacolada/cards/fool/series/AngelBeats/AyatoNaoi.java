@@ -1,16 +1,17 @@
 package pinacolada.cards.fool.series.AngelBeats;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.Dark;
-import com.megacrit.cardcrawl.vfx.combat.OfferingEffect;
 import eatyourbeets.utilities.TargetHelper;
 import pinacolada.cards.base.CardEffectChoice;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.fool.FoolCard;
+import pinacolada.effects.PCLEffekseerEFX;
+import pinacolada.effects.SFX;
+import pinacolada.effects.VFX;
 import pinacolada.stances.pcl.WisdomStance;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
@@ -64,7 +65,9 @@ public class AyatoNaoi extends FoolCard
 
             if (totalDamage > 0)
             {
-                PCLActions.Top.VFX(new OfferingEffect(), Settings.FAST_MODE ? 0.1F : 0.5F);
+
+                SFX.Play(SFX.DARKLING_REGROW_2);
+                PCLActions.Bottom.VFX(VFX.EFX(PCLEffekseerEFX.SWORD25).SetScale(2f));
                 PCLActions.Bottom.ApplyRippled(TargetHelper.Enemies(), totalDamage);
             }
         });

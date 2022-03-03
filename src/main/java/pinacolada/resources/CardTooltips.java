@@ -18,6 +18,7 @@ import pinacolada.powers.fool.*;
 import pinacolada.powers.replacement.AntiArtifactSlowPower;
 import pinacolada.powers.replacement.PCLCurlUpPower;
 import pinacolada.powers.replacement.PlayerFlightPower;
+import pinacolada.powers.replacement.TemporaryDrawReductionPower;
 import pinacolada.powers.temporary.TemporaryThornsPower;
 import pinacolada.resources.pcl.PCLImages;
 import pinacolada.utilities.PCLColors;
@@ -148,6 +149,7 @@ public class CardTooltips
     public PCLCardTooltip NeutralStance = FindByID("Neutral Stance");
     public PCLCardTooltip NextTurnBlock = FindByID("Next Turn Block");
     public PCLCardTooltip NextTurnDraw = FindByID("Next Turn Draw");
+    public PCLCardTooltip NextTurnDrawLess = FindByID("Next Turn Draw Less");
     public PCLCardTooltip OrbCore = FindByID("~Orb Core");
     public PCLCardTooltip OrbSlot = FindByID("Orb Slot");
     public PCLCardTooltip Phasing = FindByID("Phasing");
@@ -382,6 +384,7 @@ public class CardTooltips
         LoadFromPower(Metallicize, new MetallicizePower(FakeCharacter.Instance, 0));
         LoadFromPower(NextTurnBlock, new NextTurnBlockPower(FakeCharacter.Instance, 0));
         LoadFromPower(NextTurnDraw, new DrawCardNextTurnPower(FakeCharacter.Instance, 0));
+        LoadFromPower(NextTurnDrawLess, new TemporaryDrawReductionPower(FakeCharacter.Instance, 0));
         LoadFromPower(Phasing, new PhasingPower(FakeCharacter.Instance, 0));
         LoadFromPower(PlatedArmor, new PlatedArmorPower(FakeCharacter.Instance, 0));
         LoadFromPower(Resistance, new ResistancePower(FakeCharacter.Instance, 0));

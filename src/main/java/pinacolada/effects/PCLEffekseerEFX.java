@@ -54,4 +54,24 @@ public class PCLEffekseerEFX {
     public static final String SWORD04 = "effects/Sword04.efk";
     public static final String SWORD05 = "effects/Sword05.efk";
     public static final String SWORD06 = "effects/Sword06.efk";
+    public static final String SWORD07 = "effects/Sword07.efk";
+    public static final String SWORD08 = "effects/Sword08.efk";
+    public static final String SWORD09 = "effects/Sword09.efk";
+    public static final String SWORD11 = "effects/Sword11.efk";
+    public static final String SWORD12 = "effects/Sword12.efk";
+    public static final String SWORD13 = "effects/Sword13.efk";
+    public static final String SWORD14 = "effects/Sword14.efk";
+    public static final String SWORD15 = "effects/Sword15.efk";
+    public static final String SWORD16 = "effects/Sword16.efk";
+    public static final String SWORD17 = "effects/Sword17.efk";
+    public static final String SWORD18 = "effects/Sword18.efk";
+    public static final String SWORD19 = "effects/Sword19.efk";
+    public static final String SWORD21 = "effects/Sword21.efk";
+    public static final String SWORD22 = "effects/Sword22.efk";
+    public static final String SWORD23 = "effects/Sword23.efk";
+    public static final String SWORD24 = "effects/Sword24.efk";
+    public static final String SWORD25 = "effects/Sword25.efk";
+    public static final String SWORD26 = "effects/Sword26.efk";
+    public static final String SWORD27 = "effects/Sword27.efk";
+    public static final String SWORD28 = "effects/Sword28.efk";
 }

@@ -2,20 +2,20 @@ package pinacolada.cards.base.cardeffects.GenericEffects;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import pinacolada.cards.base.PCLCard;
+import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardTarget;
-import pinacolada.cards.base.cardeffects.GenericEffect;
+import pinacolada.cards.base.cardeffects.GenericCardEffect;
 import pinacolada.orbs.PCLOrbHelper;
 import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 
-public class GenericEffect_ChannelOrb extends GenericEffect
+public class GenericCardEffect_ChannelOrb extends GenericCardEffect
 {
-    public static final String ID = Register(GenericEffect_ChannelOrb.class);
+    public static final String ID = Register(GenericCardEffect_ChannelOrb.class);
 
     protected final PCLOrbHelper orb;
 
-    public GenericEffect_ChannelOrb(int amount, PCLOrbHelper orb)
+    public GenericCardEffect_ChannelOrb(int amount, PCLOrbHelper orb)
     {
         super(ID, orb != null ? orb.ID : null, PCLCardTarget.None, amount);
         this.orb = orb;
@@ -28,7 +28,7 @@ public class GenericEffect_ChannelOrb extends GenericEffect
     }
 
     @Override
-    public void Use(PCLCard card, AbstractPlayer p, AbstractMonster m)
+    public void Use(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
         if (orb != null) {
             PCLActions.Bottom.ChannelOrbs(orb, amount);

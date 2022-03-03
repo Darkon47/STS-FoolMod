@@ -48,6 +48,7 @@ public class PCLPowerHelper extends eatyourbeets.powers.PowerHelper implements T
     public static final PCLPowerHelper Vulnerable = new PCLPowerHelper(VulnerablePower.POWER_ID, PGR.Tooltips.Vulnerable, (o, s, a) -> new PCLVulnerablePower(o, a, PCLGameUtilities.IsMonster(s)), Behavior.TurnBased,true, true);
     public static final PCLPowerHelper Frail = new PCLPowerHelper(FrailPower.POWER_ID, PGR.Tooltips.Frail, (o, s, a) -> new PCLFrailPower(o, a, PCLGameUtilities.IsMonster(s)), Behavior.TurnBased,true, true);
     public static final PCLPowerHelper DelayedDamage = new PCLPowerHelper(DelayedDamagePower.POWER_ID, PGR.Tooltips.DelayedDamage, (o, s, a) -> new DelayedDamagePower(o, a, AttackEffects.CLAW), Behavior.SingleTurn,true, true);
+    public static final PCLPowerHelper NextTurnDrawLess = new PCLPowerHelper(TemporaryDrawReductionPower.POWER_ID, PGR.Tooltips.NextTurnDrawLess, (o, s, a) -> new TemporaryDrawReductionPower(o, a, true), Behavior.SingleTurn,false, true);
     public static final PCLPowerHelper SelfImmolation = new PCLPowerHelper(SelfImmolationPower.POWER_ID, PGR.Tooltips.SelfImmolation, (o, s, a) -> new SelfImmolationPower(o, a, PCLGameUtilities.IsMonster(s)), Behavior.TurnBased,false, true);
     public static final PCLPowerHelper Slow = new PCLPowerHelper(AntiArtifactSlowPower.POWER_ID, PGR.Tooltips.Slow, AntiArtifactSlowPower::new, Behavior.Permanent,false, true);
     public static final PCLPowerHelper Stoned = new PCLPowerHelper(StonedPower.POWER_ID, PGR.Tooltips.Stoned, SwirledPower::new, Behavior.Permanent,false, true);

@@ -8,6 +8,8 @@ import com.megacrit.cardcrawl.powers.NextTurnBlockPower;
 import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
+import pinacolada.effects.PCLEffekseerEFX;
+import pinacolada.effects.VFX;
 import pinacolada.powers.common.BurningWeaponPower;
 import pinacolada.powers.common.FreezingPower;
 import pinacolada.utilities.PCLActions;
@@ -32,6 +34,7 @@ public class Diluc extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
+        PCLActions.Bottom.VFX(VFX.EFX(PCLEffekseerEFX.FIRE02).SetScale(2f));
         PCLActions.Bottom.DealCardDamageToAll(this, AttackEffects.SLASH_HEAVY).forEach(d -> d.SetVFXColor(Color.FIREBRICK));
 
         int amount = 0;

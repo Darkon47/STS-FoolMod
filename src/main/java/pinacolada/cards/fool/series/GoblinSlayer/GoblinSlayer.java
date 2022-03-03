@@ -9,6 +9,8 @@ import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.PCLCardTrait;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
+import pinacolada.effects.PCLEffekseerEFX;
+import pinacolada.effects.VFX;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
@@ -65,6 +67,7 @@ public class GoblinSlayer extends FoolCard
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
         PCLActions.Bottom.GainBlock(block);
+        PCLActions.Bottom.VFX(VFX.EFX(PCLEffekseerEFX.SWORD08, m.hb));
         PCLActions.Bottom.DealCardDamage(this, m, AttackEffects.SLASH_VERTICAL);
 
         PCLActions.Bottom.MoveCards(p.hand, p.exhaustPile)

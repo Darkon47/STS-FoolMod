@@ -6,6 +6,9 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import eatyourbeets.powers.CombatStats;
 import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
+import pinacolada.effects.PCLEffekseerEFX;
+import pinacolada.effects.SFX;
+import pinacolada.effects.VFX;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
@@ -38,6 +41,9 @@ public class KanadeTachibana extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
+        SFX.Play(SFX.HEAL_3);
+        PCLActions.Bottom.VFX(VFX.EFX(PCLEffekseerEFX.CURE07, p.hb).SetScale(3f));
+
         PCLActions.Bottom.GainBlock(block);
         PCLActions.Bottom.GainInvocation(secondaryValue);
         PCLActions.Bottom.FetchFromPile(name, magicNumber, p.discardPile)

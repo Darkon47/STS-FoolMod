@@ -36,7 +36,7 @@ public class AffinityChoiceBuilder extends PCLCardBuilder
         return new AffinityChoice(this);
     }
 
-    public AffinityChoiceBuilder SetOnUse(ActionT3<PCLCard, AbstractPlayer, AbstractMonster> onUseAction)
+    public AffinityChoiceBuilder SetOnUse(ActionT3<AbstractPlayer, AbstractMonster, CardUseInfo> onUseAction)
     {
         super.SetOnUse(onUseAction);
         return this;

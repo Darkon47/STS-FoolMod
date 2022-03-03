@@ -109,7 +109,7 @@ public class ReplacementCardBuilder extends PCLCardBuilder
 
         SetProperties(original.type, original.rarity, original.target);
         SetText(name, modifyText ? GetModifiedText(text) : text, null);
-        SetOnUse((c, p, m) -> this.original.use(p, m));
+        SetOnUse((p, m, i) -> this.original.use(p, m));
     }
 
     public ReplacementCard Build()

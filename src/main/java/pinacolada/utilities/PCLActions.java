@@ -484,6 +484,15 @@ public final class PCLActions
         .ShowEffect(true, false);
     }
 
+    public ApplyPower DrawLessNextTurn(int amount)
+    {
+        ApplyPower last = null;
+        for (int i = 0; i < amount; i++) {
+            last = StackPower(new TemporaryDrawReductionPower(player, amount, true));
+        }
+        return last;
+    }
+
     public ApplyPower DrawNextTurn(int amount)
     {
         return StackPower(new DrawCardNextTurnPower(player, amount));

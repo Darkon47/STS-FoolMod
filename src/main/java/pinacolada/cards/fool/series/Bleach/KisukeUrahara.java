@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import eatyourbeets.powers.CombatStats;
 import eatyourbeets.utilities.RandomizedList;
 import pinacolada.cards.base.*;
-import pinacolada.cards.base.cardeffects.GenericEffects.GenericEffect_EnterStance;
+import pinacolada.cards.base.cardeffects.GenericEffects.GenericCardEffect_EnterStance;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.stances.PCLStanceHelper;
 import pinacolada.utilities.PCLActions;
@@ -56,18 +56,18 @@ public class KisukeUrahara extends FoolCard
 
         choices.Initialize(this);
         if (stance1 != null) {
-            choices.AddEffect(new GenericEffect_KisukeUrahara(stance1, af1, secondaryValue));
+            choices.AddEffect(new GenericCardEffect_KisukeUrahara(stance1, af1, secondaryValue));
         }
         if (stance2 != null) {
-            choices.AddEffect(new GenericEffect_KisukeUrahara(stance2, af2, secondaryValue));
+            choices.AddEffect(new GenericCardEffect_KisukeUrahara(stance2, af2, secondaryValue));
         }
         choices.Select(PCLActions.Top, 1, m);
     }
 
-    public static class GenericEffect_KisukeUrahara extends GenericEffect_EnterStance
+    public static class GenericCardEffect_KisukeUrahara extends GenericCardEffect_EnterStance
     {
         PCLAffinity affinity;
-        public GenericEffect_KisukeUrahara(PCLStanceHelper stance, PCLAffinity affinity, int amount)
+        public GenericCardEffect_KisukeUrahara(PCLStanceHelper stance, PCLAffinity affinity, int amount)
         {
             super(stance);
             this.amount = amount;
@@ -75,7 +75,7 @@ public class KisukeUrahara extends FoolCard
         }
 
         @Override
-        public void Use(PCLCard card, AbstractPlayer p, AbstractMonster m)
+        public void Use(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
         {
             PCLActions.Bottom.ChangeStance(stance);
             PCLActions.Bottom.AddAffinity(affinity, amount);

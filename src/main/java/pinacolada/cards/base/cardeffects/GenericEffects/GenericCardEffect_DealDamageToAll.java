@@ -4,19 +4,19 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import pinacolada.cards.base.PCLCard;
+import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardTarget;
-import pinacolada.cards.base.cardeffects.GenericEffect;
+import pinacolada.cards.base.cardeffects.GenericCardEffect;
 import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 
-public class GenericEffect_DealDamageToAll extends GenericEffect
+public class GenericCardEffect_DealDamageToAll extends GenericCardEffect
 {
-    public static final String ID = Register(GenericEffect_DealDamageToAll.class);
+    public static final String ID = Register(GenericCardEffect_DealDamageToAll.class);
 
     protected final AbstractGameAction.AttackEffect attackEffect;
 
-    public GenericEffect_DealDamageToAll(int amount, AbstractGameAction.AttackEffect attackEffect)
+    public GenericCardEffect_DealDamageToAll(int amount, AbstractGameAction.AttackEffect attackEffect)
     {
         super(ID, attackEffect.name(), PCLCardTarget.AoE, amount);
         this.attackEffect = attackEffect;
@@ -29,7 +29,7 @@ public class GenericEffect_DealDamageToAll extends GenericEffect
     }
 
     @Override
-    public void Use(PCLCard card, AbstractPlayer p, AbstractMonster m)
+    public void Use(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
         int[] damage = DamageInfo.createDamageMatrix(amount, true, true);
         PCLActions.Bottom.DealDamageToAll(damage, DamageInfo.DamageType.THORNS, attackEffect);

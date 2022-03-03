@@ -5,9 +5,9 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import eatyourbeets.utilities.RandomizedList;
 import pinacolada.cards.base.*;
-import pinacolada.cards.base.cardeffects.GenericEffect;
-import pinacolada.cards.base.cardeffects.GenericEffects.GenericEffect_ModifyCardAffinityScaling;
-import pinacolada.cards.base.cardeffects.GenericEffects.GenericEffect_ModifyCardTag;
+import pinacolada.cards.base.cardeffects.GenericCardEffect;
+import pinacolada.cards.base.cardeffects.GenericEffects.GenericCardEffect_ModifyCardAffinityScaling;
+import pinacolada.cards.base.cardeffects.GenericEffects.GenericCardEffect_ModifyCardTag;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.fool.special.IonizingStorm;
 import pinacolada.powers.PCLCombatStats;
@@ -98,12 +98,12 @@ public class PurpleHeart extends FoolCard
                 });
     }
 
-    protected GenericEffect GetRandomEffect(ArrayList<AbstractCard> cards) {
+    protected GenericCardEffect GetRandomEffect(ArrayList<AbstractCard> cards) {
         if (rng.randomBoolean()) {
-            return new GenericEffect_ModifyCardTag(cards, possibleTags.Retrieve(rng, true))
+            return new GenericCardEffect_ModifyCardTag(cards, possibleTags.Retrieve(rng, true))
                     .AddTag(upgraded ? possibleTags.Retrieve(rng, true) : null);
         }
-        return new GenericEffect_ModifyCardAffinityScaling(magicNumber, cards, possibleAffinities.Retrieve(rng, true))
+        return new GenericCardEffect_ModifyCardAffinityScaling(magicNumber, cards, possibleAffinities.Retrieve(rng, true))
                 .AddAffinity(upgraded ? possibleAffinities.Retrieve(rng, true) : null);
     }
 }

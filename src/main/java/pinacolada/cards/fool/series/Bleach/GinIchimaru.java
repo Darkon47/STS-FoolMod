@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.vfx.combat.DieDieDieEffect;
 import eatyourbeets.powers.CombatStats;
 import eatyourbeets.utilities.TargetHelper;
 import pinacolada.cards.base.*;
-import pinacolada.cards.base.cardeffects.GenericEffect;
+import pinacolada.cards.base.cardeffects.GenericCardEffect;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
 import pinacolada.resources.PGR;
@@ -64,20 +64,20 @@ public class GinIchimaru extends FoolCard
         if (choices.TryInitialize(this))
         {
             if (CheckAffinity(PCLAffinity.Red)) {
-                choices.AddEffect(new GenericEffect_Gin(PCLAffinity.Red, affinities.GetRequirement(PCLAffinity.Red)));
+                choices.AddEffect(new GenericCardEffect_Gin(PCLAffinity.Red, affinities.GetRequirement(PCLAffinity.Red)));
             }
             if (CheckAffinity(PCLAffinity.Green)) {
-                choices.AddEffect(new GenericEffect_Gin(PCLAffinity.Green,  affinities.GetRequirement(PCLAffinity.Green)));
+                choices.AddEffect(new GenericCardEffect_Gin(PCLAffinity.Green,  affinities.GetRequirement(PCLAffinity.Green)));
             }
         }
         choices.Select(selections, m);
     }
 
-    protected static class GenericEffect_Gin extends GenericEffect
+    protected static class GenericCardEffect_Gin extends GenericCardEffect
     {
         protected final PCLAffinity affinity;
 
-        public GenericEffect_Gin(PCLAffinity affinity, int amount)
+        public GenericCardEffect_Gin(PCLAffinity affinity, int amount)
         {
             this.affinity = affinity;
             this.amount = amount;
@@ -90,7 +90,7 @@ public class GinIchimaru extends FoolCard
         }
 
         @Override
-        public void Use(PCLCard card, AbstractPlayer p, AbstractMonster m)
+        public void Use(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
         {
             if (PCLGameUtilities.TrySpendAffinity(affinity,amount,true)) {
                 PCLActions.Bottom.StackAffinityPower(affinity,1,false);

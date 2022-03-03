@@ -7,7 +7,7 @@ import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.attributes.AbstractAttribute;
-import pinacolada.cards.base.cardeffects.GenericEffect;
+import pinacolada.cards.base.cardeffects.GenericCardEffect;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.stances.PCLStanceHelper;
 import pinacolada.utilities.PCLActions;
@@ -62,8 +62,8 @@ public class Ciel extends FoolCard
         {
             if (choices.TryInitialize(this))
             {
-                choices.AddEffect(GenericEffect.EnterStance(PCLStanceHelper.WisdomStance));
-                choices.AddEffect(GenericEffect.EnterStance(PCLStanceHelper.DesecrationStance));
+                choices.AddEffect(GenericCardEffect.EnterStance(PCLStanceHelper.WisdomStance));
+                choices.AddEffect(GenericCardEffect.EnterStance(PCLStanceHelper.DesecrationStance));
             }
             choices.Select(1, m);
         }

@@ -1,15 +1,13 @@
 package pinacolada.cards.fool.series.Rewrite;
 
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.screens.CardRewardScreen;
-import eatyourbeets.interfaces.delegates.ActionT3;
 import pinacolada.cards.base.*;
+import pinacolada.cards.base.cardeffects.CompositeCardEffect;
+import pinacolada.cards.base.cardeffects.GenericCardEffect;
 import pinacolada.cards.fool.FoolCard;
+import pinacolada.powers.PCLPowerHelper;
 import pinacolada.utilities.PCLActions;
-import pinacolada.utilities.PCLGameEffects;
 
 public class Chibimoth extends FoolCard
 {
@@ -33,69 +31,19 @@ public class Chibimoth extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        String[] text = DATA.Strings.EXTENDED_DESCRIPTION;
-        CardGroup group = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
-        group.addToBottom(CreateChoice(text[0], (c1, p1, m1) ->
-        {
-            PCLActions.Bottom.GainVelocity(magicNumber, false);
-            PCLActions.Bottom.GainSupportDamage(secondaryValue);
-        }));
-        group.addToBottom(CreateChoice(text[1], (c1, p1, m1) ->
-        {
-            PCLActions.Bottom.GainEndurance(magicNumber, false);
-            PCLActions.Bottom.GainThorns(secondaryValue);
-        }));
+        SetupChoices(true,
+                new CompositeCardEffect(
+                        GenericCardEffect.GainAffinityPower(this, GenericCardEffect.CardValueSource.MagicNumber, PCLAffinity.Green),
+                        GenericCardEffect.Gain(this, GenericCardEffect.CardValueSource.SecondaryNumber, PCLPowerHelper.SupportDamage)
+                ),
+                new CompositeCardEffect(
+                        GenericCardEffect.GainAffinityPower(this, GenericCardEffect.CardValueSource.MagicNumber, PCLAffinity.Orange),
+                        GenericCardEffect.Gain(this, GenericCardEffect.CardValueSource.SecondaryNumber, PCLPowerHelper.Thorns)
+                )
+        ).Select(1, m);
 
-        PCLActions.Bottom.SelectFromPile(name, 1, group)
-        .SetOptions(false, false)
-        .SetMessage(CardRewardScreen.TEXT[1])
-        .AddCallback(cards ->
-        {
-            for (AbstractCard card : cards)
-            {
-                card.use(player, null);
-            }
-        });
-
-
-
-        PCLActions.Bottom.Callback(() ->
-        {
-            if (!DrawKotoriKanbe(player.drawPile))
-            {
-                DrawKotoriKanbe(player.discardPile);
-            }
-        });
-    }
-
-    private PCLCard_Dynamic CreateChoice(String text, ActionT3<PCLCard, AbstractPlayer, AbstractMonster> onSelect)
-    {
-        return new PCLCardBuilder(cardID)
-        .SetImagePath(assetUrl)
-        .SetProperties(CardType.SKILL, rarity, CardTarget.NONE)
-        .SetCost(-2, 0)
-        .SetNumbers(0,0,magicNumber,secondaryValue, 1)
-        .SetOnUse(onSelect)
-        .SetText(name, text, text).Build();
-    }
-
-    private boolean DrawKotoriKanbe(CardGroup group)
-    {
-        for (AbstractCard c : group.group)
-        {
-            if (KotoriKanbe.DATA.ID.equals(c.cardID))
-            {
-                if (group.type != CardGroup.CardGroupType.HAND)
-                {
-                    PCLGameEffects.List.ShowCardBriefly(makeStatEquivalentCopy());
-                    PCLActions.Top.MoveCard(c, group, player.hand)
-                    .ShowEffect(true, true);
-                }
-
-                return true;
-            }
-        }
-
-        return false;
+        PCLActions.Bottom.FetchFromPile(name, 1, player.drawPile, player.discardPile)
+                        .SetOptions(true, true)
+                                .SetFilter(c -> KotoriKanbe.DATA.ID.equals(c.cardID));
     }
 }

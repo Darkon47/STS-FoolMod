@@ -105,6 +105,7 @@ public class Gilgamesh extends FoolCard implements OnRelicObtainedSubscriber
     {
         PCLActions.Bottom.SFX(SFX.ATTACK_WHIRLWIND);
         PCLActions.Bottom.VFX(VFX.EFX(PCLEffekseerEFX.SWORD02)
+                        .SetScale(2f)
                 .SetSoundKey(SFX.ATTACK_HEAVY));
         PCLActions.Bottom.VFX(new WhirlwindEffect(), 0f);
 

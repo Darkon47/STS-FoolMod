@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import eatyourbeets.interfaces.delegates.ActionT3;
 import pinacolada.actions.pileSelection.SelectFromPile;
-import pinacolada.cards.base.cardeffects.GenericEffect;
+import pinacolada.cards.base.cardeffects.GenericCardEffect;
 import pinacolada.utilities.PCLActions;
 
 import java.util.ArrayList;
@@ -18,12 +18,12 @@ public class CardEffectChoice
     protected final ArrayList<PCLCardBuilder> effects = new ArrayList<>();
     protected PCLCard source;
 
-    public void Initialize(PCLCard source)
+    public CardEffectChoice Initialize(PCLCard source)
     {
-        Initialize(source, false);
+        return Initialize(source, false);
     }
 
-    public void Initialize(PCLCard source, boolean clearEffects)
+    public CardEffectChoice Initialize(PCLCard source, boolean clearEffects)
     {
         this.source = source;
 
@@ -32,6 +32,8 @@ public class CardEffectChoice
             effects.clear();
             group.clear();
         }
+
+        return this;
     }
 
     public boolean TryInitialize(PCLCard source)
@@ -60,14 +62,14 @@ public class CardEffectChoice
         return group;
     }
 
-    public PCLCardBuilder AddEffect(String text, ActionT3<PCLCard, AbstractPlayer, AbstractMonster> onUse)
+    public PCLCardBuilder AddEffect(String text, ActionT3<AbstractPlayer, AbstractMonster, CardUseInfo> onUse)
     {
         PCLCardBuilder builder = new PCLCardBuilder(source, text, false).SetOnUse(onUse);
         effects.add(builder);
         return builder;
     }
 
-    public PCLCardBuilder AddEffect(GenericEffect effect)
+    public PCLCardBuilder AddEffect(GenericCardEffect effect)
     {
         PCLCardBuilder builder = new PCLCardBuilder(source, effect.GetText(), false)
                 .SetCardTarget(effect.target)

@@ -9,6 +9,8 @@ import pinacolada.cards.base.PCLAttackType;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
+import pinacolada.effects.PCLEffekseerEFX;
+import pinacolada.effects.VFX;
 import pinacolada.utilities.PCLActions;
 
 import static pinacolada.resources.PGR.Enums.CardTags.AFTERLIFE;
@@ -35,6 +37,7 @@ public class YuriNakamura extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
+        PCLActions.Bottom.VFX(VFX.EFX(PCLEffekseerEFX.GUN03, m.hb));
         PCLActions.Bottom.DealCardDamage(this, m, AttackEffects.GUNSHOT);
         PCLActions.Bottom.GainBlock(block);
 
