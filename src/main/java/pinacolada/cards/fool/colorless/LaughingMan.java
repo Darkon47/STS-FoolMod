@@ -8,7 +8,7 @@ import eatyourbeets.interfaces.subscribers.OnEndOfTurnFirstSubscriber;
 import eatyourbeets.interfaces.subscribers.OnStartOfTurnSubscriber;
 import org.apache.commons.lang3.StringUtils;
 import pinacolada.cards.base.*;
-import pinacolada.cards.base.cardeffects.GenericCardEffect;
+import pinacolada.cards.base.baseeffects.BaseEffect;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.powers.FoolPower;
 import pinacolada.powers.PCLCombatStats;
@@ -53,11 +53,11 @@ public class LaughingMan extends FoolCard implements OnEndOfTurnFirstSubscriber,
         cardType = null;
         if (choices.TryInitialize(this))
         {
-            choices.AddEffect(new GenericCardEffect_LaughingMan(CardType.ATTACK, this));
-            choices.AddEffect(new GenericCardEffect_LaughingMan(CardType.SKILL, this));
-            choices.AddEffect(new GenericCardEffect_LaughingMan(CardType.POWER, this));
-            choices.AddEffect(new GenericCardEffect_LaughingMan(CardType.CURSE, this));
-            choices.AddEffect(new GenericCardEffect_LaughingMan(CardType.STATUS, this));
+            choices.AddEffect(new BaseEffect_LaughingMan(CardType.ATTACK, this));
+            choices.AddEffect(new BaseEffect_LaughingMan(CardType.SKILL, this));
+            choices.AddEffect(new BaseEffect_LaughingMan(CardType.POWER, this));
+            choices.AddEffect(new BaseEffect_LaughingMan(CardType.CURSE, this));
+            choices.AddEffect(new BaseEffect_LaughingMan(CardType.STATUS, this));
         }
         choices.Select(1, null);
     }
@@ -106,13 +106,13 @@ public class LaughingMan extends FoolCard implements OnEndOfTurnFirstSubscriber,
         }
     }
 
-    protected static class GenericCardEffect_LaughingMan extends GenericCardEffect
+    protected static class BaseEffect_LaughingMan extends BaseEffect
     {
         private final CardType cardType;
         private final LaughingMan source;
 
 
-        public GenericCardEffect_LaughingMan(CardType cardType, LaughingMan source)
+        public BaseEffect_LaughingMan(CardType cardType, LaughingMan source)
         {
             this.cardType = cardType;
             this.source = source;

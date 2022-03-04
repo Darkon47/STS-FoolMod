@@ -206,7 +206,7 @@
 		},
 		"fool:GinIchimaru":
         {
-        	"DESCRIPTION": "Choose 1: Pay !A! <R>: Gain [R]; ** Pay !A! <G>: Gain [G]. || <slm>. On Discard: Apply !M! [Vulnerable] to ALL enemies.",
+        	"DESCRIPTION": "Choose 1: Pay !A! <R>: Gain !M! [R]; ** Pay !A! <G>: Gain !M! [G]. || <slm>. On Discard: Apply !M! [Vulnerable] to ALL enemies.",
         	"NAME": "Gin Ichimaru"
         },
 		"fool:GrimmjowJeagerjaques":

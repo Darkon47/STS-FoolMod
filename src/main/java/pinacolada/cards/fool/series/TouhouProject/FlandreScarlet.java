@@ -11,7 +11,7 @@ import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.attributes.AbstractAttribute;
 import pinacolada.cards.base.attributes.TempHPAttribute;
-import pinacolada.cards.base.cardeffects.GenericCardEffect;
+import pinacolada.cards.base.baseeffects.BaseEffect;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.fool.special.FlandreScarlet_RemiliaScarlet;
 import pinacolada.effects.AttackEffects;
@@ -60,9 +60,9 @@ public class FlandreScarlet extends FoolCard
                 AbstractCard handCard = PCLJUtils.Random(player.hand.group);
 
                 choices.Initialize(this, true);
-                choices.AddEffect(new GenericCardEffect_FlandreScarlet(0, this));
+                choices.AddEffect(new BaseEffect_FlandreScarlet(0, this));
                 if (handCard != null) {
-                    choices.AddEffect(new GenericCardEffect_FlandreScarlet(1, handCard));
+                    choices.AddEffect(new BaseEffect_FlandreScarlet(1, handCard));
                 }
                 choices.Select(1, null);
             }
@@ -75,10 +75,10 @@ public class FlandreScarlet extends FoolCard
         });
     }
 
-    protected static class GenericCardEffect_FlandreScarlet extends GenericCardEffect
+    protected static class BaseEffect_FlandreScarlet extends BaseEffect
     {
         private final AbstractCard target;
-        public GenericCardEffect_FlandreScarlet(int amount, AbstractCard target)
+        public BaseEffect_FlandreScarlet(int amount, AbstractCard target)
         {
             this.amount = amount;
             this.target = target;

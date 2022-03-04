@@ -166,7 +166,7 @@ public class KirakishouPuppet extends PCLAlly {
                 PCLActions.Bottom.StackAffinityPower(af.getKey(), af.getValue(), false);
             }
         }, power ->  {
-            power.actionString = PGR.PCL.Strings.Actions.GainAmount(StringUtils.join(PCLJUtils.Map(affinityPowers.keySet(), item -> item + " " + affinityPowers.get(item))), "", true);
+            power.actionString = PGR.PCL.Strings.Actions.Gain(StringUtils.join(PCLJUtils.Map(affinityPowers.keySet(), item -> item + " " + affinityPowers.get(item))), true);
             power.triggerCondition.requiredAmount = COST_AFFINITY + PCLJUtils.SumInt(affinityPowers.values(), i -> i);
             power.triggerCondition.affinities = new PCLAffinity[] {target};
         }
@@ -176,7 +176,7 @@ public class KirakishouPuppet extends PCLAlly {
                 PCLActions.Bottom.ApplyPower(TargetHelper.Player(), ph.getKey(), ph.getValue());
             }
         }, power ->  {
-            power.actionString = PGR.PCL.Strings.Actions.GainAmount(StringUtils.join(PCLJUtils.Map(buffs.keySet(), item -> item + " " + buffs.get(item))), "", true);
+            power.actionString = PGR.PCL.Strings.Actions.Gain(StringUtils.join(PCLJUtils.Map(buffs.keySet(), item -> item + " " + buffs.get(item))), true);
             power.triggerCondition.requiredAmount = COST_BUFF + PCLJUtils.SumInt(buffs.values(), i -> i);
             power.triggerCondition.affinities = new PCLAffinity[] {target};
         }, ImageMaster.INTENT_BUFF).AddToMoveset(moveset));
@@ -185,7 +185,7 @@ public class KirakishouPuppet extends PCLAlly {
                 PCLActions.Bottom.ApplyPower(TargetHelper.RandomEnemy(), ph.getKey(), ph.getValue());
             }
         }, power ->  {
-            power.actionString = PGR.PCL.Strings.Actions.Apply(StringUtils.join(PCLJUtils.Map(debuffs.keySet(), item -> item + " " + debuffs.get(item))), PGR.PCL.Strings.Actions.ToARandomEnemy, true);
+            power.actionString = PGR.PCL.Strings.Actions.ApplyToTarget(StringUtils.join(PCLJUtils.Map(debuffs.keySet(), item -> item + " " + debuffs.get(item))), PGR.PCL.Strings.Actions.RandomEnemy, true);
             power.triggerCondition.requiredAmount = COST_DEBUFF + PCLJUtils.SumInt(debuffs.values(), i -> i);
             power.triggerCondition.affinities = new PCLAffinity[] {target};
         }, ImageMaster.INTENT_DEBUFF2).AddToMoveset(moveset));

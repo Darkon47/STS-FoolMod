@@ -16,7 +16,6 @@ import eatyourbeets.powers.CombatStats;
 import eatyourbeets.powers.common.BurningPower;
 import eatyourbeets.powers.common.FreezingPower;
 import eatyourbeets.powers.replacement.AnimatorVulnerablePower;
-import eatyourbeets.resources.GR;
 import eatyourbeets.utilities.ColoredString;
 import eatyourbeets.utilities.FieldInfo;
 import eatyourbeets.utilities.JUtils;
@@ -26,6 +25,7 @@ import pinacolada.powers.common.DesecratedPower;
 import pinacolada.powers.common.EnchantedArmorPower;
 import pinacolada.powers.replacement.PCLFrailPower;
 import pinacolada.powers.replacement.PCLWeakPower;
+import pinacolada.resources.PGR;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -263,7 +263,7 @@ public class PCLEnemyIntent extends eatyourbeets.monsters.EnemyIntent
     {
         if (isAttacking)
         {
-            GR.UI.CombatScreen.Intents.Add(this);
+            PGR.UI.CombatScreen.Intents.Add(this);
             modifiers.put(powerID, amount);
         }
 

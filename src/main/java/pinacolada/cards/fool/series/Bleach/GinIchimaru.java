@@ -6,18 +6,16 @@ import com.megacrit.cardcrawl.vfx.combat.DieDieDieEffect;
 import eatyourbeets.powers.CombatStats;
 import eatyourbeets.utilities.TargetHelper;
 import pinacolada.cards.base.*;
-import pinacolada.cards.base.cardeffects.GenericCardEffect;
+import pinacolada.cards.base.baseeffects.BaseCondition;
+import pinacolada.cards.base.baseeffects.BaseEffect;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
-import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
-import pinacolada.utilities.PCLGameUtilities;
 
 public class GinIchimaru extends FoolCard
 {
     public static final PCLCardData DATA = Register(GinIchimaru.class).SetAttack(1, CardRarity.UNCOMMON, PCLAttackType.Piercing, PCLCardTarget.Random).SetSeriesFromClassPackage();
 
-    private static final CardEffectChoice choices = new CardEffectChoice();
     public static final int MAX_AMOUNT = 10;
 
     public GinIchimaru()
@@ -31,8 +29,8 @@ public class GinIchimaru extends FoolCard
         SetAffinity_Green(1, 0, 1);
         SetAffinity_Blue(0,0,1);
 
-        SetAffinityRequirement(PCLAffinity.Red, 2);
-        SetAffinityRequirement(PCLAffinity.Green, 2);
+        SetAffinityRequirement(PCLAffinity.Red, 4);
+        SetAffinityRequirement(PCLAffinity.Green, 4);
         SetHitCount(2, 1);
     }
 
@@ -57,44 +55,15 @@ public class GinIchimaru extends FoolCard
     @Override
     public void OnLateUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.Callback(() -> makeChoice(m, 1));
-    }
-
-    private void makeChoice(AbstractMonster m, int selections) {
-        if (choices.TryInitialize(this))
-        {
-            if (CheckAffinity(PCLAffinity.Red)) {
-                choices.AddEffect(new GenericCardEffect_Gin(PCLAffinity.Red, affinities.GetRequirement(PCLAffinity.Red)));
-            }
-            if (CheckAffinity(PCLAffinity.Green)) {
-                choices.AddEffect(new GenericCardEffect_Gin(PCLAffinity.Green,  affinities.GetRequirement(PCLAffinity.Green)));
-            }
+        CardEffectChoice choice = SetupChoices(true);
+        if (CheckAffinity(PCLAffinity.Red)) {
+            choice.AddEffect(BaseCondition.PayAffinity(this, PCLAffinity.Red)
+                    .SetChildEffect(BaseEffect.GainAffinityPower(magicNumber, PCLAffinity.Red)));
         }
-        choices.Select(selections, m);
-    }
-
-    protected static class GenericCardEffect_Gin extends GenericCardEffect
-    {
-        protected final PCLAffinity affinity;
-
-        public GenericCardEffect_Gin(PCLAffinity affinity, int amount)
-        {
-            this.affinity = affinity;
-            this.amount = amount;
+        if (CheckAffinity(PCLAffinity.Green)) {
+            choice.AddEffect(BaseCondition.PayAffinity(this, PCLAffinity.Green)
+                    .SetChildEffect(BaseEffect.GainAffinityPower(magicNumber, PCLAffinity.Green)));
         }
-
-        @Override
-        public String GetText()
-        {
-            return PGR.PCL.Strings.Actions.PayCost(amount, affinity.GetTooltip(), true) + " NL " + PGR.PCL.Strings.Actions.GainAmount(1, affinity.equals(PCLAffinity.Green) ? PGR.Tooltips.Velocity : PGR.Tooltips.Might, true);
-        }
-
-        @Override
-        public void Use(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
-        {
-            if (PCLGameUtilities.TrySpendAffinity(affinity,amount,true)) {
-                PCLActions.Bottom.StackAffinityPower(affinity,1,false);
-            }
-        }
+        choice.Select(1, m);
     }
 }

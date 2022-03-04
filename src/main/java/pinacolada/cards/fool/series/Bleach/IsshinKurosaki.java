@@ -7,7 +7,7 @@ import pinacolada.cards.base.CardEffectChoice;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCardData;
-import pinacolada.cards.base.cardeffects.GenericCardEffect;
+import pinacolada.cards.base.baseeffects.BaseEffect;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.powers.PCLPowerHelper;
 import pinacolada.stances.pcl.MightStance;
@@ -50,8 +50,8 @@ public class IsshinKurosaki extends FoolCard
     private void makeChoice(AbstractMonster m) {
         if (choices.TryInitialize(this))
         {
-            choices.AddEffect(GenericCardEffect.ApplyToEnemies(magicNumber, PCLPowerHelper.Burning));
-            choices.AddEffect(GenericCardEffect.Gain(secondaryValue, PCLPowerHelper.CounterAttack));
+            choices.AddEffect(BaseEffect.ApplyToEnemies(magicNumber, PCLPowerHelper.Burning));
+            choices.AddEffect(BaseEffect.Gain(secondaryValue, PCLPowerHelper.CounterAttack));
         }
         choices.Select(1, m);
     }

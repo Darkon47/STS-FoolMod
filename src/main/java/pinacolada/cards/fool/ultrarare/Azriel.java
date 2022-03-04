@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.EvolvePower;
 import org.apache.commons.lang3.StringUtils;
 import pinacolada.cards.base.*;
-import pinacolada.cards.base.cardeffects.GenericCardEffect;
+import pinacolada.cards.base.baseeffects.BaseEffect;
 import pinacolada.cards.fool.FoolCard_UltraRare;
 import pinacolada.powers.FoolPower;
 import pinacolada.utilities.PCLActions;
@@ -76,21 +76,21 @@ public class Azriel extends FoolCard_UltraRare
 
             if (choices.TryInitialize(source))
             {
-                choices.AddEffect(new GenericCardEffect_Azriel(CardType.ATTACK));
-                choices.AddEffect(new GenericCardEffect_Azriel(CardType.SKILL));
-                choices.AddEffect(new GenericCardEffect_Azriel(CardType.POWER));
-                choices.AddEffect(new GenericCardEffect_Azriel(CardType.CURSE));
-                choices.AddEffect(new GenericCardEffect_Azriel(CardType.STATUS));
+                choices.AddEffect(new BaseEffect_Azriel(CardType.ATTACK));
+                choices.AddEffect(new BaseEffect_Azriel(CardType.SKILL));
+                choices.AddEffect(new BaseEffect_Azriel(CardType.POWER));
+                choices.AddEffect(new BaseEffect_Azriel(CardType.CURSE));
+                choices.AddEffect(new BaseEffect_Azriel(CardType.STATUS));
             }
             choices.Select(1, null);
         }
     }
 
-    protected static class GenericCardEffect_Azriel extends GenericCardEffect
+    protected static class BaseEffect_Azriel extends BaseEffect
     {
         private final CardType cardType;
 
-        public GenericCardEffect_Azriel(CardType cardType)
+        public BaseEffect_Azriel(CardType cardType)
         {
             this.cardType = cardType;
         }

@@ -3,7 +3,7 @@ package pinacolada.actions.affinity;
 import pinacolada.cards.base.AffinityChoice;
 import pinacolada.cards.base.AffinityChoiceBuilder;
 import pinacolada.cards.base.PCLAffinity;
-import pinacolada.cards.base.cardeffects.GenericEffects.GenericCardEffect_GainAffinity;
+import pinacolada.cards.base.baseeffects.effects.BaseEffect_GainAffinity;
 
 public class TryChooseGainAffinity extends TryChooseAffinity
 {
@@ -29,7 +29,7 @@ public class TryChooseGainAffinity extends TryChooseAffinity
 
     @Override
     protected AffinityChoice GetCard(PCLAffinity affinity) {
-        GenericCardEffect_GainAffinity affinityGain = new GenericCardEffect_GainAffinity(cost, affinity);
+        BaseEffect_GainAffinity affinityGain = new BaseEffect_GainAffinity(cost, affinity);
         AffinityChoiceBuilder builder = (AffinityChoiceBuilder) new AffinityChoiceBuilder(affinity, cost)
                 .SetText(affinity.GetTooltip().title, affinityGain.GetText(), null)
                 .ShowTypeText(false).SetOnUse(affinityGain::Use);

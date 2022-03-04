@@ -5,7 +5,7 @@ import org.apache.commons.lang3.ArrayUtils;
 import pinacolada.cards.base.CardEffectChoice;
 import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCardData;
-import pinacolada.cards.base.cardeffects.GenericEffects.GenericCardEffect_EnterStance;
+import pinacolada.cards.base.baseeffects.effects.BaseEffect_EnterStance;
 import pinacolada.stances.PCLStanceHelper;
 import pinacolada.stances.pcl.*;
 import pinacolada.utilities.PCLActions;
@@ -54,7 +54,7 @@ public class Enchantment1 extends Enchantment
             if (choices.TryInitialize(this))
             {
                 for (PCLStanceHelper stance : PCLStanceHelper.ALL.values()) {
-                    choices.AddEffect(new GenericCardEffect_EnterStance(stance));
+                    choices.AddEffect(new BaseEffect_EnterStance(stance));
                 }
             }
 

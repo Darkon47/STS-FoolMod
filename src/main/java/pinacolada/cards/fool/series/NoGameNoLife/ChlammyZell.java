@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import eatyourbeets.interfaces.subscribers.OnStartOfTurnPostDrawSubscriber;
 import org.apache.commons.lang3.StringUtils;
 import pinacolada.cards.base.*;
-import pinacolada.cards.base.cardeffects.GenericCardEffect;
+import pinacolada.cards.base.baseeffects.BaseEffect;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.fool.special.ChlammyZell_Scheme;
 import pinacolada.powers.PCLCombatStats;
@@ -57,11 +57,11 @@ public class ChlammyZell extends FoolCard
 
         if (choices.TryInitialize(this))
         {
-            choices.AddEffect(new GenericCardEffect_DrawNextTurn(CardType.ATTACK));
-            choices.AddEffect(new GenericCardEffect_DrawNextTurn(CardType.SKILL));
-            choices.AddEffect(new GenericCardEffect_DrawNextTurn(CardType.POWER));
-            choices.AddEffect(new GenericCardEffect_DrawNextTurn(CardType.CURSE));
-            choices.AddEffect(new GenericCardEffect_DrawNextTurn(CardType.STATUS));
+            choices.AddEffect(new BaseEffect_DrawNextTurn(CardType.ATTACK));
+            choices.AddEffect(new BaseEffect_DrawNextTurn(CardType.SKILL));
+            choices.AddEffect(new BaseEffect_DrawNextTurn(CardType.POWER));
+            choices.AddEffect(new BaseEffect_DrawNextTurn(CardType.CURSE));
+            choices.AddEffect(new BaseEffect_DrawNextTurn(CardType.STATUS));
         }
         choices.Select(1, m);
 
@@ -71,11 +71,11 @@ public class ChlammyZell extends FoolCard
         }
     }
 
-    protected static class GenericCardEffect_DrawNextTurn extends GenericCardEffect implements OnStartOfTurnPostDrawSubscriber
+    protected static class BaseEffect_DrawNextTurn extends BaseEffect implements OnStartOfTurnPostDrawSubscriber
     {
         private final CardType cardType;
 
-        public GenericCardEffect_DrawNextTurn(CardType cardType)
+        public BaseEffect_DrawNextTurn(CardType cardType)
         {
             this.cardType = cardType;
         }

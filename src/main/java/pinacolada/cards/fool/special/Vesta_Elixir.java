@@ -6,9 +6,9 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import eatyourbeets.utilities.RandomizedList;
 import pinacolada.cards.base.*;
-import pinacolada.cards.base.cardeffects.GenericCardEffect;
-import pinacolada.cards.base.cardeffects.GenericEffects.GenericCardEffect_GainOrbSlots;
-import pinacolada.cards.base.cardeffects.GenericEffects.GenericCardEffect_GainTempHP;
+import pinacolada.cards.base.baseeffects.BaseEffect;
+import pinacolada.cards.base.baseeffects.effects.BaseEffect_GainOrbSlots;
+import pinacolada.cards.base.baseeffects.effects.BaseEffect_GainTempHP;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.powers.PCLPowerHelper;
 import pinacolada.utilities.PCLActions;
@@ -23,7 +23,7 @@ public class Vesta_Elixir extends FoolCard
             .SetColorless()
             .SetSeries(CardSeries.TenseiSlime);
     public static final int MAX_GROUP_SIZE = 3;
-    public final ArrayList<GenericCardEffect> effects = new ArrayList<>();
+    public final ArrayList<BaseEffect> effects = new ArrayList<>();
 
     public Vesta_Elixir()
     {
@@ -36,7 +36,7 @@ public class Vesta_Elixir extends FoolCard
         SetPurge(true);
     }
 
-    public Vesta_Elixir(ArrayList<GenericCardEffect> effects)
+    public Vesta_Elixir(ArrayList<BaseEffect> effects)
     {
         this();
 
@@ -62,7 +62,7 @@ public class Vesta_Elixir extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        for (GenericCardEffect effect : effects)
+        for (BaseEffect effect : effects)
         {
             effect.Use(p, m, info);
         }
@@ -70,21 +70,21 @@ public class Vesta_Elixir extends FoolCard
 
     public void ResearchEffects() {
         effects.clear();
-        final RandomizedList<GenericCardEffect> possibleEffects = new RandomizedList<>();
+        final RandomizedList<BaseEffect> possibleEffects = new RandomizedList<>();
         for (PCLAffinity af : PCLAffinity.Extended()) {
-            possibleEffects.Add(GenericCardEffect.GainAffinityPower(magicNumber, af));
+            possibleEffects.Add(BaseEffect.GainAffinityPower(magicNumber, af));
         }
-        possibleEffects.Add(GenericCardEffect.Gain(secondaryValue, PCLPowerHelper.Inspiration));
-        possibleEffects.Add(GenericCardEffect.Gain(magicNumber, PCLPowerHelper.Malleable));
-        possibleEffects.Add(GenericCardEffect.Gain(secondaryValue, PCLPowerHelper.Metallicize));
-        possibleEffects.Add(GenericCardEffect.Gain(secondaryValue, PCLPowerHelper.Energized));
-        possibleEffects.Add(new GenericCardEffect_GainTempHP(magicNumber * 2));
-        possibleEffects.Add(new GenericCardEffect_GainOrbSlots(secondaryValue));
+        possibleEffects.Add(BaseEffect.Gain(secondaryValue, PCLPowerHelper.Inspiration));
+        possibleEffects.Add(BaseEffect.Gain(magicNumber, PCLPowerHelper.Malleable));
+        possibleEffects.Add(BaseEffect.Gain(secondaryValue, PCLPowerHelper.Metallicize));
+        possibleEffects.Add(BaseEffect.Gain(secondaryValue, PCLPowerHelper.Energized));
+        possibleEffects.Add(new BaseEffect_GainTempHP(magicNumber * 2));
+        possibleEffects.Add(new BaseEffect_GainOrbSlots(secondaryValue));
 
         ChooseEffect(possibleEffects);
     }
 
-    public void ChooseEffect(RandomizedList<GenericCardEffect> possibleEffects) {
+    public void ChooseEffect(RandomizedList<BaseEffect> possibleEffects) {
         if (effects.size() >= MAX_GROUP_SIZE) {
             return;
         }
@@ -108,13 +108,13 @@ public class Vesta_Elixir extends FoolCard
                 });
     }
 
-    protected void ApplyEffect(GenericCardEffect effect)
+    protected void ApplyEffect(BaseEffect effect)
     {
         this.effects.add(effect);
         UpdateDescription();
     }
 
-    protected void ApplyEffects(ArrayList<GenericCardEffect> effects)
+    protected void ApplyEffects(ArrayList<BaseEffect> effects)
     {
         this.effects.clear();
         this.effects.addAll(effects);
@@ -122,6 +122,6 @@ public class Vesta_Elixir extends FoolCard
     }
 
     protected void UpdateDescription() {
-        this.cardText.OverrideDescription(GenericCardEffect.JoinEffectTexts(effects), true);
+        this.cardText.OverrideDescription(BaseEffect.JoinEffectTexts(effects), true);
     }
 }

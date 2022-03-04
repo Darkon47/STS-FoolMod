@@ -21,6 +21,7 @@ public class PCLStrings
     public SeriesSelectionButtons SeriesSelectionButtons;
     public SingleCardPopupButtons SingleCardPopupButtons;
     public Actions Actions;
+    public Conditions Conditions;
     public Trophies Trophies;
     public Tutorial Tutorial;
     public EternalTutorial EternalTutorial;
@@ -39,6 +40,7 @@ public class PCLStrings
         SeriesUI = new SeriesUI();
         CharSelect = new CharacterSelect();
         Actions = new Actions();
+        Conditions = new Conditions();
         Trophies = new Trophies();
         Tutorial = new Tutorial();
         EternalTutorial = new EternalTutorial();
@@ -365,270 +367,303 @@ public class PCLStrings
     {
         private final UIStrings Strings = GetUIStrings("Actions");
 
-        public final String ToARandomEnemy = Strings.TEXT[44];
-        public final String ToALLEnemies = Strings.TEXT[45];
+        public final String Enemy = Strings.EXTRA_TEXT[0];
+        public final String RandomEnemy = Strings.EXTRA_TEXT[1];
+        public final String ALLEnemies = Strings.EXTRA_TEXT[2];
+        public final String XCards = Strings.EXTRA_TEXT[3];
+        public final String XRandomCards = Strings.EXTRA_TEXT[4];
+        public final String ALLCards = Strings.EXTRA_TEXT[5];
+        public final String DiscardPile = Strings.EXTRA_TEXT[6];
+        public final String DrawPile = Strings.EXTRA_TEXT[7];
+        public final String ExhaustPile = Strings.EXTRA_TEXT[8];
+        public final String Hand = Strings.EXTRA_TEXT[9];
+        public final String Anywhere = Strings.EXTRA_TEXT[10];
 
-        public final String GainAmount(Object amount, Object buff, boolean addPeriod)
-        {
-            return Format(addPeriod, 0, amount, buff);
+        public final String Cards(Object amount) {
+            return PCLJUtils.Format(XCards, amount);
+        }
+        public final String RandomCards(Object amount) {
+            return PCLJUtils.Format(XRandomCards, amount);
         }
 
-        public final String Apply(Object amount, Object debuff, boolean addPeriod)
-        {
-            return Format(addPeriod, 1, amount, debuff);
-        }
 
-        public final String ApplyToALL(Object amount, Object debuff, boolean addPeriod)
+        public final String AddToPile(Object desc1, Object desc2, Object pile, boolean addPeriod)
         {
-            return Format(addPeriod, 2, amount, debuff);
+            return Format(addPeriod, 0, desc1, desc2, pile);
         }
-
-        public final String Cycle(Object amount, boolean addPeriod)
+        public final String ApplyToTarget(Object power, Object target, boolean addPeriod)
         {
-            return Format(addPeriod, 3, amount);
+            return Format(addPeriod, 1, power, target);
         }
-
-        public final String Draw(Object amount, boolean addPeriod)
+        public final String ApplyAmountToTarget(Integer amount, Object power, Object target, boolean addPeriod)
         {
-            return Format(addPeriod, 4, amount);
+            return Format(addPeriod, 2, amount, power, target);
         }
-
-        public final String Discard(Object amount, boolean addPeriod)
+        public final String ApplyAmount(Integer amount, Object power, boolean addPeriod) {return Format(addPeriod, 3, amount, power);}
+        public final String Apply(Object power, boolean addPeriod)
+        {
+            return Format(addPeriod, 4, power);
+        }
+        public final String ChannelRandomOrbs(Object amount, boolean addPeriod)
         {
             return Format(addPeriod, 5, amount);
         }
-
-        public final String Exhaust(Object amount, boolean addPeriod)
+        public final String Channel(Object amount, Object orb, boolean addPeriod)
         {
-            return Format(addPeriod, 6, amount);
+            return Format(addPeriod, 6, amount, orb);
         }
-
-        public final String GainOrbSlots(Object amount, boolean addPeriod)
+        public final String ChooseOutOf(Integer amount, Integer amount2, Object target, boolean addPeriod)
         {
-            return Format(addPeriod, 7, amount);
+            return Format(addPeriod, 7, amount, amount2, target);
         }
-
-        public final String ChannelRandomOrbs(Object amount, boolean addPeriod)
+        public final String Choose(Object amount, boolean addPeriod)
         {
             return Format(addPeriod, 8, amount);
         }
-
-        public final String Channel(Object amount, Object orb, boolean addPeriod)
+        public final String CycleTarget(Object amount, Object target, boolean addPeriod)
         {
-            return Format(addPeriod, 9, amount, orb);
+            return Format(addPeriod, 9, amount, target);
         }
-
-        public final String DealDamage(int amount, boolean addPeriod)
+        public final String Cycle(Object amount, boolean addPeriod)
         {
             return Format(addPeriod, 10, amount);
         }
-
-        public final String DealDamageToAll(int amount, boolean addPeriod)
+        public final String DealDamageTo(Integer amount, Object target, boolean addPeriod)
         {
-            return Format(addPeriod, 11, amount);
+            return Format(addPeriod, 11, amount, target);
         }
-
-        public final String GainTemporaryAmount(Object amount, Object buff, boolean addPeriod)
+        public final String DealDamage(Integer amount, boolean addPeriod)
         {
-            return Format(addPeriod, 12, amount, buff);
+            return Format(addPeriod, 12, amount);
         }
-
-        public final String RemoveCommonDebuffs(boolean addPeriod)
+        public final String DealTypeDamageTo(Object type, Integer amount, Object target, boolean addPeriod) {return Format(addPeriod, 13, type, amount, target);}
+        public final String DealTypeDamage(Object type, Integer amount, boolean addPeriod)
         {
-            return Get(13) + (addPeriod ? LocalizedStrings.PERIOD : "");
+            return Format(addPeriod, 14, type, amount);
         }
-
-        public final String Obtain(Object card, boolean addPeriod)
+        public final String DiscardFrom(Object amount, Object target, boolean addPeriod)
         {
-            return Format(addPeriod, 14, card);
+            return Format(addPeriod, 15, amount, target);
         }
-
-        public final String Stun(boolean addPeriod)
+        public final String Discard(Object amount, boolean addPeriod)
         {
-            return Get(15) + (addPeriod ? LocalizedStrings.PERIOD : "");
+            return Format(addPeriod, 16, amount);
         }
-
-        public final String EnterStance(Object stance, boolean addPeriod)
+        public final String DrawType(Integer amount, Object type, boolean addPeriod)
         {
-            return Format(addPeriod, 16, stance);
+            return Format(addPeriod, 17, amount, type);
         }
-
-        public final String Steal(Object power, Object buff, boolean addPeriod)
-        {
-            return Format(addPeriod, 17, power, buff);
-        }
-
-        public final String Scry(int amount, boolean addPeriod)
+        public final String Draw(Integer amount, boolean addPeriod)
         {
             return Format(addPeriod, 18, amount);
         }
-
-        public final String NextTurnBlock(int amount, boolean addPeriod)
-        {
-            return Format(addPeriod, 19, amount);
-        }
-
-        public final String NextTurnDraw(int amount, boolean addPeriod)
-        {
-            return Format(addPeriod, 20, amount);
-        }
-
-        public final String NextTurnEnergy(int amount, boolean addPeriod)
-        {
-            return Format(addPeriod, 21, amount);
-        }
-
         public final String EnterAnyStance(boolean addPeriod)
         {
-            return Get(22) + (addPeriod ? LocalizedStrings.PERIOD : "");
+            return Format(addPeriod, 19);
         }
-
-        public final String PayEnergy(int amount, boolean addPeriod)
+        public final String EnterStance(Object stance, boolean addPeriod)
         {
-            return Format(addPeriod, 23, amount);
+            return Format(addPeriod, 20, stance);
         }
-
-        public final String LoseHP(int amount, boolean addPeriod)
+        public final String EvokeXTimes(Object orb, Integer times, boolean addPeriod)
+        {
+            return Format(addPeriod, 21, orb, times);
+        }
+        public final String Evoke(Object orb, Integer times, boolean addPeriod)
+        {
+            return Format(addPeriod, 22, orb, times);
+        }
+        public final String ExhaustFrom(Object amount, Object target, boolean addPeriod)
+        {
+            return Format(addPeriod, 23, amount, target);
+        }
+        public final String Exhaust(Object amount, boolean addPeriod)
         {
             return Format(addPeriod, 24, amount);
         }
-
-        public final String GiveRandomEnemy(Object amount, Object debuff, boolean addPeriod)
+        public final String ExitStance(boolean addPeriod)
         {
-            return Format(addPeriod, 25, amount, debuff);
+            return Format(addPeriod, 25);
         }
-
-        public final String GiveAllEnemies(Object amount, Object debuff, boolean addPeriod)
+        public final String FetchFrom(Object item, Object target, boolean addPeriod)
         {
-            return Format(addPeriod, 26, amount, debuff);
+            return Format(addPeriod, 26, item, target);
         }
-
-        public final String LosePower(Object amount, Object power, boolean addPeriod)
+        public final String GainAmount(Integer amount, Object power, boolean addPeriod)
         {
             return Format(addPeriod, 27, amount, power);
         }
-
-        public final String Motivate(Object amount, boolean addPeriod)
+        public final String Gain(Object power, boolean addPeriod)
         {
-            return Format(addPeriod, 28, amount);
+            return Format(addPeriod, 28, power);
         }
-
-        public final String AddToDiscardPile(Object amount, Object card, boolean addPeriod)
+        public final String GiveTargetAmount(Object target, Integer amount, Object power, boolean addPeriod) {return Format(addPeriod, 29, target, amount, power);}
+        public final String GiveTarget(Object target, Object power, boolean addPeriod) {return Format(addPeriod, 30, target, power);}
+        public final String HaveTemporaryAmount(Integer amount, Object power, boolean addPeriod)
         {
-            return Format(addPeriod, 29, amount, card);
+            return Format(addPeriod, 31, amount, power);
         }
-
-        public final String AddToDrawPile(Object amount, Object card, boolean addPeriod)
-        {
-            return Format(addPeriod, 30, amount, card);
-        }
-
-        public final String AddToHand(Object amount, Object card, boolean addPeriod)
-        {
-            return Format(addPeriod, 31, amount, card);
-        }
-
-        public final String DiscardRandom(Object amount, boolean addPeriod)
+        public final String Heal(Integer amount, boolean addPeriod)
         {
             return Format(addPeriod, 32, amount);
         }
-
-        public final String ExhaustRandom(Object amount, boolean addPeriod)
+        public final String LoseAmount(Integer amount, Object power, boolean addPeriod)
         {
-            return Format(addPeriod, 33, amount);
+            return Format(addPeriod, 33, amount, power);
         }
-
-        public final String NextTurnDrawLess(Object amount, boolean addPeriod)
+        public final String MotivateFrom(Object amount, Object target, boolean addPeriod)
         {
-            return Format(addPeriod, 34, amount);
+            return Format(addPeriod, 34, amount, target);
         }
-
-        public final String NextTurnLoseEnergy(Object amount, boolean addPeriod)
+        public final String Motivate(Object amount, boolean addPeriod)
         {
             return Format(addPeriod, 35, amount);
         }
-
-        public final String Play(Object card, boolean addPeriod)
+        public final String MoveTo(Object amount, Object target, boolean addPeriod)
         {
-            return Format(addPeriod, 36, card);
+            return Format(addPeriod, 36, amount, target);
+        }
+        public final String ObtainOutOf(Integer amount, Integer amount2, Object target, boolean addPeriod)
+        {
+            return Format(addPeriod, 37, amount, amount2, target);
+        }
+        public final String ObtainAmount(Integer amount, Object card, boolean addPeriod)
+        {
+            return Format(addPeriod, 38, amount, card);
+        }
+        public final String Obtain(Object card, boolean addPeriod)
+        {
+            return Format(addPeriod, 39, card);
+        }
+        public final String Pay(Integer amount, Object power, boolean addPeriod) {return Format(addPeriod, 40, amount, power);}
+        public final String PlayFrom(Object item, Object target, boolean addPeriod)
+        {
+            return Format(addPeriod, 41, item, target);
+        }
+        public final String Play(Object item, boolean addPeriod)
+        {
+            return Format(addPeriod, 42, item);
+        }
+        public final String RemoveCommonDebuffs(boolean addPeriod)
+        {
+            return Format(addPeriod, 43);
+        }
+        public final String Remove(Object item, boolean addPeriod)
+        {
+            return Format(addPeriod, 44, item);
+        }
+        public final String RemoveFrom(Object item, Object target, boolean addPeriod)
+        {
+            return Format(addPeriod, 45, item, target);
+        }
+        public final String RetainAmount(Integer amount, Object power, boolean addPeriod)
+        {
+            return Format(addPeriod, 46, amount, power);
+        }
+        public final String Retain(Object power, boolean addPeriod)
+        {
+            return Format(addPeriod, 47, power);
+        }
+        public final String Scry(Integer amount, boolean addPeriod) {return Format(addPeriod, 48, amount);}
+        public final String SetCurrentAffinity(Object affinity, boolean addPeriod) {return Format(addPeriod, 49, affinity);}
+        public final String SetNextAffinity(Object affinity, boolean addPeriod) {return Format(addPeriod, 50, affinity);}
+        public final String StealFrom(Integer amount, Object item, Object target, boolean addPeriod) {return Format(addPeriod, 51, amount, item, target);}
+        public final String StealAmount(Integer amount, Object power, boolean addPeriod)
+        {
+            return Format(addPeriod, 52, amount, power);
+        }
+        public final String Stun(Object target, boolean addPeriod)
+        {
+            return Format(addPeriod, 53, target);
+        }
+        public final String TakeDelayedDamage(Integer amount, boolean addPeriod) {return Format(addPeriod, 54, amount);}
+        public final String TakeDamage(Integer amount, boolean addPeriod) {return Format(addPeriod, 55, amount);}
+        public final String TriggerXTimes(Object orb, Integer times, boolean addPeriod)
+        {
+            return Format(addPeriod, 56, orb, times);
+        }
+        public final String Trigger(Object orb, Integer times, boolean addPeriod)
+        {
+            return Format(addPeriod, 57, orb, times);
+        }
+        public final String Use(Object target, boolean addPeriod)
+        {
+            return Format(addPeriod, 58, target);
         }
 
-        public final String PlayFromAnywhere(Object card, boolean addPeriod)
-        {
-            return Format(addPeriod, 37, card);
-        }
-
-        public final String Use(Object card, boolean addPeriod)
-        {
-            return Format(addPeriod, 38, card);
-        }
-
-        public final String ApplyToRandom(Object amount, Object debuff, boolean addPeriod)
-        {
-            return Format(addPeriod, 39, amount, debuff);
-        }
-
-        public final String ChooseMotivatedCard(Object category, boolean addPeriod)
-        {
-            return Format(addPeriod, 40, category);
-        }
-
-        public final String CreateCurses(boolean addPeriod)
-        {
-            return Get(41) + (addPeriod ? LocalizedStrings.PERIOD : "");
-        }
-
-        public final String HealHP(int amount, boolean addPeriod)
-        {
-            return Format(addPeriod, 42, amount);
-        }
-
-        public final String Trigger(Object orb, Object amount, boolean addPeriod)
-        {
-            return Format(addPeriod, 43, orb, amount);
-        }
-
-        public final String PayCost(Object amount, Object buff, boolean addPeriod)
-        {
-            return Format(addPeriod, 44, amount, buff);
-        }
-
-        public final String Give1(Object buff, boolean addPeriod)
-        {
-            return Format(addPeriod, 45, buff);
-        }
-
-        public final String Give2(Object amount, Object buff, boolean addPeriod)
-        {
-            return Format(addPeriod, 46, amount, buff);
-        }
-
-        private String Format(boolean addPeriod, int index, Object amount)
-        {
-            return Format(addPeriod, index, amount, null);
-        }
-
-        private String Format(boolean addPeriod, int index, Object amount, Object extra)
+        private String Format(boolean addPeriod, int index, Object... objects)
         {
             String text = Strings.TEXT[index];
-            if (amount instanceof Integer)
-            {
-                if (amount.equals(1))
-                {
-                    text = text.replace("(s)", "");
-                }
-                else
-                {
-                    text = text.replace("(s)", "s");
-                }
-            }
-
-            return PCLJUtils.Format(text, amount, extra) + (addPeriod ? LocalizedStrings.PERIOD : "");
+            return PCLJUtils.Format(text, objects) + (addPeriod ? LocalizedStrings.PERIOD : "");
         }
 
-        public final String Get(int index)
+        private String Format(boolean addPeriod, int index)
         {
-            return Strings.TEXT[index];
+            return Strings.TEXT[index] + (addPeriod ? LocalizedStrings.PERIOD : "");
+        }
+    }
+
+    public static class Conditions
+    {
+        private final UIStrings Strings = GetUIStrings("Conditions");
+
+        public final String Addition(Integer amount, Object cond, boolean addPeriod)
+        {
+            return Format(addPeriod, 0, amount, cond);
+        }
+        public final String IfMulti(Object desc1, Object desc2, boolean addPeriod)
+        {
+            return Format(addPeriod, 1, desc1, desc2);
+        }
+        public final String If(Object desc1, boolean addPeriod)
+        {
+            return Format(addPeriod, 2, desc1);
+        }
+        public final String NextTurn(boolean addPeriod)
+        {
+            return Format(addPeriod, 3);
+        }
+        public final String OnDiscard(boolean addPeriod)
+        {
+            return Format(addPeriod, 4);
+        }
+        public final String OnExhaust(boolean addPeriod)
+        {
+            return Format(addPeriod, 5);
+        }
+        public final String OnPurge(boolean addPeriod)
+        {
+            return Format(addPeriod, 6);
+        }
+        public final String OnGeneric(Object desc1, boolean addPeriod)
+        {
+            return Format(addPeriod, 7, desc1);
+        }
+        public final String WhenCreated(boolean addPeriod)
+        {
+            return Format(addPeriod, 8);
+        }
+        public final String WhenDrawn(boolean addPeriod)
+        {
+            return Format(addPeriod, 9);
+        }
+        public final String GenericMulti(Object desc1, Object desc2, boolean addPeriod)
+        {
+            return Format(addPeriod, 10, desc1, desc2);
+        }
+        public final String Generic(Object desc1, boolean addPeriod)
+        {
+            return Format(addPeriod, 11, desc1);
+        }
+
+        private String Format(boolean addPeriod, int index, Object... objects)
+        {
+            String text = Strings.TEXT[index];
+            return PCLJUtils.Format(text, objects) + (addPeriod ? LocalizedStrings.PERIOD : "");
+        }
+        private String Format(boolean addPeriod, int index)
+        {
+            return Strings.TEXT[index] + (addPeriod ? LocalizedStrings.PERIOD : "");
         }
     }
 

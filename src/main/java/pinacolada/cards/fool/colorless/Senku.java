@@ -30,6 +30,7 @@ import pinacolada.utilities.PCLGameUtilities;
 import java.util.HashMap;
 import java.util.Map;
 
+// TODO Refactor to use BaseEffect
 public class Senku extends FoolCard
 {
     public static final PCLCardData DATA = Register(Senku.class).SetAttack(1, CardRarity.UNCOMMON)
@@ -132,7 +133,7 @@ public class Senku extends FoolCard
             for (Map.Entry<String,Integer> debuff : debuffs.entrySet()) {
                 PCLPowerHelper helper = PCLPowerHelper.Get(debuff.getKey());
                 builder.append(" NL ");
-                builder.append(this.attackTarget.equals(PCLCardTarget.AoE) ? ACTIONS.ApplyToALL(debuff.getValue(), helper.Tooltip, true) : ACTIONS.Apply(debuff.getValue(), helper.Tooltip, true));
+                builder.append(this.attackTarget.equals(PCLCardTarget.AoE) ? ACTIONS.ApplyAmountToTarget(debuff.getValue(), helper.Tooltip, PGR.PCL.Strings.Actions.ALLEnemies, true) : ACTIONS.ApplyAmount(debuff.getValue(), helper.Tooltip, true));
             }
             this.cardText.OverrideDescription(builder.toString(), true);
         }

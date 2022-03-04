@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.orbs.Dark;
 import com.megacrit.cardcrawl.orbs.Frost;
 import com.megacrit.cardcrawl.stances.NeutralStance;
 import pinacolada.cards.base.*;
-import pinacolada.cards.base.cardeffects.GenericCardEffect;
+import pinacolada.cards.base.baseeffects.BaseEffect;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
 import pinacolada.effects.VFX;
@@ -75,16 +75,16 @@ public class Lu extends FoolCard
                     if (stance != null && !stance.ID.equals(NeutralStance.STANCE_ID))
                     {
                         choices.Initialize(this, true);
-                        choices.AddEffect(new GenericCardEffect_Ciel(magicNumber));
-                        choices.AddEffect(GenericCardEffect.ApplyToEnemies(magicNumber, PCLPowerHelper.Freezing));
+                        choices.AddEffect(new BaseEffect_Ciel(magicNumber));
+                        choices.AddEffect(BaseEffect.ApplyToEnemies(magicNumber, PCLPowerHelper.Freezing));
                         choices.Select(1, m);
                     }
                 });
     }
 
-    protected static class GenericCardEffect_Ciel extends GenericCardEffect
+    protected static class BaseEffect_Ciel extends BaseEffect
     {
-        public GenericCardEffect_Ciel(int amount)
+        public BaseEffect_Ciel(int amount)
         {
             this.amount = amount;
         }

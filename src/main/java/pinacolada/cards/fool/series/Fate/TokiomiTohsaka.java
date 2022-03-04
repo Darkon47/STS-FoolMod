@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import pinacolada.cards.base.*;
-import pinacolada.cards.base.cardeffects.GenericEffects.GenericCardEffect_ChannelOrb;
+import pinacolada.cards.base.baseeffects.effects.BaseEffect_ChannelOrb;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.orbs.PCLOrbHelper;
 import pinacolada.utilities.PCLActions;
@@ -45,7 +45,7 @@ public class TokiomiTohsaka extends FoolCard
         {
             for (PCLOrbHelper orb : PCLOrbHelper.ALL.values()) {
                 if (PCLGameUtilities.IsCommonOrb(orb.ID)) {
-                    choices.AddEffect(new GenericCardEffect_ChannelOrb(1, orb));
+                    choices.AddEffect(new BaseEffect_ChannelOrb(1, orb));
                 }
             }
         }

@@ -32,7 +32,7 @@ public class AyakaKamisato extends FoolCard {
     public AyakaKamisato() {
         super(DATA);
 
-        Initialize(32, 0, 4, 13);
+        Initialize(32, 0, 4, 20);
         SetUpgrade(5, 0, 0, 0);
         SetAffinity_Blue(1, 0, 0);
         SetAffinity_Green(1, 0, 0);

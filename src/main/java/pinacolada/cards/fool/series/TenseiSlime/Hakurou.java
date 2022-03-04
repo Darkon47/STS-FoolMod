@@ -5,8 +5,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.DieDieDieEffect;
 import eatyourbeets.powers.CombatStats;
 import pinacolada.cards.base.*;
-import pinacolada.cards.base.attributes.AbstractAttribute;
-import pinacolada.cards.base.cardeffects.GenericCardEffect;
+import pinacolada.cards.base.baseeffects.BaseEffect;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.fool.tokens.AffinityToken;
 import pinacolada.effects.AttackEffects;
@@ -36,12 +35,7 @@ public class Hakurou extends FoolCard
         SetAffinityRequirement(PCLAffinity.Orange, 4);
 
         SetHitCount(3,0);
-    }
-
-    @Override
-    public AbstractAttribute GetBlockInfo()
-    {
-        return super.GetBlockInfo().AddMultiplier(hitCount);
+        SetRightHitCount(3);
     }
 
     @Override
@@ -66,16 +60,12 @@ public class Hakurou extends FoolCard
     {
         PCLActions.Bottom.VFX(new DieDieDieEffect());
         PCLActions.Bottom.DealCardDamage(this, m, AttackEffects.NONE);
-        for (int i = 0; i < hitCount; i++) {
-            PCLActions.Bottom.GainBlock(block);
-        }
-
         PCLActions.Bottom.TryChooseSpendAffinity(this, PCLAffinity.Red, PCLAffinity.Orange)
                 .AddConditionalCallback(() -> {
             if (choices.TryInitialize(this))
             {
-                choices.AddEffect(GenericCardEffect.EnterStance(PCLStanceHelper.VelocityStance));
-                choices.AddEffect(GenericCardEffect.GainAffinity(magicNumber, PCLAffinity.Green));
+                choices.AddEffect(BaseEffect.EnterStance(PCLStanceHelper.VelocityStance));
+                choices.AddEffect(BaseEffect.GainAffinity(magicNumber, PCLAffinity.Green));
             }
             choices.Select(1, m);
         });

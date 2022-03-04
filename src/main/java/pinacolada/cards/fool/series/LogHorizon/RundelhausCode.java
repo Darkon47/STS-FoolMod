@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import eatyourbeets.powers.CombatStats;
 import pinacolada.cards.base.*;
-import pinacolada.cards.base.cardeffects.GenericEffects.GenericCardEffect_ChannelOrb;
+import pinacolada.cards.base.baseeffects.effects.BaseEffect_ChannelOrb;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
 import pinacolada.orbs.PCLOrbHelper;
@@ -69,7 +69,7 @@ public class RundelhausCode extends FoolCard
             {
                 for (PCLOrbHelper orb : PCLOrbHelper.ALL.values()) {
                     if (PCLGameUtilities.IsCommonOrb(orb.ID)) {
-                        choices.AddEffect(new GenericCardEffect_ChannelOrb(1, orb));
+                        choices.AddEffect(new BaseEffect_ChannelOrb(1, orb));
                     }
                 }
             }

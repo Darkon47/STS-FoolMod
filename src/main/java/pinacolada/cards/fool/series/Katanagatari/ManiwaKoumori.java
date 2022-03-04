@@ -4,7 +4,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import pinacolada.cards.base.*;
-import pinacolada.cards.base.attributes.AbstractAttribute;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.fool.special.ThrowingKnife;
 import pinacolada.powers.PCLCombatStats;
@@ -27,33 +26,23 @@ public class ManiwaKoumori extends FoolCard
         super(DATA);
 
         Initialize(0, 1, 2, 2);
-        SetUpgrade(0, 0, 1);
+        SetUpgrade(0, 2, 0);
 
         SetAffinity_Green(1);
         SetAffinity_Dark(1, 0, 2);
+
+        SetRightHitCount(2);
     }
 
     @Override
     protected void OnUpgrade()
     {
         SetHaste(true);
-        this.upgradedBlock = true;
-    }
-
-    @Override
-    public AbstractAttribute GetBlockInfo()
-    {
-        return super.GetBlockInfo().AddMultiplier(magicNumber);
     }
 
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        for (int i = 0; i < magicNumber; i++)
-        {
-            PCLActions.Bottom.GainBlock(block).SetVFX(true, true);
-        }
-
         PCLActions.Bottom.Draw(1 + PCLCombatStats.MatchingSystem.GetAffinityLevel(PCLAffinity.Green, true));
 
         if (CheckSpecialCondition(true))

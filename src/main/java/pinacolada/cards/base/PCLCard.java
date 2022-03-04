@@ -40,7 +40,8 @@ import eatyourbeets.utilities.RotatingList;
 import pinacolada.cards.base.attributes.AbstractAttribute;
 import pinacolada.cards.base.attributes.BlockAttribute;
 import pinacolada.cards.base.attributes.DamageAttribute;
-import pinacolada.cards.base.cardeffects.GenericCardEffect;
+import pinacolada.cards.base.baseeffects.BaseEffect;
+import pinacolada.cards.base.baseeffects.CompositeEffect;
 import pinacolada.cards.base.modifiers.AfterLifeMod;
 import pinacolada.cards.fool.FoolCard_UltraRare;
 import pinacolada.patches.screens.GridCardSelectScreenPatches;
@@ -94,7 +95,12 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
     protected int upgrade_block;
     protected int upgrade_cost;
 
-    public final ArrayList<GenericCardEffect> onUseEffects = new ArrayList<>();
+    public BaseEffect onCreateEffect;
+    public BaseEffect onDiscardEffect;
+    public BaseEffect onDrawEffect;
+    public BaseEffect onExhaustEffect;
+    public BaseEffect onPurgeEffect;
+    public final ArrayList<BaseEffect> onUseEffects = new ArrayList<>();
     public PCLCardSaveData auxiliaryData = new PCLCardSaveData();
     protected DrawPileCardPreview drawPileCardPreview;
     protected Color borderIndicatorColor;
@@ -377,6 +383,14 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
     {
         final CardUseInfo info = new CardUseInfo(this);
 
+        if (block > 0) {
+            for (int i = 0; i < rightHitCount; i++) {
+                PCLActions.Bottom.GainBlock(block);
+            }
+        }
+        for (BaseEffect ef : onUseEffects) {
+            ef.Use(p1, m1, info);
+        }
         OnUse(p1, m1, info);
         OnLateUse(p1, m1, info);
     }
@@ -403,9 +417,33 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
 
     protected String GetRawDescription(Object... args)
     {
-        return upgraded && cardData.Strings.UPGRADE_DESCRIPTION != null
+        return GetEffectStrings() + (upgraded && cardData.Strings.UPGRADE_DESCRIPTION != null
                 ? PCLJUtils.Format(cardData.Strings.UPGRADE_DESCRIPTION, args)
-                : PCLJUtils.Format(cardData.Strings.DESCRIPTION, args);
+                : PCLJUtils.Format(cardData.Strings.DESCRIPTION, args));
+    }
+
+    protected String GetEffectStrings() {
+        ArrayList<String> s = new ArrayList<>();
+        if (!onUseEffects.isEmpty()) {
+            s.add(PCLJUtils.JoinStrings(" NL NL ", PCLJUtils.Map(onUseEffects, BaseEffect::GetText)));
+        }
+        if (onCreateEffect != null) {
+            s.add(PGR.PCL.Strings.Conditions.WhenCreated(false) + ": " + onCreateEffect.GetText());
+        }
+        if (onDiscardEffect != null) {
+            s.add(PGR.PCL.Strings.Conditions.OnDiscard(false) + ": " + onDiscardEffect.GetText());
+        }
+        if (onDrawEffect != null) {
+            s.add(PGR.PCL.Strings.Conditions.WhenDrawn(false) + ": " + onDrawEffect.GetText());
+        }
+        if (onExhaustEffect != null) {
+            s.add(PGR.PCL.Strings.Conditions.OnExhaust(false) + ": " + onExhaustEffect.GetText());
+        }
+        if (onPurgeEffect != null) {
+            s.add(PGR.PCL.Strings.Conditions.OnPurge(false) + ": " + onPurgeEffect.GetText());
+        }
+
+        return PCLJUtils.JoinStrings(" NL NL ", s);
     }
 
     @Override
@@ -814,7 +852,13 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
 
     public AbstractAttribute GetBlockInfo()
     {
-        return baseBlock >= 0 ? BlockAttribute.Instance.SetCard(this) : null;
+        if (this.baseBlock <= 0 || this.rightHitCount <= 0) {
+            return null;
+        }
+        if (this.rightHitCount <= 1) {
+            return BlockAttribute.Instance.SetCard(this);
+        }
+        return BlockAttribute.Instance.SetCard(this).AddMultiplier(rightHitCount);
     }
 
     public AbstractAttribute GetSpecialInfo()
@@ -927,6 +971,11 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
     {
         this.baseHitCount = this.hitCount = count;
         this.upgrade_hitCount = upgrade;
+    }
+
+    public void SetRightHitCount(int count)
+    {
+        this.rightHitCount = count;
     }
 
     public void SetFragile(boolean value)
@@ -1081,6 +1130,72 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
     protected void SetAffinity_Star(int base, int upgrade, int scaling) { InitializeAffinity(PCLAffinity.Star, base, upgrade, scaling); }
     protected void InitializeAffinity(PCLAffinity affinity, int base, int upgrade, int scaling) { affinities.Initialize(affinity, base, upgrade, scaling, 0); }
     //@Formatter: On
+
+    protected void SetCreateEffect(BaseEffect effect)
+    {
+        onCreateEffect = effect;
+    }
+    protected void SetCreateEffect(BaseEffect... effects)
+    {
+        onCreateEffect = new CompositeEffect(effects);
+    }
+    protected void SetDiscardEffect(BaseEffect effect)
+    {
+        onDiscardEffect = effect;
+    }
+    protected void SetDiscardEffect(BaseEffect... effects)
+    {
+        onDiscardEffect = new CompositeEffect(effects);
+    }
+    protected void SetDrawEffect(BaseEffect effect)
+    {
+        onDrawEffect = effect;
+    }
+    protected void SetDrawEffect(BaseEffect... effects)
+    {
+        onDrawEffect = new CompositeEffect(effects);
+    }
+    protected void SetExhaustEffect(BaseEffect effect)
+    {
+        onExhaustEffect = effect;
+    }
+    protected void SetExhaustEffect(BaseEffect... effects)
+    {
+        onExhaustEffect = new CompositeEffect(effects);
+    }
+    protected void SetPurgeEffect(BaseEffect effect)
+    {
+        onPurgeEffect = effect;
+    }
+    protected void SetPurgeEffect(BaseEffect... effects)
+    {
+        onPurgeEffect = new CompositeEffect(effects);
+    }
+
+    protected void AddUseEffect(BaseEffect... effects)
+    {
+        onUseEffects.addAll(Arrays.asList(effects));
+    }
+
+    protected ArrayList<BaseEffect> GetAllEffects() {
+        ArrayList<BaseEffect> result = new ArrayList<>(onUseEffects);
+        if (onCreateEffect != null) {
+            result.add(onCreateEffect);
+        }
+        if (onDiscardEffect != null) {
+            result.add(onDiscardEffect);
+        }
+        if (onDrawEffect != null) {
+            result.add(onDrawEffect);
+        }
+        if (onExhaustEffect != null) {
+            result.add(onExhaustEffect);
+        }
+        if (onPurgeEffect != null) {
+            result.add(onPurgeEffect);
+        }
+        return result;
+    }
 
     protected boolean TryUpgrade()
     {
@@ -1326,18 +1441,18 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
         return this.cooldown;
     }
 
-    public CardEffectChoice SetupChoices(boolean clearEffects, GenericCardEffect... effects) {
+    public CardEffectChoice SetupChoices(boolean clearEffects, BaseEffect... effects) {
         CardEffectChoice choice = GetCardChoice(cardID).Initialize(this, clearEffects);
-        for (GenericCardEffect gc : effects) {
+        for (BaseEffect gc : effects) {
             choice.AddEffect(gc);
         }
         return choice;
     }
 
-    public CardEffectChoice TrySetupChoices(GenericCardEffect... effects) {
+    public CardEffectChoice TrySetupChoices(BaseEffect... effects) {
         CardEffectChoice choice = GetCardChoice(cardID);
         if (choice.TryInitialize(this)) {
-            for (GenericCardEffect gc : effects) {
+            for (BaseEffect gc : effects) {
                 choice.AddEffect(gc);
             }
         }

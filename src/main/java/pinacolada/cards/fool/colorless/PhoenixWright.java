@@ -3,13 +3,12 @@ package pinacolada.cards.fool.colorless;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import pinacolada.cards.base.CardSeries;
-import pinacolada.cards.base.CardUseInfo;
-import pinacolada.cards.base.PCLAttackType;
-import pinacolada.cards.base.PCLCardData;
+import pinacolada.cards.base.*;
 import pinacolada.cards.base.attributes.AbstractAttribute;
-import pinacolada.cards.base.cardeffects.CounterIntentEffects.CounterIntentEffect;
+import pinacolada.cards.base.baseeffects.BaseEffect;
+import pinacolada.cards.base.baseeffects.CompositeEffect;
 import pinacolada.cards.fool.FoolCard;
+import pinacolada.powers.PCLPowerHelper;
 import pinacolada.ui.cards.TargetEffectPreview;
 import pinacolada.utilities.PCLGameUtilities;
 
@@ -20,7 +19,7 @@ public class PhoenixWright extends FoolCard
             .SetColorless().SetSeries(CardSeries.PhoenixWright);
 
     private TargetEffectPreview effectPreview = new TargetEffectPreview(this::ChangeEffect);
-    private CounterIntentEffect currentEffect = null;
+    private BaseEffect currentEffect = null;
 
     public PhoenixWright()
     {
@@ -50,29 +49,19 @@ public class PhoenixWright extends FoolCard
     @Override
     public AbstractAttribute GetDamageInfo()
     {
-        if (currentEffect != null)
-        {
-            return currentEffect.GetDamageInfo(this);
-        }
-
-        return null;
+        return (currentEffect != null) ? currentEffect.GetDamageInfo() : null;
     }
 
     @Override
     public AbstractAttribute GetBlockInfo()
     {
-        if (currentEffect != null)
-        {
-            return currentEffect.GetBlockInfo(this);
-        }
-
-        return null;
+        return (currentEffect != null) ? currentEffect.GetBlockInfo() : null;
     }
 
     @Override
     public AbstractAttribute GetSpecialInfo()
     {
-        return (currentEffect != null) ? currentEffect.GetSpecialInfo(this) : null;
+        return (currentEffect != null) ? currentEffect.GetSpecialInfo() : null;
     }
 
     @Override
@@ -98,7 +87,7 @@ public class PhoenixWright extends FoolCard
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
         energyOnUse = PCLGameUtilities.UseXCostEnergy(this);
-        CounterIntentEffect.GetEffect(m).EnqueueActions(this, p, m);
+        currentEffect.Use(p, m, info);
     }
 
     private void ChangeEffect(AbstractMonster enemy)
@@ -108,13 +97,69 @@ public class PhoenixWright extends FoolCard
         if (enemy != null)
         {
             energyOnUse = PCLGameUtilities.GetXCostEnergy(this);
-            currentEffect = CounterIntentEffect.GetEffect(enemy);
-            cardText.OverrideDescription(currentEffect.GetDescription(this), true);
+            currentEffect = GetEffect(enemy.intent, energyOnUse + 1);
+            cardText.OverrideDescription(currentEffect.GetText(), true);
         }
         else
         {
             currentEffect = null;
             cardText.OverrideDescription(null, true);
+        }
+    }
+
+    private BaseEffect GetEffect(AbstractMonster.Intent intent, int effectPower) {
+        switch (intent) {
+            case ATTACK:
+                return BaseEffect.GainBlock(effectPower * baseBlock);
+            case ATTACK_BUFF:
+                return new CompositeEffect(
+                        BaseEffect.GainBlock(effectPower * baseBlock),
+                        BaseEffect.GainAffinityPower(effectPower, PCLAffinity.Orange)
+                );
+            case ATTACK_DEBUFF:
+                return new CompositeEffect(
+                        BaseEffect.GainBlock(effectPower * baseBlock),
+                        BaseEffect.ApplyToSingle(effectPower, PCLPowerHelper.Weak)
+                );
+            case ATTACK_DEFEND:
+                return new CompositeEffect(
+                        BaseEffect.DealDamage(effectPower * baseDamage),
+                        BaseEffect.GainBlock(effectPower * baseBlock)
+                );
+            case BUFF:
+                return BaseEffect.GainAffinityPower(effectPower + 1, PCLAffinity.Orange);
+            case DEBUFF:
+                return BaseEffect.ApplyToSingle(effectPower, PCLPowerHelper.Weak, PCLPowerHelper.Vulnerable);
+            case STRONG_DEBUFF:
+                return BaseEffect.ApplyToSingle(effectPower, PCLPowerHelper.Weak, PCLPowerHelper.Vulnerable, PCLPowerHelper.Blinded);
+            case DEFEND:
+                return BaseEffect.DealDamage(effectPower * baseDamage);
+            case DEFEND_DEBUFF:
+                return new CompositeEffect(
+                        BaseEffect.DealDamage(effectPower * baseDamage),
+                        BaseEffect.ApplyToSingle(effectPower, PCLPowerHelper.Vulnerable)
+                );
+            case DEFEND_BUFF:
+                return new CompositeEffect(
+                        BaseEffect.DealDamage(effectPower * baseDamage),
+                        BaseEffect.GainAffinityPower(effectPower, PCLAffinity.Orange)
+                );
+            case ESCAPE:
+                return new CompositeEffect(
+                        BaseEffect.DealDamage(effectPower * baseDamage),
+                        BaseEffect.Stun(1)
+                );
+            case SLEEP:
+                return BaseEffect.Gain(effectPower, PCLPowerHelper.Energized);
+            case UNKNOWN:
+                return BaseEffect.GainTempHP(effectPower * baseMagicNumber);
+            case DEBUG:
+            case NONE:
+            case STUN:
+                return BaseEffect.Gain(effectPower, PCLPowerHelper.NextTurnDraw);
+            case MAGIC:
+            default:
+                return BaseEffect.Gain(effectPower + baseMagicNumber, PCLPowerHelper.Sorcery);
         }
     }
 }

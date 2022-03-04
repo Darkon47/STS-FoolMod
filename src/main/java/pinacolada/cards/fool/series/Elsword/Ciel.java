@@ -6,8 +6,7 @@ import pinacolada.cards.base.CardEffectChoice;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCardData;
-import pinacolada.cards.base.attributes.AbstractAttribute;
-import pinacolada.cards.base.cardeffects.GenericCardEffect;
+import pinacolada.cards.base.baseeffects.BaseEffect;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.stances.PCLStanceHelper;
 import pinacolada.utilities.PCLActions;
@@ -27,7 +26,7 @@ public class Ciel extends FoolCard
 
         Initialize(0, 5, 6, 3);
         SetUpgrade(0, 2, 1, 0);
-        SetHitCount(2);
+        SetRightHitCount(2);
 
         SetAffinity_Orange(1, 0, 0);
         SetAffinity_Blue(1, 0, 1);
@@ -37,18 +36,8 @@ public class Ciel extends FoolCard
     }
 
     @Override
-    public AbstractAttribute GetBlockInfo()
-    {
-        return super.GetBlockInfo().AddMultiplier(hitCount);
-    }
-
-    @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        for (int i = 0; i < hitCount; i++) {
-            PCLActions.Bottom.GainBlock(block);
-        }
-
         PCLActions.Bottom.ApplyLockOn(p,m,secondaryValue);
 
         PCLActions.Bottom.ModifyAllCopies(Lu.DATA.ID)
@@ -62,8 +51,8 @@ public class Ciel extends FoolCard
         {
             if (choices.TryInitialize(this))
             {
-                choices.AddEffect(GenericCardEffect.EnterStance(PCLStanceHelper.WisdomStance));
-                choices.AddEffect(GenericCardEffect.EnterStance(PCLStanceHelper.DesecrationStance));
+                choices.AddEffect(BaseEffect.EnterStance(PCLStanceHelper.WisdomStance));
+                choices.AddEffect(BaseEffect.EnterStance(PCLStanceHelper.DesecrationStance));
             }
             choices.Select(1, m);
         }

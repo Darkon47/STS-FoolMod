@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import eatyourbeets.interfaces.delegates.ActionT3;
 import pinacolada.actions.pileSelection.SelectFromPile;
-import pinacolada.cards.base.cardeffects.GenericCardEffect;
+import pinacolada.cards.base.baseeffects.BaseEffect;
 import pinacolada.utilities.PCLActions;
 
 import java.util.ArrayList;
@@ -69,7 +69,7 @@ public class CardEffectChoice
         return builder;
     }
 
-    public PCLCardBuilder AddEffect(GenericCardEffect effect)
+    public PCLCardBuilder AddEffect(BaseEffect effect)
     {
         PCLCardBuilder builder = new PCLCardBuilder(source, effect.GetText(), false)
                 .SetCardTarget(effect.target)

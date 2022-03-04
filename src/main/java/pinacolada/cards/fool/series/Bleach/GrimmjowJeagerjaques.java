@@ -41,15 +41,17 @@ public class GrimmjowJeagerjaques extends FoolCard
     }
 
     @Override
+    protected float ModifyBlock(AbstractMonster enemy, float amount)
+    {
+        return PCLGameUtilities.InBattle() && (MightStance.IsActive() || EnduranceStance.IsActive()) ? super.ModifyBlock(enemy, amount) : 0;
+    }
+
+    @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
         PCLActions.Bottom.DealCardDamage(this, m, AttackEffects.BLUNT_HEAVY);
         if (PCLGameUtilities.TrySpendAffinityPower(PCLAffinity.Green, magicNumber)) {
             PCLActions.Bottom.GainVigor(magicNumber);
-        }
-
-        if (MightStance.IsActive() || EnduranceStance.IsActive()) {
-            PCLActions.Bottom.GainBlock(block);
         }
     }
 }

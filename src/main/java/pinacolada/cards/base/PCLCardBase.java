@@ -50,6 +50,7 @@ public abstract class PCLCardBase extends EYBCardBase
     public int cooldownValue = 0;
     public int hitCount = 1;
     public int baseHitCount = 1;
+    public int rightHitCount = 1;
 
     public PCLCardCooldown cooldown;
     protected TextureAtlas.AtlasRegion fakePortrait;

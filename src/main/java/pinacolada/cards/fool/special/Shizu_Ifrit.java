@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import eatyourbeets.powers.CombatStats;
 import eatyourbeets.utilities.TargetHelper;
 import pinacolada.cards.base.*;
-import pinacolada.cards.base.cardeffects.GenericCardEffect;
+import pinacolada.cards.base.baseeffects.BaseEffect;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.fool.series.TenseiSlime.Shizu;
 import pinacolada.powers.common.BurningPower;
@@ -49,16 +49,16 @@ public class Shizu_Ifrit extends FoolCard
         if (info.CanActivateLimited && TrySpendAffinity(PCLAffinity.Dark) && CombatStats.TryActivateLimited(cardID)) {
             if (choices.TryInitialize(this))
             {
-                choices.AddEffect(new GenericCardEffect_BurningWeapon(secondaryValue));
-                choices.AddEffect(new GenericCardEffect_BlazingHeat());
+                choices.AddEffect(new BaseEffect_BurningWeapon(secondaryValue));
+                choices.AddEffect(new BaseEffect_BlazingHeat());
             }
             choices.Select(1, m);
         }
     }
 
-    protected static class GenericCardEffect_BurningWeapon extends GenericCardEffect
+    protected static class BaseEffect_BurningWeapon extends BaseEffect
     {
-        public GenericCardEffect_BurningWeapon(int amount)
+        public BaseEffect_BurningWeapon(int amount)
         {
             this.amount = amount;
         }
@@ -76,9 +76,9 @@ public class Shizu_Ifrit extends FoolCard
         }
     }
 
-    protected static class GenericCardEffect_BlazingHeat extends GenericCardEffect
+    protected static class BaseEffect_BlazingHeat extends BaseEffect
     {
-        public GenericCardEffect_BlazingHeat()
+        public BaseEffect_BlazingHeat()
         {
         }
 

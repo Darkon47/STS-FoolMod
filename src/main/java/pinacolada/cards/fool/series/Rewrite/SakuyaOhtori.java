@@ -6,7 +6,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import eatyourbeets.powers.CombatStats;
 import eatyourbeets.utilities.TargetHelper;
 import pinacolada.cards.base.*;
-import pinacolada.cards.base.attributes.AbstractAttribute;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.resources.PGR;
 import pinacolada.stances.pcl.MightStance;
@@ -33,23 +32,12 @@ public class SakuyaOhtori extends FoolCard
         SetAffinity_Blue(1, 0, 0);
         SetAffinity_Dark(1, 0, 1);
 
-        SetHitCount(2);
-    }
-
-    @Override
-    public AbstractAttribute GetBlockInfo()
-    {
-        return super.GetBlockInfo().AddMultiplier(hitCount);
+        SetRightHitCount(2);
     }
 
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        for (int i=0; i<hitCount; i++)
-        {
-            PCLActions.Bottom.GainBlock(block);
-        }
-
         if (PCLGameUtilities.InStance(MightStance.STANCE_ID))
         {
             PCLActions.Bottom.ChangeStance(WisdomStance.STANCE_ID);

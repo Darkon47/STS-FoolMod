@@ -3,8 +3,8 @@ package pinacolada.cards.fool.series.Rewrite;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import pinacolada.cards.base.*;
-import pinacolada.cards.base.cardeffects.CompositeCardEffect;
-import pinacolada.cards.base.cardeffects.GenericCardEffect;
+import pinacolada.cards.base.baseeffects.BaseEffect;
+import pinacolada.cards.base.baseeffects.CompositeEffect;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.powers.PCLPowerHelper;
 import pinacolada.utilities.PCLActions;
@@ -32,13 +32,13 @@ public class Chibimoth extends FoolCard
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
         SetupChoices(true,
-                new CompositeCardEffect(
-                        GenericCardEffect.GainAffinityPower(this, GenericCardEffect.CardValueSource.MagicNumber, PCLAffinity.Green),
-                        GenericCardEffect.Gain(this, GenericCardEffect.CardValueSource.SecondaryNumber, PCLPowerHelper.SupportDamage)
+                new CompositeEffect(
+                        BaseEffect.GainAffinityPower(this, BaseEffect.PCLCardValueSource.MagicNumber, PCLAffinity.Green),
+                        BaseEffect.Gain(this, BaseEffect.PCLCardValueSource.SecondaryNumber, PCLPowerHelper.SupportDamage)
                 ),
-                new CompositeCardEffect(
-                        GenericCardEffect.GainAffinityPower(this, GenericCardEffect.CardValueSource.MagicNumber, PCLAffinity.Orange),
-                        GenericCardEffect.Gain(this, GenericCardEffect.CardValueSource.SecondaryNumber, PCLPowerHelper.Thorns)
+                new CompositeEffect(
+                        BaseEffect.GainAffinityPower(this, BaseEffect.PCLCardValueSource.MagicNumber, PCLAffinity.Orange),
+                        BaseEffect.Gain(this, BaseEffect.PCLCardValueSource.SecondaryNumber, PCLPowerHelper.Thorns)
                 )
         ).Select(1, m);
 

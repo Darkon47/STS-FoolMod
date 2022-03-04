@@ -16,6 +16,7 @@ import pinacolada.cards.fool.colorless.TakashiNatsume;
 import pinacolada.cards.fool.series.GenshinImpact.AyakaKamisato;
 import pinacolada.effects.AttackEffects;
 import pinacolada.powers.FoolPower;
+import pinacolada.powers.PCLPowerHelper;
 import pinacolada.powers.common.DeenergizedPower;
 import pinacolada.powers.fool.InvertPower;
 import pinacolada.powers.temporary.TemporaryThousandCutsPower;
@@ -101,22 +102,22 @@ public class TakashiNatsume_Circle extends FoolCard
                 this.type = CardType.ATTACK;
                 break;
             case Curse_Nutcracker:
-                cardText.OverrideDescription(DATA.Strings.DESCRIPTION + " NL  NL " + ACTIONS.HealHP(HEAL_NUTCRACKER + magicNumber, false), true);
+                cardText.OverrideDescription(DATA.Strings.DESCRIPTION + " NL  NL " + ACTIONS.Heal(HEAL_NUTCRACKER + magicNumber, false), true);
                 break;
             case Curse_JunTormented:
-                cardText.OverrideDescription(DATA.Strings.DESCRIPTION + " NL  NL " + ACTIONS.ApplyToALL(secondaryValue, PGR.Tooltips.Weak, true) + " NL  NL " + ACTIONS.ApplyToALL(magicNumber, PGR.Tooltips.Vulnerable, true), true);
+                cardText.OverrideDescription(DATA.Strings.DESCRIPTION + " NL  NL " + ACTIONS.ApplyAmountToTarget(secondaryValue, PGR.Tooltips.Weak, PGR.PCL.Strings.Actions.ALLEnemies, true) + " NL  NL " + ACTIONS.ApplyAmountToTarget(magicNumber, PGR.Tooltips.Vulnerable, PGR.PCL.Strings.Actions.ALLEnemies, true), true);
                 break;
             case Curse_Slumber:
                 cardText.OverrideDescription(DATA.Strings.DESCRIPTION + " NL  NL " + PCLJUtils.Format(DATA.Strings.EXTENDED_DESCRIPTION[5],secondaryValue), true);
                 break;
             case Curse_SearingBurn:
-                cardText.OverrideDescription(DATA.Strings.DESCRIPTION + " NL  NL " + ACTIONS.ApplyToALL(secondaryValue, PGR.Tooltips.Burning, true), true);
+                cardText.OverrideDescription(DATA.Strings.DESCRIPTION + " NL  NL " + ACTIONS.ApplyAmountToTarget(secondaryValue, PGR.Tooltips.Burning, PGR.PCL.Strings.Actions.ALLEnemies, true), true);
                 break;
             case Doubt:
-                cardText.OverrideDescription(DATA.Strings.DESCRIPTION + " NL  NL " + ACTIONS.ApplyToALL(secondaryValue, PGR.Tooltips.Weak, true), true);
+                cardText.OverrideDescription(DATA.Strings.DESCRIPTION + " NL  NL " + ACTIONS.ApplyAmountToTarget(secondaryValue, PGR.Tooltips.Weak, PGR.PCL.Strings.Actions.ALLEnemies, true), true);
                 break;
             case Necronomicurse:
-                cardText.OverrideDescription(DATA.Strings.DESCRIPTION + " " + ACTIONS.NextTurnDraw(secondaryValue, true) + " NL  NL " + DATA.Strings.EXTENDED_DESCRIPTION[4], true);
+                cardText.OverrideDescription(DATA.Strings.DESCRIPTION + " " + ACTIONS.GainAmount(secondaryValue, PCLPowerHelper.NextTurnDraw.Tooltip, true) + " NL  NL " + DATA.Strings.EXTENDED_DESCRIPTION[4], true);
                 break;
             case Normality:
                 this.cost = 1;
@@ -133,10 +134,10 @@ public class TakashiNatsume_Circle extends FoolCard
                 cardText.OverrideDescription(DATA.Strings.DESCRIPTION + " NL  NL " + DATA.Strings.EXTENDED_DESCRIPTION[1], true);
                 break;
             case Shame:
-                cardText.OverrideDescription(DATA.Strings.DESCRIPTION + " NL  NL " + ACTIONS.ApplyToALL(secondaryValue, PGR.Tooltips.Frail, true), true);
+                cardText.OverrideDescription(DATA.Strings.DESCRIPTION + " NL  NL " + ACTIONS.ApplyAmountToTarget(secondaryValue, PGR.Tooltips.Frail, PGR.PCL.Strings.Actions.ALLEnemies, true), true);
                 break;
             default:
-                cardText.OverrideDescription(DATA.Strings.DESCRIPTION + " NL  NL " + ACTIONS.NextTurnDraw(secondaryValue, true), true);
+                cardText.OverrideDescription(DATA.Strings.DESCRIPTION + " NL  NL " + ACTIONS.GainAmount(secondaryValue, PCLPowerHelper.NextTurnDraw.Tooltip, true) , true);
         }
     }
 

@@ -7,7 +7,7 @@ import pinacolada.cards.base.CardEffectChoice;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.base.PCLCardTarget;
-import pinacolada.cards.base.cardeffects.GenericCardEffect;
+import pinacolada.cards.base.baseeffects.BaseEffect;
 import pinacolada.cards.eternal.EternalCard;
 import pinacolada.powers.PCLPowerHelper;
 
@@ -43,9 +43,9 @@ public class TranscendenceForm extends EternalCard
     {
         if (choices.TryInitialize(this))
         {
-            choices.AddEffect(GenericCardEffect.Gain(magicNumber, PCLPowerHelper.Ritual));
-            choices.AddEffect(GenericCardEffect.Gain(secondaryValue, PCLPowerHelper.Intangible));
-            choices.AddEffect(GenericCardEffect.Gain(GetXValue(), PCLPowerHelper.Artifact));
+            choices.AddEffect(BaseEffect.Gain(magicNumber, PCLPowerHelper.Ritual));
+            choices.AddEffect(BaseEffect.Gain(secondaryValue, PCLPowerHelper.Intangible));
+            choices.AddEffect(BaseEffect.Gain(GetXValue(), PCLPowerHelper.Artifact));
         }
         choices.Select(CheckSpecialCondition(true) ? 2 : 1, m);
     }

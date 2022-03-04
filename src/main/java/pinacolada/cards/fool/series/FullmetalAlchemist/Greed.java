@@ -10,7 +10,7 @@ import eatyourbeets.utilities.ColoredString;
 import pinacolada.cards.base.CardEffectChoice;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
-import pinacolada.cards.base.cardeffects.GenericCardEffect;
+import pinacolada.cards.base.baseeffects.BaseEffect;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.cards.pcl.status.Crystallize;
 import pinacolada.powers.FoolPower;
@@ -57,8 +57,8 @@ public class Greed extends FoolCard
     {
 
         choices.Initialize(this, true);
-        choices.AddEffect(GenericCardEffect.Gain(magicNumber, PCLPowerHelper.Malleable));
-        choices.AddEffect(GenericCardEffect.Gain(secondaryValue, PCLPowerHelper.Metallicize));
+        choices.AddEffect(BaseEffect.Gain(magicNumber, PCLPowerHelper.Malleable));
+        choices.AddEffect(BaseEffect.Gain(secondaryValue, PCLPowerHelper.Metallicize));
         choices.Select(1, m);
         PCLActions.Bottom.StackPower(new GreedPower(p, 1));
     }

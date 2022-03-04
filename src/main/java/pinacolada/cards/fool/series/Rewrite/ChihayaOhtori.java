@@ -4,7 +4,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import pinacolada.cards.base.*;
-import pinacolada.cards.base.cardeffects.GenericCardEffect;
+import pinacolada.cards.base.baseeffects.BaseEffect;
 import pinacolada.cards.base.modifiers.CostModifiers;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
@@ -47,7 +47,7 @@ public class ChihayaOhtori extends FoolCard
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
         PCLActions.Bottom.DealCardDamage(this, m, AttackEffects.SLASH_HEAVY);
-        TrySetupChoices(new GenericCardEffect_Chihaya(this), GenericCardEffect.Gain(secondaryValue, PCLPowerHelper.TemporaryArtifact))
+        TrySetupChoices(new BaseEffect_Chihaya(this), BaseEffect.Gain(secondaryValue, PCLPowerHelper.TemporaryArtifact))
                 .Select(1, m);
     }
 
@@ -62,11 +62,11 @@ public class ChihayaOhtori extends FoolCard
         }
     }
 
-    protected static class GenericCardEffect_Chihaya extends GenericCardEffect
+    protected static class BaseEffect_Chihaya extends BaseEffect
     {
         private final ChihayaOhtori chihaya;
 
-        public GenericCardEffect_Chihaya(ChihayaOhtori chihaya)
+        public BaseEffect_Chihaya(ChihayaOhtori chihaya)
         {
             this.chihaya = chihaya;
         }

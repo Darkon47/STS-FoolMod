@@ -36,6 +36,10 @@ public class PCLOrbHelper implements TooltipObject
     public final int weight;
     protected final FuncT0<AbstractOrb> constructor;
 
+    public static PCLOrbHelper Get(String orbID) {
+        return ALL.get(orbID);
+    }
+
     public static PCLOrbHelper RandomCommonHelper() {
         return PCLGameUtilities.GetRandomElement(PCLJUtils.Filter(WEIGHTED.GetInnerList(), PCLOrbHelper::IsCommon));
     }

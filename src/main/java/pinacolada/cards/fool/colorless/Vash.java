@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import org.apache.commons.lang3.StringUtils;
 import pinacolada.cards.base.*;
-import pinacolada.cards.base.cardeffects.GenericCardEffect;
+import pinacolada.cards.base.baseeffects.BaseEffect;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
 import pinacolada.resources.PGR;
@@ -49,25 +49,25 @@ public class Vash extends FoolCard
         PCLActions.Bottom.Reload(name, cards -> {
             if (choices.TryInitialize(this))
             {
-                choices.AddEffect(new GenericCardEffect_Vash(CardType.ATTACK, this, cards));
-                choices.AddEffect(new GenericCardEffect_Vash(CardType.SKILL, this, cards));
-                choices.AddEffect(new GenericCardEffect_Vash(CardType.POWER, this, cards));
-                choices.AddEffect(new GenericCardEffect_Vash(CardType.CURSE, this, cards));
-                choices.AddEffect(new GenericCardEffect_Vash(CardType.STATUS, this, cards));
+                choices.AddEffect(new BaseEffect_Vash(CardType.ATTACK, this, cards));
+                choices.AddEffect(new BaseEffect_Vash(CardType.SKILL, this, cards));
+                choices.AddEffect(new BaseEffect_Vash(CardType.POWER, this, cards));
+                choices.AddEffect(new BaseEffect_Vash(CardType.CURSE, this, cards));
+                choices.AddEffect(new BaseEffect_Vash(CardType.STATUS, this, cards));
             }
             choices.Select(1, m);
         });
 
     }
 
-    protected static class GenericCardEffect_Vash extends GenericCardEffect
+    protected static class BaseEffect_Vash extends BaseEffect
     {
         private final CardType cardType;
         private final PCLCard source;
         private final ArrayList<AbstractCard> cards;
 
 
-        public GenericCardEffect_Vash(CardType cardType, PCLCard source, ArrayList<AbstractCard> cards)
+        public BaseEffect_Vash(CardType cardType, PCLCard source, ArrayList<AbstractCard> cards)
         {
             this.cardType = cardType;
             this.source = source;

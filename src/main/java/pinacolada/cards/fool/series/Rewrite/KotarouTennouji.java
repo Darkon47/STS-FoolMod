@@ -8,7 +8,7 @@ import eatyourbeets.interfaces.subscribers.OnStanceChangedSubscriber;
 import eatyourbeets.interfaces.subscribers.OnStartOfTurnPostDrawSubscriber;
 import eatyourbeets.powers.CombatStats;
 import pinacolada.cards.base.*;
-import pinacolada.cards.base.cardeffects.GenericCardEffect;
+import pinacolada.cards.base.baseeffects.BaseEffect;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
 import pinacolada.powers.PCLCombatStats;
@@ -44,7 +44,7 @@ public class KotarouTennouji extends FoolCard implements OnStanceChangedSubscrib
         if (choices.TryInitialize(this))
         {
             for (PCLStanceHelper stance : PCLStanceHelper.ALL.values()) {
-                choices.AddEffect(GenericCardEffect.EnterStance(stance));
+                choices.AddEffect(BaseEffect.EnterStance(stance));
             }
         }
 
