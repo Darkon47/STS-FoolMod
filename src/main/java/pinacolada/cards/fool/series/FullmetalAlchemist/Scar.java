@@ -35,7 +35,7 @@ public class Scar extends FoolCard
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
         PCLActions.Bottom.DealCardDamage(this, m, AttackEffects.BLUNT_HEAVY);
-        PCLActions.Bottom.GainBlock(block);
+        
     }
 
     @Override

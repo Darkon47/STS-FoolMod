@@ -46,7 +46,7 @@ public class ElricAlphonse extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+
         PCLActions.Bottom.RerollAffinity(FoolAffinityMeter.TARGET_CURRENT, PCLAffinity.Blue, PCLAffinity.Orange)
                 .SetOptions(false, true);
     }

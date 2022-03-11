@@ -40,6 +40,5 @@ public class Essence_Eruza extends PCLCard
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
         PCLActions.Bottom.GainEnergy(1);
-        PCLActions.Bottom.GainBlock(block);
     }
 }

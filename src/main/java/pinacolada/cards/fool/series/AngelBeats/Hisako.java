@@ -41,7 +41,7 @@ public class Hisako extends FoolCard implements OnAfterlifeSubscriber
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+
         PCLActions.Bottom.TryChooseSpendAffinity(this).AddConditionalCallback((cards) -> {
             if (cards.size() > 0) {
                 PCLAffinity af = cards.get(0).Affinity;

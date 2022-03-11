@@ -66,7 +66,7 @@ public class GoblinSlayer extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+        
         PCLActions.Bottom.VFX(VFX.EFX(PCLEffekseerEFX.SWORD08, m.hb));
         PCLActions.Bottom.DealCardDamage(this, m, AttackEffects.SLASH_VERTICAL);
 

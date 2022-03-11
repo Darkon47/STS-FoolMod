@@ -12,14 +12,25 @@ import java.util.Arrays;
 public class CompositeEffect extends BaseEffect {
     protected final ArrayList<BaseEffect> effects;
 
+    public static final String ID = Register(CompositeEffect.class, 0);
+
     public CompositeEffect(BaseEffect... effects) {
+        super(ID);
         this.target = PCLJUtils.Max(effects, effect -> effect.target);
         this.effects = new ArrayList<>(Arrays.asList(effects));
-        this.effectID = BaseEffect.JoinEntityIDs(effects, effect -> effect.entityID);
+        this.entityID = BaseEffect.JoinEntityIDs(effects, effect -> effect.entityID);
     }
 
-    public CompositeEffect AddEffect(BaseEffect effect) {
-        this.effects.add(effect);
+    public CompositeEffect AddEffect(BaseEffect newEffect) {
+        this.effects.add(newEffect);
+        this.entityID = BaseEffect.JoinEntityIDs(effects, effect -> effect.entityID);
+        return this;
+    }
+
+    public CompositeEffect SetEffects(BaseEffect... effects) {
+        this.effects.clear();
+        this.effects.addAll(Arrays.asList(effects));
+        this.entityID = BaseEffect.JoinEntityIDs(effects, effect -> effect.entityID);
         return this;
     }
 

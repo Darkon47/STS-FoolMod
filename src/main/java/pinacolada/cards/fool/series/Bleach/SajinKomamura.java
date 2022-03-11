@@ -36,7 +36,7 @@ public class SajinKomamura extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+
         AbstractStance stance = player.stance;
         if (stance != null && !stance.ID.equals(NeutralStance.STANCE_ID) && stance instanceof PCLStance) {
             PCLActions.Bottom.AddAffinity(((PCLStance) stance).affinity, magicNumber);

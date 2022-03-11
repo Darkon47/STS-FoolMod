@@ -46,7 +46,7 @@ public class KisukeUrahara extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+
 
         RandomizedList<PCLAffinity> affinityOptions = new RandomizedList<PCLAffinity>(PCLAffinity.Basic());
         PCLAffinity af1 = affinityOptions.Retrieve(rng, true);

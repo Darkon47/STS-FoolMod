@@ -1,4 +1,4 @@
-package pinacolada.ui.seriesSelection;
+package pinacolada.ui.characterSelection;
 
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;

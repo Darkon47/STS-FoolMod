@@ -42,7 +42,7 @@ public class MumenRider extends FoolCard implements OnStartOfTurnPostDrawSubscri
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+
         PCLActions.Bottom.RerollAffinity(FoolAffinityMeter.TARGET_CURRENT, PCLAffinity.Red, PCLAffinity.Light)
                 .SetOptions(false, true);
     }

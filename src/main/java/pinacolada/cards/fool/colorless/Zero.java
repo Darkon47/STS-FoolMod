@@ -106,7 +106,8 @@ public class Zero extends FoolCard
 
         for (AbstractCard c : CardLibrary.getAllCards())
         {
-            if (PCLGameUtilities.HasBlueAffinity(c)
+            if (c.color == player.getCardColor() &&
+                    PCLGameUtilities.HasBlueAffinity(c)
                     && PCLGameUtilities.IsObtainableInCombat(c)
                     && c.rarity != AbstractCard.CardRarity.BASIC)
             {

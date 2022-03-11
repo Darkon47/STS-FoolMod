@@ -28,7 +28,7 @@ public class AllPreserver extends EternalCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+        
         PCLActions.Bottom.RetainFromHand(name, magicNumber, false)
                 .AddCallback(cards -> {
                    if (CheckPrimaryCondition(true)) {

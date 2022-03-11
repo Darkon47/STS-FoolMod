@@ -2,6 +2,7 @@ package pinacolada.cards.base.baseeffects.effects;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.stances.NeutralStance;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.base.baseeffects.BaseEffect;
@@ -15,22 +16,33 @@ public class BaseEffect_EnterStance extends BaseEffect
 
     protected final PCLStanceHelper stance;
 
+    public BaseEffect_EnterStance() {
+        this(null);
+    }
+
     public BaseEffect_EnterStance(PCLStanceHelper stance)
     {
-        super(ID, stance.ID, PCLCardTarget.Self, 1);
+        super(ID, stance != null ? stance.ID : null, PCLCardTarget.Self, 1);
         this.stance = stance;
     }
 
     @Override
     public String GetText()
     {
-        String text = stance.Tooltip.title.replace(stance.Affinity.PowerName, stance.Affinity.GetFormattedPowerSymbol());
-        return PGR.PCL.Strings.Actions.EnterStance("{" + text + "}", true);
+        if (stance == null) {
+            return PGR.PCL.Strings.Actions.ExitStance(true);
+        }
+        return PGR.PCL.Strings.Actions.EnterStance("{" + stance.Tooltip.title.replace(stance.Affinity.PowerName, stance.Affinity.GetFormattedPowerSymbol()) + "}", true);
     }
 
     @Override
     public void Use(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.ChangeStance(stance);
+        if (stance == null) {
+            PCLActions.Bottom.ChangeStance(NeutralStance.STANCE_ID);
+        }
+        else {
+            PCLActions.Bottom.ChangeStance(stance);
+        }
     }
 }

@@ -27,7 +27,7 @@ import java.util.List;
 import java.util.StringJoiner;
 import java.util.regex.Pattern;
 
-import static pinacolada.ui.seriesSelection.PCLLoadoutsContainer.MINIMUM_SERIES;
+import static pinacolada.ui.characterSelection.PCLLoadoutsContainer.MINIMUM_SERIES;
 
 public class FoolPlayerData extends PCLAbstractPlayerData
 {

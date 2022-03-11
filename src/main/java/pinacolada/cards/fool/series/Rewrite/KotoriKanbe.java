@@ -62,7 +62,7 @@ public class KotoriKanbe extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+
 
         int heal = m.maxHealth - m.currentHealth;
         int stacks = Math.floorDiv(heal, magicNumber);

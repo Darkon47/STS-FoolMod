@@ -1,5 +1,6 @@
 package pinacolada.cards.base.baseeffects;
 
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import pinacolada.cards.base.CardUseInfo;
@@ -7,8 +8,25 @@ import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCard;
 import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.base.baseeffects.conditions.*;
+import pinacolada.utilities.PCLJUtils;
+
+import java.util.ArrayList;
+import java.util.Objects;
 
 public abstract class BaseCondition extends BaseEffect {
+    public static final int CONDITION_PRIORITY = 2;
+
+    public static String Register(Class<? extends BaseEffect> type) {
+        return Register(type, CONDITION_PRIORITY);
+    }
+
+    public static String Register(Class<? extends BaseEffect> type, AbstractCard.CardColor... cardColors) {
+        return Register(type, CONDITION_PRIORITY, cardColors);
+    }
+
+    public static ArrayList<BaseCondition> GetEligibleConditions(AbstractCard.CardColor co, Integer priority) {
+        return PCLJUtils.Filter(PCLJUtils.Map(GetEligibleEffects(co, priority), ef -> PCLJUtils.SafeCast(ef, BaseCondition.class)), Objects::nonNull);
+    }
 
     public static BaseCondition Limited() {
         return new BaseCondition_Limited();
@@ -42,9 +60,23 @@ public abstract class BaseCondition extends BaseEffect {
 
     protected BaseEffect childEffect;
 
+    public BaseCondition() {
+        super();
+    }
+
     public BaseCondition(String[] content) {
         super(content);
-        this.childEffect = BaseEffect.Get(misc);
+        if (misc != null) {
+            this.childEffect = BaseEffect.Get(misc);
+        }
+    }
+
+    public BaseCondition(String effectID) {
+        super(effectID, null, PCLCardTarget.None, 0, null);
+    }
+
+    public BaseCondition(String effectID, String entityID) {
+        super(effectID, entityID, PCLCardTarget.None, 0, null);
     }
 
     public BaseCondition(String effectID, String entityID, PCLCardTarget target, int amount) {
@@ -63,7 +95,7 @@ public abstract class BaseCondition extends BaseEffect {
 
     public BaseCondition SetChildEffect(BaseEffect effect) {
         this.childEffect = effect;
-        this.misc = effect.Serialize();
+        this.misc = effect != null ? effect.Serialize() : null;
         return this;
     }
 
@@ -87,14 +119,40 @@ public abstract class BaseCondition extends BaseEffect {
     @Override
     public String GetText()
     {
-        return GetConditionText() + ": " + childEffect.GetText();
+        return GetConditionText() + (childEffect != null ? ((childEffect instanceof BaseCondition ? ". " : ": ") + childEffect.GetText()) : "");
     }
 
     @Override
     public void Use(AbstractPlayer p, AbstractMonster m, CardUseInfo info) {
-        if (CheckCondition(p, m, info, true)) {
+        if (CheckCondition(p, m, info, true) && childEffect != null) {
             childEffect.Use(p, m, info);
         }
+    }
+
+    public final BaseEffect GetChild() {return this.childEffect;}
+
+    public final boolean HasChildCondition() {return this.childEffect instanceof BaseCondition;}
+
+    public final boolean CheckChild(AbstractPlayer p, AbstractMonster m, CardUseInfo info, boolean isUsing) {return !(HasChildCondition()) || ((BaseCondition) this.childEffect).CheckCondition(p, m, info, isUsing);}
+
+    public final boolean HasCreate() {
+        return (this instanceof BaseCondition_WhenCreated || (HasChildCondition() && ((BaseCondition) this.childEffect).HasCreate()));
+    }
+
+    public final boolean HasDiscard() {
+        return (this instanceof BaseCondition_OnDiscard || (HasChildCondition() && ((BaseCondition) this.childEffect).HasDiscard()));
+    }
+
+    public final boolean HasDraw() {
+        return (this instanceof BaseCondition_WhenDrawn || (HasChildCondition() && ((BaseCondition) this.childEffect).HasDraw()));
+    }
+
+    public final boolean HasExhaust() {
+        return (this instanceof BaseCondition_OnExhaust || (HasChildCondition() && ((BaseCondition) this.childEffect).HasExhaust()));
+    }
+
+    public final boolean HasPurge() {
+        return (this instanceof BaseCondition_OnPurge || (HasChildCondition() && ((BaseCondition) this.childEffect).HasPurge()));
     }
 
     public abstract boolean CheckCondition(AbstractPlayer p, AbstractMonster m, CardUseInfo info, boolean isUsing);

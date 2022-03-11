@@ -20,6 +20,10 @@ public class BaseEffect_DealDamage extends BaseEffect
 
     protected final AbstractGameAction.AttackEffect attackEffect;
 
+    public BaseEffect_DealDamage() {
+        this(0, AbstractGameAction.AttackEffect.NONE);
+    }
+
     public BaseEffect_DealDamage(int amount, AbstractGameAction.AttackEffect attackEffect)
     {
         super(ID, attackEffect.name(), PCLCardTarget.Normal, amount);

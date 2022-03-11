@@ -75,7 +75,7 @@ public class EmiyaKiritsugu extends FoolCard
             return;
         }
 
-        PCLActions.Bottom.GainBlock(block);
+
         PCLActions.Bottom.DealCardDamage(this, m, AttackEffects.GUNSHOT).forEach(d -> d
         .SetSoundPitch(0.6f, 0.7f)
                 .SetDamageEffect(PCLEffekseerEFX.GUN05)

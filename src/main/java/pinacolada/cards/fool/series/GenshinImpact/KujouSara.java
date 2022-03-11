@@ -37,7 +37,7 @@ public class KujouSara extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+        
         PCLActions.Bottom.IncreaseScaling(player.hand, player.hand.size(), PCLAffinity.Green, 1).SetFilter(c -> c.uuid != uuid);
 
         PCLActions.Last.DiscardFromHand(name, player.hand.size() - 1, true)

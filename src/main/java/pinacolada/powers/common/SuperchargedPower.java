@@ -3,16 +3,16 @@ package pinacolada.powers.common;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import pinacolada.powers.PCLClickablePower;
+import pinacolada.powers.PCLCombatStats;
 import pinacolada.powers.PowerTriggerConditionType;
 import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
-import pinacolada.utilities.PCLGameUtilities;
-import pinacolada.utilities.PCLJUtils;
 
 public class SuperchargedPower extends PCLClickablePower
 {
     public static final String POWER_ID = PGR.PCL.CreateID(SuperchargedPower.class.getSimpleName());
     public static final int COST = 10;
+    public static final int BONUS = 5;
 
     public SuperchargedPower(AbstractCreature owner, int amount)
     {
@@ -33,14 +33,12 @@ public class SuperchargedPower extends PCLClickablePower
         super.OnUse(m, cost);
 
         PCLActions.Bottom.GainEnergy(1);
-        if (!PCLJUtils.Any(player.hand.group, PCLGameUtilities::IsPlayable)) {
-            PCLActions.Bottom.Draw(1);
-        };
+        PCLActions.Delayed.AddPowerEffectBonus(ElectrifiedPower.POWER_ID, PCLCombatStats.Type.Effect, player.energy.energy * BONUS);
     }
 
     @Override
-    public void updateDescription()
+    public String GetUpdatedDescription()
     {
-        description = FormatDescription(0, COST);
+        return FormatDescription(0, COST, BONUS);
     }
 }

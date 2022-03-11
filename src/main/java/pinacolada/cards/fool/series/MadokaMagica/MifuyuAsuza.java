@@ -36,7 +36,7 @@ public class MifuyuAsuza extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+
         int amount = PCLGameUtilities.UseXCostEnergy(this) + magicNumber;
         PCLActions.Bottom.GainOrbSlots(amount);
         for (int i = 0; i < amount; i++) {

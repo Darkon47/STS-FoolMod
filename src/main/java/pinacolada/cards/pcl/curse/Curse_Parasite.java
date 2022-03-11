@@ -4,7 +4,6 @@ import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.StartupCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import eatyourbeets.powers.CombatStats;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCard;
 import pinacolada.cards.base.PCLCardData;
@@ -30,16 +29,16 @@ public class Curse_Parasite extends PCLCard implements StartupCard
     }
 
     @Override
-    public void triggerOnManualDiscard()
+    public void triggerOnExhaust()
     {
-        super.triggerOnManualDiscard();
+        super.triggerOnExhaust();
         DoEffect();
     }
 
     @Override
-    public void triggerOnExhaust()
+    public void triggerOnPurge()
     {
-        super.triggerOnExhaust();
+        super.triggerOnPurge();
         DoEffect();
     }
 
@@ -54,14 +53,12 @@ public class Curse_Parasite extends PCLCard implements StartupCard
     }
 
     protected void DoEffect() {
-        if (CombatStats.TryActivateSemiLimited(cardID)) {
-            PCLActions.Bottom.DealDamageToRandomEnemy(secondaryValue, DamageInfo.DamageType.HP_LOSS, AttackEffects.NONE)
-                    .SetDamageEffect(enemy ->
-                    {
-                        PCLGameEffects.List.Add(new HemokinesisEffect2(enemy.hb.cX, enemy.hb.cY, player.hb.cX, player.hb.cY));
-                        return 0f;
-                    });
-            PCLActions.Bottom.GainTemporaryHP(secondaryValue);
-        }
+        PCLActions.Bottom.DealDamageToRandomEnemy(secondaryValue, DamageInfo.DamageType.HP_LOSS, AttackEffects.NONE)
+                .SetDamageEffect(enemy ->
+                {
+                    PCLGameEffects.List.Add(new HemokinesisEffect2(enemy.hb.cX, enemy.hb.cY, player.hb.cX, player.hb.cY));
+                    return 0f;
+                });
+        PCLActions.Bottom.GainTemporaryHP(secondaryValue);
     }
 }

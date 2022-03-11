@@ -40,7 +40,7 @@ public class Saber_Excalibur extends FoolCard
         PCLActions.Bottom.VFX(VFX.ShockWave(p.hb, Color.GOLD), 0.4f).SetRealtime(true);
         PCLActions.Bottom.DealCardDamageToAll(this, AttackEffects.NONE).forEach(d -> d
         .SetDamageEffect((c, __) -> PCLGameEffects.List.Add(VFX.VerticalImpact(c.hb).SetColor(Color.GOLD))));
-        PCLActions.Bottom.GainBlock(block);
+        
         PCLActions.Bottom.GainArtifact(magicNumber);
         PCLGameUtilities.AddAffinityPowerUse(PCLAffinity.Light, PCLGameUtilities.GetPCLAffinityPowerLevel(PCLAffinity.Light));
     }

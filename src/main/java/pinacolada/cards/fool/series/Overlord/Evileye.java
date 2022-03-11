@@ -46,7 +46,7 @@ public class Evileye extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+        
         if (TrySpendAffinity(PCLAffinity.Blue, PCLAffinity.Dark)) {
             int totalToTransfer = magicNumber;
             for (AbstractPower power : player.powers) {

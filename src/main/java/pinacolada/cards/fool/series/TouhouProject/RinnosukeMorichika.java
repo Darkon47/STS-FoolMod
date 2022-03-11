@@ -30,7 +30,7 @@ public class RinnosukeMorichika extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+        
 
         final CardGroup[] choices = upgraded ? new CardGroup[] {player.hand,player.drawPile,player.discardPile,player.exhaustPile} : new CardGroup[] {player.hand};
         PCLActions.Bottom.SelectFromPile(name, magicNumber,  choices)

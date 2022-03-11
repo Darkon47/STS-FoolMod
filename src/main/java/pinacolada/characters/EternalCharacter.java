@@ -19,6 +19,7 @@ import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import com.megacrit.cardcrawl.screens.stats.CharStat;
+import pinacolada.cards.base.PCLAffinity;
 import pinacolada.effects.SFX;
 import pinacolada.patches.relicLibrary.RelicLibraryPatches;
 import pinacolada.relics.eternal.MusouNoHitotachi;
@@ -37,6 +38,7 @@ public class EternalCharacter extends PCLCharacter
     public static final String[] TEXT = characterStrings.TEXT;
     public static final String ORIGINAL_NAME = NAMES[0];
     public static final String OVERRIDE_NAME = NAMES.length > 1 ? NAMES[1] : ORIGINAL_NAME; // Support for Beta/Alt
+    public static final PCLAffinity[] AVAILABLE_AFFINITIES = new PCLAffinity[] {PCLAffinity.Light, PCLAffinity.Dark, PCLAffinity.Silver, PCLAffinity.Star};
 
     public EternalCharacter()
     {
@@ -205,7 +207,7 @@ public class EternalCharacter extends PCLCharacter
         cards.add(pinacolada.cards.eternal.basic.Defend.DATA.ID);
         cards.add(pinacolada.cards.eternal.basic.ImprovedStrike.DATA.ID);
         cards.add(pinacolada.cards.eternal.basic.ImprovedStrike.DATA.ID);
-        cards.add(pinacolada.cards.eternal.normal.Dominate.DATA.ID);
+        cards.add(pinacolada.cards.eternal.normal.Origin.DATA.ID);
         cards.add(pinacolada.cards.eternal.normal.OpportuneGift.DATA.ID);
         return cards;
     }

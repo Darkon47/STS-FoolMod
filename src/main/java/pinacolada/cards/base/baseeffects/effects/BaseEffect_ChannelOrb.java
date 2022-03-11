@@ -15,6 +15,11 @@ public class BaseEffect_ChannelOrb extends BaseEffect
 
     protected final PCLOrbHelper orb;
 
+    public BaseEffect_ChannelOrb()
+    {
+        this(0, null);
+    }
+
     public BaseEffect_ChannelOrb(String[] content)
     {
         super(content);

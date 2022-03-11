@@ -54,6 +54,7 @@ import java.util.Scanner;
 
 import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.actionManager;
 import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.player;
+import static pinacolada.cards.base.PCLAffinity.MAX_LEVEL;
 import static pinacolada.resources.PGR.Enums.CardTags.*;
 
 public class PCLGameUtilities extends GameUtilities
@@ -881,14 +882,14 @@ public class PCLGameUtilities extends GameUtilities
         final PCLCardAffinities a = PCLGameUtilities.GetPCLAffinities(c);
         if (a != null)
         {
-            if (a.Star != null && a.Star.level == 1)
+            if (a.Star != null && a.Star.level > 0 && a.Star.level < MAX_LEVEL)
             {
                 return true;
             }
 
             for (PCLCardAffinity affinity : a.GetCardAffinities(false))
             {
-                if (affinity.level == 1)
+                if (affinity.level > 0 && affinity.level < MAX_LEVEL)
                 {
                     return true;
                 }

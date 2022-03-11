@@ -28,7 +28,7 @@ public class YuzuruOtonashi extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+        
         PCLActions.Bottom.ExhaustFromHand(name, magicNumber, false)
         .SetOptions(true, true, true)
         .AddCallback(cards ->

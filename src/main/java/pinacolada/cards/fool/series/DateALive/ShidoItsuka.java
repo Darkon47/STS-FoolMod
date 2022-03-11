@@ -34,7 +34,7 @@ public class ShidoItsuka extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+        
     }
 
     @Override

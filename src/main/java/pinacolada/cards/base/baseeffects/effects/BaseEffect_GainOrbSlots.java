@@ -12,6 +12,11 @@ public class BaseEffect_GainOrbSlots extends BaseEffect
 {
     public static final String ID = Register(BaseEffect_GainOrbSlots.class);
 
+    public BaseEffect_GainOrbSlots()
+    {
+        this(0);
+    }
+
     public BaseEffect_GainOrbSlots(int amount)
     {
         super(ID, null, PCLCardTarget.None, amount);

@@ -36,7 +36,7 @@ public class JeanGunnhildr extends FoolCard
     {
         PCLActions.Bottom.VFX(VFX.EFX(PCLEffekseerEFX.SWORD06, m.hb));
         PCLActions.Bottom.DealCardDamage(this, m, AttackEffects.SLASH_DIAGONAL);
-        PCLActions.Bottom.GainBlock(block);
+        
     }
 
     @Override

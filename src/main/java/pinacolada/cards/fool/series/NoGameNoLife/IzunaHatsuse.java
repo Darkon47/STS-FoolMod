@@ -67,7 +67,7 @@ public class IzunaHatsuse extends FoolCard
         PCLActions.Bottom.ApplyWeak(p, m, 1);
         if (upgraded)
         {
-            PCLActions.Bottom.GainBlock(block);
+            
         }
 
         if (PCLGameUtilities.GetHealthPercentage(player) < 0.2f && info.TryActivateSemiLimited()) {

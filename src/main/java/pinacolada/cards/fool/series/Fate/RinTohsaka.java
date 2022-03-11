@@ -40,7 +40,7 @@ public class RinTohsaka extends FoolCard
         else {
             PCLActions.Bottom.TriggerOrbPassive(secondaryValue,true,false);
         }
-        PCLActions.Bottom.GainBlock(block);
+        
 
 
         if (CheckSpecialCondition(true))

@@ -38,7 +38,7 @@ public class Victim extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+        
         PCLActions.Bottom.SelectFromHand(name, 1, false)
                 .SetOptions(true, true, true)
                 .SetMessage(RetainCardsAction.TEXT[0])

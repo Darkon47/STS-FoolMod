@@ -1,4 +1,4 @@
-package pinacolada.ui.seriesSelection;
+package pinacolada.ui.characterSelection;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
@@ -37,7 +37,7 @@ import pinacolada.utilities.PCLJUtils;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import static pinacolada.ui.seriesSelection.PCLLoadoutsContainer.MINIMUM_SERIES;
+import static pinacolada.ui.characterSelection.PCLLoadoutsContainer.MINIMUM_SERIES;
 
 public class PCLSeriesSelectScreen extends AbstractScreen
 {

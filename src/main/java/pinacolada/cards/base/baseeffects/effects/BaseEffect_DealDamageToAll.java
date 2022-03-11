@@ -21,6 +21,10 @@ public class BaseEffect_DealDamageToAll extends BaseEffect
 
     protected final AbstractGameAction.AttackEffect attackEffect;
 
+    public BaseEffect_DealDamageToAll() {
+        this(0, AbstractGameAction.AttackEffect.NONE);
+    }
+
     public BaseEffect_DealDamageToAll(int amount, AbstractGameAction.AttackEffect attackEffect)
     {
         super(ID, attackEffect.name(), AoE, amount);

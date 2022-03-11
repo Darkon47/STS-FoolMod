@@ -90,7 +90,7 @@ public class Senku extends FoolCard
         }
 
         if (block > 0) {
-            PCLActions.Bottom.GainBlock(block);
+
         }
 
         if (magicNumber > 0) {

@@ -12,6 +12,11 @@ public class BaseEffect_Scry extends BaseEffect
 {
     public static final String ID = Register(BaseEffect_Draw.class);
 
+    public BaseEffect_Scry()
+    {
+        this(0);
+    }
+
     public BaseEffect_Scry(int amount)
     {
         super(ID, null, PCLCardTarget.None, amount);

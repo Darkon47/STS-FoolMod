@@ -1,24 +1,19 @@
 package pinacolada.cards.base;
 
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Vector2;
-import com.evacipated.cardcrawl.modthespire.lib.SpireOverride;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import eatyourbeets.interfaces.delegates.ActionT1;
 import eatyourbeets.interfaces.delegates.ActionT3;
 import eatyourbeets.interfaces.delegates.FuncT1;
-import eatyourbeets.utilities.ColoredString;
 import pinacolada.cards.base.attributes.AbstractAttribute;
+import pinacolada.cards.base.baseeffects.BaseCondition;
+import pinacolada.cards.base.baseeffects.BaseEffect;
+import pinacolada.cards.base.baseeffects.effects.BaseEffect_DealCardDamage;
 import pinacolada.utilities.PCLGameUtilities;
-import pinacolada.utilities.PCLRenderHelpers;
 
-// TODO merge with PCLCard
+import java.util.ArrayList;
+
 public class PCLCard_Dynamic extends PCLCard
 {
     protected final PCLCardBuilder builder;
@@ -32,6 +27,7 @@ public class PCLCard_Dynamic extends PCLCard
     public final FuncT1<AbstractAttribute, PCLCard> getSpecialInfo;
     public final FuncT1<AbstractAttribute, PCLCard> getDamageInfo;
     public final FuncT1<AbstractAttribute, PCLCard> getBlockInfo;
+    protected ArrayList<CardTags> upgradeTags;
 
     public PCLCard_Dynamic(PCLCardBuilder builder)
     {
@@ -80,8 +76,48 @@ public class PCLCard_Dynamic extends PCLCard
         for (CardTags tag : builder.tags) {
             PCLGameUtilities.ModifyCardTag(this, tag, true);
         }
+        this.upgradeTags = builder.upgradeTags;
 
         SetSeries(builder.series);
+
+        // TODO Temp HP condition
+        boolean hasAttack = false;
+        for (BaseEffect effect : builder.effects) {
+            if (effect == null) {
+                continue;
+            }
+            if (effect instanceof BaseCondition) {
+                if (((BaseCondition) effect).HasCreate()) {
+                    onCreateEffect = effect;
+                    continue;
+                }
+                else if (((BaseCondition) effect).HasDiscard()) {
+                    onDiscardEffect = effect;
+                    continue;
+                }
+                else if (((BaseCondition) effect).HasDraw()) {
+                    onDrawEffect = effect;
+                    continue;
+                }
+                else if (((BaseCondition) effect).HasExhaust()) {
+                    onExhaustEffect = effect;
+                    continue;
+                }
+                else if (((BaseCondition) effect).HasPurge()) {
+                    onPurgeEffect = effect;
+                    continue;
+                }
+            }
+            if (effect instanceof BaseEffect_DealCardDamage) {
+                hasAttack = true;
+            }
+            onUseEffects.add(effect);
+        }
+
+        // Automatically create Attack actions for Attacks that specify damage but that do not already have attack actions
+        if (builder.damage > 0 && builder.cardType == CardType.ATTACK && !hasAttack) {
+            onUseEffects.add(new BaseEffect_DealCardDamage(this, builder.attackEffect));
+        }
     }
 
     @Override
@@ -136,6 +172,12 @@ public class PCLCard_Dynamic extends PCLCard
         {
             onUpgrade.Invoke(this);
         }
+        if (upgradeTags != null) {
+            tags.clear();
+            for (CardTags tag : upgradeTags) {
+                PCLGameUtilities.ModifyCardTag(this, tag, true);
+            }
+        }
     }
 
     @Override
@@ -157,39 +199,5 @@ public class PCLCard_Dynamic extends PCLCard
     public AbstractCard makeCopy()
     {
         return new PCLCard_Dynamic(builder);
-    }
-
-    @Override
-    protected void renderCardBg(SpriteBatch sb, float x, float y)
-    {
-        if (type != CardType.CURSE) {
-            super.renderCardBg(sb, x, y);
-            return;
-        }
-        Texture card = GetCardBackground();
-        float popUpMultiplier = isPopup ? 0.5f : 1f;
-        PCLRenderHelpers.DrawGrayscale(sb, (s) ->
-            PCLRenderHelpers.DrawOnCardAuto(s, this, card, new Vector2(0,0), card.getWidth(), card.getHeight(), new Color(0.2f, 0.2f, 0.2f, transparency), transparency, popUpMultiplier));
-    }
-
-    @SpireOverride
-    protected void renderEnergy(SpriteBatch sb)
-    {
-        if (type != CardType.CURSE) {
-            super.renderEnergy(sb);
-            return;
-        }
-        if (this.cost > -2 && !_darken.Get(this) && !this.isLocked && this.isSeen)
-        {
-            this.RenderAtlas(sb, _renderColor.Get(this), ImageMaster.CARD_COLORLESS_ORB, this.current_x, this.current_y);
-
-            ColoredString costString = GetCostString();
-            if (costString != null)
-            {
-                BitmapFont font = PCLRenderHelpers.GetEnergyFont(this);
-                pinacolada.utilities.PCLRenderHelpers.WriteOnCard(sb, this, font, costString.text, -132f, 192f, costString.color);
-                PCLRenderHelpers.ResetFont(font);
-            }
-        }
     }
 }

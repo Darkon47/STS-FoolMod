@@ -46,7 +46,7 @@ public class HomuraAkemi extends FoolCard
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
         final CardGroup[] choices = upgraded ? new CardGroup[] {player.hand,player.drawPile,player.discardPile,player.exhaustPile} : new CardGroup[] {player.hand,player.drawPile,player.discardPile};
-        PCLActions.Bottom.GainBlock(block);
+        
         PCLActions.Bottom.PurgeFromPile(name,1,choices).AddCallback(
                 pc -> {
                     if (pc.size() > 0) {

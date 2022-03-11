@@ -32,7 +32,7 @@ public class Venti extends FoolCard
     {
         super(DATA);
 
-        Initialize(0, 1, 2, 2);
+        Initialize(0, 1, 2, 1);
         SetAffinity_Star(1, 0, 0);
         SetAffinity_Green(0,0,2);
         SetAffinity_Light(0, 0, 1);
@@ -62,7 +62,7 @@ public class Venti extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+        
 
         AbstractOrb orb = new Air();
         PCLActions.Bottom.ChannelOrb(orb);

@@ -43,7 +43,7 @@ public class SuwakoMoriya extends FoolCard {
 
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info) {
-        PCLActions.Bottom.GainBlock(block);
+
         PCLActions.Bottom.ApplyPoison(TargetHelper.Normal(m), GetXValue());
 
         if (TrySpendAffinity(PCLAffinity.Red)) {

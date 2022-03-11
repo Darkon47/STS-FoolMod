@@ -45,7 +45,7 @@ public class Mayuri extends FoolCard
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
         PCLActions.Bottom.DealCardDamageToRandomEnemy(this, AttackEffects.LIGHTNING);
-        PCLActions.Bottom.GainBlock(block);
+
 
         PCLActions.Bottom.ApplyElectrified(TargetHelper.Enemies(), magicNumber);
         PCLActions.Bottom.ApplyVulnerable(TargetHelper.Player(), magicNumber).AddCallback(() -> {

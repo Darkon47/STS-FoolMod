@@ -34,7 +34,7 @@ public class Ningguang extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+        
         final Earth next = PCLJUtils.SafeCast(PCLGameUtilities.GetFirstOrb(Earth.ORB_ID), Earth.class);
         if (next != null && next.projectilesCount > magicNumber) {
             PCLActions.Top.Add(new EarthOrbPassiveAction(next, -magicNumber));

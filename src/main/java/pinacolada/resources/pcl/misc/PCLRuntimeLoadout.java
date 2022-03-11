@@ -170,7 +170,7 @@ public class PCLRuntimeLoadout
         if (isLocked) {
             card = builder
                     .SetText(Loadout.Name, UnlockTooltip.description, null)
-                    .SetProperties(AbstractCard.CardType.CURSE, AbstractCard.CardRarity.COMMON, AbstractCard.CardTarget.NONE).Build();
+                    .SetProperties(AbstractCard.CardType.CURSE, AbstractCard.CardRarity.COMMON).Build();
             card.tooltips.add(UnlockTooltip);
         }
         else if (Loadout.IsBeta)
@@ -179,7 +179,7 @@ public class PCLRuntimeLoadout
             .SetText(Loadout.Name,
                     PGR.PCL.Strings.SeriesSelection.ContainsNCards_Beta("!M!"),
                     PGR.PCL.Strings.SeriesSelection.ContainsNCards_Beta("!S!"))
-            .SetProperties(AbstractCard.CardType.SKILL, AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardTarget.NONE).Build();
+            .SetProperties(AbstractCard.CardType.SKILL, AbstractCard.CardRarity.UNCOMMON).Build();
             card.tooltips.add(BetaTooltip);
         }
         else
@@ -191,7 +191,7 @@ public class PCLRuntimeLoadout
             .SetText(Loadout.Name,
                     PGR.PCL.Strings.SeriesSelection.ContainsNCards_Full("!M!", trophyString1, trophyString2, trophyString3),
                     PGR.PCL.Strings.SeriesSelection.ContainsNCards_Full("!S!", trophyString1, trophyString2, trophyString3))
-            .SetProperties(AbstractCard.CardType.SKILL, AbstractCard.CardRarity.COMMON, AbstractCard.CardTarget.NONE).Build();
+            .SetProperties(AbstractCard.CardType.SKILL, AbstractCard.CardRarity.COMMON).Build();
             card.tooltips.add(Trophy1Tooltip);
             card.tooltips.add(Trophy2Tooltip);
             card.tooltips.add(Trophy3Tooltip);

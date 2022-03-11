@@ -34,7 +34,7 @@ public class Enchantment3 extends Enchantment
         }
         else if (auxiliaryData.form == 5)
         {
-            upgradeMagicNumber(6);
+            upgradeSecondaryValue(6);
         }
     }
 
@@ -90,8 +90,7 @@ public class Enchantment3 extends Enchantment
                 PCLActions.Bottom.RemoveCommonDebuffs(player, auxiliaryData.form == 3 ? ListSelection.First(0) : ListSelection.Last(0), 1);
                 return;
             case 5:
-                PCLActions.Bottom.ReduceDebuffs(player, magicNumber)
-                        .SetSelection(ListSelection.First(0), 1)
+                PCLActions.Bottom.RemoveDebuffs(player, ListSelection.First(0), 1)
                         .Sort(Comparator.comparingInt(a -> -a.amount));
         }
     }

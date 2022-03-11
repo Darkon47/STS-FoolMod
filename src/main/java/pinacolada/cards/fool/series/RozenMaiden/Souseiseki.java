@@ -47,7 +47,7 @@ public class Souseiseki extends FoolCard
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
         PCLActions.Bottom.DealCardDamage(this, m, AttackEffects.SLASH_HORIZONTAL);
-        PCLActions.Bottom.GainBlock(block);
+        
 
         PCLActions.Bottom.ExhaustFromHand(name, 1, false)
                 .SetOptions(false, false, false)

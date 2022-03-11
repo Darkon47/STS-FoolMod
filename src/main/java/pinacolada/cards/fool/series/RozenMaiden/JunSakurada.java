@@ -49,7 +49,7 @@ public class JunSakurada extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+        
         PCLActions.Bottom.MakeCardInHand(new Curse_JunTormented());
         PCLActions.Bottom.StackPower(new JunSakuradaPower(p, magicNumber));
         cooldown.ProgressCooldownAndTrigger(m);

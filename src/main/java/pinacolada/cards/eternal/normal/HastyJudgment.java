@@ -35,7 +35,7 @@ public class HastyJudgment extends EternalCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+        
         for (int i = 0; i < PCLCombatStats.MatchingSystem.ResolveMeter.Next.size(); i++) {
             PCLActions.Last.RerollAffinity(i, PCLAffinity.Light, PCLAffinity.Dark);
         }

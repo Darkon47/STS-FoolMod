@@ -33,7 +33,7 @@ public class SougenEsaka extends FoolCard
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
         PCLActions.Bottom.DealCardDamageToAll(this, AttackEffects.BLUNT_LIGHT);
-        PCLActions.Bottom.GainBlock(block);
+        
 
         if (PCLGameUtilities.InStance(MightStance.STANCE_ID) || PCLGameUtilities.InStance(InvocationStance.STANCE_ID)) {
             PCLActions.Bottom.GainEndurance(secondaryValue);

@@ -57,7 +57,7 @@ public class Eve_Drone extends FoolCard
             PCLActions.Bottom.DealCardDamage(this, m, AttackEffects.PSYCHOKINESIS).forEach(d -> d.SetVFXColor(Color.CYAN));
         }
         if (block > 0) {
-            PCLActions.Bottom.GainBlock(block);
+
         }
         PCLActions.Last.MoveCard(this,player.hand).AddCallback(() -> {
             PCLGameUtilities.SetUnplayableThisTurn(this);

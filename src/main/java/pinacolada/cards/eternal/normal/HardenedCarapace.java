@@ -26,7 +26,7 @@ public class HardenedCarapace extends EternalCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+        
         if (PCLCombatStats.MatchingSystem.ResolveMeter.TrySpendResolve(magicNumber)) {
             PCLActions.Bottom.GainMetallicize(magicNumber);
             if (CheckPrimaryCondition(true)) {

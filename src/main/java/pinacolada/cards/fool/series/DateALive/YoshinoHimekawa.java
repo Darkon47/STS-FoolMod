@@ -71,7 +71,7 @@ public class YoshinoHimekawa extends FoolCard {
 
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info) {
-        PCLActions.Bottom.GainBlock(block);
+        
         if (transformed) {
             PCLActions.Bottom.GainBlur(secondaryValue);
             PCLActions.Bottom.ApplyFreezing(TargetHelper.Enemies(), magicNumber).ShowEffect(true, true);

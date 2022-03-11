@@ -39,7 +39,7 @@ public class TokiomiTohsaka extends FoolCard
     {
         PCLActions.Bottom.DealCardDamageToAll(this, AbstractGameAction.AttackEffect.FIRE)
                         .forEach(d -> d.SetVFXColor(Color.ORANGE, Color.ORANGE));
-        PCLActions.Bottom.GainBlock(block);
+        
 
         if (choices.TryInitialize(this))
         {

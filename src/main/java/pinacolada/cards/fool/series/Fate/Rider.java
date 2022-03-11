@@ -52,7 +52,7 @@ public class Rider extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+        
         PCLActions.Bottom.ReduceStrength(m, magicNumber, true);
         PCLActions.Bottom.TryChooseSpendAffinity(this, PCLAffinity.Green, PCLAffinity.Blue).AddConditionalCallback(() -> {
             PCLActions.Bottom.ReduceStrength(m, secondaryValue, true);

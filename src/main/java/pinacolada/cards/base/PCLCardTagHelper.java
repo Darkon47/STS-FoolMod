@@ -1,11 +1,14 @@
 package pinacolada.cards.base;
 
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import org.apache.commons.lang3.StringUtils;
 import pinacolada.interfaces.markers.TooltipObject;
 import pinacolada.resources.PGR;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class PCLCardTagHelper implements TooltipObject
 {
@@ -29,6 +32,18 @@ public class PCLCardTagHelper implements TooltipObject
     public final PCLCardTagHelper[] PriorityTags;
     public final PCLCardTooltip Tooltip;
     public final boolean IsBuff;
+
+    public static PCLCardTagHelper Get(String name) {
+        return ALL.get(AbstractCard.CardTags.valueOf(name));
+    }
+
+    public static PCLCardTagHelper Get(AbstractCard.CardTags tag) {
+        return ALL.get(tag);
+    }
+
+    public static List<PCLCardTagHelper> GetAll() {
+        return ALL.values().stream().sorted((a, b) -> StringUtils.compare(a.Tooltip.title, b.Tooltip.title)).collect(Collectors.toList());
+    }
 
     public PCLCardTagHelper(AbstractCard.CardTags tag, PCLCardTooltip tooltip, boolean isBuff, PCLCardTagHelper... priorityTags)
     {

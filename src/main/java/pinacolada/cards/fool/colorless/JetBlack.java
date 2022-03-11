@@ -40,7 +40,7 @@ public class JetBlack extends FoolCard
     {
         boolean shouldRetain = CheckSpecialCondition(true) && CombatStats.TryActivateLimited(cardID);
         PCLActions.Bottom.DealCardDamageToAll(this, AttackEffects.BLUNT_HEAVY);
-        PCLActions.Bottom.GainBlock(block);
+
         PCLActions.Bottom.StackPower(new JetBlackPower(p, magicNumber, shouldRetain));
     }
 

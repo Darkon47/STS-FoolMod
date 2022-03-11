@@ -16,6 +16,11 @@ public class BaseEffect_GainTempHP extends BaseEffect
 {
     public static final String ID = Register(BaseEffect_GainTempHP.class);
 
+    public BaseEffect_GainTempHP()
+    {
+        this(0);
+    }
+
     public BaseEffect_GainTempHP(int amount)
     {
         super(ID, null, PCLCardTarget.Self, amount);

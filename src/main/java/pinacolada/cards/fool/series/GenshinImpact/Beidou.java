@@ -33,7 +33,7 @@ public class Beidou extends FoolCard
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
         PCLActions.Bottom.DealCardDamage(this, m, AttackEffects.SLASH_HEAVY);
-        PCLActions.Bottom.GainBlock(block);
+        
         PCLActions.Bottom.StackPower(new CounterAttackPower(p, magicNumber));
         PCLActions.Bottom.StackPower(new BeidouPower(p, secondaryValue));
     }

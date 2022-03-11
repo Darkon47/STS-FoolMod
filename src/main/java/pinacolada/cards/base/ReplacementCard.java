@@ -17,6 +17,7 @@ import eatyourbeets.utilities.AdvancedTexture;
 import eatyourbeets.utilities.ColoredString;
 import eatyourbeets.utilities.Colors;
 import eatyourbeets.utilities.FieldInfo;
+import pinacolada.cards.base.baseeffects.BaseEffect;
 import pinacolada.utilities.PCLJUtils;
 import pinacolada.utilities.PCLRenderHelpers;
 
@@ -195,6 +196,15 @@ public class ReplacementCard extends PCLCard_Dynamic
     protected void OnUpgrade() {
         super.OnUpgrade();
         original.upgrade();
+    }
+
+    // We cannot prevent replacement cards from giving block in their actions, so we need to remove the block action in PreUse
+    @Override
+    public void OnPreUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
+    {
+        for (BaseEffect ef : onUseEffects) {
+            ef.Use(p, m, info);
+        }
     }
 
     @Override

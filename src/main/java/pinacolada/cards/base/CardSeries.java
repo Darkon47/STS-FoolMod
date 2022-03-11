@@ -2,10 +2,12 @@ package pinacolada.cards.base;
 
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import org.apache.commons.lang3.StringUtils;
 import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLJUtils;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class CardSeries
 {
@@ -100,7 +102,19 @@ public class CardSeries
     public final static CardSeries Monogatari = Add(84, "Monogatari");
     public final static CardSeries Persona = Add(85, "Persona");
     public final static CardSeries HyperdimensionNeptunia = Add(86, "HyperdimensionNeptunia");
-    public final static CardSeries MyDressUpDarling = Add(87, "MyDressUpDarling");
+    public final static CardSeries ACertainMagicalIndex = Add(87, "ACertainMagicalIndex");
+    public final static CardSeries SevenDeadlySins = Add(88, "SevenDeadlySins");
+    public final static CardSeries Arcane = Add(89, "Arcane");
+    public final static CardSeries BlackBulter = Add(90, "BlackBulter");
+    public final static CardSeries CautiousHero = Add(91, "CautiousHero");
+    public final static CardSeries DarkerThanBlack = Add(92, "DarkerThanBlack");
+    public final static CardSeries Durarara = Add(93, "Durarara");
+    public final static CardSeries Inuyasha = Add(94, "Inuyasha");
+    public final static CardSeries LandOfTheLustrous = Add(95, "LandOfTheLustrous");
+    public final static CardSeries MushokuTensei = Add(96, "MushokuTensei");
+    public final static CardSeries MyHeroAcademia = Add(97, "MyHeroAcademia");
+    public final static CardSeries ReCreators = Add(98, "ReCreators");
+    public final static CardSeries RuroniKenshin = Add(98, "RuroniKenshin");
 
 
     private static AbstractCard currentSynergy = null;
@@ -157,7 +171,12 @@ public class CardSeries
 
     public static Collection<CardSeries> GetAllSeries()
     {
-        return mapIDs.values();
+        return GetAllSeries(false);
+    }
+    public static Collection<CardSeries> GetAllSeries(boolean sort)
+    {
+        Collection<CardSeries> series = mapIDs.values();
+        return sort ? series.stream().sorted((a, b) -> StringUtils.compare(a.LocalizedName, b.LocalizedName)).collect(Collectors.toList()) : series;
     }
 
     public static CardSeries GetByID(int id)

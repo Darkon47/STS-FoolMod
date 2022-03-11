@@ -54,7 +54,7 @@ public class MorganLeFay extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+        
         PCLActions.Bottom.ApplyConstricted(TargetHelper.Normal(m), GetXValue());
         TrySpendAffinity(PCLAffinity.Light, GetXValue());
         if (info.TryActivateLimited()) {

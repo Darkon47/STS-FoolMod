@@ -35,7 +35,7 @@ public class Kuroyukihime_BlackLotus extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+
         PCLActions.Bottom.SFX(SFX.ATTACK_DEFECT_BEAM);
         PCLActions.Bottom.VFX(VFX.SweepingBeam(p.hb, VFX.FlipHorizontally(), new Color(0.24f, 0, 0.4f, 1f)), 0.3f);
         PCLActions.Bottom.DealCardDamageToAll(this, AttackEffects.FIRE);

@@ -34,7 +34,7 @@ public class Naotsugu extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+        
         PCLActions.Bottom.DealCardDamage(this, m, AttackEffects.SLASH_HEAVY)
                 .forEach(d -> d.AddCallback(e ->
         {

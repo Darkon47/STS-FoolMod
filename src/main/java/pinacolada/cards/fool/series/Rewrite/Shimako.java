@@ -39,7 +39,7 @@ public class Shimako extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+
         PCLActions.Bottom.GainTemporaryHP(magicNumber);
 
         AbstractOrb orb;

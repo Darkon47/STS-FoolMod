@@ -47,7 +47,7 @@ public class Seclusion extends EternalCard
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
         if (block > 0) {
-            PCLActions.Bottom.GainBlock(block);
+            
         }
         if (CheckPrimaryCondition(true)) {
             PCLActions.Bottom.GainBlur(secondaryValue);

@@ -41,7 +41,7 @@ public class Ren extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+        
         PCLActions.Bottom.Callback(() -> {
            if (PCLGameUtilities.GetOrbCount(Dark.ORB_ID) == 0) {
                PCLActions.Bottom.ChannelOrb(new Dark()).AddCallback(() -> DoAction(m));

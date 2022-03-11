@@ -35,7 +35,7 @@ public class Ginko extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+        
         PCLActions.Bottom.SelectFromPile(name, magicNumber, player.hand)
                 .SetOptions(false, true)
                 .SetFilter(c -> c.type == CardType.STATUS)

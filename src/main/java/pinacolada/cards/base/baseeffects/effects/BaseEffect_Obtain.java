@@ -21,6 +21,11 @@ public class BaseEffect_Obtain extends BaseEffect
     protected ArrayList<PCLCardData> cardData;
     protected int upgradeTimes;
 
+    public BaseEffect_Obtain()
+    {
+        this(1, 0);
+    }
+
     public BaseEffect_Obtain(String[] content)
     {
         super(content);

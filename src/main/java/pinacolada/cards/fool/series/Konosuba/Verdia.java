@@ -58,7 +58,7 @@ public class Verdia extends FoolCard
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
         PCLActions.Bottom.DealCardDamage(this,m, AbstractGameAction.AttackEffect.SLASH_DIAGONAL);
-        PCLActions.Bottom.GainBlock(block);
+        
         if (TrySpendAffinity(PCLAffinity.Red)) {
             PCLActions.Bottom.IncreaseScaling(this, PCLAffinity.Red, 1);
         }

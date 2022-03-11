@@ -17,6 +17,7 @@ public class Biyorigo extends FoolCard
 {
     public static final PCLCardData DATA = Register(Biyorigo.class)
             .SetPower(2, CardRarity.RARE)
+            .SetMaxCopies(2)
             .SetMultiformData(2)
             .SetSeriesFromClassPackage();
     public static final int COST = 7;
@@ -25,7 +26,7 @@ public class Biyorigo extends FoolCard
     {
         super(DATA);
 
-        Initialize(0, 0, 4, 3);
+        Initialize(0, 0, 3, 3);
 
         SetAffinity_Red(1);
         SetAffinity_Green(1);
@@ -77,11 +78,7 @@ public class Biyorigo extends FoolCard
         @Override
         public int onAttacked(DamageInfo info, int damageAmount)
         {
-            if (info.type == DamageInfo.DamageType.NORMAL && info.owner != null && info.owner.isPlayer != owner.isPlayer)
-            {
-                PCLActions.Bottom.ApplyPoison(TargetHelper.Normal(info.owner), amount);
-            }
-
+            PCLActions.Bottom.ApplyPoison(TargetHelper.Enemies(), amount);
             return super.onAttacked(info, damageAmount);
         }
 

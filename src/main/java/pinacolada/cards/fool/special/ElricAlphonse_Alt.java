@@ -35,7 +35,7 @@ public class ElricAlphonse_Alt extends FoolCard
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
         PCLActions.Bottom.ChannelOrbs(PCLOrbHelper.Lightning, secondaryValue);
-        PCLActions.Bottom.GainBlock(block);
+        
         PCLActions.Bottom.GainOrbSlots(1);
 
         if (info.IsSynergizing || TrySpendAffinity(PCLAffinity.Orange))

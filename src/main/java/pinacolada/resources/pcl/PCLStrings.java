@@ -16,12 +16,14 @@ public class PCLStrings
     public Misc Misc;
     public Series Series;
     public SeriesUI SeriesUI;
+    public CardEditor CardEditor;
     public CharacterSelect CharSelect;
     public SeriesSelection SeriesSelection;
     public SeriesSelectionButtons SeriesSelectionButtons;
     public SingleCardPopupButtons SingleCardPopupButtons;
     public Actions Actions;
     public Conditions Conditions;
+    public CardTarget CardTarget;
     public Trophies Trophies;
     public Tutorial Tutorial;
     public EternalTutorial EternalTutorial;
@@ -38,9 +40,11 @@ public class PCLStrings
         Rewards = new Rewards();
         Series = new Series();
         SeriesUI = new SeriesUI();
+        CardEditor = new CardEditor();
         CharSelect = new CharacterSelect();
         Actions = new Actions();
         Conditions = new Conditions();
+        CardTarget = new CardTarget();
         Trophies = new Trophies();
         Tutorial = new Tutorial();
         EternalTutorial = new EternalTutorial();
@@ -102,15 +106,39 @@ public class PCLStrings
         public final String SeriesUI = Strings.TEXT[0];
         public final String ItemsSelected = Strings.TEXT[1];
         public final String Keywords = Strings.TEXT[2];
-        public final String Costs = Strings.TEXT[3];
-        public final String Rarities = Strings.TEXT[4];
-        public final String Types = Strings.TEXT[5];
-        public final String Affinities = Strings.TEXT[6];
-        public final String Scalings = Strings.TEXT[7];
-        public final String Amount = Strings.TEXT[8];
-        public final String Origins = Strings.TEXT[9];
-        public final String Colors = Strings.TEXT[10];
-        public final String Total = Strings.TEXT[11];
+        public final String Affinities = Strings.TEXT[3];
+        public final String Scalings = Strings.TEXT[4];
+        public final String Amount = Strings.TEXT[5];
+        public final String Origins = Strings.TEXT[6];
+        public final String Colors = Strings.TEXT[7];
+        public final String Total = Strings.TEXT[8];
+    }
+
+    public static class CardEditor
+    {
+        private final UIStrings Strings = GetUIStrings("CardEditor");
+
+        public final String Attributes = Strings.TEXT[0];
+        public final String Effects = Strings.TEXT[1];
+        public final String Tags = Strings.TEXT[2];
+        public final String CardValue = Strings.TEXT[3];
+        public final String NewCard = Strings.TEXT[4];
+        public final String Damage = Strings.TEXT[5];
+        public final String Block = Strings.TEXT[6];
+        public final String MagicNumber = Strings.TEXT[7];
+        public final String SecondaryNumber = Strings.TEXT[8];
+        public final String HitCount = Strings.TEXT[9];
+        public final String Upgrades = Strings.TEXT[10];
+        public final String CardTarget = Strings.TEXT[11];
+        public final String AttackType = Strings.TEXT[12];
+        public final String UseBaseValue = Strings.TEXT[13];
+        public final String PrimaryCondition = Strings.TEXT[14];
+        public final String SecondaryCondition = Strings.TEXT[15];
+        public final String Effect = Strings.TEXT[16];
+        public final String EffectItems = Strings.TEXT[17];
+        public final String EffectSource = Strings.TEXT[18];
+        public final String Modifier = Strings.TEXT[19];
+        public final String ModifierSource = Strings.TEXT[20];
     }
 
     public static class Misc
@@ -188,6 +216,8 @@ public class PCLStrings
         public final String CopyFrom = Strings.TEXT[23];
         public final String Export = Strings.TEXT[24];
         public final String AscensionGlyph = Strings.TEXT[25];
+        public final String CardEditor = Strings.TEXT[26];
+        public final String CardEditorInfo = Strings.TEXT[27];
 
         public final String UnlocksAtLevel(int unlockLevel, int currentLevel)
         {
@@ -361,6 +391,20 @@ public class PCLStrings
         public final String RespecLivingPictureDescription = Strings.TEXT[5];
         public final String Kirby = Strings.TEXT[6];
         public final String KirbyDescription = Strings.TEXT[7];
+    }
+
+    public static class CardTarget
+    {
+        private final UIStrings Strings = GetUIStrings("CardTarget");
+
+        public final String None = Strings.TEXT[0];
+        public final String AoE = Strings.TEXT[1];
+        public final String All = Strings.TEXT[2];
+        public final String Self = Strings.TEXT[3];
+        public final String Normal = Strings.TEXT[4];
+        public final String Any = Strings.TEXT[5];
+        public final String Random = Strings.TEXT[6];
+        public final String Ally = Strings.TEXT[7];
     }
 
     public static class Actions

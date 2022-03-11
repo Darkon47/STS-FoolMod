@@ -14,7 +14,7 @@ import pinacolada.utilities.PCLJUtils;
 public class Lean extends FoolCard
 {
     public static final PCLCardData DATA = Register(Lean.class)
-            .SetSkill(1, CardRarity.UNCOMMON, PCLCardTarget.None, true)
+            .SetSkill(1, CardRarity.UNCOMMON, PCLCardTarget.None)
             .SetMultiformData(2, false)
             .SetTraits(PCLCardTrait.Spellcaster)
             .SetSeriesFromClassPackage();
@@ -23,7 +23,7 @@ public class Lean extends FoolCard
     {
         super(DATA);
 
-        Initialize(0, 0, 2, 3);
+        Initialize(0, 1, 2, 2);
 
         SetAffinity_Blue(1, 0, 1);
         SetAffinity_Green(1);

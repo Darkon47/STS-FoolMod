@@ -309,7 +309,7 @@
 		},
 		"fool:UryuuIshida":
 		{
-			"DESCRIPTION": "{Starter}: Transfer !M! [Weak] and !M! [Vulnerable] from you to the enemy. || <SLM>. On Discard: ** Gain !S! [Support Damage].",
+			"DESCRIPTION": "{Starter}: Transfer !M! [Weak] [Vulnerable] from you to the enemy. || <SLM>. Match or On Discard: Gain !S! [Support Damage].",
 			"NAME": "Uryuu Ishida"
 		},
 		"fool:YasutoraSado":
@@ -2201,8 +2201,8 @@
 		},
 		"fool:Biyorigo":
 		{
-			"DESCRIPTION": "Gain !M! [Malleable]. Whenever you are attacked: Apply !M! [Poison] to the attacker. || Once per turn, pay {0} <G>: ** Gain !S! [Thorns].",
-			"EXTENDED_DESCRIPTION": ["Pay #b{0} [A-Green] to gain #b{1} [Thorns]. || Whenever you are attacked: Apply #b{2} [Poison] to the attacker."],
+			"DESCRIPTION": "Gain !M! [Malleable]. Whenever you take damage or lose HP from any source: Apply !M! [Poison] to ALL enemies. || Once per turn, pay {0} <G>: ** Gain !S! [Thorns].",
+			"EXTENDED_DESCRIPTION": ["Pay #b{0} [A-Green] to gain #b{1} [Thorns]. || Whenever you take damage from any source: Apply #b{2} [Poison] to ALL enemies."],
 			"NAME": "Biyorigo"
 		},
 		"fool:Emonzaemon":
@@ -2375,7 +2375,7 @@
 		},
 		"fool:Wiz":
 		{
-			"DESCRIPTION": "Exhaust 1 card. Choose a ** card in Exhaust pile and ** add a copy to your hand. || <LIM>. !M! Match Combo: This will not Purge.",
+			"DESCRIPTION": "Exhaust 1 card. Obtain a copy of a card in your Exhaust pile. || <LIM>. !M! Match Combo: This will not Purge.",
 			"NAME": "Wiz"
 		},
 		"fool:YunYun":
@@ -2935,7 +2935,7 @@
 		},
 		"fool:KimizugiShiho":
 		{
-			"DESCRIPTION": "Select a card in hand. Fetch a random card in your discard pile with its Series. || Match or On Discard: <CYC>.",
+			"DESCRIPTION": "Select a card in hand. Fetch a random card in your discard pile with its Series. || <slm>. Match or On Discard: <CYC>.",
 			"EXTENDED_DESCRIPTION": ["Fetch Cards with the same Series."],
 			"NAME": "Shiho Kimizugi"
 		},

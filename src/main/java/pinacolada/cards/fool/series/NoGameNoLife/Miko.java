@@ -38,6 +38,11 @@ public class Miko extends FoolCard
         SetAffinity_Light(1);
     }
 
+    public void OnUpgrade() {
+        SetInnate(true);
+        SetRetainOnce(true);
+    }
+
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {

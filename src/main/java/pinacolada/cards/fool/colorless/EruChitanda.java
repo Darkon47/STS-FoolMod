@@ -40,7 +40,7 @@ public class EruChitanda extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+
         int lastTurn = CombatStats.TurnCount(true) - 1;
         if (lastTurn >= 0) {
             final CardGroup group = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);

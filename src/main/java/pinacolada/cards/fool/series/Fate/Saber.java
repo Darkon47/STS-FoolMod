@@ -104,7 +104,7 @@ public class Saber extends FoolCard
     {
         PCLActions.Bottom.VFX(VFX.EFX(PCLEffekseerEFX.FIRE02, m.hb));
         PCLActions.Bottom.DealCardDamage(this, m, AttackEffects.SLASH_DIAGONAL);
-        PCLActions.Bottom.GainBlock(block);
+        
         this.baseDamage += magicNumber;
         cooldown.ProgressCooldownAndTrigger(m);
     }

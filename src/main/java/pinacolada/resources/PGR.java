@@ -1,7 +1,9 @@
 package pinacolada.resources;
 
 import basemod.BaseMod;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.google.gson.Gson;
@@ -18,6 +20,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
+import eatyourbeets.resources.GR;
 import org.apache.logging.log4j.Logger;
 import pinacolada.cards.base.PCLCardTooltip;
 import pinacolada.interfaces.markers.Replacement;
@@ -31,6 +34,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 public class PGR extends eatyourbeets.resources.GR
@@ -46,6 +50,7 @@ public class PGR extends eatyourbeets.resources.GR
     protected static final ArrayList<String> potionClassNames = PCLJUtils.GetClassNamesFromJarFile(PREFIX_POTIONS);
     protected static final ArrayList<String> powerClassNames = PCLJUtils.GetClassNamesFromJarFile(PREFIX_POWERS);
     protected static final ArrayList<String> relicClassNames = PCLJUtils.GetClassNamesFromJarFile(PREFIX_RELIC);
+    protected static final HashMap<String, Texture> localTextures = new HashMap();
 
     public static CardTooltips Tooltips = null;
     public static UIManager UI = new UIManager();
@@ -90,6 +95,35 @@ public class PGR extends eatyourbeets.resources.GR
     {
         //This should be set only for beta branches.  Do not merge this into master.
         return false;//language == Settings.GameLanguage.RUS; // language == Settings.GameLanguage.ZHS || language == Settings.GameLanguage.ZHT;
+    }
+
+    public static Texture GetLocalTexture(String path) {
+        return GetLocalTexture(path, false);
+    }
+
+    public static Texture GetLocalTexture(String path, boolean useMipMap) {
+        return GetLocalTexture(path, true, false);
+    }
+
+    public static Texture GetLocalTexture(String path, boolean useMipMap, boolean refresh) {
+        Texture texture = (Texture)localTextures.get(path);
+        if (texture == null || refresh) {
+            FileHandle file = Gdx.files.local(path);
+            if (file.exists()) {
+                texture = new Texture(file, useMipMap);
+                if (useMipMap) {
+                    texture.setFilter(Texture.TextureFilter.MipMapLinearLinear, Texture.TextureFilter.Linear);
+                } else {
+                    texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+                }
+            } else {
+                PCLJUtils.GetLogger(GR.class).error("Texture does not exist: " + path);
+            }
+
+            localTextures.put(path, texture);
+        }
+
+        return texture;
     }
 
     protected void LoadCustomPotions(String character)

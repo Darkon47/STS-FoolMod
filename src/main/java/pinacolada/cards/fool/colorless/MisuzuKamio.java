@@ -44,7 +44,7 @@ public class MisuzuKamio extends FoolCard implements OnStartOfTurnPostDrawSubscr
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+        
 
         if (CheckSpecialCondition(true)) {
             PCLActions.Bottom.ChannelOrbs(PCLOrbHelper.Air, player.maxOrbs);

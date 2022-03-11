@@ -165,6 +165,7 @@ public class Kirby extends FoolCard implements
         }
         for (AbstractCard card : inheritedCards) {
             if (card instanceof PCLCard) {
+                ((PCLCard) card).OnPreUse(p, m, info);
                 ((PCLCard) card).OnUse(p, m, info);
                 ((PCLCard) card).OnLateUse(p, m, info);
                 PCLActions.Bottom.AddAffinities(((PCLCard) card).affinities);

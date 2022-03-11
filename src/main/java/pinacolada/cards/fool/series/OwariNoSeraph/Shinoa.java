@@ -37,7 +37,7 @@ public class Shinoa extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+        
         PCLActions.Bottom.ApplyVulnerable(TargetHelper.Enemies(), magicNumber);
 
         if (info.IsSynergizing)

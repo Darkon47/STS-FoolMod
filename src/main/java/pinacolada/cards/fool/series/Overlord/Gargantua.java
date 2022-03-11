@@ -38,7 +38,7 @@ public class Gargantua extends FoolCard
     {
         PCLActions.Bottom.DealCardDamage(this, m, AttackEffects.NONE).forEach(d -> d.SetVFX(true, false)
                 .SetDamageEffect(c -> PCLGameEffects.List.Add(VFX.ThrowRock(player.hb, c.hb, 0.5f)).duration).SetRealtime(true));
-        PCLActions.Bottom.GainBlock(block);
+
         PCLActions.Bottom.EvokeOrb(1)
                 .SetFilter(o -> Earth.ORB_ID.equals(o.ID))
                 .AddCallback(orbs ->

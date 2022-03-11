@@ -66,7 +66,7 @@ public class Xiao extends FoolCard
                     wait += PCLGameEffects.Queue.Add(new AnimatedSlashEffect(enemy.hb.cX, enemy.hb.cY - 60f * Settings.scale,
                             500f, 200f, 300f, 5f, Color.FOREST.cpy(), Color.GREEN.cpy())).duration;
                 }));
-        PCLActions.Bottom.GainBlock(block);
+        
 
         if (VelocityStance.IsActive()) {
             PCLActions.Bottom.ApplyPoison(TargetHelper.Enemies(), GetXValue());

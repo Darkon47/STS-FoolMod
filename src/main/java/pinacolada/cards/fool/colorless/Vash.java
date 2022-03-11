@@ -42,7 +42,7 @@ public class Vash extends FoolCard
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
         PCLActions.Bottom.DealCardDamageToRandomEnemy(this, AttackEffects.GUNSHOT).forEach(d -> d.SetSoundPitch(0.5f, 0.7f));
-        PCLActions.Bottom.GainBlock(block);
+        
 
 
         PCLActions.Top.ReshuffleDiscardPile(false);

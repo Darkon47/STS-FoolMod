@@ -12,6 +12,10 @@ public class BaseEffect_Draw extends BaseEffect
 {
     public static final String ID = Register(BaseEffect_Draw.class);
 
+    public BaseEffect_Draw() {
+        this(0);
+    }
+
     public BaseEffect_Draw(int amount)
     {
         super(ID, null,  PCLCardTarget.None, amount);

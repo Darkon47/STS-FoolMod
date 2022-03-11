@@ -34,7 +34,7 @@ public class Kuroyukihime extends FoolCard
     @Override
     public void OnLateUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+        
         PCLActions.Bottom.GainBlur(secondaryValue);
         PCLActions.Bottom.DiscardFromHand(name, magicNumber, false)
         .SetOptions(false, false, false)

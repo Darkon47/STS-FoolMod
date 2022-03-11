@@ -39,7 +39,7 @@ public class FemaleKnight extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+
         PCLActions.Bottom.SelectFromHand(name, secondaryValue, false)
                 .SetFilter(c -> c instanceof PCLCard && c.type == CardType.ATTACK && ((PCLCard) c).attackType == PCLAttackType.Normal)
                 .AddCallback((cards) -> {

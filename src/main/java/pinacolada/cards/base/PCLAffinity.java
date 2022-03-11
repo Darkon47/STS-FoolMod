@@ -3,7 +3,10 @@ package pinacolada.cards.base;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import eatyourbeets.ui.TextureCache;
+import pinacolada.characters.EternalCharacter;
 import pinacolada.interfaces.markers.TooltipObject;
 import pinacolada.powers.affinity.*;
 import pinacolada.resources.PGR;
@@ -22,6 +25,7 @@ public enum PCLAffinity implements TooltipObject, Comparable<PCLAffinity>
     General(-2, "Gen", "Multicolor","W", PGR.PCL.Images.Affinities.General);// Don't use directly
 
     public static final int TOTAL_AFFINITIES = 7;
+    public static final int MAX_LEVEL = 2;
 
     protected static final TextureCache BorderBG = PGR.PCL.Images.Affinities.BorderBG;
     protected static final TextureCache BorderFG = PGR.PCL.Images.Affinities.BorderFG;
@@ -56,6 +60,20 @@ public enum PCLAffinity implements TooltipObject, Comparable<PCLAffinity>
     public static PCLAffinity[] All()
     {
         return ALL_TYPES;
+    }
+
+    public static PCLAffinity[] GetAvailableAffinities(AbstractPlayer.PlayerClass pc) {
+        if (pc == PGR.Enums.Characters.THE_ETERNAL) {
+            return EternalCharacter.AVAILABLE_AFFINITIES;
+        }
+        return All();
+    }
+
+    public static PCLAffinity[] GetAvailableAffinities(AbstractCard.CardColor pc) {
+        if (pc == PGR.Enums.Cards.THE_ETERNAL) {
+            return EternalCharacter.AVAILABLE_AFFINITIES;
+        }
+        return All();
     }
 
     public final int ID;

@@ -69,11 +69,13 @@ public class ByakuyaBankai extends FoolCard {
     private PCLCardBuilder GenerateInternal(AbstractCard.CardType type, ActionT3<AbstractPlayer, AbstractMonster, CardUseInfo> onUseAction, String description) {
         PCLCardBuilder builder = new PCLCardBuilder(ByakuyaBankai.DATA.ID);
         builder.SetText(name, description, "");
-        builder.SetProperties(type, PGR.Enums.Cards.THE_FOOL, AbstractCard.CardRarity.RARE, CardTarget.ENEMY);
+        builder
+                .SetProperties(type, PGR.Enums.Cards.THE_FOOL, AbstractCard.CardRarity.RARE)
+                .SetCardTarget(PCLCardTarget.AoE);
         builder.SetOnUse(onUseAction);
 
         if (type.equals(CardType.ATTACK)) {
-            builder.SetAttackType(PCLAttackType.Ranged, PCLCardTarget.AoE);
+            builder.SetAttackType(PCLAttackType.Ranged);
             builder.SetNumbers(damage, 0, magicNumber, 0, 1);
         } else {
             builder.SetNumbers(0, block, magicNumber, 0, 1);
@@ -104,7 +106,7 @@ public class ByakuyaBankai extends FoolCard {
     }
 
     private void BlockEffect(AbstractPlayer p, AbstractMonster m, CardUseInfo info) {
-        PCLActions.Bottom.GainBlock(block);
+        
         PCLActions.Bottom.GainVelocity(magicNumber);
     }
 }

@@ -34,7 +34,7 @@ public class Elsword extends FoolCard
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
         PCLActions.Bottom.DealCardDamage(this, m, AttackEffects.SLASH_DIAGONAL).forEach(d -> d.SetVFXColor(Color.RED));
-        PCLActions.Bottom.GainBlock(block);
+
 
         if (m.hasPower(BurningPower.POWER_ID))
         {

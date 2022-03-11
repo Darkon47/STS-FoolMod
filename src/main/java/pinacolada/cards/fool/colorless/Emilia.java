@@ -56,7 +56,7 @@ public class Emilia extends FoolCard implements OnStartOfTurnPostDrawSubscriber
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+
         PCLActions.Bottom.EvokeOrb(player.filledOrbCount(), EvokeOrb.Mode.Sequential).AddFocus(secondaryValue).AddCallback(() -> {
             PCLActions.Bottom.ChannelOrbs(PCLOrbHelper.Frost, magicNumber);
         });

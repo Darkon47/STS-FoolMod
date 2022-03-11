@@ -45,7 +45,7 @@ public class Yae extends FoolCard
         PCLActions.Bottom.SFX(SFX.NECRONOMICON,1.5f,1.5f);
         int lightningCount = 0;
         for (AbstractMonster enemy : PCLGameUtilities.GetEnemies(true)) {
-            PCLActions.Bottom.StackPower(new SilencedPower(enemy, magicNumber));
+            PCLActions.Bottom.StackPower(new SilencedPower(enemy, magicNumber)).IgnoreArtifact(true);
         }
         PCLActions.Bottom.EvokeOrb(player.filledOrbCount(), EvokeOrb.Mode.Sequential)
                 .SetFilter(o -> Lightning.ORB_ID.equals(o.ID))

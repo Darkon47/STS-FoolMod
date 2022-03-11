@@ -27,7 +27,7 @@ public class IkkakuMadarame extends FoolCard {
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info) {
         PCLActions.Bottom.DealCardDamageToAll(this, AttackEffects.SLASH_HORIZONTAL);
-        PCLActions.Bottom.GainBlock(block);
+        
 
         PCLGameUtilities.MaintainPower(PCLAffinity.Red);
         PCLGameUtilities.MaintainPower(PCLAffinity.Green);

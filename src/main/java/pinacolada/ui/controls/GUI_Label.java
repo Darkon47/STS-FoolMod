@@ -16,8 +16,8 @@ public class GUI_Label extends GUIElement
     public Hitbox hb;
     public String text;
 
-    private Color textColor;
-    private BitmapFont font;
+    protected Color textColor;
+    protected BitmapFont font;
     private float fontScale;
     private float verticalRatio;
     private float horizontalRatio;

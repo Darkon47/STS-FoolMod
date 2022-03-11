@@ -43,7 +43,6 @@ public class ReplacementCardBuilder extends PCLCardBuilder
 
                 if (eC.type.equals(AbstractCard.CardType.ATTACK)) {
                     PCLAttackType at = PCLAttackType.Normal;
-                    PCLCardTarget ct = PCLCardTarget.Normal;
                     switch (eC.attackType) {
                         case None:
                             at = PCLAttackType.None;
@@ -58,22 +57,25 @@ public class ReplacementCardBuilder extends PCLCardBuilder
                             at = PCLAttackType.Dark;
                             break;
                     }
-                    switch (eC.attackTarget) {
-                        case None:
-                            ct = PCLCardTarget.None;
-                            break;
-                        case Self:
-                            ct = PCLCardTarget.Self;
-                            break;
-                        case ALL:
-                            ct = PCLCardTarget.AoE;
-                            break;
-                        case Random:
-                            ct = PCLCardTarget.Random;
-                            break;
-                    }
-                    SetAttackType(at, ct);
+                    SetAttackType(at);
                 }
+
+                PCLCardTarget ct = PCLCardTarget.Normal;
+                switch (eC.attackTarget) {
+                    case None:
+                        ct = PCLCardTarget.None;
+                        break;
+                    case Self:
+                        ct = PCLCardTarget.Self;
+                        break;
+                    case ALL:
+                        ct = PCLCardTarget.AoE;
+                        break;
+                    case Random:
+                        ct = PCLCardTarget.Random;
+                        break;
+                }
+                SetCardTarget( ct);
             }
             else {
                 AbstractCard upgradedCopy = original.makeStatEquivalentCopy();
@@ -82,7 +84,7 @@ public class ReplacementCardBuilder extends PCLCardBuilder
                 SetUpgrades(upgradedCopy.baseDamage - original.baseDamage, upgradedCopy.baseBlock - original.baseBlock, upgradedCopy.baseMagicNumber - original.baseMagicNumber, 0, 0);
                 SetCost(original.cost, upgradedCopy.cost - original.cost);
                 if (original.type.equals(AbstractCard.CardType.ATTACK)) {
-                    SetAttackType(PCLAttackType.Normal, original.target == AbstractCard.CardTarget.ALL_ENEMY ? PCLCardTarget.AoE : PCLCardTarget.Normal);
+                    SetAttackType(PCLAttackType.Normal);
                 }
 
                 GetAffinitiesFromCard(original);
@@ -105,9 +107,23 @@ public class ReplacementCardBuilder extends PCLCardBuilder
             SetPortrait(_portrait.Get(original));
             SetBlockInfo(__ -> null);
             SetDamageInfo(__ -> null);
+            PCLCardTarget ct = PCLCardTarget.Normal;
+            switch (original.target) {
+                case NONE:
+                    ct = PCLCardTarget.None;
+                    break;
+                case SELF:
+                    ct = PCLCardTarget.Self;
+                    break;
+                case ALL:
+                case ALL_ENEMY:
+                    ct = PCLCardTarget.AoE;
+                    break;
+            }
+            SetCardTarget( ct);
         }
 
-        SetProperties(original.type, original.rarity, original.target);
+        SetProperties(original.type, original.rarity);
         SetText(name, modifyText ? GetModifiedText(text) : text, null);
         SetOnUse((p, m, i) -> this.original.use(p, m));
     }

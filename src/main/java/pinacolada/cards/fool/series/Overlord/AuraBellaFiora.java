@@ -40,7 +40,7 @@ public class AuraBellaFiora extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+
         PCLActions.Bottom.Motivate().SetFilter(PCLGameUtilities::IsHighCost);
         PCLActions.Bottom.DiscardFromHand(name, 1, false)
         .SetOptions(true, true, true).AddCallback(cards -> {

@@ -13,6 +13,11 @@ public class BaseEffect_Stun extends BaseEffect
 {
     public static final String ID = Register(BaseEffect_Stun.class);
 
+    public BaseEffect_Stun()
+    {
+        this( 0);
+    }
+
     public BaseEffect_Stun(int amount)
     {
         super(ID, null, PCLCardTarget.Normal, amount);

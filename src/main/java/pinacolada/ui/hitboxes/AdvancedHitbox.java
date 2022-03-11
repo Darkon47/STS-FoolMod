@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.Hitbox;
 import com.megacrit.cardcrawl.helpers.input.InputHelper;
+import eatyourbeets.ui.GUIElement;
 import eatyourbeets.utilities.Mathf;
 import pinacolada.resources.PGR;
 
@@ -17,7 +18,7 @@ public class AdvancedHitbox extends Hitbox
     public float lerpSpeed;
     public float target_cX;
     public float target_cY;
-    public boolean isDropdownCompatbile;
+    public GUIElement parentElement;
     public boolean isPopupCompatible;
 
     public AdvancedHitbox(Hitbox hb)
@@ -59,14 +60,14 @@ public class AdvancedHitbox extends Hitbox
         return this;
     }
 
-    public AdvancedHitbox SetIsDropdownCompatible(boolean value) {
-        this.isDropdownCompatbile = value;
+    public AdvancedHitbox SetIsPopupCompatible(boolean value) {
+        this.isPopupCompatible = value;
 
         return this;
     }
 
-    public AdvancedHitbox SetIsPopupCompatible(boolean value) {
-        this.isPopupCompatible = value;
+    public AdvancedHitbox SetParentElement(GUIElement element) {
+        this.parentElement = element;
 
         return this;
     }
@@ -100,7 +101,7 @@ public class AdvancedHitbox extends Hitbox
 
             float actualMX;
             float actualMY;
-            if (PGR.UI.IsDropdownOpen && !isDropdownCompatbile) {
+            if (!PGR.UI.IsInActiveElement(this)) {
                 this.hovered = false;
                 return;
             }

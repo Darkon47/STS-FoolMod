@@ -36,7 +36,7 @@ public class Wrath extends FoolCard
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
         PCLActions.Bottom.DealCardDamageToAll(this, AbstractGameAction.AttackEffect.BLUNT_HEAVY);
-        PCLActions.Bottom.GainBlock(block);
+        
         PCLActions.Bottom.StackPower(new WrathPower(p, secondaryValue));
 
     }

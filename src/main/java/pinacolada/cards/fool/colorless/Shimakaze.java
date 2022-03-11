@@ -41,7 +41,7 @@ public class Shimakaze extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+
         PCLActions.Bottom.DealCardDamage(this, m, AttackEffects.BLUNT_LIGHT);
 
         PCLActions.Bottom.AddAffinity(PCLJUtils.Random(PCLAffinity.Extended()), secondaryValue);

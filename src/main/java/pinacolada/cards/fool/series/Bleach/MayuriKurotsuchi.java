@@ -36,7 +36,7 @@ public class MayuriKurotsuchi extends FoolCard {
 
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info) {
-        PCLActions.Bottom.GainBlock(block);
+
         PCLActions.Bottom.ApplyPoison(TargetHelper.Normal(m), GetXValue())
                 .AddCallback(m, (enemy, cards) -> {
                     if (PCLGameUtilities.GetPowerAmount(enemy, PoisonPower.POWER_ID) >= POISON_THRESHOLD && info.TryActivateLimited()) {

@@ -42,7 +42,7 @@ public class ShizuruNakatsu extends FoolCard
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
         PCLActions.Bottom.DealCardDamageToAll(this, AttackEffects.GUNSHOT);
-        PCLActions.Bottom.GainBlock(block);
+        
 
         PCLActions.Bottom.DiscardFromHand(name, magicNumber, false)
                 .ShowEffect(true, true)

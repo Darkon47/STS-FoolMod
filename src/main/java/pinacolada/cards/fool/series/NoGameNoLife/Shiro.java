@@ -44,7 +44,7 @@ public class Shiro extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+
         PCLActions.Bottom.GainTemporaryHP(magicNumber);
         PCLActions.Bottom.Scry(secondaryValue).AddCallback(
                 cards -> {

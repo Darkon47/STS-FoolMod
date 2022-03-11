@@ -31,7 +31,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import static pinacolada.ui.seriesSelection.PCLLoadoutsContainer.MINIMUM_SERIES;
+import static pinacolada.ui.characterSelection.PCLLoadoutsContainer.MINIMUM_SERIES;
 
 public abstract class PCLEnchantableRelic extends PCLRelic implements OnReceiveRewardsListener // implements CustomSavable<Integer> NOTE: I do not implement this here because CustomSavable patch does not check abstract classes
 {

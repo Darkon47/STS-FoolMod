@@ -17,11 +17,11 @@ public enum PCLAttackType
     Normal(false, false, 0),
     Air(false, true, 0, StonedPower.POWER_ID),
     Brutal(false, false, 0),
-    Dark(false, true, 60,ElectrifiedPower.POWER_ID),
-    Earth(false, true, 60,SwirledPower.POWER_ID),
-    Electric(false, true, 60,RippledPower.POWER_ID),
-    Fire(false, true, 60,FreezingPower.POWER_ID),
-    Ice(false, true, 60,BurningPower.POWER_ID),
+    Dark(false, true, 60, ElectrifiedPower.POWER_ID),
+    Earth(false, true, 60, SwirledPower.POWER_ID),
+    Electric(false, true, 60, RippledPower.POWER_ID),
+    Fire(false, true, 60, FreezingPower.POWER_ID),
+    Ice(false, true, 60, BurningPower.POWER_ID),
     Piercing(true, true, 0),
     Ranged(false, true, 0);
 

@@ -31,7 +31,7 @@ public class NiaHonjou extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+        
         if (info.TryActivateSemiLimited()) {
             PCLActions.Bottom.StackPower(new NiaHonjouPower(p, magicNumber));
         }

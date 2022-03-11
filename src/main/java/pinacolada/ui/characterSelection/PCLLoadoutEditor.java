@@ -304,7 +304,7 @@ public class PCLLoadoutEditor extends AbstractScreen
         {
             seriesButton.TryUpdate();
 
-            if (!PGR.UI.IsDropdownOpen) {
+            if (!PGR.UI.DoesActiveElementExist()) {
                 for (int i = 0; i < preset_buttons.length; i++)
                 {
                     final GUI_Button button = preset_buttons[i];

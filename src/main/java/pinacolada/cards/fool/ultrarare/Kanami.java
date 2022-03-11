@@ -13,6 +13,7 @@ import pinacolada.effects.AttackEffects;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameEffects;
 
+// TODO Rewrite to use alt forms
 public class Kanami extends FoolCard_UltraRare
 {
     public static final PCLCardData DATA = Register(Kanami.class)
@@ -34,6 +35,17 @@ public class Kanami extends FoolCard_UltraRare
 
         SetCooldown(2, 0, this::OnCooldownCompleted);
         SetHaste(true);
+    }
+
+    @Override
+    public int SetForm(Integer form, int timesUpgraded) {
+        if (form == 1) {
+            magicNumber = 10;
+        }
+        else {
+            magicNumber = 2;
+        }
+        return super.SetForm(form, timesUpgraded);
     }
 
     @Override

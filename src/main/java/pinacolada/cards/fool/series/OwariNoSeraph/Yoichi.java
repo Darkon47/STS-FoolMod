@@ -22,7 +22,7 @@ public class Yoichi extends FoolCard
         super(DATA);
 
         Initialize(0,1, 1);
-        SetUpgrade(0,1, 1);
+        SetUpgrade(0,0, 1);
 
         SetAffinity_Green(1, 0, 1);
     }
@@ -36,7 +36,7 @@ public class Yoichi extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+        
     }
 
     @Override

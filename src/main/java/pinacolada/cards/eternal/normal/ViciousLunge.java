@@ -44,7 +44,7 @@ public class ViciousLunge extends EternalCard
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
         PCLActions.Bottom.DealCardDamage(this, m, AttackEffects.SLASH_HEAVY);
-        if (IsMismatching(info)) {
+        if (!(info.IsSynergizing)) {
             PCLActions.Bottom.TakeDamage(GetXValue(), AttackEffects.BLUNT_HEAVY);
         }
     }

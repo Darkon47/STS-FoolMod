@@ -44,7 +44,7 @@ public class Rena extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+        
         PCLActions.Bottom.EvokeOrb(1)
                 .SetFilter(o -> Air.ORB_ID.equals(o.ID))
                 .AddCallback(orbs ->

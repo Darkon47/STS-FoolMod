@@ -43,11 +43,12 @@ public class GUI_Dropdown<T> extends GUIElement
     protected FuncT1<Color, List<T>> colorFunctionButton;
     protected FuncT1<String, List<T>> labelFunctionButton;
     protected FuncT1<String, T> labelFunction;
-    protected GUI_Label header; // TODO
+    protected GUI_Label header;
     protected GUI_VerticalScrollBar scrollBar;
     protected boolean isOpen;
     protected boolean rowsHaveBeenPositioned;
     protected boolean shouldSnapCursorToSelectedIndex;
+    protected boolean isOptionSmartText;
     protected final GUI_Button button;
     protected final GUI_Button clearButton;
     protected final TreeSet<Integer> currentIndices = new TreeSet<>();
@@ -59,7 +60,7 @@ public class GUI_Dropdown<T> extends GUIElement
     public boolean canAutosizeButton;
     public boolean isMultiSelect;
     public final AdvancedHitbox hb;
-    public final ArrayList<DropdownRow<T>> rows = new ArrayList<>();
+    public ArrayList<DropdownRow<T>> rows = new ArrayList<>();
 
     public GUI_Dropdown(AdvancedHitbox hb) {
         this(hb, Object::toString, new ArrayList<>(), EYBFontHelper.CardTooltipFont, DEFAULT_MAX_ROWS, false);
@@ -75,7 +76,9 @@ public class GUI_Dropdown<T> extends GUIElement
 
     public GUI_Dropdown(AdvancedHitbox hb, FuncT1<String, T> labelFunction, ArrayList <T> options, BitmapFont font, int maxRows, boolean canAutosizeButton) {
         this.hb = hb;
-        this.hb.SetIsPopupCompatible(true).SetIsDropdownCompatible(true);
+        this.hb
+                .SetIsPopupCompatible(true)
+                .SetParentElement(this);
         this.font = font;
         this.fontScale = 1;
         this.maxRows = maxRows;
@@ -84,14 +87,16 @@ public class GUI_Dropdown<T> extends GUIElement
 
         this.rowHeight = CalculateRowHeight();
         for (int i = 0; i < options.size(); i++) {
-            rows.add(new DropdownRow<>(new RelativeHitbox(hb, hb.width, this.rowHeight, 0f, 0, false)
+            rows.add(new DropdownRow<>(this,
+                    new RelativeHitbox(hb, hb.width, this.rowHeight, 0f, 0, false)
                     .SetIsPopupCompatible(true)
-                    .SetIsDropdownCompatible(true), options.get(i), labelFunction, font, fontScale, i).SetIsMultiSelect(isMultiSelect));
+                    .SetParentElement(this), options.get(i), labelFunction, font, fontScale, i).SetIsMultiSelect(isMultiSelect));
         }
         this.scrollBar = new GUI_VerticalScrollBar(
                 new AdvancedHitbox(hb.x + hb.width - SCROLLBAR_PADDING, hb.y + CalculateScrollbarOffset(), SCROLLBAR_WIDTH,rowHeight * this.visibleRowCount())
-                .SetIsPopupCompatible(true))
-        .SetOnScroll(this::OnScroll);
+                .SetIsPopupCompatible(true)
+                .SetParentElement(this))
+                .SetOnScroll(this::OnScroll);
         this.button = new GUI_Button(PGR.PCL.Images.RectangularButton.Texture(), this.hb)
                 .SetColor(Color.GRAY)
                 .SetFont(font, fontScale)
@@ -100,7 +105,7 @@ public class GUI_Dropdown<T> extends GUIElement
         //noinspection SuspiciousNameCombination
         this.clearButton = new GUI_Button(PGR.PCL.Images.X.Texture(), new AdvancedHitbox(hb.x + hb.width, hb.y, hb.height, hb.height)
                 .SetIsPopupCompatible(true)
-                .SetIsDropdownCompatible(true))
+                .SetParentElement(this))
                 .SetOnClick(() -> {SetSelectionIndices(new int[] {}, true);});
         this.header = new GUI_Label(EYBFontHelper.CardTitleFont_Small, new AdvancedHitbox(hb.x, hb.y + hb.height, hb.width, hb.height)).SetAlignment(0.5f,0.0f,false);
         this.header.SetActive(false);
@@ -135,7 +140,28 @@ public class GUI_Dropdown<T> extends GUIElement
         return this;
     }
 
-    public GUI_Dropdown<T> SetItems(T[] options) {
+    public GUI_Dropdown<T> AddItems(T... options) {
+        return AddItems(Arrays.asList(options));
+    }
+
+    public GUI_Dropdown<T> AddItems(List<T> options) {
+        int initialSize = rows.size();
+        for (int i = 0; i < options.size(); i++) {
+            rows.add(new DropdownRow<T>(
+                    this,
+                    new RelativeHitbox(hb, hb.width, this.rowHeight, 0f, 0, false)
+                            .SetIsPopupCompatible(true)
+                            .SetParentElement(this)
+                    , options.get(i), labelFunction, font, fontScale, i + initialSize)
+                    .SetLabelFunction(labelFunction, isOptionSmartText)
+                    .SetIsMultiSelect(isMultiSelect));
+        }
+        Autosize();
+
+        return this;
+    }
+
+    public GUI_Dropdown<T> SetItems(T... options) {
         return SetItems(Arrays.asList(options));
     }
 
@@ -143,9 +169,14 @@ public class GUI_Dropdown<T> extends GUIElement
         this.currentIndices.clear();
         this.rows.clear();
         for (int i = 0; i < options.size(); i++) {
-            rows.add(new DropdownRow<T>(new RelativeHitbox(hb, hb.width, this.rowHeight, 0f, 0, false)
-                    .SetIsPopupCompatible(true).SetIsDropdownCompatible(true)
-                    , options.get(i), labelFunction, font, fontScale, i).SetIsMultiSelect(isMultiSelect));
+            rows.add(new DropdownRow<T>(
+                    this,
+                    new RelativeHitbox(hb, hb.width, this.rowHeight, 0f, 0, false)
+                    .SetIsPopupCompatible(true)
+                    .SetParentElement(this)
+                    , options.get(i), labelFunction, font, fontScale, i)
+                            .SetLabelFunction(labelFunction, isOptionSmartText)
+                    .SetIsMultiSelect(isMultiSelect));
         }
         Autosize();
 
@@ -171,6 +202,7 @@ public class GUI_Dropdown<T> extends GUIElement
 
     public GUI_Dropdown<T> SetLabelFunctionForOption(FuncT1<String, T> labelFunction, boolean isSmartText) {
         this.labelFunction = labelFunction;
+        this.isOptionSmartText = isSmartText;
         for (DropdownRow<T> row : rows) {
             row.SetLabelFunction(labelFunction, isSmartText);
         }
@@ -234,10 +266,12 @@ public class GUI_Dropdown<T> extends GUIElement
 
     public GUI_Dropdown<T> SetSelection(T selection, boolean shouldInvoke) {
         this.currentIndices.clear();
-        for (int i = 0; i < rows.size(); i++) {
-            if (selection.equals(rows.get(i).item)) {
-                currentIndices.add(i);
-                break;
+        if (selection != null) {
+            for (int i = 0; i < rows.size(); i++) {
+                if (selection.equals(rows.get(i).item)) {
+                    currentIndices.add(i);
+                    break;
+                }
             }
         }
         updateForSelection(shouldInvoke);
@@ -245,11 +279,13 @@ public class GUI_Dropdown<T> extends GUIElement
     }
 
 
-    public GUI_Dropdown<T> SetSelection(ArrayList<T> selection, boolean shouldInvoke) {
+    public GUI_Dropdown<T> SetSelection(List<T> selection, boolean shouldInvoke) {
         this.currentIndices.clear();
-        for (int i = 0; i < rows.size(); i++) {
-            if (selection.contains(rows.get(i).item)) {
-                currentIndices.add(i);
+        if (selection != null) {
+            for (int i = 0; i < rows.size(); i++) {
+                if (selection.contains(rows.get(i).item)) {
+                    currentIndices.add(i);
+                }
             }
         }
         updateForSelection(shouldInvoke);
@@ -332,17 +368,17 @@ public class GUI_Dropdown<T> extends GUIElement
     }
 
     public int GetCurrentIndex() {
-        return currentIndices.isEmpty() ? 0 : currentIndices.first();
+        return currentIndices.isEmpty() || currentIndices.first() >= this.rows.size() ? 0 : currentIndices.first();
     }
 
     public void OpenOrCloseMenu() {
         if (this.isOpen) {
-            PGR.UI.IsDropdownOpen = false;
+            PGR.UI.TryToggleActiveElement(this, false);
             CardCrawlGame.isPopupOpen = false;
             this.isOpen = false;
         }
         else {
-            PGR.UI.IsDropdownOpen = true;
+            PGR.UI.TryToggleActiveElement(this, true);
             CardCrawlGame.isPopupOpen = true;
             this.isOpen = true;
             this.updateNonMouseStartPosition();
@@ -371,20 +407,20 @@ public class GUI_Dropdown<T> extends GUIElement
                 boolean isHoveringOver = this.hb.hovered;
                 this.updateNonMouseInput();
 
-                if (this.isMultiSelect) {
-                    isHoveringOver = isHoveringOver | this.clearButton.hb.hovered;
+                if (this.isMultiSelect && PGR.UI.TryHover(this.clearButton.hb)) {
+                    isHoveringOver = true;
                 }
 
                 for(int i = 0; i < rows.size(); ++i) {
                     if (this.rows.get(i).update(i >= topVisibleRowIndex && i < topVisibleRowIndex + visibleRowCount(), currentIndices.contains(i))) {
-                        this.setSelectedIndex(i);
+                        this.setSelectedIndex(this.rows.get(i).index);
                         isHoveringOver = true;
                         CardCrawlGame.sound.play("UI_CLICK_2");
                         if (!this.isMultiSelect) {
                             OpenOrCloseMenu();
                         }
                     }
-                    else if (this.rows.get(i).hb.hovered) {
+                    else if (PGR.UI.TryHover(this.rows.get(i).hb)) {
                         isHoveringOver = true;
                     }
                 }
@@ -486,7 +522,7 @@ public class GUI_Dropdown<T> extends GUIElement
             this.clearButton.Render(sb);
         }
         if (this.rows.size() > 0) {
-            RenderRowContent(sb);
+            PGR.UI.AddPostRender(this::RenderRowContent);
             RenderArrows(sb);
         }
     }
@@ -520,7 +556,9 @@ public class GUI_Dropdown<T> extends GUIElement
 
     protected void layoutRowsBelow(float originX, float originY) {
         for(int i = 0; i < this.visibleRowCount(); ++i) {
-            this.rows.get(this.topVisibleRowIndex + i).move(originX, this.yPositionForRowBelow(originY, i + 1));
+            if (this.topVisibleRowIndex + i < this.rows.size()) {
+                this.rows.get(this.topVisibleRowIndex + i).move(originX, this.yPositionForRowBelow(originY, i + 1));
+            }
         }
         this.rowsHaveBeenPositioned = true;
     }
@@ -557,7 +595,7 @@ public class GUI_Dropdown<T> extends GUIElement
         }
         else if (!currentIndices.contains(i)) {
             currentIndices.clear();
-            currentIndices.add(Math.max(0, Math.min(i, this.rows.size() - 1)));
+            currentIndices.add(i);
         }
 
         updateForSelection(true);
@@ -596,16 +634,16 @@ public class GUI_Dropdown<T> extends GUIElement
         return (int)((float)maxRow * percent);
     }
 
-    private int visibleRowCount() {
+    protected int visibleRowCount() {
         return Math.min(this.rows.size(), this.maxRows);
     }
 
-    private float yPositionForRowBelow(float originY, int rowIndex) {
+    protected float yPositionForRowBelow(float originY, int rowIndex) {
         float extraHeight = rowIndex > 0 ? BORDER_SIZE : 0.0F;
         return originY - rowHeight * (float)rowIndex - extraHeight;
     }
 
-    private static class DropdownRow<T> {
+    protected static class DropdownRow<T> {
         T item;
         AdvancedHitbox hb;
         GUI_Image checkbox;
@@ -615,8 +653,8 @@ public class GUI_Dropdown<T> extends GUIElement
         boolean isSmartText;
         boolean isMultiSelect;
 
-        DropdownRow(AdvancedHitbox hb, T item, FuncT1<String, T> labelFunction, BitmapFont font, float fontScale, int index) {
-            this.hb = new RelativeHitbox(hb, 1f, 1f, 0f, 0f).SetIsPopupCompatible(true).SetIsDropdownCompatible(true);
+        DropdownRow(GUI_Dropdown<T> dr, AdvancedHitbox hb, T item, FuncT1<String, T> labelFunction, BitmapFont font, float fontScale, int index) {
+            this.hb = new RelativeHitbox(hb, 1f, 1f, 0f, 0f).SetIsPopupCompatible(true).SetParentElement(dr);
             this.item = item;
             this.index = index;
             this.label = new GUI_Label(font, this.hb).SetFont(font, fontScale).SetText(labelFunction.Invoke(item)).SetAlignment(0.5f, 0f, isSmartText);
@@ -625,12 +663,7 @@ public class GUI_Dropdown<T> extends GUIElement
 
         public DropdownRow<T> SetIsMultiSelect(boolean value) {
             isMultiSelect = value;
-            if (isMultiSelect) {
-                this.label.SetAlignment(0.5f, 0.22f, isSmartText);
-            }
-            else {
-                this.label.SetAlignment(0.5f, 0.1f, isSmartText);
-            }
+            this.label.SetAlignment(isSmartText ? 1f : 0.5f, (isMultiSelect ? 0.22f : 0.1f) * (isSmartText ? 0.5f : 1f), isSmartText);
             return this;
         }
 
@@ -639,6 +672,10 @@ public class GUI_Dropdown<T> extends GUIElement
             this.label.SetSmartText(isSmartText);
             this.label.SetText(labelFunction.Invoke(item));
             return this;
+        }
+
+        public String GetText() {
+            return this.label.text;
         }
 
         public void move(float x, float y) {
@@ -667,13 +704,12 @@ public class GUI_Dropdown<T> extends GUIElement
                 this.checkbox.SetTexture(ImageMaster.COLOR_TAB_BOX_UNTICKED);
             }
 
-            if (!this.hb.clicked && (!this.hb.hovered || !CInputActionSet.select.isJustPressed())) {
-                return false;
-            } else {
+            if ((this.hb.clicked) || (this.hb.hovered && CInputActionSet.select.isJustPressed())) {
                 this.hb.clicked = false;
                 this.checkbox.SetTexture(isSelected ? ImageMaster.COLOR_TAB_BOX_UNTICKED : ImageMaster.COLOR_TAB_BOX_TICKED);
                 return true;
             }
+            return false;
         }
 
         private void renderRow(SpriteBatch sb) {

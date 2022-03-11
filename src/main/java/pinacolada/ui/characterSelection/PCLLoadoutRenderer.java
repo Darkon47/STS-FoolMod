@@ -45,6 +45,7 @@ public class PCLLoadoutRenderer extends GUIElement
 
     protected GUI_Button SeriesButton;
     protected GUI_Button LoadoutEditorButton;
+    protected GUI_Button CardEditorButton;
     protected GUI_Label StartingCardsLabel;
     protected GUI_Label AscensionGlyphsLabel;
     protected GUI_TextBox StartingCardsListLabel;
@@ -95,6 +96,11 @@ public class PCLLoadoutRenderer extends GUIElement
                 .SetOnRightClick(this::ChangePreset)
                 .SetOnClick(this::OpenLoadoutEditor);
 
+        CardEditorButton = new GUI_Button(PGR.PCL.Images.SwapCards.Texture(), new AdvancedHitbox(0, 0, Scale(64), Scale(64)))
+                .SetPosition(LoadoutEditorButton.hb.x + LoadoutEditorButton.hb.width + Scale(40), StartingCardsListLabel.hb.y + Scale(192)).SetText("")
+                .SetTooltip(PGR.PCL.Strings.CharSelect.CardEditor, PGR.PCL.Strings.CharSelect.CardEditorInfo)
+                .SetOnClick(this::OpenCardEditor);
+
         AscensionGlyphsLabel = new GUI_Label(EYBFontHelper.CardTitleFont_Small,
                 new AdvancedHitbox(POS_X * 6, POS_Y, leftTextWidth, 50f * Settings.scale))
                 .SetColor(Settings.GOLD_COLOR)
@@ -121,6 +127,14 @@ public class PCLLoadoutRenderer extends GUIElement
         if (characterOption != null)
         {
             PGR.UI.SeriesSelection.Open(characterOption, () -> Refresh(selectScreen, characterOption));
+        }
+    }
+
+    private void OpenCardEditor()
+    {
+        if (characterOption != null)
+        {
+            PGR.UI.CustomCards.Open(characterOption, () -> Refresh(selectScreen, characterOption));
         }
     }
 
@@ -257,6 +271,7 @@ public class PCLLoadoutRenderer extends GUIElement
     {
         SeriesButton.TryUpdate();
         LoadoutEditorButton.TryUpdate();
+        CardEditorButton.TryUpdate();
         StartingCardsLabel.Update();
         StartingCardsListLabel.Update();
         AscensionGlyphsLabel.Update();
@@ -269,6 +284,7 @@ public class PCLLoadoutRenderer extends GUIElement
     {
         SeriesButton.TryRender(sb);
         LoadoutEditorButton.TryRender(sb);
+        CardEditorButton.TryRender(sb);
         StartingCardsLabel.Render(sb);
         StartingCardsListLabel.Render(sb);
         AscensionGlyphsLabel.Render(sb);

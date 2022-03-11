@@ -33,7 +33,7 @@ public class HousakiMinori extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+        
         cooldown.ProgressCooldownAndTrigger(info.GetPreviousCardID().equals(HousakiTohya.DATA.ID) ? 3 : 1, m);
     }
 

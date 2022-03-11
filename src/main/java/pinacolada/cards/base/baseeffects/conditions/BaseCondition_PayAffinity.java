@@ -13,10 +13,11 @@ import pinacolada.utilities.PCLJUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class BaseCondition_PayAffinity extends BaseCondition
 {
-    public static final String ID = Register(BaseCondition_PayAffinity.class);
+    public static final String ID = Register(BaseCondition_PayAffinity.class, PGR.Enums.Cards.THE_FOOL);
 
     protected ArrayList<PCLAffinity> affinities;
 
@@ -26,10 +27,33 @@ public class BaseCondition_PayAffinity extends BaseCondition
         this.affinities = ParseAffinitiesFromEntityID();
     }
 
+    public BaseCondition_PayAffinity()
+    {
+        super(ID, null, PCLCardTarget.None, 0);
+        this.affinities = new ArrayList<>();
+    }
+
     public BaseCondition_PayAffinity(int amount, PCLAffinity... affinities)
     {
         super(ID, JoinEntityIDs(affinities, affinity -> affinity.Name), PCLCardTarget.None, amount);
         this.affinities = new ArrayList<>(Arrays.asList(affinities));
+    }
+
+    public BaseCondition_PayAffinity(int amount, List<PCLAffinity> affinities)
+    {
+        super(ID, JoinEntityIDs(affinities, affinity -> affinity.Name), PCLCardTarget.None, amount);
+        this.affinities = new ArrayList<>(affinities);
+    }
+
+    public BaseCondition_PayAffinity Set(PCLAffinity... affinities) {
+        return Set(Arrays.asList(affinities));
+    }
+
+    public BaseCondition_PayAffinity Set(List<PCLAffinity> affinities) {
+        this.affinities.clear();
+        this.affinities.addAll(affinities);
+        this.entityID = JoinEntityIDs(affinities, af -> af.Name);
+        return this;
     }
 
     public BaseCondition_PayAffinity Add(PCLAffinity newAf) {

@@ -2,6 +2,7 @@ package pinacolada.cards.fool.series.OwariNoSeraph;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import eatyourbeets.powers.CombatStats;
 import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.utilities.PCLActions;
@@ -20,9 +21,9 @@ public class KimizugiShiho extends FoolCard
         Initialize(0,2, 1,1);
         SetUpgrade(0,0, 0, 0);
 
-        SetAffinity_Red(1, 0, 0);
         SetAffinity_Green(1, 0, 0);
         SetAffinity_Blue(1, 0, 1);
+        SetAffinity_Orange(1, 0, 0);
 
         SetCostUpgrade(-1);
     }
@@ -32,14 +33,14 @@ public class KimizugiShiho extends FoolCard
     {
         super.triggerOnManualDiscard();
 
-        PCLActions.Bottom.Cycle(name, secondaryValue);
+        if (CombatStats.TryActivateSemiLimited(cardID)) {
+            PCLActions.Bottom.Cycle(name, secondaryValue);
+        }
     }
 
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
-
         PCLActions.Bottom.SelectFromHand(name, 1, false)
                 .SetOptions(true, false, false)
                 .SetFilter(c -> c instanceof PCLCard && ((PCLCard) c).series != null)
@@ -53,7 +54,7 @@ public class KimizugiShiho extends FoolCard
                                 .SetFilter(cards.get(0), PCLGameUtilities::IsSameSeries);
                     }
 
-                    if (info.IsSynergizing) {
+                    if (info.IsSynergizing && CombatStats.TryActivateSemiLimited(cardID)) {
                         PCLActions.Bottom.Cycle(name, secondaryValue);
                     }
                 });

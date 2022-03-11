@@ -52,7 +52,7 @@ public class SilverFang extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+
         BlockModifiers.For(this).Set(0);
 
         if ((info.IsSynergizing || TrySpendAffinity(PCLAffinity.Red)) && info.TryActivateSemiLimited())

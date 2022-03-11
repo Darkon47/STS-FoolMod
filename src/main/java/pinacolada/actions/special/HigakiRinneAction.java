@@ -158,7 +158,7 @@ public class HigakiRinneAction extends EYBAction
         AbstractMonster m = PCLGameUtilities.GetRandomEnemy(true);
         if (m != null)
         {
-            PCLActions.Bottom.StackPower(player, new SilencedPower(m, 1));
+            PCLActions.Bottom.StackPower(player, new SilencedPower(m, 1)).IgnoreArtifact(true);
         }
     }
 

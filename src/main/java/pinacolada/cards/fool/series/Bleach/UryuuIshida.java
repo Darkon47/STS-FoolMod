@@ -11,7 +11,6 @@ import pinacolada.cards.base.PCLAttackType;
 import pinacolada.cards.base.PCLCardData;
 import pinacolada.cards.fool.FoolCard;
 import pinacolada.effects.AttackEffects;
-import pinacolada.powers.common.SupportDamagePower;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 
@@ -21,8 +20,8 @@ public class UryuuIshida extends FoolCard {
     public UryuuIshida() {
         super(DATA);
 
-        Initialize(5, 0, 1, 2);
-        SetUpgrade(2, 0, 1);
+        Initialize(4, 1, 1, 1);
+        SetUpgrade(2, 1, 1);
         SetAffinity_Green(1, 0, 0);
         SetAffinity_Blue(1, 0, 1);
         SetAffinity_Silver(1, 0 ,0);
@@ -32,7 +31,7 @@ public class UryuuIshida extends FoolCard {
     @Override
     public void triggerOnManualDiscard() {
         if (CombatStats.TryActivateSemiLimited(cardID)) {
-            PCLActions.Bottom.StackPower(new SupportDamagePower(player, secondaryValue));
+            PCLActions.Bottom.GainSupportDamage(secondaryValue);
         }
     }
 
@@ -42,6 +41,10 @@ public class UryuuIshida extends FoolCard {
 
         if (IsStarter()) {
             PCLActions.Bottom.Callback(m, (enemy, __) -> TransferWeakVulnerable(enemy));
+        }
+
+        if (info.IsSynergizing && info.TryActivateSemiLimited()) {
+            PCLActions.Bottom.GainSupportDamage(secondaryValue);
         }
     }
 

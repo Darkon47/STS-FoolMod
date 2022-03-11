@@ -45,9 +45,14 @@ public class PCLCardAffinities
         Initialize(affinities);
     }
 
+    public PCLCardAffinities Initialize(PCLAffinity affinity, int base, int upgrade, int scaling)
+    {
+        return Initialize(affinity, base, upgrade, scaling, GetRequirement(affinity));
+    }
+
     public PCLCardAffinities Initialize(PCLAffinity affinity, int base, int upgrade, int scaling, int requirement)
     {
-        if (base > 0 || upgrade > 0 || scaling > 0 || requirement > 0)
+        if (base > 0 || upgrade > 0 || scaling > 0 || requirement > 0 || Get(affinity, false) != null)
         {
             PCLCardAffinity a = Set(affinity, base);
             a.upgrade = upgrade;
@@ -115,6 +120,25 @@ public class PCLCardAffinities
         }
 
         this.UpdateSortedList();
+        return this;
+    }
+
+    public PCLCardAffinities Initialize(Integer[] base, Integer[] upgrade, Integer[] scaling, Integer[] requirement)
+    {
+        List = new PCLCardAffinity[TOTAL_AFFINITIES];
+        for (int i = 0; i < PCLAffinity.Extended().length; i++) {
+            PCLCardAffinity t = new PCLCardAffinity(PCLAffinity.All()[i], base[i]);
+            t.scaling = scaling[i];
+            t.upgrade = upgrade[i];
+            t.requirement = requirement[i];
+            List[t.type.ID] = t;
+        }
+
+        Star = new PCLCardAffinity(PCLAffinity.Star, base[TOTAL_AFFINITIES]);
+        Star.scaling = scaling[TOTAL_AFFINITIES];
+        Star.upgrade = upgrade[TOTAL_AFFINITIES];
+        Star.requirement = requirement[TOTAL_AFFINITIES];
+
         return this;
     }
 
@@ -371,6 +395,38 @@ public class PCLCardAffinities
 
     public PCLAffinity[] GetAffinitiesAsArray() {
         return GetAffinities().toArray(new PCLAffinity[] {});
+    }
+
+    public Integer[] GetAffinityLevelsAsArray() {
+        final Integer[] values = new Integer[PCLAffinity.All().length];
+        for (int i = 0; i < values.length; i++) {
+            values[i] = GetLevel(PCLAffinity.All()[i]);
+        }
+        return values;
+    }
+
+    public Integer[] GetAffinityUpgradesAsArray() {
+        final Integer[] values = new Integer[PCLAffinity.All().length];
+        for (int i = 0; i < values.length; i++) {
+            values[i] = GetUpgrade(PCLAffinity.All()[i]);
+        }
+        return values;
+    }
+
+    public Integer[] GetAffinityScalingsAsArray() {
+        final Integer[] values = new Integer[PCLAffinity.All().length];
+        for (int i = 0; i < values.length; i++) {
+            values[i] = GetScaling(PCLAffinity.All()[i], false);
+        }
+        return values;
+    }
+
+    public Integer[] GetAffinityRequirementsAsArray() {
+        final Integer[] values = new Integer[PCLAffinity.All().length];
+        for (int i = 0; i < values.length; i++) {
+            values[i] = GetRequirement(PCLAffinity.All()[i]);
+        }
+        return values;
     }
 
     public ArrayList<PCLCardAffinity> GetCardAffinities(boolean filterLevelZero) {

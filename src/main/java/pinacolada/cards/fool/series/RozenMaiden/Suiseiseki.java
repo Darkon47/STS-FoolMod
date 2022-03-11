@@ -42,7 +42,7 @@ public class Suiseiseki extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+
         PCLActions.Bottom.GainTemporaryHP(magicNumber);
 
         Status_Slimed slimed = new Status_Slimed();

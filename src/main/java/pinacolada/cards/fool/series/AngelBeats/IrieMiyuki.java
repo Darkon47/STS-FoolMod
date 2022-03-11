@@ -59,7 +59,7 @@ public class IrieMiyuki extends FoolCard
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
         PCLActions.Bottom.GainWisdom(magicNumber);
-        PCLActions.Bottom.GainBlock(block);
+        
         PCLActions.Bottom.GainTemporaryHP(GetXValue());
 
         if (PCLGameUtilities.GetCurrentMatchCombo() >= MATCH_COMBO && info.TryActivateLimited()) {

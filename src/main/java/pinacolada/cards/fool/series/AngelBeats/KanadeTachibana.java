@@ -13,6 +13,8 @@ import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
 
+import static pinacolada.cards.base.PCLAffinity.MAX_LEVEL;
+
 public class KanadeTachibana extends FoolCard
 {
     public static final PCLCardData DATA = Register(KanadeTachibana.class).SetSkill(1, CardRarity.RARE, PCLCardTarget.None).SetSeriesFromClassPackage();
@@ -44,7 +46,7 @@ public class KanadeTachibana extends FoolCard
         SFX.Play(SFX.HEAL_3);
         PCLActions.Bottom.VFX(VFX.EFX(PCLEffekseerEFX.CURE07, p.hb).SetScale(3f));
 
-        PCLActions.Bottom.GainBlock(block);
+        
         PCLActions.Bottom.GainInvocation(secondaryValue);
         PCLActions.Bottom.FetchFromPile(name, magicNumber, p.discardPile)
         .SetOptions(false, true)
@@ -54,7 +56,7 @@ public class KanadeTachibana extends FoolCard
 
                     for (AbstractCard c : cards) {
                         PCLCard card = PCLJUtils.SafeCast(c, PCLCard.class);
-                        if (card != null && PCLGameUtilities.GetPCLAffinityLevel(card, PCLAffinity.Light, true) < 2)
+                        if (card != null && PCLGameUtilities.GetPCLAffinityLevel(card, PCLAffinity.Light, true) < MAX_LEVEL)
                         {
                             card.affinities.Add(PCLAffinity.Light, 1);
                             card.flash();

@@ -53,7 +53,7 @@ public class Canti extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+        
 
         if (m != null && !PCLGameUtilities.IsAttacking(m.intent) && info.TryActivateSemiLimited()) {
             PCLActions.Delayed.GainPlatedArmor(magicNumber);

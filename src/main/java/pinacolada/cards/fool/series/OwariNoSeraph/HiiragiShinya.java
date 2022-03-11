@@ -37,7 +37,7 @@ public class HiiragiShinya extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+
         PCLActions.Bottom.FetchFromPile(name, 1, p.discardPile)
         .SetMessage(MoveCardsAction.TEXT[0])
         .SetOptions(false, false)

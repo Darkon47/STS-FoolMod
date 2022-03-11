@@ -91,7 +91,20 @@
 			"Monogatari",
 			"Persona",
 			"Hyperdimension Neptunia",
-			"My Dress-Up Darling"
+			"A Certain Magical Index",
+			"Seven Deadly Sins",
+			"Arcane",
+			"Black Bulter",
+			"Cautious Hero",
+			"Darker than Black",
+			"Demon Slayer",
+			"Durarara",
+			"Inuyasha",
+			"Land of the Lustrous",
+			"Mushoku Tensei",
+			"My Hero Academia",
+			"Re:Creators",
+			"Ruroni Kenshin"
 		],
 		"EXTRA_TEXT":
 		[
@@ -200,7 +213,23 @@
 			"{0} {1}",
 			"{0}",
 			"{0} Match Combo",
-			"Not {0}"
+			"Not {0}",
+			"or"
+		]
+	},
+
+	"pcl:CardTarget":
+	{
+		"TEXT":
+		[
+			"None",
+			"All Enemies",
+			"All Characters",
+			"Self",
+			"Single Enemy",
+			"Any Character",
+			"Random Enemy",
+			"Ally"
 		]
 	},
 
@@ -327,7 +356,9 @@
 			"Copy Current To Slot",
 			"Import From Slot",
 			"Export",
-			"Ascension Glyphs:"
+			"Ascension Glyphs:",
+			"Custom Card Editor",
+			"#pLeft-Click to open the editor. NL #pRight-Click to enable or disable #yCustom #yCards."
 		]
 	},
 	
@@ -425,15 +456,40 @@
 			"Series",
 			"Item(s)",
 			"Keywords",
-			"Costs",
-			"Rarities",
-			"Types",
 			"Affinities",
             "Scaling",
             "Amount",
             "Origins",
             "Colors",
             "Results"
+		]
+	},
+
+	"pcl:CardEditor":
+	{
+		"TEXT":
+		[
+			"Attributes",
+			"Effects",
+			"Tags",
+			"Card Value",
+			"New Card",
+			"Damage",
+			"Block",
+			"M Value",
+			"S Value",
+			"Hit Count",
+			"Upgrade",
+			"Card Target",
+			"Attack Type",
+			"Use Base Values",
+			"Condition 1",
+			"Condition 2",
+			"Effect",
+			"Effect Items",
+			"Effect Source",
+			"Modifier",
+			"Modifier Source"
 		]
 	},
 

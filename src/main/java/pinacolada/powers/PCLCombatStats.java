@@ -345,6 +345,7 @@ public class PCLCombatStats extends EYBPower implements InvisiblePower
 
         final CardUseInfo info = new CardUseInfo(card);
 
+        card.OnPreUse(p, m, info);
         card.OnUse(p, m, info);
 
         if (info.IsSynergizing)

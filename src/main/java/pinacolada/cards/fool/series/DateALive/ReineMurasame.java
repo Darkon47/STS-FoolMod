@@ -33,7 +33,7 @@ public class ReineMurasame extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+        
         int stacks = PCLGameUtilities.UseXCostEnergy(this);
 
         for (int i = 0; i < stacks; i++)

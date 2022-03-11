@@ -47,7 +47,7 @@ public class King extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+
         if (PCLGameUtilities.TrySpendAffinityPower(PCLAffinity.Light, magicNumber)) {
             PCLActions.Bottom.GainMight(magicNumber);
         }

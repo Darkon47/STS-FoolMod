@@ -21,7 +21,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Locale;
 
-import static pinacolada.ui.seriesSelection.PCLLoadoutsContainer.MINIMUM_SERIES;
+import static pinacolada.ui.characterSelection.PCLLoadoutsContainer.MINIMUM_SERIES;
 
 public class PCLConfig
 {

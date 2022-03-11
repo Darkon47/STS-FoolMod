@@ -177,7 +177,7 @@
 	},
 	"pcl:IonizingStormPower":
 	{
-		"DESCRIPTIONS": ["[~Lightning] applies #b{0}% of [Focus] as [Electrified] to a random enemy when #yTriggered and to ALL enemies when #yEvoked. NL At the start of turn: Gain #b{1} [L] for each enemy with [Electrified]."],
+		"DESCRIPTIONS": ["[~Lightning] applies #b{0}% of potency as [Electrified] to a random enemy and gives #b{1} [Supercharged] when #yTriggered or #yEvoked. NL ALL [Electrified] bonuses are doubled."],
 		"NAME": "Ionizing Storm"
 	},
 	"pcl:KuragesOathPower":
@@ -282,7 +282,7 @@
 	},
 	"pcl:SorceryPower":
 	{
-		"DESCRIPTIONS": ["The next #yOrb #yChanneled has #b{0} additional [Focus]."],
+		"DESCRIPTIONS": ["The next #yOrb #yChanneled has #b{0} additional #yPassive and #yEvoke power."],
 		"NAME": "Sorcery"
 	},
 	"pcl:StolenGoldPower":
@@ -297,7 +297,7 @@
 	},
 	"pcl:SuperchargedPower":
 	{
-		"DESCRIPTIONS": ["Spend #b{0} stacks to gain [E]. Then, if you have no playable cards in hand: Draw #b1."],
+		"DESCRIPTIONS": ["Spend #b{0} stacks to gain [E]. Then, [Electrified] gains +#b{1}% effect bonus per [E]."],
 		"NAME": "Supercharged"
 	},
 	"pcl:SupportDamagePower":

@@ -20,7 +20,7 @@ import pinacolada.utilities.PCLRenderHelpers;
 public class GUI_Toggle extends GUIElement
 {
     public Hitbox hb;
-    public String text = "-";
+    public String text = "";
     public boolean toggled = false;
     public boolean interactable = true;
 

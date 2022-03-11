@@ -11,10 +11,7 @@ import com.megacrit.cardcrawl.localization.*;
 import eatyourbeets.console.CommandsManager;
 import eatyourbeets.resources.common.CommonResources;
 import eatyourbeets.utilities.EYBFontHelper;
-import pinacolada.cards.base.CardSeries;
-import pinacolada.cards.base.PCLAffinity;
-import pinacolada.cards.base.PCLCardData;
-import pinacolada.cards.base.PCLCardTooltip;
+import pinacolada.cards.base.*;
 import pinacolada.effects.AttackEffects;
 import pinacolada.effects.SFX;
 import pinacolada.events.base.PCLEvent;
@@ -165,6 +162,7 @@ public class PCLResources extends PCLAbstractResources {
         PGR.UI.Initialize();
         Config.Load(CardCrawlGame.saveSlot);
         Config.InitializeOptions();
+        PCLCustomCardSlot.Initialize();
         //PCLImages.PreloadResources();
         BaseMod.addTopPanelItem(new CardPoolPanelItem());
     }

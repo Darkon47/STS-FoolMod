@@ -6,7 +6,7 @@ import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.base.baseeffects.BaseCondition;
 import pinacolada.cards.base.baseeffects.BaseEffect;
-import pinacolada.resources.CardTooltips;
+import pinacolada.resources.PGR;
 
 public class BaseCondition_Match extends BaseCondition {
 
@@ -38,6 +38,6 @@ public class BaseCondition_Match extends BaseCondition {
 
     @Override
     public String GetConditionText() {
-        return CardTooltips.FindByID("Match").title;
+        return PGR.Tooltips.Match.title;
     }
 }

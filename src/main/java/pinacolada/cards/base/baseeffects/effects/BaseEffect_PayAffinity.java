@@ -5,36 +5,28 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCardTarget;
-import pinacolada.cards.base.baseeffects.BaseEffect;
+import pinacolada.cards.base.baseeffects.BaseEffect_Affinity;
 import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
-public class BaseEffect_PayAffinity extends BaseEffect
+public class BaseEffect_PayAffinity extends BaseEffect_Affinity
 {
-    public static final String ID = Register(BaseEffect_PayAffinity.class);
+    public static final String ID = Register(BaseEffect_PayAffinity.class, PGR.Enums.Cards.THE_FOOL);
 
-    protected ArrayList<PCLAffinity> affinities;
+    public BaseEffect_PayAffinity()
+    {
+        this(0);
+    }
 
     public BaseEffect_PayAffinity(String[] content)
     {
         super(content);
-        this.affinities = ParseAffinitiesFromEntityID();
     }
 
     public BaseEffect_PayAffinity(int amount, PCLAffinity... affinities)
     {
-        super(ID, JoinEntityIDs(affinities, Enum::name), PCLCardTarget.None, amount);
-        this.affinities = new ArrayList<>(Arrays.asList(affinities));
-    }
-
-    public BaseEffect_PayAffinity Add(PCLAffinity newAf) {
-        this.affinities.add(newAf);
-        this.entityID = JoinEntityIDs(affinities, Enum::name);
-        return this;
+        super(ID, PCLCardTarget.Self, amount);
     }
 
     @Override

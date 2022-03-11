@@ -13,6 +13,7 @@ import pinacolada.powers.common.ElectrifiedPower;
 import pinacolada.utilities.PCLActions;
 
 import static pinacolada.cards.fool.special.IonizingStorm.LIGHTNING_BONUS;
+import static pinacolada.cards.fool.special.IonizingStorm.PER_CHARGE;
 
 public class IonizingStormPower extends PCLPower implements OnOrbPassiveEffectSubscriber, OnGainPowerBonusSubscriber
 {
@@ -48,7 +49,7 @@ public class IonizingStormPower extends PCLPower implements OnOrbPassiveEffectSu
     @Override
     public void updateDescription()
     {
-        description = FormatDescription(0, LIGHTNING_BONUS * amount);
+        description = FormatDescription(0, LIGHTNING_BONUS * amount, PER_CHARGE);
     }
 
     @Override

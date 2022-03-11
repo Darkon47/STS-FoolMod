@@ -10,7 +10,7 @@ import pinacolada.cards.base.PCLCardData;
 import pinacolada.characters.FoolCharacter;
 import pinacolada.resources.PCLAbstractResources;
 import pinacolada.resources.PGR;
-import pinacolada.ui.seriesSelection.PCLLoadoutsContainer;
+import pinacolada.ui.characterSelection.PCLLoadoutsContainer;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
 

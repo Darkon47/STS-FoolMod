@@ -5,45 +5,34 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCardTarget;
-import pinacolada.cards.base.baseeffects.BaseEffect;
+import pinacolada.cards.base.baseeffects.BaseEffect_Affinity;
 import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLJUtils;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
-public class BaseEffect_GainAffinity extends BaseEffect
+public class BaseEffect_GainAffinity extends BaseEffect_Affinity
 {
-    public static final String ID = Register(BaseEffect_GainAffinity.class);
+    public static final String ID = Register(BaseEffect_GainAffinity.class, PGR.Enums.Cards.THE_FOOL);
 
-    protected ArrayList<PCLAffinity> affinities;
+    public BaseEffect_GainAffinity()
+    {
+        this(0);
+    }
 
     public BaseEffect_GainAffinity(String[] content)
     {
         super(content);
-        this.affinities = ParseAffinitiesFromEntityID();
     }
 
     public BaseEffect_GainAffinity(int amount, PCLAffinity... affinities)
     {
-        super(ID, JoinEntityIDs(affinities, Enum::name), PCLCardTarget.Self, amount);
-        this.affinities = new ArrayList<>(Arrays.asList(affinities));
-    }
-
-    public BaseEffect_GainAffinity Add(PCLAffinity newAf) {
-        if (newAf != null) {
-            this.affinities.add(newAf);
-            this.entityID = JoinEntityIDs(affinities, Enum::name);
-        }
-        return this;
+        super(ID, PCLCardTarget.Self, amount);
     }
 
     @Override
     public String GetText()
     {
-        String joinedString = PCLJUtils.JoinStrings(" ", PCLJUtils.Map(affinities, PCLAffinity::GetTooltip));
-        return PGR.PCL.Strings.Actions.GainAmount(amount, joinedString, true);
+        return PGR.PCL.Strings.Actions.GainAmount(amount, PCLJUtils.JoinStrings(" ", PCLJUtils.Map(affinities, PCLAffinity::GetTooltip)), true);
     }
 
     @Override

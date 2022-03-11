@@ -7,7 +7,6 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Vector2;
-import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.SoulboundField;
 import com.evacipated.cardcrawl.modthespire.lib.SpireOverride;
 import com.evacipated.cardcrawl.modthespire.lib.SpireSuper;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -61,19 +60,6 @@ public abstract class PCLCardBase extends EYBCardBase
     public PCLCardBase(String id, String name, String imagePath, int cost, String rawDescription, CardType type, CardColor color, CardRarity rarity, CardTarget target)
     {
         super(id, name, imagePath, cost, rawDescription, type, color, rarity, target);
-
-        portrait = null;
-        assetUrl = imagePath;
-
-        if (rarity == CardRarity.SPECIAL)
-        {
-            SoulboundField.soulbound.set(this, true);
-        }
-
-        if (imagePath != null)
-        {
-            LoadImage(null);
-        }
     }
 
     public void LoadImage(String suffix)
@@ -211,10 +197,10 @@ public abstract class PCLCardBase extends EYBCardBase
     protected void renderType(SpriteBatch sb)
     {
         if (showTypeText) {
-            BitmapFont font = EYBFontHelper.CardIconFont_Small;
+            BitmapFont font = EYBFontHelper.CardIconFont_Large;
             Color color = Color.WHITE.cpy();//_typeColor.Get(this);
             color.a = _renderColor.Get(this).a;
-            font.getData().setScale(drawScale * 0.9f);
+            font.getData().setScale(drawScale * 0.42f);
             FontHelper.renderRotatedText(sb, font, GetTypeText(), current_x, current_y - 22.0f * drawScale * Settings.scale, 0.0F, -1.0F * this.drawScale * Settings.scale, angle, false, color);
             pinacolada.utilities.PCLRenderHelpers.ResetFont(font);
         }

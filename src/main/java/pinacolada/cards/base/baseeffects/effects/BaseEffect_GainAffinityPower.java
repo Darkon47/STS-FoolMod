@@ -5,45 +5,35 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCardTarget;
-import pinacolada.cards.base.baseeffects.BaseEffect;
+import pinacolada.cards.base.baseeffects.BaseEffect_Affinity;
 import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 import pinacolada.utilities.PCLJUtils;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
-public class BaseEffect_GainAffinityPower extends BaseEffect
+public class BaseEffect_GainAffinityPower extends BaseEffect_Affinity
 {
-    public static final String ID = Register(BaseEffect_GainAffinityPower.class);
+    public static final String ID = Register(BaseEffect_GainAffinityPower.class, PGR.Enums.Cards.THE_FOOL);
 
-    protected ArrayList<PCLAffinity> affinities;
+    public BaseEffect_GainAffinityPower()
+    {
+        this(0);
+    }
 
     public BaseEffect_GainAffinityPower(String[] content)
     {
         super(content);
-        this.affinities = ParseAffinitiesFromEntityID();
     }
 
     public BaseEffect_GainAffinityPower(int amount, PCLAffinity... affinities)
     {
-        super(ID, JoinEntityIDs(affinities, Enum::name), PCLCardTarget.Self, amount);
-        this.affinities = new ArrayList<>(Arrays.asList(affinities));
+        super(ID, PCLCardTarget.Self, amount);
     }
 
-    public BaseEffect_GainAffinityPower Add(PCLAffinity newAf) {
-        if (newAf != null) {
-            this.affinities.add(newAf);
-            this.entityID = JoinEntityIDs(affinities, Enum::name);
-        }
-        return this;
-    }
 
     @Override
     public String GetText()
     {
-        String joinedString = PCLJUtils.JoinStrings(" ", PCLJUtils.Map(affinities, PCLAffinity::GetPowerTooltip));
-        return PGR.PCL.Strings.Actions.GainAmount(amount, joinedString, true);
+        return PGR.PCL.Strings.Actions.GainAmount(amount, PCLJUtils.JoinStrings(" ", PCLJUtils.Map(affinities, PCLAffinity::GetPowerTooltip)), true);
     }
 
     @Override

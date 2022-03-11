@@ -29,7 +29,7 @@ public class LisaMinci extends FoolCard {
 
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info) {
-        PCLActions.Bottom.GainBlock(block);
+        
         PCLActions.Bottom.Scry(magicNumber)
                 .AddCallback(cards -> {
                     boolean activateEffect1 = false;

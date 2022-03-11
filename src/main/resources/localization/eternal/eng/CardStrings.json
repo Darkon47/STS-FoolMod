@@ -333,7 +333,7 @@
 		},
 		"eternal:ViciousLunge":
 		{
-			"DESCRIPTION": "Mismatch: Take !M! damage. || [MI]: Damage dealt and taken from this is increased by +!S!%.",
+			"DESCRIPTION": "Not Match: Take !M! damage. || [MI]: Damage dealt and taken from this is increased by +!S!%.",
 			"NAME": "Vicious Lunge"
 		},
 		"eternal:WideLeap":

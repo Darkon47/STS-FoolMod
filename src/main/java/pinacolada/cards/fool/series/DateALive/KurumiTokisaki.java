@@ -53,7 +53,7 @@ public class KurumiTokisaki extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+
         PCLActions.Bottom.VFX(VFX.EFX(PCLEffekseerEFX.GUN08)
                 .SetSoundKey(SFX.PCL_GUNSHOT, 1.5f));
         PCLActions.Bottom.DealCardDamageToAll(this, AttackEffects.GUNSHOT);

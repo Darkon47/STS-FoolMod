@@ -50,12 +50,12 @@
 		},
 		"pcl:Curse_Parasite":
 		{
-			"DESCRIPTION": "Startup: Take !M! [DD]. || <SLM>. On Discard or Exhaust: Steal !S! [THP] from a random enemy.",
+			"DESCRIPTION": "Startup: Take !M! [DD]. || On Exhaust or Purge: Steal !S! [THP] from a random enemy.",
 			"NAME": "Parasite"
 		},
 		"pcl:Curse_Regret":
 		{
-			"DESCRIPTION": "At the end of turn: ** Lose !M! HP for every card in hand. || On Exhaust: Gain !S! [THP].",
+			"DESCRIPTION": "At the end of turn: ** Lose !M! HP per card in hand. || On Exhaust: Gain !S! [THP].",
 			"NAME": "Regret"
 		},
 		"pcl:Curse_SearingBurn":
@@ -258,7 +258,7 @@
 		},
 		"pcl:TestCard":
 		{
-			"DESCRIPTION": "WARNING: This will probably cause your game to explode.",
+			"DESCRIPTION": "",
 			"NAME": "Test Card"
 		}
 	},

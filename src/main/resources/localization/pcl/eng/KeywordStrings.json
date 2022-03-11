@@ -686,7 +686,7 @@
 	},
 	"Sorcery":
 	{
-		"DESCRIPTION": "The next Orb #yChanneled has additional [Focus].",
+		"DESCRIPTION": "The next Orb #yChanneled has additional passive and Evoke power.",
 		"NAMES": ["sorcery"],
 		"PROPER_NAME": "Sorcery"
 	},
@@ -728,7 +728,7 @@
 	},
 	"Supercharged":
 	{
-		"DESCRIPTION": "Spend stacks to gain [E]. Then, if you have no playable cards in hand: Draw #b1.",
+		"DESCRIPTION": "Spend stacks to gain [E]. Then, [Electrified] gains +#b5% effect bonus per [E].",
 		"NAMES": ["supercharged"],
 		"PROPER_NAME": "Supercharged"
 	},
@@ -946,13 +946,13 @@
 	{
 		"DESCRIPTION": "When drawn, draw 1 card. NL #yThis #yeffect #ycan #yactivate #yonce #yper #yturn.",
 		"NAMES": ["~haste infinite"],
-		"PROPER_NAME": "Haste"
+		"PROPER_NAME": "Haste Infinite"
 	},
 	"~HasteOnce":
 	{
 		"DESCRIPTION": "When drawn, draw 1 card. NL #bOnce #bactivated, #bremove #bthis #beffect.",
 		"NAMES": ["~haste once"],
-		"PROPER_NAME": "Haste"
+		"PROPER_NAME": "Haste Once"
 	},
 	"~Ice Damage":
 	{
@@ -1016,15 +1016,15 @@
 	},
 	"~RetainInfinite":
 	{
-		"DESCRIPTION": "Retained cards are not discarded at the end of turn. NL #yThis #yeffect #yis #ypermanent.",
+		"DESCRIPTION": "Remains in hand at the end of turn. NL #yThis #yeffect #yis #ypermanent.",
 		"NAMES": ["~retain infinite"],
-		"PROPER_NAME": "Retain"
+		"PROPER_NAME": "Retain Infinite"
 	},
 	"~RetainOnce":
 	{
-		"DESCRIPTION": "Retained cards are not discarded at the end of turn. NL #bOnce #bactivated, #bremove #bthis #beffect.",
+		"DESCRIPTION": "Remains in hand at the end of turn. NL #bOnce #bactivated, #bremove #bthis #beffect.",
 		"NAMES": ["~retain once"],
-		"PROPER_NAME": "Retain"
+		"PROPER_NAME": "Retain Once"
 	},
 	"~Steal":
 	{

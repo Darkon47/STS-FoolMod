@@ -11,7 +11,7 @@ import pinacolada.utilities.PCLActions;
 
 public class Dominate extends EternalCard
 {
-    public static final PCLCardData DATA = Register(Dominate.class).SetAttack(2, CardRarity.COMMON);
+    public static final PCLCardData DATA = Register(Dominate.class).SetAttack(2, CardRarity.UNCOMMON);
 
     public Dominate()
     {

@@ -47,7 +47,7 @@ public class HataNoKokoro extends FoolCard {
 
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info) {
-        PCLActions.Bottom.GainBlock(block);
+
         PCLActions.Bottom.TryChooseSpendAffinity(this).AddConditionalCallback((chosenAffinities) -> {
             for (AffinityChoice choice : chosenAffinities) {
                 PCLActions.Bottom.SelectFromHand(name, player.hand.size() - 1, true)

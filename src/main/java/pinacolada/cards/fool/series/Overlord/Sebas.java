@@ -39,7 +39,7 @@ public class Sebas extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+        
 
         final int counter = PCLJUtils.Count(PCLGameUtilities.GetPCLIntents(), PCLEnemyIntent::IsAttacking);
         if (counter > 0)

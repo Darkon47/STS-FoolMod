@@ -36,7 +36,7 @@ public class SherryTueli extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+
 
         PCLActions.Bottom.DiscardFromHand(name, magicNumber, false)
         .SetOptions(false, true, false)

@@ -9,7 +9,6 @@ import com.megacrit.cardcrawl.powers.FrailPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
 import eatyourbeets.interfaces.listeners.OnTryApplyPowerListener;
-import eatyourbeets.utilities.GameActions;
 import eatyourbeets.utilities.TargetHelper;
 import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardData;
@@ -79,12 +78,12 @@ public class Laby extends FoolCard
         {
             PCLPowerHelper ph = PCLJUtils.Find(PCLGameUtilities.GetPCLCommonDebuffs(), ph2 -> ph2.ID.equals(power.ID));
             int applyAmount = power.amount;
-            if (target == owner && ph != null && power.amount > 0)
+            if (power.owner == this.owner && ph != null && power.amount > 0)
             {
                 if (!PCLGameUtilities.IsPlayerTurn(true) && (VulnerablePower.POWER_ID.equals(ph.ID) || WeakPower.POWER_ID.equals(ph.ID) || FrailPower.POWER_ID.equals(ph.ID))) {
                     applyAmount += 1;
                 }
-                GameActions.Bottom.StackPower(TargetHelper.Enemies(), ph, applyAmount);
+                PCLActions.Bottom.StackPower(TargetHelper.Enemies(), ph, applyAmount);
                 flashWithoutSound();
             }
 

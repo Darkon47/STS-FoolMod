@@ -148,7 +148,8 @@ public class DainsleifAbyssPower extends PCLPower {
         String combinedText = positiveEffect.effect.GetText() + " NL " + negativeEffect.effect.GetText();
 
         builder.SetText(NAME, combinedText, "");
-        builder.SetProperties(AbstractCard.CardType.SKILL, PGR.Fool.CardColor, AbstractCard.CardRarity.SPECIAL, AbstractCard.CardTarget.ALL);
+        builder.SetProperties(AbstractCard.CardType.SKILL, PGR.Fool.CardColor, AbstractCard.CardRarity.SPECIAL);
+        builder.SetCardTarget(PCLCardTarget.AoE);
         builder.SetOnUse((p, m, i) -> {
             positiveEffect.effect.Use(p, m, i);
             negativeEffect.effect.Use(p, m, i);

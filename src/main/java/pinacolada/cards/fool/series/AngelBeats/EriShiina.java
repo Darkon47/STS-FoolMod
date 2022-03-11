@@ -47,7 +47,7 @@ public class EriShiina extends FoolCard
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
         PCLActions.Bottom.DealCardDamage(this, m, AttackEffects.BLUNT_LIGHT);
-        PCLActions.Bottom.GainBlock(block);
+        
 
         if (VelocityStance.IsActive())
         {

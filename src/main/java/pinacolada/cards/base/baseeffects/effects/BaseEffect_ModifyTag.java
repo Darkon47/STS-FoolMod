@@ -21,6 +21,11 @@ public class BaseEffect_ModifyTag extends BaseEffect
     protected ArrayList<PCLCardTagHelper> tags;
     protected ArrayList<AbstractCard> cards;
 
+    public BaseEffect_ModifyTag()
+    {
+        this(new ArrayList<>());
+    }
+
     public BaseEffect_ModifyTag(AbstractCard card, PCLCardTagHelper... tags)
     {
         super(ID, JoinEntityIDs(tags, tag -> tag.Tag.name()), PCLCardTarget.None, 1);

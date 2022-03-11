@@ -33,7 +33,7 @@ public class OrikoMikuni extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+        
 
         choices.Initialize(this, true);
         choices.AddEffect(new BaseEffect_Scry(magicNumber));

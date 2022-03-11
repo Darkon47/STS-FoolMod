@@ -54,7 +54,7 @@ public class EirinYagokoro extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+        
         PCLActions.Bottom.RemovePower(player, player, PoisonPower.POWER_ID);
         PCLActions.Bottom.RemovePower(player, player, BurningPower.POWER_ID);
         if (upgraded) {

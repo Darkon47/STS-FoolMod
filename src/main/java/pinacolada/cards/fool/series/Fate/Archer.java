@@ -30,6 +30,7 @@ public class Archer extends FoolCard
         Initialize(0, 0, 3, 4);
         SetUpgrade(0, 1, 0);
 
+        SetAffinity_Red(1, 0, 0);
         SetAffinity_Green(1, 0, 0);
     }
 
@@ -46,7 +47,7 @@ public class Archer extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+
         PCLActions.Bottom.StackPower(new ArcherPower(p, magicNumber));
     }
 

@@ -57,7 +57,7 @@ public class Sonic extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+        
         PCLActions.Bottom.GainBlur(magicNumber);
         PCLActions.Bottom.GainVelocity(magicNumber);
 

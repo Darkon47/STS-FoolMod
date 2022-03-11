@@ -31,7 +31,7 @@ public class ToushirouHitsugaya extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info) {
         PCLActions.Bottom.DealCardDamage(this, m, AttackEffects.SLASH_VERTICAL);
-        PCLActions.Bottom.GainBlock(block);
+
         PCLActions.Bottom.ApplyFreezing(TargetHelper.Normal(m), info.IsSynergizing ? magicNumber * 2 : magicNumber).ShowEffect(true, true).AddCallback(m, (enemy, __) -> {
             if (PCLGameUtilities.GetPowerAmount(enemy, FreezingPower.POWER_ID) > FREEZING_THRESHOLD) {
                 PCLActions.Bottom.MakeCardInDrawPile(new ToushirouHitsugaya_Bankai()).SetUpgrade(upgraded, false);

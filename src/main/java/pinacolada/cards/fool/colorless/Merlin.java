@@ -81,7 +81,7 @@ public class Merlin extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+
 
         final AbstractOrb orb = PCLGameUtilities.GetFirstOrb(null);
         if (PCLGameUtilities.IsValidOrb(orb))

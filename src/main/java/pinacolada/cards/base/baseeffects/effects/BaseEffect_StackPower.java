@@ -13,6 +13,7 @@ import pinacolada.utilities.PCLJUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 public class BaseEffect_StackPower extends BaseEffect
@@ -20,6 +21,11 @@ public class BaseEffect_StackPower extends BaseEffect
     public static final String ID = Register(BaseEffect_StackPower.class);
 
     protected ArrayList<PCLPowerHelper> powers;
+
+    public BaseEffect_StackPower()
+    {
+        this(PCLCardTarget.Self, 0);
+    }
 
     public BaseEffect_StackPower(String[] content)
     {
@@ -33,12 +39,27 @@ public class BaseEffect_StackPower extends BaseEffect
         this.powers = new ArrayList<>(Arrays.asList(powers));
     }
 
+    public BaseEffect_StackPower Set(PCLPowerHelper... powers) {
+        return Set(Arrays.asList(powers));
+    }
+
+    public BaseEffect_StackPower Set(List<PCLPowerHelper> powers) {
+        this.powers.clear();
+        this.powers.addAll(powers);
+        this.entityID = JoinEntityIDs(powers, power -> power.ID);
+        return this;
+    }
+
     public BaseEffect_StackPower Add(PCLPowerHelper newPo) {
         if (newPo != null) {
             this.powers.add(newPo);
             this.entityID = JoinEntityIDs(powers, power -> power.ID);
         }
         return this;
+    }
+
+    public ArrayList<PCLPowerHelper> GetPowers() {
+        return powers;
     }
 
     @Override

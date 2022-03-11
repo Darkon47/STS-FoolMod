@@ -8,17 +8,20 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.Hitbox;
 import eatyourbeets.interfaces.delegates.ActionT1;
+import eatyourbeets.ui.GUIElement;
 import pinacolada.cards.base.PCLCardTooltip;
 import pinacolada.powers.PCLCombatStats;
 import pinacolada.ui.AbstractScreen;
 import pinacolada.ui.cardReward.CardAffinityPanel;
+import pinacolada.ui.characterSelection.PCLCustomCardsScreen;
 import pinacolada.ui.characterSelection.PCLLoadoutEditor;
+import pinacolada.ui.characterSelection.PCLSeriesSelectScreen;
 import pinacolada.ui.combat.PCLCombatScreen;
 import pinacolada.ui.common.CardKeywordFilters;
 import pinacolada.ui.common.CardPoolScreen;
 import pinacolada.ui.common.CustomCardLibSortHeader;
 import pinacolada.ui.common.PCLSingleCardPopup;
-import pinacolada.ui.seriesSelection.PCLSeriesSelectScreen;
+import pinacolada.ui.hitboxes.AdvancedHitbox;
 import pinacolada.utilities.PCLGameUtilities;
 
 import java.util.ArrayList;
@@ -35,6 +38,7 @@ public class UIManager extends eatyourbeets.resources.UIManager
     protected boolean isDragging;
     protected Hitbox lastHovered;
     protected Hitbox lastHoveredTemp;
+    protected GUIElement activeElement;
 
     public PCLCombatScreen CombatScreen;
     public PCLSingleCardPopup CardPopup;
@@ -42,10 +46,10 @@ public class UIManager extends eatyourbeets.resources.UIManager
     public CardPoolScreen CardsScreen;
     public PCLSeriesSelectScreen SeriesSelection;
     public PCLLoadoutEditor LoadoutEditor;
+    public PCLCustomCardsScreen CustomCards;
     public CardAffinityPanel CardAffinities;
     public CardKeywordFilters CardFilters;
     public CustomCardLibSortHeader CustomHeader;
-    public boolean IsDropdownOpen;
 
     public void Initialize()
     {
@@ -55,6 +59,7 @@ public class UIManager extends eatyourbeets.resources.UIManager
         CardsScreen = new CardPoolScreen();
         SeriesSelection = new PCLSeriesSelectScreen();
         LoadoutEditor = new PCLLoadoutEditor();
+        CustomCards = new PCLCustomCardsScreen();
         CardFilters = new CardKeywordFilters();
         CustomHeader = new CustomCardLibSortHeader(null);
     }
@@ -64,7 +69,7 @@ public class UIManager extends eatyourbeets.resources.UIManager
         if (CurrentScreen != null)
         {
             CurrentScreen.Dispose();
-            IsDropdownOpen = false;
+            activeElement = null;
         }
 
         CurrentScreen = null;
@@ -169,6 +174,22 @@ public class UIManager extends eatyourbeets.resources.UIManager
         }
 
         return false;
+    }
+
+    public boolean TryToggleActiveElement(GUIElement element, boolean setActive) {
+        if (activeElement == null || activeElement == element) {
+            activeElement = setActive ? element : null;
+            return true;
+        }
+        return false;
+    }
+
+    public boolean IsInActiveElement(AdvancedHitbox hb) {
+        return activeElement == null || activeElement == hb.parentElement;
+    }
+
+    public boolean DoesActiveElementExist() {
+        return activeElement != null;
     }
 
     public float Time_Sin(float distance, float speed)

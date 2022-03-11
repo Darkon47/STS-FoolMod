@@ -18,7 +18,7 @@ public class Curse_Regret extends PCLCard
     {
         super(DATA);
 
-        Initialize(0, 0, 1, 2);
+        Initialize(0, 0, 1, 3);
         SetAffinity_Dark(1);
 
         SetUnplayable(true);

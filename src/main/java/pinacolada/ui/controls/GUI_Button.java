@@ -34,6 +34,7 @@ public class GUI_Button extends GUIElement
     public float currentAlpha = 1f;
     public boolean interactable;
     public boolean isSmartText;
+    public boolean showText = true;
     public PCLCardTooltip tooltip;
     public GenericCallback<GUI_Button> onLeftClick;
     public GenericCallback<GUI_Button> onRightClick;
@@ -283,7 +284,7 @@ public class GUI_Button extends GUIElement
         }
 
         final boolean interactable = IsInteractable();
-        if (StringUtils.isNotEmpty(text))
+        if (StringUtils.isNotEmpty(text) && showText)
         {
             this.RenderButton(sb, interactable, buttonColor);
 

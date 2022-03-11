@@ -43,7 +43,7 @@ public class WingGundamZero extends FoolCard
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
         CardGroup[] groups = upgraded ? (new CardGroup[] {p.discardPile, p.drawPile, p.hand}) : (new CardGroup[] {p.hand});
-        PCLActions.Bottom.GainBlock(block);
+
         PCLActions.Bottom.SelectFromPile(name, magicNumber, groups)
                 .SetOptions(false, true)
                 .AddCallback((cards) -> {

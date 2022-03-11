@@ -101,7 +101,7 @@ public abstract class AbstractScreen extends GUIElement
 
     }
 
-    protected static GUI_Button CreateHexagonalButton(float x, float y, float width, float height)
+    public static GUI_Button CreateHexagonalButton(float x, float y, float width, float height)
     {
         final Texture buttonTexture = PGR.PCL.Images.HexagonalButton.Texture();
         final Texture buttonBorderTexture = PGR.PCL.Images.HexagonalButtonBorder.Texture();

@@ -44,7 +44,7 @@ public class MonaMegistus extends FoolCard implements OnEvokeOrbSubscriber {
 
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info) {
-        PCLActions.Bottom.GainBlock(block);
+
         PCLActions.Bottom.Scry(magicNumber)
                 .AddCallback(cards -> {
                     int commons = PCLJUtils.Count(cards, card -> card.rarity == CardRarity.COMMON || card.rarity == CardRarity.BASIC);

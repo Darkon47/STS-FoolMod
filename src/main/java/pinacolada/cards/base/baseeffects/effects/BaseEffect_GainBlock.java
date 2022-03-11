@@ -16,6 +16,11 @@ public class BaseEffect_GainBlock extends BaseEffect
 {
     public static final String ID = Register(BaseEffect_GainBlock.class);
 
+    public BaseEffect_GainBlock()
+    {
+        this(0);
+    }
+
     public BaseEffect_GainBlock(int amount)
     {
         super(ID, null, PCLCardTarget.Self, amount);

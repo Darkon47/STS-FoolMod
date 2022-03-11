@@ -36,7 +36,7 @@ public class TanyaDegurechaff extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+        
         PCLActions.Bottom.DealCardDamage(this, m, AttackEffects.GUNSHOT).forEach(d -> d.SetSoundPitch(0.75f, 0.8f));
         PCLActions.Bottom.DiscardFromPile(name, magicNumber, p.drawPile)
         .ShowEffect(true, true)

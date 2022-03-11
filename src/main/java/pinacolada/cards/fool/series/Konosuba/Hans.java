@@ -51,7 +51,7 @@ public class Hans extends FoolCard implements OnTrySpendAffinitySubscriber
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+        
         PCLActions.Bottom.ApplyPoison(p, m, magicNumber).AddCallback(() -> {
                 for (AbstractMonster mo : PCLGameUtilities.GetEnemies(true)) {
                     if (PCLGameUtilities.GetPowerAmount(mo, PoisonPower.POWER_ID) > 0) {

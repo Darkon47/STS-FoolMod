@@ -41,7 +41,7 @@ public class Tatsumaki extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+        
         PCLActions.Bottom.ChannelOrb(new Air());
         PCLActions.Bottom.StackPower(new TatsumakiPower(p, magicNumber));
         if (IsStarter() && TrySpendAffinity(PCLAffinity.Red, PCLAffinity.Blue)) {

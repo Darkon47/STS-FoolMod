@@ -27,13 +27,19 @@ public class TukaLunaMarceau extends FoolCard
         super(DATA);
 
         Initialize(0, 2, 3);
-        SetUpgrade(0, 3);
+        SetUpgrade(0, 1);
 
         SetAffinity_Green(1, 0, 1);
         SetAffinity_Light(1);
 
         SetAffinityRequirement(PCLAffinity.Light, 2);
         SetAffinityRequirement(PCLAffinity.Green, 2);
+    }
+
+    @Override
+    protected void OnUpgrade()
+    {
+        SetHaste(true);
     }
 
 
@@ -44,8 +50,6 @@ public class TukaLunaMarceau extends FoolCard
         {
             PCLActions.Bottom.Draw(1);
         }
-
-        PCLActions.Bottom.GainBlock(block);
 
         if (TrySpendAffinity(PCLAffinity.Light, PCLAffinity.Green))
         {

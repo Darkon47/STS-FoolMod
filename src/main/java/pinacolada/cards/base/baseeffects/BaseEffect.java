@@ -1,6 +1,7 @@
 package pinacolada.cards.base.baseeffects;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import eatyourbeets.interfaces.delegates.FuncT1;
@@ -15,14 +16,15 @@ import pinacolada.utilities.PCLJUtils;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Objects;
+import java.util.*;
 
 public abstract class BaseEffect
 {
+    public static final int DEFAULT_PRIORITY = 3;
+
+    // TODO Effects should be able to define their own numbers + upgrades
     public enum PCLCardValueSource {
+        None,
         Damage,
         Block,
         MagicNumber,
@@ -32,28 +34,102 @@ public abstract class BaseEffect
         XValue,
     }
 
+    public static class BaseEffectData {
+        public final Class<? extends BaseEffect> EffectClass;
+        public final Set<AbstractCard.CardColor> Colors;
+        public final int Priority;
+
+        public BaseEffectData(Class<? extends BaseEffect> effectClass) {
+            this(effectClass, DEFAULT_PRIORITY);
+        }
+
+        public BaseEffectData(Class<? extends BaseEffect> effectClass, AbstractCard.CardColor... cardColors) {
+            this(effectClass, DEFAULT_PRIORITY, cardColors);
+        }
+
+        public BaseEffectData(Class<? extends BaseEffect> effectClass, int priority, AbstractCard.CardColor... cardColors) {
+            this.EffectClass = effectClass;
+            this.Colors = new HashSet<AbstractCard.CardColor>(Arrays.asList(cardColors));
+            this.Priority = priority;
+        }
+
+        public final boolean IsColorCompatible(AbstractCard.CardColor co) {
+            return Colors.contains(co) || Colors.isEmpty();
+        }
+
+        public final boolean MatchesPriority(Integer pr) {
+            return pr == null || Priority == pr;
+        }
+    }
+
     protected static final String SEPARATOR = "|";
     protected static final String SUB_SEPARATOR = ";";
+    protected static final String EMPTY_CHARACTER = "~"; // Null values are serialized as "null", so they won't automatically be turned into nulls if deserialized as strings
 
-    private static final HashMap<String, Class<? extends BaseEffect>> EFFECT_MAP = new HashMap<>();
+    private static final HashMap<String, BaseEffectData> EFFECT_MAP = new HashMap<>();
 
     public static String Register(Class<? extends BaseEffect> type) {
+        return Register(type, DEFAULT_PRIORITY);
+    }
+
+    public static String Register(Class<? extends BaseEffect> type, AbstractCard.CardColor... cardColors) {
+        return Register(type, DEFAULT_PRIORITY, cardColors);
+    }
+
+    public static String Register(Class<? extends BaseEffect> type, int priority, AbstractCard.CardColor... cardColors) {
         String id = PGR.PCL.CreateID(type.getSimpleName());
-        EFFECT_MAP.put(id, type);
+        EFFECT_MAP.put(id, new BaseEffectData(type, priority, cardColors));
+        PCLJUtils.LogInfo(null, id);
         return id;
     }
 
     public static BaseEffect Get(String serializedString) {
+        //PCLJUtils.LogInfo(BaseEffect.class, "Attempting" + serializedString);
         String[] content = PCLJUtils.SplitString(SEPARATOR, serializedString);
-        Constructor<? extends BaseEffect> c = PCLJUtils.TryGetConstructor(EFFECT_MAP.get(content[0]), String[].class);
+        Constructor<? extends BaseEffect> c = PCLJUtils.TryGetConstructor(EFFECT_MAP.get(content[0]).EffectClass, String[].class);
         if (c != null) {
             try {
                 return c.newInstance((Object) content);
             } catch (InstantiationException | IllegalAccessException | InvocationTargetException e) {
                 e.printStackTrace();
+                //PCLJUtils.LogError(BaseEffect.class, "Failed to deserialize: " + serializedString);
             }
         }
         return null;
+    }
+
+    public static BaseEffectData GetData(String id) {
+        return EFFECT_MAP.get(id);
+    }
+
+    public static Set<String> GetAllIDs() {
+        return EFFECT_MAP.keySet();
+    }
+
+    public static Collection<BaseEffectData> GetAllClasses() {
+        PCLJUtils.LogInfo(null, PCLJUtils.JoinStrings(", ",PCLJUtils.Map(EFFECT_MAP.values(), v -> v.EffectClass)));
+        return EFFECT_MAP.values();
+    }
+
+    public static ArrayList<BaseEffectData> GetEligibleClasses(AbstractCard.CardColor co, Integer priority) {
+        return PCLJUtils.Filter(GetAllClasses(), d -> d.MatchesPriority(priority) && d.IsColorCompatible(co));
+    }
+
+    public static ArrayList<BaseEffect> GetEligibleEffects(AbstractCard.CardColor co, Integer priority) {
+        return PCLJUtils.Filter(PCLJUtils.Map(GetEligibleClasses(co, priority), cl -> {
+            //PCLJUtils.LogInfo(null, "Parsing effect " + cl.EffectClass);
+            Constructor<? extends BaseEffect> c = PCLJUtils.TryGetConstructor(cl.EffectClass);
+            if (c != null) {
+                try {
+                    return c.newInstance();
+                } catch (InstantiationException | IllegalAccessException | InvocationTargetException e) {
+                    e.printStackTrace();
+                    //PCLJUtils.LogError(BaseEffect.class, "Failed to instantiate: " + cl.EffectClass);
+                }
+            }
+            //PCLJUtils.LogInfo(null, "Failed to parse effect " + cl.EffectClass);
+            return null;
+        }), Objects::nonNull);
     }
 
     public static String GetTargetString(PCLCardTarget target) {
@@ -67,8 +143,8 @@ public abstract class BaseEffect
                 return PGR.PCL.Strings.Actions.Enemy;
         }
     }
-    public static <T> String JoinEntityIDs(T[] items, FuncT1<String, T> stringFunction) {return PCLJUtils.JoinStrings(SUB_SEPARATOR,PCLJUtils.Map(items, stringFunction));}
-    public static <T> String JoinEntityIDs(Collection<T> items, FuncT1<String, T> stringFunction) {return PCLJUtils.JoinStrings(SUB_SEPARATOR,PCLJUtils.Map(items, stringFunction));}
+    public static <T> String JoinEntityIDs(T[] items, FuncT1<String, T> stringFunction) {return items.length > 0 ? PCLJUtils.JoinStrings(SUB_SEPARATOR,PCLJUtils.Map(items, stringFunction)) : null;}
+    public static <T> String JoinEntityIDs(Collection<T> items, FuncT1<String, T> stringFunction) {return items.size() > 0 ? PCLJUtils.JoinStrings(SUB_SEPARATOR,PCLJUtils.Map(items, stringFunction)) : null;}
     public static String JoinEffectTexts(Collection<BaseEffect> effects) {
         return JoinEffectTexts(effects, " NL ");
     }
@@ -119,25 +195,20 @@ public abstract class BaseEffect
                 .SetSourceCard(card, valueSource);
     }
 
+    public static BaseEffect DealCardDamage(PCLCard card) {
+        return DealCardDamage(card, AbstractGameAction.AttackEffect.NONE);
+    }
+
+    public static BaseEffect DealCardDamage(PCLCard card, AbstractGameAction.AttackEffect attackEffect) {
+        return new BaseEffect_DealCardDamage(card, attackEffect);
+    }
+
     public static BaseEffect DealDamage(int amount) {
         return DealDamage(amount, AbstractGameAction.AttackEffect.NONE);
     }
 
     public static BaseEffect DealDamage(int amount, AbstractGameAction.AttackEffect attackEffect) {
         return new BaseEffect_DealDamage(amount, attackEffect);
-    }
-
-    public static BaseEffect DealDamage(PCLCard card) {
-        return DealDamage(card, PCLCardValueSource.Damage, AbstractGameAction.AttackEffect.NONE);
-    }
-
-    public static BaseEffect DealDamage(PCLCard card, AbstractGameAction.AttackEffect attackEffect) {
-        return DealDamage(card, PCLCardValueSource.Damage, attackEffect);
-    }
-
-    public static BaseEffect DealDamage(PCLCard card, PCLCardValueSource valueSource, AbstractGameAction.AttackEffect attackEffect) {
-        return new BaseEffect_DealDamage(0, attackEffect)
-                .SetSourceCard(card, valueSource);
     }
 
     public static BaseEffect DealDamageToAll(int amount) {
@@ -277,34 +348,57 @@ public abstract class BaseEffect
 
     public String effectID;
     public String entityID;
-    public PCLCardTarget target;
-    public PCLCardValueSource valueSource;
+    public PCLCardTarget target = PCLCardTarget.None;
+    public PCLCardValueSource valueSource = PCLCardValueSource.None;
     public PCLCard sourceCard;
     public int amount;
+    public int upgrade;
     public String misc;
 
     public BaseEffect() {
-        target = PCLCardTarget.None;
     }
 
     public BaseEffect(String[] content) {
         this.effectID = content[0];
-        this.entityID = content[1];
+        this.entityID = EMPTY_CHARACTER.equals(content[1]) ? null : content[1];
         this.target = PCLCardTarget.valueOf(content[2]);
-        this.valueSource = PCLCardValueSource.valueOf(content[3]);
+        try {
+            this.valueSource = PCLCardValueSource.valueOf(content[3]);
+        }
+        catch (IllegalArgumentException ignored) {
+        }
+
         this.amount = Integer.parseInt(content[4]);
-        this.misc = content[5];
+        this.upgrade = Integer.parseInt(content[5]);
+        this.misc = EMPTY_CHARACTER.equals(content[6]) ? null : content[6];
+    }
+
+    public BaseEffect(String effectID) {
+        this(effectID, null, PCLCardTarget.None, 0, null);
+    }
+
+    public BaseEffect(String effectID, String entityID) {
+        this(effectID, entityID, PCLCardTarget.None, 0, null);
     }
 
     public BaseEffect(String effectID, String entityID, PCLCardTarget target, int amount) {
         this(effectID, entityID, target, amount, null);
     }
 
+    public BaseEffect(String effectID, String entityID, PCLCardTarget target, int amount, int upgrade) {
+        this(effectID, entityID, target, amount, upgrade, null);
+    }
+
     public BaseEffect(String effectID, String entityID, PCLCardTarget target, int amount, String misc) {
+        this(effectID, entityID, target, amount, 0, misc);
+    }
+
+    public BaseEffect(String effectID, String entityID, PCLCardTarget target, int amount, int upgrade, String misc) {
         this.effectID = effectID;
         this.entityID = entityID;
         this.target = target;
         this.amount = amount;
+        this.upgrade = upgrade;
         this.misc = misc;
     }
 
@@ -319,6 +413,12 @@ public abstract class BaseEffect
         return this;
     }
 
+    public BaseEffect SetSourceValue(PCLCardValueSource valueSource) {
+        this.valueSource = valueSource;
+        return this;
+    }
+
+
     public BaseEffect SetAmountFromCard() {
         this.amount = GetAmountFromCard();
         return this;
@@ -330,9 +430,13 @@ public abstract class BaseEffect
     public int GetCardAffinityValue() {return 0;}
     public void OnDrag(AbstractMonster m) {}
 
+    public final boolean IsCompatible(AbstractCard.CardColor co) {
+        return EFFECT_MAP.get(effectID).IsColorCompatible(co);
+    }
     public final ArrayList<PCLAffinity> ParseAffinitiesFromEntityID() {
         return PCLJUtils.Filter(PCLJUtils.Map(SplitEntityIDs(), PCLAffinity::valueOf), Objects::nonNull);
     }
+
     public final int GetAmountFromCard() {
         if (this.sourceCard != null && this.valueSource != null) {
             switch (valueSource) {
@@ -344,23 +448,39 @@ public abstract class BaseEffect
                 case Affinity: return GetCardAffinityValue();
                 case XValue: return sourceCard.GetXValue();
             }
+            return amount + sourceCard.timesUpgraded * upgrade;
         }
         return amount;
     }
     public final String GetTargetString() {
         return GetTargetString(target);
     }
+    public final BaseEffect SetAmount(int amount) {
+        this.amount = amount;
+        return this;
+    }
+    public final BaseEffect SetAmount(int amount, int upgrade) {
+        this.amount = amount;
+        this.upgrade = upgrade;
+        return this;
+    }
+    public final BaseEffect SetUpgrade(int upgrade) {
+        this.upgrade = upgrade;
+        return this;
+    }
+    public final BaseEffect MakeCopy() {return BaseEffect.Get(Serialize());}
     public final String[] SplitEntityIDs() {
         return PCLJUtils.SplitString(SUB_SEPARATOR, entityID);
     }
     public final String Serialize() {
         return PCLJUtils.JoinStrings(SEPARATOR, new String[] {
            effectID,
-           entityID,
+           entityID == null ? EMPTY_CHARACTER : entityID,
            target != null ? target.name() : PCLCardTarget.None.name(),
            valueSource != null ? valueSource.name() : null,
            String.valueOf(amount),
-           misc
+           String.valueOf(upgrade),
+           misc == null ? EMPTY_CHARACTER : misc
         });
     }
 

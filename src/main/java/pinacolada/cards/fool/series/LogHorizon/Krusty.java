@@ -41,7 +41,7 @@ public class Krusty extends FoolCard
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
         PCLActions.Bottom.GainMight(secondaryValue);
-        PCLActions.Bottom.GainBlock(block);
+        
         PCLActions.Bottom.GainTemporaryHP(magicNumber);
         PCLActions.Bottom.IncreaseScaling(player.hand, player.hand.size(), PCLAffinity.Red, secondaryValue).SetFilter(c -> c.uuid != uuid);
         cooldown.ProgressCooldownAndTrigger(null);

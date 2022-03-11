@@ -38,7 +38,7 @@ public class MetalKnight extends FoolCard
     {
         PCLActions.Bottom.VFX(new WeightyImpactEffect(m.hb.cX, m.hb.cY), 0.6f, true);
         PCLActions.Bottom.DealCardDamage(this, m, AttackEffects.BLUNT_HEAVY);
-        PCLActions.Bottom.GainBlock(block);
+        
         PCLActions.Bottom.GainMetallicize(magicNumber);
         PCLActions.Bottom.ModifyAllInstances(uuid, c -> PCLGameUtilities.DecreaseMagicNumber(c, 1, false));
         if (TrySpendAffinity(PCLAffinity.Silver)) {

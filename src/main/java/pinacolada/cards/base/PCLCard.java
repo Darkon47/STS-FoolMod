@@ -10,6 +10,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.GraveField;
 import com.evacipated.cardcrawl.modthespire.lib.SpireOverride;
 import com.google.gson.reflect.TypeToken;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardQueueItem;
 import com.megacrit.cardcrawl.cards.green.Tactician;
@@ -383,16 +384,21 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
     {
         final CardUseInfo info = new CardUseInfo(this);
 
+        OnPreUse(p1, m1, info);
+        OnUse(p1, m1, info);
+        OnLateUse(p1, m1, info);
+    }
+
+    public void OnPreUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
+    {
         if (block > 0) {
             for (int i = 0; i < rightHitCount; i++) {
                 PCLActions.Bottom.GainBlock(block);
             }
         }
         for (BaseEffect ef : onUseEffects) {
-            ef.Use(p1, m1, info);
+            ef.Use(p, m, info);
         }
-        OnUse(p1, m1, info);
-        OnLateUse(p1, m1, info);
     }
 
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
@@ -425,25 +431,25 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
     protected String GetEffectStrings() {
         ArrayList<String> s = new ArrayList<>();
         if (!onUseEffects.isEmpty()) {
-            s.add(PCLJUtils.JoinStrings(" NL NL ", PCLJUtils.Map(onUseEffects, BaseEffect::GetText)));
+            s.add(PCLJUtils.JoinStrings(" NL  NL ", PCLJUtils.Filter(PCLJUtils.Map(onUseEffects, BaseEffect::GetText), Objects::nonNull)));
         }
         if (onCreateEffect != null) {
-            s.add(PGR.PCL.Strings.Conditions.WhenCreated(false) + ": " + onCreateEffect.GetText());
+            s.add(onCreateEffect.GetText());
         }
         if (onDiscardEffect != null) {
-            s.add(PGR.PCL.Strings.Conditions.OnDiscard(false) + ": " + onDiscardEffect.GetText());
+            s.add(onDiscardEffect.GetText());
         }
         if (onDrawEffect != null) {
-            s.add(PGR.PCL.Strings.Conditions.WhenDrawn(false) + ": " + onDrawEffect.GetText());
+            s.add(onDrawEffect.GetText());
         }
         if (onExhaustEffect != null) {
-            s.add(PGR.PCL.Strings.Conditions.OnExhaust(false) + ": " + onExhaustEffect.GetText());
+            s.add(onExhaustEffect.GetText());
         }
         if (onPurgeEffect != null) {
-            s.add(PGR.PCL.Strings.Conditions.OnPurge(false) + ": " + onPurgeEffect.GetText());
+            s.add(onPurgeEffect.GetText());
         }
 
-        return PCLJUtils.JoinStrings(" NL NL ", s);
+        return PCLJUtils.JoinStrings(" NL  NL ", s);
     }
 
     @Override
@@ -1170,6 +1176,16 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
     protected void SetPurgeEffect(BaseEffect... effects)
     {
         onPurgeEffect = new CompositeEffect(effects);
+    }
+
+    protected void AddDamageEffect()
+    {
+        onUseEffects.add(BaseEffect.DealCardDamage(this));
+    }
+
+    protected void AddDamageEffect(AbstractGameAction.AttackEffect attackEffect)
+    {
+        onUseEffects.add(BaseEffect.DealCardDamage(this, attackEffect));
     }
 
     protected void AddUseEffect(BaseEffect... effects)

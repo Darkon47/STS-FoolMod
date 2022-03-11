@@ -42,7 +42,7 @@ public class Nyanta extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+        
         PCLActions.Bottom.TryChooseSpendAffinity(this, PCLAffinity.Orange, PCLAffinity.Green).AddConditionalCallback((cards) -> {
             for (AffinityChoice c : cards) {
                 if (c.Affinity.equals(PCLAffinity.Green)) {

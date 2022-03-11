@@ -39,7 +39,7 @@ public class YuriNakamura extends FoolCard
     {
         PCLActions.Bottom.VFX(VFX.EFX(PCLEffekseerEFX.GUN03, m.hb));
         PCLActions.Bottom.DealCardDamage(this, m, AttackEffects.GUNSHOT);
-        PCLActions.Bottom.GainBlock(block);
+
 
         CardGroup[] groups = upgraded ? (new CardGroup[] {p.hand, p.discardPile, p.drawPile}) : (new CardGroup[] {p.hand});
         PCLActions.Bottom.ExhaustFromPile(name, magicNumber, groups)

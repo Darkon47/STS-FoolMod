@@ -70,6 +70,12 @@ public class MamizouFutatsuiwa_Daruma extends FoolCard
     }
 
     @Override
+    protected float GetInitialBlock()
+    {
+        return auxiliaryData.form == 0 ? super.GetInitialBlock() : 0;
+    }
+
+    @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
         switch (auxiliaryData.form) {
@@ -79,8 +85,6 @@ public class MamizouFutatsuiwa_Daruma extends FoolCard
             case INDEX_PLATED_ARMOR:
                 PCLActions.Bottom.GainPlatedArmor(secondaryValue);
                 break;
-            default:
-                PCLActions.Bottom.GainBlock(block);
         }
 
     }

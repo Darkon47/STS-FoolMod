@@ -39,7 +39,7 @@ public class Witch extends FoolCard implements OnStartOfTurnPostDrawSubscriber
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+        
 
         AbstractOrb orb = CheckPrimaryCondition(false) ? new Dark() : new Fire();
         PCLActions.Bottom.ChannelOrb(orb).AddCallback(() -> {

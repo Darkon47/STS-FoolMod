@@ -86,7 +86,7 @@ public class LaplacesDemon extends FoolCard
             PCLActions.Bottom.StackPower(new LaplacesDemonPower(p, magicNumber));
         }
         else {
-            PCLActions.Bottom.GainBlock(block);
+            
             int[] damageMatrix = DamageInfo.createDamageMatrix(GetXValue(), true);
             PCLActions.Bottom.DealDamageToAll(damageMatrix, DamageInfo.DamageType.HP_LOSS, AttackEffects.NONE);
         }

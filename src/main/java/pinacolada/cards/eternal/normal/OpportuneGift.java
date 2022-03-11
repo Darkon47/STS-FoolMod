@@ -17,7 +17,7 @@ public class OpportuneGift extends EternalCard
     {
         super(DATA);
 
-        Initialize(0, 2, 3, 1);
+        Initialize(0, 2, 2, 1);
         SetUpgrade(0, 0, 0, 0);
         SetCostUpgrade(-1);
 
@@ -27,7 +27,7 @@ public class OpportuneGift extends EternalCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+        
         if (IsStarter()) {
             PCLCombatStats.MatchingSystem.ResolveMeter.AddResolve(magicNumber);
         }

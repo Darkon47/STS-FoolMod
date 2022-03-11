@@ -34,7 +34,7 @@ public class KaeyaAlberich extends FoolCard {
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info) {
 
-        PCLActions.Bottom.GainBlock(block);
+        
 
         if (TrySpendAffinity(PCLAffinity.Blue) && CombatStats.TryActivateSemiLimited(cardID)) {
             PCLActions.Bottom.StackPower(TargetHelper.Enemies(), PCLPowerHelper.Shackles, magicNumber);

@@ -42,7 +42,7 @@ public class NarberalGamma extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+        
         PCLActions.Bottom.ChannelOrb(new Lightning());
 
         if (!p.hasPower(ElectroPower.POWER_ID))

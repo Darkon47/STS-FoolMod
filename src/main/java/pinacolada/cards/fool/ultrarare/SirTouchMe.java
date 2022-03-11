@@ -33,7 +33,7 @@ public class SirTouchMe extends FoolCard_UltraRare
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+        
         PCLActions.Bottom.DealCardDamage(this, m, AttackEffects.SLASH_HEAVY);
         PCLActions.Bottom.StackPower(new JuggernautPower(p, magicNumber));
     }

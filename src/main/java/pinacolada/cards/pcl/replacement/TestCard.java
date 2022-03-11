@@ -1,13 +1,13 @@
 package pinacolada.cards.pcl.replacement;
 
-import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import pinacolada.cards.base.*;
+import pinacolada.cards.base.baseeffects.BaseCondition;
+import pinacolada.cards.base.baseeffects.BaseEffect;
 import pinacolada.effects.AttackEffects;
-import pinacolada.effects.PCLEffekseerEFX;
-import pinacolada.effects.VFX;
-import pinacolada.utilities.PCLActions;
+import pinacolada.orbs.PCLOrbHelper;
+import pinacolada.powers.PCLPowerHelper;
 
 public class TestCard extends PCLCard
 {
@@ -19,15 +19,18 @@ public class TestCard extends PCLCard
     {
         super(DATA);
 
-        Initialize(1, 0, 2);
-        SetUpgrade(0, 0, 0);
+        Initialize(4, 1, 2, 2);
+        SetUpgrade(2, 1, 0);
+        SetAffinity_Green(1, 0 ,1);
+        SetAffinity_Light(1, 0, 0);
+
+        AddDamageEffect(AttackEffects.BLUNT_LIGHT);
+        AddUseEffect(BaseCondition.Starter().SetChildEffect(BaseEffect.ChannelOrb(1, PCLOrbHelper.Fire)));
+        AddUseEffect(BaseCondition.Match().SetChildEffect(BaseEffect.ApplyToSingle(this, BaseEffect.PCLCardValueSource.MagicNumber, PCLPowerHelper.LockOn)));
     }
 
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.VFX(VFX.EFX(PCLEffekseerEFX.SWORD01, m.hb.cX, m.hb.cY + 130f));
-        PCLActions.Bottom.VFX(VFX.EFX(PCLEffekseerEFX.SWORD01, m.hb).SetColor(Color.PURPLE));
-        PCLActions.Bottom.DealCardDamage(this, m, AttackEffects.SLASH_DIAGONAL);
     }
 }

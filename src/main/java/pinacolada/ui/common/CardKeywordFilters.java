@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.helpers.MathHelper;
 import com.megacrit.cardcrawl.helpers.controller.CInputActionSet;
 import com.megacrit.cardcrawl.helpers.input.InputHelper;
 import com.megacrit.cardcrawl.screens.CombatRewardScreen;
+import com.megacrit.cardcrawl.screens.compendium.CardLibSortHeader;
 import eatyourbeets.interfaces.delegates.ActionT1;
 import eatyourbeets.ui.GUIElement;
 import eatyourbeets.utilities.EYBFontHelper;
@@ -18,10 +19,7 @@ import eatyourbeets.utilities.Mathf;
 import org.apache.commons.lang3.StringUtils;
 import pinacolada.cards.base.*;
 import pinacolada.resources.PGR;
-import pinacolada.ui.controls.GUI_Button;
-import pinacolada.ui.controls.GUI_Dropdown;
-import pinacolada.ui.controls.GUI_Label;
-import pinacolada.ui.controls.GUI_VerticalScrollBar;
+import pinacolada.ui.controls.*;
 import pinacolada.ui.hitboxes.AdvancedHitbox;
 import pinacolada.ui.hitboxes.DraggableHitbox;
 import pinacolada.ui.hitboxes.RelativeHitbox;
@@ -107,7 +105,7 @@ public class CardKeywordFilters extends GUIElement
     protected float scrollStart;
     protected float scrollDelta;
     protected int filterSizeCache;
-    protected final GUI_Dropdown<CardSeries> SeriesDropdown;
+    protected final GUI_SearchableDropdown<CardSeries> SeriesDropdown;
     protected final GUI_Dropdown<OriginFilter> OriginsDropdown;
     protected final GUI_Dropdown<CostFilter> CostDropdown;
     protected final GUI_Dropdown<AbstractCard.CardRarity> RaritiesDropdown;
@@ -247,7 +245,7 @@ public class CardKeywordFilters extends GUIElement
         this.scrollBar = new GUI_VerticalScrollBar(new Hitbox(ScreenW(0.03f), ScreenH(0.7f)))
                 .SetOnScroll(this::OnScroll);
 
-        SeriesDropdown = new GUI_Dropdown<CardSeries>(new AdvancedHitbox(hb.x - SPACING * 3, hb.y + SPACING * 3, Scale(240), Scale(48)), cs -> cs.LocalizedName)
+        SeriesDropdown = (GUI_SearchableDropdown<CardSeries>) new GUI_SearchableDropdown<CardSeries>(new AdvancedHitbox(hb.x - SPACING * 3, hb.y + SPACING * 3, Scale(240), Scale(48)), cs -> cs.LocalizedName)
                 .SetOnOpenOrClose(isOpen -> {
                     CardCrawlGame.isPopupOpen = this.isActive;
                 })
@@ -307,7 +305,7 @@ public class CardKeywordFilters extends GUIElement
                     }
                     return StringUtils.join(PCLJUtils.Map(items, item -> item.name), ", ");
                 }, null,false)
-                .SetHeader(EYBFontHelper.CardTitleFont_Small, 0.8f, Settings.GOLD_COLOR, PGR.PCL.Strings.SeriesUI.Costs)
+                .SetHeader(EYBFontHelper.CardTitleFont_Small, 0.8f, Settings.GOLD_COLOR, CardLibSortHeader.TEXT[3])
                 .SetIsMultiSelect(true)
                 .SetCanAutosizeButton(true)
                 .SetItems(CostFilter.values());
@@ -333,7 +331,7 @@ public class CardKeywordFilters extends GUIElement
                     }
                     return StringUtils.join(PCLJUtils.Map(items, item -> StringUtils.capitalize(item.toString().toLowerCase())), ", ");
                 }, null,false)
-                .SetHeader(EYBFontHelper.CardTitleFont_Small, 0.8f, Settings.GOLD_COLOR, PGR.PCL.Strings.SeriesUI.Rarities)
+                .SetHeader(EYBFontHelper.CardTitleFont_Small, 0.8f, Settings.GOLD_COLOR, CardLibSortHeader.TEXT[0])
                 .SetIsMultiSelect(true)
                 .SetCanAutosizeButton(true)
                 .SetItems(AbstractCard.CardRarity.values());
@@ -359,7 +357,7 @@ public class CardKeywordFilters extends GUIElement
                     }
                     return StringUtils.join(PCLJUtils.Map(items, item -> StringUtils.capitalize(item.toString().toLowerCase())), ", ");
                 }, null,false)
-                .SetHeader(EYBFontHelper.CardTitleFont_Small, 0.8f, Settings.GOLD_COLOR, PGR.PCL.Strings.SeriesUI.Types)
+                .SetHeader(EYBFontHelper.CardTitleFont_Small, 0.8f, Settings.GOLD_COLOR, CardLibSortHeader.TEXT[1])
                 .SetIsMultiSelect(true)
                 .SetCanAutosizeButton(true)
                 .SetItems(AbstractCard.CardType.values());
@@ -628,7 +626,7 @@ public class CardKeywordFilters extends GUIElement
             RefreshButtons();
         }
 
-        if (!PGR.UI.IsDropdownOpen) {
+        if (!PGR.UI.DoesActiveElementExist()) {
             for (CardKeywordButton c : FilterButtons)
             {
                 c.TryUpdate();
@@ -695,7 +693,7 @@ public class CardKeywordFilters extends GUIElement
 
     protected void OnScroll(float newPercent)
     {
-        if (!PGR.UI.IsDropdownOpen) {
+        if (!PGR.UI.DoesActiveElementExist()) {
             scrollDelta = MathHelper.valueFromPercentBetween(lowerScrollBound, upperScrollBound, newPercent);
         }
     }

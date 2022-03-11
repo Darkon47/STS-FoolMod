@@ -32,7 +32,7 @@ public class AkiraInoue extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+        
 
         final CardGroup group = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
         final RandomizedList<AbstractCard> pile = new RandomizedList<>(JUtils.Filter(player.discardPile.group, c -> !(PCLGameUtilities.IsHindrance(c)) && PCLGameUtilities.GetPCLAffinityLevel(c, PCLAffinity.General, true) > 0));

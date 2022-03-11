@@ -31,7 +31,7 @@ public class SuikaIbuki extends FoolCard
     {
         AtomicBoolean shouldDrawLess = new AtomicBoolean(true);
         PCLActions.Bottom.DealCardDamageToAll(this, AttackEffects.BLUNT_HEAVY);
-        PCLActions.Bottom.GainBlock(block);
+
 
         final CardGroup group = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
         for (int i = 0; i < Math.min(magicNumber, player.drawPile.size()); ++i)

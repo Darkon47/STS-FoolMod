@@ -6,11 +6,11 @@ import pinacolada.cards.base.CardUseInfo;
 import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.base.baseeffects.BaseCondition;
 import pinacolada.cards.base.baseeffects.BaseEffect;
-import pinacolada.resources.CardTooltips;
+import pinacolada.resources.PGR;
 
 public class BaseCondition_Limited extends BaseCondition {
 
-    public static final String ID = Register(BaseCondition_Limited.class);
+    public static final String ID = Register(BaseCondition_Limited.class, 1);
 
     public BaseCondition_Limited()
     {
@@ -33,11 +33,11 @@ public class BaseCondition_Limited extends BaseCondition {
 
     @Override
     public boolean CheckCondition(AbstractPlayer p, AbstractMonster m, CardUseInfo info, boolean isUsing) {
-        return isUsing ? info.TryActivateLimited() : info.CanActivateLimited;
+        return isUsing ? CheckChild(p, m, info, isUsing) && info.TryActivateLimited() : info.CanActivateLimited;
     }
 
     @Override
     public String GetConditionText() {
-        return CardTooltips.FindByID("Limited").title;
+        return PGR.Tooltips.Limited.title;
     }
 }

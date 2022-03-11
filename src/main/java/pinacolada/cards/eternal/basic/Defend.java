@@ -31,7 +31,7 @@ public class Defend extends EternalCard
             PCLActions.Bottom.StackPower(new NextTurnBlockPower(p, block));
         }
         else {
-            PCLActions.Bottom.GainBlock(block);
+            
         }
     }
 }

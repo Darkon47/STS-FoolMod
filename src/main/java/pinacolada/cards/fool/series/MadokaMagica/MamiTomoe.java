@@ -64,7 +64,7 @@ public class MamiTomoe extends FoolCard
         PCLActions.Bottom.VFX(new MindblastEffect(p.dialogX, p.dialogY, p.flipHorizontal), 0.05f * magicNumber);
         PCLActions.Bottom.SFX("ATTACK_FIRE");
         PCLActions.Bottom.DealCardDamage(this, m, AttackEffects.NONE);
-        PCLActions.Bottom.GainBlock(block);
+
 
         //GameActions.Bottom.Add(new ShakeScreenAction(0.5f, ScreenShake.ShakeDur.LONG, ScreenShake.ShakeIntensity.MED));
 

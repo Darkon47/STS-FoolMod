@@ -34,7 +34,7 @@ public class TsurugaMeisai extends FoolCard
     @Override
     public void OnLateUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+
         PCLActions.Bottom.StackPower(new NextTurnBlockPower(p, magicNumber));
         PCLActions.Bottom.CreateThrowingKnives(secondaryValue, player.drawPile).AddCallback(c -> {
             PCLGameUtilities.SetCardTag(c, HASTE, true);

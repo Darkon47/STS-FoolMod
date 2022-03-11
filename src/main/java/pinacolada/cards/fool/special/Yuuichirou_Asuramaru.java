@@ -35,7 +35,7 @@ public class Yuuichirou_Asuramaru extends FoolCard
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainBlock(block);
+
         PCLActions.Bottom.ApplyBlinded(TargetHelper.Normal(m), magicNumber);
 
         if (TrySpendAffinity(PCLAffinity.Dark)) {
