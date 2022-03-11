@@ -5,6 +5,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import eatyourbeets.utilities.ColoredString;
 import pinacolada.cards.base.CardUseInfo;
+import pinacolada.cards.base.PCLCard;
 import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.base.attributes.AbstractAttribute;
 import pinacolada.cards.base.attributes.TempHPAttribute;
@@ -12,29 +13,21 @@ import pinacolada.cards.base.baseeffects.BaseEffect;
 import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 
-public class BaseEffect_GainTempHP extends BaseEffect
+public class BaseEffect_GainCardTempHP extends BaseEffect
 {
-    public static final String ID = Register(BaseEffect_GainTempHP.class);
+    public static final String ID = Register(BaseEffect_GainCardTempHP.class);
 
-    public BaseEffect_GainTempHP()
-    {
-        this(0);
-    }
 
-    public BaseEffect_GainTempHP(SerializedData content)
+    public BaseEffect_GainCardTempHP(PCLCard card)
     {
-        super(content);
-    }
-
-    public BaseEffect_GainTempHP(int amount)
-    {
-        super(ID, null, PCLCardTarget.Self, amount);
+        super(ID, null, PCLCardTarget.Self, 0);
+        SetSourceCard(card, PCLCardValueSource.MagicNumber);
     }
 
     @Override
     public String GetText()
     {
-        return PGR.PCL.Strings.Actions.GainAmount(amount, PGR.Tooltips.TempHP, true);
+        return null;
     }
 
     @Override

@@ -17,7 +17,7 @@ public class BaseCondition_OnPurge extends BaseCondition {
         super(ID, null, PCLCardTarget.None, 0);
     }
 
-    public BaseCondition_OnPurge(String[] content) {
+    public BaseCondition_OnPurge(SerializedData content) {
         super(content);
     }
 

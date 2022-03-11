@@ -19,7 +19,7 @@ public class BaseEffect_PayAffinity extends BaseEffect_Affinity
         this(0);
     }
 
-    public BaseEffect_PayAffinity(String[] content)
+    public BaseEffect_PayAffinity(SerializedData content)
     {
         super(content);
     }
@@ -33,6 +33,12 @@ public class BaseEffect_PayAffinity extends BaseEffect_Affinity
     public String GetText()
     {
         return PGR.PCL.Strings.Actions.Pay(amount, PCLJUtils.JoinStrings(" ", PCLJUtils.Map(affinities, PCLAffinity::GetTooltip)), true);
+    }
+
+    @Override
+    public String GetSampleText()
+    {
+        return PGR.PCL.Strings.Actions.Pay("X", PGR.Tooltips.Affinity_General.title, false);
     }
 
     @Override

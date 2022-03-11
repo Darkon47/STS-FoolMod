@@ -24,7 +24,17 @@ public class BaseEffect_DealDamage extends BaseEffect
         this(0, AbstractGameAction.AttackEffect.NONE);
     }
 
-    public BaseEffect_DealDamage(int amount, AbstractGameAction.AttackEffect attackEffect)
+    public BaseEffect_DealDamage(SerializedData content)
+    {
+        super(content);
+        this.attackEffect =  AbstractGameAction.AttackEffect.NONE;
+    }
+
+    public BaseEffect_DealDamage(int amount, AbstractGameAction.AttackEffect attackEffect) {
+        this(amount, attackEffect, PCLCardTarget.Normal);
+    }
+
+    public BaseEffect_DealDamage(int amount, AbstractGameAction.AttackEffect attackEffect, PCLCardTarget target)
     {
         super(ID, attackEffect.name(), PCLCardTarget.Normal, amount);
         this.attackEffect = attackEffect;
@@ -33,13 +43,28 @@ public class BaseEffect_DealDamage extends BaseEffect
     @Override
     public String GetText()
     {
-        return PGR.PCL.Strings.Actions.DealDamage(amount, true);
+        if (target == PCLCardTarget.Normal) {
+            return PGR.PCL.Strings.Actions.DealDamage(amount, true);
+        }
+        return PGR.PCL.Strings.Actions.DealDamageTo(amount, GetTargetString(), true);
+    }
+
+    @Override
+    public String GetSampleText()
+    {
+        return PGR.PCL.Strings.Actions.DealDamage("X", false);
     }
 
     @Override
     public void Use(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.DealDamage(p, m, amount, DamageInfo.DamageType.THORNS, attackEffect);
+        if (target == PCLCardTarget.AoE || target == PCLCardTarget.All) {
+            int[] damage = DamageInfo.createDamageMatrix(amount, true, true);
+            PCLActions.Bottom.DealDamageToAll(damage, DamageInfo.DamageType.THORNS, attackEffect);
+        }
+        else {
+            PCLActions.Bottom.DealDamage(p, m, amount, DamageInfo.DamageType.THORNS, attackEffect);
+        }
     }
 
     @Override

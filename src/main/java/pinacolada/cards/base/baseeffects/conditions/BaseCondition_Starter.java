@@ -17,7 +17,7 @@ public class BaseCondition_Starter extends BaseCondition {
         super(ID, null, PCLCardTarget.None, 0);
     }
 
-    public BaseCondition_Starter(String[] content) {
+    public BaseCondition_Starter(SerializedData content) {
         super(content);
     }
 

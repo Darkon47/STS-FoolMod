@@ -64,7 +64,7 @@ public abstract class BaseCondition extends BaseEffect {
         super();
     }
 
-    public BaseCondition(String[] content) {
+    public BaseCondition(SerializedData content) {
         super(content);
         if (misc != null) {
             this.childEffect = BaseEffect.Get(misc);
@@ -114,6 +114,11 @@ public abstract class BaseCondition extends BaseEffect {
     public BaseCondition SetSourceCard(PCLCard card, PCLCardValueSource valueSource) {
         super.SetSourceCard(card, valueSource);
         return this;
+    }
+
+    @Override
+    public String GetSampleText() {
+        return GetConditionText();
     }
 
     @Override

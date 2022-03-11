@@ -214,7 +214,7 @@
 			"{0}",
 			"{0} Match Combo",
 			"Not {0}",
-			"or"
+			"{0} or {1}"
 		]
 	},
 
@@ -358,7 +358,10 @@
 			"Export",
 			"Ascension Glyphs:",
 			"Custom Card Editor",
-			"#pLeft-Click to open the editor. NL #pRight-Click to enable or disable #yCustom #yCards."
+			"#pLeft-Click to open the editor. NL #pRight-Click to enable or disable #yCustom #yCards.",
+			"#gCustom #gCards #gare #genabled.",
+			"#rCustom #rCards #rare #rdisabled.",
+			"Enable Custom Cards"
 		]
 	},
 	
@@ -387,7 +390,7 @@
 			"(Max. #b{0} [Block])",
 			"Enable certain events for non-Fool characters",
 			"Enable certain relics for non-Fool characters",
-			"Alternate Version of The Animator: Card effects and mechanics differ from NL the official version. Settings and trophies are not shared between versions.",
+			"Custom Cards are active for this character. NL #rTrophies #rand #rAscension #rare #rdisabled.",
 			"Filters",
 			"Any",
 			"Replace Non-Fool cards when playing as the Fool (Warning: Unstable)",
@@ -412,6 +415,7 @@
 	{
 		"TEXT":
 		[
+			"Hand",
 			"Current",
 			"Next",
 			"Uses",
@@ -476,20 +480,24 @@
 			"New Card",
 			"Damage",
 			"Block",
-			"M Value",
-			"S Value",
+			"Temp. HP",
+			"Heal",
 			"Hit Count",
 			"Upgrade",
 			"Card Target",
 			"Attack Type",
-			"Use Base Values",
+			"Attack Effect",
 			"Condition 1",
 			"Condition 2",
 			"Effect",
 			"Effect Items",
 			"Effect Source",
 			"Modifier",
-			"Modifier Source"
+			"Modifier Source",
+			"Orb(s)",
+			"Power(s)",
+			"Use Base Values",
+			"Load Image"
 		]
 	},
 

@@ -2,6 +2,7 @@ package pinacolada.ui.characterSelection;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.FontHelper;
@@ -11,11 +12,9 @@ import com.megacrit.cardcrawl.screens.select.GridCardSelectScreen;
 import eatyourbeets.ui.GUIElement;
 import eatyourbeets.utilities.EYBFontHelper;
 import org.apache.commons.lang3.StringUtils;
-import pinacolada.cards.base.CardSeries;
-import pinacolada.cards.base.PCLAffinity;
-import pinacolada.cards.base.PCLCardTagHelper;
-import pinacolada.cards.base.PCLCardTarget;
+import pinacolada.cards.base.*;
 import pinacolada.cards.base.baseeffects.BaseEffect;
+import pinacolada.effects.AttackEffects;
 import pinacolada.resources.PGR;
 import pinacolada.ui.controls.*;
 import pinacolada.ui.hitboxes.AdvancedHitbox;
@@ -43,6 +42,8 @@ public class PCLCustomCardPage extends GUIElement {
     protected GUI_Dropdown<PCLCardTarget> TargetDropdown;
     protected GUI_Dropdown<AbstractCard.CardRarity> RaritiesDropdown;
     protected GUI_Dropdown<AbstractCard.CardType> TypesDropdown;
+    protected GUI_Dropdown<PCLAttackType> AttackTypeDropdown;
+    protected GUI_Dropdown<AbstractGameAction.AttackEffect> AttackEffectDropdown;
     protected GUI_Dropdown<CardSeries> SeriesDropdown;
     protected PCLCustomCardValueEditor CostEditor;
     protected PCLCustomCardValueEditor DamageEditor;
@@ -59,7 +60,7 @@ public class PCLCustomCardPage extends GUIElement {
     protected GUI_Label scaling_label;
     protected GUI_Toggle tags_toggle;
 
-    protected ArrayList<BaseEffect> CurrentEffects;
+    protected ArrayList<BaseEffect> CurrentEffects = new ArrayList<>();
 
     public PCLCustomCardPage(PCLCustomCardEditEffect effect) {
         final float buttonHeight = ScreenH(0.07f);
@@ -68,10 +69,10 @@ public class PCLCustomCardPage extends GUIElement {
         final float labelWidth = ScreenW(0.20f);
         final float button_cY = buttonHeight * 1.5f;
         this.effect = effect;
-        while (effect.TempBuilder.effects.size() < EFFECT_COUNT) {
-            effect.TempBuilder.SetBaseEffect((BaseEffect) null);
+        CurrentEffects.addAll(effect.TempBuilder.effects);
+        while (CurrentEffects.size() < EFFECT_COUNT) {
+            CurrentEffects.add(null);
         }
-        CurrentEffects = effect.TempBuilder.effects;
 
         NameInput = (GUI_TextBoxInput) new GUI_TextBoxInput(PGR.PCL.Images.Panel_Rounded_Half_H.Texture(),
                 new AdvancedHitbox(START_X, ScreenH(0.87f), MENU_WIDTH * 1.8f, MENU_HEIGHT * 1.6f))
@@ -195,7 +196,7 @@ public class PCLCustomCardPage extends GUIElement {
         })
                 .SetLimits(1, 999)
                 .SetValue(effect.TempBuilder.hitCount, effect.TempBuilder.hitCountUpgrade);
-        TagsDropdown = new GUI_Dropdown<PCLCardTagHelper>(new AdvancedHitbox(curW + SPACING_WIDTH * 2, ScreenH(0.77f), MENU_WIDTH * 1.2f, MENU_HEIGHT))
+        TagsDropdown = new GUI_Dropdown<PCLCardTagHelper>(new AdvancedHitbox(ScreenW(0.79f), ScreenH(0.77f), MENU_WIDTH * 1.2f, MENU_HEIGHT))
                 .SetOnChange(tags -> {
                     effect.TempBuilder.SetTags(PCLJUtils.Map(tags, tag -> tag.Tag), true);
                     effect.RefreshCard();
@@ -207,6 +208,32 @@ public class PCLCustomCardPage extends GUIElement {
                 .SetIsMultiSelect(true)
                 .SetItems(PCLCardTagHelper.GetAll())
                 .SetSelection(PCLJUtils.Map(effect.TempBuilder.tags, PCLCardTagHelper::Get), false);
+        AttackTypeDropdown = new GUI_Dropdown<PCLAttackType>(new AdvancedHitbox(ScreenW(0.79f), ScreenH(0.64f), MENU_WIDTH, MENU_HEIGHT)
+                ,item -> StringUtils.capitalize(item.toString().toLowerCase()))
+                .SetOnChange(targets -> {
+                    if (!targets.isEmpty()) {
+                        effect.TempBuilder.SetAttackType(targets.get(0));
+                        effect.RefreshCard();
+                    }
+                })
+                .SetLabelFunctionForOption(c -> c.GetTooltip() != null ? c.GetTooltip().title : "", false)
+                .SetHeader(EYBFontHelper.CardTitleFont_Small, 0.8f, Settings.GOLD_COLOR, PGR.PCL.Strings.CardEditor.AttackType)
+                .SetCanAutosizeButton(true)
+                .SetItems(PCLJUtils.Filter(PCLAttackType.values(), v -> v.GetTooltip() != null))
+                .SetSelection(effect.TempBuilder.attackType, false);
+        AttackEffectDropdown = new GUI_Dropdown<AbstractGameAction.AttackEffect>(new AdvancedHitbox(ScreenW(0.79f), ScreenH(0.56f), MENU_WIDTH, MENU_HEIGHT)
+                ,item -> StringUtils.capitalize(item.toString().toLowerCase()))
+                .SetOnChange(targets -> {
+                    if (!targets.isEmpty()) {
+                        effect.TempBuilder.SetAttackEffect(targets.get(0));
+                        effect.RefreshCard();
+                    }
+                })
+                .SetLabelFunctionForOption(Enum::name, false)
+                .SetHeader(EYBFontHelper.CardTitleFont_Small, 0.8f, Settings.GOLD_COLOR, PGR.PCL.Strings.CardEditor.AttackEffect)
+                .SetCanAutosizeButton(true)
+                .SetItems(AttackEffects.Keys())
+                .SetSelection(effect.TempBuilder.attackEffect, false);
 
         // Affinity editors
 
@@ -237,11 +264,12 @@ public class PCLCustomCardPage extends GUIElement {
         for (int i = 0; i < EFFECT_COUNT; i++) {
             int finalI = i;
             EffectEditors.add(new PCLCustomCardEffectEditor(effect.TempBuilder, CurrentEffects.get(i), new AdvancedHitbox(START_X, curY, MENU_WIDTH / 4, MENU_HEIGHT)
-                    , PGR.PCL.Strings.CardEditor.Effect, (be) -> {
+                    , "", (be) -> {
                         CurrentEffects.set(finalI, be);
+                        effect.TempBuilder.SetBaseEffect(CurrentEffects, false, true);
                         effect.RefreshCard();
                     }));
-            curY -= SPACING_WIDTH * 2;
+            curY -= SPACING_WIDTH;
         }
 
         cancel_button = CreateHexagonalButton(0, 0, buttonWidth, buttonHeight)
@@ -270,6 +298,8 @@ public class PCLCustomCardPage extends GUIElement {
         TypesDropdown.TryUpdate();
         TagsDropdown.TryUpdate();
         TargetDropdown.TryUpdate();
+        AttackTypeDropdown.TryUpdate();
+        AttackEffectDropdown.TryUpdate();
         for (PCLCustomCardAffinityValueEditor aEditor : AffinityEditors) {
             aEditor.TryUpdate();
         }
@@ -301,6 +331,8 @@ public class PCLCustomCardPage extends GUIElement {
         MagicNumberEditor.TryRender(sb);
         SecondaryValueEditor.TryRender(sb);
         HitCountEditor.TryRender(sb);
+        AttackTypeDropdown.TryRender(sb);
+        AttackEffectDropdown.TryRender(sb);
         TagsDropdown.TryRender(sb);
         RaritiesDropdown.TryRender(sb);
         TypesDropdown.TryRender(sb);

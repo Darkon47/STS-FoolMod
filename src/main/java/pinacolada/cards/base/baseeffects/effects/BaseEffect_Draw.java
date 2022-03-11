@@ -16,15 +16,26 @@ public class BaseEffect_Draw extends BaseEffect
         this(0);
     }
 
+    public BaseEffect_Draw(SerializedData content)
+    {
+        super(content);
+    }
+
     public BaseEffect_Draw(int amount)
     {
-        super(ID, null,  PCLCardTarget.None, amount);
+        super(ID, null, PCLCardTarget.None, amount);
     }
 
     @Override
     public String GetText()
     {
         return PGR.PCL.Strings.Actions.Draw(amount, true);
+    }
+
+    @Override
+    public String GetSampleText()
+    {
+        return PGR.PCL.Strings.Actions.Draw("X", false);
     }
 
     @Override

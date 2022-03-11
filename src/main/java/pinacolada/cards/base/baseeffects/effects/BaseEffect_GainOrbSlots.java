@@ -17,6 +17,11 @@ public class BaseEffect_GainOrbSlots extends BaseEffect
         this(0);
     }
 
+    public BaseEffect_GainOrbSlots(SerializedData content)
+    {
+        super(content);
+    }
+
     public BaseEffect_GainOrbSlots(int amount)
     {
         super(ID, null, PCLCardTarget.None, amount);
@@ -26,6 +31,12 @@ public class BaseEffect_GainOrbSlots extends BaseEffect
     public String GetText()
     {
         return PGR.PCL.Strings.Actions.GainAmount(amount, PGR.Tooltips.OrbSlot, true);
+    }
+
+    @Override
+    public String GetSampleText()
+    {
+        return PGR.PCL.Strings.Actions.GainAmount("X", PGR.Tooltips.OrbSlot.title, false);
     }
 
     @Override

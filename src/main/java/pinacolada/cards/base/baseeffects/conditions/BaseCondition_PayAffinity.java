@@ -21,7 +21,7 @@ public class BaseCondition_PayAffinity extends BaseCondition
 
     protected ArrayList<PCLAffinity> affinities;
 
-    public BaseCondition_PayAffinity(String[] content)
+    public BaseCondition_PayAffinity(SerializedData content)
     {
         super(content);
         this.affinities = ParseAffinitiesFromEntityID();
@@ -66,6 +66,12 @@ public class BaseCondition_PayAffinity extends BaseCondition
     public String GetConditionText()
     {
         return PGR.PCL.Strings.Actions.Pay(amount, PCLJUtils.JoinStrings(" ", PCLJUtils.Map(affinities, PCLAffinity::GetTooltip)), false);
+    }
+
+    @Override
+    public String GetSampleText()
+    {
+        return PGR.PCL.Strings.Actions.Pay("X", PGR.Tooltips.Affinity_General, false);
     }
 
     @Override

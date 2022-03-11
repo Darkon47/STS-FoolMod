@@ -534,8 +534,17 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
 
     }
 
-    public void triggerOnPurge() {
+    public void triggerOnExhaust() {
+        super.triggerOnExhaust();
+        if (onExhaustEffect != null) {
+            onExhaustEffect.Use(player, null, new CardUseInfo(this));
+        }
+    }
 
+    public void triggerOnPurge() {
+        if (onPurgeEffect != null) {
+            onPurgeEffect.Use(player, null, new CardUseInfo(this));
+        }
     }
 
     public void triggerWhenCreated(boolean startOfBattle)
@@ -545,6 +554,9 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
         }
         if (hasTag(AFTERLIFE)) {
             AfterLifeMod.Add(this);
+        }
+        if (onCreateEffect != null) {
+            onCreateEffect.Use(player, null, new CardUseInfo(this));
         }
         // Called at the start of a fight, or when a card is created by MakeTempCard.
     }
@@ -575,6 +587,9 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
         if (cooldown != null && cooldown.canProgressOnDraw)
         {
             cooldown.ProgressCooldownAndTrigger(null);
+        }
+        if (onDrawEffect != null) {
+            onDrawEffect.Use(player, null, new CardUseInfo(this));
         }
     }
 
@@ -1478,6 +1493,25 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
     protected void OnUpgrade()
     {
         SetForm(auxiliaryData.form, timesUpgraded);
+
+        if (onCreateEffect != null) {
+            onCreateEffect.SetAmountFromCard();
+        }
+        if (onDiscardEffect != null) {
+            onDiscardEffect.SetAmountFromCard();
+        }
+        if (onDrawEffect != null) {
+            onDrawEffect.SetAmountFromCard();
+        }
+        if (onExhaustEffect != null) {
+            onExhaustEffect.SetAmountFromCard();
+        }
+        if (onPurgeEffect != null) {
+            onPurgeEffect.SetAmountFromCard();
+        }
+        for (BaseEffect ef : onUseEffects) {
+            ef.SetAmountFromCard();
+        }
     }
 
     @Override
@@ -1513,6 +1547,9 @@ public abstract class PCLCard extends PCLCardBase implements OnStartOfTurnSubscr
         if (cooldown != null && cooldown.canProgressOnManualDiscard)
         {
             cooldown.ProgressCooldownAndTrigger(null);
+        }
+        if (onDiscardEffect != null) {
+            onDiscardEffect.Use(player, null, new CardUseInfo(this));
         }
     }
 

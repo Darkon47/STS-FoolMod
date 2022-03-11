@@ -17,7 +17,7 @@ public class BaseCondition_OnDiscard extends BaseCondition {
         super(ID, null, PCLCardTarget.None, 0);
     }
 
-    public BaseCondition_OnDiscard(String[] content) {
+    public BaseCondition_OnDiscard(SerializedData content) {
         super(content);
     }
 

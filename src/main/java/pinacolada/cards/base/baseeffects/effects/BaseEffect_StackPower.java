@@ -27,7 +27,7 @@ public class BaseEffect_StackPower extends BaseEffect
         this(PCLCardTarget.Self, 0);
     }
 
-    public BaseEffect_StackPower(String[] content)
+    public BaseEffect_StackPower(SerializedData content)
     {
         super(content);
         this.powers = PCLJUtils.Filter(PCLJUtils.Map(SplitEntityIDs(), PCLPowerHelper::Get), Objects::nonNull);
@@ -89,6 +89,12 @@ public class BaseEffect_StackPower extends BaseEffect
                         : amount < 0 ? PGR.PCL.Strings.Actions.LoseAmount(amount, joinedString, true)
                         : PGR.PCL.Strings.Actions.GainAmount(amount, joinedString, true);
         }
+    }
+
+    @Override
+    public String GetSampleText()
+    {
+        return PGR.PCL.Strings.Actions.ApplyAmount("X", PGR.PCL.Strings.CardEditor.Powers, false);
     }
 
     @Override

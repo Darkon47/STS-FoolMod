@@ -10,6 +10,8 @@ import pinacolada.cards.base.attributes.AbstractAttribute;
 import pinacolada.cards.base.baseeffects.BaseCondition;
 import pinacolada.cards.base.baseeffects.BaseEffect;
 import pinacolada.cards.base.baseeffects.effects.BaseEffect_DealCardDamage;
+import pinacolada.cards.base.baseeffects.effects.BaseEffect_GainCardTempHP;
+import pinacolada.cards.base.baseeffects.effects.BaseEffect_HealCardHP;
 import pinacolada.utilities.PCLGameUtilities;
 
 import java.util.ArrayList;
@@ -27,6 +29,8 @@ public class PCLCard_Dynamic extends PCLCard
     public final FuncT1<AbstractAttribute, PCLCard> getSpecialInfo;
     public final FuncT1<AbstractAttribute, PCLCard> getDamageInfo;
     public final FuncT1<AbstractAttribute, PCLCard> getBlockInfo;
+    protected BaseEffect tempHPEffect;
+    protected BaseEffect healEffect;
     protected ArrayList<CardTags> upgradeTags;
 
     public PCLCard_Dynamic(PCLCardBuilder builder)
@@ -52,6 +56,10 @@ public class PCLCard_Dynamic extends PCLCard
         this.canUpgrade = builder.canUpgrade;
         this.showTypeText = builder.showTypeText;
 
+        this.getDamageInfo = builder.getDamageInfo;
+        this.getBlockInfo = builder.getBlockInfo;
+        this.getSpecialInfo = builder.getSpecialInfo;
+
         if (builder.portraitImage != null)
         {
             this.portraitImg = builder.portraitImage;
@@ -63,10 +71,6 @@ public class PCLCard_Dynamic extends PCLCard
         if (builder.fakePortrait != null) {
             this.fakePortrait = builder.fakePortrait;
         }
-
-        this.getSpecialInfo = builder.getSpecialInfo;
-        this.getDamageInfo = builder.getDamageInfo;
-        this.getBlockInfo = builder.getBlockInfo;
 
         if (constructor != null)
         {
@@ -80,7 +84,6 @@ public class PCLCard_Dynamic extends PCLCard
 
         SetSeries(builder.series);
 
-        // TODO Temp HP condition
         boolean hasAttack = false;
         for (BaseEffect effect : builder.effects) {
             if (effect == null) {
@@ -112,12 +115,26 @@ public class PCLCard_Dynamic extends PCLCard
                 hasAttack = true;
             }
             onUseEffects.add(effect);
+            effect.SetSourceCard(this);
         }
 
         // Automatically create Attack actions for Attacks that specify damage but that do not already have attack actions
         if (builder.damage > 0 && builder.cardType == CardType.ATTACK && !hasAttack) {
             onUseEffects.add(new BaseEffect_DealCardDamage(this, builder.attackEffect));
         }
+
+        // Automatically create TempHP action for custom cards with magic number
+        if (builder.magicNumber > 0 && builder.isTempHP) {
+            tempHPEffect = new BaseEffect_GainCardTempHP(this);
+            onUseEffects.add(tempHPEffect);
+        }
+
+        if (builder.secondaryValue > 0 && builder.isHeal) {
+            healEffect = new BaseEffect_HealCardHP(this);
+            onUseEffects.add(healEffect);
+        }
+
+        initializeDescription();
     }
 
     @Override
@@ -161,6 +178,12 @@ public class PCLCard_Dynamic extends PCLCard
         {
             return getSpecialInfo.Invoke(this);
         }
+        if (healEffect != null) {
+            return healEffect.GetSpecialInfo();
+        }
+        if (tempHPEffect != null) {
+            return tempHPEffect.GetSpecialInfo();
+        }
 
         return super.GetSpecialInfo();
     }
@@ -168,6 +191,7 @@ public class PCLCard_Dynamic extends PCLCard
     @Override
     protected void OnUpgrade()
     {
+        super.OnUpgrade();
         if (onUpgrade != null)
         {
             onUpgrade.Invoke(this);
@@ -178,11 +202,13 @@ public class PCLCard_Dynamic extends PCLCard
                 PCLGameUtilities.ModifyCardTag(this, tag, true);
             }
         }
+        initializeDescription();
     }
 
     @Override
     public void OnUse(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
+        super.OnUse(p, m, info);
         if (onUse != null)
         {
             onUse.Invoke(p, m, info);

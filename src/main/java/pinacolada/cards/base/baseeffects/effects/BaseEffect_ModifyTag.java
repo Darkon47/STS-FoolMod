@@ -64,6 +64,10 @@ public class BaseEffect_ModifyTag extends BaseEffect
         return PGR.PCL.Strings.Actions.GiveTarget(PGR.PCL.Strings.Actions.Cards(cards.size()), joinedString, true);
     }
 
+    public String GetSampleText() {
+        return PGR.PCL.Strings.Actions.GiveTarget(PGR.PCL.Strings.Actions.Cards("X"), PGR.PCL.Strings.CardEditor.Tags, false);
+    }
+
     @Override
     public void Use(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {

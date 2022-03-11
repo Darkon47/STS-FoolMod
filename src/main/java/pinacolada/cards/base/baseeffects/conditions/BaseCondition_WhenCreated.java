@@ -17,7 +17,7 @@ public class BaseCondition_WhenCreated extends BaseCondition {
         super(ID, null, PCLCardTarget.None, 0);
     }
 
-    public BaseCondition_WhenCreated(String[] content) {
+    public BaseCondition_WhenCreated(SerializedData content) {
         super(content);
     }
 

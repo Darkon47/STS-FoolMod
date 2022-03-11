@@ -10,6 +10,7 @@ import eatyourbeets.ui.config.ConfigOption_String;
 import eatyourbeets.ui.config.ConfigOption_Vector2;
 import pinacolada.characters.FoolCharacter;
 import pinacolada.resources.PGR;
+import pinacolada.ui.config.ConfigOption_CharacterSet;
 import pinacolada.ui.config.ConfigOption_SeriesList;
 import pinacolada.utilities.PCLJUtils;
 
@@ -50,6 +51,7 @@ public class PCLConfig
     private static final String REPLACE_CARDS_FOOL = PCLConfig.CreateFullID("ReplaceCards");
     private static final String REPLACE_CARDS_ANIMATOR = PCLConfig.CreateFullID("ReplaceCardsAnimator");
     private static final String FLASH_FOR_REROLL = PCLConfig.CreateFullID("FlashForReroll");
+    private static final String CUSTOM_CARDS_ENABLED_CHARACTERS = PCLConfig.CreateFullID("CustomCardsEnabledCharacters");
     private static final String ASCENSIONGLYPH0 = PCLConfig.CreateFullID("AscensionGlyph0");
     private static final String ASCENSIONGLYPH1 = PCLConfig.CreateFullID("AscensionGlyph1");
     private static final String ASCENSIONGLYPH2 = PCLConfig.CreateFullID("AscensionGlyph2");
@@ -75,6 +77,7 @@ public class PCLConfig
     public ConfigOption_SeriesList SelectedSeries = new ConfigOption_SeriesList(SELECTED_SERIES, null);
     public ConfigOption_SeriesList ExpandedSeries = new ConfigOption_SeriesList(EXPANDED_SERIES, new ArrayList<>());
     public ConfigOption_Integer SeriesSize = new ConfigOption_Integer(SERIES_SIZE, MINIMUM_SERIES);
+    public ConfigOption_CharacterSet CustomCardsEnabledCharacters = new ConfigOption_CharacterSet(CUSTOM_CARDS_ENABLED_CHARACTERS, new HashSet<>());
     public ConfigOption_Integer AscensionGlyph0 = new ConfigOption_Integer(ASCENSIONGLYPH0, 0);
     public ConfigOption_Integer AscensionGlyph1 = new ConfigOption_Integer(ASCENSIONGLYPH1, 0);
     public ConfigOption_Integer AscensionGlyph2 = new ConfigOption_Integer(ASCENSIONGLYPH2, 0);
@@ -118,6 +121,7 @@ public class PCLConfig
             SelectedSeries.SetConfig(config);
             ExpandedSeries.SetConfig(config);
             SeriesSize.SetConfig(config);
+            CustomCardsEnabledCharacters.SetConfig(config);
             AscensionGlyph0.SetConfig(config);
             AscensionGlyph1.SetConfig(config);
             AscensionGlyph2.SetConfig(config);

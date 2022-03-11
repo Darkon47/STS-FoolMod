@@ -1031,6 +1031,14 @@ public class PCLGameUtilities extends GameUtilities
         return playerClass == PGR.Fool.PlayerClass || playerClass == PGR.Eternal.PlayerClass;
     }
 
+    public static boolean AreCustomCardsEnabled() {
+        return AbstractDungeon.player != null && AreCustomCardsEnabled(AbstractDungeon.player.chosenClass);
+    }
+
+    public static boolean AreCustomCardsEnabled(AbstractPlayer.PlayerClass playerClass) {
+        return PGR.PCL.Config.CustomCardsEnabledCharacters.Get().contains(playerClass);
+    }
+
     public static boolean IsSameSeries(AbstractCard card1, AbstractCard card2)
     {
         PCLCard c1 = PCLJUtils.SafeCast(card1, PCLCard.class);

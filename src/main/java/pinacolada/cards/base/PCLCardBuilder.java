@@ -39,7 +39,7 @@ public class PCLCardBuilder
     public FuncT1<AbstractAttribute, PCLCard> getDamageInfo;
     public FuncT1<AbstractAttribute, PCLCard> getSpecialInfo;
     public FuncT2<Boolean, PCLCard, AbstractMonster> canUse;
-    public AbstractGameAction.AttackEffect attackEffect = AbstractGameAction.AttackEffect.NONE; //TODO
+    public AbstractGameAction.AttackEffect attackEffect = AbstractGameAction.AttackEffect.NONE;
     public PCLAttackType attackType = PCLAttackType.Normal;
     public PCLCardAffinities affinities = new PCLCardAffinities(null);
     public PCLCardTarget attackTarget = PCLCardTarget.None;
@@ -48,6 +48,8 @@ public class PCLCardBuilder
     public final ArrayList<BaseEffect> effects = new ArrayList<>();
     public boolean canUpgrade = true;
     public boolean isMultiDamage;
+    public boolean isTempHP;
+    public boolean isHeal;
     public boolean showTypeText = true;
     public int attributeMultiplier = 1;
     public int block;
@@ -119,6 +121,9 @@ public class PCLCardBuilder
         SetOnUpgrade(original.onUpgrade);
         SetOnUse(original.onUse);
         SetConstructor(original.constructor);
+
+        isTempHP = original.isTempHP;
+        isHeal = original.isHeal;
     }
 
     public PCLCard_Dynamic Build()
@@ -568,6 +573,20 @@ public class PCLCardBuilder
         return this;
     }
 
+    public PCLCardBuilder SetBaseEffect(ArrayList<BaseEffect> currentEffects) {
+        return SetBaseEffect(currentEffects, false, false);
+    }
+
+    public PCLCardBuilder SetBaseEffect(ArrayList<BaseEffect> currentEffects, boolean makeCopy, boolean clear) {
+        if (clear) {
+            effects.clear();
+        }
+        for (BaseEffect be : currentEffects) {
+            SetBaseEffect(be, makeCopy);
+        }
+        return this;
+    }
+
     public PCLCardBuilder SetBaseEffect(BaseEffect... effect) {
         return SetBaseEffect(false, false, effect);
     }
@@ -588,7 +607,7 @@ public class PCLCardBuilder
 
     public PCLCardBuilder SetBaseEffect(BaseEffect effect, boolean makeCopy)
     {
-        if (makeCopy) {
+        if (makeCopy && effect != null) {
             effect = effect.MakeCopy();
         }
         effects.add(effect);

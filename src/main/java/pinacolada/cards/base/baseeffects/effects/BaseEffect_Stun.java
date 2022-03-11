@@ -18,6 +18,11 @@ public class BaseEffect_Stun extends BaseEffect
         this( 0);
     }
 
+    public BaseEffect_Stun(SerializedData content)
+    {
+        super(content);
+    }
+
     public BaseEffect_Stun(int amount)
     {
         super(ID, null, PCLCardTarget.Normal, amount);
@@ -27,6 +32,12 @@ public class BaseEffect_Stun extends BaseEffect
     public String GetText()
     {
         return PGR.PCL.Strings.Actions.Stun(GetTargetString(), true);
+    }
+
+    @Override
+    public String GetSampleText()
+    {
+        return PGR.PCL.Strings.Actions.Stun("X", true);
     }
 
     @Override

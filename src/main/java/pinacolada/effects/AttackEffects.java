@@ -9,6 +9,7 @@ import eatyourbeets.effects.EYBEffect;
 import eatyourbeets.interfaces.delegates.FuncT2;
 import eatyourbeets.interfaces.delegates.FuncT3;
 import eatyourbeets.utilities.Colors;
+import org.apache.commons.lang3.StringUtils;
 import pinacolada.effects.vfx.GenericRenderEffect;
 import pinacolada.resources.PGR;
 import pinacolada.resources.pcl.PCLImages;
@@ -16,12 +17,14 @@ import pinacolada.utilities.PCLJUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect;
 
 public class AttackEffects
 {
-    private static final HashMap<AttackEffect, AttackEffectData> map = new HashMap();
+    private static final HashMap<AttackEffect, AttackEffectData> map = new HashMap<>();
     private static final PCLImages.Effects IMAGES = PGR.PCL.Images.Effects;
     private static final ArrayList<AttackEffect> melee = new ArrayList<>();
     private static final ArrayList<AttackEffect> magic = new ArrayList<>();
@@ -58,8 +61,12 @@ public class AttackEffects
    public static final AttackEffect WATER = PGR.Enums.AttackEffect.WATER;
    public static final AttackEffect WAVE = PGR.Enums.AttackEffect.WAVE;
 
-    public static EYBEffect GetVFX(AttackEffect effect, AbstractCreature source, float t_cX, float t_cY)
-    {
+   public static List<AttackEffect> Keys() {
+       return map.keySet().stream().sorted((a, b) -> StringUtils.compare(a.name(), b.name())).collect(Collectors.toList());
+   }
+
+   public static EYBEffect GetVFX(AttackEffect effect, AbstractCreature source, float t_cX, float t_cY)
+   {
         if (effect != null && effect != NONE)
         {
             final AttackEffectData data = map.get(effect);
@@ -81,7 +88,7 @@ public class AttackEffects
         }
 
         return new GenericRenderEffect((TextureRegion) null, t_cX, t_cY);
-    }
+   }
 
     public static void PlaySound(AttackEffect effect, float pitchMin, float pitchMax)
     {

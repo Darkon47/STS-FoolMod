@@ -10,7 +10,7 @@ import java.util.List;
 public abstract class BaseEffect_Affinity extends BaseEffect {
     protected ArrayList<PCLAffinity> affinities;
 
-    public BaseEffect_Affinity(String[] content)
+    public BaseEffect_Affinity(SerializedData content)
     {
         super(content);
         this.affinities = ParseAffinitiesFromEntityID();

@@ -7,6 +7,7 @@ import pinacolada.powers.common.FreezingPower;
 import pinacolada.powers.common.RippledPower;
 import pinacolada.powers.fool.StonedPower;
 import pinacolada.powers.fool.SwirledPower;
+import pinacolada.resources.PGR;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -45,5 +46,32 @@ public enum PCLAttackType
 
     public int GetDamageMultiplierForDisplay(String powerID) {
         return damageMultiplier + PCLCombatStats.GetAmplifierBonus(powerID);
+    }
+
+    // These strings cannot be put in as an enum variable because cards are initialized before these strings are
+    public final PCLCardTooltip GetTooltip() {
+        switch (this) {
+            case Normal:
+                return PGR.Tooltips.Damage;
+            case Air:
+                return PGR.Tooltips.AirDamage;
+            case Brutal:
+                return PGR.Tooltips.Brutal;
+            case Dark:
+                return PGR.Tooltips.DarkDamage;
+            case Earth:
+                return PGR.Tooltips.EarthDamage;
+            case Electric:
+                return PGR.Tooltips.ElectricDamage;
+            case Fire:
+                return PGR.Tooltips.FireDamage;
+            case Ice:
+                return PGR.Tooltips.IceDamage;
+            case Piercing:
+                return PGR.Tooltips.Piercing;
+            case Ranged:
+                return PGR.Tooltips.Ranged;
+        }
+        return null;
     }
 }

@@ -1,6 +1,8 @@
 package pinacolada.ui.characterSelection;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.random.Random;
@@ -8,6 +10,7 @@ import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import com.megacrit.cardcrawl.screens.charSelect.CharacterOption;
 import com.megacrit.cardcrawl.screens.charSelect.CharacterSelectScreen;
 import eatyourbeets.ui.GUIElement;
+import eatyourbeets.utilities.Colors;
 import eatyourbeets.utilities.EYBFontHelper;
 import eatyourbeets.utilities.FieldInfo;
 import pinacolada.blights.common.AbstractGlyphBlight;
@@ -22,10 +25,12 @@ import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
 
 import java.util.ArrayList;
+import java.util.Set;
 
 import static pinacolada.resources.pcl.misc.PCLLoadout.BRONZE_REQUIRED_EXPANSION;
+import static pinacolada.ui.characterSelection.PCLCharacterSelectScreen.GetCurrentClass;
 
-public class PCLLoadoutRenderer extends GUIElement
+public class PCLCharacterSelectOptionsRenderer extends GUIElement
 {
     private final static PCLCardTooltip ExpansionLockedTooltip = new PCLCardTooltip(PGR.PCL.Strings.SeriesSelection.ExpansionHeader, PCLJUtils.Format(PGR.PCL.Strings.SeriesSelection.ExpansionSeriesLocked, BRONZE_REQUIRED_EXPANSION));
     private final static PCLCardTooltip ExpansionUnlockedTooltip = new PCLCardTooltip(PGR.PCL.Strings.SeriesSelection.ExpansionHeader, PGR.PCL.Strings.SeriesSelection.ExpansionSeriesUnlocked);
@@ -56,7 +61,7 @@ public class PCLLoadoutRenderer extends GUIElement
 
     protected float textScale;
 
-    public PCLLoadoutRenderer()
+    public PCLCharacterSelectOptionsRenderer()
     {
         final float leftTextWidth = FontHelper.getSmartWidth(FontHelper.cardTitleFont, PGR.PCL.Strings.CharSelect.LeftText, 9999f, 0f); // Ascension
         final float rightTextWidth = FontHelper.getSmartWidth(FontHelper.cardTitleFont, PGR.PCL.Strings.CharSelect.RightText, 9999f, 0f); // Level 22
@@ -99,7 +104,9 @@ public class PCLLoadoutRenderer extends GUIElement
         CardEditorButton = new GUI_Button(PGR.PCL.Images.SwapCards.Texture(), new AdvancedHitbox(0, 0, Scale(64), Scale(64)))
                 .SetPosition(LoadoutEditorButton.hb.x + LoadoutEditorButton.hb.width + Scale(40), StartingCardsListLabel.hb.y + Scale(192)).SetText("")
                 .SetTooltip(PGR.PCL.Strings.CharSelect.CardEditor, PGR.PCL.Strings.CharSelect.CardEditorInfo)
-                .SetOnClick(this::OpenCardEditor);
+                .SetOnRightClick(this::ToggleCustomCards)
+                .SetOnClick(this::OpenCardEditor)
+                .SetColor(characterOption != null && PGR.PCL.Config.CustomCardsEnabledCharacters.Get().contains(GetCurrentClass(characterOption)) ? Colors.White(1) : Color.GRAY.cpy());
 
         AscensionGlyphsLabel = new GUI_Label(EYBFontHelper.CardTitleFont_Small,
                 new AdvancedHitbox(POS_X * 6, POS_Y, leftTextWidth, 50f * Settings.scale))
@@ -111,6 +118,22 @@ public class PCLLoadoutRenderer extends GUIElement
         for (AbstractGlyphBlight glyph : PGR.Fool.Data.Glyphs) {
             glyphEditors.add(new PCLGlyphEditor(glyph, new AdvancedHitbox(xOffset, POS_Y, glyph.hb.width, glyph.hb.height)));
             xOffset += ROW_OFFSET * 1.7f;
+        }
+    }
+
+    private void ToggleCustomCards() {
+        AbstractPlayer.PlayerClass pc = GetCurrentClass(characterOption);
+        if (pc != null) {
+            Set<AbstractPlayer.PlayerClass> selected = PGR.PCL.Config.CustomCardsEnabledCharacters.Get();
+            if (selected.contains(pc)) {
+                selected.remove(pc);
+                CardEditorButton.SetColor(Color.GRAY.cpy());
+            }
+            else {
+                selected.add(pc);
+                CardEditorButton.SetColor(Colors.White(1));
+            }
+            PGR.PCL.Config.CustomCardsEnabledCharacters.Set(selected, true);
         }
     }
 

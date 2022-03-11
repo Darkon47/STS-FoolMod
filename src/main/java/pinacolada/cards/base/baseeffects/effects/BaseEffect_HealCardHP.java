@@ -5,53 +5,46 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import eatyourbeets.utilities.ColoredString;
 import pinacolada.cards.base.CardUseInfo;
+import pinacolada.cards.base.PCLCard;
 import pinacolada.cards.base.PCLCardTarget;
 import pinacolada.cards.base.attributes.AbstractAttribute;
-import pinacolada.cards.base.attributes.TempHPAttribute;
+import pinacolada.cards.base.attributes.HPAttribute;
 import pinacolada.cards.base.baseeffects.BaseEffect;
 import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLActions;
 
-public class BaseEffect_GainTempHP extends BaseEffect
+public class BaseEffect_HealCardHP extends BaseEffect
 {
-    public static final String ID = Register(BaseEffect_GainTempHP.class);
+    public static final String ID = Register(BaseEffect_HealCardHP.class);
 
-    public BaseEffect_GainTempHP()
-    {
-        this(0);
-    }
 
-    public BaseEffect_GainTempHP(SerializedData content)
+    public BaseEffect_HealCardHP(PCLCard card)
     {
-        super(content);
-    }
-
-    public BaseEffect_GainTempHP(int amount)
-    {
-        super(ID, null, PCLCardTarget.Self, amount);
+        super(ID, null, PCLCardTarget.Self, 0);
+        SetSourceCard(card, PCLCardValueSource.SecondaryNumber);
     }
 
     @Override
     public String GetText()
     {
-        return PGR.PCL.Strings.Actions.GainAmount(amount, PGR.Tooltips.TempHP, true);
+        return null;
     }
 
     @Override
     public String GetSampleText()
     {
-        return PGR.PCL.Strings.Actions.GainAmount("X", PGR.Tooltips.TempHP.title, false);
+        return PGR.PCL.Strings.Actions.Heal("X", false);
     }
 
     @Override
     public void Use(AbstractPlayer p, AbstractMonster m, CardUseInfo info)
     {
-        PCLActions.Bottom.GainTemporaryHP(amount);
+        PCLActions.Bottom.Heal(amount);
     }
 
     @Override
     public AbstractAttribute GetSpecialInfo() {
-        return TempHPAttribute.Instance
+        return HPAttribute.Instance
                 .SetText(new ColoredString(amount, Settings.CREAM_COLOR));
     }
 }

@@ -17,6 +17,11 @@ public class BaseEffect_Scry extends BaseEffect
         this(0);
     }
 
+    public BaseEffect_Scry(SerializedData content)
+    {
+        super(content);
+    }
+
     public BaseEffect_Scry(int amount)
     {
         super(ID, null, PCLCardTarget.None, amount);
@@ -26,6 +31,12 @@ public class BaseEffect_Scry extends BaseEffect
     public String GetText()
     {
         return PGR.PCL.Strings.Actions.Scry(amount, true);
+    }
+
+    @Override
+    public String GetSampleText()
+    {
+        return PGR.PCL.Strings.Actions.Scry("X", false);
     }
 
     @Override

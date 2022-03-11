@@ -18,10 +18,7 @@ import eatyourbeets.cards.base.EYBCardData;
 import eatyourbeets.resources.animator.AnimatorResources;
 import eatyourbeets.utilities.FieldInfo;
 import eatyourbeets.utilities.RandomizedList;
-import pinacolada.cards.base.PCLCard;
-import pinacolada.cards.base.PCLCardBase;
-import pinacolada.cards.base.PCLCardData;
-import pinacolada.cards.base.ReplacementCardBuilder;
+import pinacolada.cards.base.*;
 import pinacolada.cards.fool.FoolCard_UltraRare;
 import pinacolada.cards.fool.special.OrbCore_Air;
 import pinacolada.cards.pcl.curse.*;
@@ -188,6 +185,11 @@ public class PCLCardLibraryPatches
                     {
                         return SpireReturn.Return(data.MakeCopy(false));
                     }
+                }
+
+                PCLCustomCardSlot slot = PCLCustomCardSlot.Get(key);
+                if (slot != null) {
+                    return SpireReturn.Return(slot.Builder.Build());
                 }
             }
 

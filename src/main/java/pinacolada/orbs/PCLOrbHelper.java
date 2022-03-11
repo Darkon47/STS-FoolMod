@@ -3,6 +3,7 @@ package pinacolada.orbs;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import eatyourbeets.interfaces.delegates.FuncT0;
 import eatyourbeets.utilities.WeightedList;
+import org.apache.commons.lang3.StringUtils;
 import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCardTooltip;
 import pinacolada.interfaces.markers.TooltipObject;
@@ -10,8 +11,10 @@ import pinacolada.resources.PGR;
 import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class PCLOrbHelper implements TooltipObject
 {
@@ -38,6 +41,10 @@ public class PCLOrbHelper implements TooltipObject
 
     public static PCLOrbHelper Get(String orbID) {
         return ALL.get(orbID);
+    }
+
+    public static Collection<PCLOrbHelper> Values() {
+        return ALL.values().stream().sorted((a, b) -> StringUtils.compare(a.Tooltip.title, b.Tooltip.title)).collect(Collectors.toList());
     }
 
     public static PCLOrbHelper RandomCommonHelper() {

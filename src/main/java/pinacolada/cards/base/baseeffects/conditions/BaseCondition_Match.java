@@ -17,7 +17,7 @@ public class BaseCondition_Match extends BaseCondition {
         super(ID, null, PCLCardTarget.None, 0);
     }
 
-    public BaseCondition_Match(String[] content) {
+    public BaseCondition_Match(SerializedData content) {
         super(content);
     }
 

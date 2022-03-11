@@ -131,7 +131,7 @@ public class PCLStrings
         public final String Upgrades = Strings.TEXT[10];
         public final String CardTarget = Strings.TEXT[11];
         public final String AttackType = Strings.TEXT[12];
-        public final String UseBaseValue = Strings.TEXT[13];
+        public final String AttackEffect = Strings.TEXT[13];
         public final String PrimaryCondition = Strings.TEXT[14];
         public final String SecondaryCondition = Strings.TEXT[15];
         public final String Effect = Strings.TEXT[16];
@@ -139,6 +139,10 @@ public class PCLStrings
         public final String EffectSource = Strings.TEXT[18];
         public final String Modifier = Strings.TEXT[19];
         public final String ModifierSource = Strings.TEXT[20];
+        public final String Orbs = Strings.TEXT[21];
+        public final String Powers = Strings.TEXT[22];
+        public final String UseBaseValue = Strings.TEXT[23];
+        public final String LoadImage = Strings.TEXT[24];
     }
 
     public static class Misc
@@ -166,7 +170,7 @@ public class PCLStrings
         public final String MaxBlock_F1 = Strings.TEXT[18];
         public final String EnableEventsForOtherCharacters = Strings.TEXT[19];
         public final String EnableRelicsForOtherCharacters = Strings.TEXT[20];
-        public final String UnofficialDisclaimer = Strings.TEXT[21];
+        public final String CustomDisclaimer = Strings.TEXT[21];
         public final String Filters = Strings.TEXT[22];
         public final String Any = Strings.TEXT[23];
         public final String ReplaceCardsFool = Strings.TEXT[24];
@@ -218,6 +222,9 @@ public class PCLStrings
         public final String AscensionGlyph = Strings.TEXT[25];
         public final String CardEditor = Strings.TEXT[26];
         public final String CardEditorInfo = Strings.TEXT[27];
+        public final String CardEditorEnabled = Strings.TEXT[28];
+        public final String CardEditorDisabled = Strings.TEXT[29];
+        public final String CardEditorToggle = Strings.TEXT[30];
 
         public final String UnlocksAtLevel(int unlockLevel, int currentLevel)
         {
@@ -355,20 +362,21 @@ public class PCLStrings
     {
         private final UIStrings Strings = GetUIStrings("Combat");
 
-        public final String Current = Strings.TEXT[0];
-        public final String Next = Strings.TEXT[1];
-        public final String Uses = Strings.TEXT[2];
-        public final String Rerolls = Strings.TEXT[3];
-        public final String Experience = Strings.TEXT[4];
-        public final String ControlPile = Strings.TEXT[5];
-        public final String ControlPileDescription = Strings.TEXT[6];
-        public final String TotalMatches = Strings.TEXT[7];
-        public final String CurrentMatchCombo = Strings.TEXT[8];
-        public final String LongestMatchCombo = Strings.TEXT[9];
-        public final String ResolveMeter = Strings.TEXT[10];
-        public final String ResolveMeterDescription1 = Strings.TEXT[11];
-        public final String ResolveMeterDescription2 = Strings.TEXT[12];
-        public final String ResolveMeterDescription3 = Strings.TEXT[13];
+        public final String Hand = Strings.TEXT[0];
+        public final String Current = Strings.TEXT[1];
+        public final String Next = Strings.TEXT[2];
+        public final String Uses = Strings.TEXT[3];
+        public final String Rerolls = Strings.TEXT[4];
+        public final String Experience = Strings.TEXT[5];
+        public final String ControlPile = Strings.TEXT[6];
+        public final String ControlPileDescription = Strings.TEXT[7];
+        public final String TotalMatches = Strings.TEXT[8];
+        public final String CurrentMatchCombo = Strings.TEXT[9];
+        public final String LongestMatchCombo = Strings.TEXT[10];
+        public final String ResolveMeter = Strings.TEXT[11];
+        public final String ResolveMeterDescription1 = Strings.TEXT[12];
+        public final String ResolveMeterDescription2 = Strings.TEXT[13];
+        public final String ResolveMeterDescription3 = Strings.TEXT[14];
 
         public final String ControlPileDescriptionFull(String keyName) {
             return PCLJUtils.Format(ControlPileDescription, keyName);
@@ -439,11 +447,11 @@ public class PCLStrings
         {
             return Format(addPeriod, 1, power, target);
         }
-        public final String ApplyAmountToTarget(Integer amount, Object power, Object target, boolean addPeriod)
+        public final String ApplyAmountToTarget(Object amount, Object power, Object target, boolean addPeriod)
         {
             return Format(addPeriod, 2, amount, power, target);
         }
-        public final String ApplyAmount(Integer amount, Object power, boolean addPeriod) {return Format(addPeriod, 3, amount, power);}
+        public final String ApplyAmount(Object amount, Object power, boolean addPeriod) {return Format(addPeriod, 3, amount, power);}
         public final String Apply(Object power, boolean addPeriod)
         {
             return Format(addPeriod, 4, power);
@@ -456,7 +464,7 @@ public class PCLStrings
         {
             return Format(addPeriod, 6, amount, orb);
         }
-        public final String ChooseOutOf(Integer amount, Integer amount2, Object target, boolean addPeriod)
+        public final String ChooseOutOf(Object amount, Object amount2, Object target, boolean addPeriod)
         {
             return Format(addPeriod, 7, amount, amount2, target);
         }
@@ -472,16 +480,16 @@ public class PCLStrings
         {
             return Format(addPeriod, 10, amount);
         }
-        public final String DealDamageTo(Integer amount, Object target, boolean addPeriod)
+        public final String DealDamageTo(Object amount, Object target, boolean addPeriod)
         {
             return Format(addPeriod, 11, amount, target);
         }
-        public final String DealDamage(Integer amount, boolean addPeriod)
+        public final String DealDamage(Object amount, boolean addPeriod)
         {
             return Format(addPeriod, 12, amount);
         }
-        public final String DealTypeDamageTo(Object type, Integer amount, Object target, boolean addPeriod) {return Format(addPeriod, 13, type, amount, target);}
-        public final String DealTypeDamage(Object type, Integer amount, boolean addPeriod)
+        public final String DealTypeDamageTo(Object type, Object amount, Object target, boolean addPeriod) {return Format(addPeriod, 13, type, amount, target);}
+        public final String DealTypeDamage(Object type, Object amount, boolean addPeriod)
         {
             return Format(addPeriod, 14, type, amount);
         }
@@ -493,11 +501,11 @@ public class PCLStrings
         {
             return Format(addPeriod, 16, amount);
         }
-        public final String DrawType(Integer amount, Object type, boolean addPeriod)
+        public final String DrawType(Object amount, Object type, boolean addPeriod)
         {
             return Format(addPeriod, 17, amount, type);
         }
-        public final String Draw(Integer amount, boolean addPeriod)
+        public final String Draw(Object amount, boolean addPeriod)
         {
             return Format(addPeriod, 18, amount);
         }
@@ -509,11 +517,11 @@ public class PCLStrings
         {
             return Format(addPeriod, 20, stance);
         }
-        public final String EvokeXTimes(Object orb, Integer times, boolean addPeriod)
+        public final String EvokeXTimes(Object orb, Object times, boolean addPeriod)
         {
             return Format(addPeriod, 21, orb, times);
         }
-        public final String Evoke(Object orb, Integer times, boolean addPeriod)
+        public final String Evoke(Object orb, Object times, boolean addPeriod)
         {
             return Format(addPeriod, 22, orb, times);
         }
@@ -533,7 +541,7 @@ public class PCLStrings
         {
             return Format(addPeriod, 26, item, target);
         }
-        public final String GainAmount(Integer amount, Object power, boolean addPeriod)
+        public final String GainAmount(Object amount, Object power, boolean addPeriod)
         {
             return Format(addPeriod, 27, amount, power);
         }
@@ -541,17 +549,17 @@ public class PCLStrings
         {
             return Format(addPeriod, 28, power);
         }
-        public final String GiveTargetAmount(Object target, Integer amount, Object power, boolean addPeriod) {return Format(addPeriod, 29, target, amount, power);}
+        public final String GiveTargetAmount(Object target, Object amount, Object power, boolean addPeriod) {return Format(addPeriod, 29, target, amount, power);}
         public final String GiveTarget(Object target, Object power, boolean addPeriod) {return Format(addPeriod, 30, target, power);}
-        public final String HaveTemporaryAmount(Integer amount, Object power, boolean addPeriod)
+        public final String HaveTemporaryAmount(Object amount, Object power, boolean addPeriod)
         {
             return Format(addPeriod, 31, amount, power);
         }
-        public final String Heal(Integer amount, boolean addPeriod)
+        public final String Heal(Object amount, boolean addPeriod)
         {
             return Format(addPeriod, 32, amount);
         }
-        public final String LoseAmount(Integer amount, Object power, boolean addPeriod)
+        public final String LoseAmount(Object amount, Object power, boolean addPeriod)
         {
             return Format(addPeriod, 33, amount, power);
         }
@@ -567,11 +575,11 @@ public class PCLStrings
         {
             return Format(addPeriod, 36, amount, target);
         }
-        public final String ObtainOutOf(Integer amount, Integer amount2, Object target, boolean addPeriod)
+        public final String ObtainOutOf(Object amount, Object amount2, Object target, boolean addPeriod)
         {
             return Format(addPeriod, 37, amount, amount2, target);
         }
-        public final String ObtainAmount(Integer amount, Object card, boolean addPeriod)
+        public final String ObtainAmount(Object amount, Object card, boolean addPeriod)
         {
             return Format(addPeriod, 38, amount, card);
         }
@@ -579,7 +587,7 @@ public class PCLStrings
         {
             return Format(addPeriod, 39, card);
         }
-        public final String Pay(Integer amount, Object power, boolean addPeriod) {return Format(addPeriod, 40, amount, power);}
+        public final String Pay(Object amount, Object power, boolean addPeriod) {return Format(addPeriod, 40, amount, power);}
         public final String PlayFrom(Object item, Object target, boolean addPeriod)
         {
             return Format(addPeriod, 41, item, target);
@@ -600,7 +608,7 @@ public class PCLStrings
         {
             return Format(addPeriod, 45, item, target);
         }
-        public final String RetainAmount(Integer amount, Object power, boolean addPeriod)
+        public final String RetainAmount(Object amount, Object power, boolean addPeriod)
         {
             return Format(addPeriod, 46, amount, power);
         }
@@ -608,11 +616,11 @@ public class PCLStrings
         {
             return Format(addPeriod, 47, power);
         }
-        public final String Scry(Integer amount, boolean addPeriod) {return Format(addPeriod, 48, amount);}
+        public final String Scry(Object amount, boolean addPeriod) {return Format(addPeriod, 48, amount);}
         public final String SetCurrentAffinity(Object affinity, boolean addPeriod) {return Format(addPeriod, 49, affinity);}
         public final String SetNextAffinity(Object affinity, boolean addPeriod) {return Format(addPeriod, 50, affinity);}
-        public final String StealFrom(Integer amount, Object item, Object target, boolean addPeriod) {return Format(addPeriod, 51, amount, item, target);}
-        public final String StealAmount(Integer amount, Object power, boolean addPeriod)
+        public final String StealFrom(Object amount, Object item, Object target, boolean addPeriod) {return Format(addPeriod, 51, amount, item, target);}
+        public final String StealAmount(Object amount, Object power, boolean addPeriod)
         {
             return Format(addPeriod, 52, amount, power);
         }
@@ -620,13 +628,13 @@ public class PCLStrings
         {
             return Format(addPeriod, 53, target);
         }
-        public final String TakeDelayedDamage(Integer amount, boolean addPeriod) {return Format(addPeriod, 54, amount);}
-        public final String TakeDamage(Integer amount, boolean addPeriod) {return Format(addPeriod, 55, amount);}
-        public final String TriggerXTimes(Object orb, Integer times, boolean addPeriod)
+        public final String TakeDelayedDamage(Object amount, boolean addPeriod) {return Format(addPeriod, 54, amount);}
+        public final String TakeDamage(Object amount, boolean addPeriod) {return Format(addPeriod, 55, amount);}
+        public final String TriggerXTimes(Object orb, Object times, boolean addPeriod)
         {
             return Format(addPeriod, 56, orb, times);
         }
-        public final String Trigger(Object orb, Integer times, boolean addPeriod)
+        public final String Trigger(Object orb, Object times, boolean addPeriod)
         {
             return Format(addPeriod, 57, orb, times);
         }
@@ -698,6 +706,18 @@ public class PCLStrings
         public final String Generic(Object desc1, boolean addPeriod)
         {
             return Format(addPeriod, 11, desc1);
+        }
+        public final String MatchCombo(Object desc1, boolean addPeriod)
+        {
+            return Format(addPeriod, 12, desc1);
+        }
+        public final String Not(Object desc1, boolean addPeriod)
+        {
+            return Format(addPeriod, 13, desc1);
+        }
+        public final String Or(Object desc1, Object desc2, boolean addPeriod)
+        {
+            return Format(addPeriod, 14, desc1, desc2);
         }
 
         private String Format(boolean addPeriod, int index, Object... objects)

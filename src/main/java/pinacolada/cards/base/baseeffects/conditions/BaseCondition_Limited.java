@@ -17,7 +17,7 @@ public class BaseCondition_Limited extends BaseCondition {
         super(ID, null, PCLCardTarget.None, 0);
     }
 
-    public BaseCondition_Limited(String[] content) {
+    public BaseCondition_Limited(SerializedData content) {
         super(content);
     }
 

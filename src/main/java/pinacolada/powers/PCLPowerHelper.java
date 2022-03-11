@@ -5,6 +5,7 @@ import com.megacrit.cardcrawl.powers.*;
 import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 import eatyourbeets.interfaces.delegates.FuncT2;
 import eatyourbeets.interfaces.delegates.FuncT3;
+import org.apache.commons.lang3.StringUtils;
 import pinacolada.cards.base.PCLCardTooltip;
 import pinacolada.effects.AttackEffects;
 import pinacolada.interfaces.markers.TooltipObject;
@@ -22,6 +23,7 @@ import pinacolada.utilities.PCLGameUtilities;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class PCLPowerHelper extends eatyourbeets.powers.PowerHelper implements TooltipObject
 {
@@ -105,7 +107,7 @@ public class PCLPowerHelper extends eatyourbeets.powers.PowerHelper implements T
     }
 
     public static Collection<PCLPowerHelper> Values() {
-        return ALL.values();
+        return ALL.values().stream().sorted((a, b) -> StringUtils.compare(a.Tooltip.title, b.Tooltip.title)).collect(Collectors.toList());
     }
 
     public PCLPowerHelper(String powerID, PCLCardTooltip tooltip, FuncT2<AbstractPower, AbstractCreature, Integer> constructor, Behavior endTurnBehavior, boolean isCommon, boolean isDebuff)

@@ -26,10 +26,10 @@ public class BaseEffect_Obtain extends BaseEffect
         this(1, 0);
     }
 
-    public BaseEffect_Obtain(String[] content)
+    public BaseEffect_Obtain(SerializedData content)
     {
         super(content);
-        this.upgradeTimes = Integer.parseInt(misc);
+        this.upgradeTimes = misc != null ? Integer.parseInt(misc) : 0;
     }
 
     public BaseEffect_Obtain(int copies, int upgradeTimes, PCLCardData... cards)
@@ -49,6 +49,12 @@ public class BaseEffect_Obtain extends BaseEffect
     {
         String joinedString = PCLJUtils.JoinStrings(" ", PCLJUtils.Map(cardData, card -> card.Strings.NAME));
         return PGR.PCL.Strings.Actions.Obtain(joinedString, true);
+    }
+
+    @Override
+    public String GetSampleText()
+    {
+        return PGR.PCL.Strings.Actions.Obtain("X", false);
     }
 
     @Override

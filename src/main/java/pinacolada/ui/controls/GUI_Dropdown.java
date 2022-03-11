@@ -58,6 +58,7 @@ public class GUI_Dropdown<T> extends GUIElement
     protected int maxRows;
     protected int topVisibleRowIndex;
     public boolean canAutosizeButton;
+    public boolean canAutosizeRows = true;
     public boolean isMultiSelect;
     public final AdvancedHitbox hb;
     public ArrayList<DropdownRow<T>> rows = new ArrayList<>();
@@ -109,14 +110,19 @@ public class GUI_Dropdown<T> extends GUIElement
                 .SetOnClick(() -> {SetSelectionIndices(new int[] {}, true);});
         this.header = new GUI_Label(EYBFontHelper.CardTitleFont_Small, new AdvancedHitbox(hb.x, hb.y + hb.height, hb.width, hb.height)).SetAlignment(0.5f,0.0f,false);
         this.header.SetActive(false);
+    }
+
+    public GUI_Dropdown<T> SetCanAutosize(boolean canAutosizeButton, boolean canAutosizeRows) {
+        this.canAutosizeButton = canAutosizeButton;
+        this.canAutosizeRows = canAutosizeRows;
         Autosize();
+
+        return this;
     }
 
     public GUI_Dropdown<T> SetCanAutosizeButton(boolean value) {
         this.canAutosizeButton = value;
-        if (this.canAutosizeButton) {
-            Autosize();
-        }
+        Autosize();
 
         return this;
     }
@@ -310,6 +316,7 @@ public class GUI_Dropdown<T> extends GUIElement
     }
 
     public void Autosize() {
+
         this.rowWidth = CalculateRowWidth();
         this.rowHeight = CalculateRowHeight();
         if (canAutosizeButton) {
@@ -318,11 +325,13 @@ public class GUI_Dropdown<T> extends GUIElement
             this.header.hb.translate(hb.x, hb.y + hb.height);
             this.clearButton.hb.translate(hb.x + hb.width, hb.y);
         }
-        for (DropdownRow<T> row : rows) {
-            row.hb.resize(rowWidth,rowHeight);
+        if (canAutosizeRows) {
+            for (DropdownRow<T> row : rows) {
+                row.hb.resize(rowWidth, rowHeight);
+            }
         }
         this.scrollBar.hb.resize(SCROLLBAR_WIDTH, rowHeight * (this.visibleRowCount() - 1));
-        this.scrollBar.hb.translate(hb.x + rowWidth - SCROLLBAR_PADDING, hb.y + CalculateScrollbarOffset());
+        this.scrollBar.hb.translate(hb.x + (canAutosizeRows ? rowWidth : hb.width) - SCROLLBAR_PADDING, hb.y + CalculateScrollbarOffset());
     }
 
     public boolean AreAnyItemsHovered() {

@@ -21,6 +21,11 @@ public class BaseEffect_GainBlock extends BaseEffect
         this(0);
     }
 
+    public BaseEffect_GainBlock(SerializedData content)
+    {
+        super(content);
+    }
+
     public BaseEffect_GainBlock(int amount)
     {
         super(ID, null, PCLCardTarget.Self, amount);
@@ -30,6 +35,12 @@ public class BaseEffect_GainBlock extends BaseEffect
     public String GetText()
     {
         return PGR.PCL.Strings.Actions.GainAmount(amount, PGR.Tooltips.Block, true);
+    }
+
+    @Override
+    public String GetSampleText()
+    {
+        return PGR.PCL.Strings.Actions.GainAmount("X", PGR.Tooltips.Block.title, false);
     }
 
     @Override

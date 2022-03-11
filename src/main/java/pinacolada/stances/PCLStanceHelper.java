@@ -1,6 +1,7 @@
 package pinacolada.stances;
 
 import eatyourbeets.interfaces.delegates.FuncT0;
+import org.apache.commons.lang3.StringUtils;
 import pinacolada.cards.base.PCLAffinity;
 import pinacolada.cards.base.PCLCardTooltip;
 import pinacolada.interfaces.markers.TooltipObject;
@@ -9,8 +10,10 @@ import pinacolada.utilities.PCLGameUtilities;
 import pinacolada.utilities.PCLJUtils;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class PCLStanceHelper implements TooltipObject
 {
@@ -34,6 +37,10 @@ public class PCLStanceHelper implements TooltipObject
 
     public static PCLStanceHelper Get(PCLAffinity affinity) {
         return PCLJUtils.Find(ALL.values(), h -> affinity.equals(h.Affinity));
+    }
+
+    public static Collection<PCLStanceHelper> Values() {
+        return ALL.values().stream().sorted((a, b) -> StringUtils.compare(a.Tooltip.title, b.Tooltip.title)).collect(Collectors.toList());
     }
 
     public static PCLStanceHelper RandomHelper() {

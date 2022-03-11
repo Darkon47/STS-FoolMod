@@ -17,7 +17,7 @@ public class BaseCondition_OnExhaust extends BaseCondition {
         super(ID, null, PCLCardTarget.None, 0);
     }
 
-    public BaseCondition_OnExhaust(String[] content) {
+    public BaseCondition_OnExhaust(SerializedData content) {
         super(content);
     }
 

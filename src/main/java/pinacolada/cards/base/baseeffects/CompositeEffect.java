@@ -82,6 +82,11 @@ public class CompositeEffect extends BaseEffect {
     }
 
     @Override
+    public String GetSampleText() {
+        return null;
+    }
+
+    @Override
     public void Use(AbstractPlayer p, AbstractMonster m, CardUseInfo info) {
         for (BaseEffect effect : effects) {
             effect.Use(p, m, info);

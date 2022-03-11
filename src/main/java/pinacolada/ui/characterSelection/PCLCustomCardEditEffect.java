@@ -9,6 +9,7 @@ import eatyourbeets.effects.EYBEffectWithCallback;
 import eatyourbeets.interfaces.delegates.ActionT0;
 import eatyourbeets.utilities.EYBFontHelper;
 import pinacolada.cards.base.PCLCardBuilder;
+import pinacolada.cards.base.PCLCardTooltip;
 import pinacolada.cards.base.PCLCard_Dynamic;
 import pinacolada.cards.base.PCLCustomCardSlot;
 import pinacolada.resources.PGR;
@@ -47,6 +48,9 @@ public class PCLCustomCardEditEffect extends EYBEffectWithCallback<Object> {
         Page.TryUpdate();
         upgradeToggle.TryUpdate();
         PreviewCard.update();
+        if (PreviewCard.hb.hovered) {
+            PCLCardTooltip.QueueTooltips(PreviewCard);
+        }
     }
 
     @Override

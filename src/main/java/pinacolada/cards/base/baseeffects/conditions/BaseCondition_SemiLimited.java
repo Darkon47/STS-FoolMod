@@ -17,7 +17,7 @@ public class BaseCondition_SemiLimited extends BaseCondition {
         super(ID, null, PCLCardTarget.None, 0);
     }
 
-    public BaseCondition_SemiLimited(String[] content) {
+    public BaseCondition_SemiLimited(SerializedData content) {
         super(content);
     }
 

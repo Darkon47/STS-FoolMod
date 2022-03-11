@@ -17,7 +17,7 @@ public class BaseCondition_WhenDrawn extends BaseCondition {
         super(ID, null, PCLCardTarget.None, 0);
     }
 
-    public BaseCondition_WhenDrawn(String[] content) {
+    public BaseCondition_WhenDrawn(SerializedData content) {
         super(content);
     }
 

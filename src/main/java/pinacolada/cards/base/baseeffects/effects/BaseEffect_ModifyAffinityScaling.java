@@ -28,7 +28,7 @@ public class BaseEffect_ModifyAffinityScaling extends BaseEffect
         this(0, new ArrayList<>());
     }
 
-    public BaseEffect_ModifyAffinityScaling(String[] content)
+    public BaseEffect_ModifyAffinityScaling(SerializedData content)
     {
         super(content);
         this.affinities = ParseAffinitiesFromEntityID();
@@ -77,6 +77,10 @@ public class BaseEffect_ModifyAffinityScaling extends BaseEffect
     {
         String joinedString = PCLJUtils.JoinStrings(", " + amount + " ", PCLJUtils.Map(affinities, af -> CardTooltips.FindByID(af.GetScalingTooltipID()).GetTitleOrIcon()));
         return PGR.PCL.Strings.Actions.GiveTargetAmount(PGR.PCL.Strings.Actions.Cards(cards.size()), amount, joinedString, true);
+    }
+
+    public String GetSampleText() {
+        return PGR.PCL.Strings.Actions.GiveTarget(PGR.PCL.Strings.Actions.Cards("X"), PGR.PCL.Strings.SeriesUI.Scalings, false);
     }
 
     @Override

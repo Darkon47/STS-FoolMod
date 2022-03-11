@@ -29,6 +29,7 @@ import pinacolada.blights.common.AbstractGlyphBlight;
 import pinacolada.cards.base.CardSeries;
 import pinacolada.cards.base.PCLCard;
 import pinacolada.cards.base.PCLCardBase;
+import pinacolada.cards.base.PCLCustomCardSlot;
 import pinacolada.effects.card.PermanentUpgradeEffect;
 import pinacolada.powers.PCLCombatStats;
 import pinacolada.relics.PCLRelic;
@@ -292,12 +293,23 @@ public class PCLDungeonData implements CustomSavable<PCLDungeonData>, StartGameS
         final AbstractPlayer player = PCLCombatStats.RefreshPlayer();
         GetPlayerData(player.chosenClass).InitializeCardPool(startGame);
 
+        // Add custom cards if applicable, then disable trophies and ascension
+        if (PCLGameUtilities.AreCustomCardsEnabled(player.chosenClass)) {
+            Settings.seedSet = true;
+            for (PCLCustomCardSlot c : PCLCustomCardSlot.GetCards(player.getCardColor())) {
+                CardGroup pool = PCLGameUtilities.GetCardPool(c.Builder.cardRarity);
+                if (pool != null) {
+                    pool.addToBottom(c.Builder.Build());
+                }
+            }
+        }
+
         if (PCLGameUtilities.IsPCLPlayerClass() && PCLGameUtilities.IsNormalRun(false) && Settings.seed != null)
         {
             PGR.PCL.Config.LastSeed.Set(Settings.seed.toString(), true);
         }
 
-        else if (PCLGameUtilities.IsPCLPlayerClass())
+        else if (!PCLGameUtilities.IsPCLPlayerClass())
         {
             AbstractDungeon.srcCurseCardPool.group.removeIf(PCLCardBase.class::isInstance);
             AbstractDungeon.curseCardPool.group.removeIf(PCLCardBase.class::isInstance);

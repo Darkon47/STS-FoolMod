@@ -19,7 +19,7 @@ public class BaseEffect_GainAffinityPower extends BaseEffect_Affinity
         this(0);
     }
 
-    public BaseEffect_GainAffinityPower(String[] content)
+    public BaseEffect_GainAffinityPower(SerializedData content)
     {
         super(content);
     }
@@ -34,6 +34,12 @@ public class BaseEffect_GainAffinityPower extends BaseEffect_Affinity
     public String GetText()
     {
         return PGR.PCL.Strings.Actions.GainAmount(amount, PCLJUtils.JoinStrings(" ", PCLJUtils.Map(affinities, PCLAffinity::GetPowerTooltip)), true);
+    }
+
+    @Override
+    public String GetSampleText()
+    {
+        return PGR.PCL.Strings.Actions.GainAmount("X", PGR.Tooltips.Affinity_Power.title, false);
     }
 
     @Override
