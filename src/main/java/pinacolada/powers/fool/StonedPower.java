@@ -38,11 +38,27 @@ public class StonedPower extends PCLPower implements OnTryReducePowerListener
 
     @Override
     public boolean TryReducePower(AbstractPower power, AbstractCreature target, AbstractCreature source, AbstractGameAction action) {
-        return target != owner ||
-                (!BurningPower.POWER_ID.equals(power.ID)
-                        && !FreezingPower.POWER_ID.equals(power.ID)
-                        && !ElectrifiedPower.POWER_ID.equals(power.ID)
-                        && !RippledPower.POWER_ID.equals(power.ID)
-                        && !SwirledPower.POWER_ID.equals(power.ID));
+    	boolean returnValue = true;
+    	try {
+    		if(target != owner) {
+    			returnValue = false;
+    		}
+    		if(!BurningPower.POWER_ID.equals(power.ID)) {
+    			returnValue = false;
+    		}
+    		if(!FreezingPower.POWER_ID.equals(power.ID)) {
+    			returnValue = false;
+    		}
+    		if(!ElectrifiedPower.POWER_ID.equals(power.ID)) {
+    			returnValue = false;
+    		}
+    		if(!RippledPower.POWER_ID.equals(power.ID)) {
+    			returnValue = false;
+    		}
+    	}
+    	catch(NullPointerException e) {
+    		
+    	}
+        return returnValue;
     }
 }
